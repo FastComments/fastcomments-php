@@ -1,0 +1,1685 @@
+# OpenAPI\Client\PublicApi
+
+All URIs are relative to http://localhost, except if the operation defines another base path.
+
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**blockFromComment()**](PublicApi.md#blockFromComment) | **POST** /block-from-comment/{commentId} |  |
+| [**checkedCommentsForBlocked()**](PublicApi.md#checkedCommentsForBlocked) | **GET** /check-blocked-comments |  |
+| [**createCommentPublic()**](PublicApi.md#createCommentPublic) | **POST** /comments/{tenantId} |  |
+| [**deleteCommentPublic()**](PublicApi.md#deleteCommentPublic) | **DELETE** /comments/{tenantId}/{commentId} |  |
+| [**deleteCommentVote()**](PublicApi.md#deleteCommentVote) | **DELETE** /comments/{tenantId}/{commentId}/vote/{voteId} |  |
+| [**flagCommentPublic()**](PublicApi.md#flagCommentPublic) | **POST** /flag-comment/{commentId} |  |
+| [**getCommentText()**](PublicApi.md#getCommentText) | **GET** /comments/{tenantId}/{commentId}/text |  |
+| [**getCommentVoteUserNames()**](PublicApi.md#getCommentVoteUserNames) | **GET** /comments/{tenantId}/{commentId}/votes |  |
+| [**getCommentsPublic()**](PublicApi.md#getCommentsPublic) | **GET** /comments/{tenantId} |  |
+| [**getEventLog()**](PublicApi.md#getEventLog) | **GET** /event-log/{tenantId} |  |
+| [**getGlobalEventLog()**](PublicApi.md#getGlobalEventLog) | **GET** /event-log/global/{tenantId} |  |
+| [**getUserNotificationCount()**](PublicApi.md#getUserNotificationCount) | **GET** /user-notifications/get-count |  |
+| [**getUserNotifications()**](PublicApi.md#getUserNotifications) | **GET** /user-notifications |  |
+| [**getUserPresenceStatuses()**](PublicApi.md#getUserPresenceStatuses) | **GET** /user-presence-status |  |
+| [**lockComment()**](PublicApi.md#lockComment) | **POST** /comments/{tenantId}/{commentId}/lock |  |
+| [**pinComment()**](PublicApi.md#pinComment) | **POST** /comments/{tenantId}/{commentId}/pin |  |
+| [**resetUserNotificationCount()**](PublicApi.md#resetUserNotificationCount) | **POST** /user-notifications/reset-count |  |
+| [**resetUserNotifications()**](PublicApi.md#resetUserNotifications) | **POST** /user-notifications/reset |  |
+| [**setCommentText()**](PublicApi.md#setCommentText) | **POST** /comments/{tenantId}/{commentId}/update-text |  |
+| [**unBlockComment()**](PublicApi.md#unBlockComment) | **DELETE** /block-from-comment/{commentId} |  |
+| [**unLockComment()**](PublicApi.md#unLockComment) | **POST** /comments/{tenantId}/{commentId}/unlock |  |
+| [**unPinComment()**](PublicApi.md#unPinComment) | **POST** /comments/{tenantId}/{commentId}/unpin |  |
+| [**updateUserNotificationCommentSubscriptionStatus()**](PublicApi.md#updateUserNotificationCommentSubscriptionStatus) | **POST** /user-notifications/{notificationId}/mark-opted/{optedInOrOut} |  |
+| [**updateUserNotificationPageSubscriptionStatus()**](PublicApi.md#updateUserNotificationPageSubscriptionStatus) | **POST** /user-notifications/set-subscription-state/{subscribedOrUnsubscribed} |  |
+| [**updateUserNotificationStatus()**](PublicApi.md#updateUserNotificationStatus) | **POST** /user-notifications/{notificationId}/mark/{newStatus} |  |
+| [**voteComment()**](PublicApi.md#voteComment) | **POST** /comments/{tenantId}/{commentId}/vote |  |
+
+
+## `blockFromComment()`
+
+```php
+blockFromComment($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \OpenAPI\Client\Model\BlockFromComment200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$public_block_from_comment_params = new \OpenAPI\Client\Model\PublicBlockFromCommentParams(); // \OpenAPI\Client\Model\PublicBlockFromCommentParams
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->blockFromComment($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->blockFromComment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **public_block_from_comment_params** | [**\OpenAPI\Client\Model\PublicBlockFromCommentParams**](../Model/PublicBlockFromCommentParams.md)|  | |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\BlockFromComment200Response**](../Model/BlockFromComment200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `checkedCommentsForBlocked()`
+
+```php
+checkedCommentsForBlocked($tenant_id, $comment_ids, $sso): \OpenAPI\Client\Model\CheckedCommentsForBlocked200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$comment_ids = 'comment_ids_example'; // string | A comma separated list of comment ids.
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->checkedCommentsForBlocked($tenant_id, $comment_ids, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->checkedCommentsForBlocked: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **comment_ids** | **string**| A comma separated list of comment ids. | |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\CheckedCommentsForBlocked200Response**](../Model/CheckedCommentsForBlocked200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createCommentPublic()`
+
+```php
+createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $session_id, $sso): \OpenAPI\Client\Model\CreateCommentPublic200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$comment_data = new \OpenAPI\Client\Model\CommentData(); // \OpenAPI\Client\Model\CommentData
+$session_id = 'session_id_example'; // string
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $session_id, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->createCommentPublic: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id** | **string**|  | |
+| **broadcast_id** | **string**|  | |
+| **comment_data** | [**\OpenAPI\Client\Model\CommentData**](../Model/CommentData.md)|  | |
+| **session_id** | **string**|  | [optional] |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\CreateCommentPublic200Response**](../Model/CreateCommentPublic200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteCommentPublic()`
+
+```php
+deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $edit_key): \OpenAPI\Client\Model\DeleteCommentPublic200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$edit_key = 'edit_key_example'; // string
+
+try {
+    $result = $apiInstance->deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $edit_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->deleteCommentPublic: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **broadcast_id** | **string**|  | |
+| **edit_key** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\DeleteCommentPublic200Response**](../Model/DeleteCommentPublic200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteCommentVote()`
+
+```php
+deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $edit_key, $sso): \OpenAPI\Client\Model\DeleteCommentVote200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$vote_id = 'vote_id_example'; // string
+$url_id = 'url_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$edit_key = 'edit_key_example'; // string
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $edit_key, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->deleteCommentVote: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **vote_id** | **string**|  | |
+| **url_id** | **string**|  | |
+| **broadcast_id** | **string**|  | |
+| **edit_key** | **string**|  | [optional] |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\DeleteCommentVote200Response**](../Model/DeleteCommentVote200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `flagCommentPublic()`
+
+```php
+flagCommentPublic($tenant_id, $comment_id, $is_flagged, $sso): \OpenAPI\Client\Model\FlagCommentPublic200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$is_flagged = True; // bool
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->flagCommentPublic($tenant_id, $comment_id, $is_flagged, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->flagCommentPublic: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **is_flagged** | **bool**|  | |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\FlagCommentPublic200Response**](../Model/FlagCommentPublic200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCommentText()`
+
+```php
+getCommentText($tenant_id, $comment_id, $edit_key, $sso): \OpenAPI\Client\Model\GetCommentText200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$edit_key = 'edit_key_example'; // string
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->getCommentText($tenant_id, $comment_id, $edit_key, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getCommentText: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **edit_key** | **string**|  | [optional] |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\GetCommentText200Response**](../Model/GetCommentText200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCommentVoteUserNames()`
+
+```php
+getCommentVoteUserNames($tenant_id, $comment_id, $direction, $sso): \OpenAPI\Client\Model\GetCommentVoteUserNames200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$direction = 3.4; // float | Pass 1 for getting the names of users that up voted, and -1 for the usernames for users that down voted.
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->getCommentVoteUserNames($tenant_id, $comment_id, $direction, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getCommentVoteUserNames: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **direction** | **float**| Pass 1 for getting the names of users that up voted, and -1 for the usernames for users that down voted. | |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\GetCommentVoteUserNames200Response**](../Model/GetCommentVoteUserNames200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCommentsPublic()`
+
+```php
+getCommentsPublic($tenant_id, $url_id, $page, $direction, $sso, $skip, $skip_children, $limit, $limit_children, $count_children, $last_gen_date, $fetch_page_for_comment_id, $include_config, $count_all, $includei10n, $locale, $modules, $is_crawler, $include_notification_count, $as_tree, $max_tree_depth, $use_full_translation_ids, $parent_id, $search_text, $hash_tags, $user_id, $custom_config_str): \OpenAPI\Client\Model\GetCommentsPublic200Response
+```
+
+
+
+req tenantId urlId
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$page = 56; // int
+$direction = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\SortDirections(); // \OpenAPI\Client\Model\SortDirections
+$sso = 'sso_example'; // string
+$skip = 56; // int
+$skip_children = 56; // int
+$limit = 56; // int
+$limit_children = 56; // int
+$count_children = True; // bool
+$last_gen_date = 56; // int
+$fetch_page_for_comment_id = 'fetch_page_for_comment_id_example'; // string
+$include_config = True; // bool
+$count_all = True; // bool
+$includei10n = True; // bool
+$locale = 'locale_example'; // string
+$modules = 'modules_example'; // string
+$is_crawler = True; // bool
+$include_notification_count = True; // bool
+$as_tree = True; // bool
+$max_tree_depth = 56; // int
+$use_full_translation_ids = True; // bool
+$parent_id = 'parent_id_example'; // string
+$search_text = 'search_text_example'; // string
+$hash_tags = array('hash_tags_example'); // string[]
+$user_id = 'user_id_example'; // string
+$custom_config_str = 'custom_config_str_example'; // string
+
+try {
+    $result = $apiInstance->getCommentsPublic($tenant_id, $url_id, $page, $direction, $sso, $skip, $skip_children, $limit, $limit_children, $count_children, $last_gen_date, $fetch_page_for_comment_id, $include_config, $count_all, $includei10n, $locale, $modules, $is_crawler, $include_notification_count, $as_tree, $max_tree_depth, $use_full_translation_ids, $parent_id, $search_text, $hash_tags, $user_id, $custom_config_str);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getCommentsPublic: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id** | **string**|  | |
+| **page** | **int**|  | [optional] |
+| **direction** | [**\OpenAPI\Client\Model\SortDirections**](../Model/.md)|  | [optional] |
+| **sso** | **string**|  | [optional] |
+| **skip** | **int**|  | [optional] |
+| **skip_children** | **int**|  | [optional] |
+| **limit** | **int**|  | [optional] |
+| **limit_children** | **int**|  | [optional] |
+| **count_children** | **bool**|  | [optional] |
+| **last_gen_date** | **int**|  | [optional] |
+| **fetch_page_for_comment_id** | **string**|  | [optional] |
+| **include_config** | **bool**|  | [optional] |
+| **count_all** | **bool**|  | [optional] |
+| **includei10n** | **bool**|  | [optional] |
+| **locale** | **string**|  | [optional] |
+| **modules** | **string**|  | [optional] |
+| **is_crawler** | **bool**|  | [optional] |
+| **include_notification_count** | **bool**|  | [optional] |
+| **as_tree** | **bool**|  | [optional] |
+| **max_tree_depth** | **int**|  | [optional] |
+| **use_full_translation_ids** | **bool**|  | [optional] |
+| **parent_id** | **string**|  | [optional] |
+| **search_text** | **string**|  | [optional] |
+| **hash_tags** | [**string[]**](../Model/string.md)|  | [optional] |
+| **user_id** | **string**|  | [optional] |
+| **custom_config_str** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\GetCommentsPublic200Response**](../Model/GetCommentsPublic200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getEventLog()`
+
+```php
+getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \OpenAPI\Client\Model\GetEventLog200Response
+```
+
+
+
+req tenantId urlId userIdWS
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$user_id_ws = 'user_id_ws_example'; // string
+$start_time = 56; // int
+$end_time = 56; // int
+
+try {
+    $result = $apiInstance->getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getEventLog: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id** | **string**|  | |
+| **user_id_ws** | **string**|  | |
+| **start_time** | **int**|  | |
+| **end_time** | **int**|  | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\GetEventLog200Response**](../Model/GetEventLog200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getGlobalEventLog()`
+
+```php
+getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \OpenAPI\Client\Model\GetEventLog200Response
+```
+
+
+
+req tenantId urlId userIdWS
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$user_id_ws = 'user_id_ws_example'; // string
+$start_time = 56; // int
+$end_time = 56; // int
+
+try {
+    $result = $apiInstance->getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getGlobalEventLog: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id** | **string**|  | |
+| **user_id_ws** | **string**|  | |
+| **start_time** | **int**|  | |
+| **end_time** | **int**|  | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\GetEventLog200Response**](../Model/GetEventLog200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getUserNotificationCount()`
+
+```php
+getUserNotificationCount($tenant_id, $sso): \OpenAPI\Client\Model\GetUserNotificationCount200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->getUserNotificationCount($tenant_id, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getUserNotificationCount: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\GetUserNotificationCount200Response**](../Model/GetUserNotificationCount200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getUserNotifications()`
+
+```php
+getUserNotifications($tenant_id, $page_size, $after_id, $include_context, $after_created_at, $unread_only, $dm_only, $no_dm, $include_translations, $sso): \OpenAPI\Client\Model\GetUserNotifications200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$page_size = 3.4; // float | Defaults to 20.
+$after_id = 'after_id_example'; // string
+$include_context = True; // bool
+$after_created_at = 3.4; // float
+$unread_only = True; // bool
+$dm_only = True; // bool
+$no_dm = True; // bool
+$include_translations = True; // bool
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->getUserNotifications($tenant_id, $page_size, $after_id, $include_context, $after_created_at, $unread_only, $dm_only, $no_dm, $include_translations, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getUserNotifications: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **page_size** | **float**| Defaults to 20. | [optional] |
+| **after_id** | **string**|  | [optional] |
+| **include_context** | **bool**|  | [optional] |
+| **after_created_at** | **float**|  | [optional] |
+| **unread_only** | **bool**|  | [optional] |
+| **dm_only** | **bool**|  | [optional] |
+| **no_dm** | **bool**|  | [optional] |
+| **include_translations** | **bool**|  | [optional] |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\GetUserNotifications200Response**](../Model/GetUserNotifications200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getUserPresenceStatuses()`
+
+```php
+getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids): \OpenAPI\Client\Model\GetUserPresenceStatuses200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id_ws = 'url_id_ws_example'; // string
+$user_ids = 'user_ids_example'; // string
+
+try {
+    $result = $apiInstance->getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getUserPresenceStatuses: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id_ws** | **string**|  | |
+| **user_ids** | **string**|  | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\GetUserPresenceStatuses200Response**](../Model/GetUserPresenceStatuses200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `lockComment()`
+
+```php
+lockComment($tenant_id, $comment_id, $broadcast_id, $sso): \OpenAPI\Client\Model\LockComment200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->lockComment($tenant_id, $comment_id, $broadcast_id, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->lockComment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **broadcast_id** | **string**|  | |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\LockComment200Response**](../Model/LockComment200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `pinComment()`
+
+```php
+pinComment($tenant_id, $comment_id, $broadcast_id, $sso): \OpenAPI\Client\Model\PinComment200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->pinComment($tenant_id, $comment_id, $broadcast_id, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->pinComment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **broadcast_id** | **string**|  | |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\PinComment200Response**](../Model/PinComment200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `resetUserNotificationCount()`
+
+```php
+resetUserNotificationCount($tenant_id, $sso): \OpenAPI\Client\Model\ResetUserNotifications200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->resetUserNotificationCount($tenant_id, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->resetUserNotificationCount: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\ResetUserNotifications200Response**](../Model/ResetUserNotifications200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `resetUserNotifications()`
+
+```php
+resetUserNotifications($tenant_id, $after_id, $after_created_at, $unread_only, $dm_only, $no_dm, $sso): \OpenAPI\Client\Model\ResetUserNotifications200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$after_id = 'after_id_example'; // string
+$after_created_at = 3.4; // float
+$unread_only = True; // bool
+$dm_only = True; // bool
+$no_dm = True; // bool
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->resetUserNotifications($tenant_id, $after_id, $after_created_at, $unread_only, $dm_only, $no_dm, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->resetUserNotifications: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **after_id** | **string**|  | [optional] |
+| **after_created_at** | **float**|  | [optional] |
+| **unread_only** | **bool**|  | [optional] |
+| **dm_only** | **bool**|  | [optional] |
+| **no_dm** | **bool**|  | [optional] |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\ResetUserNotifications200Response**](../Model/ResetUserNotifications200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setCommentText()`
+
+```php
+setCommentText($tenant_id, $comment_id, $broadcast_id, $edit_key, $comment_text_update_request, $sso): \OpenAPI\Client\Model\SetCommentText200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$edit_key = 'edit_key_example'; // string
+$comment_text_update_request = new \OpenAPI\Client\Model\CommentTextUpdateRequest(); // \OpenAPI\Client\Model\CommentTextUpdateRequest
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->setCommentText($tenant_id, $comment_id, $broadcast_id, $edit_key, $comment_text_update_request, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->setCommentText: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **broadcast_id** | **string**|  | |
+| **edit_key** | **string**|  | |
+| **comment_text_update_request** | [**\OpenAPI\Client\Model\CommentTextUpdateRequest**](../Model/CommentTextUpdateRequest.md)|  | |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\SetCommentText200Response**](../Model/SetCommentText200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `unBlockComment()`
+
+```php
+unBlockComment($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \OpenAPI\Client\Model\UnBlockComment200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$public_block_from_comment_params = new \OpenAPI\Client\Model\PublicBlockFromCommentParams(); // \OpenAPI\Client\Model\PublicBlockFromCommentParams
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->unBlockComment($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->unBlockComment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **public_block_from_comment_params** | [**\OpenAPI\Client\Model\PublicBlockFromCommentParams**](../Model/PublicBlockFromCommentParams.md)|  | |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\UnBlockComment200Response**](../Model/UnBlockComment200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `unLockComment()`
+
+```php
+unLockComment($tenant_id, $comment_id, $broadcast_id, $sso): \OpenAPI\Client\Model\LockComment200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->unLockComment($tenant_id, $comment_id, $broadcast_id, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->unLockComment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **broadcast_id** | **string**|  | |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\LockComment200Response**](../Model/LockComment200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `unPinComment()`
+
+```php
+unPinComment($tenant_id, $comment_id, $broadcast_id, $sso): \OpenAPI\Client\Model\PinComment200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->unPinComment($tenant_id, $comment_id, $broadcast_id, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->unPinComment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **broadcast_id** | **string**|  | |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\PinComment200Response**](../Model/PinComment200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateUserNotificationCommentSubscriptionStatus()`
+
+```php
+updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso): \OpenAPI\Client\Model\UpdateUserNotificationStatus200Response
+```
+
+
+
+Enable or disable notifications for a specific comment.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$notification_id = 'notification_id_example'; // string
+$opted_in_or_out = 'opted_in_or_out_example'; // string
+$comment_id = 'comment_id_example'; // string
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->updateUserNotificationCommentSubscriptionStatus: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **notification_id** | **string**|  | |
+| **opted_in_or_out** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\UpdateUserNotificationStatus200Response**](../Model/UpdateUserNotificationStatus200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateUserNotificationPageSubscriptionStatus()`
+
+```php
+updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso): \OpenAPI\Client\Model\UpdateUserNotificationStatus200Response
+```
+
+
+
+Enable or disable notifications for a page. When users are subscribed to a page, notifications are created for new root comments, and also
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$url = 'url_example'; // string
+$page_title = 'page_title_example'; // string
+$subscribed_or_unsubscribed = 'subscribed_or_unsubscribed_example'; // string
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->updateUserNotificationPageSubscriptionStatus: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id** | **string**|  | |
+| **url** | **string**|  | |
+| **page_title** | **string**|  | |
+| **subscribed_or_unsubscribed** | **string**|  | |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\UpdateUserNotificationStatus200Response**](../Model/UpdateUserNotificationStatus200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateUserNotificationStatus()`
+
+```php
+updateUserNotificationStatus($tenant_id, $notification_id, $new_status, $sso): \OpenAPI\Client\Model\UpdateUserNotificationStatus200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$notification_id = 'notification_id_example'; // string
+$new_status = 'new_status_example'; // string
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->updateUserNotificationStatus($tenant_id, $notification_id, $new_status, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->updateUserNotificationStatus: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **notification_id** | **string**|  | |
+| **new_status** | **string**|  | |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\UpdateUserNotificationStatus200Response**](../Model/UpdateUserNotificationStatus200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `voteComment()`
+
+```php
+voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $session_id, $sso): \OpenAPI\Client\Model\VoteComment200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new OpenAPI\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$url_id = 'url_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$vote_body_params = new \OpenAPI\Client\Model\VoteBodyParams(); // \OpenAPI\Client\Model\VoteBodyParams
+$session_id = 'session_id_example'; // string
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $session_id, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->voteComment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **comment_id** | **string**|  | |
+| **url_id** | **string**|  | |
+| **broadcast_id** | **string**|  | |
+| **vote_body_params** | [**\OpenAPI\Client\Model\VoteBodyParams**](../Model/VoteBodyParams.md)|  | |
+| **session_id** | **string**|  | [optional] |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\VoteComment200Response**](../Model/VoteComment200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
