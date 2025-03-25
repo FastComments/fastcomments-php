@@ -11,73 +11,73 @@ class SecureSSOUserData
      * Required. 1k Characters Max.
      * @var string
      */
-    public $id;
+    public string $id;
 
     /**
      * Required. 1k Characters Max. Must be unique.
      * @var string
      */
-    public $email;
+    public string $email;
 
     /**
      * Required. 1k Characters Max. Note: The username cannot be an email.
      * @var string
      */
-    public $username;
+    public string $username;
 
     /**
      * Optional. 3k Characters Max for URLs. Default is from gravatar based on email.
      * @var string|null
      */
-    public $avatar;
+    public ?string $avatar = null;
 
     /**
      * Optional. Default false.
      * @var bool|null
      */
-    public $optedInNotifications;
+    public ?bool $optedInNotifications = null;
 
     /**
      * Optional. 100 Characters Max.
      * @var string|null
      */
-    public $displayLabel;
+    public ?string $displayLabel = null;
 
     /**
      * Optional. 500 Characters Max.
      * @var string|null
      */
-    public $displayName;
+    public ?string $displayName = null;
 
     /**
      * Optional. 2k Characters Max.
      * @var string|null
      */
-    public $websiteUrl;
+    public ?string $websiteUrl = null;
 
     /**
      * Optional. Up to 100 groups per user.
      * @var array|null
      */
-    public $groupIds;
+    public ?array $groupIds = null;
 
     /**
      * Optional. Denotes the user as an administrator.
      * @var bool|null
      */
-    public $isAdmin;
+    public ?bool $isAdmin = null;
 
     /**
      * Optional. Denotes the user as a moderator.
      * @var bool|null
      */
-    public $isModerator;
+    public ?bool $isModerator = null;
 
     /**
      * Optional, default true.
      * @var bool|null
      */
-    public $isProfileActivityPrivate;
+    public ?bool $isProfileActivityPrivate = null;
 
     /**
      * Constructor with required ID.

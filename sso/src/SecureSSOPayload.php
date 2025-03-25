@@ -12,19 +12,19 @@ class SecureSSOPayload
      * Leave empty for an unauthenticated user.
      * @var string
      */
-    public $userDataJSONBase64;
+    public string $userDataJSONBase64;
 
     /**
      * The HMAC-SHA256 hash of the userDataJSONBase64 field, using your secret key.
      * @var string
      */
-    public $verificationHash;
+    public string $verificationHash;
 
     /**
      * The timestamp of when the verificationHash was created.
      * @var int
      */
-    public $timestamp;
+    public int $timestamp;
 
     /**
      * Constructor to initialize a SecureSSOPayload.

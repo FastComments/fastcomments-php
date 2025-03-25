@@ -10,41 +10,29 @@ class FastCommentsSSO
     /**
      * @var SecureSSOPayload|null
      */
-    private $secureSSOPayload;
+    private ?SecureSSOPayload $secureSSOPayload;
 
     /**
      * @var SimpleSSOUserData|null
      */
-    private $simpleSSOUserData;
+    private ?SimpleSSOUserData $simpleSSOUserData;
 
     /**
      * @var string|null
      */
-    private $cachedToken;
+    private ?string $cachedToken = null;
 
     /**
      * The login URL for the user.
      * @var string|null
      */
-    public $loginURL;
+    public ?string $loginURL = null;
 
     /**
      * The logout URL for the user.
      * @var string|null
      */
-    public $logoutURL;
-
-    /**
-     * Callback invoked on login.
-     * @var callable|null
-     */
-    public $loginCallback;
-
-    /**
-     * Callback invoked on logout.
-     * @var callable|null
-     */
-    public $logoutCallback;
+    public ?string $logoutURL = null;
 
     /**
      * Constructor for secure SSO.
@@ -52,7 +40,7 @@ class FastCommentsSSO
      * @param SecureSSOPayload|null $secureSSOPayload Secure SSO payload
      * @param SimpleSSOUserData|null $simpleSSOUserData Simple SSO user data
      */
-    public function __construct($secureSSOPayload = null, $simpleSSOUserData = null)
+    public function __construct(?SecureSSOPayload $secureSSOPayload = null, ?SimpleSSOUserData $simpleSSOUserData = null)
     {
         $this->secureSSOPayload = $secureSSOPayload;
         $this->simpleSSOUserData = $simpleSSOUserData;
@@ -90,25 +78,6 @@ class FastCommentsSSO
         $instance = new FastCommentsSSO($secureSSOPayload);
         $instance->loginURL = $loginURL;
         $instance->logoutURL = $logoutURL;
-        return $instance;
-    }
-
-    /**
-     * Create SSO with login/logout callbacks.
-     *
-     * @param SimpleSSOUserData $simpleSSOUserData Simple SSO user data
-     * @param callable $loginCallback Login callback
-     * @param callable $logoutCallback Logout callback
-     * @return FastCommentsSSO
-     */
-    public static function createWithCallbacks(
-        SimpleSSOUserData $simpleSSOUserData,
-        callable $loginCallback,
-        callable $logoutCallback
-    ): FastCommentsSSO {
-        $instance = new FastCommentsSSO(null, $simpleSSOUserData);
-        $instance->loginCallback = $loginCallback;
-        $instance->logoutCallback = $logoutCallback;
         return $instance;
     }
 

@@ -11,25 +11,25 @@ class SimpleSSOUserData
      * This must be unique when paired with an email.
      * @var string
      */
-    public $username;
+    public string $username;
 
     /**
      * The user's email.
      * @var string|null
      */
-    public $email;
+    public ?string $email = null;
 
     /**
      * The user's avatar.
      * @var string|null
      */
-    public $avatar;
+    public ?string $avatar = null;
 
     /**
      * The user's website, blog, or personal account page.
      * @var string|null
      */
-    public $websiteUrl;
+    public ?string $websiteUrl = null;
 
     /**
      * Constructor with username.
@@ -47,8 +47,8 @@ class SimpleSSOUserData
      * Create with username, email, and avatar.
      *
      * @param string $username The username
-     * @param string $email The email
-     * @param string $avatar The avatar URL
+     * @param string|null $email The email
+     * @param string|null $avatar The avatar URL
      * @return SimpleSSOUserData
      */
     public static function create(string $username, ?string $email = null, ?string $avatar = null): SimpleSSOUserData
