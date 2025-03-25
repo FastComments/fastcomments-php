@@ -27,6 +27,11 @@ composer require fastcomments/sso
 
 ## Usage
 
+### Public vs Secured APIs
+
+For the API client, there are two classes, `DefaultApi` and `PublicApi`. The `DefaultApi` contains methods that take your API key, and `PublicApi` contains api calls
+that can be made directly from a browser/mobile device/etc.
+
 ### API Client
 
 The client package provides a comprehensive API for interacting with FastComments:
