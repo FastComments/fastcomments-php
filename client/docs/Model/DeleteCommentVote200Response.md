@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\OpenAPI\Client\Model\APIStatusFAILED**](APIStatusFAILED.md) |  |
+**status** | [**\OpenAPI\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
 **was_pending_vote** | **bool** |  | [optional]
 **reason** | **string** |  |
 **code** | **string** |  |

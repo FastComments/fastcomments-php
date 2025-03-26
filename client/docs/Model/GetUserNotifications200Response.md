@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **is_subscribed** | **bool** |  |
 **has_more** | **bool** |  |
 **notifications** | [**\OpenAPI\Client\Model\RenderableUserNotification[]**](RenderableUserNotification.md) |  |
-**status** | [**\OpenAPI\Client\Model\APIStatusFAILED**](APIStatusFAILED.md) |  |
+**status** | [**\OpenAPI\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |
 **secondary_code** | **string** |  | [optional]

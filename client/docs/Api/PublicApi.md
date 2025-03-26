@@ -4,7 +4,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**blockFromComment()**](PublicApi.md#blockFromComment) | **POST** /block-from-comment/{commentId} |  |
+| [**blockFromCommentPublic()**](PublicApi.md#blockFromCommentPublic) | **POST** /block-from-comment/{commentId} |  |
 | [**checkedCommentsForBlocked()**](PublicApi.md#checkedCommentsForBlocked) | **GET** /check-blocked-comments |  |
 | [**createCommentPublic()**](PublicApi.md#createCommentPublic) | **POST** /comments/{tenantId} |  |
 | [**deleteCommentPublic()**](PublicApi.md#deleteCommentPublic) | **DELETE** /comments/{tenantId}/{commentId} |  |
@@ -23,7 +23,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | [**resetUserNotificationCount()**](PublicApi.md#resetUserNotificationCount) | **POST** /user-notifications/reset-count |  |
 | [**resetUserNotifications()**](PublicApi.md#resetUserNotifications) | **POST** /user-notifications/reset |  |
 | [**setCommentText()**](PublicApi.md#setCommentText) | **POST** /comments/{tenantId}/{commentId}/update-text |  |
-| [**unBlockComment()**](PublicApi.md#unBlockComment) | **DELETE** /block-from-comment/{commentId} |  |
+| [**unBlockCommentPublic()**](PublicApi.md#unBlockCommentPublic) | **DELETE** /block-from-comment/{commentId} |  |
 | [**unLockComment()**](PublicApi.md#unLockComment) | **POST** /comments/{tenantId}/{commentId}/unlock |  |
 | [**unPinComment()**](PublicApi.md#unPinComment) | **POST** /comments/{tenantId}/{commentId}/unpin |  |
 | [**updateUserNotificationCommentSubscriptionStatus()**](PublicApi.md#updateUserNotificationCommentSubscriptionStatus) | **POST** /user-notifications/{notificationId}/mark-opted/{optedInOrOut} |  |
@@ -32,10 +32,10 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | [**voteComment()**](PublicApi.md#voteComment) | **POST** /comments/{tenantId}/{commentId}/vote |  |
 
 
-## `blockFromComment()`
+## `blockFromCommentPublic()`
 
 ```php
-blockFromComment($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \OpenAPI\Client\Model\BlockFromComment200Response
+blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \OpenAPI\Client\Model\BlockFromCommentPublic200Response
 ```
 
 
@@ -59,10 +59,10 @@ $public_block_from_comment_params = new \OpenAPI\Client\Model\PublicBlockFromCom
 $sso = 'sso_example'; // string
 
 try {
-    $result = $apiInstance->blockFromComment($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
+    $result = $apiInstance->blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PublicApi->blockFromComment: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PublicApi->blockFromCommentPublic: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -77,7 +77,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\BlockFromComment200Response**](../Model/BlockFromComment200Response.md)
+[**\OpenAPI\Client\Model\BlockFromCommentPublic200Response**](../Model/BlockFromCommentPublic200Response.md)
 
 ### Authorization
 
@@ -1187,7 +1187,7 @@ No authorization required
 ## `setCommentText()`
 
 ```php
-setCommentText($tenant_id, $comment_id, $broadcast_id, $edit_key, $comment_text_update_request, $sso): \OpenAPI\Client\Model\SetCommentText200Response
+setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key, $sso): \OpenAPI\Client\Model\SetCommentText200Response
 ```
 
 
@@ -1208,12 +1208,12 @@ $apiInstance = new OpenAPI\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
-$edit_key = 'edit_key_example'; // string
 $comment_text_update_request = new \OpenAPI\Client\Model\CommentTextUpdateRequest(); // \OpenAPI\Client\Model\CommentTextUpdateRequest
+$edit_key = 'edit_key_example'; // string
 $sso = 'sso_example'; // string
 
 try {
-    $result = $apiInstance->setCommentText($tenant_id, $comment_id, $broadcast_id, $edit_key, $comment_text_update_request, $sso);
+    $result = $apiInstance->setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->setCommentText: ', $e->getMessage(), PHP_EOL;
@@ -1227,8 +1227,8 @@ try {
 | **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
 | **broadcast_id** | **string**|  | |
-| **edit_key** | **string**|  | |
 | **comment_text_update_request** | [**\OpenAPI\Client\Model\CommentTextUpdateRequest**](../Model/CommentTextUpdateRequest.md)|  | |
+| **edit_key** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1248,10 +1248,10 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `unBlockComment()`
+## `unBlockCommentPublic()`
 
 ```php
-unBlockComment($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \OpenAPI\Client\Model\UnBlockComment200Response
+unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \OpenAPI\Client\Model\UnBlockCommentPublic200Response
 ```
 
 
@@ -1275,10 +1275,10 @@ $public_block_from_comment_params = new \OpenAPI\Client\Model\PublicBlockFromCom
 $sso = 'sso_example'; // string
 
 try {
-    $result = $apiInstance->unBlockComment($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
+    $result = $apiInstance->unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PublicApi->unBlockComment: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PublicApi->unBlockCommentPublic: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1293,7 +1293,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\UnBlockComment200Response**](../Model/UnBlockComment200Response.md)
+[**\OpenAPI\Client\Model\UnBlockCommentPublic200Response**](../Model/UnBlockCommentPublic200Response.md)
 
 ### Authorization
 

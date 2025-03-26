@@ -57,7 +57,7 @@ class GetCommentVoteUserNames200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\OpenAPI\Client\Model\APIStatusFAILED',
+        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
         'vote_user_names' => 'string[]',
         'has_more' => 'bool',
         'reason' => 'string',
@@ -370,7 +370,7 @@ class GetCommentVoteUserNames200Response implements ModelInterface, ArrayAccess,
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\APIStatusFAILED
+     * @return \OpenAPI\Client\Model\ImportedAPIStatusFAILED
      */
     public function getStatus()
     {
@@ -380,7 +380,7 @@ class GetCommentVoteUserNames200Response implements ModelInterface, ArrayAccess,
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\APIStatusFAILED $status status
+     * @param \OpenAPI\Client\Model\ImportedAPIStatusFAILED $status status
      *
      * @return self
      */

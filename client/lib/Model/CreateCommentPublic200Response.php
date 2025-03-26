@@ -57,7 +57,7 @@ class CreateCommentPublic200Response implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\OpenAPI\Client\Model\APIStatusFAILED',
+        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
         'comment' => '\OpenAPI\Client\Model\PublicComment',
         'user' => '\OpenAPI\Client\Model\UserSessionInfo',
         'module_data' => 'array<string,object>',
@@ -384,7 +384,7 @@ class CreateCommentPublic200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\APIStatusFAILED
+     * @return \OpenAPI\Client\Model\ImportedAPIStatusFAILED
      */
     public function getStatus()
     {
@@ -394,7 +394,7 @@ class CreateCommentPublic200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\APIStatusFAILED $status status
+     * @param \OpenAPI\Client\Model\ImportedAPIStatusFAILED $status status
      *
      * @return self
      */

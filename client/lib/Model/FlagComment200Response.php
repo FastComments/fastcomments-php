@@ -58,7 +58,7 @@ class FlagComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'status_code' => 'float',
-        'status' => '\OpenAPI\Client\Model\APIStatusFAILED',
+        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
         'code' => 'string',
         'reason' => 'string',
         'was_unapproved' => 'bool',
@@ -391,7 +391,7 @@ class FlagComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\APIStatusFAILED
+     * @return \OpenAPI\Client\Model\ImportedAPIStatusFAILED
      */
     public function getStatus()
     {
@@ -401,7 +401,7 @@ class FlagComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\APIStatusFAILED $status status
+     * @param \OpenAPI\Client\Model\ImportedAPIStatusFAILED $status status
      *
      * @return self
      */

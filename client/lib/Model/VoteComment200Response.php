@@ -57,7 +57,7 @@ class VoteComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\OpenAPI\Client\Model\APIStatusFAILED',
+        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
         'vote_id' => 'string',
         'is_verified' => 'bool',
         'user' => '\OpenAPI\Client\Model\VoteResponseUser',
@@ -378,7 +378,7 @@ class VoteComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\APIStatusFAILED
+     * @return \OpenAPI\Client\Model\ImportedAPIStatusFAILED
      */
     public function getStatus()
     {
@@ -388,7 +388,7 @@ class VoteComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\APIStatusFAILED $status status
+     * @param \OpenAPI\Client\Model\ImportedAPIStatusFAILED $status status
      *
      * @return self
      */

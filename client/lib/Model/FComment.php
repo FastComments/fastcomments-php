@@ -124,7 +124,9 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'feedback_ids' => 'string[]',
         'logs' => 'array[]',
         'group_ids' => 'string[]',
-        'view_count' => 'float'
+        'view_count' => 'float',
+        'requires_verification' => 'bool',
+        'edit_key' => 'string'
     ];
 
     /**
@@ -202,7 +204,9 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'feedback_ids' => null,
         'logs' => null,
         'group_ids' => null,
-        'view_count' => 'double'
+        'view_count' => 'double',
+        'requires_verification' => null,
+        'edit_key' => null
     ];
 
     /**
@@ -278,7 +282,9 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'feedback_ids' => false,
         'logs' => true,
         'group_ids' => true,
-        'view_count' => true
+        'view_count' => true,
+        'requires_verification' => false,
+        'edit_key' => false
     ];
 
     /**
@@ -434,7 +440,9 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'feedback_ids' => 'feedbackIds',
         'logs' => 'logs',
         'group_ids' => 'groupIds',
-        'view_count' => 'viewCount'
+        'view_count' => 'viewCount',
+        'requires_verification' => 'requiresVerification',
+        'edit_key' => 'editKey'
     ];
 
     /**
@@ -510,7 +518,9 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'feedback_ids' => 'setFeedbackIds',
         'logs' => 'setLogs',
         'group_ids' => 'setGroupIds',
-        'view_count' => 'setViewCount'
+        'view_count' => 'setViewCount',
+        'requires_verification' => 'setRequiresVerification',
+        'edit_key' => 'setEditKey'
     ];
 
     /**
@@ -586,7 +596,9 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'feedback_ids' => 'getFeedbackIds',
         'logs' => 'getLogs',
         'group_ids' => 'getGroupIds',
-        'view_count' => 'getViewCount'
+        'view_count' => 'getViewCount',
+        'requires_verification' => 'getRequiresVerification',
+        'edit_key' => 'getEditKey'
     ];
 
     /**
@@ -714,6 +726,8 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('logs', $data ?? [], null);
         $this->setIfExists('group_ids', $data ?? [], null);
         $this->setIfExists('view_count', $data ?? [], null);
+        $this->setIfExists('requires_verification', $data ?? [], null);
+        $this->setIfExists('edit_key', $data ?? [], null);
     }
 
     /**
@@ -2847,6 +2861,60 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['view_count'] = $view_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets requires_verification
+     *
+     * @return bool|null
+     */
+    public function getRequiresVerification()
+    {
+        return $this->container['requires_verification'];
+    }
+
+    /**
+     * Sets requires_verification
+     *
+     * @param bool|null $requires_verification requires_verification
+     *
+     * @return self
+     */
+    public function setRequiresVerification($requires_verification)
+    {
+        if (is_null($requires_verification)) {
+            throw new \InvalidArgumentException('non-nullable requires_verification cannot be null');
+        }
+        $this->container['requires_verification'] = $requires_verification;
+
+        return $this;
+    }
+
+    /**
+     * Gets edit_key
+     *
+     * @return string|null
+     */
+    public function getEditKey()
+    {
+        return $this->container['edit_key'];
+    }
+
+    /**
+     * Sets edit_key
+     *
+     * @param string|null $edit_key edit_key
+     *
+     * @return self
+     */
+    public function setEditKey($edit_key)
+    {
+        if (is_null($edit_key)) {
+            throw new \InvalidArgumentException('non-nullable edit_key cannot be null');
+        }
+        $this->container['edit_key'] = $edit_key;
 
         return $this;
     }

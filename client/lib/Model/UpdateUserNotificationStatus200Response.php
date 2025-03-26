@@ -57,7 +57,7 @@ class UpdateUserNotificationStatus200Response implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\OpenAPI\Client\Model\APIStatusFAILED',
+        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
         'matched_count' => 'float',
         'modified_count' => 'float',
         'note' => 'string',
@@ -404,7 +404,7 @@ class UpdateUserNotificationStatus200Response implements ModelInterface, ArrayAc
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\APIStatusFAILED
+     * @return \OpenAPI\Client\Model\ImportedAPIStatusFAILED
      */
     public function getStatus()
     {
@@ -414,7 +414,7 @@ class UpdateUserNotificationStatus200Response implements ModelInterface, ArrayAc
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\APIStatusFAILED $status status
+     * @param \OpenAPI\Client\Model\ImportedAPIStatusFAILED $status status
      *
      * @return self
      */

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment_positions** | [**array<string,\OpenAPI\Client\Model\RecordStringBeforeStringOrNullAfterStringOrNullValue>**](RecordStringBeforeStringOrNullAfterStringOrNullValue.md) | Construct a type with a set of properties K of type T |
-**status** | [**\OpenAPI\Client\Model\APIStatusFAILED**](APIStatusFAILED.md) |  |
+**status** | [**\OpenAPI\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |
 **secondary_code** | **string** |  | [optional]

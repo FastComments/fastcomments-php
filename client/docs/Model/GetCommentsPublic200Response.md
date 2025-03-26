@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status_code** | **int** |  | [optional]
-**status** | [**\OpenAPI\Client\Model\APIStatusFAILED**](APIStatusFAILED.md) |  |
+**status** | [**\OpenAPI\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
 **code** | **string** |  |
 **reason** | **string** |  |
 **comments** | [**\OpenAPI\Client\Model\PublicComment[]**](PublicComment.md) |  |

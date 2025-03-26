@@ -58,7 +58,7 @@ class SetCommentText200Response implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'comment' => '\OpenAPI\Client\Model\PickFCommentApprovedOrCommentHTML',
-        'status' => '\OpenAPI\Client\Model\APIStatusFAILED',
+        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
@@ -387,7 +387,7 @@ class SetCommentText200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\APIStatusFAILED
+     * @return \OpenAPI\Client\Model\ImportedAPIStatusFAILED
      */
     public function getStatus()
     {
@@ -397,7 +397,7 @@ class SetCommentText200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\APIStatusFAILED $status status
+     * @param \OpenAPI\Client\Model\ImportedAPIStatusFAILED $status status
      *
      * @return self
      */

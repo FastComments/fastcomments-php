@@ -83,6 +83,8 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'badges' => '\OpenAPI\Client\Model\CommentUserBadgeInfo[]',
         'feedback_ids' => 'string[]',
         'view_count' => 'float',
+        'requires_verification' => 'bool',
+        'edit_key' => 'string',
         'is_unread' => 'bool',
         'my_vote_id' => 'string',
         'is_voted_down' => 'bool',
@@ -129,6 +131,8 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'badges' => null,
         'feedback_ids' => null,
         'view_count' => 'double',
+        'requires_verification' => null,
+        'edit_key' => null,
         'is_unread' => null,
         'my_vote_id' => null,
         'is_voted_down' => null,
@@ -173,6 +177,8 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'badges' => false,
         'feedback_ids' => false,
         'view_count' => false,
+        'requires_verification' => false,
+        'edit_key' => false,
         'is_unread' => false,
         'my_vote_id' => false,
         'is_voted_down' => false,
@@ -297,6 +303,8 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'badges' => 'badges',
         'feedback_ids' => 'feedbackIds',
         'view_count' => 'viewCount',
+        'requires_verification' => 'requiresVerification',
+        'edit_key' => 'editKey',
         'is_unread' => 'isUnread',
         'my_vote_id' => 'myVoteId',
         'is_voted_down' => 'isVotedDown',
@@ -341,6 +349,8 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'badges' => 'setBadges',
         'feedback_ids' => 'setFeedbackIds',
         'view_count' => 'setViewCount',
+        'requires_verification' => 'setRequiresVerification',
+        'edit_key' => 'setEditKey',
         'is_unread' => 'setIsUnread',
         'my_vote_id' => 'setMyVoteId',
         'is_voted_down' => 'setIsVotedDown',
@@ -385,6 +395,8 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'badges' => 'getBadges',
         'feedback_ids' => 'getFeedbackIds',
         'view_count' => 'getViewCount',
+        'requires_verification' => 'getRequiresVerification',
+        'edit_key' => 'getEditKey',
         'is_unread' => 'getIsUnread',
         'my_vote_id' => 'getMyVoteId',
         'is_voted_down' => 'getIsVotedDown',
@@ -480,6 +492,8 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('badges', $data ?? [], null);
         $this->setIfExists('feedback_ids', $data ?? [], null);
         $this->setIfExists('view_count', $data ?? [], null);
+        $this->setIfExists('requires_verification', $data ?? [], null);
+        $this->setIfExists('edit_key', $data ?? [], null);
         $this->setIfExists('is_unread', $data ?? [], null);
         $this->setIfExists('my_vote_id', $data ?? [], null);
         $this->setIfExists('is_voted_down', $data ?? [], null);
@@ -1247,6 +1261,60 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable view_count cannot be null');
         }
         $this->container['view_count'] = $view_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets requires_verification
+     *
+     * @return bool|null
+     */
+    public function getRequiresVerification()
+    {
+        return $this->container['requires_verification'];
+    }
+
+    /**
+     * Sets requires_verification
+     *
+     * @param bool|null $requires_verification requires_verification
+     *
+     * @return self
+     */
+    public function setRequiresVerification($requires_verification)
+    {
+        if (is_null($requires_verification)) {
+            throw new \InvalidArgumentException('non-nullable requires_verification cannot be null');
+        }
+        $this->container['requires_verification'] = $requires_verification;
+
+        return $this;
+    }
+
+    /**
+     * Gets edit_key
+     *
+     * @return string|null
+     */
+    public function getEditKey()
+    {
+        return $this->container['edit_key'];
+    }
+
+    /**
+     * Sets edit_key
+     *
+     * @param string|null $edit_key edit_key
+     *
+     * @return self
+     */
+    public function setEditKey($edit_key)
+    {
+        if (is_null($edit_key)) {
+            throw new \InvalidArgumentException('non-nullable edit_key cannot be null');
+        }
+        $this->container['edit_key'] = $edit_key;
 
         return $this;
     }

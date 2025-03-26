@@ -59,7 +59,7 @@ class DeleteCommentPublic200Response implements ModelInterface, ArrayAccess, \Js
     protected static $openAPITypes = [
         'comment' => '\OpenAPI\Client\Model\PickFCommentIsDeletedOrCommentHTMLOrCommenterNameOrUserId',
         'hard_removed' => 'bool',
-        'status' => '\OpenAPI\Client\Model\APIStatusFAILED',
+        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
@@ -421,7 +421,7 @@ class DeleteCommentPublic200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\APIStatusFAILED
+     * @return \OpenAPI\Client\Model\ImportedAPIStatusFAILED
      */
     public function getStatus()
     {
@@ -431,7 +431,7 @@ class DeleteCommentPublic200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\APIStatusFAILED $status status
+     * @param \OpenAPI\Client\Model\ImportedAPIStatusFAILED $status status
      *
      * @return self
      */

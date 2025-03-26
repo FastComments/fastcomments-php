@@ -71,7 +71,7 @@ class PublicApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'blockFromComment' => [
+        'blockFromCommentPublic' => [
             'application/json',
         ],
         'checkedCommentsForBlocked' => [
@@ -128,7 +128,7 @@ class PublicApi
         'setCommentText' => [
             'application/json',
         ],
-        'unBlockComment' => [
+        'unBlockCommentPublic' => [
             'application/json',
         ],
         'unLockComment' => [
@@ -198,40 +198,40 @@ class PublicApi
     }
 
     /**
-     * Operation blockFromComment
+     * Operation blockFromCommentPublic
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  \OpenAPI\Client\Model\PublicBlockFromCommentParams $public_block_from_comment_params public_block_from_comment_params (required)
      * @param  string|null $sso sso (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockFromComment'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockFromCommentPublic'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BlockFromComment200Response
+     * @return \OpenAPI\Client\Model\BlockFromCommentPublic200Response
      */
-    public function blockFromComment($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['blockFromComment'][0])
+    public function blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['blockFromCommentPublic'][0])
     {
-        list($response) = $this->blockFromCommentWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType);
+        list($response) = $this->blockFromCommentPublicWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType);
         return $response;
     }
 
     /**
-     * Operation blockFromCommentWithHttpInfo
+     * Operation blockFromCommentPublicWithHttpInfo
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \OpenAPI\Client\Model\PublicBlockFromCommentParams $public_block_from_comment_params (required)
      * @param  string|null $sso (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockFromComment'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockFromCommentPublic'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BlockFromComment200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BlockFromCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function blockFromCommentWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['blockFromComment'][0])
+    public function blockFromCommentPublicWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['blockFromCommentPublic'][0])
     {
-        $request = $this->blockFromCommentRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType);
+        $request = $this->blockFromCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -258,11 +258,11 @@ class PublicApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\BlockFromComment200Response' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\BlockFromCommentPublic200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\BlockFromComment200Response' !== 'string') {
+                        if ('\OpenAPI\Client\Model\BlockFromCommentPublic200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -280,7 +280,7 @@ class PublicApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\BlockFromComment200Response', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\BlockFromCommentPublic200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -299,7 +299,7 @@ class PublicApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\BlockFromComment200Response';
+            $returnType = '\OpenAPI\Client\Model\BlockFromCommentPublic200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -332,7 +332,7 @@ class PublicApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\BlockFromComment200Response',
+                        '\OpenAPI\Client\Model\BlockFromCommentPublic200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -343,20 +343,20 @@ class PublicApi
     }
 
     /**
-     * Operation blockFromCommentAsync
+     * Operation blockFromCommentPublicAsync
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \OpenAPI\Client\Model\PublicBlockFromCommentParams $public_block_from_comment_params (required)
      * @param  string|null $sso (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockFromComment'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockFromCommentPublic'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function blockFromCommentAsync($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['blockFromComment'][0])
+    public function blockFromCommentPublicAsync($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['blockFromCommentPublic'][0])
     {
-        return $this->blockFromCommentAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType)
+        return $this->blockFromCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -365,21 +365,21 @@ class PublicApi
     }
 
     /**
-     * Operation blockFromCommentAsyncWithHttpInfo
+     * Operation blockFromCommentPublicAsyncWithHttpInfo
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \OpenAPI\Client\Model\PublicBlockFromCommentParams $public_block_from_comment_params (required)
      * @param  string|null $sso (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockFromComment'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockFromCommentPublic'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function blockFromCommentAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['blockFromComment'][0])
+    public function blockFromCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['blockFromCommentPublic'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\BlockFromComment200Response';
-        $request = $this->blockFromCommentRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType);
+        $returnType = '\OpenAPI\Client\Model\BlockFromCommentPublic200Response';
+        $request = $this->blockFromCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -418,38 +418,38 @@ class PublicApi
     }
 
     /**
-     * Create request for operation 'blockFromComment'
+     * Create request for operation 'blockFromCommentPublic'
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \OpenAPI\Client\Model\PublicBlockFromCommentParams $public_block_from_comment_params (required)
      * @param  string|null $sso (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockFromComment'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockFromCommentPublic'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function blockFromCommentRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['blockFromComment'][0])
+    public function blockFromCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['blockFromCommentPublic'][0])
     {
 
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $tenant_id when calling blockFromComment'
+                'Missing the required parameter $tenant_id when calling blockFromCommentPublic'
             );
         }
 
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $comment_id when calling blockFromComment'
+                'Missing the required parameter $comment_id when calling blockFromCommentPublic'
             );
         }
 
         // verify the required parameter 'public_block_from_comment_params' is set
         if ($public_block_from_comment_params === null || (is_array($public_block_from_comment_params) && count($public_block_from_comment_params) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $public_block_from_comment_params when calling blockFromComment'
+                'Missing the required parameter $public_block_from_comment_params when calling blockFromCommentPublic'
             );
         }
 
@@ -5337,7 +5337,7 @@ class PublicApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GetUserPresenceStatuses200Response|\OpenAPI\Client\Model\PickAPIErrorInternalExcludeKeyofAPIErrorInternalStatusCode
+     * @return \OpenAPI\Client\Model\GetUserPresenceStatuses200Response|\OpenAPI\Client\Model\APIError
      */
     public function getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids, string $contentType = self::contentTypes['getUserPresenceStatuses'][0])
     {
@@ -5355,7 +5355,7 @@ class PublicApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GetUserPresenceStatuses200Response|\OpenAPI\Client\Model\PickAPIErrorInternalExcludeKeyofAPIErrorInternalStatusCode, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GetUserPresenceStatuses200Response|\OpenAPI\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserPresenceStatusesWithHttpInfo($tenant_id, $url_id_ws, $user_ids, string $contentType = self::contentTypes['getUserPresenceStatuses'][0])
     {
@@ -5413,11 +5413,11 @@ class PublicApi
                         $response->getHeaders()
                     ];
                 case 422:
-                    if ('\OpenAPI\Client\Model\PickAPIErrorInternalExcludeKeyofAPIErrorInternalStatusCode' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\APIError' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\PickAPIErrorInternalExcludeKeyofAPIErrorInternalStatusCode' !== 'string') {
+                        if ('\OpenAPI\Client\Model\APIError' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -5435,7 +5435,7 @@ class PublicApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\PickAPIErrorInternalExcludeKeyofAPIErrorInternalStatusCode', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -5495,7 +5495,7 @@ class PublicApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PickAPIErrorInternalExcludeKeyofAPIErrorInternalStatusCode',
+                        '\OpenAPI\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7130,8 +7130,8 @@ class PublicApi
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  string $broadcast_id broadcast_id (required)
-     * @param  string $edit_key edit_key (required)
      * @param  \OpenAPI\Client\Model\CommentTextUpdateRequest $comment_text_update_request comment_text_update_request (required)
+     * @param  string|null $edit_key edit_key (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCommentText'] to see the possible values for this operation
      *
@@ -7139,9 +7139,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\SetCommentText200Response
      */
-    public function setCommentText($tenant_id, $comment_id, $broadcast_id, $edit_key, $comment_text_update_request, $sso = null, string $contentType = self::contentTypes['setCommentText'][0])
+    public function setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key = null, $sso = null, string $contentType = self::contentTypes['setCommentText'][0])
     {
-        list($response) = $this->setCommentTextWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $edit_key, $comment_text_update_request, $sso, $contentType);
+        list($response) = $this->setCommentTextWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key, $sso, $contentType);
         return $response;
     }
 
@@ -7151,8 +7151,8 @@ class PublicApi
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $broadcast_id (required)
-     * @param  string $edit_key (required)
      * @param  \OpenAPI\Client\Model\CommentTextUpdateRequest $comment_text_update_request (required)
+     * @param  string|null $edit_key (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCommentText'] to see the possible values for this operation
      *
@@ -7160,9 +7160,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\SetCommentText200Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setCommentTextWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $edit_key, $comment_text_update_request, $sso = null, string $contentType = self::contentTypes['setCommentText'][0])
+    public function setCommentTextWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key = null, $sso = null, string $contentType = self::contentTypes['setCommentText'][0])
     {
-        $request = $this->setCommentTextRequest($tenant_id, $comment_id, $broadcast_id, $edit_key, $comment_text_update_request, $sso, $contentType);
+        $request = $this->setCommentTextRequest($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7279,17 +7279,17 @@ class PublicApi
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $broadcast_id (required)
-     * @param  string $edit_key (required)
      * @param  \OpenAPI\Client\Model\CommentTextUpdateRequest $comment_text_update_request (required)
+     * @param  string|null $edit_key (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCommentText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setCommentTextAsync($tenant_id, $comment_id, $broadcast_id, $edit_key, $comment_text_update_request, $sso = null, string $contentType = self::contentTypes['setCommentText'][0])
+    public function setCommentTextAsync($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key = null, $sso = null, string $contentType = self::contentTypes['setCommentText'][0])
     {
-        return $this->setCommentTextAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $edit_key, $comment_text_update_request, $sso, $contentType)
+        return $this->setCommentTextAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7303,18 +7303,18 @@ class PublicApi
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $broadcast_id (required)
-     * @param  string $edit_key (required)
      * @param  \OpenAPI\Client\Model\CommentTextUpdateRequest $comment_text_update_request (required)
+     * @param  string|null $edit_key (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCommentText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setCommentTextAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $edit_key, $comment_text_update_request, $sso = null, string $contentType = self::contentTypes['setCommentText'][0])
+    public function setCommentTextAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key = null, $sso = null, string $contentType = self::contentTypes['setCommentText'][0])
     {
         $returnType = '\OpenAPI\Client\Model\SetCommentText200Response';
-        $request = $this->setCommentTextRequest($tenant_id, $comment_id, $broadcast_id, $edit_key, $comment_text_update_request, $sso, $contentType);
+        $request = $this->setCommentTextRequest($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7358,15 +7358,15 @@ class PublicApi
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $broadcast_id (required)
-     * @param  string $edit_key (required)
      * @param  \OpenAPI\Client\Model\CommentTextUpdateRequest $comment_text_update_request (required)
+     * @param  string|null $edit_key (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCommentText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setCommentTextRequest($tenant_id, $comment_id, $broadcast_id, $edit_key, $comment_text_update_request, $sso = null, string $contentType = self::contentTypes['setCommentText'][0])
+    public function setCommentTextRequest($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key = null, $sso = null, string $contentType = self::contentTypes['setCommentText'][0])
     {
 
         // verify the required parameter 'tenant_id' is set
@@ -7390,19 +7390,13 @@ class PublicApi
             );
         }
 
-        // verify the required parameter 'edit_key' is set
-        if ($edit_key === null || (is_array($edit_key) && count($edit_key) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $edit_key when calling setCommentText'
-            );
-        }
-
         // verify the required parameter 'comment_text_update_request' is set
         if ($comment_text_update_request === null || (is_array($comment_text_update_request) && count($comment_text_update_request) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $comment_text_update_request when calling setCommentText'
             );
         }
+
 
 
 
@@ -7429,7 +7423,7 @@ class PublicApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -7521,40 +7515,40 @@ class PublicApi
     }
 
     /**
-     * Operation unBlockComment
+     * Operation unBlockCommentPublic
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  \OpenAPI\Client\Model\PublicBlockFromCommentParams $public_block_from_comment_params public_block_from_comment_params (required)
      * @param  string|null $sso sso (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unBlockComment'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unBlockCommentPublic'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\UnBlockComment200Response
+     * @return \OpenAPI\Client\Model\UnBlockCommentPublic200Response
      */
-    public function unBlockComment($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['unBlockComment'][0])
+    public function unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['unBlockCommentPublic'][0])
     {
-        list($response) = $this->unBlockCommentWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType);
+        list($response) = $this->unBlockCommentPublicWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType);
         return $response;
     }
 
     /**
-     * Operation unBlockCommentWithHttpInfo
+     * Operation unBlockCommentPublicWithHttpInfo
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \OpenAPI\Client\Model\PublicBlockFromCommentParams $public_block_from_comment_params (required)
      * @param  string|null $sso (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unBlockComment'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unBlockCommentPublic'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\UnBlockComment200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\UnBlockCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function unBlockCommentWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['unBlockComment'][0])
+    public function unBlockCommentPublicWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['unBlockCommentPublic'][0])
     {
-        $request = $this->unBlockCommentRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType);
+        $request = $this->unBlockCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7581,11 +7575,11 @@ class PublicApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\UnBlockComment200Response' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\UnBlockCommentPublic200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\UnBlockComment200Response' !== 'string') {
+                        if ('\OpenAPI\Client\Model\UnBlockCommentPublic200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -7603,7 +7597,7 @@ class PublicApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\UnBlockComment200Response', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\UnBlockCommentPublic200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -7622,7 +7616,7 @@ class PublicApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\UnBlockComment200Response';
+            $returnType = '\OpenAPI\Client\Model\UnBlockCommentPublic200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7655,7 +7649,7 @@ class PublicApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\UnBlockComment200Response',
+                        '\OpenAPI\Client\Model\UnBlockCommentPublic200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7666,20 +7660,20 @@ class PublicApi
     }
 
     /**
-     * Operation unBlockCommentAsync
+     * Operation unBlockCommentPublicAsync
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \OpenAPI\Client\Model\PublicBlockFromCommentParams $public_block_from_comment_params (required)
      * @param  string|null $sso (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unBlockComment'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unBlockCommentPublic'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unBlockCommentAsync($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['unBlockComment'][0])
+    public function unBlockCommentPublicAsync($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['unBlockCommentPublic'][0])
     {
-        return $this->unBlockCommentAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType)
+        return $this->unBlockCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7688,21 +7682,21 @@ class PublicApi
     }
 
     /**
-     * Operation unBlockCommentAsyncWithHttpInfo
+     * Operation unBlockCommentPublicAsyncWithHttpInfo
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \OpenAPI\Client\Model\PublicBlockFromCommentParams $public_block_from_comment_params (required)
      * @param  string|null $sso (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unBlockComment'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unBlockCommentPublic'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unBlockCommentAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['unBlockComment'][0])
+    public function unBlockCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['unBlockCommentPublic'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\UnBlockComment200Response';
-        $request = $this->unBlockCommentRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType);
+        $returnType = '\OpenAPI\Client\Model\UnBlockCommentPublic200Response';
+        $request = $this->unBlockCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7741,38 +7735,38 @@ class PublicApi
     }
 
     /**
-     * Create request for operation 'unBlockComment'
+     * Create request for operation 'unBlockCommentPublic'
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \OpenAPI\Client\Model\PublicBlockFromCommentParams $public_block_from_comment_params (required)
      * @param  string|null $sso (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unBlockComment'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unBlockCommentPublic'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function unBlockCommentRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['unBlockComment'][0])
+    public function unBlockCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null, string $contentType = self::contentTypes['unBlockCommentPublic'][0])
     {
 
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $tenant_id when calling unBlockComment'
+                'Missing the required parameter $tenant_id when calling unBlockCommentPublic'
             );
         }
 
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $comment_id when calling unBlockComment'
+                'Missing the required parameter $comment_id when calling unBlockCommentPublic'
             );
         }
 
         // verify the required parameter 'public_block_from_comment_params' is set
         if ($public_block_from_comment_params === null || (is_array($public_block_from_comment_params) && count($public_block_from_comment_params) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $public_block_from_comment_params when calling unBlockComment'
+                'Missing the required parameter $public_block_from_comment_params when calling unBlockCommentPublic'
             );
         }
 

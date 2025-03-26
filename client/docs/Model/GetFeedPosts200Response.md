@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\OpenAPI\Client\Model\APIStatusFAILED**](APIStatusFAILED.md) |  |
+**status** | [**\OpenAPI\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
 **feed_posts** | [**\OpenAPI\Client\Model\FeedPost[]**](FeedPost.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |

@@ -30,6 +30,8 @@ Name | Type | Description | Notes
 **badges** | [**\OpenAPI\Client\Model\CommentUserBadgeInfo[]**](CommentUserBadgeInfo.md) |  | [optional]
 **feedback_ids** | **string[]** |  | [optional]
 **view_count** | **float** |  | [optional]
+**requires_verification** | **bool** |  | [optional]
+**edit_key** | **string** |  | [optional]
 **is_unread** | **bool** |  | [optional]
 **my_vote_id** | **string** |  | [optional]
 **is_voted_down** | **bool** |  | [optional]

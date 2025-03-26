@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\OpenAPI\Client\Model\APIStatusFAILED**](APIStatusFAILED.md) |  |
+**status** | [**\OpenAPI\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
 **comment** | [**\OpenAPI\Client\Model\PickFCommentAPICommentFieldsKeys**](PickFCommentAPICommentFieldsKeys.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |

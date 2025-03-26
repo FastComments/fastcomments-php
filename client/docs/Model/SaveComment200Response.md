@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\OpenAPI\Client\Model\APIStatusFAILED**](APIStatusFAILED.md) |  |
+**status** | [**\OpenAPI\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
 **comment** | [**\OpenAPI\Client\Model\FComment**](FComment.md) |  |
 **user** | [**\OpenAPI\Client\Model\UserSessionInfo**](UserSessionInfo.md) |  |
 **module_data** | **array<string,object>** | Construct a type with a set of properties K of type T | [optional]

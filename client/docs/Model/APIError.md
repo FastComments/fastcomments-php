@@ -1,13 +1,10 @@
-# # UpdateUserNotificationStatus200Response
+# # APIError
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**\OpenAPI\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
-**matched_count** | **float** |  |
-**modified_count** | **float** |  |
-**note** | **string** |  |
 **reason** | **string** |  |
 **code** | **string** |  |
 **secondary_code** | **string** |  | [optional]

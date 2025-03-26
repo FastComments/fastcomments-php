@@ -57,7 +57,7 @@ class CreateFeedPost200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\OpenAPI\Client\Model\APIStatusFAILED',
+        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
         'feed_post' => '\OpenAPI\Client\Model\FeedPost',
         'reason' => 'string',
         'code' => 'string',
@@ -360,7 +360,7 @@ class CreateFeedPost200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\APIStatusFAILED
+     * @return \OpenAPI\Client\Model\ImportedAPIStatusFAILED
      */
     public function getStatus()
     {
@@ -370,7 +370,7 @@ class CreateFeedPost200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\APIStatusFAILED $status status
+     * @param \OpenAPI\Client\Model\ImportedAPIStatusFAILED $status status
      *
      * @return self
      */

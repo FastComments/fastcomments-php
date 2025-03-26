@@ -93,7 +93,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**unFlagComment**](docs/Api/DefaultApi.md#unflagcomment) | **POST** /api/v1/comments/{id}/un-flag | 
 *DefaultApi* | [**updateComment**](docs/Api/DefaultApi.md#updatecomment) | **PATCH** /api/v1/comments/{id} | 
 *DefaultApi* | [**updateFeedPost**](docs/Api/DefaultApi.md#updatefeedpost) | **PATCH** /api/v1/feed-posts/{id} | 
-*PublicApi* | [**blockFromComment**](docs/Api/PublicApi.md#blockfromcomment) | **POST** /block-from-comment/{commentId} | 
+*PublicApi* | [**blockFromCommentPublic**](docs/Api/PublicApi.md#blockfromcommentpublic) | **POST** /block-from-comment/{commentId} | 
 *PublicApi* | [**checkedCommentsForBlocked**](docs/Api/PublicApi.md#checkedcommentsforblocked) | **GET** /check-blocked-comments | 
 *PublicApi* | [**createCommentPublic**](docs/Api/PublicApi.md#createcommentpublic) | **POST** /comments/{tenantId} | 
 *PublicApi* | [**deleteCommentPublic**](docs/Api/PublicApi.md#deletecommentpublic) | **DELETE** /comments/{tenantId}/{commentId} | 
@@ -112,7 +112,7 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**resetUserNotificationCount**](docs/Api/PublicApi.md#resetusernotificationcount) | **POST** /user-notifications/reset-count | 
 *PublicApi* | [**resetUserNotifications**](docs/Api/PublicApi.md#resetusernotifications) | **POST** /user-notifications/reset | 
 *PublicApi* | [**setCommentText**](docs/Api/PublicApi.md#setcommenttext) | **POST** /comments/{tenantId}/{commentId}/update-text | 
-*PublicApi* | [**unBlockComment**](docs/Api/PublicApi.md#unblockcomment) | **DELETE** /block-from-comment/{commentId} | 
+*PublicApi* | [**unBlockCommentPublic**](docs/Api/PublicApi.md#unblockcommentpublic) | **DELETE** /block-from-comment/{commentId} | 
 *PublicApi* | [**unLockComment**](docs/Api/PublicApi.md#unlockcomment) | **POST** /comments/{tenantId}/{commentId}/unlock | 
 *PublicApi* | [**unPinComment**](docs/Api/PublicApi.md#unpincomment) | **POST** /comments/{tenantId}/{commentId}/unpin | 
 *PublicApi* | [**updateUserNotificationCommentSubscriptionStatus**](docs/Api/PublicApi.md#updateusernotificationcommentsubscriptionstatus) | **POST** /user-notifications/{notificationId}/mark-opted/{optedInOrOut} | 
@@ -123,12 +123,10 @@ Class | Method | HTTP request | Description
 ## Models
 
 - [APIEmptyResponse](docs/Model/APIEmptyResponse.md)
-- [APIEmptyResponseAnyOf](docs/Model/APIEmptyResponseAnyOf.md)
-- [APIErrorInternal](docs/Model/APIErrorInternal.md)
+- [APIError](docs/Model/APIError.md)
 - [APIGetCommentResponse](docs/Model/APIGetCommentResponse.md)
 - [APIGetCommentsResponse](docs/Model/APIGetCommentsResponse.md)
 - [APIStatus](docs/Model/APIStatus.md)
-- [APIStatusFAILED](docs/Model/APIStatusFAILED.md)
 - [AddDomainConfig200Response](docs/Model/AddDomainConfig200Response.md)
 - [AddDomainConfig200ResponseAnyOf](docs/Model/AddDomainConfig200ResponseAnyOf.md)
 - [AddDomainConfigParams](docs/Model/AddDomainConfigParams.md)
@@ -140,8 +138,8 @@ Class | Method | HTTP request | Description
 - [AggregationResponse](docs/Model/AggregationResponse.md)
 - [AggregationResponseStats](docs/Model/AggregationResponseStats.md)
 - [AggregationValue](docs/Model/AggregationValue.md)
-- [BlockFromComment200Response](docs/Model/BlockFromComment200Response.md)
 - [BlockFromCommentParams](docs/Model/BlockFromCommentParams.md)
+- [BlockFromCommentPublic200Response](docs/Model/BlockFromCommentPublic200Response.md)
 - [BlockSuccess](docs/Model/BlockSuccess.md)
 - [ChangeCommentPinStatusResponse](docs/Model/ChangeCommentPinStatusResponse.md)
 - [CheckBlockedCommentsResponse](docs/Model/CheckBlockedCommentsResponse.md)
@@ -214,7 +212,6 @@ Class | Method | HTTP request | Description
 - [NotificationType](docs/Model/NotificationType.md)
 - [PatchDomainConfigParams](docs/Model/PatchDomainConfigParams.md)
 - [PickAPICommentUpdatableCommentFields](docs/Model/PickAPICommentUpdatableCommentFields.md)
-- [PickAPIErrorInternalExcludeKeyofAPIErrorInternalStatusCode](docs/Model/PickAPIErrorInternalExcludeKeyofAPIErrorInternalStatusCode.md)
 - [PickFCommentAPICommentFieldsKeys](docs/Model/PickFCommentAPICommentFieldsKeys.md)
 - [PickFCommentAPICommentFieldsKeysMeta](docs/Model/PickFCommentAPICommentFieldsKeysMeta.md)
 - [PickFCommentApprovedOrCommentHTML](docs/Model/PickFCommentApprovedOrCommentHTML.md)
@@ -250,7 +247,7 @@ Class | Method | HTTP request | Description
 - [SetCommentText200Response](docs/Model/SetCommentText200Response.md)
 - [SortDirections](docs/Model/SortDirections.md)
 - [SpamRule](docs/Model/SpamRule.md)
-- [UnBlockComment200Response](docs/Model/UnBlockComment200Response.md)
+- [UnBlockCommentPublic200Response](docs/Model/UnBlockCommentPublic200Response.md)
 - [UnBlockFromCommentParams](docs/Model/UnBlockFromCommentParams.md)
 - [UnblockSuccess](docs/Model/UnblockSuccess.md)
 - [UpdateDomainConfigParams](docs/Model/UpdateDomainConfigParams.md)

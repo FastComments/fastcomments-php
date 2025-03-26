@@ -57,15 +57,14 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusSUCCESS',
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
         'banned_until' => 'float',
         'max_character_length' => 'float',
         'translated_error' => 'string',
-        'custom_config' => '\OpenAPI\Client\Model\CustomConfigParameters',
-        'status_code' => 'float'
+        'custom_config' => '\OpenAPI\Client\Model\CustomConfigParameters'
     ];
 
     /**
@@ -83,8 +82,7 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'banned_until' => 'double',
         'max_character_length' => 'double',
         'translated_error' => null,
-        'custom_config' => null,
-        'status_code' => 'double'
+        'custom_config' => null
     ];
 
     /**
@@ -100,8 +98,7 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'banned_until' => false,
         'max_character_length' => false,
         'translated_error' => false,
-        'custom_config' => false,
-        'status_code' => false
+        'custom_config' => false
     ];
 
     /**
@@ -197,8 +194,7 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'banned_until' => 'bannedUntil',
         'max_character_length' => 'maxCharacterLength',
         'translated_error' => 'translatedError',
-        'custom_config' => 'customConfig',
-        'status_code' => 'statusCode'
+        'custom_config' => 'customConfig'
     ];
 
     /**
@@ -214,8 +210,7 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'banned_until' => 'setBannedUntil',
         'max_character_length' => 'setMaxCharacterLength',
         'translated_error' => 'setTranslatedError',
-        'custom_config' => 'setCustomConfig',
-        'status_code' => 'setStatusCode'
+        'custom_config' => 'setCustomConfig'
     ];
 
     /**
@@ -231,8 +226,7 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'banned_until' => 'getBannedUntil',
         'max_character_length' => 'getMaxCharacterLength',
         'translated_error' => 'getTranslatedError',
-        'custom_config' => 'getCustomConfig',
-        'status_code' => 'getStatusCode'
+        'custom_config' => 'getCustomConfig'
     ];
 
     /**
@@ -300,7 +294,6 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('max_character_length', $data ?? [], null);
         $this->setIfExists('translated_error', $data ?? [], null);
         $this->setIfExists('custom_config', $data ?? [], null);
-        $this->setIfExists('status_code', $data ?? [], null);
     }
 
     /**
@@ -357,7 +350,7 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\ImportedAPIStatusFAILED
+     * @return \OpenAPI\Client\Model\ImportedAPIStatusSUCCESS
      */
     public function getStatus()
     {
@@ -367,7 +360,7 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \OpenAPI\Client\Model\ImportedAPIStatusSUCCESS $status status
      *
      * @return self
      */
@@ -566,33 +559,6 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable custom_config cannot be null');
         }
         $this->container['custom_config'] = $custom_config;
-
-        return $this;
-    }
-
-    /**
-     * Gets status_code
-     *
-     * @return float|null
-     */
-    public function getStatusCode()
-    {
-        return $this->container['status_code'];
-    }
-
-    /**
-     * Sets status_code
-     *
-     * @param float|null $status_code status_code
-     *
-     * @return self
-     */
-    public function setStatusCode($status_code)
-    {
-        if (is_null($status_code)) {
-            throw new \InvalidArgumentException('non-nullable status_code cannot be null');
-        }
-        $this->container['status_code'] = $status_code;
 
         return $this;
     }

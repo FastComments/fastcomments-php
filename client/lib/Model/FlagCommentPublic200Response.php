@@ -57,8 +57,7 @@ class FlagCommentPublic200Response implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\OpenAPI\Client\Model\APIStatusFAILED',
-        'status_code' => 'float',
+        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
@@ -77,7 +76,6 @@ class FlagCommentPublic200Response implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPIFormats = [
         'status' => null,
-        'status_code' => 'double',
         'reason' => null,
         'code' => null,
         'secondary_code' => null,
@@ -94,7 +92,6 @@ class FlagCommentPublic200Response implements ModelInterface, ArrayAccess, \Json
       */
     protected static array $openAPINullables = [
         'status' => false,
-        'status_code' => false,
         'reason' => false,
         'code' => false,
         'secondary_code' => false,
@@ -191,7 +188,6 @@ class FlagCommentPublic200Response implements ModelInterface, ArrayAccess, \Json
      */
     protected static $attributeMap = [
         'status' => 'status',
-        'status_code' => 'statusCode',
         'reason' => 'reason',
         'code' => 'code',
         'secondary_code' => 'secondaryCode',
@@ -208,7 +204,6 @@ class FlagCommentPublic200Response implements ModelInterface, ArrayAccess, \Json
      */
     protected static $setters = [
         'status' => 'setStatus',
-        'status_code' => 'setStatusCode',
         'reason' => 'setReason',
         'code' => 'setCode',
         'secondary_code' => 'setSecondaryCode',
@@ -225,7 +220,6 @@ class FlagCommentPublic200Response implements ModelInterface, ArrayAccess, \Json
      */
     protected static $getters = [
         'status' => 'getStatus',
-        'status_code' => 'getStatusCode',
         'reason' => 'getReason',
         'code' => 'getCode',
         'secondary_code' => 'getSecondaryCode',
@@ -293,7 +287,6 @@ class FlagCommentPublic200Response implements ModelInterface, ArrayAccess, \Json
     public function __construct(?array $data = null)
     {
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('status_code', $data ?? [], null);
         $this->setIfExists('reason', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('secondary_code', $data ?? [], null);
@@ -357,7 +350,7 @@ class FlagCommentPublic200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\APIStatusFAILED
+     * @return \OpenAPI\Client\Model\ImportedAPIStatusFAILED
      */
     public function getStatus()
     {
@@ -367,7 +360,7 @@ class FlagCommentPublic200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\APIStatusFAILED $status status
+     * @param \OpenAPI\Client\Model\ImportedAPIStatusFAILED $status status
      *
      * @return self
      */
@@ -377,33 +370,6 @@ class FlagCommentPublic200Response implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
         $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets status_code
-     *
-     * @return float|null
-     */
-    public function getStatusCode()
-    {
-        return $this->container['status_code'];
-    }
-
-    /**
-     * Sets status_code
-     *
-     * @param float|null $status_code status_code
-     *
-     * @return self
-     */
-    public function setStatusCode($status_code)
-    {
-        if (is_null($status_code)) {
-            throw new \InvalidArgumentException('non-nullable status_code cannot be null');
-        }
-        $this->container['status_code'] = $status_code;
 
         return $this;
     }

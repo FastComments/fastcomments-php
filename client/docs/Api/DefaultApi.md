@@ -147,7 +147,7 @@ No authorization required
 ## `blockUserFromComment()`
 
 ```php
-blockUserFromComment($tenant_id, $id, $block_from_comment_params, $user_id, $anon_user_id): \OpenAPI\Client\Model\BlockFromComment200Response
+blockUserFromComment($tenant_id, $id, $block_from_comment_params, $user_id, $anon_user_id): \OpenAPI\Client\Model\BlockFromCommentPublic200Response
 ```
 
 
@@ -191,7 +191,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\BlockFromComment200Response**](../Model/BlockFromComment200Response.md)
+[**\OpenAPI\Client\Model\BlockFromCommentPublic200Response**](../Model/BlockFromCommentPublic200Response.md)
 
 ### Authorization
 
@@ -993,7 +993,7 @@ No authorization required
 ## `unBlockUserFromComment()`
 
 ```php
-unBlockUserFromComment($tenant_id, $id, $un_block_from_comment_params, $user_id, $anon_user_id): \OpenAPI\Client\Model\UnBlockComment200Response
+unBlockUserFromComment($tenant_id, $id, $un_block_from_comment_params, $user_id, $anon_user_id): \OpenAPI\Client\Model\UnBlockCommentPublic200Response
 ```
 
 
@@ -1037,7 +1037,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\UnBlockComment200Response**](../Model/UnBlockComment200Response.md)
+[**\OpenAPI\Client\Model\UnBlockCommentPublic200Response**](../Model/UnBlockCommentPublic200Response.md)
 
 ### Authorization
 

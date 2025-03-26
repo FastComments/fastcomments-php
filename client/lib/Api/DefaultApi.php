@@ -861,7 +861,7 @@ class DefaultApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BlockFromComment200Response
+     * @return \OpenAPI\Client\Model\BlockFromCommentPublic200Response
      */
     public function blockUserFromComment($tenant_id, $id, $block_from_comment_params, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['blockUserFromComment'][0])
     {
@@ -881,7 +881,7 @@ class DefaultApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BlockFromComment200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BlockFromCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function blockUserFromCommentWithHttpInfo($tenant_id, $id, $block_from_comment_params, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['blockUserFromComment'][0])
     {
@@ -912,11 +912,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\BlockFromComment200Response' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\BlockFromCommentPublic200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\BlockFromComment200Response' !== 'string') {
+                        if ('\OpenAPI\Client\Model\BlockFromCommentPublic200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -934,7 +934,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\BlockFromComment200Response', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\BlockFromCommentPublic200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -953,7 +953,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\BlockFromComment200Response';
+            $returnType = '\OpenAPI\Client\Model\BlockFromCommentPublic200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -986,7 +986,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\BlockFromComment200Response',
+                        '\OpenAPI\Client\Model\BlockFromCommentPublic200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1034,7 +1034,7 @@ class DefaultApi
      */
     public function blockUserFromCommentAsyncWithHttpInfo($tenant_id, $id, $block_from_comment_params, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['blockUserFromComment'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\BlockFromComment200Response';
+        $returnType = '\OpenAPI\Client\Model\BlockFromCommentPublic200Response';
         $request = $this->blockUserFromCommentRequest($tenant_id, $id, $block_from_comment_params, $user_id, $anon_user_id, $contentType);
 
         return $this->client
@@ -5810,7 +5810,7 @@ class DefaultApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\UnBlockComment200Response
+     * @return \OpenAPI\Client\Model\UnBlockCommentPublic200Response
      */
     public function unBlockUserFromComment($tenant_id, $id, $un_block_from_comment_params, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['unBlockUserFromComment'][0])
     {
@@ -5830,7 +5830,7 @@ class DefaultApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\UnBlockComment200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\UnBlockCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function unBlockUserFromCommentWithHttpInfo($tenant_id, $id, $un_block_from_comment_params, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['unBlockUserFromComment'][0])
     {
@@ -5861,11 +5861,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\UnBlockComment200Response' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\UnBlockCommentPublic200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\UnBlockComment200Response' !== 'string') {
+                        if ('\OpenAPI\Client\Model\UnBlockCommentPublic200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -5883,7 +5883,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\UnBlockComment200Response', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\UnBlockCommentPublic200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -5902,7 +5902,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\OpenAPI\Client\Model\UnBlockComment200Response';
+            $returnType = '\OpenAPI\Client\Model\UnBlockCommentPublic200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5935,7 +5935,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\UnBlockComment200Response',
+                        '\OpenAPI\Client\Model\UnBlockCommentPublic200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5983,7 +5983,7 @@ class DefaultApi
      */
     public function unBlockUserFromCommentAsyncWithHttpInfo($tenant_id, $id, $un_block_from_comment_params, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['unBlockUserFromComment'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\UnBlockComment200Response';
+        $returnType = '\OpenAPI\Client\Model\UnBlockCommentPublic200Response';
         $request = $this->unBlockUserFromCommentRequest($tenant_id, $id, $un_block_from_comment_params, $user_id, $anon_user_id, $contentType);
 
         return $this->client

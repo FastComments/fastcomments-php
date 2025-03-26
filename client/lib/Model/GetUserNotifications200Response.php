@@ -61,7 +61,7 @@ class GetUserNotifications200Response implements ModelInterface, ArrayAccess, \J
         'is_subscribed' => 'bool',
         'has_more' => 'bool',
         'notifications' => '\OpenAPI\Client\Model\RenderableUserNotification[]',
-        'status' => '\OpenAPI\Client\Model\APIStatusFAILED',
+        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
@@ -495,7 +495,7 @@ class GetUserNotifications200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\APIStatusFAILED
+     * @return \OpenAPI\Client\Model\ImportedAPIStatusFAILED
      */
     public function getStatus()
     {
@@ -505,7 +505,7 @@ class GetUserNotifications200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\APIStatusFAILED $status status
+     * @param \OpenAPI\Client\Model\ImportedAPIStatusFAILED $status status
      *
      * @return self
      */

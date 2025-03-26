@@ -1,6 +1,6 @@
 <?php
 /**
- * SaveComment200Response
+ * BlockFromCommentPublic200Response
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * SaveComment200Response Class Doc Comment
+ * BlockFromCommentPublic200Response Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SaveComment200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class BlockFromCommentPublic200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class SaveComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SaveComment_200_response';
+    protected static $openAPIModelName = 'BlockFromCommentPublic_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class SaveComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
-        'comment' => '\OpenAPI\Client\Model\FComment',
-        'user' => '\OpenAPI\Client\Model\UserSessionInfo',
-        'module_data' => 'array<string,object>',
+        'comment_statuses' => 'array<string,bool>',
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
@@ -79,9 +77,7 @@ class SaveComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'status' => null,
-        'comment' => null,
-        'user' => null,
-        'module_data' => null,
+        'comment_statuses' => null,
         'reason' => null,
         'code' => null,
         'secondary_code' => null,
@@ -98,9 +94,7 @@ class SaveComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'status' => false,
-        'comment' => false,
-        'user' => true,
-        'module_data' => false,
+        'comment_statuses' => false,
         'reason' => false,
         'code' => false,
         'secondary_code' => false,
@@ -197,9 +191,7 @@ class SaveComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'status' => 'status',
-        'comment' => 'comment',
-        'user' => 'user',
-        'module_data' => 'moduleData',
+        'comment_statuses' => 'commentStatuses',
         'reason' => 'reason',
         'code' => 'code',
         'secondary_code' => 'secondaryCode',
@@ -216,9 +208,7 @@ class SaveComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'status' => 'setStatus',
-        'comment' => 'setComment',
-        'user' => 'setUser',
-        'module_data' => 'setModuleData',
+        'comment_statuses' => 'setCommentStatuses',
         'reason' => 'setReason',
         'code' => 'setCode',
         'secondary_code' => 'setSecondaryCode',
@@ -235,9 +225,7 @@ class SaveComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'status' => 'getStatus',
-        'comment' => 'getComment',
-        'user' => 'getUser',
-        'module_data' => 'getModuleData',
+        'comment_statuses' => 'getCommentStatuses',
         'reason' => 'getReason',
         'code' => 'getCode',
         'secondary_code' => 'getSecondaryCode',
@@ -305,9 +293,7 @@ class SaveComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(?array $data = null)
     {
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('comment', $data ?? [], null);
-        $this->setIfExists('user', $data ?? [], null);
-        $this->setIfExists('module_data', $data ?? [], null);
+        $this->setIfExists('comment_statuses', $data ?? [], null);
         $this->setIfExists('reason', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('secondary_code', $data ?? [], null);
@@ -347,11 +333,8 @@ class SaveComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['comment'] === null) {
-            $invalidProperties[] = "'comment' can't be null";
-        }
-        if ($this->container['user'] === null) {
-            $invalidProperties[] = "'user' can't be null";
+        if ($this->container['comment_statuses'] === null) {
+            $invalidProperties[] = "'comment_statuses' can't be null";
         }
         if ($this->container['reason'] === null) {
             $invalidProperties[] = "'reason' can't be null";
@@ -402,89 +385,28 @@ class SaveComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets comment
+     * Gets comment_statuses
      *
-     * @return \OpenAPI\Client\Model\FComment
+     * @return array<string,bool>
      */
-    public function getComment()
+    public function getCommentStatuses()
     {
-        return $this->container['comment'];
+        return $this->container['comment_statuses'];
     }
 
     /**
-     * Sets comment
+     * Sets comment_statuses
      *
-     * @param \OpenAPI\Client\Model\FComment $comment comment
+     * @param array<string,bool> $comment_statuses Construct a type with a set of properties K of type T
      *
      * @return self
      */
-    public function setComment($comment)
+    public function setCommentStatuses($comment_statuses)
     {
-        if (is_null($comment)) {
-            throw new \InvalidArgumentException('non-nullable comment cannot be null');
+        if (is_null($comment_statuses)) {
+            throw new \InvalidArgumentException('non-nullable comment_statuses cannot be null');
         }
-        $this->container['comment'] = $comment;
-
-        return $this;
-    }
-
-    /**
-     * Gets user
-     *
-     * @return \OpenAPI\Client\Model\UserSessionInfo
-     */
-    public function getUser()
-    {
-        return $this->container['user'];
-    }
-
-    /**
-     * Sets user
-     *
-     * @param \OpenAPI\Client\Model\UserSessionInfo $user user
-     *
-     * @return self
-     */
-    public function setUser($user)
-    {
-        if (is_null($user)) {
-            array_push($this->openAPINullablesSetToNull, 'user');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('user', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['user'] = $user;
-
-        return $this;
-    }
-
-    /**
-     * Gets module_data
-     *
-     * @return array<string,object>|null
-     */
-    public function getModuleData()
-    {
-        return $this->container['module_data'];
-    }
-
-    /**
-     * Sets module_data
-     *
-     * @param array<string,object>|null $module_data Construct a type with a set of properties K of type T
-     *
-     * @return self
-     */
-    public function setModuleData($module_data)
-    {
-        if (is_null($module_data)) {
-            throw new \InvalidArgumentException('non-nullable module_data cannot be null');
-        }
-        $this->container['module_data'] = $module_data;
+        $this->container['comment_statuses'] = $comment_statuses;
 
         return $this;
     }

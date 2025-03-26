@@ -1,13 +1,11 @@
-# # UpdateUserNotificationStatus200Response
+# # BlockFromCommentPublic200Response
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**\OpenAPI\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
-**matched_count** | **float** |  |
-**modified_count** | **float** |  |
-**note** | **string** |  |
+**comment_statuses** | **array<string,bool>** | Construct a type with a set of properties K of type T |
 **reason** | **string** |  |
 **code** | **string** |  |
 **secondary_code** | **string** |  | [optional]

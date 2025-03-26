@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\OpenAPI\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
+**status** | [**\OpenAPI\Client\Model\ImportedAPIStatusSUCCESS**](ImportedAPIStatusSUCCESS.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |
 **secondary_code** | **string** |  | [optional]
@@ -12,6 +12,5 @@ Name | Type | Description | Notes
 **max_character_length** | **float** |  | [optional]
 **translated_error** | **string** |  | [optional]
 **custom_config** | [**\OpenAPI\Client\Model\CustomConfigParameters**](CustomConfigParameters.md) |  | [optional]
-**status_code** | **float** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

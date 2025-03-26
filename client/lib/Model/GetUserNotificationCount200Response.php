@@ -57,7 +57,7 @@ class GetUserNotificationCount200Response implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\OpenAPI\Client\Model\APIStatusFAILED',
+        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
         'count' => 'float',
         'reason' => 'string',
         'code' => 'string',
@@ -360,7 +360,7 @@ class GetUserNotificationCount200Response implements ModelInterface, ArrayAccess
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\APIStatusFAILED
+     * @return \OpenAPI\Client\Model\ImportedAPIStatusFAILED
      */
     public function getStatus()
     {
@@ -370,7 +370,7 @@ class GetUserNotificationCount200Response implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\APIStatusFAILED $status status
+     * @param \OpenAPI\Client\Model\ImportedAPIStatusFAILED $status status
      *
      * @return self
      */

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\OpenAPI\Client\Model\APIStatusFAILED**](APIStatusFAILED.md) |  |
+**status** | [**\OpenAPI\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
 **audit_logs** | [**\OpenAPI\Client\Model\PickTenantAuditLogTenantAuditLogKeys[]**](PickTenantAuditLogTenantAuditLogKeys.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |

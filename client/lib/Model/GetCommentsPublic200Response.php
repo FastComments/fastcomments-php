@@ -58,7 +58,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'status_code' => 'int',
-        'status' => '\OpenAPI\Client\Model\APIStatusFAILED',
+        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
         'code' => 'string',
         'reason' => 'string',
         'comments' => '\OpenAPI\Client\Model\PublicComment[]',
@@ -540,7 +540,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\APIStatusFAILED
+     * @return \OpenAPI\Client\Model\ImportedAPIStatusFAILED
      */
     public function getStatus()
     {
@@ -550,7 +550,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\APIStatusFAILED $status status
+     * @param \OpenAPI\Client\Model\ImportedAPIStatusFAILED $status status
      *
      * @return self
      */

@@ -57,7 +57,7 @@ class DeleteCommentVote200Response implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\OpenAPI\Client\Model\APIStatusFAILED',
+        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
         'was_pending_vote' => 'bool',
         'reason' => 'string',
         'code' => 'string',
@@ -357,7 +357,7 @@ class DeleteCommentVote200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\APIStatusFAILED
+     * @return \OpenAPI\Client\Model\ImportedAPIStatusFAILED
      */
     public function getStatus()
     {
@@ -367,7 +367,7 @@ class DeleteCommentVote200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\APIStatusFAILED $status status
+     * @param \OpenAPI\Client\Model\ImportedAPIStatusFAILED $status status
      *
      * @return self
      */

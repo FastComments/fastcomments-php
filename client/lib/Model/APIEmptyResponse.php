@@ -57,15 +57,7 @@ class APIEmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusFAILED',
-        'status_code' => 'float',
-        'reason' => 'string',
-        'code' => 'string',
-        'secondary_code' => 'string',
-        'banned_until' => 'float',
-        'max_character_length' => 'float',
-        'translated_error' => 'string',
-        'custom_config' => '\OpenAPI\Client\Model\CustomConfigParameters'
+        'status' => '\OpenAPI\Client\Model\ImportedAPIStatusSUCCESS'
     ];
 
     /**
@@ -76,15 +68,7 @@ class APIEmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'status_code' => 'double',
-        'reason' => null,
-        'code' => null,
-        'secondary_code' => null,
-        'banned_until' => 'double',
-        'max_character_length' => 'double',
-        'translated_error' => null,
-        'custom_config' => null
+        'status' => null
     ];
 
     /**
@@ -93,15 +77,7 @@ class APIEmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'status_code' => false,
-        'reason' => false,
-        'code' => false,
-        'secondary_code' => false,
-        'banned_until' => false,
-        'max_character_length' => false,
-        'translated_error' => false,
-        'custom_config' => false
+        'status' => false
     ];
 
     /**
@@ -190,15 +166,7 @@ class APIEmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'status_code' => 'statusCode',
-        'reason' => 'reason',
-        'code' => 'code',
-        'secondary_code' => 'secondaryCode',
-        'banned_until' => 'bannedUntil',
-        'max_character_length' => 'maxCharacterLength',
-        'translated_error' => 'translatedError',
-        'custom_config' => 'customConfig'
+        'status' => 'status'
     ];
 
     /**
@@ -207,15 +175,7 @@ class APIEmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'status_code' => 'setStatusCode',
-        'reason' => 'setReason',
-        'code' => 'setCode',
-        'secondary_code' => 'setSecondaryCode',
-        'banned_until' => 'setBannedUntil',
-        'max_character_length' => 'setMaxCharacterLength',
-        'translated_error' => 'setTranslatedError',
-        'custom_config' => 'setCustomConfig'
+        'status' => 'setStatus'
     ];
 
     /**
@@ -224,15 +184,7 @@ class APIEmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'status_code' => 'getStatusCode',
-        'reason' => 'getReason',
-        'code' => 'getCode',
-        'secondary_code' => 'getSecondaryCode',
-        'banned_until' => 'getBannedUntil',
-        'max_character_length' => 'getMaxCharacterLength',
-        'translated_error' => 'getTranslatedError',
-        'custom_config' => 'getCustomConfig'
+        'status' => 'getStatus'
     ];
 
     /**
@@ -293,14 +245,6 @@ class APIEmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('status_code', $data ?? [], null);
-        $this->setIfExists('reason', $data ?? [], null);
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('secondary_code', $data ?? [], null);
-        $this->setIfExists('banned_until', $data ?? [], null);
-        $this->setIfExists('max_character_length', $data ?? [], null);
-        $this->setIfExists('translated_error', $data ?? [], null);
-        $this->setIfExists('custom_config', $data ?? [], null);
     }
 
     /**
@@ -333,12 +277,6 @@ class APIEmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['reason'] === null) {
-            $invalidProperties[] = "'reason' can't be null";
-        }
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -357,7 +295,7 @@ class APIEmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\ImportedAPIStatusFAILED
+     * @return \OpenAPI\Client\Model\ImportedAPIStatusSUCCESS
      */
     public function getStatus()
     {
@@ -367,7 +305,7 @@ class APIEmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \OpenAPI\Client\Model\ImportedAPIStatusSUCCESS $status status
      *
      * @return self
      */
@@ -377,222 +315,6 @@ class APIEmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
         $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets status_code
-     *
-     * @return float|null
-     */
-    public function getStatusCode()
-    {
-        return $this->container['status_code'];
-    }
-
-    /**
-     * Sets status_code
-     *
-     * @param float|null $status_code status_code
-     *
-     * @return self
-     */
-    public function setStatusCode($status_code)
-    {
-        if (is_null($status_code)) {
-            throw new \InvalidArgumentException('non-nullable status_code cannot be null');
-        }
-        $this->container['status_code'] = $status_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets reason
-     *
-     * @return string
-     */
-    public function getReason()
-    {
-        return $this->container['reason'];
-    }
-
-    /**
-     * Sets reason
-     *
-     * @param string $reason reason
-     *
-     * @return self
-     */
-    public function setReason($reason)
-    {
-        if (is_null($reason)) {
-            throw new \InvalidArgumentException('non-nullable reason cannot be null');
-        }
-        $this->container['reason'] = $reason;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets secondary_code
-     *
-     * @return string|null
-     */
-    public function getSecondaryCode()
-    {
-        return $this->container['secondary_code'];
-    }
-
-    /**
-     * Sets secondary_code
-     *
-     * @param string|null $secondary_code secondary_code
-     *
-     * @return self
-     */
-    public function setSecondaryCode($secondary_code)
-    {
-        if (is_null($secondary_code)) {
-            throw new \InvalidArgumentException('non-nullable secondary_code cannot be null');
-        }
-        $this->container['secondary_code'] = $secondary_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets banned_until
-     *
-     * @return float|null
-     */
-    public function getBannedUntil()
-    {
-        return $this->container['banned_until'];
-    }
-
-    /**
-     * Sets banned_until
-     *
-     * @param float|null $banned_until banned_until
-     *
-     * @return self
-     */
-    public function setBannedUntil($banned_until)
-    {
-        if (is_null($banned_until)) {
-            throw new \InvalidArgumentException('non-nullable banned_until cannot be null');
-        }
-        $this->container['banned_until'] = $banned_until;
-
-        return $this;
-    }
-
-    /**
-     * Gets max_character_length
-     *
-     * @return float|null
-     */
-    public function getMaxCharacterLength()
-    {
-        return $this->container['max_character_length'];
-    }
-
-    /**
-     * Sets max_character_length
-     *
-     * @param float|null $max_character_length max_character_length
-     *
-     * @return self
-     */
-    public function setMaxCharacterLength($max_character_length)
-    {
-        if (is_null($max_character_length)) {
-            throw new \InvalidArgumentException('non-nullable max_character_length cannot be null');
-        }
-        $this->container['max_character_length'] = $max_character_length;
-
-        return $this;
-    }
-
-    /**
-     * Gets translated_error
-     *
-     * @return string|null
-     */
-    public function getTranslatedError()
-    {
-        return $this->container['translated_error'];
-    }
-
-    /**
-     * Sets translated_error
-     *
-     * @param string|null $translated_error translated_error
-     *
-     * @return self
-     */
-    public function setTranslatedError($translated_error)
-    {
-        if (is_null($translated_error)) {
-            throw new \InvalidArgumentException('non-nullable translated_error cannot be null');
-        }
-        $this->container['translated_error'] = $translated_error;
-
-        return $this;
-    }
-
-    /**
-     * Gets custom_config
-     *
-     * @return \OpenAPI\Client\Model\CustomConfigParameters|null
-     */
-    public function getCustomConfig()
-    {
-        return $this->container['custom_config'];
-    }
-
-    /**
-     * Sets custom_config
-     *
-     * @param \OpenAPI\Client\Model\CustomConfigParameters|null $custom_config custom_config
-     *
-     * @return self
-     */
-    public function setCustomConfig($custom_config)
-    {
-        if (is_null($custom_config)) {
-            throw new \InvalidArgumentException('non-nullable custom_config cannot be null');
-        }
-        $this->container['custom_config'] = $custom_config;
 
         return $this;
     }

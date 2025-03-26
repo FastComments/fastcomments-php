@@ -83,7 +83,9 @@ class PickFCommentPublicCommentFieldsKeys implements ModelInterface, ArrayAccess
         'display_label' => 'string',
         'badges' => '\OpenAPI\Client\Model\CommentUserBadgeInfo[]',
         'feedback_ids' => 'string[]',
-        'view_count' => 'float'
+        'view_count' => 'float',
+        'requires_verification' => 'bool',
+        'edit_key' => 'string'
     ];
 
     /**
@@ -119,7 +121,9 @@ class PickFCommentPublicCommentFieldsKeys implements ModelInterface, ArrayAccess
         'display_label' => null,
         'badges' => null,
         'feedback_ids' => null,
-        'view_count' => 'double'
+        'view_count' => 'double',
+        'requires_verification' => null,
+        'edit_key' => null
     ];
 
     /**
@@ -153,7 +157,9 @@ class PickFCommentPublicCommentFieldsKeys implements ModelInterface, ArrayAccess
         'display_label' => false,
         'badges' => false,
         'feedback_ids' => false,
-        'view_count' => false
+        'view_count' => false,
+        'requires_verification' => false,
+        'edit_key' => false
     ];
 
     /**
@@ -267,7 +273,9 @@ class PickFCommentPublicCommentFieldsKeys implements ModelInterface, ArrayAccess
         'display_label' => 'displayLabel',
         'badges' => 'badges',
         'feedback_ids' => 'feedbackIds',
-        'view_count' => 'viewCount'
+        'view_count' => 'viewCount',
+        'requires_verification' => 'requiresVerification',
+        'edit_key' => 'editKey'
     ];
 
     /**
@@ -301,7 +309,9 @@ class PickFCommentPublicCommentFieldsKeys implements ModelInterface, ArrayAccess
         'display_label' => 'setDisplayLabel',
         'badges' => 'setBadges',
         'feedback_ids' => 'setFeedbackIds',
-        'view_count' => 'setViewCount'
+        'view_count' => 'setViewCount',
+        'requires_verification' => 'setRequiresVerification',
+        'edit_key' => 'setEditKey'
     ];
 
     /**
@@ -335,7 +345,9 @@ class PickFCommentPublicCommentFieldsKeys implements ModelInterface, ArrayAccess
         'display_label' => 'getDisplayLabel',
         'badges' => 'getBadges',
         'feedback_ids' => 'getFeedbackIds',
-        'view_count' => 'getViewCount'
+        'view_count' => 'getViewCount',
+        'requires_verification' => 'getRequiresVerification',
+        'edit_key' => 'getEditKey'
     ];
 
     /**
@@ -421,6 +433,8 @@ class PickFCommentPublicCommentFieldsKeys implements ModelInterface, ArrayAccess
         $this->setIfExists('badges', $data ?? [], null);
         $this->setIfExists('feedback_ids', $data ?? [], null);
         $this->setIfExists('view_count', $data ?? [], null);
+        $this->setIfExists('requires_verification', $data ?? [], null);
+        $this->setIfExists('edit_key', $data ?? [], null);
     }
 
     /**
@@ -1178,6 +1192,60 @@ class PickFCommentPublicCommentFieldsKeys implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable view_count cannot be null');
         }
         $this->container['view_count'] = $view_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets requires_verification
+     *
+     * @return bool|null
+     */
+    public function getRequiresVerification()
+    {
+        return $this->container['requires_verification'];
+    }
+
+    /**
+     * Sets requires_verification
+     *
+     * @param bool|null $requires_verification requires_verification
+     *
+     * @return self
+     */
+    public function setRequiresVerification($requires_verification)
+    {
+        if (is_null($requires_verification)) {
+            throw new \InvalidArgumentException('non-nullable requires_verification cannot be null');
+        }
+        $this->container['requires_verification'] = $requires_verification;
+
+        return $this;
+    }
+
+    /**
+     * Gets edit_key
+     *
+     * @return string|null
+     */
+    public function getEditKey()
+    {
+        return $this->container['edit_key'];
+    }
+
+    /**
+     * Sets edit_key
+     *
+     * @param string|null $edit_key edit_key
+     *
+     * @return self
+     */
+    public function setEditKey($edit_key)
+    {
+        if (is_null($edit_key)) {
+            throw new \InvalidArgumentException('non-nullable edit_key cannot be null');
+        }
+        $this->container['edit_key'] = $edit_key;
 
         return $this;
     }
