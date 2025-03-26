@@ -204,6 +204,8 @@ class PublicApi
     /**
      * Operation blockFromCommentPublic
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  \FastComments\Client\Model\PublicBlockFromCommentParams $public_block_from_comment_params public_block_from_comment_params (required)
@@ -222,6 +224,8 @@ class PublicApi
 
     /**
      * Operation blockFromCommentPublicWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -349,6 +353,8 @@ class PublicApi
     /**
      * Operation blockFromCommentPublicAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\PublicBlockFromCommentParams $public_block_from_comment_params (required)
@@ -370,6 +376,8 @@ class PublicApi
 
     /**
      * Operation blockFromCommentPublicAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -559,6 +567,8 @@ class PublicApi
     /**
      * Operation checkedCommentsForBlocked
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_ids A comma separated list of comment ids. (required)
      * @param  string|null $sso sso (optional)
@@ -576,6 +586,8 @@ class PublicApi
 
     /**
      * Operation checkedCommentsForBlockedWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_ids A comma separated list of comment ids. (required)
@@ -702,6 +714,8 @@ class PublicApi
     /**
      * Operation checkedCommentsForBlockedAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $comment_ids A comma separated list of comment ids. (required)
      * @param  string|null $sso (optional)
@@ -722,6 +736,8 @@ class PublicApi
 
     /**
      * Operation checkedCommentsForBlockedAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_ids A comma separated list of comment ids. (required)
@@ -896,6 +912,8 @@ class PublicApi
     /**
      * Operation createCommentPublic
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $url_id url_id (required)
      * @param  string $broadcast_id broadcast_id (required)
@@ -916,6 +934,8 @@ class PublicApi
 
     /**
      * Operation createCommentPublicWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -1045,6 +1065,8 @@ class PublicApi
     /**
      * Operation createCommentPublicAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
      * @param  string $broadcast_id (required)
@@ -1068,6 +1090,8 @@ class PublicApi
 
     /**
      * Operation createCommentPublicAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -1287,6 +1311,8 @@ class PublicApi
     /**
      * Operation deleteCommentPublic
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  string $broadcast_id broadcast_id (required)
@@ -1305,6 +1331,8 @@ class PublicApi
 
     /**
      * Operation deleteCommentPublicWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -1432,6 +1460,8 @@ class PublicApi
     /**
      * Operation deleteCommentPublicAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $broadcast_id (required)
@@ -1453,6 +1483,8 @@ class PublicApi
 
     /**
      * Operation deleteCommentPublicAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -1643,6 +1675,8 @@ class PublicApi
     /**
      * Operation deleteCommentVote
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  string $vote_id vote_id (required)
@@ -1664,6 +1698,8 @@ class PublicApi
 
     /**
      * Operation deleteCommentVoteWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -1794,6 +1830,8 @@ class PublicApi
     /**
      * Operation deleteCommentVoteAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $vote_id (required)
@@ -1818,6 +1856,8 @@ class PublicApi
 
     /**
      * Operation deleteCommentVoteAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -2055,6 +2095,8 @@ class PublicApi
     /**
      * Operation flagCommentPublic
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  bool $is_flagged is_flagged (required)
@@ -2073,6 +2115,8 @@ class PublicApi
 
     /**
      * Operation flagCommentPublicWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -2200,6 +2244,8 @@ class PublicApi
     /**
      * Operation flagCommentPublicAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool $is_flagged (required)
@@ -2221,6 +2267,8 @@ class PublicApi
 
     /**
      * Operation flagCommentPublicAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -2412,6 +2460,8 @@ class PublicApi
     /**
      * Operation getCommentText
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  string|null $edit_key edit_key (optional)
@@ -2430,6 +2480,8 @@ class PublicApi
 
     /**
      * Operation getCommentTextWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -2557,6 +2609,8 @@ class PublicApi
     /**
      * Operation getCommentTextAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string|null $edit_key (optional)
@@ -2578,6 +2632,8 @@ class PublicApi
 
     /**
      * Operation getCommentTextAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -2762,6 +2818,8 @@ class PublicApi
     /**
      * Operation getCommentVoteUserNames
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  float $direction Pass 1 for getting the names of users that up voted, and -1 for the usernames for users that down voted. (required)
@@ -2780,6 +2838,8 @@ class PublicApi
 
     /**
      * Operation getCommentVoteUserNamesWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -2907,6 +2967,8 @@ class PublicApi
     /**
      * Operation getCommentVoteUserNamesAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  float $direction Pass 1 for getting the names of users that up voted, and -1 for the usernames for users that down voted. (required)
@@ -2928,6 +2990,8 @@ class PublicApi
 
     /**
      * Operation getCommentVoteUserNamesAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -3118,6 +3182,8 @@ class PublicApi
     /**
      * Operation getCommentsPublic
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $url_id url_id (required)
      * @param  int|null $page page (optional)
@@ -3159,6 +3225,8 @@ class PublicApi
 
     /**
      * Operation getCommentsPublicWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -3309,6 +3377,8 @@ class PublicApi
     /**
      * Operation getCommentsPublicAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
      * @param  int|null $page (optional)
@@ -3353,6 +3423,8 @@ class PublicApi
 
     /**
      * Operation getCommentsPublicAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -3814,6 +3886,8 @@ class PublicApi
     /**
      * Operation getEventLog
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $url_id url_id (required)
      * @param  string $user_id_ws user_id_ws (required)
@@ -3833,6 +3907,8 @@ class PublicApi
 
     /**
      * Operation getEventLogWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -3961,6 +4037,8 @@ class PublicApi
     /**
      * Operation getEventLogAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
      * @param  string $user_id_ws (required)
@@ -3983,6 +4061,8 @@ class PublicApi
 
     /**
      * Operation getEventLogAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -4198,6 +4278,8 @@ class PublicApi
     /**
      * Operation getFeedPostsPublic
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  float|null $after_id after_id (optional)
      * @param  float|null $limit limit (optional)
@@ -4216,6 +4298,8 @@ class PublicApi
 
     /**
      * Operation getFeedPostsPublicWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  float|null $after_id (optional)
@@ -4343,6 +4427,8 @@ class PublicApi
     /**
      * Operation getFeedPostsPublicAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  float|null $after_id (optional)
      * @param  float|null $limit (optional)
@@ -4364,6 +4450,8 @@ class PublicApi
 
     /**
      * Operation getFeedPostsPublicAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  float|null $after_id (optional)
@@ -4543,6 +4631,8 @@ class PublicApi
     /**
      * Operation getGlobalEventLog
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $url_id url_id (required)
      * @param  string $user_id_ws user_id_ws (required)
@@ -4562,6 +4652,8 @@ class PublicApi
 
     /**
      * Operation getGlobalEventLogWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -4690,6 +4782,8 @@ class PublicApi
     /**
      * Operation getGlobalEventLogAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
      * @param  string $user_id_ws (required)
@@ -4712,6 +4806,8 @@ class PublicApi
 
     /**
      * Operation getGlobalEventLogAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -4927,6 +5023,8 @@ class PublicApi
     /**
      * Operation getUserNotificationCount
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserNotificationCount'] to see the possible values for this operation
@@ -4943,6 +5041,8 @@ class PublicApi
 
     /**
      * Operation getUserNotificationCountWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
@@ -5068,6 +5168,8 @@ class PublicApi
     /**
      * Operation getUserNotificationCountAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserNotificationCount'] to see the possible values for this operation
@@ -5087,6 +5189,8 @@ class PublicApi
 
     /**
      * Operation getUserNotificationCountAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
@@ -5243,6 +5347,8 @@ class PublicApi
     /**
      * Operation getUserNotifications
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  float|null $page_size Defaults to 20. (optional)
      * @param  string|null $after_id after_id (optional)
@@ -5267,6 +5373,8 @@ class PublicApi
 
     /**
      * Operation getUserNotificationsWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  float|null $page_size Defaults to 20. (optional)
@@ -5400,6 +5508,8 @@ class PublicApi
     /**
      * Operation getUserNotificationsAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  float|null $page_size Defaults to 20. (optional)
      * @param  string|null $after_id (optional)
@@ -5427,6 +5537,8 @@ class PublicApi
 
     /**
      * Operation getUserNotificationsAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  float|null $page_size Defaults to 20. (optional)
@@ -5679,6 +5791,8 @@ class PublicApi
     /**
      * Operation getUserPresenceStatuses
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $url_id_ws url_id_ws (required)
      * @param  string $user_ids user_ids (required)
@@ -5696,6 +5810,8 @@ class PublicApi
 
     /**
      * Operation getUserPresenceStatusesWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id_ws (required)
@@ -5857,6 +5973,8 @@ class PublicApi
     /**
      * Operation getUserPresenceStatusesAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $url_id_ws (required)
      * @param  string $user_ids (required)
@@ -5877,6 +5995,8 @@ class PublicApi
 
     /**
      * Operation getUserPresenceStatusesAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id_ws (required)
@@ -6057,6 +6177,8 @@ class PublicApi
     /**
      * Operation lockComment
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  string $broadcast_id broadcast_id (required)
@@ -6075,6 +6197,8 @@ class PublicApi
 
     /**
      * Operation lockCommentWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -6202,6 +6326,8 @@ class PublicApi
     /**
      * Operation lockCommentAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $broadcast_id (required)
@@ -6223,6 +6349,8 @@ class PublicApi
 
     /**
      * Operation lockCommentAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -6413,6 +6541,8 @@ class PublicApi
     /**
      * Operation pinComment
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  string $broadcast_id broadcast_id (required)
@@ -6431,6 +6561,8 @@ class PublicApi
 
     /**
      * Operation pinCommentWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -6558,6 +6690,8 @@ class PublicApi
     /**
      * Operation pinCommentAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $broadcast_id (required)
@@ -6579,6 +6713,8 @@ class PublicApi
 
     /**
      * Operation pinCommentAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -6769,6 +6905,8 @@ class PublicApi
     /**
      * Operation resetUserNotificationCount
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetUserNotificationCount'] to see the possible values for this operation
@@ -6785,6 +6923,8 @@ class PublicApi
 
     /**
      * Operation resetUserNotificationCountWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
@@ -6910,6 +7050,8 @@ class PublicApi
     /**
      * Operation resetUserNotificationCountAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetUserNotificationCount'] to see the possible values for this operation
@@ -6929,6 +7071,8 @@ class PublicApi
 
     /**
      * Operation resetUserNotificationCountAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
@@ -7085,6 +7229,8 @@ class PublicApi
     /**
      * Operation resetUserNotifications
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $after_id after_id (optional)
      * @param  float|null $after_created_at after_created_at (optional)
@@ -7106,6 +7252,8 @@ class PublicApi
 
     /**
      * Operation resetUserNotificationsWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string|null $after_id (optional)
@@ -7236,6 +7384,8 @@ class PublicApi
     /**
      * Operation resetUserNotificationsAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string|null $after_id (optional)
      * @param  float|null $after_created_at (optional)
@@ -7260,6 +7410,8 @@ class PublicApi
 
     /**
      * Operation resetUserNotificationsAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string|null $after_id (optional)
@@ -7476,6 +7628,8 @@ class PublicApi
     /**
      * Operation setCommentText
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  string $broadcast_id broadcast_id (required)
@@ -7496,6 +7650,8 @@ class PublicApi
 
     /**
      * Operation setCommentTextWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -7625,6 +7781,8 @@ class PublicApi
     /**
      * Operation setCommentTextAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $broadcast_id (required)
@@ -7648,6 +7806,8 @@ class PublicApi
 
     /**
      * Operation setCommentTextAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -7866,6 +8026,8 @@ class PublicApi
     /**
      * Operation unBlockCommentPublic
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  \FastComments\Client\Model\PublicBlockFromCommentParams $public_block_from_comment_params public_block_from_comment_params (required)
@@ -7884,6 +8046,8 @@ class PublicApi
 
     /**
      * Operation unBlockCommentPublicWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -8011,6 +8175,8 @@ class PublicApi
     /**
      * Operation unBlockCommentPublicAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\PublicBlockFromCommentParams $public_block_from_comment_params (required)
@@ -8032,6 +8198,8 @@ class PublicApi
 
     /**
      * Operation unBlockCommentPublicAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -8221,6 +8389,8 @@ class PublicApi
     /**
      * Operation unLockComment
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  string $broadcast_id broadcast_id (required)
@@ -8239,6 +8409,8 @@ class PublicApi
 
     /**
      * Operation unLockCommentWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -8366,6 +8538,8 @@ class PublicApi
     /**
      * Operation unLockCommentAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $broadcast_id (required)
@@ -8387,6 +8561,8 @@ class PublicApi
 
     /**
      * Operation unLockCommentAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -8577,6 +8753,8 @@ class PublicApi
     /**
      * Operation unPinComment
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  string $broadcast_id broadcast_id (required)
@@ -8595,6 +8773,8 @@ class PublicApi
 
     /**
      * Operation unPinCommentWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -8722,6 +8902,8 @@ class PublicApi
     /**
      * Operation unPinCommentAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $broadcast_id (required)
@@ -8743,6 +8925,8 @@ class PublicApi
 
     /**
      * Operation unPinCommentAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -8933,6 +9117,8 @@ class PublicApi
     /**
      * Operation updateUserNotificationCommentSubscriptionStatus
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $notification_id notification_id (required)
      * @param  string $opted_in_or_out opted_in_or_out (required)
@@ -8952,6 +9138,8 @@ class PublicApi
 
     /**
      * Operation updateUserNotificationCommentSubscriptionStatusWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $notification_id (required)
@@ -9080,6 +9268,8 @@ class PublicApi
     /**
      * Operation updateUserNotificationCommentSubscriptionStatusAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $notification_id (required)
      * @param  string $opted_in_or_out (required)
@@ -9102,6 +9292,8 @@ class PublicApi
 
     /**
      * Operation updateUserNotificationCommentSubscriptionStatusAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $notification_id (required)
@@ -9310,6 +9502,8 @@ class PublicApi
     /**
      * Operation updateUserNotificationPageSubscriptionStatus
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $url_id url_id (required)
      * @param  string $url url (required)
@@ -9330,6 +9524,8 @@ class PublicApi
 
     /**
      * Operation updateUserNotificationPageSubscriptionStatusWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -9459,6 +9655,8 @@ class PublicApi
     /**
      * Operation updateUserNotificationPageSubscriptionStatusAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
      * @param  string $url (required)
@@ -9482,6 +9680,8 @@ class PublicApi
 
     /**
      * Operation updateUserNotificationPageSubscriptionStatusAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -9709,6 +9909,8 @@ class PublicApi
     /**
      * Operation updateUserNotificationStatus
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $notification_id notification_id (required)
      * @param  string $new_status new_status (required)
@@ -9727,6 +9929,8 @@ class PublicApi
 
     /**
      * Operation updateUserNotificationStatusWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $notification_id (required)
@@ -9854,6 +10058,8 @@ class PublicApi
     /**
      * Operation updateUserNotificationStatusAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $notification_id (required)
      * @param  string $new_status (required)
@@ -9875,6 +10081,8 @@ class PublicApi
 
     /**
      * Operation updateUserNotificationStatusAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $notification_id (required)
@@ -10065,6 +10273,8 @@ class PublicApi
     /**
      * Operation voteComment
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  string $url_id url_id (required)
@@ -10086,6 +10296,8 @@ class PublicApi
 
     /**
      * Operation voteCommentWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -10216,6 +10428,8 @@ class PublicApi
     /**
      * Operation voteCommentAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $url_id (required)
@@ -10240,6 +10454,8 @@ class PublicApi
 
     /**
      * Operation voteCommentAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)

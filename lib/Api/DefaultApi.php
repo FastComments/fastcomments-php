@@ -183,6 +183,8 @@ class DefaultApi
     /**
      * Operation addDomainConfig
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\AddDomainConfigParams $add_domain_config_params add_domain_config_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addDomainConfig'] to see the possible values for this operation
@@ -199,6 +201,8 @@ class DefaultApi
 
     /**
      * Operation addDomainConfigWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\AddDomainConfigParams $add_domain_config_params (required)
@@ -324,6 +328,8 @@ class DefaultApi
     /**
      * Operation addDomainConfigAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\AddDomainConfigParams $add_domain_config_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addDomainConfig'] to see the possible values for this operation
@@ -343,6 +349,8 @@ class DefaultApi
 
     /**
      * Operation addDomainConfigAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\AddDomainConfigParams $add_domain_config_params (required)
@@ -503,6 +511,8 @@ class DefaultApi
     /**
      * Operation aggregate
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\AggregationRequest $aggregation_request aggregation_request (required)
      * @param  string|null $parent_tenant_id parent_tenant_id (optional)
@@ -521,6 +531,8 @@ class DefaultApi
 
     /**
      * Operation aggregateWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\AggregationRequest $aggregation_request (required)
@@ -648,6 +660,8 @@ class DefaultApi
     /**
      * Operation aggregateAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\AggregationRequest $aggregation_request (required)
      * @param  string|null $parent_tenant_id (optional)
@@ -669,6 +683,8 @@ class DefaultApi
 
     /**
      * Operation aggregateAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\AggregationRequest $aggregation_request (required)
@@ -853,6 +869,8 @@ class DefaultApi
     /**
      * Operation blockUserFromComment
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  \FastComments\Client\Model\BlockFromCommentParams $block_from_comment_params block_from_comment_params (required)
@@ -872,6 +890,8 @@ class DefaultApi
 
     /**
      * Operation blockUserFromCommentWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -1000,6 +1020,8 @@ class DefaultApi
     /**
      * Operation blockUserFromCommentAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\BlockFromCommentParams $block_from_comment_params (required)
@@ -1022,6 +1044,8 @@ class DefaultApi
 
     /**
      * Operation blockUserFromCommentAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -1223,6 +1247,8 @@ class DefaultApi
     /**
      * Operation createFeedPost
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\FeedPost $feed_post feed_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFeedPost'] to see the possible values for this operation
@@ -1239,6 +1265,8 @@ class DefaultApi
 
     /**
      * Operation createFeedPostWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\FeedPost $feed_post (required)
@@ -1364,6 +1392,8 @@ class DefaultApi
     /**
      * Operation createFeedPostAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\FeedPost $feed_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFeedPost'] to see the possible values for this operation
@@ -1383,6 +1413,8 @@ class DefaultApi
 
     /**
      * Operation createFeedPostAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\FeedPost $feed_post (required)
@@ -1543,6 +1575,8 @@ class DefaultApi
     /**
      * Operation deleteComment
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string|null $context_user_id context_user_id (optional)
@@ -1561,6 +1595,8 @@ class DefaultApi
 
     /**
      * Operation deleteCommentWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -1688,6 +1724,8 @@ class DefaultApi
     /**
      * Operation deleteCommentAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string|null $context_user_id (optional)
@@ -1709,6 +1747,8 @@ class DefaultApi
 
     /**
      * Operation deleteCommentAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -1894,6 +1934,8 @@ class DefaultApi
     /**
      * Operation deleteDomainConfig
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $domain domain (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDomainConfig'] to see the possible values for this operation
@@ -1910,6 +1952,8 @@ class DefaultApi
 
     /**
      * Operation deleteDomainConfigWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $domain (required)
@@ -2035,6 +2079,8 @@ class DefaultApi
     /**
      * Operation deleteDomainConfigAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $domain (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDomainConfig'] to see the possible values for this operation
@@ -2054,6 +2100,8 @@ class DefaultApi
 
     /**
      * Operation deleteDomainConfigAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $domain (required)
@@ -2215,6 +2263,8 @@ class DefaultApi
     /**
      * Operation flagComment
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string|null $user_id user_id (optional)
@@ -2233,6 +2283,8 @@ class DefaultApi
 
     /**
      * Operation flagCommentWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -2360,6 +2412,8 @@ class DefaultApi
     /**
      * Operation flagCommentAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string|null $user_id (optional)
@@ -2381,6 +2435,8 @@ class DefaultApi
 
     /**
      * Operation flagCommentAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -2566,6 +2622,8 @@ class DefaultApi
     /**
      * Operation getAuditLogs
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  float|null $limit limit (optional)
      * @param  float|null $skip skip (optional)
@@ -2586,6 +2644,8 @@ class DefaultApi
 
     /**
      * Operation getAuditLogsWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  float|null $limit (optional)
@@ -2715,6 +2775,8 @@ class DefaultApi
     /**
      * Operation getAuditLogsAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  float|null $limit (optional)
      * @param  float|null $skip (optional)
@@ -2738,6 +2800,8 @@ class DefaultApi
 
     /**
      * Operation getAuditLogsAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  float|null $limit (optional)
@@ -2942,6 +3006,8 @@ class DefaultApi
     /**
      * Operation getComment
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComment'] to see the possible values for this operation
@@ -2958,6 +3024,8 @@ class DefaultApi
 
     /**
      * Operation getCommentWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -3083,6 +3151,8 @@ class DefaultApi
     /**
      * Operation getCommentAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComment'] to see the possible values for this operation
@@ -3102,6 +3172,8 @@ class DefaultApi
 
     /**
      * Operation getCommentAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -3263,6 +3335,8 @@ class DefaultApi
     /**
      * Operation getComments
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  float|null $page page (optional)
      * @param  float|null $limit limit (optional)
@@ -3292,6 +3366,8 @@ class DefaultApi
 
     /**
      * Operation getCommentsWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  float|null $page (optional)
@@ -3430,6 +3506,8 @@ class DefaultApi
     /**
      * Operation getCommentsAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  float|null $page (optional)
      * @param  float|null $limit (optional)
@@ -3462,6 +3540,8 @@ class DefaultApi
 
     /**
      * Operation getCommentsAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  float|null $page (optional)
@@ -3774,6 +3854,8 @@ class DefaultApi
     /**
      * Operation getDomainConfig
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $domain domain (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomainConfig'] to see the possible values for this operation
@@ -3790,6 +3872,8 @@ class DefaultApi
 
     /**
      * Operation getDomainConfigWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $domain (required)
@@ -3915,6 +3999,8 @@ class DefaultApi
     /**
      * Operation getDomainConfigAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $domain (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomainConfig'] to see the possible values for this operation
@@ -3934,6 +4020,8 @@ class DefaultApi
 
     /**
      * Operation getDomainConfigAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $domain (required)
@@ -4095,6 +4183,8 @@ class DefaultApi
     /**
      * Operation getDomainConfigs
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomainConfigs'] to see the possible values for this operation
      *
@@ -4110,6 +4200,8 @@ class DefaultApi
 
     /**
      * Operation getDomainConfigsWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomainConfigs'] to see the possible values for this operation
@@ -4234,6 +4326,8 @@ class DefaultApi
     /**
      * Operation getDomainConfigsAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomainConfigs'] to see the possible values for this operation
      *
@@ -4252,6 +4346,8 @@ class DefaultApi
 
     /**
      * Operation getDomainConfigsAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomainConfigs'] to see the possible values for this operation
@@ -4396,6 +4492,8 @@ class DefaultApi
     /**
      * Operation getFeedPosts
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  float|null $after_id after_id (optional)
      * @param  float|null $limit limit (optional)
@@ -4414,6 +4512,8 @@ class DefaultApi
 
     /**
      * Operation getFeedPostsWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  float|null $after_id (optional)
@@ -4541,6 +4641,8 @@ class DefaultApi
     /**
      * Operation getFeedPostsAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  float|null $after_id (optional)
      * @param  float|null $limit (optional)
@@ -4562,6 +4664,8 @@ class DefaultApi
 
     /**
      * Operation getFeedPostsAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  float|null $after_id (optional)
@@ -4742,6 +4846,8 @@ class DefaultApi
     /**
      * Operation patchDomainConfig
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $domain_to_update domain_to_update (required)
      * @param  \FastComments\Client\Model\PatchDomainConfigParams $patch_domain_config_params patch_domain_config_params (required)
@@ -4759,6 +4865,8 @@ class DefaultApi
 
     /**
      * Operation patchDomainConfigWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $domain_to_update (required)
@@ -4885,6 +4993,8 @@ class DefaultApi
     /**
      * Operation patchDomainConfigAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $domain_to_update (required)
      * @param  \FastComments\Client\Model\PatchDomainConfigParams $patch_domain_config_params (required)
@@ -4905,6 +5015,8 @@ class DefaultApi
 
     /**
      * Operation patchDomainConfigAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $domain_to_update (required)
@@ -5082,6 +5194,8 @@ class DefaultApi
     /**
      * Operation putDomainConfig
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $domain_to_update domain_to_update (required)
      * @param  \FastComments\Client\Model\UpdateDomainConfigParams $update_domain_config_params update_domain_config_params (required)
@@ -5099,6 +5213,8 @@ class DefaultApi
 
     /**
      * Operation putDomainConfigWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $domain_to_update (required)
@@ -5225,6 +5341,8 @@ class DefaultApi
     /**
      * Operation putDomainConfigAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $domain_to_update (required)
      * @param  \FastComments\Client\Model\UpdateDomainConfigParams $update_domain_config_params (required)
@@ -5245,6 +5363,8 @@ class DefaultApi
 
     /**
      * Operation putDomainConfigAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $domain_to_update (required)
@@ -5422,6 +5542,8 @@ class DefaultApi
     /**
      * Operation saveComment
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateCommentParams $create_comment_params create_comment_params (required)
      * @param  bool|null $is_live is_live (optional)
@@ -5442,6 +5564,8 @@ class DefaultApi
 
     /**
      * Operation saveCommentWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateCommentParams $create_comment_params (required)
@@ -5571,6 +5695,8 @@ class DefaultApi
     /**
      * Operation saveCommentAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateCommentParams $create_comment_params (required)
      * @param  bool|null $is_live (optional)
@@ -5594,6 +5720,8 @@ class DefaultApi
 
     /**
      * Operation saveCommentAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateCommentParams $create_comment_params (required)
@@ -5802,6 +5930,8 @@ class DefaultApi
     /**
      * Operation unBlockUserFromComment
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  \FastComments\Client\Model\UnBlockFromCommentParams $un_block_from_comment_params un_block_from_comment_params (required)
@@ -5821,6 +5951,8 @@ class DefaultApi
 
     /**
      * Operation unBlockUserFromCommentWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -5949,6 +6081,8 @@ class DefaultApi
     /**
      * Operation unBlockUserFromCommentAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UnBlockFromCommentParams $un_block_from_comment_params (required)
@@ -5971,6 +6105,8 @@ class DefaultApi
 
     /**
      * Operation unBlockUserFromCommentAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -6172,6 +6308,8 @@ class DefaultApi
     /**
      * Operation unFlagComment
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string|null $user_id user_id (optional)
@@ -6190,6 +6328,8 @@ class DefaultApi
 
     /**
      * Operation unFlagCommentWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -6317,6 +6457,8 @@ class DefaultApi
     /**
      * Operation unFlagCommentAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string|null $user_id (optional)
@@ -6338,6 +6480,8 @@ class DefaultApi
 
     /**
      * Operation unFlagCommentAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -6523,6 +6667,8 @@ class DefaultApi
     /**
      * Operation updateComment
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  \FastComments\Client\Model\PickAPICommentUpdatableCommentFields $body body (required)
@@ -6543,6 +6689,8 @@ class DefaultApi
 
     /**
      * Operation updateCommentWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -6672,6 +6820,8 @@ class DefaultApi
     /**
      * Operation updateCommentAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\PickAPICommentUpdatableCommentFields $body (required)
@@ -6695,6 +6845,8 @@ class DefaultApi
 
     /**
      * Operation updateCommentAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -6908,6 +7060,8 @@ class DefaultApi
     /**
      * Operation updateFeedPost
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  \FastComments\Client\Model\FeedPost $feed_post feed_post (required)
@@ -6925,6 +7079,8 @@ class DefaultApi
 
     /**
      * Operation updateFeedPostWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -7051,6 +7207,8 @@ class DefaultApi
     /**
      * Operation updateFeedPostAsync
      *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\FeedPost $feed_post (required)
@@ -7071,6 +7229,8 @@ class DefaultApi
 
     /**
      * Operation updateFeedPostAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
