@@ -5,5 +5,5 @@ rm -rvf ./client/src \
     && openapi-generator-cli generate \
         -i /tmp/fastcomments-openapi.json \
         -g php \
-        -o ./client \
+        -o . \
         --additional-properties=useSingleRequestParameter=true
