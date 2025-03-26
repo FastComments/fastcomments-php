@@ -90,9 +90,45 @@ class FeedPostTest extends TestCase
     }
 
     /**
+     * Test attribute "tenant_id"
+     */
+    public function testPropertyTenantId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "title"
+     */
+    public function testPropertyTitle()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "from_user_id"
      */
     public function testPropertyFromUserId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "from_user_display_name"
+     */
+    public function testPropertyFromUserDisplayName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "from_user_avatar"
+     */
+    public function testPropertyFromUserAvatar()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -165,6 +201,15 @@ class FeedPostTest extends TestCase
      * Test attribute "created_at"
      */
     public function testPropertyCreatedAt()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "reacts"
+     */
+    public function testPropertyReacts()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

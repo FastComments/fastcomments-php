@@ -60,7 +60,7 @@ class FeedPostMediaItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPITypes = [
         'title' => 'string',
         'link' => 'string',
-        'sizes' => '\FastComments\Client\Model\FeedPostMediaItemAsset'
+        'sizes' => '\FastComments\Client\Model\FeedPostMediaItemAsset[]'
     ];
 
     /**
@@ -289,6 +289,9 @@ class FeedPostMediaItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if ($this->container['sizes'] === null) {
+            $invalidProperties[] = "'sizes' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -361,7 +364,7 @@ class FeedPostMediaItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets sizes
      *
-     * @return \FastComments\Client\Model\FeedPostMediaItemAsset|null
+     * @return \FastComments\Client\Model\FeedPostMediaItemAsset[]
      */
     public function getSizes()
     {
@@ -371,7 +374,7 @@ class FeedPostMediaItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets sizes
      *
-     * @param \FastComments\Client\Model\FeedPostMediaItemAsset|null $sizes sizes
+     * @param \FastComments\Client\Model\FeedPostMediaItemAsset[] $sizes sizes
      *
      * @return self
      */

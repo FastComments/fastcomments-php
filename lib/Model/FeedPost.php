@@ -59,7 +59,11 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         '_id' => 'string',
+        'tenant_id' => 'string',
+        'title' => 'string',
         'from_user_id' => 'string',
+        'from_user_display_name' => 'string',
+        'from_user_avatar' => 'string',
         'from_ip_hash' => 'string',
         'tags' => 'string[]',
         'weight' => 'float',
@@ -67,7 +71,8 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'content_html' => 'string',
         'media' => '\FastComments\Client\Model\FeedPostMediaItem[]',
         'links' => '\FastComments\Client\Model\FeedPostLink[]',
-        'created_at' => '\DateTime'
+        'created_at' => '\DateTime',
+        'reacts' => 'array<string,float>'
     ];
 
     /**
@@ -79,7 +84,11 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         '_id' => null,
+        'tenant_id' => null,
+        'title' => null,
         'from_user_id' => null,
+        'from_user_display_name' => null,
+        'from_user_avatar' => null,
         'from_ip_hash' => null,
         'tags' => null,
         'weight' => 'double',
@@ -87,7 +96,8 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'content_html' => null,
         'media' => null,
         'links' => null,
-        'created_at' => 'date-time'
+        'created_at' => 'date-time',
+        'reacts' => 'double'
     ];
 
     /**
@@ -97,7 +107,11 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         '_id' => false,
+        'tenant_id' => false,
+        'title' => false,
         'from_user_id' => false,
+        'from_user_display_name' => false,
+        'from_user_avatar' => false,
         'from_ip_hash' => false,
         'tags' => false,
         'weight' => false,
@@ -105,7 +119,8 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'content_html' => false,
         'media' => false,
         'links' => false,
-        'created_at' => false
+        'created_at' => false,
+        'reacts' => false
     ];
 
     /**
@@ -195,7 +210,11 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         '_id' => '_id',
+        'tenant_id' => 'tenantId',
+        'title' => 'title',
         'from_user_id' => 'fromUserId',
+        'from_user_display_name' => 'fromUserDisplayName',
+        'from_user_avatar' => 'fromUserAvatar',
         'from_ip_hash' => 'fromIpHash',
         'tags' => 'tags',
         'weight' => 'weight',
@@ -203,7 +222,8 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'content_html' => 'contentHTML',
         'media' => 'media',
         'links' => 'links',
-        'created_at' => 'createdAt'
+        'created_at' => 'createdAt',
+        'reacts' => 'reacts'
     ];
 
     /**
@@ -213,7 +233,11 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         '_id' => 'setId',
+        'tenant_id' => 'setTenantId',
+        'title' => 'setTitle',
         'from_user_id' => 'setFromUserId',
+        'from_user_display_name' => 'setFromUserDisplayName',
+        'from_user_avatar' => 'setFromUserAvatar',
         'from_ip_hash' => 'setFromIpHash',
         'tags' => 'setTags',
         'weight' => 'setWeight',
@@ -221,7 +245,8 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'content_html' => 'setContentHtml',
         'media' => 'setMedia',
         'links' => 'setLinks',
-        'created_at' => 'setCreatedAt'
+        'created_at' => 'setCreatedAt',
+        'reacts' => 'setReacts'
     ];
 
     /**
@@ -231,7 +256,11 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         '_id' => 'getId',
+        'tenant_id' => 'getTenantId',
+        'title' => 'getTitle',
         'from_user_id' => 'getFromUserId',
+        'from_user_display_name' => 'getFromUserDisplayName',
+        'from_user_avatar' => 'getFromUserAvatar',
         'from_ip_hash' => 'getFromIpHash',
         'tags' => 'getTags',
         'weight' => 'getWeight',
@@ -239,7 +268,8 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'content_html' => 'getContentHtml',
         'media' => 'getMedia',
         'links' => 'getLinks',
-        'created_at' => 'getCreatedAt'
+        'created_at' => 'getCreatedAt',
+        'reacts' => 'getReacts'
     ];
 
     /**
@@ -300,7 +330,11 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('_id', $data ?? [], null);
+        $this->setIfExists('tenant_id', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('from_user_id', $data ?? [], null);
+        $this->setIfExists('from_user_display_name', $data ?? [], null);
+        $this->setIfExists('from_user_avatar', $data ?? [], null);
         $this->setIfExists('from_ip_hash', $data ?? [], null);
         $this->setIfExists('tags', $data ?? [], null);
         $this->setIfExists('weight', $data ?? [], null);
@@ -309,6 +343,7 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('media', $data ?? [], null);
         $this->setIfExists('links', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('reacts', $data ?? [], null);
     }
 
     /**
@@ -340,6 +375,9 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if ($this->container['_id'] === null) {
             $invalidProperties[] = "'_id' can't be null";
+        }
+        if ($this->container['tenant_id'] === null) {
+            $invalidProperties[] = "'tenant_id' can't be null";
         }
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
@@ -387,6 +425,60 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets tenant_id
+     *
+     * @return string
+     */
+    public function getTenantId()
+    {
+        return $this->container['tenant_id'];
+    }
+
+    /**
+     * Sets tenant_id
+     *
+     * @param string $tenant_id tenant_id
+     *
+     * @return self
+     */
+    public function setTenantId($tenant_id)
+    {
+        if (is_null($tenant_id)) {
+            throw new \InvalidArgumentException('non-nullable tenant_id cannot be null');
+        }
+        $this->container['tenant_id'] = $tenant_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        }
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
      * Gets from_user_id
      *
      * @return string|null
@@ -409,6 +501,60 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable from_user_id cannot be null');
         }
         $this->container['from_user_id'] = $from_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_user_display_name
+     *
+     * @return string|null
+     */
+    public function getFromUserDisplayName()
+    {
+        return $this->container['from_user_display_name'];
+    }
+
+    /**
+     * Sets from_user_display_name
+     *
+     * @param string|null $from_user_display_name from_user_display_name
+     *
+     * @return self
+     */
+    public function setFromUserDisplayName($from_user_display_name)
+    {
+        if (is_null($from_user_display_name)) {
+            throw new \InvalidArgumentException('non-nullable from_user_display_name cannot be null');
+        }
+        $this->container['from_user_display_name'] = $from_user_display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_user_avatar
+     *
+     * @return string|null
+     */
+    public function getFromUserAvatar()
+    {
+        return $this->container['from_user_avatar'];
+    }
+
+    /**
+     * Sets from_user_avatar
+     *
+     * @param string|null $from_user_avatar from_user_avatar
+     *
+     * @return self
+     */
+    public function setFromUserAvatar($from_user_avatar)
+    {
+        if (is_null($from_user_avatar)) {
+            throw new \InvalidArgumentException('non-nullable from_user_avatar cannot be null');
+        }
+        $this->container['from_user_avatar'] = $from_user_avatar;
 
         return $this;
     }
@@ -625,6 +771,33 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
         $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets reacts
+     *
+     * @return array<string,float>|null
+     */
+    public function getReacts()
+    {
+        return $this->container['reacts'];
+    }
+
+    /**
+     * Sets reacts
+     *
+     * @param array<string,float>|null $reacts Construct a type with a set of properties K of type T
+     *
+     * @return self
+     */
+    public function setReacts($reacts)
+    {
+        if (is_null($reacts)) {
+            throw new \InvalidArgumentException('non-nullable reacts cannot be null');
+        }
+        $this->container['reacts'] = $reacts;
 
         return $this;
     }

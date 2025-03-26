@@ -7,7 +7,11 @@
         "php",
         "sdk",
         "rest",
-        "api"
+        "api",
+        "fastcomments",
+        "live-commenting",
+        "comments-api",
+        "comments"
     ],
     "homepage": "https://fastcomments.com",
     "license": "MIT",
@@ -30,9 +34,14 @@
         "friendsofphp/php-cs-fixer": "^3.5"
     },
     "autoload": {
-        "psr-4": { "FastComments\\Client\\" : "lib/" }
+        "psr-4": {
+            "FastComments\\Client\\": "lib/"
+        }
     },
     "autoload-dev": {
-        "psr-4": { "FastComments\\Client\\Test\\" : "test/" }
-    }
+        "psr-4": {
+            "FastComments\\Client\\Test\\": "test/"
+        }
+    },
+    "name": "fastcomments/client"
 }
