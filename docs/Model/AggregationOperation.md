@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **field** | **string** | The field to operate on |
-**op** | [**\OpenAPI\Client\Model\AggregationOpType**](AggregationOpType.md) |  |
+**op** | [**\FastComments\Client\Model\AggregationOpType**](AggregationOpType.md) |  |
 **alias** | **string** | Optional alias for the output; if not provided, a default alias is computed | [optional]
 **expand_array** | **bool** |  | [optional]
 

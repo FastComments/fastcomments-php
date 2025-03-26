@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **status** | **string** |  |
 **code** | **string** |  | [optional]
 **reason** | **string** |  | [optional]
-**comments** | [**\OpenAPI\Client\Model\PublicComment[]**](PublicComment.md) |  |
-**user** | [**\OpenAPI\Client\Model\UserSessionInfo**](UserSessionInfo.md) |  |
+**comments** | [**\FastComments\Client\Model\PublicComment[]**](PublicComment.md) |  |
+**user** | [**\FastComments\Client\Model\UserSessionInfo**](UserSessionInfo.md) |  |
 **url_id_clean** | **string** |  | [optional]
 **last_gen_date** | **int** |  | [optional]
 **includes_past_pages** | **bool** |  | [optional]
@@ -26,6 +26,6 @@ Name | Type | Description | Notes
 **has_more** | **bool** |  | [optional]
 **is_closed** | **bool** |  | [optional]
 **presence_poll_state** | **int** |  | [optional]
-**custom_config** | [**\OpenAPI\Client\Model\CustomConfigParameters**](CustomConfigParameters.md) |  | [optional]
+**custom_config** | [**\FastComments\Client\Model\CustomConfigParameters**](CustomConfigParameters.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

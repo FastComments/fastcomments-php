@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **is_unread_message** | **bool** |  |
 **sent** | **bool** |  |
 **created_at** | **\DateTime** |  |
-**type** | [**\OpenAPI\Client\Model\NotificationType**](NotificationType.md) |  |
+**type** | [**\FastComments\Client\Model\NotificationType**](NotificationType.md) |  |
 **from_comment_id** | **string** |  | [optional]
 **from_vote_id** | **string** |  | [optional]
 **from_user_name** | **string** |  | [optional]

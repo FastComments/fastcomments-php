@@ -6,6 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **string** |  | [optional]
 **link** | **string** |  | [optional]
-**sizes** | [**\OpenAPI\Client\Model\FeedPostMediaItemAsset**](FeedPostMediaItemAsset.md) |  | [optional]
+**sizes** | [**\FastComments\Client\Model\FeedPostMediaItemAsset**](FeedPostMediaItemAsset.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

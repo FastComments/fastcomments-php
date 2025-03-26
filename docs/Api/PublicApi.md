@@ -1,4 +1,4 @@
-# OpenAPI\Client\PublicApi
+# FastComments\Client\PublicApi
 
 All URIs are relative to http://localhost, except if the operation defines another base path.
 
@@ -36,7 +36,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 ## `blockFromCommentPublic()`
 
 ```php
-blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \OpenAPI\Client\Model\BlockFromCommentPublic200Response
+blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \FastComments\Client\Model\BlockFromCommentPublic200Response
 ```
 
 
@@ -49,14 +49,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
-$public_block_from_comment_params = new \OpenAPI\Client\Model\PublicBlockFromCommentParams(); // \OpenAPI\Client\Model\PublicBlockFromCommentParams
+$public_block_from_comment_params = new \FastComments\Client\Model\PublicBlockFromCommentParams(); // \FastComments\Client\Model\PublicBlockFromCommentParams
 $sso = 'sso_example'; // string
 
 try {
@@ -73,12 +73,12 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
-| **public_block_from_comment_params** | [**\OpenAPI\Client\Model\PublicBlockFromCommentParams**](../Model/PublicBlockFromCommentParams.md)|  | |
+| **public_block_from_comment_params** | [**\FastComments\Client\Model\PublicBlockFromCommentParams**](../Model/PublicBlockFromCommentParams.md)|  | |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\BlockFromCommentPublic200Response**](../Model/BlockFromCommentPublic200Response.md)
+[**\FastComments\Client\Model\BlockFromCommentPublic200Response**](../Model/BlockFromCommentPublic200Response.md)
 
 ### Authorization
 
@@ -96,7 +96,7 @@ No authorization required
 ## `checkedCommentsForBlocked()`
 
 ```php
-checkedCommentsForBlocked($tenant_id, $comment_ids, $sso): \OpenAPI\Client\Model\CheckedCommentsForBlocked200Response
+checkedCommentsForBlocked($tenant_id, $comment_ids, $sso): \FastComments\Client\Model\CheckedCommentsForBlocked200Response
 ```
 
 
@@ -109,7 +109,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -136,7 +136,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CheckedCommentsForBlocked200Response**](../Model/CheckedCommentsForBlocked200Response.md)
+[**\FastComments\Client\Model\CheckedCommentsForBlocked200Response**](../Model/CheckedCommentsForBlocked200Response.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ No authorization required
 ## `createCommentPublic()`
 
 ```php
-createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $session_id, $sso): \OpenAPI\Client\Model\CreateCommentPublic200Response
+createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $session_id, $sso): \FastComments\Client\Model\CreateCommentPublic200Response
 ```
 
 
@@ -167,7 +167,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -175,7 +175,7 @@ $apiInstance = new OpenAPI\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
-$comment_data = new \OpenAPI\Client\Model\CommentData(); // \OpenAPI\Client\Model\CommentData
+$comment_data = new \FastComments\Client\Model\CommentData(); // \FastComments\Client\Model\CommentData
 $session_id = 'session_id_example'; // string
 $sso = 'sso_example'; // string
 
@@ -194,13 +194,13 @@ try {
 | **tenant_id** | **string**|  | |
 | **url_id** | **string**|  | |
 | **broadcast_id** | **string**|  | |
-| **comment_data** | [**\OpenAPI\Client\Model\CommentData**](../Model/CommentData.md)|  | |
+| **comment_data** | [**\FastComments\Client\Model\CommentData**](../Model/CommentData.md)|  | |
 | **session_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CreateCommentPublic200Response**](../Model/CreateCommentPublic200Response.md)
+[**\FastComments\Client\Model\CreateCommentPublic200Response**](../Model/CreateCommentPublic200Response.md)
 
 ### Authorization
 
@@ -218,7 +218,7 @@ No authorization required
 ## `deleteCommentPublic()`
 
 ```php
-deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $edit_key): \OpenAPI\Client\Model\DeleteCommentPublic200Response
+deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $edit_key): \FastComments\Client\Model\DeleteCommentPublic200Response
 ```
 
 
@@ -231,7 +231,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -260,7 +260,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DeleteCommentPublic200Response**](../Model/DeleteCommentPublic200Response.md)
+[**\FastComments\Client\Model\DeleteCommentPublic200Response**](../Model/DeleteCommentPublic200Response.md)
 
 ### Authorization
 
@@ -278,7 +278,7 @@ No authorization required
 ## `deleteCommentVote()`
 
 ```php
-deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $edit_key, $sso): \OpenAPI\Client\Model\DeleteCommentVote200Response
+deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $edit_key, $sso): \FastComments\Client\Model\DeleteCommentVote200Response
 ```
 
 
@@ -291,7 +291,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -326,7 +326,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DeleteCommentVote200Response**](../Model/DeleteCommentVote200Response.md)
+[**\FastComments\Client\Model\DeleteCommentVote200Response**](../Model/DeleteCommentVote200Response.md)
 
 ### Authorization
 
@@ -344,7 +344,7 @@ No authorization required
 ## `flagCommentPublic()`
 
 ```php
-flagCommentPublic($tenant_id, $comment_id, $is_flagged, $sso): \OpenAPI\Client\Model\FlagCommentPublic200Response
+flagCommentPublic($tenant_id, $comment_id, $is_flagged, $sso): \FastComments\Client\Model\FlagCommentPublic200Response
 ```
 
 
@@ -357,7 +357,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -386,7 +386,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\FlagCommentPublic200Response**](../Model/FlagCommentPublic200Response.md)
+[**\FastComments\Client\Model\FlagCommentPublic200Response**](../Model/FlagCommentPublic200Response.md)
 
 ### Authorization
 
@@ -404,7 +404,7 @@ No authorization required
 ## `getCommentText()`
 
 ```php
-getCommentText($tenant_id, $comment_id, $edit_key, $sso): \OpenAPI\Client\Model\GetCommentText200Response
+getCommentText($tenant_id, $comment_id, $edit_key, $sso): \FastComments\Client\Model\GetCommentText200Response
 ```
 
 
@@ -417,7 +417,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -446,7 +446,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetCommentText200Response**](../Model/GetCommentText200Response.md)
+[**\FastComments\Client\Model\GetCommentText200Response**](../Model/GetCommentText200Response.md)
 
 ### Authorization
 
@@ -464,7 +464,7 @@ No authorization required
 ## `getCommentVoteUserNames()`
 
 ```php
-getCommentVoteUserNames($tenant_id, $comment_id, $direction, $sso): \OpenAPI\Client\Model\GetCommentVoteUserNames200Response
+getCommentVoteUserNames($tenant_id, $comment_id, $direction, $sso): \FastComments\Client\Model\GetCommentVoteUserNames200Response
 ```
 
 
@@ -477,7 +477,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -506,7 +506,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetCommentVoteUserNames200Response**](../Model/GetCommentVoteUserNames200Response.md)
+[**\FastComments\Client\Model\GetCommentVoteUserNames200Response**](../Model/GetCommentVoteUserNames200Response.md)
 
 ### Authorization
 
@@ -524,7 +524,7 @@ No authorization required
 ## `getCommentsPublic()`
 
 ```php
-getCommentsPublic($tenant_id, $url_id, $page, $direction, $sso, $skip, $skip_children, $limit, $limit_children, $count_children, $last_gen_date, $fetch_page_for_comment_id, $include_config, $count_all, $includei10n, $locale, $modules, $is_crawler, $include_notification_count, $as_tree, $max_tree_depth, $use_full_translation_ids, $parent_id, $search_text, $hash_tags, $user_id, $custom_config_str): \OpenAPI\Client\Model\GetCommentsPublic200Response
+getCommentsPublic($tenant_id, $url_id, $page, $direction, $sso, $skip, $skip_children, $limit, $limit_children, $count_children, $last_gen_date, $fetch_page_for_comment_id, $include_config, $count_all, $includei10n, $locale, $modules, $is_crawler, $include_notification_count, $as_tree, $max_tree_depth, $use_full_translation_ids, $parent_id, $search_text, $hash_tags, $user_id, $custom_config_str): \FastComments\Client\Model\GetCommentsPublic200Response
 ```
 
 
@@ -539,7 +539,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -547,7 +547,7 @@ $apiInstance = new OpenAPI\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 $page = 56; // int
-$direction = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\SortDirections(); // \OpenAPI\Client\Model\SortDirections
+$direction = new \FastComments\Client\Model\\FastComments\Client\Model\SortDirections(); // \FastComments\Client\Model\SortDirections
 $sso = 'sso_example'; // string
 $skip = 56; // int
 $skip_children = 56; // int
@@ -587,7 +587,7 @@ try {
 | **tenant_id** | **string**|  | |
 | **url_id** | **string**|  | |
 | **page** | **int**|  | [optional] |
-| **direction** | [**\OpenAPI\Client\Model\SortDirections**](../Model/.md)|  | [optional] |
+| **direction** | [**\FastComments\Client\Model\SortDirections**](../Model/.md)|  | [optional] |
 | **sso** | **string**|  | [optional] |
 | **skip** | **int**|  | [optional] |
 | **skip_children** | **int**|  | [optional] |
@@ -614,7 +614,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetCommentsPublic200Response**](../Model/GetCommentsPublic200Response.md)
+[**\FastComments\Client\Model\GetCommentsPublic200Response**](../Model/GetCommentsPublic200Response.md)
 
 ### Authorization
 
@@ -632,7 +632,7 @@ No authorization required
 ## `getEventLog()`
 
 ```php
-getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \OpenAPI\Client\Model\GetEventLog200Response
+getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \FastComments\Client\Model\GetEventLog200Response
 ```
 
 
@@ -647,7 +647,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -678,7 +678,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetEventLog200Response**](../Model/GetEventLog200Response.md)
+[**\FastComments\Client\Model\GetEventLog200Response**](../Model/GetEventLog200Response.md)
 
 ### Authorization
 
@@ -696,7 +696,7 @@ No authorization required
 ## `getFeedPostsPublic()`
 
 ```php
-getFeedPostsPublic($tenant_id, $after_id, $limit, $tags): \OpenAPI\Client\Model\GetFeedPosts200Response
+getFeedPostsPublic($tenant_id, $after_id, $limit, $tags): \FastComments\Client\Model\GetFeedPosts200Response
 ```
 
 
@@ -711,7 +711,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -740,7 +740,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetFeedPosts200Response**](../Model/GetFeedPosts200Response.md)
+[**\FastComments\Client\Model\GetFeedPosts200Response**](../Model/GetFeedPosts200Response.md)
 
 ### Authorization
 
@@ -758,7 +758,7 @@ No authorization required
 ## `getGlobalEventLog()`
 
 ```php
-getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \OpenAPI\Client\Model\GetEventLog200Response
+getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \FastComments\Client\Model\GetEventLog200Response
 ```
 
 
@@ -773,7 +773,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -804,7 +804,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetEventLog200Response**](../Model/GetEventLog200Response.md)
+[**\FastComments\Client\Model\GetEventLog200Response**](../Model/GetEventLog200Response.md)
 
 ### Authorization
 
@@ -822,7 +822,7 @@ No authorization required
 ## `getUserNotificationCount()`
 
 ```php
-getUserNotificationCount($tenant_id, $sso): \OpenAPI\Client\Model\GetUserNotificationCount200Response
+getUserNotificationCount($tenant_id, $sso): \FastComments\Client\Model\GetUserNotificationCount200Response
 ```
 
 
@@ -835,7 +835,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -860,7 +860,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetUserNotificationCount200Response**](../Model/GetUserNotificationCount200Response.md)
+[**\FastComments\Client\Model\GetUserNotificationCount200Response**](../Model/GetUserNotificationCount200Response.md)
 
 ### Authorization
 
@@ -878,7 +878,7 @@ No authorization required
 ## `getUserNotifications()`
 
 ```php
-getUserNotifications($tenant_id, $page_size, $after_id, $include_context, $after_created_at, $unread_only, $dm_only, $no_dm, $include_translations, $sso): \OpenAPI\Client\Model\GetUserNotifications200Response
+getUserNotifications($tenant_id, $page_size, $after_id, $include_context, $after_created_at, $unread_only, $dm_only, $no_dm, $include_translations, $sso): \FastComments\Client\Model\GetUserNotifications200Response
 ```
 
 
@@ -891,7 +891,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -932,7 +932,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetUserNotifications200Response**](../Model/GetUserNotifications200Response.md)
+[**\FastComments\Client\Model\GetUserNotifications200Response**](../Model/GetUserNotifications200Response.md)
 
 ### Authorization
 
@@ -950,7 +950,7 @@ No authorization required
 ## `getUserPresenceStatuses()`
 
 ```php
-getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids): \OpenAPI\Client\Model\GetUserPresenceStatuses200Response
+getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids): \FastComments\Client\Model\GetUserPresenceStatuses200Response
 ```
 
 
@@ -963,7 +963,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -990,7 +990,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetUserPresenceStatuses200Response**](../Model/GetUserPresenceStatuses200Response.md)
+[**\FastComments\Client\Model\GetUserPresenceStatuses200Response**](../Model/GetUserPresenceStatuses200Response.md)
 
 ### Authorization
 
@@ -1008,7 +1008,7 @@ No authorization required
 ## `lockComment()`
 
 ```php
-lockComment($tenant_id, $comment_id, $broadcast_id, $sso): \OpenAPI\Client\Model\LockComment200Response
+lockComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\LockComment200Response
 ```
 
 
@@ -1021,7 +1021,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -1050,7 +1050,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\LockComment200Response**](../Model/LockComment200Response.md)
+[**\FastComments\Client\Model\LockComment200Response**](../Model/LockComment200Response.md)
 
 ### Authorization
 
@@ -1068,7 +1068,7 @@ No authorization required
 ## `pinComment()`
 
 ```php
-pinComment($tenant_id, $comment_id, $broadcast_id, $sso): \OpenAPI\Client\Model\PinComment200Response
+pinComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\PinComment200Response
 ```
 
 
@@ -1081,7 +1081,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -1110,7 +1110,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\PinComment200Response**](../Model/PinComment200Response.md)
+[**\FastComments\Client\Model\PinComment200Response**](../Model/PinComment200Response.md)
 
 ### Authorization
 
@@ -1128,7 +1128,7 @@ No authorization required
 ## `resetUserNotificationCount()`
 
 ```php
-resetUserNotificationCount($tenant_id, $sso): \OpenAPI\Client\Model\ResetUserNotifications200Response
+resetUserNotificationCount($tenant_id, $sso): \FastComments\Client\Model\ResetUserNotifications200Response
 ```
 
 
@@ -1141,7 +1141,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -1166,7 +1166,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ResetUserNotifications200Response**](../Model/ResetUserNotifications200Response.md)
+[**\FastComments\Client\Model\ResetUserNotifications200Response**](../Model/ResetUserNotifications200Response.md)
 
 ### Authorization
 
@@ -1184,7 +1184,7 @@ No authorization required
 ## `resetUserNotifications()`
 
 ```php
-resetUserNotifications($tenant_id, $after_id, $after_created_at, $unread_only, $dm_only, $no_dm, $sso): \OpenAPI\Client\Model\ResetUserNotifications200Response
+resetUserNotifications($tenant_id, $after_id, $after_created_at, $unread_only, $dm_only, $no_dm, $sso): \FastComments\Client\Model\ResetUserNotifications200Response
 ```
 
 
@@ -1197,7 +1197,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -1232,7 +1232,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ResetUserNotifications200Response**](../Model/ResetUserNotifications200Response.md)
+[**\FastComments\Client\Model\ResetUserNotifications200Response**](../Model/ResetUserNotifications200Response.md)
 
 ### Authorization
 
@@ -1250,7 +1250,7 @@ No authorization required
 ## `setCommentText()`
 
 ```php
-setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key, $sso): \OpenAPI\Client\Model\SetCommentText200Response
+setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key, $sso): \FastComments\Client\Model\SetCommentText200Response
 ```
 
 
@@ -1263,7 +1263,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -1271,7 +1271,7 @@ $apiInstance = new OpenAPI\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
-$comment_text_update_request = new \OpenAPI\Client\Model\CommentTextUpdateRequest(); // \OpenAPI\Client\Model\CommentTextUpdateRequest
+$comment_text_update_request = new \FastComments\Client\Model\CommentTextUpdateRequest(); // \FastComments\Client\Model\CommentTextUpdateRequest
 $edit_key = 'edit_key_example'; // string
 $sso = 'sso_example'; // string
 
@@ -1290,13 +1290,13 @@ try {
 | **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
 | **broadcast_id** | **string**|  | |
-| **comment_text_update_request** | [**\OpenAPI\Client\Model\CommentTextUpdateRequest**](../Model/CommentTextUpdateRequest.md)|  | |
+| **comment_text_update_request** | [**\FastComments\Client\Model\CommentTextUpdateRequest**](../Model/CommentTextUpdateRequest.md)|  | |
 | **edit_key** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SetCommentText200Response**](../Model/SetCommentText200Response.md)
+[**\FastComments\Client\Model\SetCommentText200Response**](../Model/SetCommentText200Response.md)
 
 ### Authorization
 
@@ -1314,7 +1314,7 @@ No authorization required
 ## `unBlockCommentPublic()`
 
 ```php
-unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \OpenAPI\Client\Model\UnBlockCommentPublic200Response
+unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \FastComments\Client\Model\UnBlockCommentPublic200Response
 ```
 
 
@@ -1327,14 +1327,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
-$public_block_from_comment_params = new \OpenAPI\Client\Model\PublicBlockFromCommentParams(); // \OpenAPI\Client\Model\PublicBlockFromCommentParams
+$public_block_from_comment_params = new \FastComments\Client\Model\PublicBlockFromCommentParams(); // \FastComments\Client\Model\PublicBlockFromCommentParams
 $sso = 'sso_example'; // string
 
 try {
@@ -1351,12 +1351,12 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
-| **public_block_from_comment_params** | [**\OpenAPI\Client\Model\PublicBlockFromCommentParams**](../Model/PublicBlockFromCommentParams.md)|  | |
+| **public_block_from_comment_params** | [**\FastComments\Client\Model\PublicBlockFromCommentParams**](../Model/PublicBlockFromCommentParams.md)|  | |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\UnBlockCommentPublic200Response**](../Model/UnBlockCommentPublic200Response.md)
+[**\FastComments\Client\Model\UnBlockCommentPublic200Response**](../Model/UnBlockCommentPublic200Response.md)
 
 ### Authorization
 
@@ -1374,7 +1374,7 @@ No authorization required
 ## `unLockComment()`
 
 ```php
-unLockComment($tenant_id, $comment_id, $broadcast_id, $sso): \OpenAPI\Client\Model\LockComment200Response
+unLockComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\LockComment200Response
 ```
 
 
@@ -1387,7 +1387,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -1416,7 +1416,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\LockComment200Response**](../Model/LockComment200Response.md)
+[**\FastComments\Client\Model\LockComment200Response**](../Model/LockComment200Response.md)
 
 ### Authorization
 
@@ -1434,7 +1434,7 @@ No authorization required
 ## `unPinComment()`
 
 ```php
-unPinComment($tenant_id, $comment_id, $broadcast_id, $sso): \OpenAPI\Client\Model\PinComment200Response
+unPinComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\PinComment200Response
 ```
 
 
@@ -1447,7 +1447,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -1476,7 +1476,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\PinComment200Response**](../Model/PinComment200Response.md)
+[**\FastComments\Client\Model\PinComment200Response**](../Model/PinComment200Response.md)
 
 ### Authorization
 
@@ -1494,7 +1494,7 @@ No authorization required
 ## `updateUserNotificationCommentSubscriptionStatus()`
 
 ```php
-updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso): \OpenAPI\Client\Model\UpdateUserNotificationStatus200Response
+updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso): \FastComments\Client\Model\UpdateUserNotificationStatus200Response
 ```
 
 
@@ -1509,7 +1509,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -1540,7 +1540,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\UpdateUserNotificationStatus200Response**](../Model/UpdateUserNotificationStatus200Response.md)
+[**\FastComments\Client\Model\UpdateUserNotificationStatus200Response**](../Model/UpdateUserNotificationStatus200Response.md)
 
 ### Authorization
 
@@ -1558,7 +1558,7 @@ No authorization required
 ## `updateUserNotificationPageSubscriptionStatus()`
 
 ```php
-updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso): \OpenAPI\Client\Model\UpdateUserNotificationStatus200Response
+updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso): \FastComments\Client\Model\UpdateUserNotificationStatus200Response
 ```
 
 
@@ -1573,7 +1573,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -1606,7 +1606,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\UpdateUserNotificationStatus200Response**](../Model/UpdateUserNotificationStatus200Response.md)
+[**\FastComments\Client\Model\UpdateUserNotificationStatus200Response**](../Model/UpdateUserNotificationStatus200Response.md)
 
 ### Authorization
 
@@ -1624,7 +1624,7 @@ No authorization required
 ## `updateUserNotificationStatus()`
 
 ```php
-updateUserNotificationStatus($tenant_id, $notification_id, $new_status, $sso): \OpenAPI\Client\Model\UpdateUserNotificationStatus200Response
+updateUserNotificationStatus($tenant_id, $notification_id, $new_status, $sso): \FastComments\Client\Model\UpdateUserNotificationStatus200Response
 ```
 
 
@@ -1637,7 +1637,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -1666,7 +1666,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\UpdateUserNotificationStatus200Response**](../Model/UpdateUserNotificationStatus200Response.md)
+[**\FastComments\Client\Model\UpdateUserNotificationStatus200Response**](../Model/UpdateUserNotificationStatus200Response.md)
 
 ### Authorization
 
@@ -1684,7 +1684,7 @@ No authorization required
 ## `voteComment()`
 
 ```php
-voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $session_id, $sso): \OpenAPI\Client\Model\VoteComment200Response
+voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $session_id, $sso): \FastComments\Client\Model\VoteComment200Response
 ```
 
 
@@ -1697,7 +1697,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-$apiInstance = new OpenAPI\Client\Api\PublicApi(
+$apiInstance = new FastComments\Client\Api\PublicApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -1706,7 +1706,7 @@ $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $url_id = 'url_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
-$vote_body_params = new \OpenAPI\Client\Model\VoteBodyParams(); // \OpenAPI\Client\Model\VoteBodyParams
+$vote_body_params = new \FastComments\Client\Model\VoteBodyParams(); // \FastComments\Client\Model\VoteBodyParams
 $session_id = 'session_id_example'; // string
 $sso = 'sso_example'; // string
 
@@ -1726,13 +1726,13 @@ try {
 | **comment_id** | **string**|  | |
 | **url_id** | **string**|  | |
 | **broadcast_id** | **string**|  | |
-| **vote_body_params** | [**\OpenAPI\Client\Model\VoteBodyParams**](../Model/VoteBodyParams.md)|  | |
+| **vote_body_params** | [**\FastComments\Client\Model\VoteBodyParams**](../Model/VoteBodyParams.md)|  | |
 | **session_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\VoteComment200Response**](../Model/VoteComment200Response.md)
+[**\FastComments\Client\Model\VoteComment200Response**](../Model/VoteComment200Response.md)
 
 ### Authorization
 

@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **is_locked** | **bool** |  | [optional]
 **rating** | **float** |  | [optional]
 **display_label** | **string** |  | [optional]
-**badges** | [**\OpenAPI\Client\Model\CommentUserBadgeInfo[]**](CommentUserBadgeInfo.md) |  | [optional]
+**badges** | [**\FastComments\Client\Model\CommentUserBadgeInfo[]**](CommentUserBadgeInfo.md) |  | [optional]
 **feedback_ids** | **string[]** |  | [optional]
 **view_count** | **float** |  | [optional]
 **requires_verification** | **bool** |  | [optional]
@@ -39,7 +39,7 @@ Name | Type | Description | Notes
 **has_children** | **bool** | This is always set when asTree&#x3D;true | [optional]
 **nested_children_count** | **int** | The total nested child count included in this response (may be more available w/ pagination) Only set with asTree&#x3D;true, otherwise this will be null. | [optional]
 **child_count** | **int** | You must ask the API to count children (with asTree&#x3D;true&amp;countChildren&#x3D;true), otherwise this will be null. This will be the complete direct child count, whereas children may only contain a subset based on pagination. | [optional]
-**children** | [**\OpenAPI\Client\Model\PublicComment[]**](PublicComment.md) |  | [optional]
+**children** | [**\FastComments\Client\Model\PublicComment[]**](PublicComment.md) |  | [optional]
 **is_flagged** | **bool** |  | [optional]
 **is_blocked** | **bool** |  | [optional]
 

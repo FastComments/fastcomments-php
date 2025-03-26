@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\OpenAPI\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
+**status** | [**\FastComments\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
 **vote_id** | **string** |  | [optional]
 **is_verified** | **bool** |  | [optional]
-**user** | [**\OpenAPI\Client\Model\VoteResponseUser**](VoteResponseUser.md) |  | [optional]
+**user** | [**\FastComments\Client\Model\VoteResponseUser**](VoteResponseUser.md) |  | [optional]
 **edit_key** | **string** |  | [optional]
 **reason** | **string** |  |
 **code** | **string** |  |
@@ -15,6 +15,6 @@ Name | Type | Description | Notes
 **banned_until** | **float** |  | [optional]
 **max_character_length** | **float** |  | [optional]
 **translated_error** | **string** |  | [optional]
-**custom_config** | [**\OpenAPI\Client\Model\CustomConfigParameters**](CustomConfigParameters.md) |  | [optional]
+**custom_config** | [**\FastComments\Client\Model\CustomConfigParameters**](CustomConfigParameters.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**\OpenAPI\Client\Model\LiveEventType**](LiveEventType.md) |  |
+**type** | [**\FastComments\Client\Model\LiveEventType**](LiveEventType.md) |  |
 **timestamp** | **int** |  | [optional]
 **ts** | **int** |  | [optional]
 **broadcast_id** | **string** |  | [optional]
 **user_id** | **string** |  | [optional]
-**badges** | [**\OpenAPI\Client\Model\CommentUserBadgeInfo[]**](CommentUserBadgeInfo.md) |  | [optional]
-**notification** | [**\OpenAPI\Client\Model\UserNotification**](UserNotification.md) |  | [optional]
-**vote** | [**\OpenAPI\Client\Model\PubSubVote**](PubSubVote.md) |  | [optional]
-**comment** | [**\OpenAPI\Client\Model\PubSubComment**](PubSubComment.md) |  | [optional]
-**extra_info** | [**\OpenAPI\Client\Model\LiveEventExtraInfo**](LiveEventExtraInfo.md) |  | [optional]
+**badges** | [**\FastComments\Client\Model\CommentUserBadgeInfo[]**](CommentUserBadgeInfo.md) |  | [optional]
+**notification** | [**\FastComments\Client\Model\UserNotification**](UserNotification.md) |  | [optional]
+**vote** | [**\FastComments\Client\Model\PubSubVote**](PubSubVote.md) |  | [optional]
+**comment** | [**\FastComments\Client\Model\PubSubComment**](PubSubComment.md) |  | [optional]
+**extra_info** | [**\FastComments\Client\Model\LiveEventExtraInfo**](LiveEventExtraInfo.md) |  | [optional]
 **config** | **object** |  | [optional]
 **is_closed** | **bool** |  | [optional]
 **uj** | **string[]** |  | [optional]

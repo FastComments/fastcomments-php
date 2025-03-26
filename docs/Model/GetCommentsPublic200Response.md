@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status_code** | **int** |  | [optional]
-**status** | [**\OpenAPI\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
+**status** | [**\FastComments\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
 **code** | **string** |  |
 **reason** | **string** |  |
-**comments** | [**\OpenAPI\Client\Model\PublicComment[]**](PublicComment.md) |  |
-**user** | [**\OpenAPI\Client\Model\UserSessionInfo**](UserSessionInfo.md) |  |
+**comments** | [**\FastComments\Client\Model\PublicComment[]**](PublicComment.md) |  |
+**user** | [**\FastComments\Client\Model\UserSessionInfo**](UserSessionInfo.md) |  |
 **url_id_clean** | **string** |  | [optional]
 **last_gen_date** | **int** |  | [optional]
 **includes_past_pages** | **bool** |  | [optional]
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **has_more** | **bool** |  | [optional]
 **is_closed** | **bool** |  | [optional]
 **presence_poll_state** | **int** |  | [optional]
-**custom_config** | [**\OpenAPI\Client\Model\CustomConfigParameters**](CustomConfigParameters.md) |  | [optional]
+**custom_config** | [**\FastComments\Client\Model\CustomConfigParameters**](CustomConfigParameters.md) |  | [optional]
 **url_id_ws** | **string** |  | [optional]
 **user_id_ws** | **string** |  | [optional]
 **tenant_id_ws** | **string** |  | [optional]

@@ -40,7 +40,7 @@ Name | Type | Description | Notes
 **is_locked** | **bool** |  | [optional]
 **flag_count** | **int** |  | [optional]
 **display_label** | **string** |  | [optional]
-**meta** | [**\OpenAPI\Client\Model\PickFCommentAPICommentFieldsKeysMeta**](PickFCommentAPICommentFieldsKeysMeta.md) |  | [optional]
+**meta** | [**\FastComments\Client\Model\PickFCommentAPICommentFieldsKeysMeta**](PickFCommentAPICommentFieldsKeysMeta.md) |  | [optional]
 **moderation_group_ids** | **string[]** |  | [optional]
 **feedback_ids** | **string[]** |  | [optional]
 

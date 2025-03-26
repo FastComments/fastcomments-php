@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **viewed** | **bool** |  |
 **sent** | **bool** |  |
 **created_at** | **\DateTime** |  |
-**type** | [**\OpenAPI\Client\Model\NotificationType**](NotificationType.md) |  |
+**type** | [**\FastComments\Client\Model\NotificationType**](NotificationType.md) |  |
 **from_comment_id** | **string** |  | [optional]
 **from_user_name** | **string** |  |
 **from_user_id** | **string** |  |

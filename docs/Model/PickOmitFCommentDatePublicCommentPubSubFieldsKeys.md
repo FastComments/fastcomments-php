@@ -40,7 +40,7 @@ Name | Type | Description | Notes
 **flag_count** | **int** |  | [optional]
 **rating** | **float** |  | [optional]
 **display_label** | **string** |  | [optional]
-**badges** | [**\OpenAPI\Client\Model\CommentUserBadgeInfo[]**](CommentUserBadgeInfo.md) |  | [optional]
+**badges** | [**\FastComments\Client\Model\CommentUserBadgeInfo[]**](CommentUserBadgeInfo.md) |  | [optional]
 **domain** | **string** |  | [optional]
 **feedback_ids** | **string[]** |  | [optional]
 **group_ids** | **string[]** |  | [optional]

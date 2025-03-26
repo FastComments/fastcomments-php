@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **is_locked** | **bool** |  | [optional]
 **rating** | **float** |  | [optional]
 **display_label** | **string** |  | [optional]
-**badges** | [**\OpenAPI\Client\Model\CommentUserBadgeInfo[]**](CommentUserBadgeInfo.md) |  | [optional]
+**badges** | [**\FastComments\Client\Model\CommentUserBadgeInfo[]**](CommentUserBadgeInfo.md) |  | [optional]
 **feedback_ids** | **string[]** |  | [optional]
 **view_count** | **float** |  | [optional]
 **requires_verification** | **bool** |  | [optional]
