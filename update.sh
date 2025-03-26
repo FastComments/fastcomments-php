@@ -7,7 +7,7 @@ rm -rf docs/Model
 rm -rf test/Api
 rm -rf test/Model
 
-rm wget http://localhost:3001/js/swagger.json -O /tmp/fastcomments-openapi.json \
+wget http://localhost:3001/js/swagger.json -O /tmp/fastcomments-openapi.json \
     && openapi-generator-cli generate \
         -i /tmp/fastcomments-openapi.json \
         -g php \
