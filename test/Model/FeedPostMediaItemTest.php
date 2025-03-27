@@ -90,9 +90,9 @@ class FeedPostMediaItemTest extends TestCase
     }
 
     /**
-     * Test attribute "link"
+     * Test attribute "link_url"
      */
-    public function testPropertyLink()
+    public function testPropertyLinkUrl()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -58,8 +58,10 @@ class FeedPostLink implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'text' => 'string',
         'title' => 'string',
-        'link' => 'string'
+        'description' => 'string',
+        'url' => 'string'
     ];
 
     /**
@@ -70,8 +72,10 @@ class FeedPostLink implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'text' => null,
         'title' => null,
-        'link' => null
+        'description' => null,
+        'url' => null
     ];
 
     /**
@@ -80,8 +84,10 @@ class FeedPostLink implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'text' => false,
         'title' => false,
-        'link' => false
+        'description' => false,
+        'url' => false
     ];
 
     /**
@@ -170,8 +176,10 @@ class FeedPostLink implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'text' => 'text',
         'title' => 'title',
-        'link' => 'link'
+        'description' => 'description',
+        'url' => 'url'
     ];
 
     /**
@@ -180,8 +188,10 @@ class FeedPostLink implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'text' => 'setText',
         'title' => 'setTitle',
-        'link' => 'setLink'
+        'description' => 'setDescription',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -190,8 +200,10 @@ class FeedPostLink implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'text' => 'getText',
         'title' => 'getTitle',
-        'link' => 'getLink'
+        'description' => 'getDescription',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -251,8 +263,10 @@ class FeedPostLink implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('text', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('link', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
     }
 
     /**
@@ -298,6 +312,33 @@ class FeedPostLink implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets text
+     *
+     * @return string|null
+     */
+    public function getText()
+    {
+        return $this->container['text'];
+    }
+
+    /**
+     * Sets text
+     *
+     * @param string|null $text text
+     *
+     * @return self
+     */
+    public function setText($text)
+    {
+        if (is_null($text)) {
+            throw new \InvalidArgumentException('non-nullable text cannot be null');
+        }
+        $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /**
      * Gets title
      *
      * @return string|null
@@ -325,28 +366,55 @@ class FeedPostLink implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets link
+     * Gets description
      *
      * @return string|null
      */
-    public function getLink()
+    public function getDescription()
     {
-        return $this->container['link'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets link
+     * Sets description
      *
-     * @param string|null $link link
+     * @param string|null $description description
      *
      * @return self
      */
-    public function setLink($link)
+    public function setDescription($description)
     {
-        if (is_null($link)) {
-            throw new \InvalidArgumentException('non-nullable link cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $this->container['link'] = $link;
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string|null
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string|null $url url
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        }
+        $this->container['url'] = $url;
 
         return $this;
     }

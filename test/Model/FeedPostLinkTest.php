@@ -81,6 +81,15 @@ class FeedPostLinkTest extends TestCase
     }
 
     /**
+     * Test attribute "text"
+     */
+    public function testPropertyText()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "title"
      */
     public function testPropertyTitle()
@@ -90,9 +99,18 @@ class FeedPostLinkTest extends TestCase
     }
 
     /**
-     * Test attribute "link"
+     * Test attribute "description"
      */
-    public function testPropertyLink()
+    public function testPropertyDescription()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "url"
+     */
+    public function testPropertyUrl()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

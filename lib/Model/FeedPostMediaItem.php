@@ -59,7 +59,7 @@ class FeedPostMediaItem implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPITypes = [
         'title' => 'string',
-        'link' => 'string',
+        'link_url' => 'string',
         'sizes' => '\FastComments\Client\Model\FeedPostMediaItemAsset[]'
     ];
 
@@ -72,7 +72,7 @@ class FeedPostMediaItem implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPIFormats = [
         'title' => null,
-        'link' => null,
+        'link_url' => null,
         'sizes' => null
     ];
 
@@ -83,7 +83,7 @@ class FeedPostMediaItem implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPINullables = [
         'title' => false,
-        'link' => false,
+        'link_url' => false,
         'sizes' => false
     ];
 
@@ -174,7 +174,7 @@ class FeedPostMediaItem implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $attributeMap = [
         'title' => 'title',
-        'link' => 'link',
+        'link_url' => 'linkUrl',
         'sizes' => 'sizes'
     ];
 
@@ -185,7 +185,7 @@ class FeedPostMediaItem implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $setters = [
         'title' => 'setTitle',
-        'link' => 'setLink',
+        'link_url' => 'setLinkUrl',
         'sizes' => 'setSizes'
     ];
 
@@ -196,7 +196,7 @@ class FeedPostMediaItem implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $getters = [
         'title' => 'getTitle',
-        'link' => 'getLink',
+        'link_url' => 'getLinkUrl',
         'sizes' => 'getSizes'
     ];
 
@@ -258,7 +258,7 @@ class FeedPostMediaItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function __construct(?array $data = null)
     {
         $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('link', $data ?? [], null);
+        $this->setIfExists('link_url', $data ?? [], null);
         $this->setIfExists('sizes', $data ?? [], null);
     }
 
@@ -335,28 +335,28 @@ class FeedPostMediaItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets link
+     * Gets link_url
      *
      * @return string|null
      */
-    public function getLink()
+    public function getLinkUrl()
     {
-        return $this->container['link'];
+        return $this->container['link_url'];
     }
 
     /**
-     * Sets link
+     * Sets link_url
      *
-     * @param string|null $link link
+     * @param string|null $link_url link_url
      *
      * @return self
      */
-    public function setLink($link)
+    public function setLinkUrl($link_url)
     {
-        if (is_null($link)) {
-            throw new \InvalidArgumentException('non-nullable link cannot be null');
+        if (is_null($link_url)) {
+            throw new \InvalidArgumentException('non-nullable link_url cannot be null');
         }
-        $this->container['link'] = $link;
+        $this->container['link_url'] = $link_url;
 
         return $this;
     }
