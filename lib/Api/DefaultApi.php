@@ -4495,8 +4495,8 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id tenant_id (required)
-     * @param  float|null $after_id after_id (optional)
-     * @param  float|null $limit limit (optional)
+     * @param  string|null $after_id after_id (optional)
+     * @param  int|null $limit limit (optional)
      * @param  string[]|null $tags tags (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFeedPosts'] to see the possible values for this operation
      *
@@ -4516,8 +4516,8 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $after_id (optional)
-     * @param  float|null $limit (optional)
+     * @param  string|null $after_id (optional)
+     * @param  int|null $limit (optional)
      * @param  string[]|null $tags (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFeedPosts'] to see the possible values for this operation
      *
@@ -4644,8 +4644,8 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $after_id (optional)
-     * @param  float|null $limit (optional)
+     * @param  string|null $after_id (optional)
+     * @param  int|null $limit (optional)
      * @param  string[]|null $tags (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFeedPosts'] to see the possible values for this operation
      *
@@ -4668,8 +4668,8 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $after_id (optional)
-     * @param  float|null $limit (optional)
+     * @param  string|null $after_id (optional)
+     * @param  int|null $limit (optional)
      * @param  string[]|null $tags (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFeedPosts'] to see the possible values for this operation
      *
@@ -4721,8 +4721,8 @@ class DefaultApi
      * Create request for operation 'getFeedPosts'
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $after_id (optional)
-     * @param  float|null $limit (optional)
+     * @param  string|null $after_id (optional)
+     * @param  int|null $limit (optional)
      * @param  string[]|null $tags (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFeedPosts'] to see the possible values for this operation
      *
@@ -4763,7 +4763,7 @@ class DefaultApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $after_id,
             'afterId', // param base name
-            'number', // openApiType
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -4772,7 +4772,7 @@ class DefaultApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $limit,
             'limit', // param base name
-            'number', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required

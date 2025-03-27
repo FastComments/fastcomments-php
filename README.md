@@ -19,11 +19,11 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/GIT_USER_ID/fastcomments-php.git"
+      "url": "https://github.com/fastcomments/fastcomments-php.git"
     }
   ],
   "require": {
-    "GIT_USER_ID/fastcomments-php": "*@dev"
+    "fastcomments/fastcomments-php": "*@dev"
   }
 }
 ```

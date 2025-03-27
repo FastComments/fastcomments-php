@@ -703,7 +703,7 @@ getFeedPostsPublic($tenant_id, $after_id, $limit, $tags): \FastComments\Client\M
 
 
 
-req tenantId urlId userIdWS
+req tenantId afterId
 
 ### Example
 
@@ -719,8 +719,8 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 $tenant_id = 'tenant_id_example'; // string
-$after_id = 3.4; // float
-$limit = 3.4; // float
+$after_id = 'after_id_example'; // string
+$limit = 56; // int
 $tags = array('tags_example'); // string[]
 
 try {
@@ -736,8 +736,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **tenant_id** | **string**|  | |
-| **after_id** | **float**|  | [optional] |
-| **limit** | **float**|  | [optional] |
+| **after_id** | **string**|  | [optional] |
+| **limit** | **int**|  | [optional] |
 | **tags** | [**string[]**](../Model/string.md)|  | [optional] |
 
 ### Return type
