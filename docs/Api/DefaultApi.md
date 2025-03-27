@@ -43,11 +43,17 @@ addDomainConfig($tenant_id, $add_domain_config_params): \FastComments\Client\Mod
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $add_domain_config_params = new \FastComments\Client\Model\AddDomainConfigParams(); // \FastComments\Client\Model\AddDomainConfigParams
@@ -73,7 +79,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -101,11 +107,17 @@ Aggregates documents by grouping them (if groupBy is provided) and applying mult
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $aggregation_request = new \FastComments\Client\Model\AggregationRequest(); // \FastComments\Client\Model\AggregationRequest
@@ -135,7 +147,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -161,11 +173,17 @@ blockUserFromComment($tenant_id, $id, $block_from_comment_params, $user_id, $ano
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
@@ -197,7 +215,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -223,11 +241,17 @@ createFeedPost($tenant_id, $feed_post): \FastComments\Client\Model\CreateFeedPos
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $feed_post = new \FastComments\Client\Model\FeedPost(); // \FastComments\Client\Model\FeedPost
@@ -253,7 +277,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -279,11 +303,17 @@ deleteComment($tenant_id, $id, $context_user_id, $is_live): \FastComments\Client
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
@@ -313,7 +343,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -339,11 +369,17 @@ deleteDomainConfig($tenant_id, $domain): \FastComments\Client\Model\DeleteDomain
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $domain = 'domain_example'; // string
@@ -369,7 +405,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -395,11 +431,17 @@ flagComment($tenant_id, $id, $user_id, $anon_user_id): \FastComments\Client\Mode
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
@@ -429,7 +471,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -455,11 +497,17 @@ getAuditLogs($tenant_id, $limit, $skip, $order, $after, $before): \FastComments\
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $limit = 3.4; // float
@@ -493,7 +541,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -519,11 +567,17 @@ getComment($tenant_id, $id): \FastComments\Client\Model\GetComment200Response
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
@@ -549,7 +603,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -575,11 +629,17 @@ getComments($tenant_id, $page, $limit, $skip, $as_tree, $skip_children, $limit_c
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $page = 3.4; // float
@@ -631,7 +691,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -657,11 +717,17 @@ getDomainConfig($tenant_id, $domain): \FastComments\Client\Model\GetDomainConfig
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $domain = 'domain_example'; // string
@@ -687,7 +753,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -713,11 +779,17 @@ getDomainConfigs($tenant_id): \FastComments\Client\Model\GetDomainConfigs200Resp
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 
@@ -741,7 +813,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -769,11 +841,17 @@ req tenantId afterId
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $after_id = 'after_id_example'; // string
@@ -803,7 +881,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -829,11 +907,17 @@ patchDomainConfig($tenant_id, $domain_to_update, $patch_domain_config_params): \
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $domain_to_update = 'domain_to_update_example'; // string
@@ -861,7 +945,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -887,11 +971,17 @@ putDomainConfig($tenant_id, $domain_to_update, $update_domain_config_params): \F
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $domain_to_update = 'domain_to_update_example'; // string
@@ -919,7 +1009,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -945,11 +1035,17 @@ saveComment($tenant_id, $create_comment_params, $is_live, $do_spam_check, $send_
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $create_comment_params = new \FastComments\Client\Model\CreateCommentParams(); // \FastComments\Client\Model\CreateCommentParams
@@ -983,7 +1079,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -1009,11 +1105,17 @@ unBlockUserFromComment($tenant_id, $id, $un_block_from_comment_params, $user_id,
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
@@ -1045,7 +1147,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -1071,11 +1173,17 @@ unFlagComment($tenant_id, $id, $user_id, $anon_user_id): \FastComments\Client\Mo
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
@@ -1105,7 +1213,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -1131,11 +1239,17 @@ updateComment($tenant_id, $id, $body, $context_user_id, $do_spam_check, $is_live
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
@@ -1169,7 +1283,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
@@ -1195,11 +1309,17 @@ updateFeedPost($tenant_id, $id, $feed_post): \FastComments\Client\Model\FlagComm
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
 
 $apiInstance = new FastComments\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
@@ -1227,7 +1347,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[api_key](../../README.md#api_key)
 
 ### HTTP request headers
 
