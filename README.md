@@ -81,7 +81,10 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DefaultApi* | [**addDomainConfig**](docs/Api/DefaultApi.md#adddomainconfig) | **POST** /api/v1/domain-configs | 
 *DefaultApi* | [**aggregate**](docs/Api/DefaultApi.md#aggregate) | **POST** /api/v1/aggregate | 
+*DefaultApi* | [**aggregateQuestionResults**](docs/Api/DefaultApi.md#aggregatequestionresults) | **GET** /api/v1/question-results-aggregation | 
 *DefaultApi* | [**blockUserFromComment**](docs/Api/DefaultApi.md#blockuserfromcomment) | **POST** /api/v1/comments/{id}/block | 
+*DefaultApi* | [**bulkAggregateQuestionResults**](docs/Api/DefaultApi.md#bulkaggregatequestionresults) | **POST** /api/v1/question-results-aggregation/bulk | 
+*DefaultApi* | [**combineCommentsWithQuestionResults**](docs/Api/DefaultApi.md#combinecommentswithquestionresults) | **GET** /api/v1/question-results-aggregation/combine/comments | 
 *DefaultApi* | [**createFeedPost**](docs/Api/DefaultApi.md#createfeedpost) | **POST** /api/v1/feed-posts | 
 *DefaultApi* | [**deleteComment**](docs/Api/DefaultApi.md#deletecomment) | **DELETE** /api/v1/comments/{id} | 
 *DefaultApi* | [**deleteDomainConfig**](docs/Api/DefaultApi.md#deletedomainconfig) | **DELETE** /api/v1/domain-configs/{domain} | 
@@ -137,6 +140,9 @@ Class | Method | HTTP request | Description
 - [AddDomainConfig200Response](docs/Model/AddDomainConfig200Response.md)
 - [AddDomainConfig200ResponseAnyOf](docs/Model/AddDomainConfig200ResponseAnyOf.md)
 - [AddDomainConfigParams](docs/Model/AddDomainConfigParams.md)
+- [AggregateQuestionResults200Response](docs/Model/AggregateQuestionResults200Response.md)
+- [AggregateQuestionResultsResponse](docs/Model/AggregateQuestionResultsResponse.md)
+- [AggregateTimeBucket](docs/Model/AggregateTimeBucket.md)
 - [AggregationItem](docs/Model/AggregationItem.md)
 - [AggregationOpType](docs/Model/AggregationOpType.md)
 - [AggregationOperation](docs/Model/AggregationOperation.md)
@@ -148,9 +154,15 @@ Class | Method | HTTP request | Description
 - [BlockFromCommentParams](docs/Model/BlockFromCommentParams.md)
 - [BlockFromCommentPublic200Response](docs/Model/BlockFromCommentPublic200Response.md)
 - [BlockSuccess](docs/Model/BlockSuccess.md)
+- [BulkAggregateQuestionItem](docs/Model/BulkAggregateQuestionItem.md)
+- [BulkAggregateQuestionResults200Response](docs/Model/BulkAggregateQuestionResults200Response.md)
+- [BulkAggregateQuestionResultsRequest](docs/Model/BulkAggregateQuestionResultsRequest.md)
+- [BulkAggregateQuestionResultsResponse](docs/Model/BulkAggregateQuestionResultsResponse.md)
 - [ChangeCommentPinStatusResponse](docs/Model/ChangeCommentPinStatusResponse.md)
 - [CheckBlockedCommentsResponse](docs/Model/CheckBlockedCommentsResponse.md)
 - [CheckedCommentsForBlocked200Response](docs/Model/CheckedCommentsForBlocked200Response.md)
+- [CombineCommentsWithQuestionResults200Response](docs/Model/CombineCommentsWithQuestionResults200Response.md)
+- [CombineQuestionResultsWithCommentsResponse](docs/Model/CombineQuestionResultsWithCommentsResponse.md)
 - [CommentData](docs/Model/CommentData.md)
 - [CommentHTMLRenderingMode](docs/Model/CommentHTMLRenderingMode.md)
 - [CommentQuestionResultsRenderingType](docs/Model/CommentQuestionResultsRenderingType.md)
@@ -179,6 +191,8 @@ Class | Method | HTTP request | Description
 - [FeedPostLink](docs/Model/FeedPostLink.md)
 - [FeedPostMediaItem](docs/Model/FeedPostMediaItem.md)
 - [FeedPostMediaItemAsset](docs/Model/FeedPostMediaItemAsset.md)
+- [FindCommentsByRangeItem](docs/Model/FindCommentsByRangeItem.md)
+- [FindCommentsByRangeResponse](docs/Model/FindCommentsByRangeResponse.md)
 - [FlagComment200Response](docs/Model/FlagComment200Response.md)
 - [FlagCommentPublic200Response](docs/Model/FlagCommentPublic200Response.md)
 - [FlagCommentResponse](docs/Model/FlagCommentResponse.md)
@@ -215,6 +229,7 @@ Class | Method | HTTP request | Description
 - [LiveEventExtraInfo](docs/Model/LiveEventExtraInfo.md)
 - [LiveEventType](docs/Model/LiveEventType.md)
 - [LockComment200Response](docs/Model/LockComment200Response.md)
+- [MetaItem](docs/Model/MetaItem.md)
 - [NotificationAndCount](docs/Model/NotificationAndCount.md)
 - [NotificationType](docs/Model/NotificationType.md)
 - [PatchDomainConfigParams](docs/Model/PatchDomainConfigParams.md)
@@ -237,7 +252,10 @@ Class | Method | HTTP request | Description
 - [PublicComment](docs/Model/PublicComment.md)
 - [QueryPredicate](docs/Model/QueryPredicate.md)
 - [QueryPredicateValue](docs/Model/QueryPredicateValue.md)
+- [QuestionDatum](docs/Model/QuestionDatum.md)
 - [QuestionRenderingType](docs/Model/QuestionRenderingType.md)
+- [QuestionResult](docs/Model/QuestionResult.md)
+- [QuestionResultAggregationOverall](docs/Model/QuestionResultAggregationOverall.md)
 - [QuestionSubQuestionVisibility](docs/Model/QuestionSubQuestionVisibility.md)
 - [QuestionWhenSave](docs/Model/QuestionWhenSave.md)
 - [RecordStringBeforeStringOrNullAfterStringOrNullValue](docs/Model/RecordStringBeforeStringOrNullAfterStringOrNullValue.md)

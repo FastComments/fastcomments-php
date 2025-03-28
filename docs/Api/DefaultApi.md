@@ -8,7 +8,10 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | ------------- | ------------- | ------------- |
 | [**addDomainConfig()**](DefaultApi.md#addDomainConfig) | **POST** /api/v1/domain-configs |  |
 | [**aggregate()**](DefaultApi.md#aggregate) | **POST** /api/v1/aggregate |  |
+| [**aggregateQuestionResults()**](DefaultApi.md#aggregateQuestionResults) | **GET** /api/v1/question-results-aggregation |  |
 | [**blockUserFromComment()**](DefaultApi.md#blockUserFromComment) | **POST** /api/v1/comments/{id}/block |  |
+| [**bulkAggregateQuestionResults()**](DefaultApi.md#bulkAggregateQuestionResults) | **POST** /api/v1/question-results-aggregation/bulk |  |
+| [**combineCommentsWithQuestionResults()**](DefaultApi.md#combineCommentsWithQuestionResults) | **GET** /api/v1/question-results-aggregation/combine/comments |  |
 | [**createFeedPost()**](DefaultApi.md#createFeedPost) | **POST** /api/v1/feed-posts |  |
 | [**deleteComment()**](DefaultApi.md#deleteComment) | **DELETE** /api/v1/comments/{id} |  |
 | [**deleteDomainConfig()**](DefaultApi.md#deleteDomainConfig) | **DELETE** /api/v1/domain-configs/{domain} |  |
@@ -158,6 +161,78 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `aggregateQuestionResults()`
+
+```php
+aggregateQuestionResults($tenant_id, $question_id, $question_ids, $url_id, $time_bucket, $start_date, $force_recalculate): \FastComments\Client\Model\AggregateQuestionResults200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$question_id = 'question_id_example'; // string
+$question_ids = array('question_ids_example'); // string[]
+$url_id = 'url_id_example'; // string
+$time_bucket = new \FastComments\Client\Model\\FastComments\Client\Model\AggregateTimeBucket(); // \FastComments\Client\Model\AggregateTimeBucket
+$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$force_recalculate = True; // bool
+
+try {
+    $result = $apiInstance->aggregateQuestionResults($tenant_id, $question_id, $question_ids, $url_id, $time_bucket, $start_date, $force_recalculate);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->aggregateQuestionResults: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **question_id** | **string**|  | [optional] |
+| **question_ids** | [**string[]**](../Model/string.md)|  | [optional] |
+| **url_id** | **string**|  | [optional] |
+| **time_bucket** | [**\FastComments\Client\Model\AggregateTimeBucket**](../Model/.md)|  | [optional] |
+| **start_date** | **\DateTime**|  | [optional] |
+| **force_recalculate** | **bool**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\AggregateQuestionResults200Response**](../Model/AggregateQuestionResults200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `blockUserFromComment()`
 
 ```php
@@ -220,6 +295,146 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `bulkAggregateQuestionResults()`
+
+```php
+bulkAggregateQuestionResults($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate): \FastComments\Client\Model\BulkAggregateQuestionResults200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$bulk_aggregate_question_results_request = new \FastComments\Client\Model\BulkAggregateQuestionResultsRequest(); // \FastComments\Client\Model\BulkAggregateQuestionResultsRequest
+$force_recalculate = True; // bool
+
+try {
+    $result = $apiInstance->bulkAggregateQuestionResults($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->bulkAggregateQuestionResults: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **bulk_aggregate_question_results_request** | [**\FastComments\Client\Model\BulkAggregateQuestionResultsRequest**](../Model/BulkAggregateQuestionResultsRequest.md)|  | |
+| **force_recalculate** | **bool**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\BulkAggregateQuestionResults200Response**](../Model/BulkAggregateQuestionResults200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `combineCommentsWithQuestionResults()`
+
+```php
+combineCommentsWithQuestionResults($tenant_id, $question_id, $question_ids, $url_id, $start_date, $force_recalculate, $min_value, $max_value, $limit): \FastComments\Client\Model\CombineCommentsWithQuestionResults200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$question_id = 'question_id_example'; // string
+$question_ids = array('question_ids_example'); // string[]
+$url_id = 'url_id_example'; // string
+$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
+$force_recalculate = True; // bool
+$min_value = 3.4; // float
+$max_value = 3.4; // float
+$limit = 3.4; // float
+
+try {
+    $result = $apiInstance->combineCommentsWithQuestionResults($tenant_id, $question_id, $question_ids, $url_id, $start_date, $force_recalculate, $min_value, $max_value, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->combineCommentsWithQuestionResults: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **question_id** | **string**|  | [optional] |
+| **question_ids** | [**string[]**](../Model/string.md)|  | [optional] |
+| **url_id** | **string**|  | [optional] |
+| **start_date** | **\DateTime**|  | [optional] |
+| **force_recalculate** | **bool**|  | [optional] |
+| **min_value** | **float**|  | [optional] |
+| **max_value** | **float**|  | [optional] |
+| **limit** | **float**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\CombineCommentsWithQuestionResults200Response**](../Model/CombineCommentsWithQuestionResults200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

@@ -97,12 +97,48 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for aggregateQuestionResults
+     *
+     * .
+     *
+     */
+    public function testAggregateQuestionResults()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for blockUserFromComment
      *
      * .
      *
      */
     public function testBlockUserFromComment()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for bulkAggregateQuestionResults
+     *
+     * .
+     *
+     */
+    public function testBulkAggregateQuestionResults()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for combineCommentsWithQuestionResults
+     *
+     * .
+     *
+     */
+    public function testCombineCommentsWithQuestionResults()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

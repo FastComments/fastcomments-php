@@ -78,7 +78,16 @@ class DefaultApi
         'aggregate' => [
             'application/json',
         ],
+        'aggregateQuestionResults' => [
+            'application/json',
+        ],
         'blockUserFromComment' => [
+            'application/json',
+        ],
+        'bulkAggregateQuestionResults' => [
+            'application/json',
+        ],
+        'combineCommentsWithQuestionResults' => [
             'application/json',
         ],
         'createFeedPost' => [
@@ -877,6 +886,410 @@ class DefaultApi
     }
 
     /**
+     * Operation aggregateQuestionResults
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id tenant_id (required)
+     * @param  string|null $question_id question_id (optional)
+     * @param  string[]|null $question_ids question_ids (optional)
+     * @param  string|null $url_id url_id (optional)
+     * @param  \FastComments\Client\Model\AggregateTimeBucket|null $time_bucket time_bucket (optional)
+     * @param  \DateTime|null $start_date start_date (optional)
+     * @param  bool|null $force_recalculate force_recalculate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aggregateQuestionResults'] to see the possible values for this operation
+     *
+     * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \FastComments\Client\Model\AggregateQuestionResults200Response
+     */
+    public function aggregateQuestionResults($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $time_bucket = null, $start_date = null, $force_recalculate = null, string $contentType = self::contentTypes['aggregateQuestionResults'][0])
+    {
+        list($response) = $this->aggregateQuestionResultsWithHttpInfo($tenant_id, $question_id, $question_ids, $url_id, $time_bucket, $start_date, $force_recalculate, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation aggregateQuestionResultsWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  string|null $question_id (optional)
+     * @param  string[]|null $question_ids (optional)
+     * @param  string|null $url_id (optional)
+     * @param  \FastComments\Client\Model\AggregateTimeBucket|null $time_bucket (optional)
+     * @param  \DateTime|null $start_date (optional)
+     * @param  bool|null $force_recalculate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aggregateQuestionResults'] to see the possible values for this operation
+     *
+     * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \FastComments\Client\Model\AggregateQuestionResults200Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function aggregateQuestionResultsWithHttpInfo($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $time_bucket = null, $start_date = null, $force_recalculate = null, string $contentType = self::contentTypes['aggregateQuestionResults'][0])
+    {
+        $request = $this->aggregateQuestionResultsRequest($tenant_id, $question_id, $question_ids, $url_id, $time_bucket, $start_date, $force_recalculate, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    if ('\FastComments\Client\Model\AggregateQuestionResults200Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\AggregateQuestionResults200Response' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\AggregateQuestionResults200Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            $returnType = '\FastComments\Client\Model\AggregateQuestionResults200Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\AggregateQuestionResults200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation aggregateQuestionResultsAsync
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  string|null $question_id (optional)
+     * @param  string[]|null $question_ids (optional)
+     * @param  string|null $url_id (optional)
+     * @param  \FastComments\Client\Model\AggregateTimeBucket|null $time_bucket (optional)
+     * @param  \DateTime|null $start_date (optional)
+     * @param  bool|null $force_recalculate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aggregateQuestionResults'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function aggregateQuestionResultsAsync($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $time_bucket = null, $start_date = null, $force_recalculate = null, string $contentType = self::contentTypes['aggregateQuestionResults'][0])
+    {
+        return $this->aggregateQuestionResultsAsyncWithHttpInfo($tenant_id, $question_id, $question_ids, $url_id, $time_bucket, $start_date, $force_recalculate, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation aggregateQuestionResultsAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  string|null $question_id (optional)
+     * @param  string[]|null $question_ids (optional)
+     * @param  string|null $url_id (optional)
+     * @param  \FastComments\Client\Model\AggregateTimeBucket|null $time_bucket (optional)
+     * @param  \DateTime|null $start_date (optional)
+     * @param  bool|null $force_recalculate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aggregateQuestionResults'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function aggregateQuestionResultsAsyncWithHttpInfo($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $time_bucket = null, $start_date = null, $force_recalculate = null, string $contentType = self::contentTypes['aggregateQuestionResults'][0])
+    {
+        $returnType = '\FastComments\Client\Model\AggregateQuestionResults200Response';
+        $request = $this->aggregateQuestionResultsRequest($tenant_id, $question_id, $question_ids, $url_id, $time_bucket, $start_date, $force_recalculate, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'aggregateQuestionResults'
+     *
+     * @param  string $tenant_id (required)
+     * @param  string|null $question_id (optional)
+     * @param  string[]|null $question_ids (optional)
+     * @param  string|null $url_id (optional)
+     * @param  \FastComments\Client\Model\AggregateTimeBucket|null $time_bucket (optional)
+     * @param  \DateTime|null $start_date (optional)
+     * @param  bool|null $force_recalculate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aggregateQuestionResults'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function aggregateQuestionResultsRequest($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $time_bucket = null, $start_date = null, $force_recalculate = null, string $contentType = self::contentTypes['aggregateQuestionResults'][0])
+    {
+
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling aggregateQuestionResults'
+            );
+        }
+
+
+
+
+
+
+
+
+        $resourcePath = '/api/v1/question-results-aggregation';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $question_id,
+            'questionId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $question_ids,
+            'questionIds', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $url_id,
+            'urlId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $time_bucket,
+            'timeBucket', // param base name
+            'AggregateTimeBucket', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $start_date,
+            'startDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $force_recalculate,
+            'forceRecalculate', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('x-api-key');
+        if ($apiKey !== null) {
+            $headers['x-api-key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation blockUserFromComment
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
@@ -1253,6 +1666,788 @@ class DefaultApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation bulkAggregateQuestionResults
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id tenant_id (required)
+     * @param  \FastComments\Client\Model\BulkAggregateQuestionResultsRequest $bulk_aggregate_question_results_request bulk_aggregate_question_results_request (required)
+     * @param  bool|null $force_recalculate force_recalculate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkAggregateQuestionResults'] to see the possible values for this operation
+     *
+     * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \FastComments\Client\Model\BulkAggregateQuestionResults200Response
+     */
+    public function bulkAggregateQuestionResults($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate = null, string $contentType = self::contentTypes['bulkAggregateQuestionResults'][0])
+    {
+        list($response) = $this->bulkAggregateQuestionResultsWithHttpInfo($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation bulkAggregateQuestionResultsWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  \FastComments\Client\Model\BulkAggregateQuestionResultsRequest $bulk_aggregate_question_results_request (required)
+     * @param  bool|null $force_recalculate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkAggregateQuestionResults'] to see the possible values for this operation
+     *
+     * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \FastComments\Client\Model\BulkAggregateQuestionResults200Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function bulkAggregateQuestionResultsWithHttpInfo($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate = null, string $contentType = self::contentTypes['bulkAggregateQuestionResults'][0])
+    {
+        $request = $this->bulkAggregateQuestionResultsRequest($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    if ('\FastComments\Client\Model\BulkAggregateQuestionResults200Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\BulkAggregateQuestionResults200Response' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\BulkAggregateQuestionResults200Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            $returnType = '\FastComments\Client\Model\BulkAggregateQuestionResults200Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\BulkAggregateQuestionResults200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation bulkAggregateQuestionResultsAsync
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  \FastComments\Client\Model\BulkAggregateQuestionResultsRequest $bulk_aggregate_question_results_request (required)
+     * @param  bool|null $force_recalculate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkAggregateQuestionResults'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function bulkAggregateQuestionResultsAsync($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate = null, string $contentType = self::contentTypes['bulkAggregateQuestionResults'][0])
+    {
+        return $this->bulkAggregateQuestionResultsAsyncWithHttpInfo($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation bulkAggregateQuestionResultsAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  \FastComments\Client\Model\BulkAggregateQuestionResultsRequest $bulk_aggregate_question_results_request (required)
+     * @param  bool|null $force_recalculate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkAggregateQuestionResults'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function bulkAggregateQuestionResultsAsyncWithHttpInfo($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate = null, string $contentType = self::contentTypes['bulkAggregateQuestionResults'][0])
+    {
+        $returnType = '\FastComments\Client\Model\BulkAggregateQuestionResults200Response';
+        $request = $this->bulkAggregateQuestionResultsRequest($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'bulkAggregateQuestionResults'
+     *
+     * @param  string $tenant_id (required)
+     * @param  \FastComments\Client\Model\BulkAggregateQuestionResultsRequest $bulk_aggregate_question_results_request (required)
+     * @param  bool|null $force_recalculate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkAggregateQuestionResults'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function bulkAggregateQuestionResultsRequest($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate = null, string $contentType = self::contentTypes['bulkAggregateQuestionResults'][0])
+    {
+
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling bulkAggregateQuestionResults'
+            );
+        }
+
+        // verify the required parameter 'bulk_aggregate_question_results_request' is set
+        if ($bulk_aggregate_question_results_request === null || (is_array($bulk_aggregate_question_results_request) && count($bulk_aggregate_question_results_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $bulk_aggregate_question_results_request when calling bulkAggregateQuestionResults'
+            );
+        }
+
+
+
+        $resourcePath = '/api/v1/question-results-aggregation/bulk';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $force_recalculate,
+            'forceRecalculate', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($bulk_aggregate_question_results_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($bulk_aggregate_question_results_request));
+            } else {
+                $httpBody = $bulk_aggregate_question_results_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('x-api-key');
+        if ($apiKey !== null) {
+            $headers['x-api-key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation combineCommentsWithQuestionResults
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id tenant_id (required)
+     * @param  string|null $question_id question_id (optional)
+     * @param  string[]|null $question_ids question_ids (optional)
+     * @param  string|null $url_id url_id (optional)
+     * @param  \DateTime|null $start_date start_date (optional)
+     * @param  bool|null $force_recalculate force_recalculate (optional)
+     * @param  float|null $min_value min_value (optional)
+     * @param  float|null $max_value max_value (optional)
+     * @param  float|null $limit limit (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['combineCommentsWithQuestionResults'] to see the possible values for this operation
+     *
+     * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \FastComments\Client\Model\CombineCommentsWithQuestionResults200Response
+     */
+    public function combineCommentsWithQuestionResults($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $start_date = null, $force_recalculate = null, $min_value = null, $max_value = null, $limit = null, string $contentType = self::contentTypes['combineCommentsWithQuestionResults'][0])
+    {
+        list($response) = $this->combineCommentsWithQuestionResultsWithHttpInfo($tenant_id, $question_id, $question_ids, $url_id, $start_date, $force_recalculate, $min_value, $max_value, $limit, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation combineCommentsWithQuestionResultsWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  string|null $question_id (optional)
+     * @param  string[]|null $question_ids (optional)
+     * @param  string|null $url_id (optional)
+     * @param  \DateTime|null $start_date (optional)
+     * @param  bool|null $force_recalculate (optional)
+     * @param  float|null $min_value (optional)
+     * @param  float|null $max_value (optional)
+     * @param  float|null $limit (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['combineCommentsWithQuestionResults'] to see the possible values for this operation
+     *
+     * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \FastComments\Client\Model\CombineCommentsWithQuestionResults200Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function combineCommentsWithQuestionResultsWithHttpInfo($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $start_date = null, $force_recalculate = null, $min_value = null, $max_value = null, $limit = null, string $contentType = self::contentTypes['combineCommentsWithQuestionResults'][0])
+    {
+        $request = $this->combineCommentsWithQuestionResultsRequest($tenant_id, $question_id, $question_ids, $url_id, $start_date, $force_recalculate, $min_value, $max_value, $limit, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    if ('\FastComments\Client\Model\CombineCommentsWithQuestionResults200Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\CombineCommentsWithQuestionResults200Response' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CombineCommentsWithQuestionResults200Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            $returnType = '\FastComments\Client\Model\CombineCommentsWithQuestionResults200Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\CombineCommentsWithQuestionResults200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation combineCommentsWithQuestionResultsAsync
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  string|null $question_id (optional)
+     * @param  string[]|null $question_ids (optional)
+     * @param  string|null $url_id (optional)
+     * @param  \DateTime|null $start_date (optional)
+     * @param  bool|null $force_recalculate (optional)
+     * @param  float|null $min_value (optional)
+     * @param  float|null $max_value (optional)
+     * @param  float|null $limit (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['combineCommentsWithQuestionResults'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function combineCommentsWithQuestionResultsAsync($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $start_date = null, $force_recalculate = null, $min_value = null, $max_value = null, $limit = null, string $contentType = self::contentTypes['combineCommentsWithQuestionResults'][0])
+    {
+        return $this->combineCommentsWithQuestionResultsAsyncWithHttpInfo($tenant_id, $question_id, $question_ids, $url_id, $start_date, $force_recalculate, $min_value, $max_value, $limit, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation combineCommentsWithQuestionResultsAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  string|null $question_id (optional)
+     * @param  string[]|null $question_ids (optional)
+     * @param  string|null $url_id (optional)
+     * @param  \DateTime|null $start_date (optional)
+     * @param  bool|null $force_recalculate (optional)
+     * @param  float|null $min_value (optional)
+     * @param  float|null $max_value (optional)
+     * @param  float|null $limit (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['combineCommentsWithQuestionResults'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function combineCommentsWithQuestionResultsAsyncWithHttpInfo($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $start_date = null, $force_recalculate = null, $min_value = null, $max_value = null, $limit = null, string $contentType = self::contentTypes['combineCommentsWithQuestionResults'][0])
+    {
+        $returnType = '\FastComments\Client\Model\CombineCommentsWithQuestionResults200Response';
+        $request = $this->combineCommentsWithQuestionResultsRequest($tenant_id, $question_id, $question_ids, $url_id, $start_date, $force_recalculate, $min_value, $max_value, $limit, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'combineCommentsWithQuestionResults'
+     *
+     * @param  string $tenant_id (required)
+     * @param  string|null $question_id (optional)
+     * @param  string[]|null $question_ids (optional)
+     * @param  string|null $url_id (optional)
+     * @param  \DateTime|null $start_date (optional)
+     * @param  bool|null $force_recalculate (optional)
+     * @param  float|null $min_value (optional)
+     * @param  float|null $max_value (optional)
+     * @param  float|null $limit (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['combineCommentsWithQuestionResults'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function combineCommentsWithQuestionResultsRequest($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $start_date = null, $force_recalculate = null, $min_value = null, $max_value = null, $limit = null, string $contentType = self::contentTypes['combineCommentsWithQuestionResults'][0])
+    {
+
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling combineCommentsWithQuestionResults'
+            );
+        }
+
+
+
+
+
+
+
+
+
+
+        $resourcePath = '/api/v1/question-results-aggregation/combine/comments';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $question_id,
+            'questionId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $question_ids,
+            'questionIds', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $url_id,
+            'urlId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $start_date,
+            'startDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $force_recalculate,
+            'forceRecalculate', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $min_value,
+            'minValue', // param base name
+            'number', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $max_value,
+            'maxValue', // param base name
+            'number', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'number', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('x-api-key');
+        if ($apiKey !== null) {
+            $headers['x-api-key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
