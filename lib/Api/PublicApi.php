@@ -81,6 +81,9 @@ class PublicApi
         'createCommentPublic' => [
             'application/json',
         ],
+        'createFeedPostPublic' => [
+            'application/json',
+        ],
         'deleteCommentPublic' => [
             'application/json',
         ],
@@ -117,10 +120,16 @@ class PublicApi
         'getUserPresenceStatuses' => [
             'application/json',
         ],
+        'getUserReactsPublic' => [
+            'application/json',
+        ],
         'lockComment' => [
             'application/json',
         ],
         'pinComment' => [
+            'application/json',
+        ],
+        'reactFeedPostPublic' => [
             'application/json',
         ],
         'resetUserNotificationCount' => [
@@ -148,6 +157,9 @@ class PublicApi
             'application/json',
         ],
         'updateUserNotificationStatus' => [
+            'application/json',
+        ],
+        'uploadImage' => [
             'application/json',
         ],
         'voteComment' => [
@@ -1261,6 +1273,363 @@ class PublicApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($comment_data));
             } else {
                 $httpBody = $comment_data;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createFeedPostPublic
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id tenant_id (required)
+     * @param  \FastComments\Client\Model\CreateFeedPostParams $create_feed_post_params create_feed_post_params (required)
+     * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  string|null $sso sso (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFeedPostPublic'] to see the possible values for this operation
+     *
+     * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \FastComments\Client\Model\CreateFeedPostPublic200Response
+     */
+    public function createFeedPostPublic($tenant_id, $create_feed_post_params, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['createFeedPostPublic'][0])
+    {
+        list($response) = $this->createFeedPostPublicWithHttpInfo($tenant_id, $create_feed_post_params, $broadcast_id, $sso, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createFeedPostPublicWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  \FastComments\Client\Model\CreateFeedPostParams $create_feed_post_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $sso (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFeedPostPublic'] to see the possible values for this operation
+     *
+     * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \FastComments\Client\Model\CreateFeedPostPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createFeedPostPublicWithHttpInfo($tenant_id, $create_feed_post_params, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['createFeedPostPublic'][0])
+    {
+        $request = $this->createFeedPostPublicRequest($tenant_id, $create_feed_post_params, $broadcast_id, $sso, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    if ('\FastComments\Client\Model\CreateFeedPostPublic200Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\CreateFeedPostPublic200Response' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateFeedPostPublic200Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            $returnType = '\FastComments\Client\Model\CreateFeedPostPublic200Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\CreateFeedPostPublic200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createFeedPostPublicAsync
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  \FastComments\Client\Model\CreateFeedPostParams $create_feed_post_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $sso (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFeedPostPublic'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createFeedPostPublicAsync($tenant_id, $create_feed_post_params, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['createFeedPostPublic'][0])
+    {
+        return $this->createFeedPostPublicAsyncWithHttpInfo($tenant_id, $create_feed_post_params, $broadcast_id, $sso, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createFeedPostPublicAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  \FastComments\Client\Model\CreateFeedPostParams $create_feed_post_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $sso (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFeedPostPublic'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createFeedPostPublicAsyncWithHttpInfo($tenant_id, $create_feed_post_params, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['createFeedPostPublic'][0])
+    {
+        $returnType = '\FastComments\Client\Model\CreateFeedPostPublic200Response';
+        $request = $this->createFeedPostPublicRequest($tenant_id, $create_feed_post_params, $broadcast_id, $sso, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createFeedPostPublic'
+     *
+     * @param  string $tenant_id (required)
+     * @param  \FastComments\Client\Model\CreateFeedPostParams $create_feed_post_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $sso (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFeedPostPublic'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createFeedPostPublicRequest($tenant_id, $create_feed_post_params, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['createFeedPostPublic'][0])
+    {
+
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling createFeedPostPublic'
+            );
+        }
+
+        // verify the required parameter 'create_feed_post_params' is set
+        if ($create_feed_post_params === null || (is_array($create_feed_post_params) && count($create_feed_post_params) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_feed_post_params when calling createFeedPostPublic'
+            );
+        }
+
+
+
+
+        $resourcePath = '/feed-posts/{tenantId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $broadcast_id,
+            'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sso,
+            'sso', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($tenant_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tenantId' . '}',
+                ObjectSerializer::toPathValue($tenant_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_feed_post_params)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_feed_post_params));
+            } else {
+                $httpBody = $create_feed_post_params;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -4284,15 +4653,17 @@ class PublicApi
      * @param  string|null $after_id after_id (optional)
      * @param  int|null $limit limit (optional)
      * @param  string[]|null $tags tags (optional)
+     * @param  string|null $sso sso (optional)
+     * @param  bool|null $is_crawler is_crawler (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFeedPostsPublic'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetFeedPosts200Response
+     * @return \FastComments\Client\Model\GetFeedPostsPublic200Response
      */
-    public function getFeedPostsPublic($tenant_id, $after_id = null, $limit = null, $tags = null, string $contentType = self::contentTypes['getFeedPostsPublic'][0])
+    public function getFeedPostsPublic($tenant_id, $after_id = null, $limit = null, $tags = null, $sso = null, $is_crawler = null, string $contentType = self::contentTypes['getFeedPostsPublic'][0])
     {
-        list($response) = $this->getFeedPostsPublicWithHttpInfo($tenant_id, $after_id, $limit, $tags, $contentType);
+        list($response) = $this->getFeedPostsPublicWithHttpInfo($tenant_id, $after_id, $limit, $tags, $sso, $is_crawler, $contentType);
         return $response;
     }
 
@@ -4305,15 +4676,17 @@ class PublicApi
      * @param  string|null $after_id (optional)
      * @param  int|null $limit (optional)
      * @param  string[]|null $tags (optional)
+     * @param  string|null $sso (optional)
+     * @param  bool|null $is_crawler (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFeedPostsPublic'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetFeedPosts200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetFeedPostsPublic200Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFeedPostsPublicWithHttpInfo($tenant_id, $after_id = null, $limit = null, $tags = null, string $contentType = self::contentTypes['getFeedPostsPublic'][0])
+    public function getFeedPostsPublicWithHttpInfo($tenant_id, $after_id = null, $limit = null, $tags = null, $sso = null, $is_crawler = null, string $contentType = self::contentTypes['getFeedPostsPublic'][0])
     {
-        $request = $this->getFeedPostsPublicRequest($tenant_id, $after_id, $limit, $tags, $contentType);
+        $request = $this->getFeedPostsPublicRequest($tenant_id, $after_id, $limit, $tags, $sso, $is_crawler, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4340,11 +4713,11 @@ class PublicApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetFeedPosts200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetFeedPostsPublic200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetFeedPosts200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetFeedPostsPublic200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -4362,7 +4735,7 @@ class PublicApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetFeedPosts200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetFeedPostsPublic200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -4381,7 +4754,7 @@ class PublicApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetFeedPosts200Response';
+            $returnType = '\FastComments\Client\Model\GetFeedPostsPublic200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4414,7 +4787,7 @@ class PublicApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetFeedPosts200Response',
+                        '\FastComments\Client\Model\GetFeedPostsPublic200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4433,14 +4806,16 @@ class PublicApi
      * @param  string|null $after_id (optional)
      * @param  int|null $limit (optional)
      * @param  string[]|null $tags (optional)
+     * @param  string|null $sso (optional)
+     * @param  bool|null $is_crawler (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFeedPostsPublic'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFeedPostsPublicAsync($tenant_id, $after_id = null, $limit = null, $tags = null, string $contentType = self::contentTypes['getFeedPostsPublic'][0])
+    public function getFeedPostsPublicAsync($tenant_id, $after_id = null, $limit = null, $tags = null, $sso = null, $is_crawler = null, string $contentType = self::contentTypes['getFeedPostsPublic'][0])
     {
-        return $this->getFeedPostsPublicAsyncWithHttpInfo($tenant_id, $after_id, $limit, $tags, $contentType)
+        return $this->getFeedPostsPublicAsyncWithHttpInfo($tenant_id, $after_id, $limit, $tags, $sso, $is_crawler, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4457,15 +4832,17 @@ class PublicApi
      * @param  string|null $after_id (optional)
      * @param  int|null $limit (optional)
      * @param  string[]|null $tags (optional)
+     * @param  string|null $sso (optional)
+     * @param  bool|null $is_crawler (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFeedPostsPublic'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFeedPostsPublicAsyncWithHttpInfo($tenant_id, $after_id = null, $limit = null, $tags = null, string $contentType = self::contentTypes['getFeedPostsPublic'][0])
+    public function getFeedPostsPublicAsyncWithHttpInfo($tenant_id, $after_id = null, $limit = null, $tags = null, $sso = null, $is_crawler = null, string $contentType = self::contentTypes['getFeedPostsPublic'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetFeedPosts200Response';
-        $request = $this->getFeedPostsPublicRequest($tenant_id, $after_id, $limit, $tags, $contentType);
+        $returnType = '\FastComments\Client\Model\GetFeedPostsPublic200Response';
+        $request = $this->getFeedPostsPublicRequest($tenant_id, $after_id, $limit, $tags, $sso, $is_crawler, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4510,12 +4887,14 @@ class PublicApi
      * @param  string|null $after_id (optional)
      * @param  int|null $limit (optional)
      * @param  string[]|null $tags (optional)
+     * @param  string|null $sso (optional)
+     * @param  bool|null $is_crawler (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFeedPostsPublic'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getFeedPostsPublicRequest($tenant_id, $after_id = null, $limit = null, $tags = null, string $contentType = self::contentTypes['getFeedPostsPublic'][0])
+    public function getFeedPostsPublicRequest($tenant_id, $after_id = null, $limit = null, $tags = null, $sso = null, $is_crawler = null, string $contentType = self::contentTypes['getFeedPostsPublic'][0])
     {
 
         // verify the required parameter 'tenant_id' is set
@@ -4524,6 +4903,8 @@ class PublicApi
                 'Missing the required parameter $tenant_id when calling getFeedPostsPublic'
             );
         }
+
+
 
 
 
@@ -4559,6 +4940,24 @@ class PublicApi
             $tags,
             'tags', // param base name
             'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sso,
+            'sso', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $is_crawler,
+            'isCrawler', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -6175,6 +6574,344 @@ class PublicApi
     }
 
     /**
+     * Operation getUserReactsPublic
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id tenant_id (required)
+     * @param  string[]|null $post_ids post_ids (optional)
+     * @param  string|null $sso sso (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserReactsPublic'] to see the possible values for this operation
+     *
+     * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \FastComments\Client\Model\GetUserReactsPublic200Response
+     */
+    public function getUserReactsPublic($tenant_id, $post_ids = null, $sso = null, string $contentType = self::contentTypes['getUserReactsPublic'][0])
+    {
+        list($response) = $this->getUserReactsPublicWithHttpInfo($tenant_id, $post_ids, $sso, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getUserReactsPublicWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  string[]|null $post_ids (optional)
+     * @param  string|null $sso (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserReactsPublic'] to see the possible values for this operation
+     *
+     * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \FastComments\Client\Model\GetUserReactsPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getUserReactsPublicWithHttpInfo($tenant_id, $post_ids = null, $sso = null, string $contentType = self::contentTypes['getUserReactsPublic'][0])
+    {
+        $request = $this->getUserReactsPublicRequest($tenant_id, $post_ids, $sso, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    if ('\FastComments\Client\Model\GetUserReactsPublic200Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\GetUserReactsPublic200Response' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetUserReactsPublic200Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            $returnType = '\FastComments\Client\Model\GetUserReactsPublic200Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\GetUserReactsPublic200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getUserReactsPublicAsync
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  string[]|null $post_ids (optional)
+     * @param  string|null $sso (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserReactsPublic'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getUserReactsPublicAsync($tenant_id, $post_ids = null, $sso = null, string $contentType = self::contentTypes['getUserReactsPublic'][0])
+    {
+        return $this->getUserReactsPublicAsyncWithHttpInfo($tenant_id, $post_ids, $sso, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getUserReactsPublicAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  string[]|null $post_ids (optional)
+     * @param  string|null $sso (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserReactsPublic'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getUserReactsPublicAsyncWithHttpInfo($tenant_id, $post_ids = null, $sso = null, string $contentType = self::contentTypes['getUserReactsPublic'][0])
+    {
+        $returnType = '\FastComments\Client\Model\GetUserReactsPublic200Response';
+        $request = $this->getUserReactsPublicRequest($tenant_id, $post_ids, $sso, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getUserReactsPublic'
+     *
+     * @param  string $tenant_id (required)
+     * @param  string[]|null $post_ids (optional)
+     * @param  string|null $sso (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserReactsPublic'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getUserReactsPublicRequest($tenant_id, $post_ids = null, $sso = null, string $contentType = self::contentTypes['getUserReactsPublic'][0])
+    {
+
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getUserReactsPublic'
+            );
+        }
+
+
+
+
+        $resourcePath = '/feed-posts/{tenantId}/user-reacts';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $post_ids,
+            'postIds', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sso,
+            'sso', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($tenant_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tenantId' . '}',
+                ObjectSerializer::toPathValue($tenant_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation lockComment
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
@@ -6857,6 +7594,398 @@ class PublicApi
 
         // for model (json/xml)
         if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation reactFeedPostPublic
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id tenant_id (required)
+     * @param  string $post_id post_id (required)
+     * @param  \FastComments\Client\Model\ReactBodyParams $react_body_params react_body_params (required)
+     * @param  bool|null $is_undo is_undo (optional)
+     * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  string|null $sso sso (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reactFeedPostPublic'] to see the possible values for this operation
+     *
+     * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \FastComments\Client\Model\ReactFeedPostPublic200Response
+     */
+    public function reactFeedPostPublic($tenant_id, $post_id, $react_body_params, $is_undo = null, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['reactFeedPostPublic'][0])
+    {
+        list($response) = $this->reactFeedPostPublicWithHttpInfo($tenant_id, $post_id, $react_body_params, $is_undo, $broadcast_id, $sso, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation reactFeedPostPublicWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  string $post_id (required)
+     * @param  \FastComments\Client\Model\ReactBodyParams $react_body_params (required)
+     * @param  bool|null $is_undo (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $sso (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reactFeedPostPublic'] to see the possible values for this operation
+     *
+     * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \FastComments\Client\Model\ReactFeedPostPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function reactFeedPostPublicWithHttpInfo($tenant_id, $post_id, $react_body_params, $is_undo = null, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['reactFeedPostPublic'][0])
+    {
+        $request = $this->reactFeedPostPublicRequest($tenant_id, $post_id, $react_body_params, $is_undo, $broadcast_id, $sso, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    if ('\FastComments\Client\Model\ReactFeedPostPublic200Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\ReactFeedPostPublic200Response' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ReactFeedPostPublic200Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            $returnType = '\FastComments\Client\Model\ReactFeedPostPublic200Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\ReactFeedPostPublic200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation reactFeedPostPublicAsync
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  string $post_id (required)
+     * @param  \FastComments\Client\Model\ReactBodyParams $react_body_params (required)
+     * @param  bool|null $is_undo (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $sso (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reactFeedPostPublic'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function reactFeedPostPublicAsync($tenant_id, $post_id, $react_body_params, $is_undo = null, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['reactFeedPostPublic'][0])
+    {
+        return $this->reactFeedPostPublicAsyncWithHttpInfo($tenant_id, $post_id, $react_body_params, $is_undo, $broadcast_id, $sso, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation reactFeedPostPublicAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id (required)
+     * @param  string $post_id (required)
+     * @param  \FastComments\Client\Model\ReactBodyParams $react_body_params (required)
+     * @param  bool|null $is_undo (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $sso (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reactFeedPostPublic'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function reactFeedPostPublicAsyncWithHttpInfo($tenant_id, $post_id, $react_body_params, $is_undo = null, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['reactFeedPostPublic'][0])
+    {
+        $returnType = '\FastComments\Client\Model\ReactFeedPostPublic200Response';
+        $request = $this->reactFeedPostPublicRequest($tenant_id, $post_id, $react_body_params, $is_undo, $broadcast_id, $sso, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'reactFeedPostPublic'
+     *
+     * @param  string $tenant_id (required)
+     * @param  string $post_id (required)
+     * @param  \FastComments\Client\Model\ReactBodyParams $react_body_params (required)
+     * @param  bool|null $is_undo (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $sso (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reactFeedPostPublic'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function reactFeedPostPublicRequest($tenant_id, $post_id, $react_body_params, $is_undo = null, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['reactFeedPostPublic'][0])
+    {
+
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling reactFeedPostPublic'
+            );
+        }
+
+        // verify the required parameter 'post_id' is set
+        if ($post_id === null || (is_array($post_id) && count($post_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $post_id when calling reactFeedPostPublic'
+            );
+        }
+
+        // verify the required parameter 'react_body_params' is set
+        if ($react_body_params === null || (is_array($react_body_params) && count($react_body_params) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $react_body_params when calling reactFeedPostPublic'
+            );
+        }
+
+
+
+
+
+        $resourcePath = '/feed-posts/{tenantId}/react/{postId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $is_undo,
+            'isUndo', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $broadcast_id,
+            'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sso,
+            'sso', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($tenant_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tenantId' . '}',
+                ObjectSerializer::toPathValue($tenant_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($post_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'postId' . '}',
+                ObjectSerializer::toPathValue($post_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($react_body_params)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($react_body_params));
+            } else {
+                $httpBody = $react_body_params;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -10212,6 +11341,344 @@ class PublicApi
             $resourcePath = str_replace(
                 '{' . 'newStatus' . '}',
                 ObjectSerializer::toPathValue($new_status),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation uploadImage
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id Tenant ID (required)
+     * @param  \FastComments\Client\Model\SizePreset|null $size_preset Size preset: \&quot;Default\&quot; (1000x1000px) or \&quot;CrossPlatform\&quot; (creates sizes for popular devices) (optional)
+     * @param  string|null $url_id Page id that upload is happening from, to configure (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadImage'] to see the possible values for this operation
+     *
+     * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \FastComments\Client\Model\UploadImageResponse
+     */
+    public function uploadImage($tenant_id, $size_preset = null, $url_id = null, string $contentType = self::contentTypes['uploadImage'][0])
+    {
+        list($response) = $this->uploadImageWithHttpInfo($tenant_id, $size_preset, $url_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation uploadImageWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id Tenant ID (required)
+     * @param  \FastComments\Client\Model\SizePreset|null $size_preset Size preset: \&quot;Default\&quot; (1000x1000px) or \&quot;CrossPlatform\&quot; (creates sizes for popular devices) (optional)
+     * @param  string|null $url_id Page id that upload is happening from, to configure (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadImage'] to see the possible values for this operation
+     *
+     * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \FastComments\Client\Model\UploadImageResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function uploadImageWithHttpInfo($tenant_id, $size_preset = null, $url_id = null, string $contentType = self::contentTypes['uploadImage'][0])
+    {
+        $request = $this->uploadImageRequest($tenant_id, $size_preset, $url_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    if ('\FastComments\Client\Model\UploadImageResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\UploadImageResponse' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\UploadImageResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            $returnType = '\FastComments\Client\Model\UploadImageResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    try {
+                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                    } catch (\JsonException $exception) {
+                        throw new ApiException(
+                            sprintf(
+                                'Error JSON decoding server response (%s)',
+                                $request->getUri()
+                            ),
+                            $statusCode,
+                            $response->getHeaders(),
+                            $content
+                        );
+                    }
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\UploadImageResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation uploadImageAsync
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id Tenant ID (required)
+     * @param  \FastComments\Client\Model\SizePreset|null $size_preset Size preset: \&quot;Default\&quot; (1000x1000px) or \&quot;CrossPlatform\&quot; (creates sizes for popular devices) (optional)
+     * @param  string|null $url_id Page id that upload is happening from, to configure (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadImage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadImageAsync($tenant_id, $size_preset = null, $url_id = null, string $contentType = self::contentTypes['uploadImage'][0])
+    {
+        return $this->uploadImageAsyncWithHttpInfo($tenant_id, $size_preset, $url_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation uploadImageAsyncWithHttpInfo
+     *
+     * FastComments PHP API Client - A SDK for interacting with the FastComments API
+     *
+     * @param  string $tenant_id Tenant ID (required)
+     * @param  \FastComments\Client\Model\SizePreset|null $size_preset Size preset: \&quot;Default\&quot; (1000x1000px) or \&quot;CrossPlatform\&quot; (creates sizes for popular devices) (optional)
+     * @param  string|null $url_id Page id that upload is happening from, to configure (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadImage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadImageAsyncWithHttpInfo($tenant_id, $size_preset = null, $url_id = null, string $contentType = self::contentTypes['uploadImage'][0])
+    {
+        $returnType = '\FastComments\Client\Model\UploadImageResponse';
+        $request = $this->uploadImageRequest($tenant_id, $size_preset, $url_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'uploadImage'
+     *
+     * @param  string $tenant_id Tenant ID (required)
+     * @param  \FastComments\Client\Model\SizePreset|null $size_preset Size preset: \&quot;Default\&quot; (1000x1000px) or \&quot;CrossPlatform\&quot; (creates sizes for popular devices) (optional)
+     * @param  string|null $url_id Page id that upload is happening from, to configure (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadImage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function uploadImageRequest($tenant_id, $size_preset = null, $url_id = null, string $contentType = self::contentTypes['uploadImage'][0])
+    {
+
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling uploadImage'
+            );
+        }
+
+
+
+
+        $resourcePath = '/upload-image/{tenantId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $size_preset,
+            'sizePreset', // param base name
+            'SizePreset', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $url_id,
+            'urlId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($tenant_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tenantId' . '}',
+                ObjectSerializer::toPathValue($tenant_id),
                 $resourcePath
             );
         }

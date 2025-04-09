@@ -109,6 +109,18 @@ class PublicApiTest extends TestCase
     }
 
     /**
+     * Test case for createFeedPostPublic
+     *
+     * .
+     *
+     */
+    public function testCreateFeedPostPublic()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for deleteCommentPublic
      *
      * .
@@ -253,6 +265,18 @@ class PublicApiTest extends TestCase
     }
 
     /**
+     * Test case for getUserReactsPublic
+     *
+     * .
+     *
+     */
+    public function testGetUserReactsPublic()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for lockComment
      *
      * .
@@ -271,6 +295,18 @@ class PublicApiTest extends TestCase
      *
      */
     public function testPinComment()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for reactFeedPostPublic
+     *
+     * .
+     *
+     */
+    public function testReactFeedPostPublic()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -379,6 +415,18 @@ class PublicApiTest extends TestCase
      *
      */
     public function testUpdateUserNotificationStatus()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for uploadImage
+     *
+     * .
+     *
+     */
+    public function testUploadImage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

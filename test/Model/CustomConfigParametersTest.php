@@ -450,6 +450,15 @@ class CustomConfigParametersTest extends TestCase
     }
 
     /**
+     * Test attribute "image_content_profanity_level"
+     */
+    public function testPropertyImageContentProfanityLevel()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "input_after_comments"
      */
     public function testPropertyInputAfterComments()
@@ -549,15 +558,6 @@ class CustomConfigParametersTest extends TestCase
     }
 
     /**
-     * Test attribute "sso_sec_lvl"
-     */
-    public function testPropertySsoSecLvl()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "restricted_link_domains"
      */
     public function testPropertyRestrictedLinkDomains()
@@ -597,6 +597,15 @@ class CustomConfigParametersTest extends TestCase
      * Test attribute "spam_rules"
      */
     public function testPropertySpamRules()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "sso_sec_lvl"
+     */
+    public function testPropertySsoSecLvl()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

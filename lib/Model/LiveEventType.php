@@ -65,6 +65,12 @@ class LiveEventType
 
     public const THREAD_STATE_CHANGE = 'thread-state-change';
 
+    public const FR = 'fr';
+
+    public const DFR = 'dfr';
+
+    public const NEW_FEED_POST = 'new-feed-post';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -82,7 +88,10 @@ class LiveEventType
             self::DELETED_COMMENT,
             self::CVC,
             self::NEW_CONFIG,
-            self::THREAD_STATE_CHANGE
+            self::THREAD_STATE_CHANGE,
+            self::FR,
+            self::DFR,
+            self::NEW_FEED_POST
         ];
     }
 }

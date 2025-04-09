@@ -1,6 +1,6 @@
 <?php
 /**
- * FeedPost
+ * CreateFeedPostParams
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \FastComments\Client\ObjectSerializer;
 
 /**
- * FeedPost Class Doc Comment
+ * CreateFeedPostParams Class Doc Comment
  *
  * @category Class
  * @package  FastComments\Client
@@ -41,7 +41,7 @@ use \FastComments\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateFeedPostParams implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FeedPost';
+    protected static $openAPIModelName = 'CreateFeedPostParams';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,21 +58,14 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_id' => 'string',
-        'tenant_id' => 'string',
         'title' => 'string',
-        'from_user_id' => 'string',
-        'from_user_display_name' => 'string',
-        'from_user_avatar' => 'string',
-        'from_ip_hash' => 'string',
-        'tags' => 'string[]',
-        'weight' => 'float',
-        'meta' => 'array<string,string>',
         'content_html' => 'string',
         'media' => '\FastComments\Client\Model\FeedPostMediaItem[]',
         'links' => '\FastComments\Client\Model\FeedPostLink[]',
-        'created_at' => '\DateTime',
-        'reacts' => 'array<string,float>'
+        'from_user_id' => 'string',
+        'from_user_display_name' => 'string',
+        'tags' => 'string[]',
+        'meta' => 'array<string,string>'
     ];
 
     /**
@@ -83,21 +76,14 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        '_id' => null,
-        'tenant_id' => null,
         'title' => null,
-        'from_user_id' => null,
-        'from_user_display_name' => null,
-        'from_user_avatar' => null,
-        'from_ip_hash' => null,
-        'tags' => null,
-        'weight' => 'double',
-        'meta' => null,
         'content_html' => null,
         'media' => null,
         'links' => null,
-        'created_at' => 'date-time',
-        'reacts' => 'double'
+        'from_user_id' => null,
+        'from_user_display_name' => null,
+        'tags' => null,
+        'meta' => null
     ];
 
     /**
@@ -106,21 +92,14 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        '_id' => false,
-        'tenant_id' => false,
         'title' => false,
-        'from_user_id' => false,
-        'from_user_display_name' => true,
-        'from_user_avatar' => true,
-        'from_ip_hash' => false,
-        'tags' => false,
-        'weight' => false,
-        'meta' => false,
         'content_html' => false,
         'media' => false,
         'links' => false,
-        'created_at' => false,
-        'reacts' => false
+        'from_user_id' => false,
+        'from_user_display_name' => false,
+        'tags' => false,
+        'meta' => false
     ];
 
     /**
@@ -209,21 +188,14 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        '_id' => '_id',
-        'tenant_id' => 'tenantId',
         'title' => 'title',
-        'from_user_id' => 'fromUserId',
-        'from_user_display_name' => 'fromUserDisplayName',
-        'from_user_avatar' => 'fromUserAvatar',
-        'from_ip_hash' => 'fromIpHash',
-        'tags' => 'tags',
-        'weight' => 'weight',
-        'meta' => 'meta',
         'content_html' => 'contentHTML',
         'media' => 'media',
         'links' => 'links',
-        'created_at' => 'createdAt',
-        'reacts' => 'reacts'
+        'from_user_id' => 'fromUserId',
+        'from_user_display_name' => 'fromUserDisplayName',
+        'tags' => 'tags',
+        'meta' => 'meta'
     ];
 
     /**
@@ -232,21 +204,14 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        '_id' => 'setId',
-        'tenant_id' => 'setTenantId',
         'title' => 'setTitle',
-        'from_user_id' => 'setFromUserId',
-        'from_user_display_name' => 'setFromUserDisplayName',
-        'from_user_avatar' => 'setFromUserAvatar',
-        'from_ip_hash' => 'setFromIpHash',
-        'tags' => 'setTags',
-        'weight' => 'setWeight',
-        'meta' => 'setMeta',
         'content_html' => 'setContentHtml',
         'media' => 'setMedia',
         'links' => 'setLinks',
-        'created_at' => 'setCreatedAt',
-        'reacts' => 'setReacts'
+        'from_user_id' => 'setFromUserId',
+        'from_user_display_name' => 'setFromUserDisplayName',
+        'tags' => 'setTags',
+        'meta' => 'setMeta'
     ];
 
     /**
@@ -255,21 +220,14 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        '_id' => 'getId',
-        'tenant_id' => 'getTenantId',
         'title' => 'getTitle',
-        'from_user_id' => 'getFromUserId',
-        'from_user_display_name' => 'getFromUserDisplayName',
-        'from_user_avatar' => 'getFromUserAvatar',
-        'from_ip_hash' => 'getFromIpHash',
-        'tags' => 'getTags',
-        'weight' => 'getWeight',
-        'meta' => 'getMeta',
         'content_html' => 'getContentHtml',
         'media' => 'getMedia',
         'links' => 'getLinks',
-        'created_at' => 'getCreatedAt',
-        'reacts' => 'getReacts'
+        'from_user_id' => 'getFromUserId',
+        'from_user_display_name' => 'getFromUserDisplayName',
+        'tags' => 'getTags',
+        'meta' => 'getMeta'
     ];
 
     /**
@@ -329,21 +287,14 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('_id', $data ?? [], null);
-        $this->setIfExists('tenant_id', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('from_user_id', $data ?? [], null);
-        $this->setIfExists('from_user_display_name', $data ?? [], null);
-        $this->setIfExists('from_user_avatar', $data ?? [], null);
-        $this->setIfExists('from_ip_hash', $data ?? [], null);
-        $this->setIfExists('tags', $data ?? [], null);
-        $this->setIfExists('weight', $data ?? [], null);
-        $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('content_html', $data ?? [], null);
         $this->setIfExists('media', $data ?? [], null);
         $this->setIfExists('links', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('reacts', $data ?? [], null);
+        $this->setIfExists('from_user_id', $data ?? [], null);
+        $this->setIfExists('from_user_display_name', $data ?? [], null);
+        $this->setIfExists('tags', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
     }
 
     /**
@@ -373,15 +324,6 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['_id'] === null) {
-            $invalidProperties[] = "'_id' can't be null";
-        }
-        if ($this->container['tenant_id'] === null) {
-            $invalidProperties[] = "'tenant_id' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -396,60 +338,6 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets _id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['_id'];
-    }
-
-    /**
-     * Sets _id
-     *
-     * @param string $_id _id
-     *
-     * @return self
-     */
-    public function setId($_id)
-    {
-        if (is_null($_id)) {
-            throw new \InvalidArgumentException('non-nullable _id cannot be null');
-        }
-        $this->container['_id'] = $_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets tenant_id
-     *
-     * @return string
-     */
-    public function getTenantId()
-    {
-        return $this->container['tenant_id'];
-    }
-
-    /**
-     * Sets tenant_id
-     *
-     * @param string $tenant_id tenant_id
-     *
-     * @return self
-     */
-    public function setTenantId($tenant_id)
-    {
-        if (is_null($tenant_id)) {
-            throw new \InvalidArgumentException('non-nullable tenant_id cannot be null');
-        }
-        $this->container['tenant_id'] = $tenant_id;
-
-        return $this;
-    }
 
     /**
      * Gets title
@@ -474,209 +362,6 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable title cannot be null');
         }
         $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets from_user_id
-     *
-     * @return string|null
-     */
-    public function getFromUserId()
-    {
-        return $this->container['from_user_id'];
-    }
-
-    /**
-     * Sets from_user_id
-     *
-     * @param string|null $from_user_id from_user_id
-     *
-     * @return self
-     */
-    public function setFromUserId($from_user_id)
-    {
-        if (is_null($from_user_id)) {
-            throw new \InvalidArgumentException('non-nullable from_user_id cannot be null');
-        }
-        $this->container['from_user_id'] = $from_user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets from_user_display_name
-     *
-     * @return string|null
-     */
-    public function getFromUserDisplayName()
-    {
-        return $this->container['from_user_display_name'];
-    }
-
-    /**
-     * Sets from_user_display_name
-     *
-     * @param string|null $from_user_display_name from_user_display_name
-     *
-     * @return self
-     */
-    public function setFromUserDisplayName($from_user_display_name)
-    {
-        if (is_null($from_user_display_name)) {
-            array_push($this->openAPINullablesSetToNull, 'from_user_display_name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('from_user_display_name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['from_user_display_name'] = $from_user_display_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets from_user_avatar
-     *
-     * @return string|null
-     */
-    public function getFromUserAvatar()
-    {
-        return $this->container['from_user_avatar'];
-    }
-
-    /**
-     * Sets from_user_avatar
-     *
-     * @param string|null $from_user_avatar from_user_avatar
-     *
-     * @return self
-     */
-    public function setFromUserAvatar($from_user_avatar)
-    {
-        if (is_null($from_user_avatar)) {
-            array_push($this->openAPINullablesSetToNull, 'from_user_avatar');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('from_user_avatar', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['from_user_avatar'] = $from_user_avatar;
-
-        return $this;
-    }
-
-    /**
-     * Gets from_ip_hash
-     *
-     * @return string|null
-     */
-    public function getFromIpHash()
-    {
-        return $this->container['from_ip_hash'];
-    }
-
-    /**
-     * Sets from_ip_hash
-     *
-     * @param string|null $from_ip_hash from_ip_hash
-     *
-     * @return self
-     */
-    public function setFromIpHash($from_ip_hash)
-    {
-        if (is_null($from_ip_hash)) {
-            throw new \InvalidArgumentException('non-nullable from_ip_hash cannot be null');
-        }
-        $this->container['from_ip_hash'] = $from_ip_hash;
-
-        return $this;
-    }
-
-    /**
-     * Gets tags
-     *
-     * @return string[]|null
-     */
-    public function getTags()
-    {
-        return $this->container['tags'];
-    }
-
-    /**
-     * Sets tags
-     *
-     * @param string[]|null $tags tags
-     *
-     * @return self
-     */
-    public function setTags($tags)
-    {
-        if (is_null($tags)) {
-            throw new \InvalidArgumentException('non-nullable tags cannot be null');
-        }
-        $this->container['tags'] = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Gets weight
-     *
-     * @return float|null
-     */
-    public function getWeight()
-    {
-        return $this->container['weight'];
-    }
-
-    /**
-     * Sets weight
-     *
-     * @param float|null $weight weight
-     *
-     * @return self
-     */
-    public function setWeight($weight)
-    {
-        if (is_null($weight)) {
-            throw new \InvalidArgumentException('non-nullable weight cannot be null');
-        }
-        $this->container['weight'] = $weight;
-
-        return $this;
-    }
-
-    /**
-     * Gets meta
-     *
-     * @return array<string,string>|null
-     */
-    public function getMeta()
-    {
-        return $this->container['meta'];
-    }
-
-    /**
-     * Sets meta
-     *
-     * @param array<string,string>|null $meta Construct a type with a set of properties K of type T
-     *
-     * @return self
-     */
-    public function setMeta($meta)
-    {
-        if (is_null($meta)) {
-            throw new \InvalidArgumentException('non-nullable meta cannot be null');
-        }
-        $this->container['meta'] = $meta;
 
         return $this;
     }
@@ -763,55 +448,109 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets created_at
+     * Gets from_user_id
      *
-     * @return \DateTime
+     * @return string|null
      */
-    public function getCreatedAt()
+    public function getFromUserId()
     {
-        return $this->container['created_at'];
+        return $this->container['from_user_id'];
     }
 
     /**
-     * Sets created_at
+     * Sets from_user_id
      *
-     * @param \DateTime $created_at created_at
+     * @param string|null $from_user_id from_user_id
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setFromUserId($from_user_id)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($from_user_id)) {
+            throw new \InvalidArgumentException('non-nullable from_user_id cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['from_user_id'] = $from_user_id;
 
         return $this;
     }
 
     /**
-     * Gets reacts
+     * Gets from_user_display_name
      *
-     * @return array<string,float>|null
+     * @return string|null
      */
-    public function getReacts()
+    public function getFromUserDisplayName()
     {
-        return $this->container['reacts'];
+        return $this->container['from_user_display_name'];
     }
 
     /**
-     * Sets reacts
+     * Sets from_user_display_name
      *
-     * @param array<string,float>|null $reacts Construct a type with a set of properties K of type T
+     * @param string|null $from_user_display_name from_user_display_name
      *
      * @return self
      */
-    public function setReacts($reacts)
+    public function setFromUserDisplayName($from_user_display_name)
     {
-        if (is_null($reacts)) {
-            throw new \InvalidArgumentException('non-nullable reacts cannot be null');
+        if (is_null($from_user_display_name)) {
+            throw new \InvalidArgumentException('non-nullable from_user_display_name cannot be null');
         }
-        $this->container['reacts'] = $reacts;
+        $this->container['from_user_display_name'] = $from_user_display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets tags
+     *
+     * @return string[]|null
+     */
+    public function getTags()
+    {
+        return $this->container['tags'];
+    }
+
+    /**
+     * Sets tags
+     *
+     * @param string[]|null $tags tags
+     *
+     * @return self
+     */
+    public function setTags($tags)
+    {
+        if (is_null($tags)) {
+            throw new \InvalidArgumentException('non-nullable tags cannot be null');
+        }
+        $this->container['tags'] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     *
+     * @return array<string,string>|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param array<string,string>|null $meta Construct a type with a set of properties K of type T
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+        }
+        $this->container['meta'] = $meta;
 
         return $this;
     }

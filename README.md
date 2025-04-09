@@ -102,9 +102,11 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**unFlagComment**](docs/Api/DefaultApi.md#unflagcomment) | **POST** /api/v1/comments/{id}/un-flag | 
 *DefaultApi* | [**updateComment**](docs/Api/DefaultApi.md#updatecomment) | **PATCH** /api/v1/comments/{id} | 
 *DefaultApi* | [**updateFeedPost**](docs/Api/DefaultApi.md#updatefeedpost) | **PATCH** /api/v1/feed-posts/{id} | 
+*HiddenApi* | [**uploadImageOptions**](docs/Api/HiddenApi.md#uploadimageoptions) | **OPTIONS** /upload-image/{tenantId} | 
 *PublicApi* | [**blockFromCommentPublic**](docs/Api/PublicApi.md#blockfromcommentpublic) | **POST** /block-from-comment/{commentId} | 
 *PublicApi* | [**checkedCommentsForBlocked**](docs/Api/PublicApi.md#checkedcommentsforblocked) | **GET** /check-blocked-comments | 
 *PublicApi* | [**createCommentPublic**](docs/Api/PublicApi.md#createcommentpublic) | **POST** /comments/{tenantId} | 
+*PublicApi* | [**createFeedPostPublic**](docs/Api/PublicApi.md#createfeedpostpublic) | **POST** /feed-posts/{tenantId} | 
 *PublicApi* | [**deleteCommentPublic**](docs/Api/PublicApi.md#deletecommentpublic) | **DELETE** /comments/{tenantId}/{commentId} | 
 *PublicApi* | [**deleteCommentVote**](docs/Api/PublicApi.md#deletecommentvote) | **DELETE** /comments/{tenantId}/{commentId}/vote/{voteId} | 
 *PublicApi* | [**flagCommentPublic**](docs/Api/PublicApi.md#flagcommentpublic) | **POST** /flag-comment/{commentId} | 
@@ -117,8 +119,10 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**getUserNotificationCount**](docs/Api/PublicApi.md#getusernotificationcount) | **GET** /user-notifications/get-count | 
 *PublicApi* | [**getUserNotifications**](docs/Api/PublicApi.md#getusernotifications) | **GET** /user-notifications | 
 *PublicApi* | [**getUserPresenceStatuses**](docs/Api/PublicApi.md#getuserpresencestatuses) | **GET** /user-presence-status | 
+*PublicApi* | [**getUserReactsPublic**](docs/Api/PublicApi.md#getuserreactspublic) | **GET** /feed-posts/{tenantId}/user-reacts | 
 *PublicApi* | [**lockComment**](docs/Api/PublicApi.md#lockcomment) | **POST** /comments/{tenantId}/{commentId}/lock | 
 *PublicApi* | [**pinComment**](docs/Api/PublicApi.md#pincomment) | **POST** /comments/{tenantId}/{commentId}/pin | 
+*PublicApi* | [**reactFeedPostPublic**](docs/Api/PublicApi.md#reactfeedpostpublic) | **POST** /feed-posts/{tenantId}/react/{postId} | 
 *PublicApi* | [**resetUserNotificationCount**](docs/Api/PublicApi.md#resetusernotificationcount) | **POST** /user-notifications/reset-count | 
 *PublicApi* | [**resetUserNotifications**](docs/Api/PublicApi.md#resetusernotifications) | **POST** /user-notifications/reset | 
 *PublicApi* | [**setCommentText**](docs/Api/PublicApi.md#setcommenttext) | **POST** /comments/{tenantId}/{commentId}/update-text | 
@@ -128,6 +132,7 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**updateUserNotificationCommentSubscriptionStatus**](docs/Api/PublicApi.md#updateusernotificationcommentsubscriptionstatus) | **POST** /user-notifications/{notificationId}/mark-opted/{optedInOrOut} | 
 *PublicApi* | [**updateUserNotificationPageSubscriptionStatus**](docs/Api/PublicApi.md#updateusernotificationpagesubscriptionstatus) | **POST** /user-notifications/set-subscription-state/{subscribedOrUnsubscribed} | 
 *PublicApi* | [**updateUserNotificationStatus**](docs/Api/PublicApi.md#updateusernotificationstatus) | **POST** /user-notifications/{notificationId}/mark/{newStatus} | 
+*PublicApi* | [**uploadImage**](docs/Api/PublicApi.md#uploadimage) | **POST** /upload-image/{tenantId} | 
 *PublicApi* | [**voteComment**](docs/Api/PublicApi.md#votecomment) | **POST** /comments/{tenantId}/{commentId}/vote | 
 
 ## Models
@@ -176,6 +181,9 @@ Class | Method | HTTP request | Description
 - [CreateCommentParams](docs/Model/CreateCommentParams.md)
 - [CreateCommentPublic200Response](docs/Model/CreateCommentPublic200Response.md)
 - [CreateFeedPost200Response](docs/Model/CreateFeedPost200Response.md)
+- [CreateFeedPostParams](docs/Model/CreateFeedPostParams.md)
+- [CreateFeedPostPublic200Response](docs/Model/CreateFeedPostPublic200Response.md)
+- [CreateFeedPostResponse](docs/Model/CreateFeedPostResponse.md)
 - [CreateFeedPostsResponse](docs/Model/CreateFeedPostsResponse.md)
 - [CustomConfigParameters](docs/Model/CustomConfigParameters.md)
 - [DeleteComment200Response](docs/Model/DeleteComment200Response.md)
@@ -213,6 +221,7 @@ Class | Method | HTTP request | Description
 - [GetEventLog200Response](docs/Model/GetEventLog200Response.md)
 - [GetEventLogResponse](docs/Model/GetEventLogResponse.md)
 - [GetFeedPosts200Response](docs/Model/GetFeedPosts200Response.md)
+- [GetFeedPostsPublic200Response](docs/Model/GetFeedPostsPublic200Response.md)
 - [GetFeedPostsResponse](docs/Model/GetFeedPostsResponse.md)
 - [GetMyNotificationsResponse](docs/Model/GetMyNotificationsResponse.md)
 - [GetUserNotificationCount200Response](docs/Model/GetUserNotificationCount200Response.md)
@@ -220,15 +229,18 @@ Class | Method | HTTP request | Description
 - [GetUserNotifications200Response](docs/Model/GetUserNotifications200Response.md)
 - [GetUserPresenceStatuses200Response](docs/Model/GetUserPresenceStatuses200Response.md)
 - [GetUserPresenceStatusesResponse](docs/Model/GetUserPresenceStatusesResponse.md)
+- [GetUserReactsPublic200Response](docs/Model/GetUserReactsPublic200Response.md)
 - [GifRating](docs/Model/GifRating.md)
 - [HeaderState](docs/Model/HeaderState.md)
 - [IgnoredResponse](docs/Model/IgnoredResponse.md)
+- [ImageContentProfanityLevel](docs/Model/ImageContentProfanityLevel.md)
 - [ImportedAPIStatusFAILED](docs/Model/ImportedAPIStatusFAILED.md)
 - [ImportedAPIStatusSUCCESS](docs/Model/ImportedAPIStatusSUCCESS.md)
 - [LiveEvent](docs/Model/LiveEvent.md)
 - [LiveEventExtraInfo](docs/Model/LiveEventExtraInfo.md)
 - [LiveEventType](docs/Model/LiveEventType.md)
 - [LockComment200Response](docs/Model/LockComment200Response.md)
+- [MediaAsset](docs/Model/MediaAsset.md)
 - [MetaItem](docs/Model/MetaItem.md)
 - [NotificationAndCount](docs/Model/NotificationAndCount.md)
 - [NotificationType](docs/Model/NotificationType.md)
@@ -250,6 +262,7 @@ Class | Method | HTTP request | Description
 - [PublicAPISetCommentTextResponse](docs/Model/PublicAPISetCommentTextResponse.md)
 - [PublicBlockFromCommentParams](docs/Model/PublicBlockFromCommentParams.md)
 - [PublicComment](docs/Model/PublicComment.md)
+- [PublicFeedPostsResponse](docs/Model/PublicFeedPostsResponse.md)
 - [QueryPredicate](docs/Model/QueryPredicate.md)
 - [QueryPredicateValue](docs/Model/QueryPredicateValue.md)
 - [QuestionDatum](docs/Model/QuestionDatum.md)
@@ -258,6 +271,9 @@ Class | Method | HTTP request | Description
 - [QuestionResultAggregationOverall](docs/Model/QuestionResultAggregationOverall.md)
 - [QuestionSubQuestionVisibility](docs/Model/QuestionSubQuestionVisibility.md)
 - [QuestionWhenSave](docs/Model/QuestionWhenSave.md)
+- [ReactBodyParams](docs/Model/ReactBodyParams.md)
+- [ReactFeedPostPublic200Response](docs/Model/ReactFeedPostPublic200Response.md)
+- [ReactFeedPostResponse](docs/Model/ReactFeedPostResponse.md)
 - [RecordStringBeforeStringOrNullAfterStringOrNullValue](docs/Model/RecordStringBeforeStringOrNullAfterStringOrNullValue.md)
 - [RecordStringStringOrNumberValue](docs/Model/RecordStringStringOrNumberValue.md)
 - [RenderableUserNotification](docs/Model/RenderableUserNotification.md)
@@ -270,6 +286,7 @@ Class | Method | HTTP request | Description
 - [SaveCommentResponseOptimized](docs/Model/SaveCommentResponseOptimized.md)
 - [SaveCommentsResponseWithPresence](docs/Model/SaveCommentsResponseWithPresence.md)
 - [SetCommentText200Response](docs/Model/SetCommentText200Response.md)
+- [SizePreset](docs/Model/SizePreset.md)
 - [SortDirections](docs/Model/SortDirections.md)
 - [SpamRule](docs/Model/SpamRule.md)
 - [UnBlockCommentPublic200Response](docs/Model/UnBlockCommentPublic200Response.md)
@@ -277,9 +294,11 @@ Class | Method | HTTP request | Description
 - [UnblockSuccess](docs/Model/UnblockSuccess.md)
 - [UpdateDomainConfigParams](docs/Model/UpdateDomainConfigParams.md)
 - [UpdateUserNotificationStatus200Response](docs/Model/UpdateUserNotificationStatus200Response.md)
+- [UploadImageResponse](docs/Model/UploadImageResponse.md)
 - [UserNotification](docs/Model/UserNotification.md)
 - [UserNotificationWriteResponse](docs/Model/UserNotificationWriteResponse.md)
 - [UserPresenceData](docs/Model/UserPresenceData.md)
+- [UserReactsResponse](docs/Model/UserReactsResponse.md)
 - [UserSessionInfo](docs/Model/UserSessionInfo.md)
 - [VoteBodyParams](docs/Model/VoteBodyParams.md)
 - [VoteComment200Response](docs/Model/VoteComment200Response.md)

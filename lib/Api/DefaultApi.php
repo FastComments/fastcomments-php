@@ -2460,16 +2460,20 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id tenant_id (required)
-     * @param  \FastComments\Client\Model\FeedPost $feed_post feed_post (required)
+     * @param  \FastComments\Client\Model\CreateFeedPostParams $create_feed_post_params create_feed_post_params (required)
+     * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  bool|null $is_live is_live (optional)
+     * @param  bool|null $do_spam_check do_spam_check (optional)
+     * @param  bool|null $skip_dup_check skip_dup_check (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFeedPost'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateFeedPost200Response
      */
-    public function createFeedPost($tenant_id, $feed_post, string $contentType = self::contentTypes['createFeedPost'][0])
+    public function createFeedPost($tenant_id, $create_feed_post_params, $broadcast_id = null, $is_live = null, $do_spam_check = null, $skip_dup_check = null, string $contentType = self::contentTypes['createFeedPost'][0])
     {
-        list($response) = $this->createFeedPostWithHttpInfo($tenant_id, $feed_post, $contentType);
+        list($response) = $this->createFeedPostWithHttpInfo($tenant_id, $create_feed_post_params, $broadcast_id, $is_live, $do_spam_check, $skip_dup_check, $contentType);
         return $response;
     }
 
@@ -2479,16 +2483,20 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
-     * @param  \FastComments\Client\Model\FeedPost $feed_post (required)
+     * @param  \FastComments\Client\Model\CreateFeedPostParams $create_feed_post_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  bool|null $is_live (optional)
+     * @param  bool|null $do_spam_check (optional)
+     * @param  bool|null $skip_dup_check (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFeedPost'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateFeedPost200Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createFeedPostWithHttpInfo($tenant_id, $feed_post, string $contentType = self::contentTypes['createFeedPost'][0])
+    public function createFeedPostWithHttpInfo($tenant_id, $create_feed_post_params, $broadcast_id = null, $is_live = null, $do_spam_check = null, $skip_dup_check = null, string $contentType = self::contentTypes['createFeedPost'][0])
     {
-        $request = $this->createFeedPostRequest($tenant_id, $feed_post, $contentType);
+        $request = $this->createFeedPostRequest($tenant_id, $create_feed_post_params, $broadcast_id, $is_live, $do_spam_check, $skip_dup_check, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2605,15 +2613,19 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
-     * @param  \FastComments\Client\Model\FeedPost $feed_post (required)
+     * @param  \FastComments\Client\Model\CreateFeedPostParams $create_feed_post_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  bool|null $is_live (optional)
+     * @param  bool|null $do_spam_check (optional)
+     * @param  bool|null $skip_dup_check (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFeedPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createFeedPostAsync($tenant_id, $feed_post, string $contentType = self::contentTypes['createFeedPost'][0])
+    public function createFeedPostAsync($tenant_id, $create_feed_post_params, $broadcast_id = null, $is_live = null, $do_spam_check = null, $skip_dup_check = null, string $contentType = self::contentTypes['createFeedPost'][0])
     {
-        return $this->createFeedPostAsyncWithHttpInfo($tenant_id, $feed_post, $contentType)
+        return $this->createFeedPostAsyncWithHttpInfo($tenant_id, $create_feed_post_params, $broadcast_id, $is_live, $do_spam_check, $skip_dup_check, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2627,16 +2639,20 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
-     * @param  \FastComments\Client\Model\FeedPost $feed_post (required)
+     * @param  \FastComments\Client\Model\CreateFeedPostParams $create_feed_post_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  bool|null $is_live (optional)
+     * @param  bool|null $do_spam_check (optional)
+     * @param  bool|null $skip_dup_check (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFeedPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createFeedPostAsyncWithHttpInfo($tenant_id, $feed_post, string $contentType = self::contentTypes['createFeedPost'][0])
+    public function createFeedPostAsyncWithHttpInfo($tenant_id, $create_feed_post_params, $broadcast_id = null, $is_live = null, $do_spam_check = null, $skip_dup_check = null, string $contentType = self::contentTypes['createFeedPost'][0])
     {
         $returnType = '\FastComments\Client\Model\CreateFeedPost200Response';
-        $request = $this->createFeedPostRequest($tenant_id, $feed_post, $contentType);
+        $request = $this->createFeedPostRequest($tenant_id, $create_feed_post_params, $broadcast_id, $is_live, $do_spam_check, $skip_dup_check, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2678,13 +2694,17 @@ class DefaultApi
      * Create request for operation 'createFeedPost'
      *
      * @param  string $tenant_id (required)
-     * @param  \FastComments\Client\Model\FeedPost $feed_post (required)
+     * @param  \FastComments\Client\Model\CreateFeedPostParams $create_feed_post_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  bool|null $is_live (optional)
+     * @param  bool|null $do_spam_check (optional)
+     * @param  bool|null $skip_dup_check (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFeedPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createFeedPostRequest($tenant_id, $feed_post, string $contentType = self::contentTypes['createFeedPost'][0])
+    public function createFeedPostRequest($tenant_id, $create_feed_post_params, $broadcast_id = null, $is_live = null, $do_spam_check = null, $skip_dup_check = null, string $contentType = self::contentTypes['createFeedPost'][0])
     {
 
         // verify the required parameter 'tenant_id' is set
@@ -2694,12 +2714,16 @@ class DefaultApi
             );
         }
 
-        // verify the required parameter 'feed_post' is set
-        if ($feed_post === null || (is_array($feed_post) && count($feed_post) === 0)) {
+        // verify the required parameter 'create_feed_post_params' is set
+        if ($create_feed_post_params === null || (is_array($create_feed_post_params) && count($create_feed_post_params) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $feed_post when calling createFeedPost'
+                'Missing the required parameter $create_feed_post_params when calling createFeedPost'
             );
         }
+
+
+
+
 
 
         $resourcePath = '/api/v1/feed-posts';
@@ -2718,6 +2742,42 @@ class DefaultApi
             true, // explode
             true // required
         ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $broadcast_id,
+            'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $is_live,
+            'isLive', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $do_spam_check,
+            'doSpamCheck', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $skip_dup_check,
+            'skipDupCheck', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
 
@@ -2729,12 +2789,12 @@ class DefaultApi
         );
 
         // for model (json/xml)
-        if (isset($feed_post)) {
+        if (isset($create_feed_post_params)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($feed_post));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_feed_post_params));
             } else {
-                $httpBody = $feed_post;
+                $httpBody = $create_feed_post_params;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

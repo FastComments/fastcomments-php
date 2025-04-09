@@ -1,6 +1,6 @@
 <?php
 /**
- * LiveEventTest
+ * GetFeedPostsPublic200ResponseTest
  *
  * PHP version 7.4
  *
@@ -32,15 +32,15 @@ namespace FastComments\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * LiveEventTest Class Doc Comment
+ * GetFeedPostsPublic200ResponseTest Class Doc Comment
  *
  * @category    Class
- * @description LiveEvent
+ * @description GetFeedPostsPublic200Response
  * @package     FastComments\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class LiveEventTest extends TestCase
+class GetFeedPostsPublic200ResponseTest extends TestCase
 {
 
     /**
@@ -72,153 +72,126 @@ class LiveEventTest extends TestCase
     }
 
     /**
-     * Test "LiveEvent"
+     * Test "GetFeedPostsPublic200Response"
      */
-    public function testLiveEvent()
+    public function testGetFeedPostsPublic200Response()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "type"
+     * Test attribute "my_reacts"
      */
-    public function testPropertyType()
+    public function testPropertyMyReacts()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "timestamp"
+     * Test attribute "status"
      */
-    public function testPropertyTimestamp()
+    public function testPropertyStatus()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "ts"
+     * Test attribute "feed_posts"
      */
-    public function testPropertyTs()
+    public function testPropertyFeedPosts()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "broadcast_id"
+     * Test attribute "url_id_ws"
      */
-    public function testPropertyBroadcastId()
+    public function testPropertyUrlIdWs()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "user_id"
+     * Test attribute "user_id_ws"
      */
-    public function testPropertyUserId()
+    public function testPropertyUserIdWs()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "badges"
+     * Test attribute "tenant_id_ws"
      */
-    public function testPropertyBadges()
+    public function testPropertyTenantIdWs()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "notification"
+     * Test attribute "reason"
      */
-    public function testPropertyNotification()
+    public function testPropertyReason()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "vote"
+     * Test attribute "code"
      */
-    public function testPropertyVote()
+    public function testPropertyCode()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "comment"
+     * Test attribute "secondary_code"
      */
-    public function testPropertyComment()
+    public function testPropertySecondaryCode()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "feed_post"
+     * Test attribute "banned_until"
      */
-    public function testPropertyFeedPost()
+    public function testPropertyBannedUntil()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "extra_info"
+     * Test attribute "max_character_length"
      */
-    public function testPropertyExtraInfo()
+    public function testPropertyMaxCharacterLength()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "config"
+     * Test attribute "translated_error"
      */
-    public function testPropertyConfig()
+    public function testPropertyTranslatedError()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "is_closed"
+     * Test attribute "custom_config"
      */
-    public function testPropertyIsClosed()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "uj"
-     */
-    public function testPropertyUj()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "ul"
-     */
-    public function testPropertyUl()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "changes"
-     */
-    public function testPropertyChanges()
+    public function testPropertyCustomConfig()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

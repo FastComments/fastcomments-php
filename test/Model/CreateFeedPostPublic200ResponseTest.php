@@ -1,6 +1,6 @@
 <?php
 /**
- * LiveEventTest
+ * CreateFeedPostPublic200ResponseTest
  *
  * PHP version 7.4
  *
@@ -32,15 +32,15 @@ namespace FastComments\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * LiveEventTest Class Doc Comment
+ * CreateFeedPostPublic200ResponseTest Class Doc Comment
  *
  * @category    Class
- * @description LiveEvent
+ * @description CreateFeedPostPublic200Response
  * @package     FastComments\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class LiveEventTest extends TestCase
+class CreateFeedPostPublic200ResponseTest extends TestCase
 {
 
     /**
@@ -72,90 +72,18 @@ class LiveEventTest extends TestCase
     }
 
     /**
-     * Test "LiveEvent"
+     * Test "CreateFeedPostPublic200Response"
      */
-    public function testLiveEvent()
+    public function testCreateFeedPostPublic200Response()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "type"
+     * Test attribute "status"
      */
-    public function testPropertyType()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "timestamp"
-     */
-    public function testPropertyTimestamp()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "ts"
-     */
-    public function testPropertyTs()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "broadcast_id"
-     */
-    public function testPropertyBroadcastId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "user_id"
-     */
-    public function testPropertyUserId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "badges"
-     */
-    public function testPropertyBadges()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "notification"
-     */
-    public function testPropertyNotification()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "vote"
-     */
-    public function testPropertyVote()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "comment"
-     */
-    public function testPropertyComment()
+    public function testPropertyStatus()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -171,54 +99,63 @@ class LiveEventTest extends TestCase
     }
 
     /**
-     * Test attribute "extra_info"
+     * Test attribute "reason"
      */
-    public function testPropertyExtraInfo()
+    public function testPropertyReason()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "config"
+     * Test attribute "code"
      */
-    public function testPropertyConfig()
+    public function testPropertyCode()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "is_closed"
+     * Test attribute "secondary_code"
      */
-    public function testPropertyIsClosed()
+    public function testPropertySecondaryCode()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "uj"
+     * Test attribute "banned_until"
      */
-    public function testPropertyUj()
+    public function testPropertyBannedUntil()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "ul"
+     * Test attribute "max_character_length"
      */
-    public function testPropertyUl()
+    public function testPropertyMaxCharacterLength()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "changes"
+     * Test attribute "translated_error"
      */
-    public function testPropertyChanges()
+    public function testPropertyTranslatedError()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "custom_config"
+     */
+    public function testPropertyCustomConfig()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

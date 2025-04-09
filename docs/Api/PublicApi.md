@@ -9,6 +9,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | [**blockFromCommentPublic()**](PublicApi.md#blockFromCommentPublic) | **POST** /block-from-comment/{commentId} |  |
 | [**checkedCommentsForBlocked()**](PublicApi.md#checkedCommentsForBlocked) | **GET** /check-blocked-comments |  |
 | [**createCommentPublic()**](PublicApi.md#createCommentPublic) | **POST** /comments/{tenantId} |  |
+| [**createFeedPostPublic()**](PublicApi.md#createFeedPostPublic) | **POST** /feed-posts/{tenantId} |  |
 | [**deleteCommentPublic()**](PublicApi.md#deleteCommentPublic) | **DELETE** /comments/{tenantId}/{commentId} |  |
 | [**deleteCommentVote()**](PublicApi.md#deleteCommentVote) | **DELETE** /comments/{tenantId}/{commentId}/vote/{voteId} |  |
 | [**flagCommentPublic()**](PublicApi.md#flagCommentPublic) | **POST** /flag-comment/{commentId} |  |
@@ -21,8 +22,10 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | [**getUserNotificationCount()**](PublicApi.md#getUserNotificationCount) | **GET** /user-notifications/get-count |  |
 | [**getUserNotifications()**](PublicApi.md#getUserNotifications) | **GET** /user-notifications |  |
 | [**getUserPresenceStatuses()**](PublicApi.md#getUserPresenceStatuses) | **GET** /user-presence-status |  |
+| [**getUserReactsPublic()**](PublicApi.md#getUserReactsPublic) | **GET** /feed-posts/{tenantId}/user-reacts |  |
 | [**lockComment()**](PublicApi.md#lockComment) | **POST** /comments/{tenantId}/{commentId}/lock |  |
 | [**pinComment()**](PublicApi.md#pinComment) | **POST** /comments/{tenantId}/{commentId}/pin |  |
+| [**reactFeedPostPublic()**](PublicApi.md#reactFeedPostPublic) | **POST** /feed-posts/{tenantId}/react/{postId} |  |
 | [**resetUserNotificationCount()**](PublicApi.md#resetUserNotificationCount) | **POST** /user-notifications/reset-count |  |
 | [**resetUserNotifications()**](PublicApi.md#resetUserNotifications) | **POST** /user-notifications/reset |  |
 | [**setCommentText()**](PublicApi.md#setCommentText) | **POST** /comments/{tenantId}/{commentId}/update-text |  |
@@ -32,6 +35,7 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | [**updateUserNotificationCommentSubscriptionStatus()**](PublicApi.md#updateUserNotificationCommentSubscriptionStatus) | **POST** /user-notifications/{notificationId}/mark-opted/{optedInOrOut} |  |
 | [**updateUserNotificationPageSubscriptionStatus()**](PublicApi.md#updateUserNotificationPageSubscriptionStatus) | **POST** /user-notifications/set-subscription-state/{subscribedOrUnsubscribed} |  |
 | [**updateUserNotificationStatus()**](PublicApi.md#updateUserNotificationStatus) | **POST** /user-notifications/{notificationId}/mark/{newStatus} |  |
+| [**uploadImage()**](PublicApi.md#uploadImage) | **POST** /upload-image/{tenantId} |  |
 | [**voteComment()**](PublicApi.md#voteComment) | **POST** /comments/{tenantId}/{commentId}/vote |  |
 
 
@@ -203,6 +207,66 @@ try {
 ### Return type
 
 [**\FastComments\Client\Model\CreateCommentPublic200Response**](../Model/CreateCommentPublic200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createFeedPostPublic()`
+
+```php
+createFeedPostPublic($tenant_id, $create_feed_post_params, $broadcast_id, $sso): \FastComments\Client\Model\CreateFeedPostPublic200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$create_feed_post_params = new \FastComments\Client\Model\CreateFeedPostParams(); // \FastComments\Client\Model\CreateFeedPostParams
+$broadcast_id = 'broadcast_id_example'; // string
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->createFeedPostPublic($tenant_id, $create_feed_post_params, $broadcast_id, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->createFeedPostPublic: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **create_feed_post_params** | [**\FastComments\Client\Model\CreateFeedPostParams**](../Model/CreateFeedPostParams.md)|  | |
+| **broadcast_id** | **string**|  | [optional] |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\CreateFeedPostPublic200Response**](../Model/CreateFeedPostPublic200Response.md)
 
 ### Authorization
 
@@ -698,7 +762,7 @@ No authorization required
 ## `getFeedPostsPublic()`
 
 ```php
-getFeedPostsPublic($tenant_id, $after_id, $limit, $tags): \FastComments\Client\Model\GetFeedPosts200Response
+getFeedPostsPublic($tenant_id, $after_id, $limit, $tags, $sso, $is_crawler): \FastComments\Client\Model\GetFeedPostsPublic200Response
 ```
 
 
@@ -722,9 +786,11 @@ $tenant_id = 'tenant_id_example'; // string
 $after_id = 'after_id_example'; // string
 $limit = 56; // int
 $tags = array('tags_example'); // string[]
+$sso = 'sso_example'; // string
+$is_crawler = True; // bool
 
 try {
-    $result = $apiInstance->getFeedPostsPublic($tenant_id, $after_id, $limit, $tags);
+    $result = $apiInstance->getFeedPostsPublic($tenant_id, $after_id, $limit, $tags, $sso, $is_crawler);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getFeedPostsPublic: ', $e->getMessage(), PHP_EOL;
@@ -739,10 +805,12 @@ try {
 | **after_id** | **string**|  | [optional] |
 | **limit** | **int**|  | [optional] |
 | **tags** | [**string[]**](../Model/string.md)|  | [optional] |
+| **sso** | **string**|  | [optional] |
+| **is_crawler** | **bool**|  | [optional] |
 
 ### Return type
 
-[**\FastComments\Client\Model\GetFeedPosts200Response**](../Model/GetFeedPosts200Response.md)
+[**\FastComments\Client\Model\GetFeedPostsPublic200Response**](../Model/GetFeedPostsPublic200Response.md)
 
 ### Authorization
 
@@ -1007,6 +1075,64 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getUserReactsPublic()`
+
+```php
+getUserReactsPublic($tenant_id, $post_ids, $sso): \FastComments\Client\Model\GetUserReactsPublic200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$post_ids = array('post_ids_example'); // string[]
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->getUserReactsPublic($tenant_id, $post_ids, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getUserReactsPublic: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **post_ids** | [**string[]**](../Model/string.md)|  | [optional] |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\GetUserReactsPublic200Response**](../Model/GetUserReactsPublic200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `lockComment()`
 
 ```php
@@ -1121,6 +1247,70 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `reactFeedPostPublic()`
+
+```php
+reactFeedPostPublic($tenant_id, $post_id, $react_body_params, $is_undo, $broadcast_id, $sso): \FastComments\Client\Model\ReactFeedPostPublic200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$post_id = 'post_id_example'; // string
+$react_body_params = new \FastComments\Client\Model\ReactBodyParams(); // \FastComments\Client\Model\ReactBodyParams
+$is_undo = True; // bool
+$broadcast_id = 'broadcast_id_example'; // string
+$sso = 'sso_example'; // string
+
+try {
+    $result = $apiInstance->reactFeedPostPublic($tenant_id, $post_id, $react_body_params, $is_undo, $broadcast_id, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->reactFeedPostPublic: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **post_id** | **string**|  | |
+| **react_body_params** | [**\FastComments\Client\Model\ReactBodyParams**](../Model/ReactBodyParams.md)|  | |
+| **is_undo** | **bool**|  | [optional] |
+| **broadcast_id** | **string**|  | [optional] |
+| **sso** | **string**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\ReactFeedPostPublic200Response**](../Model/ReactFeedPostPublic200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1669,6 +1859,66 @@ try {
 ### Return type
 
 [**\FastComments\Client\Model\UpdateUserNotificationStatus200Response**](../Model/UpdateUserNotificationStatus200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `uploadImage()`
+
+```php
+uploadImage($tenant_id, $size_preset, $url_id): \FastComments\Client\Model\UploadImageResponse
+```
+
+
+
+Upload and resize an image
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string | Tenant ID
+$size_preset = new \FastComments\Client\Model\\FastComments\Client\Model\SizePreset(); // \FastComments\Client\Model\SizePreset | Size preset: \"Default\" (1000x1000px) or \"CrossPlatform\" (creates sizes for popular devices)
+$url_id = 'url_id_example'; // string | Page id that upload is happening from, to configure
+
+try {
+    $result = $apiInstance->uploadImage($tenant_id, $size_preset, $url_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->uploadImage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**| Tenant ID | |
+| **size_preset** | [**\FastComments\Client\Model\SizePreset**](../Model/.md)| Size preset: \&quot;Default\&quot; (1000x1000px) or \&quot;CrossPlatform\&quot; (creates sizes for popular devices) | [optional] |
+| **url_id** | **string**| Page id that upload is happening from, to configure | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\UploadImageResponse**](../Model/UploadImageResponse.md)
 
 ### Authorization
 

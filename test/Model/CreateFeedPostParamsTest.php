@@ -1,6 +1,6 @@
 <?php
 /**
- * LiveEventTest
+ * CreateFeedPostParamsTest
  *
  * PHP version 7.4
  *
@@ -32,15 +32,15 @@ namespace FastComments\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * LiveEventTest Class Doc Comment
+ * CreateFeedPostParamsTest Class Doc Comment
  *
  * @category    Class
- * @description LiveEvent
+ * @description CreateFeedPostParams
  * @package     FastComments\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class LiveEventTest extends TestCase
+class CreateFeedPostParamsTest extends TestCase
 {
 
     /**
@@ -72,153 +72,81 @@ class LiveEventTest extends TestCase
     }
 
     /**
-     * Test "LiveEvent"
+     * Test "CreateFeedPostParams"
      */
-    public function testLiveEvent()
+    public function testCreateFeedPostParams()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "type"
+     * Test attribute "title"
      */
-    public function testPropertyType()
+    public function testPropertyTitle()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "timestamp"
+     * Test attribute "content_html"
      */
-    public function testPropertyTimestamp()
+    public function testPropertyContentHtml()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "ts"
+     * Test attribute "media"
      */
-    public function testPropertyTs()
+    public function testPropertyMedia()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "broadcast_id"
+     * Test attribute "links"
      */
-    public function testPropertyBroadcastId()
+    public function testPropertyLinks()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "user_id"
+     * Test attribute "from_user_id"
      */
-    public function testPropertyUserId()
+    public function testPropertyFromUserId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "badges"
+     * Test attribute "from_user_display_name"
      */
-    public function testPropertyBadges()
+    public function testPropertyFromUserDisplayName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "notification"
+     * Test attribute "tags"
      */
-    public function testPropertyNotification()
+    public function testPropertyTags()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "vote"
+     * Test attribute "meta"
      */
-    public function testPropertyVote()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "comment"
-     */
-    public function testPropertyComment()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "feed_post"
-     */
-    public function testPropertyFeedPost()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "extra_info"
-     */
-    public function testPropertyExtraInfo()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "config"
-     */
-    public function testPropertyConfig()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "is_closed"
-     */
-    public function testPropertyIsClosed()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "uj"
-     */
-    public function testPropertyUj()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "ul"
-     */
-    public function testPropertyUl()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "changes"
-     */
-    public function testPropertyChanges()
+    public function testPropertyMeta()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

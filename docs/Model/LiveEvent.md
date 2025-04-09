@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **notification** | [**\FastComments\Client\Model\UserNotification**](UserNotification.md) |  | [optional]
 **vote** | [**\FastComments\Client\Model\PubSubVote**](PubSubVote.md) |  | [optional]
 **comment** | [**\FastComments\Client\Model\PubSubComment**](PubSubComment.md) |  | [optional]
+**feed_post** | [**\FastComments\Client\Model\FeedPost**](FeedPost.md) |  | [optional]
 **extra_info** | [**\FastComments\Client\Model\LiveEventExtraInfo**](LiveEventExtraInfo.md) |  | [optional]
 **config** | **object** |  | [optional]
 **is_closed** | **bool** |  | [optional]

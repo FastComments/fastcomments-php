@@ -99,6 +99,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'header_html' => 'string',
         'hide_avatars' => 'bool',
         'hide_comments_under_count_text_format' => 'string',
+        'image_content_profanity_level' => '\FastComments\Client\Model\ImageContentProfanityLevel',
         'input_after_comments' => 'bool',
         'limit_comments_by_groups' => 'bool',
         'locale' => 'string',
@@ -110,12 +111,12 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'page_size' => 'float',
         'readonly' => 'bool',
         'require_sso' => 'bool',
-        'sso_sec_lvl' => '\FastComments\Client\Model\SSOSecurityLevel',
         'restricted_link_domains' => 'string[]',
         'show_comment_save_success' => 'bool',
         'show_live_right_away' => 'bool',
         'show_question' => 'bool',
         'spam_rules' => '\FastComments\Client\Model\SpamRule[]',
+        'sso_sec_lvl' => '\FastComments\Client\Model\SSOSecurityLevel',
         'translations' => 'array<string,string>',
         'use_show_comments_toggle' => 'bool',
         'use_single_line_comment_input' => 'bool',
@@ -178,6 +179,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'header_html' => null,
         'hide_avatars' => null,
         'hide_comments_under_count_text_format' => null,
+        'image_content_profanity_level' => null,
         'input_after_comments' => null,
         'limit_comments_by_groups' => null,
         'locale' => null,
@@ -189,12 +191,12 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'page_size' => 'double',
         'readonly' => null,
         'require_sso' => null,
-        'sso_sec_lvl' => null,
         'restricted_link_domains' => null,
         'show_comment_save_success' => null,
         'show_live_right_away' => null,
         'show_question' => null,
         'spam_rules' => null,
+        'sso_sec_lvl' => null,
         'translations' => null,
         'use_show_comments_toggle' => null,
         'use_single_line_comment_input' => null,
@@ -255,6 +257,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'header_html' => true,
         'hide_avatars' => false,
         'hide_comments_under_count_text_format' => true,
+        'image_content_profanity_level' => false,
         'input_after_comments' => false,
         'limit_comments_by_groups' => false,
         'locale' => true,
@@ -266,12 +269,12 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'page_size' => true,
         'readonly' => false,
         'require_sso' => false,
-        'sso_sec_lvl' => false,
         'restricted_link_domains' => true,
         'show_comment_save_success' => false,
         'show_live_right_away' => false,
         'show_question' => false,
         'spam_rules' => false,
+        'sso_sec_lvl' => false,
         'translations' => true,
         'use_show_comments_toggle' => false,
         'use_single_line_comment_input' => false,
@@ -412,6 +415,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'header_html' => 'headerHTML',
         'hide_avatars' => 'hideAvatars',
         'hide_comments_under_count_text_format' => 'hideCommentsUnderCountTextFormat',
+        'image_content_profanity_level' => 'imageContentProfanityLevel',
         'input_after_comments' => 'inputAfterComments',
         'limit_comments_by_groups' => 'limitCommentsByGroups',
         'locale' => 'locale',
@@ -423,12 +427,12 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'page_size' => 'pageSize',
         'readonly' => 'readonly',
         'require_sso' => 'requireSSO',
-        'sso_sec_lvl' => 'ssoSecLvl',
         'restricted_link_domains' => 'restrictedLinkDomains',
         'show_comment_save_success' => 'showCommentSaveSuccess',
         'show_live_right_away' => 'showLiveRightAway',
         'show_question' => 'showQuestion',
         'spam_rules' => 'spamRules',
+        'sso_sec_lvl' => 'ssoSecLvl',
         'translations' => 'translations',
         'use_show_comments_toggle' => 'useShowCommentsToggle',
         'use_single_line_comment_input' => 'useSingleLineCommentInput',
@@ -489,6 +493,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'header_html' => 'setHeaderHtml',
         'hide_avatars' => 'setHideAvatars',
         'hide_comments_under_count_text_format' => 'setHideCommentsUnderCountTextFormat',
+        'image_content_profanity_level' => 'setImageContentProfanityLevel',
         'input_after_comments' => 'setInputAfterComments',
         'limit_comments_by_groups' => 'setLimitCommentsByGroups',
         'locale' => 'setLocale',
@@ -500,12 +505,12 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'page_size' => 'setPageSize',
         'readonly' => 'setReadonly',
         'require_sso' => 'setRequireSso',
-        'sso_sec_lvl' => 'setSsoSecLvl',
         'restricted_link_domains' => 'setRestrictedLinkDomains',
         'show_comment_save_success' => 'setShowCommentSaveSuccess',
         'show_live_right_away' => 'setShowLiveRightAway',
         'show_question' => 'setShowQuestion',
         'spam_rules' => 'setSpamRules',
+        'sso_sec_lvl' => 'setSsoSecLvl',
         'translations' => 'setTranslations',
         'use_show_comments_toggle' => 'setUseShowCommentsToggle',
         'use_single_line_comment_input' => 'setUseSingleLineCommentInput',
@@ -566,6 +571,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'header_html' => 'getHeaderHtml',
         'hide_avatars' => 'getHideAvatars',
         'hide_comments_under_count_text_format' => 'getHideCommentsUnderCountTextFormat',
+        'image_content_profanity_level' => 'getImageContentProfanityLevel',
         'input_after_comments' => 'getInputAfterComments',
         'limit_comments_by_groups' => 'getLimitCommentsByGroups',
         'locale' => 'getLocale',
@@ -577,12 +583,12 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'page_size' => 'getPageSize',
         'readonly' => 'getReadonly',
         'require_sso' => 'getRequireSso',
-        'sso_sec_lvl' => 'getSsoSecLvl',
         'restricted_link_domains' => 'getRestrictedLinkDomains',
         'show_comment_save_success' => 'getShowCommentSaveSuccess',
         'show_live_right_away' => 'getShowLiveRightAway',
         'show_question' => 'getShowQuestion',
         'spam_rules' => 'getSpamRules',
+        'sso_sec_lvl' => 'getSsoSecLvl',
         'translations' => 'getTranslations',
         'use_show_comments_toggle' => 'getUseShowCommentsToggle',
         'use_single_line_comment_input' => 'getUseSingleLineCommentInput',
@@ -694,6 +700,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('header_html', $data ?? [], null);
         $this->setIfExists('hide_avatars', $data ?? [], null);
         $this->setIfExists('hide_comments_under_count_text_format', $data ?? [], null);
+        $this->setIfExists('image_content_profanity_level', $data ?? [], null);
         $this->setIfExists('input_after_comments', $data ?? [], null);
         $this->setIfExists('limit_comments_by_groups', $data ?? [], null);
         $this->setIfExists('locale', $data ?? [], null);
@@ -705,12 +712,12 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('page_size', $data ?? [], null);
         $this->setIfExists('readonly', $data ?? [], null);
         $this->setIfExists('require_sso', $data ?? [], null);
-        $this->setIfExists('sso_sec_lvl', $data ?? [], null);
         $this->setIfExists('restricted_link_domains', $data ?? [], null);
         $this->setIfExists('show_comment_save_success', $data ?? [], null);
         $this->setIfExists('show_live_right_away', $data ?? [], null);
         $this->setIfExists('show_question', $data ?? [], null);
         $this->setIfExists('spam_rules', $data ?? [], null);
+        $this->setIfExists('sso_sec_lvl', $data ?? [], null);
         $this->setIfExists('translations', $data ?? [], null);
         $this->setIfExists('use_show_comments_toggle', $data ?? [], null);
         $this->setIfExists('use_single_line_comment_input', $data ?? [], null);
@@ -1944,6 +1951,33 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets image_content_profanity_level
+     *
+     * @return \FastComments\Client\Model\ImageContentProfanityLevel|null
+     */
+    public function getImageContentProfanityLevel()
+    {
+        return $this->container['image_content_profanity_level'];
+    }
+
+    /**
+     * Sets image_content_profanity_level
+     *
+     * @param \FastComments\Client\Model\ImageContentProfanityLevel|null $image_content_profanity_level image_content_profanity_level
+     *
+     * @return self
+     */
+    public function setImageContentProfanityLevel($image_content_profanity_level)
+    {
+        if (is_null($image_content_profanity_level)) {
+            throw new \InvalidArgumentException('non-nullable image_content_profanity_level cannot be null');
+        }
+        $this->container['image_content_profanity_level'] = $image_content_profanity_level;
+
+        return $this;
+    }
+
+    /**
      * Gets input_after_comments
      *
      * @return bool|null
@@ -2269,33 +2303,6 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets sso_sec_lvl
-     *
-     * @return \FastComments\Client\Model\SSOSecurityLevel|null
-     */
-    public function getSsoSecLvl()
-    {
-        return $this->container['sso_sec_lvl'];
-    }
-
-    /**
-     * Sets sso_sec_lvl
-     *
-     * @param \FastComments\Client\Model\SSOSecurityLevel|null $sso_sec_lvl sso_sec_lvl
-     *
-     * @return self
-     */
-    public function setSsoSecLvl($sso_sec_lvl)
-    {
-        if (is_null($sso_sec_lvl)) {
-            throw new \InvalidArgumentException('non-nullable sso_sec_lvl cannot be null');
-        }
-        $this->container['sso_sec_lvl'] = $sso_sec_lvl;
-
-        return $this;
-    }
-
-    /**
      * Gets restricted_link_domains
      *
      * @return string[]|null
@@ -2433,6 +2440,33 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable spam_rules cannot be null');
         }
         $this->container['spam_rules'] = $spam_rules;
+
+        return $this;
+    }
+
+    /**
+     * Gets sso_sec_lvl
+     *
+     * @return \FastComments\Client\Model\SSOSecurityLevel|null
+     */
+    public function getSsoSecLvl()
+    {
+        return $this->container['sso_sec_lvl'];
+    }
+
+    /**
+     * Sets sso_sec_lvl
+     *
+     * @param \FastComments\Client\Model\SSOSecurityLevel|null $sso_sec_lvl sso_sec_lvl
+     *
+     * @return self
+     */
+    public function setSsoSecLvl($sso_sec_lvl)
+    {
+        if (is_null($sso_sec_lvl)) {
+            throw new \InvalidArgumentException('non-nullable sso_sec_lvl cannot be null');
+        }
+        $this->container['sso_sec_lvl'] = $sso_sec_lvl;
 
         return $this;
     }

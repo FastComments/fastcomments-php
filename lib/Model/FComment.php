@@ -226,7 +226,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'anon_user_id' => true,
         'commenter_email' => true,
         'commenter_name' => false,
-        'commenter_link' => false,
+        'commenter_link' => true,
         'comment' => false,
         'comment_html' => false,
         'parent_id' => true,
@@ -1124,7 +1124,14 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCommenterLink($commenter_link)
     {
         if (is_null($commenter_link)) {
-            throw new \InvalidArgumentException('non-nullable commenter_link cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'commenter_link');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('commenter_link', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['commenter_link'] = $commenter_link;
 

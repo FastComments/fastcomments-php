@@ -444,7 +444,7 @@ try {
 ## `createFeedPost()`
 
 ```php
-createFeedPost($tenant_id, $feed_post): \FastComments\Client\Model\CreateFeedPost200Response
+createFeedPost($tenant_id, $create_feed_post_params, $broadcast_id, $is_live, $do_spam_check, $skip_dup_check): \FastComments\Client\Model\CreateFeedPost200Response
 ```
 
 
@@ -469,10 +469,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     $config
 );
 $tenant_id = 'tenant_id_example'; // string
-$feed_post = new \FastComments\Client\Model\FeedPost(); // \FastComments\Client\Model\FeedPost
+$create_feed_post_params = new \FastComments\Client\Model\CreateFeedPostParams(); // \FastComments\Client\Model\CreateFeedPostParams
+$broadcast_id = 'broadcast_id_example'; // string
+$is_live = True; // bool
+$do_spam_check = True; // bool
+$skip_dup_check = True; // bool
 
 try {
-    $result = $apiInstance->createFeedPost($tenant_id, $feed_post);
+    $result = $apiInstance->createFeedPost($tenant_id, $create_feed_post_params, $broadcast_id, $is_live, $do_spam_check, $skip_dup_check);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createFeedPost: ', $e->getMessage(), PHP_EOL;
@@ -484,7 +488,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **tenant_id** | **string**|  | |
-| **feed_post** | [**\FastComments\Client\Model\FeedPost**](../Model/FeedPost.md)|  | |
+| **create_feed_post_params** | [**\FastComments\Client\Model\CreateFeedPostParams**](../Model/CreateFeedPostParams.md)|  | |
+| **broadcast_id** | **string**|  | [optional] |
+| **is_live** | **bool**|  | [optional] |
+| **do_spam_check** | **bool**|  | [optional] |
+| **skip_dup_check** | **bool**|  | [optional] |
 
 ### Return type
 

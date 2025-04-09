@@ -67,6 +67,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification' => '\FastComments\Client\Model\UserNotification',
         'vote' => '\FastComments\Client\Model\PubSubVote',
         'comment' => '\FastComments\Client\Model\PubSubComment',
+        'feed_post' => '\FastComments\Client\Model\FeedPost',
         'extra_info' => '\FastComments\Client\Model\LiveEventExtraInfo',
         'config' => 'object',
         'is_closed' => 'bool',
@@ -92,6 +93,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification' => null,
         'vote' => null,
         'comment' => null,
+        'feed_post' => null,
         'extra_info' => null,
         'config' => null,
         'is_closed' => null,
@@ -115,6 +117,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification' => false,
         'vote' => false,
         'comment' => false,
+        'feed_post' => false,
         'extra_info' => false,
         'config' => false,
         'is_closed' => false,
@@ -218,6 +221,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification' => 'notification',
         'vote' => 'vote',
         'comment' => 'comment',
+        'feed_post' => 'feedPost',
         'extra_info' => 'extraInfo',
         'config' => 'config',
         'is_closed' => 'isClosed',
@@ -241,6 +245,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification' => 'setNotification',
         'vote' => 'setVote',
         'comment' => 'setComment',
+        'feed_post' => 'setFeedPost',
         'extra_info' => 'setExtraInfo',
         'config' => 'setConfig',
         'is_closed' => 'setIsClosed',
@@ -264,6 +269,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification' => 'getNotification',
         'vote' => 'getVote',
         'comment' => 'getComment',
+        'feed_post' => 'getFeedPost',
         'extra_info' => 'getExtraInfo',
         'config' => 'getConfig',
         'is_closed' => 'getIsClosed',
@@ -338,6 +344,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('notification', $data ?? [], null);
         $this->setIfExists('vote', $data ?? [], null);
         $this->setIfExists('comment', $data ?? [], null);
+        $this->setIfExists('feed_post', $data ?? [], null);
         $this->setIfExists('extra_info', $data ?? [], null);
         $this->setIfExists('config', $data ?? [], null);
         $this->setIfExists('is_closed', $data ?? [], null);
@@ -630,6 +637,33 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable comment cannot be null');
         }
         $this->container['comment'] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Gets feed_post
+     *
+     * @return \FastComments\Client\Model\FeedPost|null
+     */
+    public function getFeedPost()
+    {
+        return $this->container['feed_post'];
+    }
+
+    /**
+     * Sets feed_post
+     *
+     * @param \FastComments\Client\Model\FeedPost|null $feed_post feed_post
+     *
+     * @return self
+     */
+    public function setFeedPost($feed_post)
+    {
+        if (is_null($feed_post)) {
+            throw new \InvalidArgumentException('non-nullable feed_post cannot be null');
+        }
+        $this->container['feed_post'] = $feed_post;
 
         return $this;
     }
