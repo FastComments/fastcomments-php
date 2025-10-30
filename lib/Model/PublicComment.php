@@ -58,8 +58,8 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_id' => 'string',
         'date' => '\DateTime',
+        '_id' => 'string',
         'user_id' => 'string',
         'anon_user_id' => 'string',
         'commenter_name' => 'string',
@@ -106,8 +106,8 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        '_id' => null,
         'date' => 'date-time',
+        '_id' => null,
         'user_id' => null,
         'anon_user_id' => null,
         'commenter_name' => null,
@@ -152,8 +152,8 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        '_id' => false,
         'date' => false,
+        '_id' => false,
         'user_id' => false,
         'anon_user_id' => false,
         'commenter_name' => false,
@@ -278,8 +278,8 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        '_id' => '_id',
         'date' => 'date',
+        '_id' => '_id',
         'user_id' => 'userId',
         'anon_user_id' => 'anonUserId',
         'commenter_name' => 'commenterName',
@@ -324,8 +324,8 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        '_id' => 'setId',
         'date' => 'setDate',
+        '_id' => 'setId',
         'user_id' => 'setUserId',
         'anon_user_id' => 'setAnonUserId',
         'commenter_name' => 'setCommenterName',
@@ -370,8 +370,8 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        '_id' => 'getId',
         'date' => 'getDate',
+        '_id' => 'getId',
         'user_id' => 'getUserId',
         'anon_user_id' => 'getAnonUserId',
         'commenter_name' => 'getCommenterName',
@@ -467,8 +467,8 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('_id', $data ?? [], null);
         $this->setIfExists('date', $data ?? [], null);
+        $this->setIfExists('_id', $data ?? [], null);
         $this->setIfExists('user_id', $data ?? [], null);
         $this->setIfExists('anon_user_id', $data ?? [], null);
         $this->setIfExists('commenter_name', $data ?? [], null);
@@ -534,11 +534,11 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['_id'] === null) {
-            $invalidProperties[] = "'_id' can't be null";
-        }
         if ($this->container['date'] === null) {
             $invalidProperties[] = "'date' can't be null";
+        }
+        if ($this->container['_id'] === null) {
+            $invalidProperties[] = "'_id' can't be null";
         }
         if ($this->container['commenter_name'] === null) {
             $invalidProperties[] = "'commenter_name' can't be null";
@@ -565,33 +565,6 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets _id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['_id'];
-    }
-
-    /**
-     * Sets _id
-     *
-     * @param string $_id _id
-     *
-     * @return self
-     */
-    public function setId($_id)
-    {
-        if (is_null($_id)) {
-            throw new \InvalidArgumentException('non-nullable _id cannot be null');
-        }
-        $this->container['_id'] = $_id;
-
-        return $this;
-    }
-
-    /**
      * Gets date
      *
      * @return \DateTime
@@ -614,6 +587,33 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable date cannot be null');
         }
         $this->container['date'] = $date;
+
+        return $this;
+    }
+
+    /**
+     * Gets _id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['_id'];
+    }
+
+    /**
+     * Sets _id
+     *
+     * @param string $_id _id
+     *
+     * @return self
+     */
+    public function setId($_id)
+    {
+        if (is_null($_id)) {
+            throw new \InvalidArgumentException('non-nullable _id cannot be null');
+        }
+        $this->container['_id'] = $_id;
 
         return $this;
     }

@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**date** | **string** |  |
 **_id** | **string** |  |
+**tenant_id** | **string** |  |
 **url_id** | **string** |  |
 **url** | **string** |  |
 **page_title** | **string** |  | [optional]
-**date** | **string** |  |
-**tenant_id** | **string** |  |
 **user_id** | **string** |  | [optional]
 **anon_user_id** | **string** |  | [optional]
 **commenter_name** | **string** |  |

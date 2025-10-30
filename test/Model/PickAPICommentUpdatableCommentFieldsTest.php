@@ -81,9 +81,27 @@ class PickAPICommentUpdatableCommentFieldsTest extends TestCase
     }
 
     /**
+     * Test attribute "date"
+     */
+    public function testPropertyDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "url_id"
      */
     public function testPropertyUrlId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "url_id_raw"
+     */
+    public function testPropertyUrlIdRaw()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -102,24 +120,6 @@ class PickAPICommentUpdatableCommentFieldsTest extends TestCase
      * Test attribute "page_title"
      */
     public function testPropertyPageTitle()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "date"
-     */
-    public function testPropertyDate()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "url_id_raw"
-     */
-    public function testPropertyUrlIdRaw()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

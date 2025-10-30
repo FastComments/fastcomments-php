@@ -145,6 +145,18 @@ class PublicApiTest extends TestCase
     }
 
     /**
+     * Test case for deleteFeedPostPublic
+     *
+     * .
+     *
+     */
+    public function testDeleteFeedPostPublic()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for flagCommentPublic
      *
      * .
@@ -211,6 +223,18 @@ class PublicApiTest extends TestCase
      *
      */
     public function testGetFeedPostsPublic()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getFeedPostsStats
+     *
+     * .
+     *
+     */
+    public function testGetFeedPostsStats()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -337,6 +361,18 @@ class PublicApiTest extends TestCase
     }
 
     /**
+     * Test case for searchUsers
+     *
+     * .
+     *
+     */
+    public function testSearchUsers()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for setCommentText
      *
      * .
@@ -379,6 +415,18 @@ class PublicApiTest extends TestCase
      *
      */
     public function testUnPinComment()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateFeedPostPublic
+     *
+     * .
+     *
+     */
+    public function testUpdateFeedPostPublic()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

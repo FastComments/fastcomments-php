@@ -214,4 +214,13 @@ class FeedPostTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "comment_count"
+     */
+    public function testPropertyCommentCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **status** | **string** |  |
 **code** | **string** |  | [optional]
 **reason** | **string** |  | [optional]
+**translated_warning** | **string** |  | [optional]
 **comments** | [**\FastComments\Client\Model\PublicComment[]**](PublicComment.md) |  |
 **user** | [**\FastComments\Client\Model\UserSessionInfo**](UserSessionInfo.md) |  |
 **url_id_clean** | **string** |  | [optional]

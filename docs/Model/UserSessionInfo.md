@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **id** | **string** |  | [optional]
 **authorized** | **bool** |  | [optional]
 **avatar_src** | **string** |  | [optional]
+**badges** | [**\FastComments\Client\Model\CommentUserBadgeInfo[]**](CommentUserBadgeInfo.md) |  | [optional]
 **display_label** | **string** |  | [optional]
 **display_name** | **string** |  | [optional]
 **email** | **string** |  | [optional]

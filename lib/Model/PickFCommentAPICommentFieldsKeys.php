@@ -59,13 +59,13 @@ class PickFCommentAPICommentFieldsKeys implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
+        'date' => '\DateTime',
         '_id' => 'string',
+        'tenant_id' => 'string',
         'url_id' => 'string',
+        'url_id_raw' => 'string',
         'url' => 'string',
         'page_title' => 'string',
-        'date' => '\DateTime',
-        'tenant_id' => 'string',
-        'url_id_raw' => 'string',
         'user_id' => 'string',
         'anon_user_id' => 'string',
         'commenter_email' => 'string',
@@ -122,13 +122,13 @@ class PickFCommentAPICommentFieldsKeys implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'date' => 'date-time',
         '_id' => null,
+        'tenant_id' => null,
         'url_id' => null,
+        'url_id_raw' => null,
         'url' => null,
         'page_title' => null,
-        'date' => 'date-time',
-        'tenant_id' => null,
-        'url_id_raw' => null,
         'user_id' => null,
         'anon_user_id' => null,
         'commenter_email' => null,
@@ -183,13 +183,13 @@ class PickFCommentAPICommentFieldsKeys implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'date' => false,
         '_id' => false,
+        'tenant_id' => false,
         'url_id' => false,
+        'url_id_raw' => false,
         'url' => false,
         'page_title' => false,
-        'date' => false,
-        'tenant_id' => false,
-        'url_id_raw' => false,
         'user_id' => false,
         'anon_user_id' => false,
         'commenter_email' => false,
@@ -324,13 +324,13 @@ class PickFCommentAPICommentFieldsKeys implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
+        'date' => 'date',
         '_id' => '_id',
+        'tenant_id' => 'tenantId',
         'url_id' => 'urlId',
+        'url_id_raw' => 'urlIdRaw',
         'url' => 'url',
         'page_title' => 'pageTitle',
-        'date' => 'date',
-        'tenant_id' => 'tenantId',
-        'url_id_raw' => 'urlIdRaw',
         'user_id' => 'userId',
         'anon_user_id' => 'anonUserId',
         'commenter_email' => 'commenterEmail',
@@ -385,13 +385,13 @@ class PickFCommentAPICommentFieldsKeys implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
+        'date' => 'setDate',
         '_id' => 'setId',
+        'tenant_id' => 'setTenantId',
         'url_id' => 'setUrlId',
+        'url_id_raw' => 'setUrlIdRaw',
         'url' => 'setUrl',
         'page_title' => 'setPageTitle',
-        'date' => 'setDate',
-        'tenant_id' => 'setTenantId',
-        'url_id_raw' => 'setUrlIdRaw',
         'user_id' => 'setUserId',
         'anon_user_id' => 'setAnonUserId',
         'commenter_email' => 'setCommenterEmail',
@@ -446,13 +446,13 @@ class PickFCommentAPICommentFieldsKeys implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
+        'date' => 'getDate',
         '_id' => 'getId',
+        'tenant_id' => 'getTenantId',
         'url_id' => 'getUrlId',
+        'url_id_raw' => 'getUrlIdRaw',
         'url' => 'getUrl',
         'page_title' => 'getPageTitle',
-        'date' => 'getDate',
-        'tenant_id' => 'getTenantId',
-        'url_id_raw' => 'getUrlIdRaw',
         'user_id' => 'getUserId',
         'anon_user_id' => 'getAnonUserId',
         'commenter_email' => 'getCommenterEmail',
@@ -558,13 +558,13 @@ class PickFCommentAPICommentFieldsKeys implements ModelInterface, ArrayAccess, \
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('date', $data ?? [], null);
         $this->setIfExists('_id', $data ?? [], null);
+        $this->setIfExists('tenant_id', $data ?? [], null);
         $this->setIfExists('url_id', $data ?? [], null);
+        $this->setIfExists('url_id_raw', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('page_title', $data ?? [], null);
-        $this->setIfExists('date', $data ?? [], null);
-        $this->setIfExists('tenant_id', $data ?? [], null);
-        $this->setIfExists('url_id_raw', $data ?? [], null);
         $this->setIfExists('user_id', $data ?? [], null);
         $this->setIfExists('anon_user_id', $data ?? [], null);
         $this->setIfExists('commenter_email', $data ?? [], null);
@@ -640,20 +640,20 @@ class PickFCommentAPICommentFieldsKeys implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
+        if ($this->container['date'] === null) {
+            $invalidProperties[] = "'date' can't be null";
+        }
         if ($this->container['_id'] === null) {
             $invalidProperties[] = "'_id' can't be null";
+        }
+        if ($this->container['tenant_id'] === null) {
+            $invalidProperties[] = "'tenant_id' can't be null";
         }
         if ($this->container['url_id'] === null) {
             $invalidProperties[] = "'url_id' can't be null";
         }
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
-        }
-        if ($this->container['date'] === null) {
-            $invalidProperties[] = "'date' can't be null";
-        }
-        if ($this->container['tenant_id'] === null) {
-            $invalidProperties[] = "'tenant_id' can't be null";
         }
         if ($this->container['commenter_name'] === null) {
             $invalidProperties[] = "'commenter_name' can't be null";
@@ -689,6 +689,33 @@ class PickFCommentAPICommentFieldsKeys implements ModelInterface, ArrayAccess, \
 
 
     /**
+     * Gets date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->container['date'];
+    }
+
+    /**
+     * Sets date
+     *
+     * @param \DateTime $date date
+     *
+     * @return self
+     */
+    public function setDate($date)
+    {
+        if (is_null($date)) {
+            throw new \InvalidArgumentException('non-nullable date cannot be null');
+        }
+        $this->container['date'] = $date;
+
+        return $this;
+    }
+
+    /**
      * Gets _id
      *
      * @return string
@@ -716,6 +743,33 @@ class PickFCommentAPICommentFieldsKeys implements ModelInterface, ArrayAccess, \
     }
 
     /**
+     * Gets tenant_id
+     *
+     * @return string
+     */
+    public function getTenantId()
+    {
+        return $this->container['tenant_id'];
+    }
+
+    /**
+     * Sets tenant_id
+     *
+     * @param string $tenant_id tenant_id
+     *
+     * @return self
+     */
+    public function setTenantId($tenant_id)
+    {
+        if (is_null($tenant_id)) {
+            throw new \InvalidArgumentException('non-nullable tenant_id cannot be null');
+        }
+        $this->container['tenant_id'] = $tenant_id;
+
+        return $this;
+    }
+
+    /**
      * Gets url_id
      *
      * @return string
@@ -738,6 +792,33 @@ class PickFCommentAPICommentFieldsKeys implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable url_id cannot be null');
         }
         $this->container['url_id'] = $url_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets url_id_raw
+     *
+     * @return string|null
+     */
+    public function getUrlIdRaw()
+    {
+        return $this->container['url_id_raw'];
+    }
+
+    /**
+     * Sets url_id_raw
+     *
+     * @param string|null $url_id_raw url_id_raw
+     *
+     * @return self
+     */
+    public function setUrlIdRaw($url_id_raw)
+    {
+        if (is_null($url_id_raw)) {
+            throw new \InvalidArgumentException('non-nullable url_id_raw cannot be null');
+        }
+        $this->container['url_id_raw'] = $url_id_raw;
 
         return $this;
     }
@@ -792,87 +873,6 @@ class PickFCommentAPICommentFieldsKeys implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable page_title cannot be null');
         }
         $this->container['page_title'] = $page_title;
-
-        return $this;
-    }
-
-    /**
-     * Gets date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->container['date'];
-    }
-
-    /**
-     * Sets date
-     *
-     * @param \DateTime $date date
-     *
-     * @return self
-     */
-    public function setDate($date)
-    {
-        if (is_null($date)) {
-            throw new \InvalidArgumentException('non-nullable date cannot be null');
-        }
-        $this->container['date'] = $date;
-
-        return $this;
-    }
-
-    /**
-     * Gets tenant_id
-     *
-     * @return string
-     */
-    public function getTenantId()
-    {
-        return $this->container['tenant_id'];
-    }
-
-    /**
-     * Sets tenant_id
-     *
-     * @param string $tenant_id tenant_id
-     *
-     * @return self
-     */
-    public function setTenantId($tenant_id)
-    {
-        if (is_null($tenant_id)) {
-            throw new \InvalidArgumentException('non-nullable tenant_id cannot be null');
-        }
-        $this->container['tenant_id'] = $tenant_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets url_id_raw
-     *
-     * @return string|null
-     */
-    public function getUrlIdRaw()
-    {
-        return $this->container['url_id_raw'];
-    }
-
-    /**
-     * Sets url_id_raw
-     *
-     * @param string|null $url_id_raw url_id_raw
-     *
-     * @return self
-     */
-    public function setUrlIdRaw($url_id_raw)
-    {
-        if (is_null($url_id_raw)) {
-            throw new \InvalidArgumentException('non-nullable url_id_raw cannot be null');
-        }
-        $this->container['url_id_raw'] = $url_id_raw;
 
         return $this;
     }

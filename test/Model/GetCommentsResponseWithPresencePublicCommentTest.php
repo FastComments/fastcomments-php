@@ -117,6 +117,15 @@ class GetCommentsResponseWithPresencePublicCommentTest extends TestCase
     }
 
     /**
+     * Test attribute "translated_warning"
+     */
+    public function testPropertyTranslatedWarning()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "comments"
      */
     public function testPropertyComments()

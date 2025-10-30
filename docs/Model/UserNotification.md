@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **url_id** | **string** |  |
 **url** | **string** |  |
 **page_title** | **string** |  | [optional]
-**related_object_type** | **float** |  |
+**related_object_type** | [**\FastComments\Client\Model\NotificationObjectType**](NotificationObjectType.md) |  |
 **related_object_id** | **string** |  |
 **viewed** | **bool** |  |
 **is_unread_message** | **bool** |  |
@@ -24,5 +24,9 @@ Name | Type | Description | Notes
 **from_user_id** | **string** |  | [optional]
 **from_user_avatar_src** | **string** |  | [optional]
 **opted_out** | **bool** |  |
+**count** | **float** |  | [optional]
+**related_ids** | **string[]** |  | [optional]
+**from_user_ids** | **string[]** |  | [optional]
+**from_user_names** | **string[]** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

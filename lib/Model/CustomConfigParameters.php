@@ -111,7 +111,9 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'page_size' => 'float',
         'readonly' => 'bool',
         'require_sso' => 'bool',
+        'enable_resize_handle' => 'bool',
         'restricted_link_domains' => 'string[]',
+        'show_badges_in_top_bar' => 'bool',
         'show_comment_save_success' => 'bool',
         'show_live_right_away' => 'bool',
         'show_question' => 'bool',
@@ -191,7 +193,9 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'page_size' => 'double',
         'readonly' => null,
         'require_sso' => null,
+        'enable_resize_handle' => null,
         'restricted_link_domains' => null,
+        'show_badges_in_top_bar' => null,
         'show_comment_save_success' => null,
         'show_live_right_away' => null,
         'show_question' => null,
@@ -269,7 +273,9 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'page_size' => true,
         'readonly' => false,
         'require_sso' => false,
+        'enable_resize_handle' => false,
         'restricted_link_domains' => true,
+        'show_badges_in_top_bar' => false,
         'show_comment_save_success' => false,
         'show_live_right_away' => false,
         'show_question' => false,
@@ -427,7 +433,9 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'page_size' => 'pageSize',
         'readonly' => 'readonly',
         'require_sso' => 'requireSSO',
+        'enable_resize_handle' => 'enableResizeHandle',
         'restricted_link_domains' => 'restrictedLinkDomains',
+        'show_badges_in_top_bar' => 'showBadgesInTopBar',
         'show_comment_save_success' => 'showCommentSaveSuccess',
         'show_live_right_away' => 'showLiveRightAway',
         'show_question' => 'showQuestion',
@@ -505,7 +513,9 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'page_size' => 'setPageSize',
         'readonly' => 'setReadonly',
         'require_sso' => 'setRequireSso',
+        'enable_resize_handle' => 'setEnableResizeHandle',
         'restricted_link_domains' => 'setRestrictedLinkDomains',
+        'show_badges_in_top_bar' => 'setShowBadgesInTopBar',
         'show_comment_save_success' => 'setShowCommentSaveSuccess',
         'show_live_right_away' => 'setShowLiveRightAway',
         'show_question' => 'setShowQuestion',
@@ -583,7 +593,9 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'page_size' => 'getPageSize',
         'readonly' => 'getReadonly',
         'require_sso' => 'getRequireSso',
+        'enable_resize_handle' => 'getEnableResizeHandle',
         'restricted_link_domains' => 'getRestrictedLinkDomains',
+        'show_badges_in_top_bar' => 'getShowBadgesInTopBar',
         'show_comment_save_success' => 'getShowCommentSaveSuccess',
         'show_live_right_away' => 'getShowLiveRightAway',
         'show_question' => 'getShowQuestion',
@@ -712,7 +724,9 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('page_size', $data ?? [], null);
         $this->setIfExists('readonly', $data ?? [], null);
         $this->setIfExists('require_sso', $data ?? [], null);
+        $this->setIfExists('enable_resize_handle', $data ?? [], null);
         $this->setIfExists('restricted_link_domains', $data ?? [], null);
+        $this->setIfExists('show_badges_in_top_bar', $data ?? [], null);
         $this->setIfExists('show_comment_save_success', $data ?? [], null);
         $this->setIfExists('show_live_right_away', $data ?? [], null);
         $this->setIfExists('show_question', $data ?? [], null);
@@ -2303,6 +2317,33 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets enable_resize_handle
+     *
+     * @return bool|null
+     */
+    public function getEnableResizeHandle()
+    {
+        return $this->container['enable_resize_handle'];
+    }
+
+    /**
+     * Sets enable_resize_handle
+     *
+     * @param bool|null $enable_resize_handle enable_resize_handle
+     *
+     * @return self
+     */
+    public function setEnableResizeHandle($enable_resize_handle)
+    {
+        if (is_null($enable_resize_handle)) {
+            throw new \InvalidArgumentException('non-nullable enable_resize_handle cannot be null');
+        }
+        $this->container['enable_resize_handle'] = $enable_resize_handle;
+
+        return $this;
+    }
+
+    /**
      * Gets restricted_link_domains
      *
      * @return string[]|null
@@ -2332,6 +2373,33 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
             }
         }
         $this->container['restricted_link_domains'] = $restricted_link_domains;
+
+        return $this;
+    }
+
+    /**
+     * Gets show_badges_in_top_bar
+     *
+     * @return bool|null
+     */
+    public function getShowBadgesInTopBar()
+    {
+        return $this->container['show_badges_in_top_bar'];
+    }
+
+    /**
+     * Sets show_badges_in_top_bar
+     *
+     * @param bool|null $show_badges_in_top_bar show_badges_in_top_bar
+     *
+     * @return self
+     */
+    public function setShowBadgesInTopBar($show_badges_in_top_bar)
+    {
+        if (is_null($show_badges_in_top_bar)) {
+            throw new \InvalidArgumentException('non-nullable show_badges_in_top_bar cannot be null');
+        }
+        $this->container['show_badges_in_top_bar'] = $show_badges_in_top_bar;
 
         return $this;
     }

@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**date** | **\DateTime** |  |
 **url_id** | **string** |  |
+**url_id_raw** | **string** |  | [optional]
 **url** | **string** |  |
 **page_title** | **string** |  | [optional]
-**date** | **\DateTime** |  |
-**url_id_raw** | **string** |  | [optional]
 **user_id** | **string** |  | [optional]
 **commenter_email** | **string** |  | [optional]
 **commenter_name** | **string** |  |

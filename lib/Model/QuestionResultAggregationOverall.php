@@ -60,7 +60,7 @@ class QuestionResultAggregationOverall implements ModelInterface, ArrayAccess, \
     protected static $openAPITypes = [
         'data_by_date_bucket' => 'array<string,\FastComments\Client\Model\QuestionDatum>',
         'data_by_url_id' => 'array<string,\FastComments\Client\Model\QuestionDatum>',
-        'counts_by_value' => 'array<string,float>',
+        'counts_by_value' => 'array<string,int>',
         'total' => 'float',
         'average' => 'float',
         'created_at' => '\DateTime'
@@ -76,7 +76,7 @@ class QuestionResultAggregationOverall implements ModelInterface, ArrayAccess, \
     protected static $openAPIFormats = [
         'data_by_date_bucket' => null,
         'data_by_url_id' => null,
-        'counts_by_value' => 'double',
+        'counts_by_value' => 'int32',
         'total' => 'double',
         'average' => 'double',
         'created_at' => 'date-time'
@@ -388,7 +388,7 @@ class QuestionResultAggregationOverall implements ModelInterface, ArrayAccess, \
     /**
      * Gets counts_by_value
      *
-     * @return array<string,float>|null
+     * @return array<string,int>|null
      */
     public function getCountsByValue()
     {
@@ -398,7 +398,7 @@ class QuestionResultAggregationOverall implements ModelInterface, ArrayAccess, \
     /**
      * Sets counts_by_value
      *
-     * @param array<string,float>|null $counts_by_value Construct a type with a set of properties K of type T
+     * @param array<string,int>|null $counts_by_value counts_by_value
      *
      * @return self
      */

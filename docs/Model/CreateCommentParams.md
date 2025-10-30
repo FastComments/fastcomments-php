@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**date** | **float** |  |
+**date** | **float** |  | [optional]
 **local_date_string** | **string** |  | [optional]
 **local_date_hours** | **float** |  | [optional]
 **commenter_name** | **string** |  |

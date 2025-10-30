@@ -108,6 +108,15 @@ class GetFeedPostsPublic200ResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "user"
+     */
+    public function testPropertyUser()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "url_id_ws"
      */
     public function testPropertyUrlIdWs()

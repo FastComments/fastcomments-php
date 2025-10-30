@@ -1,6 +1,6 @@
 <?php
 /**
- * PickUserNotificationIdOrUrlIdOrUrlOrPageTitleOrRelatedObjectTypeOrRelatedObjectIdOrViewedOrSentOrCreatedAtOrTypeOrFromCommentIdOrFromUserNameOrFromUserIdOrFromUserAvatarSrcOrOptedOutTest
+ * UserBadgeTest
  *
  * PHP version 7.4
  *
@@ -32,15 +32,15 @@ namespace FastComments\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * PickUserNotificationIdOrUrlIdOrUrlOrPageTitleOrRelatedObjectTypeOrRelatedObjectIdOrViewedOrSentOrCreatedAtOrTypeOrFromCommentIdOrFromUserNameOrFromUserIdOrFromUserAvatarSrcOrOptedOutTest Class Doc Comment
+ * UserBadgeTest Class Doc Comment
  *
  * @category    Class
- * @description From T, pick a set of properties whose keys are in the union K
+ * @description UserBadge
  * @package     FastComments\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class PickUserNotificationIdOrUrlIdOrUrlOrPageTitleOrRelatedObjectTypeOrRelatedObjectIdOrViewedOrSentOrCreatedAtOrTypeOrFromCommentIdOrFromUserNameOrFromUserIdOrFromUserAvatarSrcOrOptedOutTest extends TestCase
+class UserBadgeTest extends TestCase
 {
 
     /**
@@ -72,9 +72,9 @@ class PickUserNotificationIdOrUrlIdOrUrlOrPageTitleOrRelatedObjectTypeOrRelatedO
     }
 
     /**
-     * Test "PickUserNotificationIdOrUrlIdOrUrlOrPageTitleOrRelatedObjectTypeOrRelatedObjectIdOrViewedOrSentOrCreatedAtOrTypeOrFromCommentIdOrFromUserNameOrFromUserIdOrFromUserAvatarSrcOrOptedOut"
+     * Test "UserBadge"
      */
-    public function testPickUserNotificationIdOrUrlIdOrUrlOrPageTitleOrRelatedObjectTypeOrRelatedObjectIdOrViewedOrSentOrCreatedAtOrTypeOrFromCommentIdOrFromUserNameOrFromUserIdOrFromUserAvatarSrcOrOptedOut()
+    public function testUserBadge()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -90,63 +90,27 @@ class PickUserNotificationIdOrUrlIdOrUrlOrPageTitleOrRelatedObjectTypeOrRelatedO
     }
 
     /**
-     * Test attribute "url_id"
+     * Test attribute "user_id"
      */
-    public function testPropertyUrlId()
+    public function testPropertyUserId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "url"
+     * Test attribute "badge_id"
      */
-    public function testPropertyUrl()
+    public function testPropertyBadgeId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "page_title"
+     * Test attribute "from_tenant_id"
      */
-    public function testPropertyPageTitle()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "related_object_type"
-     */
-    public function testPropertyRelatedObjectType()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "related_object_id"
-     */
-    public function testPropertyRelatedObjectId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "viewed"
-     */
-    public function testPropertyViewed()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "sent"
-     */
-    public function testPropertySent()
+    public function testPropertyFromTenantId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -171,45 +135,108 @@ class PickUserNotificationIdOrUrlIdOrUrlOrPageTitleOrRelatedObjectTypeOrRelatedO
     }
 
     /**
-     * Test attribute "from_comment_id"
+     * Test attribute "threshold"
      */
-    public function testPropertyFromCommentId()
+    public function testPropertyThreshold()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "from_user_name"
+     * Test attribute "description"
      */
-    public function testPropertyFromUserName()
+    public function testPropertyDescription()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "from_user_id"
+     * Test attribute "display_label"
      */
-    public function testPropertyFromUserId()
+    public function testPropertyDisplayLabel()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "from_user_avatar_src"
+     * Test attribute "display_src"
      */
-    public function testPropertyFromUserAvatarSrc()
+    public function testPropertyDisplaySrc()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "opted_out"
+     * Test attribute "background_color"
      */
-    public function testPropertyOptedOut()
+    public function testPropertyBackgroundColor()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "border_color"
+     */
+    public function testPropertyBorderColor()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "text_color"
+     */
+    public function testPropertyTextColor()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "css_class"
+     */
+    public function testPropertyCssClass()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "veteran_user_threshold_millis"
+     */
+    public function testPropertyVeteranUserThresholdMillis()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "displayed_on_comments"
+     */
+    public function testPropertyDisplayedOnComments()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "received_at"
+     */
+    public function testPropertyReceivedAt()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "order"
+     */
+    public function testPropertyOrder()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

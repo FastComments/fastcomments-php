@@ -58,8 +58,9 @@ class PublicFeedPostsResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\APIStatus',
+        'status' => '\FastComments\Client\Model\ImportedAPIStatusSUCCESS',
         'feed_posts' => '\FastComments\Client\Model\FeedPost[]',
+        'user' => '\FastComments\Client\Model\UserSessionInfo',
         'url_id_ws' => 'string',
         'user_id_ws' => 'string',
         'tenant_id_ws' => 'string',
@@ -76,6 +77,7 @@ class PublicFeedPostsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPIFormats = [
         'status' => null,
         'feed_posts' => null,
+        'user' => null,
         'url_id_ws' => null,
         'user_id_ws' => null,
         'tenant_id_ws' => null,
@@ -90,6 +92,7 @@ class PublicFeedPostsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static array $openAPINullables = [
         'status' => false,
         'feed_posts' => false,
+        'user' => true,
         'url_id_ws' => false,
         'user_id_ws' => false,
         'tenant_id_ws' => false,
@@ -184,6 +187,7 @@ class PublicFeedPostsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $attributeMap = [
         'status' => 'status',
         'feed_posts' => 'feedPosts',
+        'user' => 'user',
         'url_id_ws' => 'urlIdWS',
         'user_id_ws' => 'userIdWS',
         'tenant_id_ws' => 'tenantIdWS',
@@ -198,6 +202,7 @@ class PublicFeedPostsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $setters = [
         'status' => 'setStatus',
         'feed_posts' => 'setFeedPosts',
+        'user' => 'setUser',
         'url_id_ws' => 'setUrlIdWs',
         'user_id_ws' => 'setUserIdWs',
         'tenant_id_ws' => 'setTenantIdWs',
@@ -212,6 +217,7 @@ class PublicFeedPostsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $getters = [
         'status' => 'getStatus',
         'feed_posts' => 'getFeedPosts',
+        'user' => 'getUser',
         'url_id_ws' => 'getUrlIdWs',
         'user_id_ws' => 'getUserIdWs',
         'tenant_id_ws' => 'getTenantIdWs',
@@ -277,6 +283,7 @@ class PublicFeedPostsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('feed_posts', $data ?? [], null);
+        $this->setIfExists('user', $data ?? [], null);
         $this->setIfExists('url_id_ws', $data ?? [], null);
         $this->setIfExists('user_id_ws', $data ?? [], null);
         $this->setIfExists('tenant_id_ws', $data ?? [], null);
@@ -334,7 +341,7 @@ class PublicFeedPostsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\APIStatus
+     * @return \FastComments\Client\Model\ImportedAPIStatusSUCCESS
      */
     public function getStatus()
     {
@@ -344,7 +351,7 @@ class PublicFeedPostsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\APIStatus $status status
+     * @param \FastComments\Client\Model\ImportedAPIStatusSUCCESS $status status
      *
      * @return self
      */
@@ -381,6 +388,40 @@ class PublicFeedPostsResponse implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable feed_posts cannot be null');
         }
         $this->container['feed_posts'] = $feed_posts;
+
+        return $this;
+    }
+
+    /**
+     * Gets user
+     *
+     * @return \FastComments\Client\Model\UserSessionInfo|null
+     */
+    public function getUser()
+    {
+        return $this->container['user'];
+    }
+
+    /**
+     * Sets user
+     *
+     * @param \FastComments\Client\Model\UserSessionInfo|null $user user
+     *
+     * @return self
+     */
+    public function setUser($user)
+    {
+        if (is_null($user)) {
+            array_push($this->openAPINullablesSetToNull, 'user');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('user', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['user'] = $user;
 
         return $this;
     }

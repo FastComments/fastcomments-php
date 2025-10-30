@@ -58,23 +58,27 @@ class RenderableUserNotification implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_id' => 'string',
-        'url_id' => 'string',
-        'url' => 'string',
-        'page_title' => 'string',
-        'related_object_type' => 'float',
-        'related_object_id' => 'string',
-        'viewed' => 'bool',
-        'sent' => 'bool',
-        'created_at' => '\DateTime',
-        'type' => '\FastComments\Client\Model\NotificationType',
-        'from_comment_id' => 'string',
-        'from_user_name' => 'string',
-        'from_user_id' => 'string',
-        'from_user_avatar_src' => 'string',
-        'opted_out' => 'bool',
         'conversation_id' => 'string',
-        'context_html' => 'string'
+        'context_html' => 'string',
+        'from_user_names' => 'string[]',
+        'from_user_ids' => 'string[]',
+        'related_ids' => 'string[]',
+        'count' => 'float',
+        'opted_out' => 'bool',
+        'from_user_avatar_src' => 'string',
+        'from_user_id' => 'string',
+        'from_user_name' => 'string',
+        'from_comment_id' => 'string',
+        'type' => '\FastComments\Client\Model\NotificationType',
+        'created_at' => 'string',
+        'sent' => 'string',
+        'viewed' => 'string',
+        'related_object_id' => 'string',
+        'related_object_type' => '\FastComments\Client\Model\NotificationObjectType',
+        'page_title' => 'string',
+        'url' => 'string',
+        'url_id' => 'string',
+        '_id' => 'string'
     ];
 
     /**
@@ -85,23 +89,27 @@ class RenderableUserNotification implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        '_id' => null,
-        'url_id' => null,
-        'url' => null,
-        'page_title' => null,
-        'related_object_type' => 'double',
-        'related_object_id' => null,
-        'viewed' => null,
-        'sent' => null,
-        'created_at' => 'date-time',
-        'type' => null,
-        'from_comment_id' => null,
-        'from_user_name' => null,
-        'from_user_id' => null,
-        'from_user_avatar_src' => null,
-        'opted_out' => null,
         'conversation_id' => null,
-        'context_html' => null
+        'context_html' => null,
+        'from_user_names' => null,
+        'from_user_ids' => null,
+        'related_ids' => null,
+        'count' => 'double',
+        'opted_out' => null,
+        'from_user_avatar_src' => null,
+        'from_user_id' => null,
+        'from_user_name' => null,
+        'from_comment_id' => null,
+        'type' => null,
+        'created_at' => null,
+        'sent' => null,
+        'viewed' => null,
+        'related_object_id' => null,
+        'related_object_type' => null,
+        'page_title' => null,
+        'url' => null,
+        'url_id' => null,
+        '_id' => null
     ];
 
     /**
@@ -110,23 +118,27 @@ class RenderableUserNotification implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        '_id' => false,
-        'url_id' => false,
-        'url' => false,
-        'page_title' => false,
-        'related_object_type' => false,
-        'related_object_id' => false,
-        'viewed' => false,
-        'sent' => false,
-        'created_at' => false,
-        'type' => false,
-        'from_comment_id' => false,
-        'from_user_name' => false,
-        'from_user_id' => false,
-        'from_user_avatar_src' => false,
-        'opted_out' => false,
         'conversation_id' => false,
-        'context_html' => false
+        'context_html' => false,
+        'from_user_names' => false,
+        'from_user_ids' => false,
+        'related_ids' => false,
+        'count' => false,
+        'opted_out' => false,
+        'from_user_avatar_src' => true,
+        'from_user_id' => true,
+        'from_user_name' => true,
+        'from_comment_id' => true,
+        'type' => false,
+        'created_at' => false,
+        'sent' => false,
+        'viewed' => false,
+        'related_object_id' => false,
+        'related_object_type' => false,
+        'page_title' => true,
+        'url' => false,
+        'url_id' => false,
+        '_id' => false
     ];
 
     /**
@@ -215,23 +227,27 @@ class RenderableUserNotification implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        '_id' => '_id',
-        'url_id' => 'urlId',
-        'url' => 'url',
-        'page_title' => 'pageTitle',
-        'related_object_type' => 'relatedObjectType',
-        'related_object_id' => 'relatedObjectId',
-        'viewed' => 'viewed',
-        'sent' => 'sent',
-        'created_at' => 'createdAt',
-        'type' => 'type',
-        'from_comment_id' => 'fromCommentId',
-        'from_user_name' => 'fromUserName',
-        'from_user_id' => 'fromUserId',
-        'from_user_avatar_src' => 'fromUserAvatarSrc',
-        'opted_out' => 'optedOut',
         'conversation_id' => 'conversationId',
-        'context_html' => 'contextHTML'
+        'context_html' => 'contextHTML',
+        'from_user_names' => 'fromUserNames',
+        'from_user_ids' => 'fromUserIds',
+        'related_ids' => 'relatedIds',
+        'count' => 'count',
+        'opted_out' => 'optedOut',
+        'from_user_avatar_src' => 'fromUserAvatarSrc',
+        'from_user_id' => 'fromUserId',
+        'from_user_name' => 'fromUserName',
+        'from_comment_id' => 'fromCommentId',
+        'type' => 'type',
+        'created_at' => 'createdAt',
+        'sent' => 'sent',
+        'viewed' => 'viewed',
+        'related_object_id' => 'relatedObjectId',
+        'related_object_type' => 'relatedObjectType',
+        'page_title' => 'pageTitle',
+        'url' => 'url',
+        'url_id' => 'urlId',
+        '_id' => '_id'
     ];
 
     /**
@@ -240,23 +256,27 @@ class RenderableUserNotification implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        '_id' => 'setId',
-        'url_id' => 'setUrlId',
-        'url' => 'setUrl',
-        'page_title' => 'setPageTitle',
-        'related_object_type' => 'setRelatedObjectType',
-        'related_object_id' => 'setRelatedObjectId',
-        'viewed' => 'setViewed',
-        'sent' => 'setSent',
-        'created_at' => 'setCreatedAt',
-        'type' => 'setType',
-        'from_comment_id' => 'setFromCommentId',
-        'from_user_name' => 'setFromUserName',
-        'from_user_id' => 'setFromUserId',
-        'from_user_avatar_src' => 'setFromUserAvatarSrc',
-        'opted_out' => 'setOptedOut',
         'conversation_id' => 'setConversationId',
-        'context_html' => 'setContextHtml'
+        'context_html' => 'setContextHtml',
+        'from_user_names' => 'setFromUserNames',
+        'from_user_ids' => 'setFromUserIds',
+        'related_ids' => 'setRelatedIds',
+        'count' => 'setCount',
+        'opted_out' => 'setOptedOut',
+        'from_user_avatar_src' => 'setFromUserAvatarSrc',
+        'from_user_id' => 'setFromUserId',
+        'from_user_name' => 'setFromUserName',
+        'from_comment_id' => 'setFromCommentId',
+        'type' => 'setType',
+        'created_at' => 'setCreatedAt',
+        'sent' => 'setSent',
+        'viewed' => 'setViewed',
+        'related_object_id' => 'setRelatedObjectId',
+        'related_object_type' => 'setRelatedObjectType',
+        'page_title' => 'setPageTitle',
+        'url' => 'setUrl',
+        'url_id' => 'setUrlId',
+        '_id' => 'setId'
     ];
 
     /**
@@ -265,23 +285,27 @@ class RenderableUserNotification implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        '_id' => 'getId',
-        'url_id' => 'getUrlId',
-        'url' => 'getUrl',
-        'page_title' => 'getPageTitle',
-        'related_object_type' => 'getRelatedObjectType',
-        'related_object_id' => 'getRelatedObjectId',
-        'viewed' => 'getViewed',
-        'sent' => 'getSent',
-        'created_at' => 'getCreatedAt',
-        'type' => 'getType',
-        'from_comment_id' => 'getFromCommentId',
-        'from_user_name' => 'getFromUserName',
-        'from_user_id' => 'getFromUserId',
-        'from_user_avatar_src' => 'getFromUserAvatarSrc',
-        'opted_out' => 'getOptedOut',
         'conversation_id' => 'getConversationId',
-        'context_html' => 'getContextHtml'
+        'context_html' => 'getContextHtml',
+        'from_user_names' => 'getFromUserNames',
+        'from_user_ids' => 'getFromUserIds',
+        'related_ids' => 'getRelatedIds',
+        'count' => 'getCount',
+        'opted_out' => 'getOptedOut',
+        'from_user_avatar_src' => 'getFromUserAvatarSrc',
+        'from_user_id' => 'getFromUserId',
+        'from_user_name' => 'getFromUserName',
+        'from_comment_id' => 'getFromCommentId',
+        'type' => 'getType',
+        'created_at' => 'getCreatedAt',
+        'sent' => 'getSent',
+        'viewed' => 'getViewed',
+        'related_object_id' => 'getRelatedObjectId',
+        'related_object_type' => 'getRelatedObjectType',
+        'page_title' => 'getPageTitle',
+        'url' => 'getUrl',
+        'url_id' => 'getUrlId',
+        '_id' => 'getId'
     ];
 
     /**
@@ -341,23 +365,27 @@ class RenderableUserNotification implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('_id', $data ?? [], null);
-        $this->setIfExists('url_id', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('page_title', $data ?? [], null);
-        $this->setIfExists('related_object_type', $data ?? [], null);
-        $this->setIfExists('related_object_id', $data ?? [], null);
-        $this->setIfExists('viewed', $data ?? [], null);
-        $this->setIfExists('sent', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('from_comment_id', $data ?? [], null);
-        $this->setIfExists('from_user_name', $data ?? [], null);
-        $this->setIfExists('from_user_id', $data ?? [], null);
-        $this->setIfExists('from_user_avatar_src', $data ?? [], null);
-        $this->setIfExists('opted_out', $data ?? [], null);
         $this->setIfExists('conversation_id', $data ?? [], null);
         $this->setIfExists('context_html', $data ?? [], null);
+        $this->setIfExists('from_user_names', $data ?? [], null);
+        $this->setIfExists('from_user_ids', $data ?? [], null);
+        $this->setIfExists('related_ids', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('opted_out', $data ?? [], null);
+        $this->setIfExists('from_user_avatar_src', $data ?? [], null);
+        $this->setIfExists('from_user_id', $data ?? [], null);
+        $this->setIfExists('from_user_name', $data ?? [], null);
+        $this->setIfExists('from_comment_id', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('sent', $data ?? [], null);
+        $this->setIfExists('viewed', $data ?? [], null);
+        $this->setIfExists('related_object_id', $data ?? [], null);
+        $this->setIfExists('related_object_type', $data ?? [], null);
+        $this->setIfExists('page_title', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('url_id', $data ?? [], null);
+        $this->setIfExists('_id', $data ?? [], null);
     }
 
     /**
@@ -387,41 +415,35 @@ class RenderableUserNotification implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['_id'] === null) {
-            $invalidProperties[] = "'_id' can't be null";
-        }
-        if ($this->container['url_id'] === null) {
-            $invalidProperties[] = "'url_id' can't be null";
-        }
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
-        }
-        if ($this->container['related_object_type'] === null) {
-            $invalidProperties[] = "'related_object_type' can't be null";
-        }
-        if ($this->container['related_object_id'] === null) {
-            $invalidProperties[] = "'related_object_id' can't be null";
-        }
-        if ($this->container['viewed'] === null) {
-            $invalidProperties[] = "'viewed' can't be null";
-        }
-        if ($this->container['sent'] === null) {
-            $invalidProperties[] = "'sent' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['opted_out'] === null) {
+            $invalidProperties[] = "'opted_out' can't be null";
         }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['from_user_name'] === null) {
-            $invalidProperties[] = "'from_user_name' can't be null";
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
-        if ($this->container['from_user_id'] === null) {
-            $invalidProperties[] = "'from_user_id' can't be null";
+        if ($this->container['sent'] === null) {
+            $invalidProperties[] = "'sent' can't be null";
         }
-        if ($this->container['opted_out'] === null) {
-            $invalidProperties[] = "'opted_out' can't be null";
+        if ($this->container['viewed'] === null) {
+            $invalidProperties[] = "'viewed' can't be null";
+        }
+        if ($this->container['related_object_id'] === null) {
+            $invalidProperties[] = "'related_object_id' can't be null";
+        }
+        if ($this->container['related_object_type'] === null) {
+            $invalidProperties[] = "'related_object_type' can't be null";
+        }
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
+        if ($this->container['url_id'] === null) {
+            $invalidProperties[] = "'url_id' can't be null";
+        }
+        if ($this->container['_id'] === null) {
+            $invalidProperties[] = "'_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -437,411 +459,6 @@ class RenderableUserNotification implements ModelInterface, ArrayAccess, \JsonSe
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets _id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['_id'];
-    }
-
-    /**
-     * Sets _id
-     *
-     * @param string $_id _id
-     *
-     * @return self
-     */
-    public function setId($_id)
-    {
-        if (is_null($_id)) {
-            throw new \InvalidArgumentException('non-nullable _id cannot be null');
-        }
-        $this->container['_id'] = $_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets url_id
-     *
-     * @return string
-     */
-    public function getUrlId()
-    {
-        return $this->container['url_id'];
-    }
-
-    /**
-     * Sets url_id
-     *
-     * @param string $url_id url_id
-     *
-     * @return self
-     */
-    public function setUrlId($url_id)
-    {
-        if (is_null($url_id)) {
-            throw new \InvalidArgumentException('non-nullable url_id cannot be null');
-        }
-        $this->container['url_id'] = $url_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string $url url
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
-        }
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_title
-     *
-     * @return string|null
-     */
-    public function getPageTitle()
-    {
-        return $this->container['page_title'];
-    }
-
-    /**
-     * Sets page_title
-     *
-     * @param string|null $page_title page_title
-     *
-     * @return self
-     */
-    public function setPageTitle($page_title)
-    {
-        if (is_null($page_title)) {
-            throw new \InvalidArgumentException('non-nullable page_title cannot be null');
-        }
-        $this->container['page_title'] = $page_title;
-
-        return $this;
-    }
-
-    /**
-     * Gets related_object_type
-     *
-     * @return float
-     */
-    public function getRelatedObjectType()
-    {
-        return $this->container['related_object_type'];
-    }
-
-    /**
-     * Sets related_object_type
-     *
-     * @param float $related_object_type related_object_type
-     *
-     * @return self
-     */
-    public function setRelatedObjectType($related_object_type)
-    {
-        if (is_null($related_object_type)) {
-            throw new \InvalidArgumentException('non-nullable related_object_type cannot be null');
-        }
-        $this->container['related_object_type'] = $related_object_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets related_object_id
-     *
-     * @return string
-     */
-    public function getRelatedObjectId()
-    {
-        return $this->container['related_object_id'];
-    }
-
-    /**
-     * Sets related_object_id
-     *
-     * @param string $related_object_id related_object_id
-     *
-     * @return self
-     */
-    public function setRelatedObjectId($related_object_id)
-    {
-        if (is_null($related_object_id)) {
-            throw new \InvalidArgumentException('non-nullable related_object_id cannot be null');
-        }
-        $this->container['related_object_id'] = $related_object_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets viewed
-     *
-     * @return bool
-     */
-    public function getViewed()
-    {
-        return $this->container['viewed'];
-    }
-
-    /**
-     * Sets viewed
-     *
-     * @param bool $viewed viewed
-     *
-     * @return self
-     */
-    public function setViewed($viewed)
-    {
-        if (is_null($viewed)) {
-            throw new \InvalidArgumentException('non-nullable viewed cannot be null');
-        }
-        $this->container['viewed'] = $viewed;
-
-        return $this;
-    }
-
-    /**
-     * Gets sent
-     *
-     * @return bool
-     */
-    public function getSent()
-    {
-        return $this->container['sent'];
-    }
-
-    /**
-     * Sets sent
-     *
-     * @param bool $sent sent
-     *
-     * @return self
-     */
-    public function setSent($sent)
-    {
-        if (is_null($sent)) {
-            throw new \InvalidArgumentException('non-nullable sent cannot be null');
-        }
-        $this->container['sent'] = $sent;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return \FastComments\Client\Model\NotificationType
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param \FastComments\Client\Model\NotificationType $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets from_comment_id
-     *
-     * @return string|null
-     */
-    public function getFromCommentId()
-    {
-        return $this->container['from_comment_id'];
-    }
-
-    /**
-     * Sets from_comment_id
-     *
-     * @param string|null $from_comment_id from_comment_id
-     *
-     * @return self
-     */
-    public function setFromCommentId($from_comment_id)
-    {
-        if (is_null($from_comment_id)) {
-            throw new \InvalidArgumentException('non-nullable from_comment_id cannot be null');
-        }
-        $this->container['from_comment_id'] = $from_comment_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets from_user_name
-     *
-     * @return string
-     */
-    public function getFromUserName()
-    {
-        return $this->container['from_user_name'];
-    }
-
-    /**
-     * Sets from_user_name
-     *
-     * @param string $from_user_name from_user_name
-     *
-     * @return self
-     */
-    public function setFromUserName($from_user_name)
-    {
-        if (is_null($from_user_name)) {
-            throw new \InvalidArgumentException('non-nullable from_user_name cannot be null');
-        }
-        $this->container['from_user_name'] = $from_user_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets from_user_id
-     *
-     * @return string
-     */
-    public function getFromUserId()
-    {
-        return $this->container['from_user_id'];
-    }
-
-    /**
-     * Sets from_user_id
-     *
-     * @param string $from_user_id from_user_id
-     *
-     * @return self
-     */
-    public function setFromUserId($from_user_id)
-    {
-        if (is_null($from_user_id)) {
-            throw new \InvalidArgumentException('non-nullable from_user_id cannot be null');
-        }
-        $this->container['from_user_id'] = $from_user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets from_user_avatar_src
-     *
-     * @return string|null
-     */
-    public function getFromUserAvatarSrc()
-    {
-        return $this->container['from_user_avatar_src'];
-    }
-
-    /**
-     * Sets from_user_avatar_src
-     *
-     * @param string|null $from_user_avatar_src from_user_avatar_src
-     *
-     * @return self
-     */
-    public function setFromUserAvatarSrc($from_user_avatar_src)
-    {
-        if (is_null($from_user_avatar_src)) {
-            throw new \InvalidArgumentException('non-nullable from_user_avatar_src cannot be null');
-        }
-        $this->container['from_user_avatar_src'] = $from_user_avatar_src;
-
-        return $this;
-    }
-
-    /**
-     * Gets opted_out
-     *
-     * @return bool
-     */
-    public function getOptedOut()
-    {
-        return $this->container['opted_out'];
-    }
-
-    /**
-     * Sets opted_out
-     *
-     * @param bool $opted_out opted_out
-     *
-     * @return self
-     */
-    public function setOptedOut($opted_out)
-    {
-        if (is_null($opted_out)) {
-            throw new \InvalidArgumentException('non-nullable opted_out cannot be null');
-        }
-        $this->container['opted_out'] = $opted_out;
-
-        return $this;
-    }
 
     /**
      * Gets conversation_id
@@ -893,6 +510,554 @@ class RenderableUserNotification implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable context_html cannot be null');
         }
         $this->container['context_html'] = $context_html;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_user_names
+     *
+     * @return string[]|null
+     */
+    public function getFromUserNames()
+    {
+        return $this->container['from_user_names'];
+    }
+
+    /**
+     * Sets from_user_names
+     *
+     * @param string[]|null $from_user_names from_user_names
+     *
+     * @return self
+     */
+    public function setFromUserNames($from_user_names)
+    {
+        if (is_null($from_user_names)) {
+            throw new \InvalidArgumentException('non-nullable from_user_names cannot be null');
+        }
+        $this->container['from_user_names'] = $from_user_names;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_user_ids
+     *
+     * @return string[]|null
+     */
+    public function getFromUserIds()
+    {
+        return $this->container['from_user_ids'];
+    }
+
+    /**
+     * Sets from_user_ids
+     *
+     * @param string[]|null $from_user_ids from_user_ids
+     *
+     * @return self
+     */
+    public function setFromUserIds($from_user_ids)
+    {
+        if (is_null($from_user_ids)) {
+            throw new \InvalidArgumentException('non-nullable from_user_ids cannot be null');
+        }
+        $this->container['from_user_ids'] = $from_user_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets related_ids
+     *
+     * @return string[]|null
+     */
+    public function getRelatedIds()
+    {
+        return $this->container['related_ids'];
+    }
+
+    /**
+     * Sets related_ids
+     *
+     * @param string[]|null $related_ids related_ids
+     *
+     * @return self
+     */
+    public function setRelatedIds($related_ids)
+    {
+        if (is_null($related_ids)) {
+            throw new \InvalidArgumentException('non-nullable related_ids cannot be null');
+        }
+        $this->container['related_ids'] = $related_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets count
+     *
+     * @return float|null
+     */
+    public function getCount()
+    {
+        return $this->container['count'];
+    }
+
+    /**
+     * Sets count
+     *
+     * @param float|null $count count
+     *
+     * @return self
+     */
+    public function setCount($count)
+    {
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
+        }
+        $this->container['count'] = $count;
+
+        return $this;
+    }
+
+    /**
+     * Gets opted_out
+     *
+     * @return bool
+     */
+    public function getOptedOut()
+    {
+        return $this->container['opted_out'];
+    }
+
+    /**
+     * Sets opted_out
+     *
+     * @param bool $opted_out opted_out
+     *
+     * @return self
+     */
+    public function setOptedOut($opted_out)
+    {
+        if (is_null($opted_out)) {
+            throw new \InvalidArgumentException('non-nullable opted_out cannot be null');
+        }
+        $this->container['opted_out'] = $opted_out;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_user_avatar_src
+     *
+     * @return string|null
+     */
+    public function getFromUserAvatarSrc()
+    {
+        return $this->container['from_user_avatar_src'];
+    }
+
+    /**
+     * Sets from_user_avatar_src
+     *
+     * @param string|null $from_user_avatar_src from_user_avatar_src
+     *
+     * @return self
+     */
+    public function setFromUserAvatarSrc($from_user_avatar_src)
+    {
+        if (is_null($from_user_avatar_src)) {
+            array_push($this->openAPINullablesSetToNull, 'from_user_avatar_src');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('from_user_avatar_src', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['from_user_avatar_src'] = $from_user_avatar_src;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_user_id
+     *
+     * @return string|null
+     */
+    public function getFromUserId()
+    {
+        return $this->container['from_user_id'];
+    }
+
+    /**
+     * Sets from_user_id
+     *
+     * @param string|null $from_user_id from_user_id
+     *
+     * @return self
+     */
+    public function setFromUserId($from_user_id)
+    {
+        if (is_null($from_user_id)) {
+            array_push($this->openAPINullablesSetToNull, 'from_user_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('from_user_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['from_user_id'] = $from_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_user_name
+     *
+     * @return string|null
+     */
+    public function getFromUserName()
+    {
+        return $this->container['from_user_name'];
+    }
+
+    /**
+     * Sets from_user_name
+     *
+     * @param string|null $from_user_name from_user_name
+     *
+     * @return self
+     */
+    public function setFromUserName($from_user_name)
+    {
+        if (is_null($from_user_name)) {
+            array_push($this->openAPINullablesSetToNull, 'from_user_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('from_user_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['from_user_name'] = $from_user_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_comment_id
+     *
+     * @return string|null
+     */
+    public function getFromCommentId()
+    {
+        return $this->container['from_comment_id'];
+    }
+
+    /**
+     * Sets from_comment_id
+     *
+     * @param string|null $from_comment_id from_comment_id
+     *
+     * @return self
+     */
+    public function setFromCommentId($from_comment_id)
+    {
+        if (is_null($from_comment_id)) {
+            array_push($this->openAPINullablesSetToNull, 'from_comment_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('from_comment_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['from_comment_id'] = $from_comment_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return \FastComments\Client\Model\NotificationType
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param \FastComments\Client\Model\NotificationType $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets sent
+     *
+     * @return string
+     */
+    public function getSent()
+    {
+        return $this->container['sent'];
+    }
+
+    /**
+     * Sets sent
+     *
+     * @param string $sent sent
+     *
+     * @return self
+     */
+    public function setSent($sent)
+    {
+        if (is_null($sent)) {
+            throw new \InvalidArgumentException('non-nullable sent cannot be null');
+        }
+        $this->container['sent'] = $sent;
+
+        return $this;
+    }
+
+    /**
+     * Gets viewed
+     *
+     * @return string
+     */
+    public function getViewed()
+    {
+        return $this->container['viewed'];
+    }
+
+    /**
+     * Sets viewed
+     *
+     * @param string $viewed viewed
+     *
+     * @return self
+     */
+    public function setViewed($viewed)
+    {
+        if (is_null($viewed)) {
+            throw new \InvalidArgumentException('non-nullable viewed cannot be null');
+        }
+        $this->container['viewed'] = $viewed;
+
+        return $this;
+    }
+
+    /**
+     * Gets related_object_id
+     *
+     * @return string
+     */
+    public function getRelatedObjectId()
+    {
+        return $this->container['related_object_id'];
+    }
+
+    /**
+     * Sets related_object_id
+     *
+     * @param string $related_object_id related_object_id
+     *
+     * @return self
+     */
+    public function setRelatedObjectId($related_object_id)
+    {
+        if (is_null($related_object_id)) {
+            throw new \InvalidArgumentException('non-nullable related_object_id cannot be null');
+        }
+        $this->container['related_object_id'] = $related_object_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets related_object_type
+     *
+     * @return \FastComments\Client\Model\NotificationObjectType
+     */
+    public function getRelatedObjectType()
+    {
+        return $this->container['related_object_type'];
+    }
+
+    /**
+     * Sets related_object_type
+     *
+     * @param \FastComments\Client\Model\NotificationObjectType $related_object_type related_object_type
+     *
+     * @return self
+     */
+    public function setRelatedObjectType($related_object_type)
+    {
+        if (is_null($related_object_type)) {
+            throw new \InvalidArgumentException('non-nullable related_object_type cannot be null');
+        }
+        $this->container['related_object_type'] = $related_object_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_title
+     *
+     * @return string|null
+     */
+    public function getPageTitle()
+    {
+        return $this->container['page_title'];
+    }
+
+    /**
+     * Sets page_title
+     *
+     * @param string|null $page_title page_title
+     *
+     * @return self
+     */
+    public function setPageTitle($page_title)
+    {
+        if (is_null($page_title)) {
+            array_push($this->openAPINullablesSetToNull, 'page_title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('page_title', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['page_title'] = $page_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url url
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        }
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets url_id
+     *
+     * @return string
+     */
+    public function getUrlId()
+    {
+        return $this->container['url_id'];
+    }
+
+    /**
+     * Sets url_id
+     *
+     * @param string $url_id url_id
+     *
+     * @return self
+     */
+    public function setUrlId($url_id)
+    {
+        if (is_null($url_id)) {
+            throw new \InvalidArgumentException('non-nullable url_id cannot be null');
+        }
+        $this->container['url_id'] = $url_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets _id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['_id'];
+    }
+
+    /**
+     * Sets _id
+     *
+     * @param string $_id _id
+     *
+     * @return self
+     */
+    public function setId($_id)
+    {
+        if (is_null($_id)) {
+            throw new \InvalidArgumentException('non-nullable _id cannot be null');
+        }
+        $this->container['_id'] = $_id;
 
         return $this;
     }

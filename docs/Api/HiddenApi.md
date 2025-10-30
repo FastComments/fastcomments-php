@@ -2,7 +2,7 @@
 
 FastComments PHP API Client - A SDK for interacting with the FastComments API
 
-All URIs are relative to http://localhost, except if the operation defines another base path.
+All URIs are relative to https://fastcomments.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |

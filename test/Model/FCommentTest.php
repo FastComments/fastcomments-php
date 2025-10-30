@@ -369,6 +369,15 @@ class FCommentTest extends TestCase
     }
 
     /**
+     * Test attribute "perm_not_spam"
+     */
+    public function testPropertyPermNotSpam()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "ai_determined_spam"
      */
     public function testPropertyAiDeterminedSpam()

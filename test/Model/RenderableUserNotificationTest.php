@@ -81,126 +81,54 @@ class RenderableUserNotificationTest extends TestCase
     }
 
     /**
-     * Test attribute "_id"
+     * Test attribute "conversation_id"
      */
-    public function testPropertyId()
+    public function testPropertyConversationId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "url_id"
+     * Test attribute "context_html"
      */
-    public function testPropertyUrlId()
+    public function testPropertyContextHtml()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "url"
+     * Test attribute "from_user_names"
      */
-    public function testPropertyUrl()
+    public function testPropertyFromUserNames()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "page_title"
+     * Test attribute "from_user_ids"
      */
-    public function testPropertyPageTitle()
+    public function testPropertyFromUserIds()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "related_object_type"
+     * Test attribute "related_ids"
      */
-    public function testPropertyRelatedObjectType()
+    public function testPropertyRelatedIds()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "related_object_id"
+     * Test attribute "count"
      */
-    public function testPropertyRelatedObjectId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "viewed"
-     */
-    public function testPropertyViewed()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "sent"
-     */
-    public function testPropertySent()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "created_at"
-     */
-    public function testPropertyCreatedAt()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "type"
-     */
-    public function testPropertyType()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "from_comment_id"
-     */
-    public function testPropertyFromCommentId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "from_user_name"
-     */
-    public function testPropertyFromUserName()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "from_user_id"
-     */
-    public function testPropertyFromUserId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "from_user_avatar_src"
-     */
-    public function testPropertyFromUserAvatarSrc()
+    public function testPropertyCount()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -216,18 +144,126 @@ class RenderableUserNotificationTest extends TestCase
     }
 
     /**
-     * Test attribute "conversation_id"
+     * Test attribute "from_user_avatar_src"
      */
-    public function testPropertyConversationId()
+    public function testPropertyFromUserAvatarSrc()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "context_html"
+     * Test attribute "from_user_id"
      */
-    public function testPropertyContextHtml()
+    public function testPropertyFromUserId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "from_user_name"
+     */
+    public function testPropertyFromUserName()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "from_comment_id"
+     */
+    public function testPropertyFromCommentId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "type"
+     */
+    public function testPropertyType()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "created_at"
+     */
+    public function testPropertyCreatedAt()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "sent"
+     */
+    public function testPropertySent()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "viewed"
+     */
+    public function testPropertyViewed()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "related_object_id"
+     */
+    public function testPropertyRelatedObjectId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "related_object_type"
+     */
+    public function testPropertyRelatedObjectType()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "page_title"
+     */
+    public function testPropertyPageTitle()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "url"
+     */
+    public function testPropertyUrl()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "url_id"
+     */
+    public function testPropertyUrlId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "_id"
+     */
+    public function testPropertyId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
