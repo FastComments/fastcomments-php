@@ -245,6 +245,7 @@ class QueryPredicate implements ModelInterface, ArrayAccess, \JsonSerializable
     public const OPERATOR_NOT_EQ = 'not_eq';
     public const OPERATOR_GREATER_THAN = 'greater_than';
     public const OPERATOR_LESS_THAN = 'less_than';
+    public const OPERATOR_CONTAINS = 'contains';
 
     /**
      * Gets allowable values of the enum
@@ -258,6 +259,7 @@ class QueryPredicate implements ModelInterface, ArrayAccess, \JsonSerializable
             self::OPERATOR_NOT_EQ,
             self::OPERATOR_GREATER_THAN,
             self::OPERATOR_LESS_THAN,
+            self::OPERATOR_CONTAINS,
         ];
     }
 

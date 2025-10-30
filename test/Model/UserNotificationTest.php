@@ -259,4 +259,40 @@ class UserNotificationTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "count"
+     */
+    public function testPropertyCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "related_ids"
+     */
+    public function testPropertyRelatedIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "from_user_ids"
+     */
+    public function testPropertyFromUserIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "from_user_names"
+     */
+    public function testPropertyFromUserNames()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

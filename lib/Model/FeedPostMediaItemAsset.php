@@ -58,8 +58,8 @@ class FeedPostMediaItemAsset implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'w' => 'float',
-        'h' => 'float',
+        'w' => 'int',
+        'h' => 'int',
         'src' => 'string'
     ];
 
@@ -71,8 +71,8 @@ class FeedPostMediaItemAsset implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'w' => 'double',
-        'h' => 'double',
+        'w' => 'int32',
+        'h' => 'int32',
         'src' => null
     ];
 
@@ -316,7 +316,7 @@ class FeedPostMediaItemAsset implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets w
      *
-     * @return float
+     * @return int
      */
     public function getW()
     {
@@ -326,7 +326,7 @@ class FeedPostMediaItemAsset implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets w
      *
-     * @param float $w w
+     * @param int $w w
      *
      * @return self
      */
@@ -343,7 +343,7 @@ class FeedPostMediaItemAsset implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets h
      *
-     * @return float
+     * @return int
      */
     public function getH()
     {
@@ -353,7 +353,7 @@ class FeedPostMediaItemAsset implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets h
      *
-     * @param float $h h
+     * @param int $h h
      *
      * @return self
      */

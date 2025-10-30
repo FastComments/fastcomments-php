@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **media** | [**\FastComments\Client\Model\FeedPostMediaItem[]**](FeedPostMediaItem.md) |  | [optional]
 **links** | [**\FastComments\Client\Model\FeedPostLink[]**](FeedPostLink.md) |  | [optional]
 **created_at** | **\DateTime** |  |
-**reacts** | **array<string,float>** | Construct a type with a set of properties K of type T | [optional]
+**reacts** | **array<string,int>** |  | [optional]
+**comment_count** | **int** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

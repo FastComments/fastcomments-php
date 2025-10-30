@@ -90,6 +90,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_parent_id' => 'string',
         'avatar_src' => 'string',
         'is_spam' => 'bool',
+        'perm_not_spam' => 'bool',
         'ai_determined_spam' => 'bool',
         'has_images' => 'bool',
         'page_number' => 'int',
@@ -170,6 +171,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_parent_id' => null,
         'avatar_src' => null,
         'is_spam' => null,
+        'perm_not_spam' => null,
         'ai_determined_spam' => null,
         'has_images' => null,
         'page_number' => 'int32',
@@ -248,6 +250,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_parent_id' => true,
         'avatar_src' => true,
         'is_spam' => false,
+        'perm_not_spam' => false,
         'ai_determined_spam' => false,
         'has_images' => false,
         'page_number' => true,
@@ -406,6 +409,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_parent_id' => 'externalParentId',
         'avatar_src' => 'avatarSrc',
         'is_spam' => 'isSpam',
+        'perm_not_spam' => 'permNotSpam',
         'ai_determined_spam' => 'aiDeterminedSpam',
         'has_images' => 'hasImages',
         'page_number' => 'pageNumber',
@@ -484,6 +488,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_parent_id' => 'setExternalParentId',
         'avatar_src' => 'setAvatarSrc',
         'is_spam' => 'setIsSpam',
+        'perm_not_spam' => 'setPermNotSpam',
         'ai_determined_spam' => 'setAiDeterminedSpam',
         'has_images' => 'setHasImages',
         'page_number' => 'setPageNumber',
@@ -562,6 +567,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'external_parent_id' => 'getExternalParentId',
         'avatar_src' => 'getAvatarSrc',
         'is_spam' => 'getIsSpam',
+        'perm_not_spam' => 'getPermNotSpam',
         'ai_determined_spam' => 'getAiDeterminedSpam',
         'has_images' => 'getHasImages',
         'page_number' => 'getPageNumber',
@@ -691,6 +697,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('external_parent_id', $data ?? [], null);
         $this->setIfExists('avatar_src', $data ?? [], null);
         $this->setIfExists('is_spam', $data ?? [], null);
+        $this->setIfExists('perm_not_spam', $data ?? [], null);
         $this->setIfExists('ai_determined_spam', $data ?? [], null);
         $this->setIfExists('has_images', $data ?? [], null);
         $this->setIfExists('page_number', $data ?? [], null);
@@ -1785,6 +1792,33 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable is_spam cannot be null');
         }
         $this->container['is_spam'] = $is_spam;
+
+        return $this;
+    }
+
+    /**
+     * Gets perm_not_spam
+     *
+     * @return bool|null
+     */
+    public function getPermNotSpam()
+    {
+        return $this->container['perm_not_spam'];
+    }
+
+    /**
+     * Sets perm_not_spam
+     *
+     * @param bool|null $perm_not_spam perm_not_spam
+     *
+     * @return self
+     */
+    public function setPermNotSpam($perm_not_spam)
+    {
+        if (is_null($perm_not_spam)) {
+            throw new \InvalidArgumentException('non-nullable perm_not_spam cannot be null');
+        }
+        $this->container['perm_not_spam'] = $perm_not_spam;
 
         return $this;
     }

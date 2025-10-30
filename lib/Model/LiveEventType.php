@@ -47,6 +47,8 @@ class LiveEventType
 
     public const NOTIFICATION = 'notification';
 
+    public const NOTIFICATION_UPDATE = 'notification-update';
+
     public const P_U = 'p-u';
 
     public const NEW_VOTE = 'new-vote';
@@ -71,6 +73,10 @@ class LiveEventType
 
     public const NEW_FEED_POST = 'new-feed-post';
 
+    public const UPDATED_FEED_POST = 'updated-feed-post';
+
+    public const DELETED_FEED_POST = 'deleted-feed-post';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -80,6 +86,7 @@ class LiveEventType
         return [
             self::UPDATE_BADGES,
             self::NOTIFICATION,
+            self::NOTIFICATION_UPDATE,
             self::P_U,
             self::NEW_VOTE,
             self::DELETED_VOTE,
@@ -91,7 +98,9 @@ class LiveEventType
             self::THREAD_STATE_CHANGE,
             self::FR,
             self::DFR,
-            self::NEW_FEED_POST
+            self::NEW_FEED_POST,
+            self::UPDATED_FEED_POST,
+            self::DELETED_FEED_POST
         ];
     }
 }

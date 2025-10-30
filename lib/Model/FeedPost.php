@@ -72,7 +72,8 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'media' => '\FastComments\Client\Model\FeedPostMediaItem[]',
         'links' => '\FastComments\Client\Model\FeedPostLink[]',
         'created_at' => '\DateTime',
-        'reacts' => 'array<string,float>'
+        'reacts' => 'array<string,int>',
+        'comment_count' => 'int'
     ];
 
     /**
@@ -97,7 +98,8 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'media' => null,
         'links' => null,
         'created_at' => 'date-time',
-        'reacts' => 'double'
+        'reacts' => 'int32',
+        'comment_count' => 'int32'
     ];
 
     /**
@@ -120,7 +122,8 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'media' => false,
         'links' => false,
         'created_at' => false,
-        'reacts' => false
+        'reacts' => false,
+        'comment_count' => true
     ];
 
     /**
@@ -223,7 +226,8 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'media' => 'media',
         'links' => 'links',
         'created_at' => 'createdAt',
-        'reacts' => 'reacts'
+        'reacts' => 'reacts',
+        'comment_count' => 'commentCount'
     ];
 
     /**
@@ -246,7 +250,8 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'media' => 'setMedia',
         'links' => 'setLinks',
         'created_at' => 'setCreatedAt',
-        'reacts' => 'setReacts'
+        'reacts' => 'setReacts',
+        'comment_count' => 'setCommentCount'
     ];
 
     /**
@@ -269,7 +274,8 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'media' => 'getMedia',
         'links' => 'getLinks',
         'created_at' => 'getCreatedAt',
-        'reacts' => 'getReacts'
+        'reacts' => 'getReacts',
+        'comment_count' => 'getCommentCount'
     ];
 
     /**
@@ -344,6 +350,7 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('links', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('reacts', $data ?? [], null);
+        $this->setIfExists('comment_count', $data ?? [], null);
     }
 
     /**
@@ -792,7 +799,7 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets reacts
      *
-     * @return array<string,float>|null
+     * @return array<string,int>|null
      */
     public function getReacts()
     {
@@ -802,7 +809,7 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets reacts
      *
-     * @param array<string,float>|null $reacts Construct a type with a set of properties K of type T
+     * @param array<string,int>|null $reacts reacts
      *
      * @return self
      */
@@ -812,6 +819,40 @@ class FeedPost implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable reacts cannot be null');
         }
         $this->container['reacts'] = $reacts;
+
+        return $this;
+    }
+
+    /**
+     * Gets comment_count
+     *
+     * @return int|null
+     */
+    public function getCommentCount()
+    {
+        return $this->container['comment_count'];
+    }
+
+    /**
+     * Sets comment_count
+     *
+     * @param int|null $comment_count comment_count
+     *
+     * @return self
+     */
+    public function setCommentCount($comment_count)
+    {
+        if (is_null($comment_count)) {
+            array_push($this->openAPINullablesSetToNull, 'comment_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('comment_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['comment_count'] = $comment_count;
 
         return $this;
     }

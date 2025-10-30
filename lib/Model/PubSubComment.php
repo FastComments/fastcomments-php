@@ -58,12 +58,12 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'date' => 'string',
         '_id' => 'string',
+        'tenant_id' => 'string',
         'url_id' => 'string',
         'url' => 'string',
         'page_title' => 'string',
-        'date' => 'string',
-        'tenant_id' => 'string',
         'user_id' => 'string',
         'anon_user_id' => 'string',
         'commenter_name' => 'string',
@@ -111,12 +111,12 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'date' => null,
         '_id' => null,
+        'tenant_id' => null,
         'url_id' => null,
         'url' => null,
         'page_title' => null,
-        'date' => null,
-        'tenant_id' => null,
         'user_id' => null,
         'anon_user_id' => null,
         'commenter_name' => null,
@@ -162,12 +162,12 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'date' => false,
         '_id' => false,
+        'tenant_id' => false,
         'url_id' => false,
         'url' => false,
         'page_title' => false,
-        'date' => false,
-        'tenant_id' => false,
         'user_id' => false,
         'anon_user_id' => false,
         'commenter_name' => false,
@@ -293,12 +293,12 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'date' => 'date',
         '_id' => '_id',
+        'tenant_id' => 'tenantId',
         'url_id' => 'urlId',
         'url' => 'url',
         'page_title' => 'pageTitle',
-        'date' => 'date',
-        'tenant_id' => 'tenantId',
         'user_id' => 'userId',
         'anon_user_id' => 'anonUserId',
         'commenter_name' => 'commenterName',
@@ -344,12 +344,12 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'date' => 'setDate',
         '_id' => 'setId',
+        'tenant_id' => 'setTenantId',
         'url_id' => 'setUrlId',
         'url' => 'setUrl',
         'page_title' => 'setPageTitle',
-        'date' => 'setDate',
-        'tenant_id' => 'setTenantId',
         'user_id' => 'setUserId',
         'anon_user_id' => 'setAnonUserId',
         'commenter_name' => 'setCommenterName',
@@ -395,12 +395,12 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'date' => 'getDate',
         '_id' => 'getId',
+        'tenant_id' => 'getTenantId',
         'url_id' => 'getUrlId',
         'url' => 'getUrl',
         'page_title' => 'getPageTitle',
-        'date' => 'getDate',
-        'tenant_id' => 'getTenantId',
         'user_id' => 'getUserId',
         'anon_user_id' => 'getAnonUserId',
         'commenter_name' => 'getCommenterName',
@@ -497,12 +497,12 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('date', $data ?? [], null);
         $this->setIfExists('_id', $data ?? [], null);
+        $this->setIfExists('tenant_id', $data ?? [], null);
         $this->setIfExists('url_id', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('page_title', $data ?? [], null);
-        $this->setIfExists('date', $data ?? [], null);
-        $this->setIfExists('tenant_id', $data ?? [], null);
         $this->setIfExists('user_id', $data ?? [], null);
         $this->setIfExists('anon_user_id', $data ?? [], null);
         $this->setIfExists('commenter_name', $data ?? [], null);
@@ -569,20 +569,20 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['date'] === null) {
+            $invalidProperties[] = "'date' can't be null";
+        }
         if ($this->container['_id'] === null) {
             $invalidProperties[] = "'_id' can't be null";
+        }
+        if ($this->container['tenant_id'] === null) {
+            $invalidProperties[] = "'tenant_id' can't be null";
         }
         if ($this->container['url_id'] === null) {
             $invalidProperties[] = "'url_id' can't be null";
         }
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
-        }
-        if ($this->container['date'] === null) {
-            $invalidProperties[] = "'date' can't be null";
-        }
-        if ($this->container['tenant_id'] === null) {
-            $invalidProperties[] = "'tenant_id' can't be null";
         }
         if ($this->container['commenter_name'] === null) {
             $invalidProperties[] = "'commenter_name' can't be null";
@@ -618,6 +618,33 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets date
+     *
+     * @return string
+     */
+    public function getDate()
+    {
+        return $this->container['date'];
+    }
+
+    /**
+     * Sets date
+     *
+     * @param string $date date
+     *
+     * @return self
+     */
+    public function setDate($date)
+    {
+        if (is_null($date)) {
+            throw new \InvalidArgumentException('non-nullable date cannot be null');
+        }
+        $this->container['date'] = $date;
+
+        return $this;
+    }
+
+    /**
      * Gets _id
      *
      * @return string
@@ -640,6 +667,33 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable _id cannot be null');
         }
         $this->container['_id'] = $_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets tenant_id
+     *
+     * @return string
+     */
+    public function getTenantId()
+    {
+        return $this->container['tenant_id'];
+    }
+
+    /**
+     * Sets tenant_id
+     *
+     * @param string $tenant_id tenant_id
+     *
+     * @return self
+     */
+    public function setTenantId($tenant_id)
+    {
+        if (is_null($tenant_id)) {
+            throw new \InvalidArgumentException('non-nullable tenant_id cannot be null');
+        }
+        $this->container['tenant_id'] = $tenant_id;
 
         return $this;
     }
@@ -721,60 +775,6 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable page_title cannot be null');
         }
         $this->container['page_title'] = $page_title;
-
-        return $this;
-    }
-
-    /**
-     * Gets date
-     *
-     * @return string
-     */
-    public function getDate()
-    {
-        return $this->container['date'];
-    }
-
-    /**
-     * Sets date
-     *
-     * @param string $date date
-     *
-     * @return self
-     */
-    public function setDate($date)
-    {
-        if (is_null($date)) {
-            throw new \InvalidArgumentException('non-nullable date cannot be null');
-        }
-        $this->container['date'] = $date;
-
-        return $this;
-    }
-
-    /**
-     * Gets tenant_id
-     *
-     * @return string
-     */
-    public function getTenantId()
-    {
-        return $this->container['tenant_id'];
-    }
-
-    /**
-     * Sets tenant_id
-     *
-     * @param string $tenant_id tenant_id
-     *
-     * @return self
-     */
-    public function setTenantId($tenant_id)
-    {
-        if (is_null($tenant_id)) {
-            throw new \InvalidArgumentException('non-nullable tenant_id cannot be null');
-        }
-        $this->container['tenant_id'] = $tenant_id;
 
         return $this;
     }

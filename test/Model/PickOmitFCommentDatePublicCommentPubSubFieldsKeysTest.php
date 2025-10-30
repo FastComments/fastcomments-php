@@ -81,9 +81,27 @@ class PickOmitFCommentDatePublicCommentPubSubFieldsKeysTest extends TestCase
     }
 
     /**
+     * Test attribute "date"
+     */
+    public function testPropertyDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "_id"
      */
     public function testPropertyId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "tenant_id"
+     */
+    public function testPropertyTenantId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -111,24 +129,6 @@ class PickOmitFCommentDatePublicCommentPubSubFieldsKeysTest extends TestCase
      * Test attribute "page_title"
      */
     public function testPropertyPageTitle()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "date"
-     */
-    public function testPropertyDate()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "tenant_id"
-     */
-    public function testPropertyTenantId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

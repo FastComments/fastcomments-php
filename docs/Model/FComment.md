@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **external_parent_id** | **string** |  | [optional]
 **avatar_src** | **string** |  | [optional]
 **is_spam** | **bool** |  | [optional]
+**perm_not_spam** | **bool** |  | [optional]
 **ai_determined_spam** | **bool** |  | [optional]
 **has_images** | **bool** |  | [optional]
 **page_number** | **int** |  | [optional]

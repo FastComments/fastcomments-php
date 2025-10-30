@@ -62,6 +62,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
         'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
         'code' => 'string',
         'reason' => 'string',
+        'translated_warning' => 'string',
         'comments' => '\FastComments\Client\Model\PublicComment[]',
         'user' => '\FastComments\Client\Model\UserSessionInfo',
         'url_id_clean' => 'string',
@@ -102,6 +103,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
         'status' => null,
         'code' => null,
         'reason' => null,
+        'translated_warning' => null,
         'comments' => null,
         'user' => null,
         'url_id_clean' => null,
@@ -140,6 +142,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
         'status' => false,
         'code' => false,
         'reason' => false,
+        'translated_warning' => false,
         'comments' => false,
         'user' => true,
         'url_id_clean' => false,
@@ -258,6 +261,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
         'status' => 'status',
         'code' => 'code',
         'reason' => 'reason',
+        'translated_warning' => 'translatedWarning',
         'comments' => 'comments',
         'user' => 'user',
         'url_id_clean' => 'urlIdClean',
@@ -296,6 +300,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
         'status' => 'setStatus',
         'code' => 'setCode',
         'reason' => 'setReason',
+        'translated_warning' => 'setTranslatedWarning',
         'comments' => 'setComments',
         'user' => 'setUser',
         'url_id_clean' => 'setUrlIdClean',
@@ -334,6 +339,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
         'status' => 'getStatus',
         'code' => 'getCode',
         'reason' => 'getReason',
+        'translated_warning' => 'getTranslatedWarning',
         'comments' => 'getComments',
         'user' => 'getUser',
         'url_id_clean' => 'getUrlIdClean',
@@ -423,6 +429,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('reason', $data ?? [], null);
+        $this->setIfExists('translated_warning', $data ?? [], null);
         $this->setIfExists('comments', $data ?? [], null);
         $this->setIfExists('user', $data ?? [], null);
         $this->setIfExists('url_id_clean', $data ?? [], null);
@@ -615,6 +622,33 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable reason cannot be null');
         }
         $this->container['reason'] = $reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets translated_warning
+     *
+     * @return string|null
+     */
+    public function getTranslatedWarning()
+    {
+        return $this->container['translated_warning'];
+    }
+
+    /**
+     * Sets translated_warning
+     *
+     * @param string|null $translated_warning translated_warning
+     *
+     * @return self
+     */
+    public function setTranslatedWarning($translated_warning)
+    {
+        if (is_null($translated_warning)) {
+            throw new \InvalidArgumentException('non-nullable translated_warning cannot be null');
+        }
+        $this->container['translated_warning'] = $translated_warning;
 
         return $this;
     }

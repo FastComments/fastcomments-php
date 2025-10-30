@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**date** | **\DateTime** |  |
 **_id** | **string** |  |
+**tenant_id** | **string** |  |
 **url_id** | **string** |  |
+**url_id_raw** | **string** |  | [optional]
 **url** | **string** |  |
 **page_title** | **string** |  | [optional]
-**date** | **\DateTime** |  |
-**tenant_id** | **string** |  |
-**url_id_raw** | **string** |  | [optional]
 **user_id** | **string** |  | [optional]
 **anon_user_id** | **string** |  | [optional]
 **commenter_email** | **string** |  | [optional]

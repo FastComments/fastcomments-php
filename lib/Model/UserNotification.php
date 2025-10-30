@@ -65,7 +65,7 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
         'url_id' => 'string',
         'url' => 'string',
         'page_title' => 'string',
-        'related_object_type' => 'float',
+        'related_object_type' => '\FastComments\Client\Model\NotificationObjectType',
         'related_object_id' => 'string',
         'viewed' => 'bool',
         'is_unread_message' => 'bool',
@@ -77,7 +77,11 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
         'from_user_name' => 'string',
         'from_user_id' => 'string',
         'from_user_avatar_src' => 'string',
-        'opted_out' => 'bool'
+        'opted_out' => 'bool',
+        'count' => 'float',
+        'related_ids' => 'string[]',
+        'from_user_ids' => 'string[]',
+        'from_user_names' => 'string[]'
     ];
 
     /**
@@ -95,7 +99,7 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
         'url_id' => null,
         'url' => null,
         'page_title' => null,
-        'related_object_type' => 'double',
+        'related_object_type' => null,
         'related_object_id' => null,
         'viewed' => null,
         'is_unread_message' => null,
@@ -107,7 +111,11 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
         'from_user_name' => null,
         'from_user_id' => null,
         'from_user_avatar_src' => null,
-        'opted_out' => null
+        'opted_out' => null,
+        'count' => 'double',
+        'related_ids' => null,
+        'from_user_ids' => null,
+        'from_user_names' => null
     ];
 
     /**
@@ -135,7 +143,11 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
         'from_user_name' => true,
         'from_user_id' => true,
         'from_user_avatar_src' => true,
-        'opted_out' => false
+        'opted_out' => false,
+        'count' => false,
+        'related_ids' => false,
+        'from_user_ids' => false,
+        'from_user_names' => false
     ];
 
     /**
@@ -243,7 +255,11 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
         'from_user_name' => 'fromUserName',
         'from_user_id' => 'fromUserId',
         'from_user_avatar_src' => 'fromUserAvatarSrc',
-        'opted_out' => 'optedOut'
+        'opted_out' => 'optedOut',
+        'count' => 'count',
+        'related_ids' => 'relatedIds',
+        'from_user_ids' => 'fromUserIds',
+        'from_user_names' => 'fromUserNames'
     ];
 
     /**
@@ -271,7 +287,11 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
         'from_user_name' => 'setFromUserName',
         'from_user_id' => 'setFromUserId',
         'from_user_avatar_src' => 'setFromUserAvatarSrc',
-        'opted_out' => 'setOptedOut'
+        'opted_out' => 'setOptedOut',
+        'count' => 'setCount',
+        'related_ids' => 'setRelatedIds',
+        'from_user_ids' => 'setFromUserIds',
+        'from_user_names' => 'setFromUserNames'
     ];
 
     /**
@@ -299,7 +319,11 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
         'from_user_name' => 'getFromUserName',
         'from_user_id' => 'getFromUserId',
         'from_user_avatar_src' => 'getFromUserAvatarSrc',
-        'opted_out' => 'getOptedOut'
+        'opted_out' => 'getOptedOut',
+        'count' => 'getCount',
+        'related_ids' => 'getRelatedIds',
+        'from_user_ids' => 'getFromUserIds',
+        'from_user_names' => 'getFromUserNames'
     ];
 
     /**
@@ -379,6 +403,10 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('from_user_id', $data ?? [], null);
         $this->setIfExists('from_user_avatar_src', $data ?? [], null);
         $this->setIfExists('opted_out', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('related_ids', $data ?? [], null);
+        $this->setIfExists('from_user_ids', $data ?? [], null);
+        $this->setIfExists('from_user_names', $data ?? [], null);
     }
 
     /**
@@ -672,7 +700,7 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets related_object_type
      *
-     * @return float
+     * @return \FastComments\Client\Model\NotificationObjectType
      */
     public function getRelatedObjectType()
     {
@@ -682,7 +710,7 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets related_object_type
      *
-     * @param float $related_object_type related_object_type
+     * @param \FastComments\Client\Model\NotificationObjectType $related_object_type related_object_type
      *
      * @return self
      */
@@ -1051,6 +1079,114 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable opted_out cannot be null');
         }
         $this->container['opted_out'] = $opted_out;
+
+        return $this;
+    }
+
+    /**
+     * Gets count
+     *
+     * @return float|null
+     */
+    public function getCount()
+    {
+        return $this->container['count'];
+    }
+
+    /**
+     * Sets count
+     *
+     * @param float|null $count count
+     *
+     * @return self
+     */
+    public function setCount($count)
+    {
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
+        }
+        $this->container['count'] = $count;
+
+        return $this;
+    }
+
+    /**
+     * Gets related_ids
+     *
+     * @return string[]|null
+     */
+    public function getRelatedIds()
+    {
+        return $this->container['related_ids'];
+    }
+
+    /**
+     * Sets related_ids
+     *
+     * @param string[]|null $related_ids related_ids
+     *
+     * @return self
+     */
+    public function setRelatedIds($related_ids)
+    {
+        if (is_null($related_ids)) {
+            throw new \InvalidArgumentException('non-nullable related_ids cannot be null');
+        }
+        $this->container['related_ids'] = $related_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_user_ids
+     *
+     * @return string[]|null
+     */
+    public function getFromUserIds()
+    {
+        return $this->container['from_user_ids'];
+    }
+
+    /**
+     * Sets from_user_ids
+     *
+     * @param string[]|null $from_user_ids from_user_ids
+     *
+     * @return self
+     */
+    public function setFromUserIds($from_user_ids)
+    {
+        if (is_null($from_user_ids)) {
+            throw new \InvalidArgumentException('non-nullable from_user_ids cannot be null');
+        }
+        $this->container['from_user_ids'] = $from_user_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_user_names
+     *
+     * @return string[]|null
+     */
+    public function getFromUserNames()
+    {
+        return $this->container['from_user_names'];
+    }
+
+    /**
+     * Sets from_user_names
+     *
+     * @param string[]|null $from_user_names from_user_names
+     *
+     * @return self
+     */
+    public function setFromUserNames($from_user_names)
+    {
+        if (is_null($from_user_names)) {
+            throw new \InvalidArgumentException('non-nullable from_user_names cannot be null');
+        }
+        $this->container['from_user_names'] = $from_user_names;
 
         return $this;
     }

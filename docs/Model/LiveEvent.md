@@ -19,6 +19,6 @@ Name | Type | Description | Notes
 **is_closed** | **bool** |  | [optional]
 **uj** | **string[]** |  | [optional]
 **ul** | **string[]** |  | [optional]
-**changes** | **array<string,float>** | Construct a type with a set of properties K of type T | [optional]
+**changes** | **array<string,int>** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

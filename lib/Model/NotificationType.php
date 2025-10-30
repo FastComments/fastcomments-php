@@ -59,6 +59,16 @@ class NotificationType
 
     public const NUMBER_7 = 7;
 
+    public const NUMBER_8 = 8;
+
+    public const NUMBER_81 = 81;
+
+    public const NUMBER_82 = 82;
+
+    public const NUMBER_9 = 9;
+
+    public const NUMBER_10 = 10;
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -73,7 +83,12 @@ class NotificationType
             self::NUMBER_4,
             self::NUMBER_5,
             self::NUMBER_6,
-            self::NUMBER_7
+            self::NUMBER_7,
+            self::NUMBER_8,
+            self::NUMBER_81,
+            self::NUMBER_82,
+            self::NUMBER_9,
+            self::NUMBER_10
         ];
     }
 }

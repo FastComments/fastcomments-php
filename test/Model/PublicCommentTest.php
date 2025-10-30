@@ -81,18 +81,18 @@ class PublicCommentTest extends TestCase
     }
 
     /**
-     * Test attribute "_id"
+     * Test attribute "date"
      */
-    public function testPropertyId()
+    public function testPropertyDate()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "date"
+     * Test attribute "_id"
      */
-    public function testPropertyDate()
+    public function testPropertyId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

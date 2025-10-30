@@ -61,6 +61,7 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'authorized' => 'bool',
         'avatar_src' => 'string',
+        'badges' => '\FastComments\Client\Model\CommentUserBadgeInfo[]',
         'display_label' => 'string',
         'display_name' => 'string',
         'email' => 'string',
@@ -83,6 +84,7 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => null,
         'authorized' => null,
         'avatar_src' => null,
+        'badges' => null,
         'display_label' => null,
         'display_name' => null,
         'email' => null,
@@ -103,6 +105,7 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'authorized' => false,
         'avatar_src' => true,
+        'badges' => false,
         'display_label' => false,
         'display_name' => false,
         'email' => true,
@@ -203,6 +206,7 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'authorized' => 'authorized',
         'avatar_src' => 'avatarSrc',
+        'badges' => 'badges',
         'display_label' => 'displayLabel',
         'display_name' => 'displayName',
         'email' => 'email',
@@ -223,6 +227,7 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'authorized' => 'setAuthorized',
         'avatar_src' => 'setAvatarSrc',
+        'badges' => 'setBadges',
         'display_label' => 'setDisplayLabel',
         'display_name' => 'setDisplayName',
         'email' => 'setEmail',
@@ -243,6 +248,7 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'authorized' => 'getAuthorized',
         'avatar_src' => 'getAvatarSrc',
+        'badges' => 'getBadges',
         'display_label' => 'getDisplayLabel',
         'display_name' => 'getDisplayName',
         'email' => 'getEmail',
@@ -314,6 +320,7 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('authorized', $data ?? [], null);
         $this->setIfExists('avatar_src', $data ?? [], null);
+        $this->setIfExists('badges', $data ?? [], null);
         $this->setIfExists('display_label', $data ?? [], null);
         $this->setIfExists('display_name', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
@@ -451,6 +458,33 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['avatar_src'] = $avatar_src;
+
+        return $this;
+    }
+
+    /**
+     * Gets badges
+     *
+     * @return \FastComments\Client\Model\CommentUserBadgeInfo[]|null
+     */
+    public function getBadges()
+    {
+        return $this->container['badges'];
+    }
+
+    /**
+     * Sets badges
+     *
+     * @param \FastComments\Client\Model\CommentUserBadgeInfo[]|null $badges badges
+     *
+     * @return self
+     */
+    public function setBadges($badges)
+    {
+        if (is_null($badges)) {
+            throw new \InvalidArgumentException('non-nullable badges cannot be null');
+        }
+        $this->container['badges'] = $badges;
 
         return $this;
     }

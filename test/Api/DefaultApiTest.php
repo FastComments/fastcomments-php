@@ -85,6 +85,30 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for addPage
+     *
+     * .
+     *
+     */
+    public function testAddPage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for addSSOUser
+     *
+     * .
+     *
+     */
+    public function testAddSSOUser()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for aggregate
      *
      * .
@@ -157,6 +181,30 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for createSubscription
+     *
+     * .
+     *
+     */
+    public function testCreateSubscription()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for createUserBadge
+     *
+     * .
+     *
+     */
+    public function testCreateUserBadge()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for deleteComment
      *
      * .
@@ -175,6 +223,54 @@ class DefaultApiTest extends TestCase
      *
      */
     public function testDeleteDomainConfig()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deletePage
+     *
+     * .
+     *
+     */
+    public function testDeletePage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deleteSSOUser
+     *
+     * .
+     *
+     */
+    public function testDeleteSSOUser()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deleteSubscription
+     *
+     * .
+     *
+     */
+    public function testDeleteSubscription()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deleteUserBadge
+     *
+     * .
+     *
+     */
+    public function testDeleteUserBadge()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -265,12 +361,168 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for getPageByURLId
+     *
+     * .
+     *
+     */
+    public function testGetPageByURLId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getPages
+     *
+     * .
+     *
+     */
+    public function testGetPages()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getSSOUserByEmail
+     *
+     * .
+     *
+     */
+    public function testGetSSOUserByEmail()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getSSOUserById
+     *
+     * .
+     *
+     */
+    public function testGetSSOUserById()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getSSOUsers
+     *
+     * .
+     *
+     */
+    public function testGetSSOUsers()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getSubscriptions
+     *
+     * .
+     *
+     */
+    public function testGetSubscriptions()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getUserBadge
+     *
+     * .
+     *
+     */
+    public function testGetUserBadge()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getUserBadgeProgressById
+     *
+     * .
+     *
+     */
+    public function testGetUserBadgeProgressById()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getUserBadgeProgressByUserId
+     *
+     * .
+     *
+     */
+    public function testGetUserBadgeProgressByUserId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getUserBadgeProgressList
+     *
+     * .
+     *
+     */
+    public function testGetUserBadgeProgressList()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getUserBadges
+     *
+     * .
+     *
+     */
+    public function testGetUserBadges()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for patchDomainConfig
      *
      * .
      *
      */
     public function testPatchDomainConfig()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for patchPage
+     *
+     * .
+     *
+     */
+    public function testPatchPage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for patchSSOUser
+     *
+     * .
+     *
+     */
+    public function testPatchSSOUser()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -289,12 +541,36 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for putSSOUser
+     *
+     * .
+     *
+     */
+    public function testPutSSOUser()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for saveComment
      *
      * .
      *
      */
     public function testSaveComment()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for saveCommentsBulk
+     *
+     * .
+     *
+     */
+    public function testSaveCommentsBulk()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -343,6 +619,18 @@ class DefaultApiTest extends TestCase
      *
      */
     public function testUpdateFeedPost()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateUserBadge
+     *
+     * .
+     *
+     */
+    public function testUpdateUserBadge()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

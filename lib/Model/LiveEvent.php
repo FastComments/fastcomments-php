@@ -73,7 +73,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_closed' => 'bool',
         'uj' => 'string[]',
         'ul' => 'string[]',
-        'changes' => 'array<string,float>'
+        'changes' => 'array<string,int>'
     ];
 
     /**
@@ -99,7 +99,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_closed' => null,
         'uj' => null,
         'ul' => null,
-        'changes' => 'double'
+        'changes' => 'int32'
     ];
 
     /**
@@ -806,7 +806,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets changes
      *
-     * @return array<string,float>|null
+     * @return array<string,int>|null
      */
     public function getChanges()
     {
@@ -816,7 +816,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets changes
      *
-     * @param array<string,float>|null $changes Construct a type with a set of properties K of type T
+     * @param array<string,int>|null $changes changes
      *
      * @return self
      */

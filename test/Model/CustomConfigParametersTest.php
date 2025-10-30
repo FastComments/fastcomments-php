@@ -558,9 +558,27 @@ class CustomConfigParametersTest extends TestCase
     }
 
     /**
+     * Test attribute "enable_resize_handle"
+     */
+    public function testPropertyEnableResizeHandle()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "restricted_link_domains"
      */
     public function testPropertyRestrictedLinkDomains()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "show_badges_in_top_bar"
+     */
+    public function testPropertyShowBadgesInTopBar()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

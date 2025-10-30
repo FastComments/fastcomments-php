@@ -108,6 +108,15 @@ class UserSessionInfoTest extends TestCase
     }
 
     /**
+     * Test attribute "badges"
+     */
+    public function testPropertyBadges()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "display_label"
      */
     public function testPropertyDisplayLabel()

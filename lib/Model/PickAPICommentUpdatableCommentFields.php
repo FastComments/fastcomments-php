@@ -59,11 +59,11 @@ class PickAPICommentUpdatableCommentFields implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
+        'date' => '\DateTime',
         'url_id' => 'string',
+        'url_id_raw' => 'string',
         'url' => 'string',
         'page_title' => 'string',
-        'date' => '\DateTime',
-        'url_id_raw' => 'string',
         'user_id' => 'string',
         'commenter_email' => 'string',
         'commenter_name' => 'string',
@@ -108,11 +108,11 @@ class PickAPICommentUpdatableCommentFields implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'date' => 'date-time',
         'url_id' => null,
+        'url_id_raw' => null,
         'url' => null,
         'page_title' => null,
-        'date' => 'date-time',
-        'url_id_raw' => null,
         'user_id' => null,
         'commenter_email' => null,
         'commenter_name' => null,
@@ -155,11 +155,11 @@ class PickAPICommentUpdatableCommentFields implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'date' => false,
         'url_id' => false,
+        'url_id_raw' => false,
         'url' => false,
         'page_title' => false,
-        'date' => false,
-        'url_id_raw' => false,
         'user_id' => false,
         'commenter_email' => false,
         'commenter_name' => false,
@@ -282,11 +282,11 @@ class PickAPICommentUpdatableCommentFields implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
+        'date' => 'date',
         'url_id' => 'urlId',
+        'url_id_raw' => 'urlIdRaw',
         'url' => 'url',
         'page_title' => 'pageTitle',
-        'date' => 'date',
-        'url_id_raw' => 'urlIdRaw',
         'user_id' => 'userId',
         'commenter_email' => 'commenterEmail',
         'commenter_name' => 'commenterName',
@@ -329,11 +329,11 @@ class PickAPICommentUpdatableCommentFields implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
+        'date' => 'setDate',
         'url_id' => 'setUrlId',
+        'url_id_raw' => 'setUrlIdRaw',
         'url' => 'setUrl',
         'page_title' => 'setPageTitle',
-        'date' => 'setDate',
-        'url_id_raw' => 'setUrlIdRaw',
         'user_id' => 'setUserId',
         'commenter_email' => 'setCommenterEmail',
         'commenter_name' => 'setCommenterName',
@@ -376,11 +376,11 @@ class PickAPICommentUpdatableCommentFields implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
+        'date' => 'getDate',
         'url_id' => 'getUrlId',
+        'url_id_raw' => 'getUrlIdRaw',
         'url' => 'getUrl',
         'page_title' => 'getPageTitle',
-        'date' => 'getDate',
-        'url_id_raw' => 'getUrlIdRaw',
         'user_id' => 'getUserId',
         'commenter_email' => 'getCommenterEmail',
         'commenter_name' => 'getCommenterName',
@@ -474,11 +474,11 @@ class PickAPICommentUpdatableCommentFields implements ModelInterface, ArrayAcces
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('date', $data ?? [], null);
         $this->setIfExists('url_id', $data ?? [], null);
+        $this->setIfExists('url_id_raw', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('page_title', $data ?? [], null);
-        $this->setIfExists('date', $data ?? [], null);
-        $this->setIfExists('url_id_raw', $data ?? [], null);
         $this->setIfExists('user_id', $data ?? [], null);
         $this->setIfExists('commenter_email', $data ?? [], null);
         $this->setIfExists('commenter_name', $data ?? [], null);
@@ -542,14 +542,14 @@ class PickAPICommentUpdatableCommentFields implements ModelInterface, ArrayAcces
     {
         $invalidProperties = [];
 
+        if ($this->container['date'] === null) {
+            $invalidProperties[] = "'date' can't be null";
+        }
         if ($this->container['url_id'] === null) {
             $invalidProperties[] = "'url_id' can't be null";
         }
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
-        }
-        if ($this->container['date'] === null) {
-            $invalidProperties[] = "'date' can't be null";
         }
         if ($this->container['commenter_name'] === null) {
             $invalidProperties[] = "'commenter_name' can't be null";
@@ -582,6 +582,33 @@ class PickAPICommentUpdatableCommentFields implements ModelInterface, ArrayAcces
 
 
     /**
+     * Gets date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->container['date'];
+    }
+
+    /**
+     * Sets date
+     *
+     * @param \DateTime $date date
+     *
+     * @return self
+     */
+    public function setDate($date)
+    {
+        if (is_null($date)) {
+            throw new \InvalidArgumentException('non-nullable date cannot be null');
+        }
+        $this->container['date'] = $date;
+
+        return $this;
+    }
+
+    /**
      * Gets url_id
      *
      * @return string
@@ -604,6 +631,33 @@ class PickAPICommentUpdatableCommentFields implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable url_id cannot be null');
         }
         $this->container['url_id'] = $url_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets url_id_raw
+     *
+     * @return string|null
+     */
+    public function getUrlIdRaw()
+    {
+        return $this->container['url_id_raw'];
+    }
+
+    /**
+     * Sets url_id_raw
+     *
+     * @param string|null $url_id_raw url_id_raw
+     *
+     * @return self
+     */
+    public function setUrlIdRaw($url_id_raw)
+    {
+        if (is_null($url_id_raw)) {
+            throw new \InvalidArgumentException('non-nullable url_id_raw cannot be null');
+        }
+        $this->container['url_id_raw'] = $url_id_raw;
 
         return $this;
     }
@@ -658,60 +712,6 @@ class PickAPICommentUpdatableCommentFields implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable page_title cannot be null');
         }
         $this->container['page_title'] = $page_title;
-
-        return $this;
-    }
-
-    /**
-     * Gets date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->container['date'];
-    }
-
-    /**
-     * Sets date
-     *
-     * @param \DateTime $date date
-     *
-     * @return self
-     */
-    public function setDate($date)
-    {
-        if (is_null($date)) {
-            throw new \InvalidArgumentException('non-nullable date cannot be null');
-        }
-        $this->container['date'] = $date;
-
-        return $this;
-    }
-
-    /**
-     * Gets url_id_raw
-     *
-     * @return string|null
-     */
-    public function getUrlIdRaw()
-    {
-        return $this->container['url_id_raw'];
-    }
-
-    /**
-     * Sets url_id_raw
-     *
-     * @param string|null $url_id_raw url_id_raw
-     *
-     * @return self
-     */
-    public function setUrlIdRaw($url_id_raw)
-    {
-        if (is_null($url_id_raw)) {
-            throw new \InvalidArgumentException('non-nullable url_id_raw cannot be null');
-        }
-        $this->container['url_id_raw'] = $url_id_raw;
 
         return $this;
     }

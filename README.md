@@ -75,19 +75,27 @@ try {
 
 ## API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://fastcomments.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DefaultApi* | [**addDomainConfig**](docs/Api/DefaultApi.md#adddomainconfig) | **POST** /api/v1/domain-configs | 
+*DefaultApi* | [**addPage**](docs/Api/DefaultApi.md#addpage) | **POST** /api/v1/pages | 
+*DefaultApi* | [**addSSOUser**](docs/Api/DefaultApi.md#addssouser) | **POST** /api/v1/sso-users | 
 *DefaultApi* | [**aggregate**](docs/Api/DefaultApi.md#aggregate) | **POST** /api/v1/aggregate | 
 *DefaultApi* | [**aggregateQuestionResults**](docs/Api/DefaultApi.md#aggregatequestionresults) | **GET** /api/v1/question-results-aggregation | 
 *DefaultApi* | [**blockUserFromComment**](docs/Api/DefaultApi.md#blockuserfromcomment) | **POST** /api/v1/comments/{id}/block | 
 *DefaultApi* | [**bulkAggregateQuestionResults**](docs/Api/DefaultApi.md#bulkaggregatequestionresults) | **POST** /api/v1/question-results-aggregation/bulk | 
 *DefaultApi* | [**combineCommentsWithQuestionResults**](docs/Api/DefaultApi.md#combinecommentswithquestionresults) | **GET** /api/v1/question-results-aggregation/combine/comments | 
 *DefaultApi* | [**createFeedPost**](docs/Api/DefaultApi.md#createfeedpost) | **POST** /api/v1/feed-posts | 
+*DefaultApi* | [**createSubscription**](docs/Api/DefaultApi.md#createsubscription) | **POST** /api/v1/subscriptions | 
+*DefaultApi* | [**createUserBadge**](docs/Api/DefaultApi.md#createuserbadge) | **POST** /api/v1/user-badges | 
 *DefaultApi* | [**deleteComment**](docs/Api/DefaultApi.md#deletecomment) | **DELETE** /api/v1/comments/{id} | 
 *DefaultApi* | [**deleteDomainConfig**](docs/Api/DefaultApi.md#deletedomainconfig) | **DELETE** /api/v1/domain-configs/{domain} | 
+*DefaultApi* | [**deletePage**](docs/Api/DefaultApi.md#deletepage) | **DELETE** /api/v1/pages/{id} | 
+*DefaultApi* | [**deleteSSOUser**](docs/Api/DefaultApi.md#deletessouser) | **DELETE** /api/v1/sso-users/{id} | 
+*DefaultApi* | [**deleteSubscription**](docs/Api/DefaultApi.md#deletesubscription) | **DELETE** /api/v1/subscriptions/{id} | 
+*DefaultApi* | [**deleteUserBadge**](docs/Api/DefaultApi.md#deleteuserbadge) | **DELETE** /api/v1/user-badges/{id} | 
 *DefaultApi* | [**flagComment**](docs/Api/DefaultApi.md#flagcomment) | **POST** /api/v1/comments/{id}/flag | 
 *DefaultApi* | [**getAuditLogs**](docs/Api/DefaultApi.md#getauditlogs) | **GET** /api/v1/audit-logs | 
 *DefaultApi* | [**getComment**](docs/Api/DefaultApi.md#getcomment) | **GET** /api/v1/comments/{id} | 
@@ -95,13 +103,29 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getDomainConfig**](docs/Api/DefaultApi.md#getdomainconfig) | **GET** /api/v1/domain-configs/{domain} | 
 *DefaultApi* | [**getDomainConfigs**](docs/Api/DefaultApi.md#getdomainconfigs) | **GET** /api/v1/domain-configs | 
 *DefaultApi* | [**getFeedPosts**](docs/Api/DefaultApi.md#getfeedposts) | **GET** /api/v1/feed-posts | 
+*DefaultApi* | [**getPageByURLId**](docs/Api/DefaultApi.md#getpagebyurlid) | **GET** /api/v1/pages/by-url-id | 
+*DefaultApi* | [**getPages**](docs/Api/DefaultApi.md#getpages) | **GET** /api/v1/pages | 
+*DefaultApi* | [**getSSOUserByEmail**](docs/Api/DefaultApi.md#getssouserbyemail) | **GET** /api/v1/sso-users/by-email/{email} | 
+*DefaultApi* | [**getSSOUserById**](docs/Api/DefaultApi.md#getssouserbyid) | **GET** /api/v1/sso-users/by-id/{id} | 
+*DefaultApi* | [**getSSOUsers**](docs/Api/DefaultApi.md#getssousers) | **GET** /api/v1/sso-users | 
+*DefaultApi* | [**getSubscriptions**](docs/Api/DefaultApi.md#getsubscriptions) | **GET** /api/v1/subscriptions | 
+*DefaultApi* | [**getUserBadge**](docs/Api/DefaultApi.md#getuserbadge) | **GET** /api/v1/user-badges/{id} | 
+*DefaultApi* | [**getUserBadgeProgressById**](docs/Api/DefaultApi.md#getuserbadgeprogressbyid) | **GET** /api/v1/user-badge-progress/{id} | 
+*DefaultApi* | [**getUserBadgeProgressByUserId**](docs/Api/DefaultApi.md#getuserbadgeprogressbyuserid) | **GET** /api/v1/user-badge-progress/user/{userId} | 
+*DefaultApi* | [**getUserBadgeProgressList**](docs/Api/DefaultApi.md#getuserbadgeprogresslist) | **GET** /api/v1/user-badge-progress | 
+*DefaultApi* | [**getUserBadges**](docs/Api/DefaultApi.md#getuserbadges) | **GET** /api/v1/user-badges | 
 *DefaultApi* | [**patchDomainConfig**](docs/Api/DefaultApi.md#patchdomainconfig) | **PATCH** /api/v1/domain-configs/{domainToUpdate} | 
+*DefaultApi* | [**patchPage**](docs/Api/DefaultApi.md#patchpage) | **PATCH** /api/v1/pages/{id} | 
+*DefaultApi* | [**patchSSOUser**](docs/Api/DefaultApi.md#patchssouser) | **PATCH** /api/v1/sso-users/{id} | 
 *DefaultApi* | [**putDomainConfig**](docs/Api/DefaultApi.md#putdomainconfig) | **PUT** /api/v1/domain-configs/{domainToUpdate} | 
+*DefaultApi* | [**putSSOUser**](docs/Api/DefaultApi.md#putssouser) | **PUT** /api/v1/sso-users/{id} | 
 *DefaultApi* | [**saveComment**](docs/Api/DefaultApi.md#savecomment) | **POST** /api/v1/comments | 
+*DefaultApi* | [**saveCommentsBulk**](docs/Api/DefaultApi.md#savecommentsbulk) | **POST** /api/v1/comments/bulk | 
 *DefaultApi* | [**unBlockUserFromComment**](docs/Api/DefaultApi.md#unblockuserfromcomment) | **POST** /api/v1/comments/{id}/un-block | 
 *DefaultApi* | [**unFlagComment**](docs/Api/DefaultApi.md#unflagcomment) | **POST** /api/v1/comments/{id}/un-flag | 
 *DefaultApi* | [**updateComment**](docs/Api/DefaultApi.md#updatecomment) | **PATCH** /api/v1/comments/{id} | 
 *DefaultApi* | [**updateFeedPost**](docs/Api/DefaultApi.md#updatefeedpost) | **PATCH** /api/v1/feed-posts/{id} | 
+*DefaultApi* | [**updateUserBadge**](docs/Api/DefaultApi.md#updateuserbadge) | **PUT** /api/v1/user-badges/{id} | 
 *HiddenApi* | [**uploadImageOptions**](docs/Api/HiddenApi.md#uploadimageoptions) | **OPTIONS** /upload-image/{tenantId} | 
 *PublicApi* | [**blockFromCommentPublic**](docs/Api/PublicApi.md#blockfromcommentpublic) | **POST** /block-from-comment/{commentId} | 
 *PublicApi* | [**checkedCommentsForBlocked**](docs/Api/PublicApi.md#checkedcommentsforblocked) | **GET** /check-blocked-comments | 
@@ -109,12 +133,14 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**createFeedPostPublic**](docs/Api/PublicApi.md#createfeedpostpublic) | **POST** /feed-posts/{tenantId} | 
 *PublicApi* | [**deleteCommentPublic**](docs/Api/PublicApi.md#deletecommentpublic) | **DELETE** /comments/{tenantId}/{commentId} | 
 *PublicApi* | [**deleteCommentVote**](docs/Api/PublicApi.md#deletecommentvote) | **DELETE** /comments/{tenantId}/{commentId}/vote/{voteId} | 
+*PublicApi* | [**deleteFeedPostPublic**](docs/Api/PublicApi.md#deletefeedpostpublic) | **DELETE** /feed-posts/{tenantId}/{postId} | 
 *PublicApi* | [**flagCommentPublic**](docs/Api/PublicApi.md#flagcommentpublic) | **POST** /flag-comment/{commentId} | 
 *PublicApi* | [**getCommentText**](docs/Api/PublicApi.md#getcommenttext) | **GET** /comments/{tenantId}/{commentId}/text | 
 *PublicApi* | [**getCommentVoteUserNames**](docs/Api/PublicApi.md#getcommentvoteusernames) | **GET** /comments/{tenantId}/{commentId}/votes | 
 *PublicApi* | [**getCommentsPublic**](docs/Api/PublicApi.md#getcommentspublic) | **GET** /comments/{tenantId} | 
 *PublicApi* | [**getEventLog**](docs/Api/PublicApi.md#geteventlog) | **GET** /event-log/{tenantId} | 
 *PublicApi* | [**getFeedPostsPublic**](docs/Api/PublicApi.md#getfeedpostspublic) | **GET** /feed-posts/{tenantId} | 
+*PublicApi* | [**getFeedPostsStats**](docs/Api/PublicApi.md#getfeedpostsstats) | **GET** /feed-posts/{tenantId}/stats | 
 *PublicApi* | [**getGlobalEventLog**](docs/Api/PublicApi.md#getglobaleventlog) | **GET** /event-log/global/{tenantId} | 
 *PublicApi* | [**getUserNotificationCount**](docs/Api/PublicApi.md#getusernotificationcount) | **GET** /user-notifications/get-count | 
 *PublicApi* | [**getUserNotifications**](docs/Api/PublicApi.md#getusernotifications) | **GET** /user-notifications | 
@@ -125,10 +151,12 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**reactFeedPostPublic**](docs/Api/PublicApi.md#reactfeedpostpublic) | **POST** /feed-posts/{tenantId}/react/{postId} | 
 *PublicApi* | [**resetUserNotificationCount**](docs/Api/PublicApi.md#resetusernotificationcount) | **POST** /user-notifications/reset-count | 
 *PublicApi* | [**resetUserNotifications**](docs/Api/PublicApi.md#resetusernotifications) | **POST** /user-notifications/reset | 
+*PublicApi* | [**searchUsers**](docs/Api/PublicApi.md#searchusers) | **GET** /user-search/{tenantId} | 
 *PublicApi* | [**setCommentText**](docs/Api/PublicApi.md#setcommenttext) | **POST** /comments/{tenantId}/{commentId}/update-text | 
 *PublicApi* | [**unBlockCommentPublic**](docs/Api/PublicApi.md#unblockcommentpublic) | **DELETE** /block-from-comment/{commentId} | 
 *PublicApi* | [**unLockComment**](docs/Api/PublicApi.md#unlockcomment) | **POST** /comments/{tenantId}/{commentId}/unlock | 
 *PublicApi* | [**unPinComment**](docs/Api/PublicApi.md#unpincomment) | **POST** /comments/{tenantId}/{commentId}/unpin | 
+*PublicApi* | [**updateFeedPostPublic**](docs/Api/PublicApi.md#updatefeedpostpublic) | **PUT** /feed-posts/{tenantId}/{postId} | 
 *PublicApi* | [**updateUserNotificationCommentSubscriptionStatus**](docs/Api/PublicApi.md#updateusernotificationcommentsubscriptionstatus) | **POST** /user-notifications/{notificationId}/mark-opted/{optedInOrOut} | 
 *PublicApi* | [**updateUserNotificationPageSubscriptionStatus**](docs/Api/PublicApi.md#updateusernotificationpagesubscriptionstatus) | **POST** /user-notifications/set-subscription-state/{subscribedOrUnsubscribed} | 
 *PublicApi* | [**updateUserNotificationStatus**](docs/Api/PublicApi.md#updateusernotificationstatus) | **POST** /user-notifications/{notificationId}/mark/{newStatus} | 
@@ -137,14 +165,25 @@ Class | Method | HTTP request | Description
 
 ## Models
 
+- [APICreateUserBadgeResponse](docs/Model/APICreateUserBadgeResponse.md)
 - [APIEmptyResponse](docs/Model/APIEmptyResponse.md)
+- [APIEmptySuccessResponse](docs/Model/APIEmptySuccessResponse.md)
 - [APIError](docs/Model/APIError.md)
 - [APIGetCommentResponse](docs/Model/APIGetCommentResponse.md)
 - [APIGetCommentsResponse](docs/Model/APIGetCommentsResponse.md)
+- [APIGetUserBadgeProgressListResponse](docs/Model/APIGetUserBadgeProgressListResponse.md)
+- [APIGetUserBadgeProgressResponse](docs/Model/APIGetUserBadgeProgressResponse.md)
+- [APIGetUserBadgeResponse](docs/Model/APIGetUserBadgeResponse.md)
+- [APIGetUserBadgesResponse](docs/Model/APIGetUserBadgesResponse.md)
+- [APIPage](docs/Model/APIPage.md)
+- [APISSOUser](docs/Model/APISSOUser.md)
 - [APIStatus](docs/Model/APIStatus.md)
+- [APIUserSubscription](docs/Model/APIUserSubscription.md)
 - [AddDomainConfig200Response](docs/Model/AddDomainConfig200Response.md)
 - [AddDomainConfig200ResponseAnyOf](docs/Model/AddDomainConfig200ResponseAnyOf.md)
 - [AddDomainConfigParams](docs/Model/AddDomainConfigParams.md)
+- [AddPageAPIResponse](docs/Model/AddPageAPIResponse.md)
+- [AddSSOUserAPIResponse](docs/Model/AddSSOUserAPIResponse.md)
 - [AggregateQuestionResults200Response](docs/Model/AggregateQuestionResults200Response.md)
 - [AggregateQuestionResultsResponse](docs/Model/AggregateQuestionResultsResponse.md)
 - [AggregateTimeBucket](docs/Model/AggregateTimeBucket.md)
@@ -178,6 +217,9 @@ Class | Method | HTTP request | Description
 - [CommentUserHashTagInfo](docs/Model/CommentUserHashTagInfo.md)
 - [CommentUserMentionInfo](docs/Model/CommentUserMentionInfo.md)
 - [CommenterNameFormats](docs/Model/CommenterNameFormats.md)
+- [CreateAPIPageData](docs/Model/CreateAPIPageData.md)
+- [CreateAPISSOUserData](docs/Model/CreateAPISSOUserData.md)
+- [CreateAPIUserSubscriptionData](docs/Model/CreateAPIUserSubscriptionData.md)
 - [CreateCommentParams](docs/Model/CreateCommentParams.md)
 - [CreateCommentPublic200Response](docs/Model/CreateCommentPublic200Response.md)
 - [CreateFeedPost200Response](docs/Model/CreateFeedPost200Response.md)
@@ -185,6 +227,9 @@ Class | Method | HTTP request | Description
 - [CreateFeedPostPublic200Response](docs/Model/CreateFeedPostPublic200Response.md)
 - [CreateFeedPostResponse](docs/Model/CreateFeedPostResponse.md)
 - [CreateFeedPostsResponse](docs/Model/CreateFeedPostsResponse.md)
+- [CreateSubscriptionAPIResponse](docs/Model/CreateSubscriptionAPIResponse.md)
+- [CreateUserBadge200Response](docs/Model/CreateUserBadge200Response.md)
+- [CreateUserBadgeParams](docs/Model/CreateUserBadgeParams.md)
 - [CustomConfigParameters](docs/Model/CustomConfigParameters.md)
 - [DeleteComment200Response](docs/Model/DeleteComment200Response.md)
 - [DeleteCommentAction](docs/Model/DeleteCommentAction.md)
@@ -192,6 +237,11 @@ Class | Method | HTTP request | Description
 - [DeleteCommentResult](docs/Model/DeleteCommentResult.md)
 - [DeleteCommentVote200Response](docs/Model/DeleteCommentVote200Response.md)
 - [DeleteDomainConfig200Response](docs/Model/DeleteDomainConfig200Response.md)
+- [DeleteFeedPostPublic200Response](docs/Model/DeleteFeedPostPublic200Response.md)
+- [DeleteFeedPostPublic200ResponseAnyOf](docs/Model/DeleteFeedPostPublic200ResponseAnyOf.md)
+- [DeletePageAPIResponse](docs/Model/DeletePageAPIResponse.md)
+- [DeleteSSOUserAPIResponse](docs/Model/DeleteSSOUserAPIResponse.md)
+- [DeleteSubscriptionAPIResponse](docs/Model/DeleteSubscriptionAPIResponse.md)
 - [EventLogEntry](docs/Model/EventLogEntry.md)
 - [FComment](docs/Model/FComment.md)
 - [FCommentMeta](docs/Model/FCommentMeta.md)
@@ -199,6 +249,8 @@ Class | Method | HTTP request | Description
 - [FeedPostLink](docs/Model/FeedPostLink.md)
 - [FeedPostMediaItem](docs/Model/FeedPostMediaItem.md)
 - [FeedPostMediaItemAsset](docs/Model/FeedPostMediaItemAsset.md)
+- [FeedPostStats](docs/Model/FeedPostStats.md)
+- [FeedPostsStatsResponse](docs/Model/FeedPostsStatsResponse.md)
 - [FindCommentsByRangeItem](docs/Model/FindCommentsByRangeItem.md)
 - [FindCommentsByRangeResponse](docs/Model/FindCommentsByRangeResponse.md)
 - [FlagComment200Response](docs/Model/FlagComment200Response.md)
@@ -223,7 +275,19 @@ Class | Method | HTTP request | Description
 - [GetFeedPosts200Response](docs/Model/GetFeedPosts200Response.md)
 - [GetFeedPostsPublic200Response](docs/Model/GetFeedPostsPublic200Response.md)
 - [GetFeedPostsResponse](docs/Model/GetFeedPostsResponse.md)
+- [GetFeedPostsStats200Response](docs/Model/GetFeedPostsStats200Response.md)
 - [GetMyNotificationsResponse](docs/Model/GetMyNotificationsResponse.md)
+- [GetPageByURLIdAPIResponse](docs/Model/GetPageByURLIdAPIResponse.md)
+- [GetPagesAPIResponse](docs/Model/GetPagesAPIResponse.md)
+- [GetPublicFeedPostsResponse](docs/Model/GetPublicFeedPostsResponse.md)
+- [GetSSOUserByEmailAPIResponse](docs/Model/GetSSOUserByEmailAPIResponse.md)
+- [GetSSOUserByIdAPIResponse](docs/Model/GetSSOUserByIdAPIResponse.md)
+- [GetSSOUsers200Response](docs/Model/GetSSOUsers200Response.md)
+- [GetSubscriptionsAPIResponse](docs/Model/GetSubscriptionsAPIResponse.md)
+- [GetUserBadge200Response](docs/Model/GetUserBadge200Response.md)
+- [GetUserBadgeProgressById200Response](docs/Model/GetUserBadgeProgressById200Response.md)
+- [GetUserBadgeProgressList200Response](docs/Model/GetUserBadgeProgressList200Response.md)
+- [GetUserBadges200Response](docs/Model/GetUserBadges200Response.md)
 - [GetUserNotificationCount200Response](docs/Model/GetUserNotificationCount200Response.md)
 - [GetUserNotificationCountResponse](docs/Model/GetUserNotificationCountResponse.md)
 - [GetUserNotifications200Response](docs/Model/GetUserNotifications200Response.md)
@@ -243,8 +307,11 @@ Class | Method | HTTP request | Description
 - [MediaAsset](docs/Model/MediaAsset.md)
 - [MetaItem](docs/Model/MetaItem.md)
 - [NotificationAndCount](docs/Model/NotificationAndCount.md)
+- [NotificationObjectType](docs/Model/NotificationObjectType.md)
 - [NotificationType](docs/Model/NotificationType.md)
 - [PatchDomainConfigParams](docs/Model/PatchDomainConfigParams.md)
+- [PatchPageAPIResponse](docs/Model/PatchPageAPIResponse.md)
+- [PatchSSOUserAPIResponse](docs/Model/PatchSSOUserAPIResponse.md)
 - [PickAPICommentUpdatableCommentFields](docs/Model/PickAPICommentUpdatableCommentFields.md)
 - [PickFCommentAPICommentFieldsKeys](docs/Model/PickFCommentAPICommentFieldsKeys.md)
 - [PickFCommentAPICommentFieldsKeysMeta](docs/Model/PickFCommentAPICommentFieldsKeysMeta.md)
@@ -253,7 +320,6 @@ Class | Method | HTTP request | Description
 - [PickFCommentPublicCommentFieldsKeys](docs/Model/PickFCommentPublicCommentFieldsKeys.md)
 - [PickOmitFCommentDatePublicCommentPubSubFieldsKeys](docs/Model/PickOmitFCommentDatePublicCommentPubSubFieldsKeys.md)
 - [PickTenantAuditLogTenantAuditLogKeys](docs/Model/PickTenantAuditLogTenantAuditLogKeys.md)
-- [PickUserNotificationIdOrUrlIdOrUrlOrPageTitleOrRelatedObjectTypeOrRelatedObjectIdOrViewedOrSentOrCreatedAtOrTypeOrFromCommentIdOrFromUserNameOrFromUserIdOrFromUserAvatarSrcOrOptedOut](docs/Model/PickUserNotificationIdOrUrlIdOrUrlOrPageTitleOrRelatedObjectTypeOrRelatedObjectIdOrViewedOrSentOrCreatedAtOrTypeOrFromCommentIdOrFromUserNameOrFromUserIdOrFromUserAvatarSrcOrOptedOut.md)
 - [PinComment200Response](docs/Model/PinComment200Response.md)
 - [PubSubComment](docs/Model/PubSubComment.md)
 - [PubSubVote](docs/Model/PubSubVote.md)
@@ -263,6 +329,7 @@ Class | Method | HTTP request | Description
 - [PublicBlockFromCommentParams](docs/Model/PublicBlockFromCommentParams.md)
 - [PublicComment](docs/Model/PublicComment.md)
 - [PublicFeedPostsResponse](docs/Model/PublicFeedPostsResponse.md)
+- [PutSSOUserAPIResponse](docs/Model/PutSSOUserAPIResponse.md)
 - [QueryPredicate](docs/Model/QueryPredicate.md)
 - [QueryPredicateValue](docs/Model/QueryPredicateValue.md)
 - [QuestionDatum](docs/Model/QuestionDatum.md)
@@ -285,6 +352,8 @@ Class | Method | HTTP request | Description
 - [SaveCommentResponse](docs/Model/SaveCommentResponse.md)
 - [SaveCommentResponseOptimized](docs/Model/SaveCommentResponseOptimized.md)
 - [SaveCommentsResponseWithPresence](docs/Model/SaveCommentsResponseWithPresence.md)
+- [SearchUsers200Response](docs/Model/SearchUsers200Response.md)
+- [SearchUsersResponse](docs/Model/SearchUsersResponse.md)
 - [SetCommentText200Response](docs/Model/SetCommentText200Response.md)
 - [SizePreset](docs/Model/SizePreset.md)
 - [SortDirections](docs/Model/SortDirections.md)
@@ -292,13 +361,21 @@ Class | Method | HTTP request | Description
 - [UnBlockCommentPublic200Response](docs/Model/UnBlockCommentPublic200Response.md)
 - [UnBlockFromCommentParams](docs/Model/UnBlockFromCommentParams.md)
 - [UnblockSuccess](docs/Model/UnblockSuccess.md)
+- [UpdateAPIPageData](docs/Model/UpdateAPIPageData.md)
+- [UpdateAPISSOUserData](docs/Model/UpdateAPISSOUserData.md)
 - [UpdateDomainConfigParams](docs/Model/UpdateDomainConfigParams.md)
+- [UpdateFeedPostParams](docs/Model/UpdateFeedPostParams.md)
+- [UpdateUserBadge200Response](docs/Model/UpdateUserBadge200Response.md)
+- [UpdateUserBadgeParams](docs/Model/UpdateUserBadgeParams.md)
 - [UpdateUserNotificationStatus200Response](docs/Model/UpdateUserNotificationStatus200Response.md)
 - [UploadImageResponse](docs/Model/UploadImageResponse.md)
+- [UserBadge](docs/Model/UserBadge.md)
+- [UserBadgeProgress](docs/Model/UserBadgeProgress.md)
 - [UserNotification](docs/Model/UserNotification.md)
 - [UserNotificationWriteResponse](docs/Model/UserNotificationWriteResponse.md)
 - [UserPresenceData](docs/Model/UserPresenceData.md)
 - [UserReactsResponse](docs/Model/UserReactsResponse.md)
+- [UserSearchResult](docs/Model/UserSearchResult.md)
 - [UserSessionInfo](docs/Model/UserSessionInfo.md)
 - [VoteBodyParams](docs/Model/VoteBodyParams.md)
 - [VoteComment200Response](docs/Model/VoteComment200Response.md)

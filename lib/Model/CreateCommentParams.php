@@ -506,9 +506,6 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['date'] === null) {
-            $invalidProperties[] = "'date' can't be null";
-        }
         if ($this->container['commenter_name'] === null) {
             $invalidProperties[] = "'commenter_name' can't be null";
         }
@@ -542,7 +539,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets date
      *
-     * @return float
+     * @return float|null
      */
     public function getDate()
     {
@@ -552,7 +549,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets date
      *
-     * @param float $date date
+     * @param float|null $date date
      *
      * @return self
      */

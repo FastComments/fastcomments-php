@@ -2,19 +2,27 @@
 
 FastComments PHP API Client - A SDK for interacting with the FastComments API
 
-All URIs are relative to http://localhost, except if the operation defines another base path.
+All URIs are relative to https://fastcomments.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**addDomainConfig()**](DefaultApi.md#addDomainConfig) | **POST** /api/v1/domain-configs |  |
+| [**addPage()**](DefaultApi.md#addPage) | **POST** /api/v1/pages |  |
+| [**addSSOUser()**](DefaultApi.md#addSSOUser) | **POST** /api/v1/sso-users |  |
 | [**aggregate()**](DefaultApi.md#aggregate) | **POST** /api/v1/aggregate |  |
 | [**aggregateQuestionResults()**](DefaultApi.md#aggregateQuestionResults) | **GET** /api/v1/question-results-aggregation |  |
 | [**blockUserFromComment()**](DefaultApi.md#blockUserFromComment) | **POST** /api/v1/comments/{id}/block |  |
 | [**bulkAggregateQuestionResults()**](DefaultApi.md#bulkAggregateQuestionResults) | **POST** /api/v1/question-results-aggregation/bulk |  |
 | [**combineCommentsWithQuestionResults()**](DefaultApi.md#combineCommentsWithQuestionResults) | **GET** /api/v1/question-results-aggregation/combine/comments |  |
 | [**createFeedPost()**](DefaultApi.md#createFeedPost) | **POST** /api/v1/feed-posts |  |
+| [**createSubscription()**](DefaultApi.md#createSubscription) | **POST** /api/v1/subscriptions |  |
+| [**createUserBadge()**](DefaultApi.md#createUserBadge) | **POST** /api/v1/user-badges |  |
 | [**deleteComment()**](DefaultApi.md#deleteComment) | **DELETE** /api/v1/comments/{id} |  |
 | [**deleteDomainConfig()**](DefaultApi.md#deleteDomainConfig) | **DELETE** /api/v1/domain-configs/{domain} |  |
+| [**deletePage()**](DefaultApi.md#deletePage) | **DELETE** /api/v1/pages/{id} |  |
+| [**deleteSSOUser()**](DefaultApi.md#deleteSSOUser) | **DELETE** /api/v1/sso-users/{id} |  |
+| [**deleteSubscription()**](DefaultApi.md#deleteSubscription) | **DELETE** /api/v1/subscriptions/{id} |  |
+| [**deleteUserBadge()**](DefaultApi.md#deleteUserBadge) | **DELETE** /api/v1/user-badges/{id} |  |
 | [**flagComment()**](DefaultApi.md#flagComment) | **POST** /api/v1/comments/{id}/flag |  |
 | [**getAuditLogs()**](DefaultApi.md#getAuditLogs) | **GET** /api/v1/audit-logs |  |
 | [**getComment()**](DefaultApi.md#getComment) | **GET** /api/v1/comments/{id} |  |
@@ -22,13 +30,29 @@ All URIs are relative to http://localhost, except if the operation defines anoth
 | [**getDomainConfig()**](DefaultApi.md#getDomainConfig) | **GET** /api/v1/domain-configs/{domain} |  |
 | [**getDomainConfigs()**](DefaultApi.md#getDomainConfigs) | **GET** /api/v1/domain-configs |  |
 | [**getFeedPosts()**](DefaultApi.md#getFeedPosts) | **GET** /api/v1/feed-posts |  |
+| [**getPageByURLId()**](DefaultApi.md#getPageByURLId) | **GET** /api/v1/pages/by-url-id |  |
+| [**getPages()**](DefaultApi.md#getPages) | **GET** /api/v1/pages |  |
+| [**getSSOUserByEmail()**](DefaultApi.md#getSSOUserByEmail) | **GET** /api/v1/sso-users/by-email/{email} |  |
+| [**getSSOUserById()**](DefaultApi.md#getSSOUserById) | **GET** /api/v1/sso-users/by-id/{id} |  |
+| [**getSSOUsers()**](DefaultApi.md#getSSOUsers) | **GET** /api/v1/sso-users |  |
+| [**getSubscriptions()**](DefaultApi.md#getSubscriptions) | **GET** /api/v1/subscriptions |  |
+| [**getUserBadge()**](DefaultApi.md#getUserBadge) | **GET** /api/v1/user-badges/{id} |  |
+| [**getUserBadgeProgressById()**](DefaultApi.md#getUserBadgeProgressById) | **GET** /api/v1/user-badge-progress/{id} |  |
+| [**getUserBadgeProgressByUserId()**](DefaultApi.md#getUserBadgeProgressByUserId) | **GET** /api/v1/user-badge-progress/user/{userId} |  |
+| [**getUserBadgeProgressList()**](DefaultApi.md#getUserBadgeProgressList) | **GET** /api/v1/user-badge-progress |  |
+| [**getUserBadges()**](DefaultApi.md#getUserBadges) | **GET** /api/v1/user-badges |  |
 | [**patchDomainConfig()**](DefaultApi.md#patchDomainConfig) | **PATCH** /api/v1/domain-configs/{domainToUpdate} |  |
+| [**patchPage()**](DefaultApi.md#patchPage) | **PATCH** /api/v1/pages/{id} |  |
+| [**patchSSOUser()**](DefaultApi.md#patchSSOUser) | **PATCH** /api/v1/sso-users/{id} |  |
 | [**putDomainConfig()**](DefaultApi.md#putDomainConfig) | **PUT** /api/v1/domain-configs/{domainToUpdate} |  |
+| [**putSSOUser()**](DefaultApi.md#putSSOUser) | **PUT** /api/v1/sso-users/{id} |  |
 | [**saveComment()**](DefaultApi.md#saveComment) | **POST** /api/v1/comments |  |
+| [**saveCommentsBulk()**](DefaultApi.md#saveCommentsBulk) | **POST** /api/v1/comments/bulk |  |
 | [**unBlockUserFromComment()**](DefaultApi.md#unBlockUserFromComment) | **POST** /api/v1/comments/{id}/un-block |  |
 | [**unFlagComment()**](DefaultApi.md#unFlagComment) | **POST** /api/v1/comments/{id}/un-flag |  |
 | [**updateComment()**](DefaultApi.md#updateComment) | **PATCH** /api/v1/comments/{id} |  |
 | [**updateFeedPost()**](DefaultApi.md#updateFeedPost) | **PATCH** /api/v1/feed-posts/{id} |  |
+| [**updateUserBadge()**](DefaultApi.md#updateUserBadge) | **PUT** /api/v1/user-badges/{id} |  |
 
 
 ## `addDomainConfig()`
@@ -79,6 +103,130 @@ try {
 ### Return type
 
 [**\FastComments\Client\Model\AddDomainConfig200Response**](../Model/AddDomainConfig200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `addPage()`
+
+```php
+addPage($tenant_id, $create_api_page_data): \FastComments\Client\Model\AddPageAPIResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$create_api_page_data = new \FastComments\Client\Model\CreateAPIPageData(); // \FastComments\Client\Model\CreateAPIPageData
+
+try {
+    $result = $apiInstance->addPage($tenant_id, $create_api_page_data);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->addPage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **create_api_page_data** | [**\FastComments\Client\Model\CreateAPIPageData**](../Model/CreateAPIPageData.md)|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\AddPageAPIResponse**](../Model/AddPageAPIResponse.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `addSSOUser()`
+
+```php
+addSSOUser($tenant_id, $create_apisso_user_data): \FastComments\Client\Model\AddSSOUserAPIResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$create_apisso_user_data = new \FastComments\Client\Model\CreateAPISSOUserData(); // \FastComments\Client\Model\CreateAPISSOUserData
+
+try {
+    $result = $apiInstance->addSSOUser($tenant_id, $create_apisso_user_data);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->addSSOUser: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **create_apisso_user_data** | [**\FastComments\Client\Model\CreateAPISSOUserData**](../Model/CreateAPISSOUserData.md)|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\AddSSOUserAPIResponse**](../Model/AddSSOUserAPIResponse.md)
 
 ### Authorization
 
@@ -511,6 +659,130 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createSubscription()`
+
+```php
+createSubscription($tenant_id, $create_api_user_subscription_data): \FastComments\Client\Model\CreateSubscriptionAPIResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$create_api_user_subscription_data = new \FastComments\Client\Model\CreateAPIUserSubscriptionData(); // \FastComments\Client\Model\CreateAPIUserSubscriptionData
+
+try {
+    $result = $apiInstance->createSubscription($tenant_id, $create_api_user_subscription_data);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->createSubscription: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **create_api_user_subscription_data** | [**\FastComments\Client\Model\CreateAPIUserSubscriptionData**](../Model/CreateAPIUserSubscriptionData.md)|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\CreateSubscriptionAPIResponse**](../Model/CreateSubscriptionAPIResponse.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createUserBadge()`
+
+```php
+createUserBadge($tenant_id, $create_user_badge_params): \FastComments\Client\Model\CreateUserBadge200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$create_user_badge_params = new \FastComments\Client\Model\CreateUserBadgeParams(); // \FastComments\Client\Model\CreateUserBadgeParams
+
+try {
+    $result = $apiInstance->createUserBadge($tenant_id, $create_user_badge_params);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->createUserBadge: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **create_user_badge_params** | [**\FastComments\Client\Model\CreateUserBadgeParams**](../Model/CreateUserBadgeParams.md)|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\CreateUserBadge200Response**](../Model/CreateUserBadge200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteComment()`
 
 ```php
@@ -625,6 +897,260 @@ try {
 ### Return type
 
 [**\FastComments\Client\Model\DeleteDomainConfig200Response**](../Model/DeleteDomainConfig200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deletePage()`
+
+```php
+deletePage($tenant_id, $id): \FastComments\Client\Model\DeletePageAPIResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->deletePage($tenant_id, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->deletePage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **id** | **string**|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\DeletePageAPIResponse**](../Model/DeletePageAPIResponse.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteSSOUser()`
+
+```php
+deleteSSOUser($tenant_id, $id, $delete_comments, $comment_delete_mode): \FastComments\Client\Model\DeleteSSOUserAPIResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$id = 'id_example'; // string
+$delete_comments = True; // bool
+$comment_delete_mode = 'comment_delete_mode_example'; // string
+
+try {
+    $result = $apiInstance->deleteSSOUser($tenant_id, $id, $delete_comments, $comment_delete_mode);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->deleteSSOUser: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **id** | **string**|  | |
+| **delete_comments** | **bool**|  | [optional] |
+| **comment_delete_mode** | **string**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\DeleteSSOUserAPIResponse**](../Model/DeleteSSOUserAPIResponse.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteSubscription()`
+
+```php
+deleteSubscription($tenant_id, $id, $user_id): \FastComments\Client\Model\DeleteSubscriptionAPIResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$id = 'id_example'; // string
+$user_id = 'user_id_example'; // string
+
+try {
+    $result = $apiInstance->deleteSubscription($tenant_id, $id, $user_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->deleteSubscription: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **id** | **string**|  | |
+| **user_id** | **string**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\DeleteSubscriptionAPIResponse**](../Model/DeleteSubscriptionAPIResponse.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteUserBadge()`
+
+```php
+deleteUserBadge($tenant_id, $id): \FastComments\Client\Model\UpdateUserBadge200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->deleteUserBadge($tenant_id, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->deleteUserBadge: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **id** | **string**|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\UpdateUserBadge200Response**](../Model/UpdateUserBadge200Response.md)
 
 ### Authorization
 
@@ -1115,6 +1641,700 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getPageByURLId()`
+
+```php
+getPageByURLId($tenant_id, $url_id): \FastComments\Client\Model\GetPageByURLIdAPIResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+
+try {
+    $result = $apiInstance->getPageByURLId($tenant_id, $url_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getPageByURLId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id** | **string**|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\GetPageByURLIdAPIResponse**](../Model/GetPageByURLIdAPIResponse.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getPages()`
+
+```php
+getPages($tenant_id): \FastComments\Client\Model\GetPagesAPIResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+
+try {
+    $result = $apiInstance->getPages($tenant_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getPages: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\GetPagesAPIResponse**](../Model/GetPagesAPIResponse.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getSSOUserByEmail()`
+
+```php
+getSSOUserByEmail($tenant_id, $email): \FastComments\Client\Model\GetSSOUserByEmailAPIResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$email = 'email_example'; // string
+
+try {
+    $result = $apiInstance->getSSOUserByEmail($tenant_id, $email);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getSSOUserByEmail: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **email** | **string**|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\GetSSOUserByEmailAPIResponse**](../Model/GetSSOUserByEmailAPIResponse.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getSSOUserById()`
+
+```php
+getSSOUserById($tenant_id, $id): \FastComments\Client\Model\GetSSOUserByIdAPIResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getSSOUserById($tenant_id, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getSSOUserById: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **id** | **string**|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\GetSSOUserByIdAPIResponse**](../Model/GetSSOUserByIdAPIResponse.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getSSOUsers()`
+
+```php
+getSSOUsers($tenant_id, $skip): \FastComments\Client\Model\GetSSOUsers200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$skip = 3.4; // float
+
+try {
+    $result = $apiInstance->getSSOUsers($tenant_id, $skip);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getSSOUsers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **skip** | **float**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\GetSSOUsers200Response**](../Model/GetSSOUsers200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getSubscriptions()`
+
+```php
+getSubscriptions($tenant_id, $user_id): \FastComments\Client\Model\GetSubscriptionsAPIResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$user_id = 'user_id_example'; // string
+
+try {
+    $result = $apiInstance->getSubscriptions($tenant_id, $user_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getSubscriptions: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **user_id** | **string**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\GetSubscriptionsAPIResponse**](../Model/GetSubscriptionsAPIResponse.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getUserBadge()`
+
+```php
+getUserBadge($tenant_id, $id): \FastComments\Client\Model\GetUserBadge200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getUserBadge($tenant_id, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getUserBadge: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **id** | **string**|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\GetUserBadge200Response**](../Model/GetUserBadge200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getUserBadgeProgressById()`
+
+```php
+getUserBadgeProgressById($tenant_id, $id): \FastComments\Client\Model\GetUserBadgeProgressById200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getUserBadgeProgressById($tenant_id, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getUserBadgeProgressById: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **id** | **string**|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\GetUserBadgeProgressById200Response**](../Model/GetUserBadgeProgressById200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getUserBadgeProgressByUserId()`
+
+```php
+getUserBadgeProgressByUserId($tenant_id, $user_id): \FastComments\Client\Model\GetUserBadgeProgressById200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$user_id = 'user_id_example'; // string
+
+try {
+    $result = $apiInstance->getUserBadgeProgressByUserId($tenant_id, $user_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getUserBadgeProgressByUserId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **user_id** | **string**|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\GetUserBadgeProgressById200Response**](../Model/GetUserBadgeProgressById200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getUserBadgeProgressList()`
+
+```php
+getUserBadgeProgressList($tenant_id, $user_id, $limit, $skip): \FastComments\Client\Model\GetUserBadgeProgressList200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$user_id = 'user_id_example'; // string
+$limit = 3.4; // float
+$skip = 3.4; // float
+
+try {
+    $result = $apiInstance->getUserBadgeProgressList($tenant_id, $user_id, $limit, $skip);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getUserBadgeProgressList: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **user_id** | **string**|  | [optional] |
+| **limit** | **float**|  | [optional] |
+| **skip** | **float**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\GetUserBadgeProgressList200Response**](../Model/GetUserBadgeProgressList200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getUserBadges()`
+
+```php
+getUserBadges($tenant_id, $user_id, $badge_id, $type, $displayed_on_comments, $limit, $skip): \FastComments\Client\Model\GetUserBadges200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$user_id = 'user_id_example'; // string
+$badge_id = 'badge_id_example'; // string
+$type = 3.4; // float
+$displayed_on_comments = True; // bool
+$limit = 3.4; // float
+$skip = 3.4; // float
+
+try {
+    $result = $apiInstance->getUserBadges($tenant_id, $user_id, $badge_id, $type, $displayed_on_comments, $limit, $skip);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getUserBadges: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **user_id** | **string**|  | [optional] |
+| **badge_id** | **string**|  | [optional] |
+| **type** | **float**|  | [optional] |
+| **displayed_on_comments** | **bool**|  | [optional] |
+| **limit** | **float**|  | [optional] |
+| **skip** | **float**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\GetUserBadges200Response**](../Model/GetUserBadges200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `patchDomainConfig()`
 
 ```php
@@ -1165,6 +2385,136 @@ try {
 ### Return type
 
 [**\FastComments\Client\Model\GetDomainConfig200Response**](../Model/GetDomainConfig200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `patchPage()`
+
+```php
+patchPage($tenant_id, $id, $update_api_page_data): \FastComments\Client\Model\PatchPageAPIResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$id = 'id_example'; // string
+$update_api_page_data = new \FastComments\Client\Model\UpdateAPIPageData(); // \FastComments\Client\Model\UpdateAPIPageData
+
+try {
+    $result = $apiInstance->patchPage($tenant_id, $id, $update_api_page_data);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->patchPage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **id** | **string**|  | |
+| **update_api_page_data** | [**\FastComments\Client\Model\UpdateAPIPageData**](../Model/UpdateAPIPageData.md)|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\PatchPageAPIResponse**](../Model/PatchPageAPIResponse.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `patchSSOUser()`
+
+```php
+patchSSOUser($tenant_id, $id, $update_apisso_user_data, $update_comments): \FastComments\Client\Model\PatchSSOUserAPIResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$id = 'id_example'; // string
+$update_apisso_user_data = new \FastComments\Client\Model\UpdateAPISSOUserData(); // \FastComments\Client\Model\UpdateAPISSOUserData
+$update_comments = True; // bool
+
+try {
+    $result = $apiInstance->patchSSOUser($tenant_id, $id, $update_apisso_user_data, $update_comments);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->patchSSOUser: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **id** | **string**|  | |
+| **update_apisso_user_data** | [**\FastComments\Client\Model\UpdateAPISSOUserData**](../Model/UpdateAPISSOUserData.md)|  | |
+| **update_comments** | **bool**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\PatchSSOUserAPIResponse**](../Model/PatchSSOUserAPIResponse.md)
 
 ### Authorization
 
@@ -1243,6 +2593,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `putSSOUser()`
+
+```php
+putSSOUser($tenant_id, $id, $update_apisso_user_data, $update_comments): \FastComments\Client\Model\PutSSOUserAPIResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$id = 'id_example'; // string
+$update_apisso_user_data = new \FastComments\Client\Model\UpdateAPISSOUserData(); // \FastComments\Client\Model\UpdateAPISSOUserData
+$update_comments = True; // bool
+
+try {
+    $result = $apiInstance->putSSOUser($tenant_id, $id, $update_apisso_user_data, $update_comments);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->putSSOUser: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **id** | **string**|  | |
+| **update_apisso_user_data** | [**\FastComments\Client\Model\UpdateAPISSOUserData**](../Model/UpdateAPISSOUserData.md)|  | |
+| **update_comments** | **bool**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\PutSSOUserAPIResponse**](../Model/PutSSOUserAPIResponse.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `saveComment()`
 
 ```php
@@ -1299,6 +2715,76 @@ try {
 ### Return type
 
 [**\FastComments\Client\Model\SaveComment200Response**](../Model/SaveComment200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `saveCommentsBulk()`
+
+```php
+saveCommentsBulk($tenant_id, $create_comment_params, $is_live, $do_spam_check, $send_emails, $populate_notifications): \FastComments\Client\Model\SaveComment200Response[]
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$create_comment_params = array(new \FastComments\Client\Model\CreateCommentParams()); // \FastComments\Client\Model\CreateCommentParams[]
+$is_live = True; // bool
+$do_spam_check = True; // bool
+$send_emails = True; // bool
+$populate_notifications = True; // bool
+
+try {
+    $result = $apiInstance->saveCommentsBulk($tenant_id, $create_comment_params, $is_live, $do_spam_check, $send_emails, $populate_notifications);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->saveCommentsBulk: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **create_comment_params** | [**\FastComments\Client\Model\CreateCommentParams[]**](../Model/CreateCommentParams.md)|  | |
+| **is_live** | **bool**|  | [optional] |
+| **do_spam_check** | **bool**|  | [optional] |
+| **send_emails** | **bool**|  | [optional] |
+| **populate_notifications** | **bool**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\SaveComment200Response[]**](../Model/SaveComment200Response.md)
 
 ### Authorization
 
@@ -1567,6 +3053,70 @@ try {
 ### Return type
 
 [**\FastComments\Client\Model\FlagCommentPublic200Response**](../Model/FlagCommentPublic200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateUserBadge()`
+
+```php
+updateUserBadge($tenant_id, $id, $update_user_badge_params): \FastComments\Client\Model\UpdateUserBadge200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$id = 'id_example'; // string
+$update_user_badge_params = new \FastComments\Client\Model\UpdateUserBadgeParams(); // \FastComments\Client\Model\UpdateUserBadgeParams
+
+try {
+    $result = $apiInstance->updateUserBadge($tenant_id, $id, $update_user_badge_params);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->updateUserBadge: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **id** | **string**|  | |
+| **update_user_badge_params** | [**\FastComments\Client\Model\UpdateUserBadgeParams**](../Model/UpdateUserBadgeParams.md)|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\UpdateUserBadge200Response**](../Model/UpdateUserBadge200Response.md)
 
 ### Authorization
 
