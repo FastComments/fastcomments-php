@@ -616,7 +616,7 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 );
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
-$dir = 3.4; // float
+$dir = 56; // int
 $sso = 'sso_example'; // string
 
 try {
@@ -633,7 +633,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
-| **dir** | **float**|  | |
+| **dir** | **int**|  | |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1095,10 +1095,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 $tenant_id = 'tenant_id_example'; // string
-$page_size = 3.4; // float | Defaults to 20.
+$page_size = 56; // int
 $after_id = 'after_id_example'; // string
 $include_context = True; // bool
-$after_created_at = 3.4; // float
+$after_created_at = 56; // int
 $unread_only = True; // bool
 $dm_only = True; // bool
 $no_dm = True; // bool
@@ -1118,10 +1118,10 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **tenant_id** | **string**|  | |
-| **page_size** | **float**| Defaults to 20. | [optional] |
+| **page_size** | **int**|  | [optional] |
 | **after_id** | **string**|  | [optional] |
 | **include_context** | **bool**|  | [optional] |
-| **after_created_at** | **float**|  | [optional] |
+| **after_created_at** | **int**|  | [optional] |
 | **unread_only** | **bool**|  | [optional] |
 | **dm_only** | **bool**|  | [optional] |
 | **no_dm** | **bool**|  | [optional] |
@@ -1524,7 +1524,7 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 );
 $tenant_id = 'tenant_id_example'; // string
 $after_id = 'after_id_example'; // string
-$after_created_at = 3.4; // float
+$after_created_at = 56; // int
 $unread_only = True; // bool
 $dm_only = True; // bool
 $no_dm = True; // bool
@@ -1544,7 +1544,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **tenant_id** | **string**|  | |
 | **after_id** | **string**|  | [optional] |
-| **after_created_at** | **float**|  | [optional] |
+| **after_created_at** | **int**|  | [optional] |
 | **unread_only** | **bool**|  | [optional] |
 | **dm_only** | **bool**|  | [optional] |
 | **no_dm** | **bool**|  | [optional] |

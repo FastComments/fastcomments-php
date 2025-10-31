@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **is_closed** | **bool** |  | [optional]
 **accessible_by_group_ids** | **string[]** |  | [optional]
-**root_comment_count** | **float** |  |
-**comment_count** | **float** |  |
+**root_comment_count** | **int** |  |
+**comment_count** | **int** |  |
 **created_at** | **\DateTime** |  |
 **title** | **string** |  |
 **url** | **string** |  | [optional]

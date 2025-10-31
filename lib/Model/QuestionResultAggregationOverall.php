@@ -61,7 +61,7 @@ class QuestionResultAggregationOverall implements ModelInterface, ArrayAccess, \
         'data_by_date_bucket' => 'array<string,\FastComments\Client\Model\QuestionDatum>',
         'data_by_url_id' => 'array<string,\FastComments\Client\Model\QuestionDatum>',
         'counts_by_value' => 'array<string,int>',
-        'total' => 'float',
+        'total' => 'int',
         'average' => 'float',
         'created_at' => '\DateTime'
     ];
@@ -77,7 +77,7 @@ class QuestionResultAggregationOverall implements ModelInterface, ArrayAccess, \
         'data_by_date_bucket' => null,
         'data_by_url_id' => null,
         'counts_by_value' => 'int32',
-        'total' => 'double',
+        'total' => 'int64',
         'average' => 'double',
         'created_at' => 'date-time'
     ];
@@ -415,7 +415,7 @@ class QuestionResultAggregationOverall implements ModelInterface, ArrayAccess, \
     /**
      * Gets total
      *
-     * @return float
+     * @return int
      */
     public function getTotal()
     {
@@ -425,7 +425,7 @@ class QuestionResultAggregationOverall implements ModelInterface, ArrayAccess, \
     /**
      * Sets total
      *
-     * @param float $total total
+     * @param int $total total
      *
      * @return self
      */

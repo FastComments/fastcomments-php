@@ -72,7 +72,7 @@ Name | Type | Description | Notes
 **feedback_ids** | **string[]** |  | [optional]
 **logs** | **array[]** |  | [optional]
 **group_ids** | **string[]** |  | [optional]
-**view_count** | **float** |  | [optional]
+**view_count** | **int** |  | [optional]
 **requires_verification** | **bool** |  | [optional]
 **edit_key** | **string** |  | [optional]
 

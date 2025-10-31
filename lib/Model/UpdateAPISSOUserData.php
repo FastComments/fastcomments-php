@@ -71,9 +71,9 @@ class UpdateAPISSOUserData implements ModelInterface, ArrayAccess, \JsonSerializ
         'opted_in_subscription_notifications' => 'bool',
         'opted_in_notifications' => 'bool',
         'avatar_src' => 'string',
-        'login_count' => 'float',
+        'login_count' => 'int',
         'created_from_url_id' => 'string',
-        'sign_up_date' => 'float',
+        'sign_up_date' => 'int',
         'email' => 'string',
         'website_url' => 'string',
         'username' => 'string',
@@ -101,9 +101,9 @@ class UpdateAPISSOUserData implements ModelInterface, ArrayAccess, \JsonSerializ
         'opted_in_subscription_notifications' => null,
         'opted_in_notifications' => null,
         'avatar_src' => null,
-        'login_count' => 'double',
+        'login_count' => 'int32',
         'created_from_url_id' => null,
-        'sign_up_date' => 'double',
+        'sign_up_date' => 'int64',
         'email' => null,
         'website_url' => null,
         'username' => null,
@@ -777,7 +777,7 @@ class UpdateAPISSOUserData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets login_count
      *
-     * @return float|null
+     * @return int|null
      */
     public function getLoginCount()
     {
@@ -787,7 +787,7 @@ class UpdateAPISSOUserData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets login_count
      *
-     * @param float|null $login_count login_count
+     * @param int|null $login_count login_count
      *
      * @return self
      */
@@ -831,7 +831,7 @@ class UpdateAPISSOUserData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets sign_up_date
      *
-     * @return float|null
+     * @return int|null
      */
     public function getSignUpDate()
     {
@@ -841,7 +841,7 @@ class UpdateAPISSOUserData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets sign_up_date
      *
-     * @param float|null $sign_up_date sign_up_date
+     * @param int|null $sign_up_date sign_up_date
      *
      * @return self
      */

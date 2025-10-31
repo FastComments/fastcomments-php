@@ -58,14 +58,14 @@ class FlagComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status_code' => 'float',
+        'status_code' => 'int',
         'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
         'code' => 'string',
         'reason' => 'string',
         'was_unapproved' => 'bool',
         'secondary_code' => 'string',
-        'banned_until' => 'float',
-        'max_character_length' => 'float',
+        'banned_until' => 'int',
+        'max_character_length' => 'int',
         'translated_error' => 'string',
         'custom_config' => '\FastComments\Client\Model\CustomConfigParameters'
     ];
@@ -78,14 +78,14 @@ class FlagComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status_code' => 'double',
+        'status_code' => 'int32',
         'status' => null,
         'code' => null,
         'reason' => null,
         'was_unapproved' => null,
         'secondary_code' => null,
-        'banned_until' => 'double',
-        'max_character_length' => 'double',
+        'banned_until' => 'int64',
+        'max_character_length' => 'int32',
         'translated_error' => null,
         'custom_config' => null
     ];
@@ -365,7 +365,7 @@ class FlagComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets status_code
      *
-     * @return float|null
+     * @return int|null
      */
     public function getStatusCode()
     {
@@ -375,7 +375,7 @@ class FlagComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets status_code
      *
-     * @param float|null $status_code status_code
+     * @param int|null $status_code status_code
      *
      * @return self
      */
@@ -527,7 +527,7 @@ class FlagComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets banned_until
      *
-     * @return float|null
+     * @return int|null
      */
     public function getBannedUntil()
     {
@@ -537,7 +537,7 @@ class FlagComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets banned_until
      *
-     * @param float|null $banned_until banned_until
+     * @param int|null $banned_until banned_until
      *
      * @return self
      */
@@ -554,7 +554,7 @@ class FlagComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets max_character_length
      *
-     * @return float|null
+     * @return int|null
      */
     public function getMaxCharacterLength()
     {
@@ -564,7 +564,7 @@ class FlagComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets max_character_length
      *
-     * @param float|null $max_character_length max_character_length
+     * @param int|null $max_character_length max_character_length
      *
      * @return self
      */

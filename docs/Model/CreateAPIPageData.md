@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **accessible_by_group_ids** | **string[]** |  | [optional]
-**root_comment_count** | **float** |  | [optional]
-**comment_count** | **float** |  | [optional]
+**root_comment_count** | **int** |  | [optional]
+**comment_count** | **int** |  | [optional]
 **title** | **string** |  |
 **url** | **string** |  |
 **url_id** | **string** |  |

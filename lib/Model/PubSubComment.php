@@ -98,7 +98,7 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'domain' => 'string',
         'feedback_ids' => 'string[]',
         'group_ids' => 'string[]',
-        'view_count' => 'float',
+        'view_count' => 'int',
         'is_live' => 'bool',
         'hidden' => 'bool'
     ];
@@ -151,7 +151,7 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'domain' => null,
         'feedback_ids' => null,
         'group_ids' => null,
-        'view_count' => 'double',
+        'view_count' => 'int64',
         'is_live' => null,
         'hidden' => null
     ];
@@ -1700,7 +1700,7 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets view_count
      *
-     * @return float|null
+     * @return int|null
      */
     public function getViewCount()
     {
@@ -1710,7 +1710,7 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets view_count
      *
-     * @param float|null $view_count view_count
+     * @param int|null $view_count view_count
      *
      * @return self
      */

@@ -63,7 +63,7 @@ class RenderableUserNotification implements ModelInterface, ArrayAccess, \JsonSe
         'from_user_names' => 'string[]',
         'from_user_ids' => 'string[]',
         'related_ids' => 'string[]',
-        'count' => 'float',
+        'count' => 'int',
         'opted_out' => 'bool',
         'from_user_avatar_src' => 'string',
         'from_user_id' => 'string',
@@ -94,7 +94,7 @@ class RenderableUserNotification implements ModelInterface, ArrayAccess, \JsonSe
         'from_user_names' => null,
         'from_user_ids' => null,
         'related_ids' => null,
-        'count' => 'double',
+        'count' => 'int64',
         'opted_out' => null,
         'from_user_avatar_src' => null,
         'from_user_id' => null,
@@ -598,7 +598,7 @@ class RenderableUserNotification implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets count
      *
-     * @return float|null
+     * @return int|null
      */
     public function getCount()
     {
@@ -608,7 +608,7 @@ class RenderableUserNotification implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets count
      *
-     * @param float|null $count count
+     * @param int|null $count count
      *
      * @return self
      */

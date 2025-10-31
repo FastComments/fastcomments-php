@@ -58,14 +58,14 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'date' => 'float',
+        'date' => 'int',
         'local_date_string' => 'string',
-        'local_date_hours' => 'float',
+        'local_date_hours' => 'int',
         'commenter_name' => 'string',
         'commenter_email' => 'string',
         'commenter_link' => 'string',
         'comment' => 'string',
-        'product_id' => 'float',
+        'product_id' => 'int',
         'user_id' => 'string',
         'avatar_src' => 'string',
         'parent_id' => 'string',
@@ -79,7 +79,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'moderation_group_ids' => 'string[]',
         'rating' => 'float',
         'from_offline_restore' => 'bool',
-        'autoplay_delay_ms' => 'float',
+        'autoplay_delay_ms' => 'int',
         'feedback_ids' => 'string[]',
         'question_values' => 'array<string,\FastComments\Client\Model\RecordStringStringOrNumberValue>',
         'approved' => 'bool',
@@ -89,9 +89,9 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'locale' => 'string',
         'reviewed' => 'bool',
         'verified' => 'bool',
-        'votes' => 'float',
-        'votes_down' => 'float',
-        'votes_up' => 'float'
+        'votes' => 'int',
+        'votes_down' => 'int',
+        'votes_up' => 'int'
     ];
 
     /**
@@ -102,14 +102,14 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'date' => 'double',
+        'date' => 'int64',
         'local_date_string' => null,
-        'local_date_hours' => 'double',
+        'local_date_hours' => 'int32',
         'commenter_name' => null,
         'commenter_email' => null,
         'commenter_link' => null,
         'comment' => null,
-        'product_id' => 'double',
+        'product_id' => 'int32',
         'user_id' => null,
         'avatar_src' => null,
         'parent_id' => null,
@@ -123,7 +123,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'moderation_group_ids' => null,
         'rating' => 'double',
         'from_offline_restore' => null,
-        'autoplay_delay_ms' => 'double',
+        'autoplay_delay_ms' => 'int64',
         'feedback_ids' => null,
         'question_values' => null,
         'approved' => null,
@@ -133,9 +133,9 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'locale' => null,
         'reviewed' => null,
         'verified' => null,
-        'votes' => 'double',
-        'votes_down' => 'double',
-        'votes_up' => 'double'
+        'votes' => 'int32',
+        'votes_down' => 'int32',
+        'votes_up' => 'int32'
     ];
 
     /**
@@ -539,7 +539,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets date
      *
-     * @return float|null
+     * @return int|null
      */
     public function getDate()
     {
@@ -549,7 +549,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets date
      *
-     * @param float|null $date date
+     * @param int|null $date date
      *
      * @return self
      */
@@ -593,7 +593,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets local_date_hours
      *
-     * @return float|null
+     * @return int|null
      */
     public function getLocalDateHours()
     {
@@ -603,7 +603,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets local_date_hours
      *
-     * @param float|null $local_date_hours local_date_hours
+     * @param int|null $local_date_hours local_date_hours
      *
      * @return self
      */
@@ -742,7 +742,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets product_id
      *
-     * @return float|null
+     * @return int|null
      */
     public function getProductId()
     {
@@ -752,7 +752,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets product_id
      *
-     * @param float|null $product_id product_id
+     * @param int|null $product_id product_id
      *
      * @return self
      */
@@ -1141,7 +1141,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets autoplay_delay_ms
      *
-     * @return float|null
+     * @return int|null
      */
     public function getAutoplayDelayMs()
     {
@@ -1151,7 +1151,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets autoplay_delay_ms
      *
-     * @param float|null $autoplay_delay_ms autoplay_delay_ms
+     * @param int|null $autoplay_delay_ms autoplay_delay_ms
      *
      * @return self
      */
@@ -1411,7 +1411,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets votes
      *
-     * @return float|null
+     * @return int|null
      */
     public function getVotes()
     {
@@ -1421,7 +1421,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets votes
      *
-     * @param float|null $votes votes
+     * @param int|null $votes votes
      *
      * @return self
      */
@@ -1438,7 +1438,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets votes_down
      *
-     * @return float|null
+     * @return int|null
      */
     public function getVotesDown()
     {
@@ -1448,7 +1448,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets votes_down
      *
-     * @param float|null $votes_down votes_down
+     * @param int|null $votes_down votes_down
      *
      * @return self
      */
@@ -1465,7 +1465,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets votes_up
      *
-     * @return float|null
+     * @return int|null
      */
     public function getVotesUp()
     {
@@ -1475,7 +1475,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets votes_up
      *
-     * @param float|null $votes_up votes_up
+     * @param int|null $votes_up votes_up
      *
      * @return self
      */

@@ -62,9 +62,9 @@ class APISSOUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'username' => 'string',
         'website_url' => 'string',
         'email' => 'string',
-        'sign_up_date' => 'float',
+        'sign_up_date' => 'int',
         'created_from_url_id' => 'string',
-        'login_count' => 'float',
+        'login_count' => 'int',
         'avatar_src' => 'string',
         'opted_in_notifications' => 'bool',
         'opted_in_subscription_notifications' => 'bool',
@@ -92,9 +92,9 @@ class APISSOUser implements ModelInterface, ArrayAccess, \JsonSerializable
         'username' => null,
         'website_url' => null,
         'email' => null,
-        'sign_up_date' => 'double',
+        'sign_up_date' => 'int64',
         'created_from_url_id' => null,
-        'login_count' => 'double',
+        'login_count' => 'int32',
         'avatar_src' => null,
         'opted_in_notifications' => null,
         'opted_in_subscription_notifications' => null,
@@ -570,7 +570,7 @@ class APISSOUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sign_up_date
      *
-     * @return float
+     * @return int
      */
     public function getSignUpDate()
     {
@@ -580,7 +580,7 @@ class APISSOUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sign_up_date
      *
-     * @param float $sign_up_date sign_up_date
+     * @param int $sign_up_date sign_up_date
      *
      * @return self
      */
@@ -624,7 +624,7 @@ class APISSOUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets login_count
      *
-     * @return float
+     * @return int
      */
     public function getLoginCount()
     {
@@ -634,7 +634,7 @@ class APISSOUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets login_count
      *
-     * @param float $login_count login_count
+     * @param int $login_count login_count
      *
      * @return self
      */

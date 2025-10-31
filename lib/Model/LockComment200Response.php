@@ -62,8 +62,8 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
-        'banned_until' => 'float',
-        'max_character_length' => 'float',
+        'banned_until' => 'int',
+        'max_character_length' => 'int',
         'translated_error' => 'string',
         'custom_config' => '\FastComments\Client\Model\CustomConfigParameters'
     ];
@@ -80,8 +80,8 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'reason' => null,
         'code' => null,
         'secondary_code' => null,
-        'banned_until' => 'double',
-        'max_character_length' => 'double',
+        'banned_until' => 'int64',
+        'max_character_length' => 'int32',
         'translated_error' => null,
         'custom_config' => null
     ];
@@ -459,7 +459,7 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets banned_until
      *
-     * @return float|null
+     * @return int|null
      */
     public function getBannedUntil()
     {
@@ -469,7 +469,7 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets banned_until
      *
-     * @param float|null $banned_until banned_until
+     * @param int|null $banned_until banned_until
      *
      * @return self
      */
@@ -486,7 +486,7 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets max_character_length
      *
-     * @return float|null
+     * @return int|null
      */
     public function getMaxCharacterLength()
     {
@@ -496,7 +496,7 @@ class LockComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets max_character_length
      *
-     * @param float|null $max_character_length max_character_length
+     * @param int|null $max_character_length max_character_length
      *
      * @return self
      */

@@ -58,14 +58,14 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'date' => 'float',
+        'date' => 'int',
         'local_date_string' => 'string',
-        'local_date_hours' => 'float',
+        'local_date_hours' => 'int',
         'commenter_name' => 'string',
         'commenter_email' => 'string',
         'commenter_link' => 'string',
         'comment' => 'string',
-        'product_id' => 'float',
+        'product_id' => 'int',
         'user_id' => 'string',
         'avatar_src' => 'string',
         'parent_id' => 'string',
@@ -79,7 +79,7 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         'moderation_group_ids' => 'string[]',
         'rating' => 'float',
         'from_offline_restore' => 'bool',
-        'autoplay_delay_ms' => 'float',
+        'autoplay_delay_ms' => 'int',
         'feedback_ids' => 'string[]',
         'question_values' => 'array<string,\FastComments\Client\Model\RecordStringStringOrNumberValue>'
     ];
@@ -92,14 +92,14 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'date' => 'double',
+        'date' => 'int64',
         'local_date_string' => null,
-        'local_date_hours' => 'double',
+        'local_date_hours' => 'int32',
         'commenter_name' => null,
         'commenter_email' => null,
         'commenter_link' => null,
         'comment' => null,
-        'product_id' => 'double',
+        'product_id' => 'int32',
         'user_id' => null,
         'avatar_src' => null,
         'parent_id' => null,
@@ -113,7 +113,7 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         'moderation_group_ids' => null,
         'rating' => 'double',
         'from_offline_restore' => null,
-        'autoplay_delay_ms' => 'double',
+        'autoplay_delay_ms' => 'int64',
         'feedback_ids' => null,
         'question_values' => null
     ];
@@ -466,7 +466,7 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date
      *
-     * @return float|null
+     * @return int|null
      */
     public function getDate()
     {
@@ -476,7 +476,7 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date
      *
-     * @param float|null $date date
+     * @param int|null $date date
      *
      * @return self
      */
@@ -520,7 +520,7 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets local_date_hours
      *
-     * @return float|null
+     * @return int|null
      */
     public function getLocalDateHours()
     {
@@ -530,7 +530,7 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets local_date_hours
      *
-     * @param float|null $local_date_hours local_date_hours
+     * @param int|null $local_date_hours local_date_hours
      *
      * @return self
      */
@@ -669,7 +669,7 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets product_id
      *
-     * @return float|null
+     * @return int|null
      */
     public function getProductId()
     {
@@ -679,7 +679,7 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets product_id
      *
-     * @param float|null $product_id product_id
+     * @param int|null $product_id product_id
      *
      * @return self
      */
@@ -1068,7 +1068,7 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets autoplay_delay_ms
      *
-     * @return float|null
+     * @return int|null
      */
     public function getAutoplayDelayMs()
     {
@@ -1078,7 +1078,7 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets autoplay_delay_ms
      *
-     * @param float|null $autoplay_delay_ms autoplay_delay_ms
+     * @param int|null $autoplay_delay_ms autoplay_delay_ms
      *
      * @return self
      */

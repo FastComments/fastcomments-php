@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **anon_user_id** | **string** |  |
 **user_id** | **string** |  |
 **created_at** | **\DateTime** |  |
-**value** | **float** |  |
+**value** | **int** |  |
 **comment_id** | **string** |  | [optional]
 **question_id** | **string** |  |
 **meta** | [**\FastComments\Client\Model\MetaItem[]**](MetaItem.md) |  | [optional]

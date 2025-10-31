@@ -69,7 +69,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'comment_html_rendering_mode' => '\FastComments\Client\Model\CommentHTMLRenderingMode',
         'comment_thread_delete_mode' => '\FastComments\Client\Model\CommentThreadDeletionMode',
         'commenter_name_format' => '\FastComments\Client\Model\CommenterNameFormats',
-        'count_above_toggle' => 'float',
+        'count_above_toggle' => 'int',
         'custom_css' => 'string',
         'default_avatar_src' => 'string',
         'default_sort_direction' => '\FastComments\Client\Model\SortDirections',
@@ -103,12 +103,12 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'input_after_comments' => 'bool',
         'limit_comments_by_groups' => 'bool',
         'locale' => 'string',
-        'max_comment_character_length' => 'float',
-        'max_comment_created_count_pupm' => 'float',
+        'max_comment_character_length' => 'int',
+        'max_comment_created_count_pupm' => 'int',
         'no_custom_config' => 'bool',
         'no_image_uploads' => 'bool',
         'no_styles' => 'bool',
-        'page_size' => 'float',
+        'page_size' => 'int',
         'readonly' => 'bool',
         'require_sso' => 'bool',
         'enable_resize_handle' => 'bool',
@@ -151,7 +151,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'comment_html_rendering_mode' => null,
         'comment_thread_delete_mode' => null,
         'commenter_name_format' => null,
-        'count_above_toggle' => 'double',
+        'count_above_toggle' => 'int32',
         'custom_css' => null,
         'default_avatar_src' => null,
         'default_sort_direction' => null,
@@ -185,12 +185,12 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'input_after_comments' => null,
         'limit_comments_by_groups' => null,
         'locale' => null,
-        'max_comment_character_length' => 'double',
-        'max_comment_created_count_pupm' => 'double',
+        'max_comment_character_length' => 'int32',
+        'max_comment_created_count_pupm' => 'int32',
         'no_custom_config' => null,
         'no_image_uploads' => null,
         'no_styles' => null,
-        'page_size' => 'double',
+        'page_size' => 'int32',
         'readonly' => null,
         'require_sso' => null,
         'enable_resize_handle' => null,
@@ -1115,7 +1115,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets count_above_toggle
      *
-     * @return float|null
+     * @return int|null
      */
     public function getCountAboveToggle()
     {
@@ -1125,7 +1125,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets count_above_toggle
      *
-     * @param float|null $count_above_toggle count_above_toggle
+     * @param int|null $count_above_toggle count_above_toggle
      *
      * @return self
      */
@@ -2082,7 +2082,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets max_comment_character_length
      *
-     * @return float|null
+     * @return int|null
      */
     public function getMaxCommentCharacterLength()
     {
@@ -2092,7 +2092,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets max_comment_character_length
      *
-     * @param float|null $max_comment_character_length max_comment_character_length
+     * @param int|null $max_comment_character_length max_comment_character_length
      *
      * @return self
      */
@@ -2116,7 +2116,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets max_comment_created_count_pupm
      *
-     * @return float|null
+     * @return int|null
      */
     public function getMaxCommentCreatedCountPupm()
     {
@@ -2126,7 +2126,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets max_comment_created_count_pupm
      *
-     * @param float|null $max_comment_created_count_pupm max_comment_created_count_pupm
+     * @param int|null $max_comment_created_count_pupm max_comment_created_count_pupm
      *
      * @return self
      */
@@ -2231,7 +2231,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets page_size
      *
-     * @return float|null
+     * @return int|null
      */
     public function getPageSize()
     {
@@ -2241,7 +2241,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets page_size
      *
-     * @param float|null $page_size page_size
+     * @param int|null $page_size page_size
      *
      * @return self
      */

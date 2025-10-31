@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status_code** | **float** |  | [optional]
+**status_code** | **int** |  | [optional]
 **status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 **code** | **string** |  | [optional]
 **reason** | **string** |  | [optional]

@@ -59,7 +59,7 @@ class NotificationAndCount implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'type' => '\FastComments\Client\Model\NotificationType',
-        'count' => 'float'
+        'count' => 'int'
     ];
 
     /**
@@ -71,7 +71,7 @@ class NotificationAndCount implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'type' => null,
-        'count' => 'double'
+        'count' => 'int64'
     ];
 
     /**
@@ -333,7 +333,7 @@ class NotificationAndCount implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets count
      *
-     * @return float
+     * @return int
      */
     public function getCount()
     {
@@ -343,7 +343,7 @@ class NotificationAndCount implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets count
      *
-     * @param float $count count
+     * @param int $count count
      *
      * @return self
      */

@@ -44,7 +44,7 @@ Name | Type | Description | Notes
 **domain** | **string** |  | [optional]
 **feedback_ids** | **string[]** |  | [optional]
 **group_ids** | **string[]** |  | [optional]
-**view_count** | **float** |  | [optional]
+**view_count** | **int** |  | [optional]
 **is_live** | **bool** |  | [optional]
 **hidden** | **bool** |  | [optional]
 

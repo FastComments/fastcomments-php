@@ -59,12 +59,12 @@ class GetUserNotificationCount200Response implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
-        'count' => 'float',
+        'count' => 'int',
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
-        'banned_until' => 'float',
-        'max_character_length' => 'float',
+        'banned_until' => 'int',
+        'max_character_length' => 'int',
         'translated_error' => 'string',
         'custom_config' => '\FastComments\Client\Model\CustomConfigParameters'
     ];
@@ -78,12 +78,12 @@ class GetUserNotificationCount200Response implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'status' => null,
-        'count' => 'double',
+        'count' => 'int64',
         'reason' => null,
         'code' => null,
         'secondary_code' => null,
-        'banned_until' => 'double',
-        'max_character_length' => 'double',
+        'banned_until' => 'int64',
+        'max_character_length' => 'int32',
         'translated_error' => null,
         'custom_config' => null
     ];
@@ -388,7 +388,7 @@ class GetUserNotificationCount200Response implements ModelInterface, ArrayAccess
     /**
      * Gets count
      *
-     * @return float
+     * @return int
      */
     public function getCount()
     {
@@ -398,7 +398,7 @@ class GetUserNotificationCount200Response implements ModelInterface, ArrayAccess
     /**
      * Sets count
      *
-     * @param float $count count
+     * @param int $count count
      *
      * @return self
      */
@@ -496,7 +496,7 @@ class GetUserNotificationCount200Response implements ModelInterface, ArrayAccess
     /**
      * Gets banned_until
      *
-     * @return float|null
+     * @return int|null
      */
     public function getBannedUntil()
     {
@@ -506,7 +506,7 @@ class GetUserNotificationCount200Response implements ModelInterface, ArrayAccess
     /**
      * Sets banned_until
      *
-     * @param float|null $banned_until banned_until
+     * @param int|null $banned_until banned_until
      *
      * @return self
      */
@@ -523,7 +523,7 @@ class GetUserNotificationCount200Response implements ModelInterface, ArrayAccess
     /**
      * Gets max_character_length
      *
-     * @return float|null
+     * @return int|null
      */
     public function getMaxCharacterLength()
     {
@@ -533,7 +533,7 @@ class GetUserNotificationCount200Response implements ModelInterface, ArrayAccess
     /**
      * Sets max_character_length
      *
-     * @param float|null $max_character_length max_character_length
+     * @param int|null $max_character_length max_character_length
      *
      * @return self
      */

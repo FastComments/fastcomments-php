@@ -61,7 +61,7 @@ class AggregationValue implements ModelInterface, ArrayAccess, \JsonSerializable
         'groups' => 'array<string,string>',
         'string_value' => 'string',
         'numeric_value' => 'float',
-        'distinct_count' => 'float',
+        'distinct_count' => 'int',
         'distinct_counts' => 'array<string,float>'
     ];
 
@@ -76,7 +76,7 @@ class AggregationValue implements ModelInterface, ArrayAccess, \JsonSerializable
         'groups' => null,
         'string_value' => null,
         'numeric_value' => 'double',
-        'distinct_count' => 'double',
+        'distinct_count' => 'int64',
         'distinct_counts' => 'double'
     ];
 
@@ -402,7 +402,7 @@ class AggregationValue implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets distinct_count
      *
-     * @return float|null
+     * @return int|null
      */
     public function getDistinctCount()
     {
@@ -412,7 +412,7 @@ class AggregationValue implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets distinct_count
      *
-     * @param float|null $distinct_count distinct_count
+     * @param int|null $distinct_count distinct_count
      *
      * @return self
      */

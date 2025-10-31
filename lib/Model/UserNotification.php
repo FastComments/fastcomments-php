@@ -78,7 +78,7 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
         'from_user_id' => 'string',
         'from_user_avatar_src' => 'string',
         'opted_out' => 'bool',
-        'count' => 'float',
+        'count' => 'int',
         'related_ids' => 'string[]',
         'from_user_ids' => 'string[]',
         'from_user_names' => 'string[]'
@@ -112,7 +112,7 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
         'from_user_id' => null,
         'from_user_avatar_src' => null,
         'opted_out' => null,
-        'count' => 'double',
+        'count' => 'int64',
         'related_ids' => null,
         'from_user_ids' => null,
         'from_user_names' => null
@@ -1086,7 +1086,7 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets count
      *
-     * @return float|null
+     * @return int|null
      */
     public function getCount()
     {
@@ -1096,7 +1096,7 @@ class UserNotification implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets count
      *
-     * @param float|null $count count
+     * @param int|null $count count
      *
      * @return self
      */

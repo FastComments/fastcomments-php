@@ -17,9 +17,9 @@ Name | Type | Description | Notes
 **opted_in_subscription_notifications** | **bool** |  | [optional]
 **opted_in_notifications** | **bool** |  | [optional]
 **avatar_src** | **string** |  | [optional]
-**login_count** | **float** |  | [optional]
+**login_count** | **int** |  | [optional]
 **created_from_url_id** | **string** |  | [optional]
-**sign_up_date** | **float** |  | [optional]
+**sign_up_date** | **int** |  | [optional]
 **email** | **string** |  |
 **website_url** | **string** |  | [optional]
 **username** | **string** |  |

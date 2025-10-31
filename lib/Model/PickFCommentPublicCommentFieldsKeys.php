@@ -84,7 +84,7 @@ class PickFCommentPublicCommentFieldsKeys implements ModelInterface, ArrayAccess
         'display_label' => 'string',
         'badges' => '\FastComments\Client\Model\CommentUserBadgeInfo[]',
         'feedback_ids' => 'string[]',
-        'view_count' => 'float',
+        'view_count' => 'int',
         'requires_verification' => 'bool',
         'edit_key' => 'string'
     ];
@@ -122,7 +122,7 @@ class PickFCommentPublicCommentFieldsKeys implements ModelInterface, ArrayAccess
         'display_label' => null,
         'badges' => null,
         'feedback_ids' => null,
-        'view_count' => 'double',
+        'view_count' => 'int64',
         'requires_verification' => null,
         'edit_key' => null
     ];
@@ -1173,7 +1173,7 @@ class PickFCommentPublicCommentFieldsKeys implements ModelInterface, ArrayAccess
     /**
      * Gets view_count
      *
-     * @return float|null
+     * @return int|null
      */
     public function getViewCount()
     {
@@ -1183,7 +1183,7 @@ class PickFCommentPublicCommentFieldsKeys implements ModelInterface, ArrayAccess
     /**
      * Sets view_count
      *
-     * @param float|null $view_count view_count
+     * @param int|null $view_count view_count
      *
      * @return self
      */

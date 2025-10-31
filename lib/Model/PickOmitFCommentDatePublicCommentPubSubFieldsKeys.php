@@ -99,7 +99,7 @@ class PickOmitFCommentDatePublicCommentPubSubFieldsKeys implements ModelInterfac
         'domain' => 'string',
         'feedback_ids' => 'string[]',
         'group_ids' => 'string[]',
-        'view_count' => 'float'
+        'view_count' => 'int'
     ];
 
     /**
@@ -150,7 +150,7 @@ class PickOmitFCommentDatePublicCommentPubSubFieldsKeys implements ModelInterfac
         'domain' => null,
         'feedback_ids' => null,
         'group_ids' => null,
-        'view_count' => 'double'
+        'view_count' => 'int64'
     ];
 
     /**
@@ -1694,7 +1694,7 @@ class PickOmitFCommentDatePublicCommentPubSubFieldsKeys implements ModelInterfac
     /**
      * Gets view_count
      *
-     * @return float|null
+     * @return int|null
      */
     public function getViewCount()
     {
@@ -1704,7 +1704,7 @@ class PickOmitFCommentDatePublicCommentPubSubFieldsKeys implements ModelInterfac
     /**
      * Sets view_count
      *
-     * @param float|null $view_count view_count
+     * @param int|null $view_count view_count
      *
      * @return self
      */

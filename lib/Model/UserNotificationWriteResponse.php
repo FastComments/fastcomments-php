@@ -59,8 +59,8 @@ class UserNotificationWriteResponse implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'status' => '\FastComments\Client\Model\ImportedAPIStatusSUCCESS',
-        'matched_count' => 'float',
-        'modified_count' => 'float'
+        'matched_count' => 'int',
+        'modified_count' => 'int'
     ];
 
     /**
@@ -72,8 +72,8 @@ class UserNotificationWriteResponse implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPIFormats = [
         'status' => null,
-        'matched_count' => 'double',
-        'modified_count' => 'double'
+        'matched_count' => 'int64',
+        'modified_count' => 'int64'
     ];
 
     /**
@@ -343,7 +343,7 @@ class UserNotificationWriteResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets matched_count
      *
-     * @return float
+     * @return int
      */
     public function getMatchedCount()
     {
@@ -353,7 +353,7 @@ class UserNotificationWriteResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets matched_count
      *
-     * @param float $matched_count matched_count
+     * @param int $matched_count matched_count
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class UserNotificationWriteResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets modified_count
      *
-     * @return float
+     * @return int
      */
     public function getModifiedCount()
     {
@@ -380,7 +380,7 @@ class UserNotificationWriteResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets modified_count
      *
-     * @param float $modified_count modified_count
+     * @param int $modified_count modified_count
      *
      * @return self
      */

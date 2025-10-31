@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**date** | **float** |  | [optional]
+**date** | **int** |  | [optional]
 **local_date_string** | **string** |  | [optional]
-**local_date_hours** | **float** |  | [optional]
+**local_date_hours** | **int** |  | [optional]
 **commenter_name** | **string** |  |
 **commenter_email** | **string** |  | [optional]
 **commenter_link** | **string** |  | [optional]
 **comment** | **string** |  |
-**product_id** | **float** |  | [optional]
+**product_id** | **int** |  | [optional]
 **user_id** | **string** |  | [optional]
 **avatar_src** | **string** |  | [optional]
 **parent_id** | **string** |  | [optional]
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **moderation_group_ids** | **string[]** |  | [optional]
 **rating** | **float** |  | [optional]
 **from_offline_restore** | **bool** |  | [optional]
-**autoplay_delay_ms** | **float** |  | [optional]
+**autoplay_delay_ms** | **int** |  | [optional]
 **feedback_ids** | **string[]** |  | [optional]
 **question_values** | [**array<string,\FastComments\Client\Model\RecordStringStringOrNumberValue>**](RecordStringStringOrNumberValue.md) | Construct a type with a set of properties K of type T | [optional]
 **approved** | **bool** |  | [optional]
@@ -35,8 +35,8 @@ Name | Type | Description | Notes
 **locale** | **string** | Example: en_us |
 **reviewed** | **bool** |  | [optional]
 **verified** | **bool** |  | [optional]
-**votes** | **float** |  | [optional]
-**votes_down** | **float** |  | [optional]
-**votes_up** | **float** |  | [optional]
+**votes** | **int** |  | [optional]
+**votes_down** | **int** |  | [optional]
+**votes_up** | **int** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

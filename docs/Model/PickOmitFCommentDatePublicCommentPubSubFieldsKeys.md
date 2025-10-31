@@ -44,6 +44,6 @@ Name | Type | Description | Notes
 **domain** | **string** |  | [optional]
 **feedback_ids** | **string[]** |  | [optional]
 **group_ids** | **string[]** |  | [optional]
-**view_count** | **float** |  | [optional]
+**view_count** | **int** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

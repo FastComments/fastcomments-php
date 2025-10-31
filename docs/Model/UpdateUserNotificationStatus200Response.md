@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**\FastComments\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
-**matched_count** | **float** |  |
-**modified_count** | **float** |  |
+**matched_count** | **int** |  |
+**modified_count** | **int** |  |
 **note** | **string** |  |
 **reason** | **string** |  |
 **code** | **string** |  |
 **secondary_code** | **string** |  | [optional]
-**banned_until** | **float** |  | [optional]
-**max_character_length** | **float** |  | [optional]
+**banned_until** | **int** |  | [optional]
+**max_character_length** | **int** |  | [optional]
 **translated_error** | **string** |  | [optional]
 **custom_config** | [**\FastComments\Client\Model\CustomConfigParameters**](CustomConfigParameters.md) |  | [optional]
 

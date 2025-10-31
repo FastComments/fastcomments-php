@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **from_user_id** | **string** |  | [optional]
 **from_user_avatar_src** | **string** |  | [optional]
 **opted_out** | **bool** |  |
-**count** | **float** |  | [optional]
+**count** | **int** |  | [optional]
 **related_ids** | **string[]** |  | [optional]
 **from_user_ids** | **string[]** |  | [optional]
 **from_user_names** | **string[]** |  | [optional]

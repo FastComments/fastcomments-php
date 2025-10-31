@@ -126,7 +126,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**updateComment**](docs/Api/DefaultApi.md#updatecomment) | **PATCH** /api/v1/comments/{id} | 
 *DefaultApi* | [**updateFeedPost**](docs/Api/DefaultApi.md#updatefeedpost) | **PATCH** /api/v1/feed-posts/{id} | 
 *DefaultApi* | [**updateUserBadge**](docs/Api/DefaultApi.md#updateuserbadge) | **PUT** /api/v1/user-badges/{id} | 
-*HiddenApi* | [**uploadImageOptions**](docs/Api/HiddenApi.md#uploadimageoptions) | **OPTIONS** /upload-image/{tenantId} | 
 *PublicApi* | [**blockFromCommentPublic**](docs/Api/PublicApi.md#blockfromcommentpublic) | **POST** /block-from-comment/{commentId} | 
 *PublicApi* | [**checkedCommentsForBlocked**](docs/Api/PublicApi.md#checkedcommentsforblocked) | **GET** /check-blocked-comments | 
 *PublicApi* | [**createCommentPublic**](docs/Api/PublicApi.md#createcommentpublic) | **POST** /comments/{tenantId} | 
