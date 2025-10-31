@@ -32,8 +32,8 @@ Name | Type | Description | Notes
 **user_id_ws** | **string** |  | [optional]
 **tenant_id_ws** | **string** |  | [optional]
 **secondary_code** | **string** |  | [optional]
-**banned_until** | **float** |  | [optional]
-**max_character_length** | **float** |  | [optional]
+**banned_until** | **int** |  | [optional]
+**max_character_length** | **int** |  | [optional]
 **translated_error** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

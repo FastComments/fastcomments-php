@@ -86,8 +86,8 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
         'user_id_ws' => 'string',
         'tenant_id_ws' => 'string',
         'secondary_code' => 'string',
-        'banned_until' => 'float',
-        'max_character_length' => 'float',
+        'banned_until' => 'int',
+        'max_character_length' => 'int',
         'translated_error' => 'string'
     ];
 
@@ -127,8 +127,8 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
         'user_id_ws' => null,
         'tenant_id_ws' => null,
         'secondary_code' => null,
-        'banned_until' => 'double',
-        'max_character_length' => 'double',
+        'banned_until' => 'int64',
+        'max_character_length' => 'int32',
         'translated_error' => null
     ];
 
@@ -1291,7 +1291,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets banned_until
      *
-     * @return float|null
+     * @return int|null
      */
     public function getBannedUntil()
     {
@@ -1301,7 +1301,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets banned_until
      *
-     * @param float|null $banned_until banned_until
+     * @param int|null $banned_until banned_until
      *
      * @return self
      */
@@ -1318,7 +1318,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets max_character_length
      *
-     * @return float|null
+     * @return int|null
      */
     public function getMaxCharacterLength()
     {
@@ -1328,7 +1328,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets max_character_length
      *
-     * @param float|null $max_character_length max_character_length
+     * @param int|null $max_character_length max_character_length
      *
      * @return self
      */

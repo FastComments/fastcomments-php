@@ -63,8 +63,8 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
         'badge_id' => 'string',
         'from_tenant_id' => 'string',
         'created_at' => '\DateTime',
-        'type' => 'float',
-        'threshold' => 'float',
+        'type' => 'int',
+        'threshold' => 'int',
         'description' => 'string',
         'display_label' => 'string',
         'display_src' => 'string',
@@ -72,10 +72,10 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
         'border_color' => 'string',
         'text_color' => 'string',
         'css_class' => 'string',
-        'veteran_user_threshold_millis' => 'float',
+        'veteran_user_threshold_millis' => 'int',
         'displayed_on_comments' => 'bool',
         'received_at' => '\DateTime',
-        'order' => 'float'
+        'order' => 'int'
     ];
 
     /**
@@ -91,8 +91,8 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
         'badge_id' => null,
         'from_tenant_id' => null,
         'created_at' => 'date-time',
-        'type' => 'double',
-        'threshold' => 'double',
+        'type' => 'int32',
+        'threshold' => 'int64',
         'description' => null,
         'display_label' => null,
         'display_src' => null,
@@ -100,10 +100,10 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
         'border_color' => null,
         'text_color' => null,
         'css_class' => null,
-        'veteran_user_threshold_millis' => 'double',
+        'veteran_user_threshold_millis' => 'int64',
         'displayed_on_comments' => null,
         'received_at' => 'date-time',
-        'order' => 'double'
+        'order' => 'int32'
     ];
 
     /**
@@ -583,7 +583,7 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type
      *
-     * @return float
+     * @return int
      */
     public function getType()
     {
@@ -593,7 +593,7 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param float $type type
+     * @param int $type type
      *
      * @return self
      */
@@ -610,7 +610,7 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets threshold
      *
-     * @return float
+     * @return int
      */
     public function getThreshold()
     {
@@ -620,7 +620,7 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets threshold
      *
-     * @param float $threshold threshold
+     * @param int $threshold threshold
      *
      * @return self
      */
@@ -861,7 +861,7 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets veteran_user_threshold_millis
      *
-     * @return float
+     * @return int
      */
     public function getVeteranUserThresholdMillis()
     {
@@ -871,7 +871,7 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets veteran_user_threshold_millis
      *
-     * @param float $veteran_user_threshold_millis veteran_user_threshold_millis
+     * @param int $veteran_user_threshold_millis veteran_user_threshold_millis
      *
      * @return self
      */
@@ -942,7 +942,7 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order
      *
-     * @return float|null
+     * @return int|null
      */
     public function getOrder()
     {
@@ -952,7 +952,7 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order
      *
-     * @param float|null $order order
+     * @param int|null $order order
      *
      * @return self
      */

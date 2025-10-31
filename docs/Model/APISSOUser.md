@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **username** | **string** |  |
 **website_url** | **string** |  |
 **email** | **string** |  |
-**sign_up_date** | **float** |  |
+**sign_up_date** | **int** |  |
 **created_from_url_id** | **string** |  |
-**login_count** | **float** |  |
+**login_count** | **int** |  |
 **avatar_src** | **string** |  |
 **opted_in_notifications** | **bool** |  |
 **opted_in_subscription_notifications** | **bool** |  |

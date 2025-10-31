@@ -58,8 +58,8 @@ class AggregationResponseStats implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'time_ms' => 'float',
-        'scanned' => 'float'
+        'time_ms' => 'int',
+        'scanned' => 'int'
     ];
 
     /**
@@ -70,8 +70,8 @@ class AggregationResponseStats implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'time_ms' => 'double',
-        'scanned' => 'double'
+        'time_ms' => 'int64',
+        'scanned' => 'int64'
     ];
 
     /**
@@ -306,7 +306,7 @@ class AggregationResponseStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets time_ms
      *
-     * @return float
+     * @return int
      */
     public function getTimeMs()
     {
@@ -316,7 +316,7 @@ class AggregationResponseStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets time_ms
      *
-     * @param float $time_ms time_ms
+     * @param int $time_ms time_ms
      *
      * @return self
      */
@@ -333,7 +333,7 @@ class AggregationResponseStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets scanned
      *
-     * @return float
+     * @return int
      */
     public function getScanned()
     {
@@ -343,7 +343,7 @@ class AggregationResponseStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets scanned
      *
-     * @param float $scanned scanned
+     * @param int $scanned scanned
      *
      * @return self
      */

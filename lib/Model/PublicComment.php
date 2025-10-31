@@ -83,7 +83,7 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'display_label' => 'string',
         'badges' => '\FastComments\Client\Model\CommentUserBadgeInfo[]',
         'feedback_ids' => 'string[]',
-        'view_count' => 'float',
+        'view_count' => 'int',
         'requires_verification' => 'bool',
         'edit_key' => 'string',
         'is_unread' => 'bool',
@@ -131,7 +131,7 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'display_label' => null,
         'badges' => null,
         'feedback_ids' => null,
-        'view_count' => 'double',
+        'view_count' => 'int64',
         'requires_verification' => null,
         'edit_key' => null,
         'is_unread' => null,
@@ -1242,7 +1242,7 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets view_count
      *
-     * @return float|null
+     * @return int|null
      */
     public function getViewCount()
     {
@@ -1252,7 +1252,7 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets view_count
      *
-     * @param float|null $view_count view_count
+     * @param int|null $view_count view_count
      *
      * @return self
      */

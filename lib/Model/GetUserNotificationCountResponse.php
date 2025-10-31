@@ -59,7 +59,7 @@ class GetUserNotificationCountResponse implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPITypes = [
         'status' => '\FastComments\Client\Model\ImportedAPIStatusSUCCESS',
-        'count' => 'float'
+        'count' => 'int'
     ];
 
     /**
@@ -71,7 +71,7 @@ class GetUserNotificationCountResponse implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPIFormats = [
         'status' => null,
-        'count' => 'double'
+        'count' => 'int64'
     ];
 
     /**
@@ -333,7 +333,7 @@ class GetUserNotificationCountResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets count
      *
-     * @return float
+     * @return int
      */
     public function getCount()
     {
@@ -343,7 +343,7 @@ class GetUserNotificationCountResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets count
      *
-     * @param float $count count
+     * @param int $count count
      *
      * @return self
      */

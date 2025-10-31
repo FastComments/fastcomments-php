@@ -4,7 +4,6 @@
 README.md
 composer.json
 docs/Api/DefaultApi.md
-docs/Api/HiddenApi.md
 docs/Api/PublicApi.md
 docs/Model/APICreateUserBadgeResponse.md
 docs/Model/APIEmptyResponse.md
@@ -228,7 +227,6 @@ docs/Model/VoteResponseUser.md
 docs/Model/VoteStyle.md
 git_push.sh
 lib/Api/DefaultApi.php
-lib/Api/HiddenApi.php
 lib/Api/PublicApi.php
 lib/ApiException.php
 lib/Configuration.php
@@ -457,7 +455,6 @@ lib/Model/VoteStyle.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
 test/Api/DefaultApiTest.php
-test/Api/HiddenApiTest.php
 test/Api/PublicApiTest.php
 test/Model/APICreateUserBadgeResponseTest.php
 test/Model/APIEmptyResponseTest.php

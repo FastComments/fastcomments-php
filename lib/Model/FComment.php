@@ -126,7 +126,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'feedback_ids' => 'string[]',
         'logs' => 'array[]',
         'group_ids' => 'string[]',
-        'view_count' => 'float',
+        'view_count' => 'int',
         'requires_verification' => 'bool',
         'edit_key' => 'string'
     ];
@@ -207,7 +207,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'feedback_ids' => null,
         'logs' => null,
         'group_ids' => null,
-        'view_count' => 'double',
+        'view_count' => 'int64',
         'requires_verification' => null,
         'edit_key' => null
     ];
@@ -2876,7 +2876,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets view_count
      *
-     * @return float|null
+     * @return int|null
      */
     public function getViewCount()
     {
@@ -2886,7 +2886,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets view_count
      *
-     * @param float|null $view_count view_count
+     * @param int|null $view_count view_count
      *
      * @return self
      */

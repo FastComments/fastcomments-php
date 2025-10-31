@@ -59,7 +59,7 @@ class QuestionDatum implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'v' => 'array<string,float>',
-        'total' => 'float'
+        'total' => 'int'
     ];
 
     /**
@@ -71,7 +71,7 @@ class QuestionDatum implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'v' => 'double',
-        'total' => 'double'
+        'total' => 'int64'
     ];
 
     /**
@@ -333,7 +333,7 @@ class QuestionDatum implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets total
      *
-     * @return float
+     * @return int
      */
     public function getTotal()
     {
@@ -343,7 +343,7 @@ class QuestionDatum implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total
      *
-     * @param float $total total
+     * @param int $total total
      *
      * @return self
      */

@@ -7423,13 +7423,13 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id tenant_id (required)
-     * @param  float|null $page page (optional)
-     * @param  float|null $limit limit (optional)
-     * @param  float|null $skip skip (optional)
+     * @param  int|null $page page (optional)
+     * @param  int|null $limit limit (optional)
+     * @param  int|null $skip skip (optional)
      * @param  bool|null $as_tree as_tree (optional)
-     * @param  float|null $skip_children skip_children (optional)
-     * @param  float|null $limit_children limit_children (optional)
-     * @param  float|null $max_tree_depth max_tree_depth (optional)
+     * @param  int|null $skip_children skip_children (optional)
+     * @param  int|null $limit_children limit_children (optional)
+     * @param  int|null $max_tree_depth max_tree_depth (optional)
      * @param  string|null $url_id url_id (optional)
      * @param  string|null $user_id user_id (optional)
      * @param  string|null $anon_user_id anon_user_id (optional)
@@ -7455,13 +7455,13 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $page (optional)
-     * @param  float|null $limit (optional)
-     * @param  float|null $skip (optional)
+     * @param  int|null $page (optional)
+     * @param  int|null $limit (optional)
+     * @param  int|null $skip (optional)
      * @param  bool|null $as_tree (optional)
-     * @param  float|null $skip_children (optional)
-     * @param  float|null $limit_children (optional)
-     * @param  float|null $max_tree_depth (optional)
+     * @param  int|null $skip_children (optional)
+     * @param  int|null $limit_children (optional)
+     * @param  int|null $max_tree_depth (optional)
      * @param  string|null $url_id (optional)
      * @param  string|null $user_id (optional)
      * @param  string|null $anon_user_id (optional)
@@ -7594,13 +7594,13 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $page (optional)
-     * @param  float|null $limit (optional)
-     * @param  float|null $skip (optional)
+     * @param  int|null $page (optional)
+     * @param  int|null $limit (optional)
+     * @param  int|null $skip (optional)
      * @param  bool|null $as_tree (optional)
-     * @param  float|null $skip_children (optional)
-     * @param  float|null $limit_children (optional)
-     * @param  float|null $max_tree_depth (optional)
+     * @param  int|null $skip_children (optional)
+     * @param  int|null $limit_children (optional)
+     * @param  int|null $max_tree_depth (optional)
      * @param  string|null $url_id (optional)
      * @param  string|null $user_id (optional)
      * @param  string|null $anon_user_id (optional)
@@ -7629,13 +7629,13 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $page (optional)
-     * @param  float|null $limit (optional)
-     * @param  float|null $skip (optional)
+     * @param  int|null $page (optional)
+     * @param  int|null $limit (optional)
+     * @param  int|null $skip (optional)
      * @param  bool|null $as_tree (optional)
-     * @param  float|null $skip_children (optional)
-     * @param  float|null $limit_children (optional)
-     * @param  float|null $max_tree_depth (optional)
+     * @param  int|null $skip_children (optional)
+     * @param  int|null $limit_children (optional)
+     * @param  int|null $max_tree_depth (optional)
      * @param  string|null $url_id (optional)
      * @param  string|null $user_id (optional)
      * @param  string|null $anon_user_id (optional)
@@ -7693,13 +7693,13 @@ class DefaultApi
      * Create request for operation 'getComments'
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $page (optional)
-     * @param  float|null $limit (optional)
-     * @param  float|null $skip (optional)
+     * @param  int|null $page (optional)
+     * @param  int|null $limit (optional)
+     * @param  int|null $skip (optional)
      * @param  bool|null $as_tree (optional)
-     * @param  float|null $skip_children (optional)
-     * @param  float|null $limit_children (optional)
-     * @param  float|null $max_tree_depth (optional)
+     * @param  int|null $skip_children (optional)
+     * @param  int|null $limit_children (optional)
+     * @param  int|null $max_tree_depth (optional)
      * @param  string|null $url_id (optional)
      * @param  string|null $user_id (optional)
      * @param  string|null $anon_user_id (optional)
@@ -7757,7 +7757,7 @@ class DefaultApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $page,
             'page', // param base name
-            'number', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -7766,7 +7766,7 @@ class DefaultApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $limit,
             'limit', // param base name
-            'number', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -7775,7 +7775,7 @@ class DefaultApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $skip,
             'skip', // param base name
-            'number', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -7793,7 +7793,7 @@ class DefaultApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $skip_children,
             'skipChildren', // param base name
-            'number', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -7802,7 +7802,7 @@ class DefaultApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $limit_children,
             'limitChildren', // param base name
-            'number', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -7811,7 +7811,7 @@ class DefaultApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $max_tree_depth,
             'maxTreeDepth', // param base name
-            'number', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -10271,7 +10271,7 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id tenant_id (required)
-     * @param  float|null $skip skip (optional)
+     * @param  int|null $skip skip (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSSOUsers'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -10290,7 +10290,7 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $skip (optional)
+     * @param  int|null $skip (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSSOUsers'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -10416,7 +10416,7 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $skip (optional)
+     * @param  int|null $skip (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSSOUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10438,7 +10438,7 @@ class DefaultApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $skip (optional)
+     * @param  int|null $skip (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSSOUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10489,7 +10489,7 @@ class DefaultApi
      * Create request for operation 'getSSOUsers'
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $skip (optional)
+     * @param  int|null $skip (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSSOUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10527,7 +10527,7 @@ class DefaultApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $skip,
             'skip', // param base name
-            'number', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required

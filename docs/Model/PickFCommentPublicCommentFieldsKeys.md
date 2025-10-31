@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **display_label** | **string** |  | [optional]
 **badges** | [**\FastComments\Client\Model\CommentUserBadgeInfo[]**](CommentUserBadgeInfo.md) |  | [optional]
 **feedback_ids** | **string[]** |  | [optional]
-**view_count** | **float** |  | [optional]
+**view_count** | **int** |  | [optional]
 **requires_verification** | **bool** |  | [optional]
 **edit_key** | **string** |  | [optional]
 

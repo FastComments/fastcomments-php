@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  |
-**type** | **float** |  |
+**type** | **int** |  |
 **description** | **string** |  |
 **display_label** | **string** |  | [optional]
 **display_src** | **string** |  | [optional]

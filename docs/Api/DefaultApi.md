@@ -1391,13 +1391,13 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     $config
 );
 $tenant_id = 'tenant_id_example'; // string
-$page = 3.4; // float
-$limit = 3.4; // float
-$skip = 3.4; // float
+$page = 56; // int
+$limit = 56; // int
+$skip = 56; // int
 $as_tree = True; // bool
-$skip_children = 3.4; // float
-$limit_children = 3.4; // float
-$max_tree_depth = 3.4; // float
+$skip_children = 56; // int
+$limit_children = 56; // int
+$max_tree_depth = 56; // int
 $url_id = 'url_id_example'; // string
 $user_id = 'user_id_example'; // string
 $anon_user_id = 'anon_user_id_example'; // string
@@ -1419,13 +1419,13 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **tenant_id** | **string**|  | |
-| **page** | **float**|  | [optional] |
-| **limit** | **float**|  | [optional] |
-| **skip** | **float**|  | [optional] |
+| **page** | **int**|  | [optional] |
+| **limit** | **int**|  | [optional] |
+| **skip** | **int**|  | [optional] |
 | **as_tree** | **bool**|  | [optional] |
-| **skip_children** | **float**|  | [optional] |
-| **limit_children** | **float**|  | [optional] |
-| **max_tree_depth** | **float**|  | [optional] |
+| **skip_children** | **int**|  | [optional] |
+| **limit_children** | **int**|  | [optional] |
+| **max_tree_depth** | **int**|  | [optional] |
 | **url_id** | **string**|  | [optional] |
 | **user_id** | **string**|  | [optional] |
 | **anon_user_id** | **string**|  | [optional] |
@@ -1915,7 +1915,7 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     $config
 );
 $tenant_id = 'tenant_id_example'; // string
-$skip = 3.4; // float
+$skip = 56; // int
 
 try {
     $result = $apiInstance->getSSOUsers($tenant_id, $skip);
@@ -1930,7 +1930,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **tenant_id** | **string**|  | |
-| **skip** | **float**|  | [optional] |
+| **skip** | **int**|  | [optional] |
 
 ### Return type
 

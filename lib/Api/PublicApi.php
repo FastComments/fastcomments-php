@@ -3576,7 +3576,7 @@ class PublicApi
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
-     * @param  float $dir dir (required)
+     * @param  int $dir dir (required)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentVoteUserNames'] to see the possible values for this operation
      *
@@ -3597,7 +3597,7 @@ class PublicApi
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  float $dir (required)
+     * @param  int $dir (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentVoteUserNames'] to see the possible values for this operation
      *
@@ -3725,7 +3725,7 @@ class PublicApi
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  float $dir (required)
+     * @param  int $dir (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentVoteUserNames'] to see the possible values for this operation
      *
@@ -3749,7 +3749,7 @@ class PublicApi
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  float $dir (required)
+     * @param  int $dir (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentVoteUserNames'] to see the possible values for this operation
      *
@@ -3802,7 +3802,7 @@ class PublicApi
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  float $dir (required)
+     * @param  int $dir (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentVoteUserNames'] to see the possible values for this operation
      *
@@ -3846,7 +3846,7 @@ class PublicApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $dir,
             'dir', // param base name
-            'number', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             true // required
@@ -6508,10 +6508,10 @@ class PublicApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id tenant_id (required)
-     * @param  float|null $page_size Defaults to 20. (optional)
+     * @param  int|null $page_size page_size (optional)
      * @param  string|null $after_id after_id (optional)
      * @param  bool|null $include_context include_context (optional)
-     * @param  float|null $after_created_at after_created_at (optional)
+     * @param  int|null $after_created_at after_created_at (optional)
      * @param  bool|null $unread_only unread_only (optional)
      * @param  bool|null $dm_only dm_only (optional)
      * @param  bool|null $no_dm no_dm (optional)
@@ -6535,10 +6535,10 @@ class PublicApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $page_size Defaults to 20. (optional)
+     * @param  int|null $page_size (optional)
      * @param  string|null $after_id (optional)
      * @param  bool|null $include_context (optional)
-     * @param  float|null $after_created_at (optional)
+     * @param  int|null $after_created_at (optional)
      * @param  bool|null $unread_only (optional)
      * @param  bool|null $dm_only (optional)
      * @param  bool|null $no_dm (optional)
@@ -6669,10 +6669,10 @@ class PublicApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $page_size Defaults to 20. (optional)
+     * @param  int|null $page_size (optional)
      * @param  string|null $after_id (optional)
      * @param  bool|null $include_context (optional)
-     * @param  float|null $after_created_at (optional)
+     * @param  int|null $after_created_at (optional)
      * @param  bool|null $unread_only (optional)
      * @param  bool|null $dm_only (optional)
      * @param  bool|null $no_dm (optional)
@@ -6699,10 +6699,10 @@ class PublicApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $page_size Defaults to 20. (optional)
+     * @param  int|null $page_size (optional)
      * @param  string|null $after_id (optional)
      * @param  bool|null $include_context (optional)
-     * @param  float|null $after_created_at (optional)
+     * @param  int|null $after_created_at (optional)
      * @param  bool|null $unread_only (optional)
      * @param  bool|null $dm_only (optional)
      * @param  bool|null $no_dm (optional)
@@ -6758,10 +6758,10 @@ class PublicApi
      * Create request for operation 'getUserNotifications'
      *
      * @param  string $tenant_id (required)
-     * @param  float|null $page_size Defaults to 20. (optional)
+     * @param  int|null $page_size (optional)
      * @param  string|null $after_id (optional)
      * @param  bool|null $include_context (optional)
-     * @param  float|null $after_created_at (optional)
+     * @param  int|null $after_created_at (optional)
      * @param  bool|null $unread_only (optional)
      * @param  bool|null $dm_only (optional)
      * @param  bool|null $no_dm (optional)
@@ -6812,7 +6812,7 @@ class PublicApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $page_size,
             'pageSize', // param base name
-            'number', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -6839,7 +6839,7 @@ class PublicApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $after_created_at,
             'afterCreatedAt', // param base name
-            'number', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -9121,7 +9121,7 @@ class PublicApi
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $after_id after_id (optional)
-     * @param  float|null $after_created_at after_created_at (optional)
+     * @param  int|null $after_created_at after_created_at (optional)
      * @param  bool|null $unread_only unread_only (optional)
      * @param  bool|null $dm_only dm_only (optional)
      * @param  bool|null $no_dm no_dm (optional)
@@ -9145,7 +9145,7 @@ class PublicApi
      *
      * @param  string $tenant_id (required)
      * @param  string|null $after_id (optional)
-     * @param  float|null $after_created_at (optional)
+     * @param  int|null $after_created_at (optional)
      * @param  bool|null $unread_only (optional)
      * @param  bool|null $dm_only (optional)
      * @param  bool|null $no_dm (optional)
@@ -9276,7 +9276,7 @@ class PublicApi
      *
      * @param  string $tenant_id (required)
      * @param  string|null $after_id (optional)
-     * @param  float|null $after_created_at (optional)
+     * @param  int|null $after_created_at (optional)
      * @param  bool|null $unread_only (optional)
      * @param  bool|null $dm_only (optional)
      * @param  bool|null $no_dm (optional)
@@ -9303,7 +9303,7 @@ class PublicApi
      *
      * @param  string $tenant_id (required)
      * @param  string|null $after_id (optional)
-     * @param  float|null $after_created_at (optional)
+     * @param  int|null $after_created_at (optional)
      * @param  bool|null $unread_only (optional)
      * @param  bool|null $dm_only (optional)
      * @param  bool|null $no_dm (optional)
@@ -9359,7 +9359,7 @@ class PublicApi
      *
      * @param  string $tenant_id (required)
      * @param  string|null $after_id (optional)
-     * @param  float|null $after_created_at (optional)
+     * @param  int|null $after_created_at (optional)
      * @param  bool|null $unread_only (optional)
      * @param  bool|null $dm_only (optional)
      * @param  bool|null $no_dm (optional)
@@ -9415,7 +9415,7 @@ class PublicApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $after_created_at,
             'afterCreatedAt', // param base name
-            'number', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required

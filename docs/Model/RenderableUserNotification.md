@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **from_user_names** | **string[]** |  | [optional]
 **from_user_ids** | **string[]** |  | [optional]
 **related_ids** | **string[]** |  | [optional]
-**count** | **float** |  | [optional]
+**count** | **int** |  | [optional]
 **opted_out** | **bool** |  |
 **from_user_avatar_src** | **string** |  | [optional]
 **from_user_id** | **string** |  | [optional]

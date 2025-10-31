@@ -58,7 +58,7 @@ class FlagCommentResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status_code' => 'float',
+        'status_code' => 'int',
         'status' => '\FastComments\Client\Model\APIStatus',
         'code' => 'string',
         'reason' => 'string',
@@ -73,7 +73,7 @@ class FlagCommentResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status_code' => 'double',
+        'status_code' => 'int32',
         'status' => null,
         'code' => null,
         'reason' => null,
@@ -324,7 +324,7 @@ class FlagCommentResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets status_code
      *
-     * @return float|null
+     * @return int|null
      */
     public function getStatusCode()
     {
@@ -334,7 +334,7 @@ class FlagCommentResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets status_code
      *
-     * @param float|null $status_code status_code
+     * @param int|null $status_code status_code
      *
      * @return self
      */

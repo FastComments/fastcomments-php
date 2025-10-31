@@ -64,7 +64,7 @@ class QuestionResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'anon_user_id' => 'string',
         'user_id' => 'string',
         'created_at' => '\DateTime',
-        'value' => 'float',
+        'value' => 'int',
         'comment_id' => 'string',
         'question_id' => 'string',
         'meta' => '\FastComments\Client\Model\MetaItem[]',
@@ -85,7 +85,7 @@ class QuestionResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'anon_user_id' => null,
         'user_id' => null,
         'created_at' => 'date-time',
-        'value' => 'double',
+        'value' => 'int32',
         'comment_id' => null,
         'question_id' => null,
         'meta' => null,
@@ -552,7 +552,7 @@ class QuestionResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets value
      *
-     * @return float
+     * @return int
      */
     public function getValue()
     {
@@ -562,7 +562,7 @@ class QuestionResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value
      *
-     * @param float $value value
+     * @param int $value value
      *
      * @return self
      */

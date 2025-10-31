@@ -59,7 +59,7 @@ class CommentUserBadgeInfo implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'type' => 'float',
+        'type' => 'int',
         'description' => 'string',
         'display_label' => 'string',
         'display_src' => 'string',
@@ -78,7 +78,7 @@ class CommentUserBadgeInfo implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'type' => 'double',
+        'type' => 'int32',
         'description' => null,
         'display_label' => null,
         'display_src' => null,
@@ -385,7 +385,7 @@ class CommentUserBadgeInfo implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets type
      *
-     * @return float
+     * @return int
      */
     public function getType()
     {
@@ -395,7 +395,7 @@ class CommentUserBadgeInfo implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets type
      *
-     * @param float $type type
+     * @param int $type type
      *
      * @return self
      */

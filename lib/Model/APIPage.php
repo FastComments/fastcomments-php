@@ -60,8 +60,8 @@ class APIPage implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'is_closed' => 'bool',
         'accessible_by_group_ids' => 'string[]',
-        'root_comment_count' => 'float',
-        'comment_count' => 'float',
+        'root_comment_count' => 'int',
+        'comment_count' => 'int',
         'created_at' => '\DateTime',
         'title' => 'string',
         'url' => 'string',
@@ -79,8 +79,8 @@ class APIPage implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'is_closed' => null,
         'accessible_by_group_ids' => null,
-        'root_comment_count' => 'double',
-        'comment_count' => 'double',
+        'root_comment_count' => 'int64',
+        'comment_count' => 'int64',
         'created_at' => 'date-time',
         'title' => null,
         'url' => null,
@@ -421,7 +421,7 @@ class APIPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets root_comment_count
      *
-     * @return float
+     * @return int
      */
     public function getRootCommentCount()
     {
@@ -431,7 +431,7 @@ class APIPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets root_comment_count
      *
-     * @param float $root_comment_count root_comment_count
+     * @param int $root_comment_count root_comment_count
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class APIPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets comment_count
      *
-     * @return float
+     * @return int
      */
     public function getCommentCount()
     {
@@ -458,7 +458,7 @@ class APIPage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets comment_count
      *
-     * @param float $comment_count comment_count
+     * @param int $comment_count comment_count
      *
      * @return self
      */
