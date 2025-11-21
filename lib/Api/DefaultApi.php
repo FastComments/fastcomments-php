@@ -16023,7 +16023,7 @@ class DefaultApi
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
-     * @param  \FastComments\Client\Model\PickAPICommentUpdatableCommentFields $body body (required)
+     * @param  \FastComments\Client\Model\UpdatableCommentParams $updatable_comment_params updatable_comment_params (required)
      * @param  string|null $context_user_id context_user_id (optional)
      * @param  bool|null $do_spam_check do_spam_check (optional)
      * @param  bool|null $is_live is_live (optional)
@@ -16033,9 +16033,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\FlagCommentPublic200Response
      */
-    public function updateComment($tenant_id, $id, $body, $context_user_id = null, $do_spam_check = null, $is_live = null, string $contentType = self::contentTypes['updateComment'][0])
+    public function updateComment($tenant_id, $id, $updatable_comment_params, $context_user_id = null, $do_spam_check = null, $is_live = null, string $contentType = self::contentTypes['updateComment'][0])
     {
-        list($response) = $this->updateCommentWithHttpInfo($tenant_id, $id, $body, $context_user_id, $do_spam_check, $is_live, $contentType);
+        list($response) = $this->updateCommentWithHttpInfo($tenant_id, $id, $updatable_comment_params, $context_user_id, $do_spam_check, $is_live, $contentType);
         return $response;
     }
 
@@ -16046,7 +16046,7 @@ class DefaultApi
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
-     * @param  \FastComments\Client\Model\PickAPICommentUpdatableCommentFields $body (required)
+     * @param  \FastComments\Client\Model\UpdatableCommentParams $updatable_comment_params (required)
      * @param  string|null $context_user_id (optional)
      * @param  bool|null $do_spam_check (optional)
      * @param  bool|null $is_live (optional)
@@ -16056,9 +16056,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCommentWithHttpInfo($tenant_id, $id, $body, $context_user_id = null, $do_spam_check = null, $is_live = null, string $contentType = self::contentTypes['updateComment'][0])
+    public function updateCommentWithHttpInfo($tenant_id, $id, $updatable_comment_params, $context_user_id = null, $do_spam_check = null, $is_live = null, string $contentType = self::contentTypes['updateComment'][0])
     {
-        $request = $this->updateCommentRequest($tenant_id, $id, $body, $context_user_id, $do_spam_check, $is_live, $contentType);
+        $request = $this->updateCommentRequest($tenant_id, $id, $updatable_comment_params, $context_user_id, $do_spam_check, $is_live, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -16176,7 +16176,7 @@ class DefaultApi
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
-     * @param  \FastComments\Client\Model\PickAPICommentUpdatableCommentFields $body (required)
+     * @param  \FastComments\Client\Model\UpdatableCommentParams $updatable_comment_params (required)
      * @param  string|null $context_user_id (optional)
      * @param  bool|null $do_spam_check (optional)
      * @param  bool|null $is_live (optional)
@@ -16185,9 +16185,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCommentAsync($tenant_id, $id, $body, $context_user_id = null, $do_spam_check = null, $is_live = null, string $contentType = self::contentTypes['updateComment'][0])
+    public function updateCommentAsync($tenant_id, $id, $updatable_comment_params, $context_user_id = null, $do_spam_check = null, $is_live = null, string $contentType = self::contentTypes['updateComment'][0])
     {
-        return $this->updateCommentAsyncWithHttpInfo($tenant_id, $id, $body, $context_user_id, $do_spam_check, $is_live, $contentType)
+        return $this->updateCommentAsyncWithHttpInfo($tenant_id, $id, $updatable_comment_params, $context_user_id, $do_spam_check, $is_live, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -16202,7 +16202,7 @@ class DefaultApi
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
-     * @param  \FastComments\Client\Model\PickAPICommentUpdatableCommentFields $body (required)
+     * @param  \FastComments\Client\Model\UpdatableCommentParams $updatable_comment_params (required)
      * @param  string|null $context_user_id (optional)
      * @param  bool|null $do_spam_check (optional)
      * @param  bool|null $is_live (optional)
@@ -16211,10 +16211,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCommentAsyncWithHttpInfo($tenant_id, $id, $body, $context_user_id = null, $do_spam_check = null, $is_live = null, string $contentType = self::contentTypes['updateComment'][0])
+    public function updateCommentAsyncWithHttpInfo($tenant_id, $id, $updatable_comment_params, $context_user_id = null, $do_spam_check = null, $is_live = null, string $contentType = self::contentTypes['updateComment'][0])
     {
         $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
-        $request = $this->updateCommentRequest($tenant_id, $id, $body, $context_user_id, $do_spam_check, $is_live, $contentType);
+        $request = $this->updateCommentRequest($tenant_id, $id, $updatable_comment_params, $context_user_id, $do_spam_check, $is_live, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -16257,7 +16257,7 @@ class DefaultApi
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
-     * @param  \FastComments\Client\Model\PickAPICommentUpdatableCommentFields $body (required)
+     * @param  \FastComments\Client\Model\UpdatableCommentParams $updatable_comment_params (required)
      * @param  string|null $context_user_id (optional)
      * @param  bool|null $do_spam_check (optional)
      * @param  bool|null $is_live (optional)
@@ -16266,7 +16266,7 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCommentRequest($tenant_id, $id, $body, $context_user_id = null, $do_spam_check = null, $is_live = null, string $contentType = self::contentTypes['updateComment'][0])
+    public function updateCommentRequest($tenant_id, $id, $updatable_comment_params, $context_user_id = null, $do_spam_check = null, $is_live = null, string $contentType = self::contentTypes['updateComment'][0])
     {
 
         // verify the required parameter 'tenant_id' is set
@@ -16283,10 +16283,10 @@ class DefaultApi
             );
         }
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'updatable_comment_params' is set
+        if ($updatable_comment_params === null || (is_array($updatable_comment_params) && count($updatable_comment_params) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling updateComment'
+                'Missing the required parameter $updatable_comment_params when calling updateComment'
             );
         }
 
@@ -16356,12 +16356,12 @@ class DefaultApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($updatable_comment_params)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($updatable_comment_params));
             } else {
-                $httpBody = $body;
+                $httpBody = $updatable_comment_params;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

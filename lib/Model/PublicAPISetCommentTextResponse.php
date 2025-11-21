@@ -58,8 +58,8 @@ class PublicAPISetCommentTextResponse implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'comment' => '\FastComments\Client\Model\PickFCommentApprovedOrCommentHTML',
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusSUCCESS'
+        'comment' => '\FastComments\Client\Model\SetCommentTextResult',
+        'status' => '\FastComments\Client\Model\APIStatus'
     ];
 
     /**
@@ -306,7 +306,7 @@ class PublicAPISetCommentTextResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Gets comment
      *
-     * @return \FastComments\Client\Model\PickFCommentApprovedOrCommentHTML
+     * @return \FastComments\Client\Model\SetCommentTextResult
      */
     public function getComment()
     {
@@ -316,7 +316,7 @@ class PublicAPISetCommentTextResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Sets comment
      *
-     * @param \FastComments\Client\Model\PickFCommentApprovedOrCommentHTML $comment comment
+     * @param \FastComments\Client\Model\SetCommentTextResult $comment comment
      *
      * @return self
      */
@@ -333,7 +333,7 @@ class PublicAPISetCommentTextResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusSUCCESS
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -343,7 +343,7 @@ class PublicAPISetCommentTextResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusSUCCESS $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 **comment_statuses** | **array<string,bool>** | Construct a type with a set of properties K of type T |
 **reason** | **string** |  |
 **code** | **string** |  |

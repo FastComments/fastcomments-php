@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **is_subscribed** | **bool** |  |
 **has_more** | **bool** |  |
 **notifications** | [**\FastComments\Client\Model\RenderableUserNotification[]**](RenderableUserNotification.md) |  |
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusSUCCESS**](ImportedAPIStatusSUCCESS.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

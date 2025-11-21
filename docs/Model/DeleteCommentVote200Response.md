@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 **was_pending_vote** | **bool** |  | [optional]
 **reason** | **string** |  |
 **code** | **string** |  |

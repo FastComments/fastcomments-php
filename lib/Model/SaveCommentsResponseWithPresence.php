@@ -58,7 +58,7 @@ class SaveCommentsResponseWithPresence implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusSUCCESS',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'comment' => '\FastComments\Client\Model\PublicComment',
         'user' => '\FastComments\Client\Model\UserSessionInfo',
         'module_data' => 'array<string,object>',
@@ -330,7 +330,7 @@ class SaveCommentsResponseWithPresence implements ModelInterface, ArrayAccess, \
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusSUCCESS
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -340,7 +340,7 @@ class SaveCommentsResponseWithPresence implements ModelInterface, ArrayAccess, \
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusSUCCESS $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

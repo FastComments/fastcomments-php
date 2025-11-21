@@ -2936,7 +2936,7 @@ try {
 ## `updateComment()`
 
 ```php
-updateComment($tenant_id, $id, $body, $context_user_id, $do_spam_check, $is_live): \FastComments\Client\Model\FlagCommentPublic200Response
+updateComment($tenant_id, $id, $updatable_comment_params, $context_user_id, $do_spam_check, $is_live): \FastComments\Client\Model\FlagCommentPublic200Response
 ```
 
 
@@ -2962,13 +2962,13 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 );
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$body = new \FastComments\Client\Model\PickAPICommentUpdatableCommentFields(); // \FastComments\Client\Model\PickAPICommentUpdatableCommentFields
+$updatable_comment_params = new \FastComments\Client\Model\UpdatableCommentParams(); // \FastComments\Client\Model\UpdatableCommentParams
 $context_user_id = 'context_user_id_example'; // string
 $do_spam_check = True; // bool
 $is_live = True; // bool
 
 try {
-    $result = $apiInstance->updateComment($tenant_id, $id, $body, $context_user_id, $do_spam_check, $is_live);
+    $result = $apiInstance->updateComment($tenant_id, $id, $updatable_comment_params, $context_user_id, $do_spam_check, $is_live);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateComment: ', $e->getMessage(), PHP_EOL;
@@ -2981,7 +2981,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **tenant_id** | **string**|  | |
 | **id** | **string**|  | |
-| **body** | **\FastComments\Client\Model\PickAPICommentUpdatableCommentFields**|  | |
+| **updatable_comment_params** | [**\FastComments\Client\Model\UpdatableCommentParams**](../Model/UpdatableCommentParams.md)|  | |
 | **context_user_id** | **string**|  | [optional] |
 | **do_spam_check** | **bool**|  | [optional] |
 | **is_live** | **bool**|  | [optional] |

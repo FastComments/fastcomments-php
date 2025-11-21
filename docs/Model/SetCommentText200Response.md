@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**comment** | [**\FastComments\Client\Model\PickFCommentApprovedOrCommentHTML**](PickFCommentApprovedOrCommentHTML.md) |  |
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
+**comment** | [**\FastComments\Client\Model\SetCommentTextResult**](SetCommentTextResult.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |
 **secondary_code** | **string** |  | [optional]

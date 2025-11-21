@@ -81,15 +81,6 @@ class PublicCommentTest extends TestCase
     }
 
     /**
-     * Test attribute "date"
-     */
-    public function testPropertyDate()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "_id"
      */
     public function testPropertyId()
@@ -102,15 +93,6 @@ class PublicCommentTest extends TestCase
      * Test attribute "user_id"
      */
     public function testPropertyUserId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "anon_user_id"
-     */
-    public function testPropertyAnonUserId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -147,6 +129,15 @@ class PublicCommentTest extends TestCase
      * Test attribute "parent_id"
      */
     public function testPropertyParentId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "date"
+     */
+    public function testPropertyDate()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -198,36 +189,9 @@ class PublicCommentTest extends TestCase
     }
 
     /**
-     * Test attribute "is_spam"
-     */
-    public function testPropertyIsSpam()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "has_images"
      */
     public function testPropertyHasImages()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "is_deleted"
-     */
-    public function testPropertyIsDeleted()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "is_deleted_user"
-     */
-    public function testPropertyIsDeletedUser()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -270,18 +234,18 @@ class PublicCommentTest extends TestCase
     }
 
     /**
-     * Test attribute "rating"
+     * Test attribute "display_label"
      */
-    public function testPropertyRating()
+    public function testPropertyDisplayLabel()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "display_label"
+     * Test attribute "rating"
      */
-    public function testPropertyDisplayLabel()
+    public function testPropertyRating()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -297,18 +261,54 @@ class PublicCommentTest extends TestCase
     }
 
     /**
-     * Test attribute "feedback_ids"
+     * Test attribute "view_count"
      */
-    public function testPropertyFeedbackIds()
+    public function testPropertyViewCount()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "view_count"
+     * Test attribute "is_deleted"
      */
-    public function testPropertyViewCount()
+    public function testPropertyIsDeleted()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "is_deleted_user"
+     */
+    public function testPropertyIsDeletedUser()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "is_spam"
+     */
+    public function testPropertyIsSpam()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "anon_user_id"
+     */
+    public function testPropertyAnonUserId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "feedback_ids"
+     */
+    public function testPropertyFeedbackIds()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -327,6 +327,15 @@ class PublicCommentTest extends TestCase
      * Test attribute "edit_key"
      */
     public function testPropertyEditKey()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "approved"
+     */
+    public function testPropertyApproved()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

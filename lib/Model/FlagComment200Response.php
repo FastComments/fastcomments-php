@@ -59,7 +59,7 @@ class FlagComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'status_code' => 'int',
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'code' => 'string',
         'reason' => 'string',
         'was_unapproved' => 'bool',
@@ -392,7 +392,7 @@ class FlagComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -402,7 +402,7 @@ class FlagComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

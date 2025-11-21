@@ -58,7 +58,7 @@ class IgnoredResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusSUCCESS',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'note' => 'string'
     ];
 
@@ -330,7 +330,7 @@ class IgnoredResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusSUCCESS
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -340,7 +340,7 @@ class IgnoredResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusSUCCESS $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

@@ -59,7 +59,7 @@ class APIGetCommentsResponse implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'status' => '\FastComments\Client\Model\APIStatus',
-        'comments' => '\FastComments\Client\Model\PickFCommentAPICommentFieldsKeys[]'
+        'comments' => '\FastComments\Client\Model\APIComment[]'
     ];
 
     /**
@@ -333,7 +333,7 @@ class APIGetCommentsResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets comments
      *
-     * @return \FastComments\Client\Model\PickFCommentAPICommentFieldsKeys[]
+     * @return \FastComments\Client\Model\APIComment[]
      */
     public function getComments()
     {
@@ -343,7 +343,7 @@ class APIGetCommentsResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets comments
      *
-     * @param \FastComments\Client\Model\PickFCommentAPICommentFieldsKeys[] $comments comments
+     * @param \FastComments\Client\Model\APIComment[] $comments comments
      *
      * @return self
      */

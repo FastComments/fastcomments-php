@@ -58,7 +58,7 @@ class GetUserPresenceStatuses200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'user_ids_online' => 'array<string,bool>',
         'reason' => 'string',
         'code' => 'string',
@@ -361,7 +361,7 @@ class GetUserPresenceStatuses200Response implements ModelInterface, ArrayAccess,
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -371,7 +371,7 @@ class GetUserPresenceStatuses200Response implements ModelInterface, ArrayAccess,
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

@@ -62,7 +62,7 @@ class GetMyNotificationsResponse implements ModelInterface, ArrayAccess, \JsonSe
         'is_subscribed' => 'bool',
         'has_more' => 'bool',
         'notifications' => '\FastComments\Client\Model\RenderableUserNotification[]',
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusSUCCESS'
+        'status' => '\FastComments\Client\Model\APIStatus'
     ];
 
     /**
@@ -441,7 +441,7 @@ class GetMyNotificationsResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusSUCCESS
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -451,7 +451,7 @@ class GetMyNotificationsResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusSUCCESS $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

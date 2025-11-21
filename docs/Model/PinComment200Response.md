@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment_positions** | [**array<string,\FastComments\Client\Model\RecordStringBeforeStringOrNullAfterStringOrNullValue>**](RecordStringBeforeStringOrNullAfterStringOrNullValue.md) | Construct a type with a set of properties K of type T |
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |
 **secondary_code** | **string** |  | [optional]

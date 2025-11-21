@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 **user_badge_progress** | [**\FastComments\Client\Model\UserBadgeProgress**](UserBadgeProgress.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |

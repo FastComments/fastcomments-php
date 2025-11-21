@@ -99,6 +99,15 @@ class PatchPageAPIResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "comments_updated"
+     */
+    public function testPropertyCommentsUpdated()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "page"
      */
     public function testPropertyPage()

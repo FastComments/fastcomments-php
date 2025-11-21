@@ -59,7 +59,7 @@ class GetFeedPostsPublic200Response implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'my_reacts' => 'array<string,array<string,bool>>',
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'feed_posts' => '\FastComments\Client\Model\FeedPost[]',
         'user' => '\FastComments\Client\Model\UserSessionInfo',
         'url_id_ws' => 'string',
@@ -423,7 +423,7 @@ class GetFeedPostsPublic200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -433,7 +433,7 @@ class GetFeedPostsPublic200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

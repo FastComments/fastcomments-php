@@ -70,7 +70,7 @@ Name | Type | Description | Notes
 **autoplay_job_id** | **string** |  | [optional]
 **autoplay_delay_ms** | **int** |  | [optional]
 **feedback_ids** | **string[]** |  | [optional]
-**logs** | **array[]** |  | [optional]
+**logs** | [**\FastComments\Client\Model\CommentLogEntry[]**](CommentLogEntry.md) |  | [optional]
 **group_ids** | **string[]** |  | [optional]
 **view_count** | **int** |  | [optional]
 **requires_verification** | **bool** |  | [optional]

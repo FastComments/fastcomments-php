@@ -58,8 +58,8 @@ class GetComment200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
-        'comment' => '\FastComments\Client\Model\PickFCommentAPICommentFieldsKeys',
+        'status' => '\FastComments\Client\Model\APIStatus',
+        'comment' => '\FastComments\Client\Model\APIComment',
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
@@ -361,7 +361,7 @@ class GetComment200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -371,7 +371,7 @@ class GetComment200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */
@@ -388,7 +388,7 @@ class GetComment200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets comment
      *
-     * @return \FastComments\Client\Model\PickFCommentAPICommentFieldsKeys
+     * @return \FastComments\Client\Model\APIComment
      */
     public function getComment()
     {
@@ -398,7 +398,7 @@ class GetComment200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets comment
      *
-     * @param \FastComments\Client\Model\PickFCommentAPICommentFieldsKeys $comment comment
+     * @param \FastComments\Client\Model\APIComment $comment comment
      *
      * @return self
      */

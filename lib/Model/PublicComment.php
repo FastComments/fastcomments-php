@@ -58,34 +58,35 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'date' => '\DateTime',
         '_id' => 'string',
         'user_id' => 'string',
-        'anon_user_id' => 'string',
         'commenter_name' => 'string',
         'commenter_link' => 'string',
         'comment_html' => 'string',
         'parent_id' => 'string',
+        'date' => '\DateTime',
         'votes' => 'int',
         'votes_up' => 'int',
         'votes_down' => 'int',
         'verified' => 'bool',
         'avatar_src' => 'string',
-        'is_spam' => 'bool',
         'has_images' => 'bool',
-        'is_deleted' => 'bool',
-        'is_deleted_user' => 'bool',
         'is_by_admin' => 'bool',
         'is_by_moderator' => 'bool',
         'is_pinned' => 'bool',
         'is_locked' => 'bool',
-        'rating' => 'float',
         'display_label' => 'string',
+        'rating' => 'float',
         'badges' => '\FastComments\Client\Model\CommentUserBadgeInfo[]',
-        'feedback_ids' => 'string[]',
         'view_count' => 'int',
+        'is_deleted' => 'bool',
+        'is_deleted_user' => 'bool',
+        'is_spam' => 'bool',
+        'anon_user_id' => 'string',
+        'feedback_ids' => 'string[]',
         'requires_verification' => 'bool',
         'edit_key' => 'string',
+        'approved' => 'bool',
         'is_unread' => 'bool',
         'my_vote_id' => 'string',
         'is_voted_down' => 'bool',
@@ -106,34 +107,35 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'date' => 'date-time',
         '_id' => null,
         'user_id' => null,
-        'anon_user_id' => null,
         'commenter_name' => null,
         'commenter_link' => null,
         'comment_html' => null,
         'parent_id' => null,
+        'date' => 'date-time',
         'votes' => 'int32',
         'votes_up' => 'int32',
         'votes_down' => 'int32',
         'verified' => null,
         'avatar_src' => null,
-        'is_spam' => null,
         'has_images' => null,
-        'is_deleted' => null,
-        'is_deleted_user' => null,
         'is_by_admin' => null,
         'is_by_moderator' => null,
         'is_pinned' => null,
         'is_locked' => null,
-        'rating' => 'double',
         'display_label' => null,
+        'rating' => 'double',
         'badges' => null,
-        'feedback_ids' => null,
         'view_count' => 'int64',
+        'is_deleted' => null,
+        'is_deleted_user' => null,
+        'is_spam' => null,
+        'anon_user_id' => null,
+        'feedback_ids' => null,
         'requires_verification' => null,
         'edit_key' => null,
+        'approved' => null,
         'is_unread' => null,
         'my_vote_id' => null,
         'is_voted_down' => null,
@@ -152,34 +154,35 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'date' => false,
         '_id' => false,
-        'user_id' => false,
-        'anon_user_id' => false,
+        'user_id' => true,
         'commenter_name' => false,
-        'commenter_link' => false,
+        'commenter_link' => true,
         'comment_html' => false,
-        'parent_id' => false,
-        'votes' => false,
-        'votes_up' => false,
-        'votes_down' => false,
+        'parent_id' => true,
+        'date' => true,
+        'votes' => true,
+        'votes_up' => true,
+        'votes_down' => true,
         'verified' => false,
-        'avatar_src' => false,
-        'is_spam' => false,
+        'avatar_src' => true,
         'has_images' => false,
-        'is_deleted' => false,
-        'is_deleted_user' => false,
         'is_by_admin' => false,
         'is_by_moderator' => false,
-        'is_pinned' => false,
-        'is_locked' => false,
-        'rating' => false,
-        'display_label' => false,
-        'badges' => false,
+        'is_pinned' => true,
+        'is_locked' => true,
+        'display_label' => true,
+        'rating' => true,
+        'badges' => true,
+        'view_count' => true,
+        'is_deleted' => false,
+        'is_deleted_user' => false,
+        'is_spam' => false,
+        'anon_user_id' => true,
         'feedback_ids' => false,
-        'view_count' => false,
         'requires_verification' => false,
         'edit_key' => false,
+        'approved' => false,
         'is_unread' => false,
         'my_vote_id' => false,
         'is_voted_down' => false,
@@ -278,34 +281,35 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'date' => 'date',
         '_id' => '_id',
         'user_id' => 'userId',
-        'anon_user_id' => 'anonUserId',
         'commenter_name' => 'commenterName',
         'commenter_link' => 'commenterLink',
         'comment_html' => 'commentHTML',
         'parent_id' => 'parentId',
+        'date' => 'date',
         'votes' => 'votes',
         'votes_up' => 'votesUp',
         'votes_down' => 'votesDown',
         'verified' => 'verified',
         'avatar_src' => 'avatarSrc',
-        'is_spam' => 'isSpam',
         'has_images' => 'hasImages',
-        'is_deleted' => 'isDeleted',
-        'is_deleted_user' => 'isDeletedUser',
         'is_by_admin' => 'isByAdmin',
         'is_by_moderator' => 'isByModerator',
         'is_pinned' => 'isPinned',
         'is_locked' => 'isLocked',
-        'rating' => 'rating',
         'display_label' => 'displayLabel',
+        'rating' => 'rating',
         'badges' => 'badges',
-        'feedback_ids' => 'feedbackIds',
         'view_count' => 'viewCount',
+        'is_deleted' => 'isDeleted',
+        'is_deleted_user' => 'isDeletedUser',
+        'is_spam' => 'isSpam',
+        'anon_user_id' => 'anonUserId',
+        'feedback_ids' => 'feedbackIds',
         'requires_verification' => 'requiresVerification',
         'edit_key' => 'editKey',
+        'approved' => 'approved',
         'is_unread' => 'isUnread',
         'my_vote_id' => 'myVoteId',
         'is_voted_down' => 'isVotedDown',
@@ -324,34 +328,35 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'date' => 'setDate',
         '_id' => 'setId',
         'user_id' => 'setUserId',
-        'anon_user_id' => 'setAnonUserId',
         'commenter_name' => 'setCommenterName',
         'commenter_link' => 'setCommenterLink',
         'comment_html' => 'setCommentHtml',
         'parent_id' => 'setParentId',
+        'date' => 'setDate',
         'votes' => 'setVotes',
         'votes_up' => 'setVotesUp',
         'votes_down' => 'setVotesDown',
         'verified' => 'setVerified',
         'avatar_src' => 'setAvatarSrc',
-        'is_spam' => 'setIsSpam',
         'has_images' => 'setHasImages',
-        'is_deleted' => 'setIsDeleted',
-        'is_deleted_user' => 'setIsDeletedUser',
         'is_by_admin' => 'setIsByAdmin',
         'is_by_moderator' => 'setIsByModerator',
         'is_pinned' => 'setIsPinned',
         'is_locked' => 'setIsLocked',
-        'rating' => 'setRating',
         'display_label' => 'setDisplayLabel',
+        'rating' => 'setRating',
         'badges' => 'setBadges',
-        'feedback_ids' => 'setFeedbackIds',
         'view_count' => 'setViewCount',
+        'is_deleted' => 'setIsDeleted',
+        'is_deleted_user' => 'setIsDeletedUser',
+        'is_spam' => 'setIsSpam',
+        'anon_user_id' => 'setAnonUserId',
+        'feedback_ids' => 'setFeedbackIds',
         'requires_verification' => 'setRequiresVerification',
         'edit_key' => 'setEditKey',
+        'approved' => 'setApproved',
         'is_unread' => 'setIsUnread',
         'my_vote_id' => 'setMyVoteId',
         'is_voted_down' => 'setIsVotedDown',
@@ -370,34 +375,35 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'date' => 'getDate',
         '_id' => 'getId',
         'user_id' => 'getUserId',
-        'anon_user_id' => 'getAnonUserId',
         'commenter_name' => 'getCommenterName',
         'commenter_link' => 'getCommenterLink',
         'comment_html' => 'getCommentHtml',
         'parent_id' => 'getParentId',
+        'date' => 'getDate',
         'votes' => 'getVotes',
         'votes_up' => 'getVotesUp',
         'votes_down' => 'getVotesDown',
         'verified' => 'getVerified',
         'avatar_src' => 'getAvatarSrc',
-        'is_spam' => 'getIsSpam',
         'has_images' => 'getHasImages',
-        'is_deleted' => 'getIsDeleted',
-        'is_deleted_user' => 'getIsDeletedUser',
         'is_by_admin' => 'getIsByAdmin',
         'is_by_moderator' => 'getIsByModerator',
         'is_pinned' => 'getIsPinned',
         'is_locked' => 'getIsLocked',
-        'rating' => 'getRating',
         'display_label' => 'getDisplayLabel',
+        'rating' => 'getRating',
         'badges' => 'getBadges',
-        'feedback_ids' => 'getFeedbackIds',
         'view_count' => 'getViewCount',
+        'is_deleted' => 'getIsDeleted',
+        'is_deleted_user' => 'getIsDeletedUser',
+        'is_spam' => 'getIsSpam',
+        'anon_user_id' => 'getAnonUserId',
+        'feedback_ids' => 'getFeedbackIds',
         'requires_verification' => 'getRequiresVerification',
         'edit_key' => 'getEditKey',
+        'approved' => 'getApproved',
         'is_unread' => 'getIsUnread',
         'my_vote_id' => 'getMyVoteId',
         'is_voted_down' => 'getIsVotedDown',
@@ -467,34 +473,35 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('date', $data ?? [], null);
         $this->setIfExists('_id', $data ?? [], null);
         $this->setIfExists('user_id', $data ?? [], null);
-        $this->setIfExists('anon_user_id', $data ?? [], null);
         $this->setIfExists('commenter_name', $data ?? [], null);
         $this->setIfExists('commenter_link', $data ?? [], null);
         $this->setIfExists('comment_html', $data ?? [], null);
         $this->setIfExists('parent_id', $data ?? [], null);
+        $this->setIfExists('date', $data ?? [], null);
         $this->setIfExists('votes', $data ?? [], null);
         $this->setIfExists('votes_up', $data ?? [], null);
         $this->setIfExists('votes_down', $data ?? [], null);
         $this->setIfExists('verified', $data ?? [], null);
         $this->setIfExists('avatar_src', $data ?? [], null);
-        $this->setIfExists('is_spam', $data ?? [], null);
         $this->setIfExists('has_images', $data ?? [], null);
-        $this->setIfExists('is_deleted', $data ?? [], null);
-        $this->setIfExists('is_deleted_user', $data ?? [], null);
         $this->setIfExists('is_by_admin', $data ?? [], null);
         $this->setIfExists('is_by_moderator', $data ?? [], null);
         $this->setIfExists('is_pinned', $data ?? [], null);
         $this->setIfExists('is_locked', $data ?? [], null);
-        $this->setIfExists('rating', $data ?? [], null);
         $this->setIfExists('display_label', $data ?? [], null);
+        $this->setIfExists('rating', $data ?? [], null);
         $this->setIfExists('badges', $data ?? [], null);
-        $this->setIfExists('feedback_ids', $data ?? [], null);
         $this->setIfExists('view_count', $data ?? [], null);
+        $this->setIfExists('is_deleted', $data ?? [], null);
+        $this->setIfExists('is_deleted_user', $data ?? [], null);
+        $this->setIfExists('is_spam', $data ?? [], null);
+        $this->setIfExists('anon_user_id', $data ?? [], null);
+        $this->setIfExists('feedback_ids', $data ?? [], null);
         $this->setIfExists('requires_verification', $data ?? [], null);
         $this->setIfExists('edit_key', $data ?? [], null);
+        $this->setIfExists('approved', $data ?? [], null);
         $this->setIfExists('is_unread', $data ?? [], null);
         $this->setIfExists('my_vote_id', $data ?? [], null);
         $this->setIfExists('is_voted_down', $data ?? [], null);
@@ -534,9 +541,6 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['date'] === null) {
-            $invalidProperties[] = "'date' can't be null";
-        }
         if ($this->container['_id'] === null) {
             $invalidProperties[] = "'_id' can't be null";
         }
@@ -545,6 +549,9 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['comment_html'] === null) {
             $invalidProperties[] = "'comment_html' can't be null";
+        }
+        if ($this->container['date'] === null) {
+            $invalidProperties[] = "'date' can't be null";
         }
         if ($this->container['verified'] === null) {
             $invalidProperties[] = "'verified' can't be null";
@@ -563,33 +570,6 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->container['date'];
-    }
-
-    /**
-     * Sets date
-     *
-     * @param \DateTime $date date
-     *
-     * @return self
-     */
-    public function setDate($date)
-    {
-        if (is_null($date)) {
-            throw new \InvalidArgumentException('non-nullable date cannot be null');
-        }
-        $this->container['date'] = $date;
-
-        return $this;
-    }
 
     /**
      * Gets _id
@@ -638,36 +618,16 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUserId($user_id)
     {
         if (is_null($user_id)) {
-            throw new \InvalidArgumentException('non-nullable user_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'user_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('user_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['user_id'] = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets anon_user_id
-     *
-     * @return string|null
-     */
-    public function getAnonUserId()
-    {
-        return $this->container['anon_user_id'];
-    }
-
-    /**
-     * Sets anon_user_id
-     *
-     * @param string|null $anon_user_id anon_user_id
-     *
-     * @return self
-     */
-    public function setAnonUserId($anon_user_id)
-    {
-        if (is_null($anon_user_id)) {
-            throw new \InvalidArgumentException('non-nullable anon_user_id cannot be null');
-        }
-        $this->container['anon_user_id'] = $anon_user_id;
 
         return $this;
     }
@@ -719,7 +679,14 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCommenterLink($commenter_link)
     {
         if (is_null($commenter_link)) {
-            throw new \InvalidArgumentException('non-nullable commenter_link cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'commenter_link');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('commenter_link', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['commenter_link'] = $commenter_link;
 
@@ -773,9 +740,50 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setParentId($parent_id)
     {
         if (is_null($parent_id)) {
-            throw new \InvalidArgumentException('non-nullable parent_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parent_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['parent_id'] = $parent_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->container['date'];
+    }
+
+    /**
+     * Sets date
+     *
+     * @param \DateTime $date date
+     *
+     * @return self
+     */
+    public function setDate($date)
+    {
+        if (is_null($date)) {
+            array_push($this->openAPINullablesSetToNull, 'date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['date'] = $date;
 
         return $this;
     }
@@ -800,7 +808,14 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVotes($votes)
     {
         if (is_null($votes)) {
-            throw new \InvalidArgumentException('non-nullable votes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'votes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('votes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['votes'] = $votes;
 
@@ -827,7 +842,14 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVotesUp($votes_up)
     {
         if (is_null($votes_up)) {
-            throw new \InvalidArgumentException('non-nullable votes_up cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'votes_up');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('votes_up', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['votes_up'] = $votes_up;
 
@@ -854,7 +876,14 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVotesDown($votes_down)
     {
         if (is_null($votes_down)) {
-            throw new \InvalidArgumentException('non-nullable votes_down cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'votes_down');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('votes_down', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['votes_down'] = $votes_down;
 
@@ -908,36 +937,16 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAvatarSrc($avatar_src)
     {
         if (is_null($avatar_src)) {
-            throw new \InvalidArgumentException('non-nullable avatar_src cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'avatar_src');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('avatar_src', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['avatar_src'] = $avatar_src;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_spam
-     *
-     * @return bool|null
-     */
-    public function getIsSpam()
-    {
-        return $this->container['is_spam'];
-    }
-
-    /**
-     * Sets is_spam
-     *
-     * @param bool|null $is_spam is_spam
-     *
-     * @return self
-     */
-    public function setIsSpam($is_spam)
-    {
-        if (is_null($is_spam)) {
-            throw new \InvalidArgumentException('non-nullable is_spam cannot be null');
-        }
-        $this->container['is_spam'] = $is_spam;
 
         return $this;
     }
@@ -965,60 +974,6 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable has_images cannot be null');
         }
         $this->container['has_images'] = $has_images;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_deleted
-     *
-     * @return bool|null
-     */
-    public function getIsDeleted()
-    {
-        return $this->container['is_deleted'];
-    }
-
-    /**
-     * Sets is_deleted
-     *
-     * @param bool|null $is_deleted is_deleted
-     *
-     * @return self
-     */
-    public function setIsDeleted($is_deleted)
-    {
-        if (is_null($is_deleted)) {
-            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
-        }
-        $this->container['is_deleted'] = $is_deleted;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_deleted_user
-     *
-     * @return bool|null
-     */
-    public function getIsDeletedUser()
-    {
-        return $this->container['is_deleted_user'];
-    }
-
-    /**
-     * Sets is_deleted_user
-     *
-     * @param bool|null $is_deleted_user is_deleted_user
-     *
-     * @return self
-     */
-    public function setIsDeletedUser($is_deleted_user)
-    {
-        if (is_null($is_deleted_user)) {
-            throw new \InvalidArgumentException('non-nullable is_deleted_user cannot be null');
-        }
-        $this->container['is_deleted_user'] = $is_deleted_user;
 
         return $this;
     }
@@ -1097,7 +1052,14 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsPinned($is_pinned)
     {
         if (is_null($is_pinned)) {
-            throw new \InvalidArgumentException('non-nullable is_pinned cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_pinned');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_pinned', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_pinned'] = $is_pinned;
 
@@ -1124,36 +1086,16 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsLocked($is_locked)
     {
         if (is_null($is_locked)) {
-            throw new \InvalidArgumentException('non-nullable is_locked cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_locked');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_locked', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_locked'] = $is_locked;
-
-        return $this;
-    }
-
-    /**
-     * Gets rating
-     *
-     * @return float|null
-     */
-    public function getRating()
-    {
-        return $this->container['rating'];
-    }
-
-    /**
-     * Sets rating
-     *
-     * @param float|null $rating rating
-     *
-     * @return self
-     */
-    public function setRating($rating)
-    {
-        if (is_null($rating)) {
-            throw new \InvalidArgumentException('non-nullable rating cannot be null');
-        }
-        $this->container['rating'] = $rating;
 
         return $this;
     }
@@ -1178,9 +1120,50 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDisplayLabel($display_label)
     {
         if (is_null($display_label)) {
-            throw new \InvalidArgumentException('non-nullable display_label cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'display_label');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('display_label', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['display_label'] = $display_label;
+
+        return $this;
+    }
+
+    /**
+     * Gets rating
+     *
+     * @return float|null
+     */
+    public function getRating()
+    {
+        return $this->container['rating'];
+    }
+
+    /**
+     * Sets rating
+     *
+     * @param float|null $rating rating
+     *
+     * @return self
+     */
+    public function setRating($rating)
+    {
+        if (is_null($rating)) {
+            array_push($this->openAPINullablesSetToNull, 'rating');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rating', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['rating'] = $rating;
 
         return $this;
     }
@@ -1205,9 +1188,165 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBadges($badges)
     {
         if (is_null($badges)) {
-            throw new \InvalidArgumentException('non-nullable badges cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'badges');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('badges', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['badges'] = $badges;
+
+        return $this;
+    }
+
+    /**
+     * Gets view_count
+     *
+     * @return int|null
+     */
+    public function getViewCount()
+    {
+        return $this->container['view_count'];
+    }
+
+    /**
+     * Sets view_count
+     *
+     * @param int|null $view_count view_count
+     *
+     * @return self
+     */
+    public function setViewCount($view_count)
+    {
+        if (is_null($view_count)) {
+            array_push($this->openAPINullablesSetToNull, 'view_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('view_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['view_count'] = $view_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_deleted
+     *
+     * @return bool|null
+     */
+    public function getIsDeleted()
+    {
+        return $this->container['is_deleted'];
+    }
+
+    /**
+     * Sets is_deleted
+     *
+     * @param bool|null $is_deleted is_deleted
+     *
+     * @return self
+     */
+    public function setIsDeleted($is_deleted)
+    {
+        if (is_null($is_deleted)) {
+            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
+        }
+        $this->container['is_deleted'] = $is_deleted;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_deleted_user
+     *
+     * @return bool|null
+     */
+    public function getIsDeletedUser()
+    {
+        return $this->container['is_deleted_user'];
+    }
+
+    /**
+     * Sets is_deleted_user
+     *
+     * @param bool|null $is_deleted_user is_deleted_user
+     *
+     * @return self
+     */
+    public function setIsDeletedUser($is_deleted_user)
+    {
+        if (is_null($is_deleted_user)) {
+            throw new \InvalidArgumentException('non-nullable is_deleted_user cannot be null');
+        }
+        $this->container['is_deleted_user'] = $is_deleted_user;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_spam
+     *
+     * @return bool|null
+     */
+    public function getIsSpam()
+    {
+        return $this->container['is_spam'];
+    }
+
+    /**
+     * Sets is_spam
+     *
+     * @param bool|null $is_spam is_spam
+     *
+     * @return self
+     */
+    public function setIsSpam($is_spam)
+    {
+        if (is_null($is_spam)) {
+            throw new \InvalidArgumentException('non-nullable is_spam cannot be null');
+        }
+        $this->container['is_spam'] = $is_spam;
+
+        return $this;
+    }
+
+    /**
+     * Gets anon_user_id
+     *
+     * @return string|null
+     */
+    public function getAnonUserId()
+    {
+        return $this->container['anon_user_id'];
+    }
+
+    /**
+     * Sets anon_user_id
+     *
+     * @param string|null $anon_user_id anon_user_id
+     *
+     * @return self
+     */
+    public function setAnonUserId($anon_user_id)
+    {
+        if (is_null($anon_user_id)) {
+            array_push($this->openAPINullablesSetToNull, 'anon_user_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('anon_user_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['anon_user_id'] = $anon_user_id;
 
         return $this;
     }
@@ -1235,33 +1374,6 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable feedback_ids cannot be null');
         }
         $this->container['feedback_ids'] = $feedback_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets view_count
-     *
-     * @return int|null
-     */
-    public function getViewCount()
-    {
-        return $this->container['view_count'];
-    }
-
-    /**
-     * Sets view_count
-     *
-     * @param int|null $view_count view_count
-     *
-     * @return self
-     */
-    public function setViewCount($view_count)
-    {
-        if (is_null($view_count)) {
-            throw new \InvalidArgumentException('non-nullable view_count cannot be null');
-        }
-        $this->container['view_count'] = $view_count;
 
         return $this;
     }
@@ -1316,6 +1428,33 @@ class PublicComment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable edit_key cannot be null');
         }
         $this->container['edit_key'] = $edit_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets approved
+     *
+     * @return bool|null
+     */
+    public function getApproved()
+    {
+        return $this->container['approved'];
+    }
+
+    /**
+     * Sets approved
+     *
+     * @param bool|null $approved approved
+     *
+     * @return self
+     */
+    public function setApproved($approved)
+    {
+        if (is_null($approved)) {
+            throw new \InvalidArgumentException('non-nullable approved cannot be null');
+        }
+        $this->container['approved'] = $approved;
 
         return $this;
     }

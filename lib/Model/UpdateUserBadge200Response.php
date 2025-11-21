@@ -58,7 +58,7 @@ class UpdateUserBadge200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
@@ -351,7 +351,7 @@ class UpdateUserBadge200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -361,7 +361,7 @@ class UpdateUserBadge200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

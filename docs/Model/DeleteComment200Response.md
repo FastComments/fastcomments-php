@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **action** | [**\FastComments\Client\Model\DeleteCommentAction**](DeleteCommentAction.md) |  |
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |
 **secondary_code** | **string** |  | [optional]

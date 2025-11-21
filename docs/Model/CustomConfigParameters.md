@@ -56,6 +56,7 @@ Name | Type | Description | Notes
 **no_styles** | **bool** |  | [optional]
 **page_size** | **int** |  | [optional]
 **readonly** | **bool** |  | [optional]
+**no_new_root_comments** | **bool** |  | [optional]
 **require_sso** | **bool** |  | [optional]
 **enable_resize_handle** | **bool** |  | [optional]
 **restricted_link_domains** | **string[]** |  | [optional]

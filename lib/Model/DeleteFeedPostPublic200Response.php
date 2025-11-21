@@ -58,7 +58,7 @@ class DeleteFeedPostPublic200Response implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
@@ -351,7 +351,7 @@ class DeleteFeedPostPublic200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -361,7 +361,7 @@ class DeleteFeedPostPublic200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

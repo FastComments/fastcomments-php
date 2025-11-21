@@ -58,7 +58,7 @@ class ReactFeedPostPublic200Response implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'react_type' => 'string',
         'is_undo' => 'bool',
         'reason' => 'string',
@@ -371,7 +371,7 @@ class ReactFeedPostPublic200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -381,7 +381,7 @@ class ReactFeedPostPublic200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

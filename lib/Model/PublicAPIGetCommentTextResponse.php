@@ -58,7 +58,7 @@ class PublicAPIGetCommentTextResponse implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusSUCCESS',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'comment_text' => 'string',
         'sanitized_comment_text' => 'string'
     ];
@@ -316,7 +316,7 @@ class PublicAPIGetCommentTextResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusSUCCESS
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -326,7 +326,7 @@ class PublicAPIGetCommentTextResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusSUCCESS $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

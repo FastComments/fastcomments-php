@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reason** | **string** |  | [optional]
 **code** | **string** |  | [optional]
+**comments_updated** | **int** |  | [optional]
 **page** | [**\FastComments\Client\Model\APIPage**](APIPage.md) |  | [optional]
 **status** | **string** |  |
 

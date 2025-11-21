@@ -58,7 +58,7 @@ class VoteDeleteResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\VoteDeleteResponseStatus',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'was_pending_vote' => 'bool'
     ];
 
@@ -303,7 +303,7 @@ class VoteDeleteResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\VoteDeleteResponseStatus
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -313,7 +313,7 @@ class VoteDeleteResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\VoteDeleteResponseStatus $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
-**audit_logs** | [**\FastComments\Client\Model\PickTenantAuditLogTenantAuditLogKeys[]**](PickTenantAuditLogTenantAuditLogKeys.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
+**audit_logs** | [**\FastComments\Client\Model\APIAuditLog[]**](APIAuditLog.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |
 **secondary_code** | **string** |  | [optional]

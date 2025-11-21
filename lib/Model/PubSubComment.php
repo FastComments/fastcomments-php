@@ -58,49 +58,49 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'date' => 'string',
         '_id' => 'string',
         'tenant_id' => 'string',
-        'url_id' => 'string',
-        'url' => 'string',
-        'page_title' => 'string',
         'user_id' => 'string',
-        'anon_user_id' => 'string',
+        'url_id' => 'string',
         'commenter_name' => 'string',
         'commenter_link' => 'string',
-        'comment' => 'string',
         'comment_html' => 'string',
+        'comment' => 'string',
         'parent_id' => 'string',
         'votes' => 'int',
         'votes_up' => 'int',
         'votes_down' => 'int',
-        'expire_at' => '\DateTime',
         'verified' => 'bool',
-        'reviewed' => 'bool',
         'avatar_src' => 'string',
-        'is_spam' => 'bool',
         'has_images' => 'bool',
         'has_links' => 'bool',
-        'has_code' => 'bool',
-        'approved' => 'bool',
-        'locale' => 'string',
-        'is_deleted' => 'bool',
-        'is_deleted_user' => 'bool',
-        'is_banned_user' => 'bool',
         'is_by_admin' => 'bool',
         'is_by_moderator' => 'bool',
         'is_pinned' => 'bool',
         'is_locked' => 'bool',
-        'flag_count' => 'int',
-        'rating' => 'float',
         'display_label' => 'string',
+        'rating' => 'float',
         'badges' => '\FastComments\Client\Model\CommentUserBadgeInfo[]',
-        'domain' => 'string',
-        'feedback_ids' => 'string[]',
-        'group_ids' => 'string[]',
         'view_count' => 'int',
+        'is_deleted' => 'bool',
+        'is_deleted_user' => 'bool',
+        'is_spam' => 'bool',
+        'anon_user_id' => 'string',
+        'feedback_ids' => 'string[]',
+        'flag_count' => 'int',
+        'domain' => 'string',
+        'url' => 'string',
+        'page_title' => 'string',
+        'expire_at' => '\DateTime',
+        'reviewed' => 'bool',
+        'has_code' => 'bool',
+        'approved' => 'bool',
+        'locale' => 'string',
+        'is_banned_user' => 'bool',
+        'group_ids' => 'string[]',
         'is_live' => 'bool',
-        'hidden' => 'bool'
+        'hidden' => 'bool',
+        'date' => 'string'
     ];
 
     /**
@@ -111,49 +111,49 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'date' => null,
         '_id' => null,
         'tenant_id' => null,
-        'url_id' => null,
-        'url' => null,
-        'page_title' => null,
         'user_id' => null,
-        'anon_user_id' => null,
+        'url_id' => null,
         'commenter_name' => null,
         'commenter_link' => null,
-        'comment' => null,
         'comment_html' => null,
+        'comment' => null,
         'parent_id' => null,
         'votes' => 'int32',
         'votes_up' => 'int32',
         'votes_down' => 'int32',
-        'expire_at' => 'date-time',
         'verified' => null,
-        'reviewed' => null,
         'avatar_src' => null,
-        'is_spam' => null,
         'has_images' => null,
         'has_links' => null,
-        'has_code' => null,
-        'approved' => null,
-        'locale' => null,
-        'is_deleted' => null,
-        'is_deleted_user' => null,
-        'is_banned_user' => null,
         'is_by_admin' => null,
         'is_by_moderator' => null,
         'is_pinned' => null,
         'is_locked' => null,
-        'flag_count' => 'int32',
-        'rating' => 'double',
         'display_label' => null,
+        'rating' => 'double',
         'badges' => null,
-        'domain' => null,
-        'feedback_ids' => null,
-        'group_ids' => null,
         'view_count' => 'int64',
+        'is_deleted' => null,
+        'is_deleted_user' => null,
+        'is_spam' => null,
+        'anon_user_id' => null,
+        'feedback_ids' => null,
+        'flag_count' => 'int32',
+        'domain' => null,
+        'url' => null,
+        'page_title' => null,
+        'expire_at' => 'date-time',
+        'reviewed' => null,
+        'has_code' => null,
+        'approved' => null,
+        'locale' => null,
+        'is_banned_user' => null,
+        'group_ids' => null,
         'is_live' => null,
-        'hidden' => null
+        'hidden' => null,
+        'date' => null
     ];
 
     /**
@@ -162,49 +162,49 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'date' => false,
         '_id' => false,
         'tenant_id' => false,
+        'user_id' => true,
         'url_id' => false,
-        'url' => false,
-        'page_title' => false,
-        'user_id' => false,
-        'anon_user_id' => false,
         'commenter_name' => false,
-        'commenter_link' => false,
-        'comment' => false,
+        'commenter_link' => true,
         'comment_html' => false,
-        'parent_id' => false,
-        'votes' => false,
-        'votes_up' => false,
-        'votes_down' => false,
-        'expire_at' => false,
+        'comment' => false,
+        'parent_id' => true,
+        'votes' => true,
+        'votes_up' => true,
+        'votes_down' => true,
         'verified' => false,
-        'reviewed' => false,
-        'avatar_src' => false,
-        'is_spam' => false,
+        'avatar_src' => true,
         'has_images' => false,
         'has_links' => false,
-        'has_code' => false,
-        'approved' => false,
-        'locale' => false,
-        'is_deleted' => false,
-        'is_deleted_user' => false,
-        'is_banned_user' => false,
         'is_by_admin' => false,
         'is_by_moderator' => false,
-        'is_pinned' => false,
-        'is_locked' => false,
-        'flag_count' => false,
-        'rating' => false,
-        'display_label' => false,
-        'badges' => false,
-        'domain' => false,
+        'is_pinned' => true,
+        'is_locked' => true,
+        'display_label' => true,
+        'rating' => true,
+        'badges' => true,
+        'view_count' => true,
+        'is_deleted' => false,
+        'is_deleted_user' => false,
+        'is_spam' => false,
+        'anon_user_id' => true,
         'feedback_ids' => false,
-        'group_ids' => false,
-        'view_count' => false,
+        'flag_count' => true,
+        'domain' => true,
+        'url' => false,
+        'page_title' => true,
+        'expire_at' => true,
+        'reviewed' => false,
+        'has_code' => false,
+        'approved' => false,
+        'locale' => true,
+        'is_banned_user' => false,
+        'group_ids' => true,
         'is_live' => false,
-        'hidden' => false
+        'hidden' => false,
+        'date' => false
     ];
 
     /**
@@ -293,49 +293,49 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'date' => 'date',
         '_id' => '_id',
         'tenant_id' => 'tenantId',
-        'url_id' => 'urlId',
-        'url' => 'url',
-        'page_title' => 'pageTitle',
         'user_id' => 'userId',
-        'anon_user_id' => 'anonUserId',
+        'url_id' => 'urlId',
         'commenter_name' => 'commenterName',
         'commenter_link' => 'commenterLink',
-        'comment' => 'comment',
         'comment_html' => 'commentHTML',
+        'comment' => 'comment',
         'parent_id' => 'parentId',
         'votes' => 'votes',
         'votes_up' => 'votesUp',
         'votes_down' => 'votesDown',
-        'expire_at' => 'expireAt',
         'verified' => 'verified',
-        'reviewed' => 'reviewed',
         'avatar_src' => 'avatarSrc',
-        'is_spam' => 'isSpam',
         'has_images' => 'hasImages',
         'has_links' => 'hasLinks',
-        'has_code' => 'hasCode',
-        'approved' => 'approved',
-        'locale' => 'locale',
-        'is_deleted' => 'isDeleted',
-        'is_deleted_user' => 'isDeletedUser',
-        'is_banned_user' => 'isBannedUser',
         'is_by_admin' => 'isByAdmin',
         'is_by_moderator' => 'isByModerator',
         'is_pinned' => 'isPinned',
         'is_locked' => 'isLocked',
-        'flag_count' => 'flagCount',
-        'rating' => 'rating',
         'display_label' => 'displayLabel',
+        'rating' => 'rating',
         'badges' => 'badges',
-        'domain' => 'domain',
-        'feedback_ids' => 'feedbackIds',
-        'group_ids' => 'groupIds',
         'view_count' => 'viewCount',
+        'is_deleted' => 'isDeleted',
+        'is_deleted_user' => 'isDeletedUser',
+        'is_spam' => 'isSpam',
+        'anon_user_id' => 'anonUserId',
+        'feedback_ids' => 'feedbackIds',
+        'flag_count' => 'flagCount',
+        'domain' => 'domain',
+        'url' => 'url',
+        'page_title' => 'pageTitle',
+        'expire_at' => 'expireAt',
+        'reviewed' => 'reviewed',
+        'has_code' => 'hasCode',
+        'approved' => 'approved',
+        'locale' => 'locale',
+        'is_banned_user' => 'isBannedUser',
+        'group_ids' => 'groupIds',
         'is_live' => 'isLive',
-        'hidden' => 'hidden'
+        'hidden' => 'hidden',
+        'date' => 'date'
     ];
 
     /**
@@ -344,49 +344,49 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'date' => 'setDate',
         '_id' => 'setId',
         'tenant_id' => 'setTenantId',
-        'url_id' => 'setUrlId',
-        'url' => 'setUrl',
-        'page_title' => 'setPageTitle',
         'user_id' => 'setUserId',
-        'anon_user_id' => 'setAnonUserId',
+        'url_id' => 'setUrlId',
         'commenter_name' => 'setCommenterName',
         'commenter_link' => 'setCommenterLink',
-        'comment' => 'setComment',
         'comment_html' => 'setCommentHtml',
+        'comment' => 'setComment',
         'parent_id' => 'setParentId',
         'votes' => 'setVotes',
         'votes_up' => 'setVotesUp',
         'votes_down' => 'setVotesDown',
-        'expire_at' => 'setExpireAt',
         'verified' => 'setVerified',
-        'reviewed' => 'setReviewed',
         'avatar_src' => 'setAvatarSrc',
-        'is_spam' => 'setIsSpam',
         'has_images' => 'setHasImages',
         'has_links' => 'setHasLinks',
-        'has_code' => 'setHasCode',
-        'approved' => 'setApproved',
-        'locale' => 'setLocale',
-        'is_deleted' => 'setIsDeleted',
-        'is_deleted_user' => 'setIsDeletedUser',
-        'is_banned_user' => 'setIsBannedUser',
         'is_by_admin' => 'setIsByAdmin',
         'is_by_moderator' => 'setIsByModerator',
         'is_pinned' => 'setIsPinned',
         'is_locked' => 'setIsLocked',
-        'flag_count' => 'setFlagCount',
-        'rating' => 'setRating',
         'display_label' => 'setDisplayLabel',
+        'rating' => 'setRating',
         'badges' => 'setBadges',
-        'domain' => 'setDomain',
-        'feedback_ids' => 'setFeedbackIds',
-        'group_ids' => 'setGroupIds',
         'view_count' => 'setViewCount',
+        'is_deleted' => 'setIsDeleted',
+        'is_deleted_user' => 'setIsDeletedUser',
+        'is_spam' => 'setIsSpam',
+        'anon_user_id' => 'setAnonUserId',
+        'feedback_ids' => 'setFeedbackIds',
+        'flag_count' => 'setFlagCount',
+        'domain' => 'setDomain',
+        'url' => 'setUrl',
+        'page_title' => 'setPageTitle',
+        'expire_at' => 'setExpireAt',
+        'reviewed' => 'setReviewed',
+        'has_code' => 'setHasCode',
+        'approved' => 'setApproved',
+        'locale' => 'setLocale',
+        'is_banned_user' => 'setIsBannedUser',
+        'group_ids' => 'setGroupIds',
         'is_live' => 'setIsLive',
-        'hidden' => 'setHidden'
+        'hidden' => 'setHidden',
+        'date' => 'setDate'
     ];
 
     /**
@@ -395,49 +395,49 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'date' => 'getDate',
         '_id' => 'getId',
         'tenant_id' => 'getTenantId',
-        'url_id' => 'getUrlId',
-        'url' => 'getUrl',
-        'page_title' => 'getPageTitle',
         'user_id' => 'getUserId',
-        'anon_user_id' => 'getAnonUserId',
+        'url_id' => 'getUrlId',
         'commenter_name' => 'getCommenterName',
         'commenter_link' => 'getCommenterLink',
-        'comment' => 'getComment',
         'comment_html' => 'getCommentHtml',
+        'comment' => 'getComment',
         'parent_id' => 'getParentId',
         'votes' => 'getVotes',
         'votes_up' => 'getVotesUp',
         'votes_down' => 'getVotesDown',
-        'expire_at' => 'getExpireAt',
         'verified' => 'getVerified',
-        'reviewed' => 'getReviewed',
         'avatar_src' => 'getAvatarSrc',
-        'is_spam' => 'getIsSpam',
         'has_images' => 'getHasImages',
         'has_links' => 'getHasLinks',
-        'has_code' => 'getHasCode',
-        'approved' => 'getApproved',
-        'locale' => 'getLocale',
-        'is_deleted' => 'getIsDeleted',
-        'is_deleted_user' => 'getIsDeletedUser',
-        'is_banned_user' => 'getIsBannedUser',
         'is_by_admin' => 'getIsByAdmin',
         'is_by_moderator' => 'getIsByModerator',
         'is_pinned' => 'getIsPinned',
         'is_locked' => 'getIsLocked',
-        'flag_count' => 'getFlagCount',
-        'rating' => 'getRating',
         'display_label' => 'getDisplayLabel',
+        'rating' => 'getRating',
         'badges' => 'getBadges',
-        'domain' => 'getDomain',
-        'feedback_ids' => 'getFeedbackIds',
-        'group_ids' => 'getGroupIds',
         'view_count' => 'getViewCount',
+        'is_deleted' => 'getIsDeleted',
+        'is_deleted_user' => 'getIsDeletedUser',
+        'is_spam' => 'getIsSpam',
+        'anon_user_id' => 'getAnonUserId',
+        'feedback_ids' => 'getFeedbackIds',
+        'flag_count' => 'getFlagCount',
+        'domain' => 'getDomain',
+        'url' => 'getUrl',
+        'page_title' => 'getPageTitle',
+        'expire_at' => 'getExpireAt',
+        'reviewed' => 'getReviewed',
+        'has_code' => 'getHasCode',
+        'approved' => 'getApproved',
+        'locale' => 'getLocale',
+        'is_banned_user' => 'getIsBannedUser',
+        'group_ids' => 'getGroupIds',
         'is_live' => 'getIsLive',
-        'hidden' => 'getHidden'
+        'hidden' => 'getHidden',
+        'date' => 'getDate'
     ];
 
     /**
@@ -497,49 +497,49 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('date', $data ?? [], null);
         $this->setIfExists('_id', $data ?? [], null);
         $this->setIfExists('tenant_id', $data ?? [], null);
-        $this->setIfExists('url_id', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('page_title', $data ?? [], null);
         $this->setIfExists('user_id', $data ?? [], null);
-        $this->setIfExists('anon_user_id', $data ?? [], null);
+        $this->setIfExists('url_id', $data ?? [], null);
         $this->setIfExists('commenter_name', $data ?? [], null);
         $this->setIfExists('commenter_link', $data ?? [], null);
-        $this->setIfExists('comment', $data ?? [], null);
         $this->setIfExists('comment_html', $data ?? [], null);
+        $this->setIfExists('comment', $data ?? [], null);
         $this->setIfExists('parent_id', $data ?? [], null);
         $this->setIfExists('votes', $data ?? [], null);
         $this->setIfExists('votes_up', $data ?? [], null);
         $this->setIfExists('votes_down', $data ?? [], null);
-        $this->setIfExists('expire_at', $data ?? [], null);
         $this->setIfExists('verified', $data ?? [], null);
-        $this->setIfExists('reviewed', $data ?? [], null);
         $this->setIfExists('avatar_src', $data ?? [], null);
-        $this->setIfExists('is_spam', $data ?? [], null);
         $this->setIfExists('has_images', $data ?? [], null);
         $this->setIfExists('has_links', $data ?? [], null);
-        $this->setIfExists('has_code', $data ?? [], null);
-        $this->setIfExists('approved', $data ?? [], null);
-        $this->setIfExists('locale', $data ?? [], null);
-        $this->setIfExists('is_deleted', $data ?? [], null);
-        $this->setIfExists('is_deleted_user', $data ?? [], null);
-        $this->setIfExists('is_banned_user', $data ?? [], null);
         $this->setIfExists('is_by_admin', $data ?? [], null);
         $this->setIfExists('is_by_moderator', $data ?? [], null);
         $this->setIfExists('is_pinned', $data ?? [], null);
         $this->setIfExists('is_locked', $data ?? [], null);
-        $this->setIfExists('flag_count', $data ?? [], null);
-        $this->setIfExists('rating', $data ?? [], null);
         $this->setIfExists('display_label', $data ?? [], null);
+        $this->setIfExists('rating', $data ?? [], null);
         $this->setIfExists('badges', $data ?? [], null);
-        $this->setIfExists('domain', $data ?? [], null);
-        $this->setIfExists('feedback_ids', $data ?? [], null);
-        $this->setIfExists('group_ids', $data ?? [], null);
         $this->setIfExists('view_count', $data ?? [], null);
+        $this->setIfExists('is_deleted', $data ?? [], null);
+        $this->setIfExists('is_deleted_user', $data ?? [], null);
+        $this->setIfExists('is_spam', $data ?? [], null);
+        $this->setIfExists('anon_user_id', $data ?? [], null);
+        $this->setIfExists('feedback_ids', $data ?? [], null);
+        $this->setIfExists('flag_count', $data ?? [], null);
+        $this->setIfExists('domain', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('page_title', $data ?? [], null);
+        $this->setIfExists('expire_at', $data ?? [], null);
+        $this->setIfExists('reviewed', $data ?? [], null);
+        $this->setIfExists('has_code', $data ?? [], null);
+        $this->setIfExists('approved', $data ?? [], null);
+        $this->setIfExists('locale', $data ?? [], null);
+        $this->setIfExists('is_banned_user', $data ?? [], null);
+        $this->setIfExists('group_ids', $data ?? [], null);
         $this->setIfExists('is_live', $data ?? [], null);
         $this->setIfExists('hidden', $data ?? [], null);
+        $this->setIfExists('date', $data ?? [], null);
     }
 
     /**
@@ -569,9 +569,6 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['date'] === null) {
-            $invalidProperties[] = "'date' can't be null";
-        }
         if ($this->container['_id'] === null) {
             $invalidProperties[] = "'_id' can't be null";
         }
@@ -581,26 +578,29 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['url_id'] === null) {
             $invalidProperties[] = "'url_id' can't be null";
         }
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
-        }
         if ($this->container['commenter_name'] === null) {
             $invalidProperties[] = "'commenter_name' can't be null";
-        }
-        if ($this->container['comment'] === null) {
-            $invalidProperties[] = "'comment' can't be null";
         }
         if ($this->container['comment_html'] === null) {
             $invalidProperties[] = "'comment_html' can't be null";
         }
+        if ($this->container['comment'] === null) {
+            $invalidProperties[] = "'comment' can't be null";
+        }
         if ($this->container['verified'] === null) {
             $invalidProperties[] = "'verified' can't be null";
+        }
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
         }
         if ($this->container['approved'] === null) {
             $invalidProperties[] = "'approved' can't be null";
         }
         if ($this->container['locale'] === null) {
             $invalidProperties[] = "'locale' can't be null";
+        }
+        if ($this->container['date'] === null) {
+            $invalidProperties[] = "'date' can't be null";
         }
         return $invalidProperties;
     }
@@ -616,33 +616,6 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets date
-     *
-     * @return string
-     */
-    public function getDate()
-    {
-        return $this->container['date'];
-    }
-
-    /**
-     * Sets date
-     *
-     * @param string $date date
-     *
-     * @return self
-     */
-    public function setDate($date)
-    {
-        if (is_null($date)) {
-            throw new \InvalidArgumentException('non-nullable date cannot be null');
-        }
-        $this->container['date'] = $date;
-
-        return $this;
-    }
 
     /**
      * Gets _id
@@ -699,6 +672,40 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets user_id
+     *
+     * @return string|null
+     */
+    public function getUserId()
+    {
+        return $this->container['user_id'];
+    }
+
+    /**
+     * Sets user_id
+     *
+     * @param string|null $user_id user_id
+     *
+     * @return self
+     */
+    public function setUserId($user_id)
+    {
+        if (is_null($user_id)) {
+            array_push($this->openAPINullablesSetToNull, 'user_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('user_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
      * Gets url_id
      *
      * @return string
@@ -721,114 +728,6 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable url_id cannot be null');
         }
         $this->container['url_id'] = $url_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string $url url
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
-        }
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_title
-     *
-     * @return string|null
-     */
-    public function getPageTitle()
-    {
-        return $this->container['page_title'];
-    }
-
-    /**
-     * Sets page_title
-     *
-     * @param string|null $page_title page_title
-     *
-     * @return self
-     */
-    public function setPageTitle($page_title)
-    {
-        if (is_null($page_title)) {
-            throw new \InvalidArgumentException('non-nullable page_title cannot be null');
-        }
-        $this->container['page_title'] = $page_title;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_id
-     *
-     * @return string|null
-     */
-    public function getUserId()
-    {
-        return $this->container['user_id'];
-    }
-
-    /**
-     * Sets user_id
-     *
-     * @param string|null $user_id user_id
-     *
-     * @return self
-     */
-    public function setUserId($user_id)
-    {
-        if (is_null($user_id)) {
-            throw new \InvalidArgumentException('non-nullable user_id cannot be null');
-        }
-        $this->container['user_id'] = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets anon_user_id
-     *
-     * @return string|null
-     */
-    public function getAnonUserId()
-    {
-        return $this->container['anon_user_id'];
-    }
-
-    /**
-     * Sets anon_user_id
-     *
-     * @param string|null $anon_user_id anon_user_id
-     *
-     * @return self
-     */
-    public function setAnonUserId($anon_user_id)
-    {
-        if (is_null($anon_user_id)) {
-            throw new \InvalidArgumentException('non-nullable anon_user_id cannot be null');
-        }
-        $this->container['anon_user_id'] = $anon_user_id;
 
         return $this;
     }
@@ -880,36 +779,16 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCommenterLink($commenter_link)
     {
         if (is_null($commenter_link)) {
-            throw new \InvalidArgumentException('non-nullable commenter_link cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'commenter_link');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('commenter_link', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['commenter_link'] = $commenter_link;
-
-        return $this;
-    }
-
-    /**
-     * Gets comment
-     *
-     * @return string
-     */
-    public function getComment()
-    {
-        return $this->container['comment'];
-    }
-
-    /**
-     * Sets comment
-     *
-     * @param string $comment comment
-     *
-     * @return self
-     */
-    public function setComment($comment)
-    {
-        if (is_null($comment)) {
-            throw new \InvalidArgumentException('non-nullable comment cannot be null');
-        }
-        $this->container['comment'] = $comment;
 
         return $this;
     }
@@ -942,6 +821,33 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets comment
+     *
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->container['comment'];
+    }
+
+    /**
+     * Sets comment
+     *
+     * @param string $comment comment
+     *
+     * @return self
+     */
+    public function setComment($comment)
+    {
+        if (is_null($comment)) {
+            throw new \InvalidArgumentException('non-nullable comment cannot be null');
+        }
+        $this->container['comment'] = $comment;
+
+        return $this;
+    }
+
+    /**
      * Gets parent_id
      *
      * @return string|null
@@ -961,7 +867,14 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setParentId($parent_id)
     {
         if (is_null($parent_id)) {
-            throw new \InvalidArgumentException('non-nullable parent_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parent_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['parent_id'] = $parent_id;
 
@@ -988,7 +901,14 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVotes($votes)
     {
         if (is_null($votes)) {
-            throw new \InvalidArgumentException('non-nullable votes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'votes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('votes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['votes'] = $votes;
 
@@ -1015,7 +935,14 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVotesUp($votes_up)
     {
         if (is_null($votes_up)) {
-            throw new \InvalidArgumentException('non-nullable votes_up cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'votes_up');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('votes_up', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['votes_up'] = $votes_up;
 
@@ -1042,36 +969,16 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setVotesDown($votes_down)
     {
         if (is_null($votes_down)) {
-            throw new \InvalidArgumentException('non-nullable votes_down cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'votes_down');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('votes_down', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['votes_down'] = $votes_down;
-
-        return $this;
-    }
-
-    /**
-     * Gets expire_at
-     *
-     * @return \DateTime|null
-     */
-    public function getExpireAt()
-    {
-        return $this->container['expire_at'];
-    }
-
-    /**
-     * Sets expire_at
-     *
-     * @param \DateTime|null $expire_at expire_at
-     *
-     * @return self
-     */
-    public function setExpireAt($expire_at)
-    {
-        if (is_null($expire_at)) {
-            throw new \InvalidArgumentException('non-nullable expire_at cannot be null');
-        }
-        $this->container['expire_at'] = $expire_at;
 
         return $this;
     }
@@ -1104,33 +1011,6 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets reviewed
-     *
-     * @return bool|null
-     */
-    public function getReviewed()
-    {
-        return $this->container['reviewed'];
-    }
-
-    /**
-     * Sets reviewed
-     *
-     * @param bool|null $reviewed reviewed
-     *
-     * @return self
-     */
-    public function setReviewed($reviewed)
-    {
-        if (is_null($reviewed)) {
-            throw new \InvalidArgumentException('non-nullable reviewed cannot be null');
-        }
-        $this->container['reviewed'] = $reviewed;
-
-        return $this;
-    }
-
-    /**
      * Gets avatar_src
      *
      * @return string|null
@@ -1150,36 +1030,16 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAvatarSrc($avatar_src)
     {
         if (is_null($avatar_src)) {
-            throw new \InvalidArgumentException('non-nullable avatar_src cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'avatar_src');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('avatar_src', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['avatar_src'] = $avatar_src;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_spam
-     *
-     * @return bool|null
-     */
-    public function getIsSpam()
-    {
-        return $this->container['is_spam'];
-    }
-
-    /**
-     * Sets is_spam
-     *
-     * @param bool|null $is_spam is_spam
-     *
-     * @return self
-     */
-    public function setIsSpam($is_spam)
-    {
-        if (is_null($is_spam)) {
-            throw new \InvalidArgumentException('non-nullable is_spam cannot be null');
-        }
-        $this->container['is_spam'] = $is_spam;
 
         return $this;
     }
@@ -1234,168 +1094,6 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable has_links cannot be null');
         }
         $this->container['has_links'] = $has_links;
-
-        return $this;
-    }
-
-    /**
-     * Gets has_code
-     *
-     * @return bool|null
-     */
-    public function getHasCode()
-    {
-        return $this->container['has_code'];
-    }
-
-    /**
-     * Sets has_code
-     *
-     * @param bool|null $has_code has_code
-     *
-     * @return self
-     */
-    public function setHasCode($has_code)
-    {
-        if (is_null($has_code)) {
-            throw new \InvalidArgumentException('non-nullable has_code cannot be null');
-        }
-        $this->container['has_code'] = $has_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets approved
-     *
-     * @return bool
-     */
-    public function getApproved()
-    {
-        return $this->container['approved'];
-    }
-
-    /**
-     * Sets approved
-     *
-     * @param bool $approved approved
-     *
-     * @return self
-     */
-    public function setApproved($approved)
-    {
-        if (is_null($approved)) {
-            throw new \InvalidArgumentException('non-nullable approved cannot be null');
-        }
-        $this->container['approved'] = $approved;
-
-        return $this;
-    }
-
-    /**
-     * Gets locale
-     *
-     * @return string
-     */
-    public function getLocale()
-    {
-        return $this->container['locale'];
-    }
-
-    /**
-     * Sets locale
-     *
-     * @param string $locale locale
-     *
-     * @return self
-     */
-    public function setLocale($locale)
-    {
-        if (is_null($locale)) {
-            throw new \InvalidArgumentException('non-nullable locale cannot be null');
-        }
-        $this->container['locale'] = $locale;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_deleted
-     *
-     * @return bool|null
-     */
-    public function getIsDeleted()
-    {
-        return $this->container['is_deleted'];
-    }
-
-    /**
-     * Sets is_deleted
-     *
-     * @param bool|null $is_deleted is_deleted
-     *
-     * @return self
-     */
-    public function setIsDeleted($is_deleted)
-    {
-        if (is_null($is_deleted)) {
-            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
-        }
-        $this->container['is_deleted'] = $is_deleted;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_deleted_user
-     *
-     * @return bool|null
-     */
-    public function getIsDeletedUser()
-    {
-        return $this->container['is_deleted_user'];
-    }
-
-    /**
-     * Sets is_deleted_user
-     *
-     * @param bool|null $is_deleted_user is_deleted_user
-     *
-     * @return self
-     */
-    public function setIsDeletedUser($is_deleted_user)
-    {
-        if (is_null($is_deleted_user)) {
-            throw new \InvalidArgumentException('non-nullable is_deleted_user cannot be null');
-        }
-        $this->container['is_deleted_user'] = $is_deleted_user;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_banned_user
-     *
-     * @return bool|null
-     */
-    public function getIsBannedUser()
-    {
-        return $this->container['is_banned_user'];
-    }
-
-    /**
-     * Sets is_banned_user
-     *
-     * @param bool|null $is_banned_user is_banned_user
-     *
-     * @return self
-     */
-    public function setIsBannedUser($is_banned_user)
-    {
-        if (is_null($is_banned_user)) {
-            throw new \InvalidArgumentException('non-nullable is_banned_user cannot be null');
-        }
-        $this->container['is_banned_user'] = $is_banned_user;
 
         return $this;
     }
@@ -1474,7 +1172,14 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsPinned($is_pinned)
     {
         if (is_null($is_pinned)) {
-            throw new \InvalidArgumentException('non-nullable is_pinned cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_pinned');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_pinned', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_pinned'] = $is_pinned;
 
@@ -1501,63 +1206,16 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsLocked($is_locked)
     {
         if (is_null($is_locked)) {
-            throw new \InvalidArgumentException('non-nullable is_locked cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_locked');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_locked', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_locked'] = $is_locked;
-
-        return $this;
-    }
-
-    /**
-     * Gets flag_count
-     *
-     * @return int|null
-     */
-    public function getFlagCount()
-    {
-        return $this->container['flag_count'];
-    }
-
-    /**
-     * Sets flag_count
-     *
-     * @param int|null $flag_count flag_count
-     *
-     * @return self
-     */
-    public function setFlagCount($flag_count)
-    {
-        if (is_null($flag_count)) {
-            throw new \InvalidArgumentException('non-nullable flag_count cannot be null');
-        }
-        $this->container['flag_count'] = $flag_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets rating
-     *
-     * @return float|null
-     */
-    public function getRating()
-    {
-        return $this->container['rating'];
-    }
-
-    /**
-     * Sets rating
-     *
-     * @param float|null $rating rating
-     *
-     * @return self
-     */
-    public function setRating($rating)
-    {
-        if (is_null($rating)) {
-            throw new \InvalidArgumentException('non-nullable rating cannot be null');
-        }
-        $this->container['rating'] = $rating;
 
         return $this;
     }
@@ -1582,9 +1240,50 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDisplayLabel($display_label)
     {
         if (is_null($display_label)) {
-            throw new \InvalidArgumentException('non-nullable display_label cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'display_label');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('display_label', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['display_label'] = $display_label;
+
+        return $this;
+    }
+
+    /**
+     * Gets rating
+     *
+     * @return float|null
+     */
+    public function getRating()
+    {
+        return $this->container['rating'];
+    }
+
+    /**
+     * Sets rating
+     *
+     * @param float|null $rating rating
+     *
+     * @return self
+     */
+    public function setRating($rating)
+    {
+        if (is_null($rating)) {
+            array_push($this->openAPINullablesSetToNull, 'rating');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rating', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['rating'] = $rating;
 
         return $this;
     }
@@ -1609,7 +1308,14 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBadges($badges)
     {
         if (is_null($badges)) {
-            throw new \InvalidArgumentException('non-nullable badges cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'badges');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('badges', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['badges'] = $badges;
 
@@ -1617,28 +1323,150 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets domain
+     * Gets view_count
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getDomain()
+    public function getViewCount()
     {
-        return $this->container['domain'];
+        return $this->container['view_count'];
     }
 
     /**
-     * Sets domain
+     * Sets view_count
      *
-     * @param string|null $domain domain
+     * @param int|null $view_count view_count
      *
      * @return self
      */
-    public function setDomain($domain)
+    public function setViewCount($view_count)
     {
-        if (is_null($domain)) {
-            throw new \InvalidArgumentException('non-nullable domain cannot be null');
+        if (is_null($view_count)) {
+            array_push($this->openAPINullablesSetToNull, 'view_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('view_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['domain'] = $domain;
+        $this->container['view_count'] = $view_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_deleted
+     *
+     * @return bool|null
+     */
+    public function getIsDeleted()
+    {
+        return $this->container['is_deleted'];
+    }
+
+    /**
+     * Sets is_deleted
+     *
+     * @param bool|null $is_deleted is_deleted
+     *
+     * @return self
+     */
+    public function setIsDeleted($is_deleted)
+    {
+        if (is_null($is_deleted)) {
+            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
+        }
+        $this->container['is_deleted'] = $is_deleted;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_deleted_user
+     *
+     * @return bool|null
+     */
+    public function getIsDeletedUser()
+    {
+        return $this->container['is_deleted_user'];
+    }
+
+    /**
+     * Sets is_deleted_user
+     *
+     * @param bool|null $is_deleted_user is_deleted_user
+     *
+     * @return self
+     */
+    public function setIsDeletedUser($is_deleted_user)
+    {
+        if (is_null($is_deleted_user)) {
+            throw new \InvalidArgumentException('non-nullable is_deleted_user cannot be null');
+        }
+        $this->container['is_deleted_user'] = $is_deleted_user;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_spam
+     *
+     * @return bool|null
+     */
+    public function getIsSpam()
+    {
+        return $this->container['is_spam'];
+    }
+
+    /**
+     * Sets is_spam
+     *
+     * @param bool|null $is_spam is_spam
+     *
+     * @return self
+     */
+    public function setIsSpam($is_spam)
+    {
+        if (is_null($is_spam)) {
+            throw new \InvalidArgumentException('non-nullable is_spam cannot be null');
+        }
+        $this->container['is_spam'] = $is_spam;
+
+        return $this;
+    }
+
+    /**
+     * Gets anon_user_id
+     *
+     * @return string|null
+     */
+    public function getAnonUserId()
+    {
+        return $this->container['anon_user_id'];
+    }
+
+    /**
+     * Sets anon_user_id
+     *
+     * @param string|null $anon_user_id anon_user_id
+     *
+     * @return self
+     */
+    public function setAnonUserId($anon_user_id)
+    {
+        if (is_null($anon_user_id)) {
+            array_push($this->openAPINullablesSetToNull, 'anon_user_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('anon_user_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['anon_user_id'] = $anon_user_id;
 
         return $this;
     }
@@ -1671,6 +1499,311 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets flag_count
+     *
+     * @return int|null
+     */
+    public function getFlagCount()
+    {
+        return $this->container['flag_count'];
+    }
+
+    /**
+     * Sets flag_count
+     *
+     * @param int|null $flag_count flag_count
+     *
+     * @return self
+     */
+    public function setFlagCount($flag_count)
+    {
+        if (is_null($flag_count)) {
+            array_push($this->openAPINullablesSetToNull, 'flag_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('flag_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['flag_count'] = $flag_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets domain
+     *
+     * @return string|null
+     */
+    public function getDomain()
+    {
+        return $this->container['domain'];
+    }
+
+    /**
+     * Sets domain
+     *
+     * @param string|null $domain domain
+     *
+     * @return self
+     */
+    public function setDomain($domain)
+    {
+        if (is_null($domain)) {
+            array_push($this->openAPINullablesSetToNull, 'domain');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('domain', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['domain'] = $domain;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url url
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        }
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_title
+     *
+     * @return string|null
+     */
+    public function getPageTitle()
+    {
+        return $this->container['page_title'];
+    }
+
+    /**
+     * Sets page_title
+     *
+     * @param string|null $page_title page_title
+     *
+     * @return self
+     */
+    public function setPageTitle($page_title)
+    {
+        if (is_null($page_title)) {
+            array_push($this->openAPINullablesSetToNull, 'page_title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('page_title', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['page_title'] = $page_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets expire_at
+     *
+     * @return \DateTime|null
+     */
+    public function getExpireAt()
+    {
+        return $this->container['expire_at'];
+    }
+
+    /**
+     * Sets expire_at
+     *
+     * @param \DateTime|null $expire_at expire_at
+     *
+     * @return self
+     */
+    public function setExpireAt($expire_at)
+    {
+        if (is_null($expire_at)) {
+            array_push($this->openAPINullablesSetToNull, 'expire_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expire_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['expire_at'] = $expire_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets reviewed
+     *
+     * @return bool|null
+     */
+    public function getReviewed()
+    {
+        return $this->container['reviewed'];
+    }
+
+    /**
+     * Sets reviewed
+     *
+     * @param bool|null $reviewed reviewed
+     *
+     * @return self
+     */
+    public function setReviewed($reviewed)
+    {
+        if (is_null($reviewed)) {
+            throw new \InvalidArgumentException('non-nullable reviewed cannot be null');
+        }
+        $this->container['reviewed'] = $reviewed;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_code
+     *
+     * @return bool|null
+     */
+    public function getHasCode()
+    {
+        return $this->container['has_code'];
+    }
+
+    /**
+     * Sets has_code
+     *
+     * @param bool|null $has_code has_code
+     *
+     * @return self
+     */
+    public function setHasCode($has_code)
+    {
+        if (is_null($has_code)) {
+            throw new \InvalidArgumentException('non-nullable has_code cannot be null');
+        }
+        $this->container['has_code'] = $has_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets approved
+     *
+     * @return bool
+     */
+    public function getApproved()
+    {
+        return $this->container['approved'];
+    }
+
+    /**
+     * Sets approved
+     *
+     * @param bool $approved approved
+     *
+     * @return self
+     */
+    public function setApproved($approved)
+    {
+        if (is_null($approved)) {
+            throw new \InvalidArgumentException('non-nullable approved cannot be null');
+        }
+        $this->container['approved'] = $approved;
+
+        return $this;
+    }
+
+    /**
+     * Gets locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->container['locale'];
+    }
+
+    /**
+     * Sets locale
+     *
+     * @param string $locale locale
+     *
+     * @return self
+     */
+    public function setLocale($locale)
+    {
+        if (is_null($locale)) {
+            array_push($this->openAPINullablesSetToNull, 'locale');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('locale', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['locale'] = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_banned_user
+     *
+     * @return bool|null
+     */
+    public function getIsBannedUser()
+    {
+        return $this->container['is_banned_user'];
+    }
+
+    /**
+     * Sets is_banned_user
+     *
+     * @param bool|null $is_banned_user is_banned_user
+     *
+     * @return self
+     */
+    public function setIsBannedUser($is_banned_user)
+    {
+        if (is_null($is_banned_user)) {
+            throw new \InvalidArgumentException('non-nullable is_banned_user cannot be null');
+        }
+        $this->container['is_banned_user'] = $is_banned_user;
+
+        return $this;
+    }
+
+    /**
      * Gets group_ids
      *
      * @return string[]|null
@@ -1690,36 +1823,16 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGroupIds($group_ids)
     {
         if (is_null($group_ids)) {
-            throw new \InvalidArgumentException('non-nullable group_ids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'group_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('group_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['group_ids'] = $group_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets view_count
-     *
-     * @return int|null
-     */
-    public function getViewCount()
-    {
-        return $this->container['view_count'];
-    }
-
-    /**
-     * Sets view_count
-     *
-     * @param int|null $view_count view_count
-     *
-     * @return self
-     */
-    public function setViewCount($view_count)
-    {
-        if (is_null($view_count)) {
-            throw new \InvalidArgumentException('non-nullable view_count cannot be null');
-        }
-        $this->container['view_count'] = $view_count;
 
         return $this;
     }
@@ -1774,6 +1887,33 @@ class PubSubComment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable hidden cannot be null');
         }
         $this->container['hidden'] = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Gets date
+     *
+     * @return string
+     */
+    public function getDate()
+    {
+        return $this->container['date'];
+    }
+
+    /**
+     * Sets date
+     *
+     * @param string $date date
+     *
+     * @return self
+     */
+    public function setDate($date)
+    {
+        if (is_null($date)) {
+            throw new \InvalidArgumentException('non-nullable date cannot be null');
+        }
+        $this->container['date'] = $date;
 
         return $this;
     }

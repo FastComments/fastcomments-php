@@ -60,6 +60,7 @@ class PatchPageAPIResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPITypes = [
         'reason' => 'string',
         'code' => 'string',
+        'comments_updated' => 'int',
         'page' => '\FastComments\Client\Model\APIPage',
         'status' => 'string'
     ];
@@ -74,6 +75,7 @@ class PatchPageAPIResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPIFormats = [
         'reason' => null,
         'code' => null,
+        'comments_updated' => 'int64',
         'page' => null,
         'status' => null
     ];
@@ -86,6 +88,7 @@ class PatchPageAPIResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static array $openAPINullables = [
         'reason' => false,
         'code' => false,
+        'comments_updated' => false,
         'page' => false,
         'status' => false
     ];
@@ -178,6 +181,7 @@ class PatchPageAPIResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $attributeMap = [
         'reason' => 'reason',
         'code' => 'code',
+        'comments_updated' => 'commentsUpdated',
         'page' => 'page',
         'status' => 'status'
     ];
@@ -190,6 +194,7 @@ class PatchPageAPIResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $setters = [
         'reason' => 'setReason',
         'code' => 'setCode',
+        'comments_updated' => 'setCommentsUpdated',
         'page' => 'setPage',
         'status' => 'setStatus'
     ];
@@ -202,6 +207,7 @@ class PatchPageAPIResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $getters = [
         'reason' => 'getReason',
         'code' => 'getCode',
+        'comments_updated' => 'getCommentsUpdated',
         'page' => 'getPage',
         'status' => 'getStatus'
     ];
@@ -265,6 +271,7 @@ class PatchPageAPIResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $this->setIfExists('reason', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('comments_updated', $data ?? [], null);
         $this->setIfExists('page', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
     }
@@ -364,6 +371,33 @@ class PatchPageAPIResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
         $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets comments_updated
+     *
+     * @return int|null
+     */
+    public function getCommentsUpdated()
+    {
+        return $this->container['comments_updated'];
+    }
+
+    /**
+     * Sets comments_updated
+     *
+     * @param int|null $comments_updated comments_updated
+     *
+     * @return self
+     */
+    public function setCommentsUpdated($comments_updated)
+    {
+        if (is_null($comments_updated)) {
+            throw new \InvalidArgumentException('non-nullable comments_updated cannot be null');
+        }
+        $this->container['comments_updated'] = $comments_updated;
 
         return $this;
     }

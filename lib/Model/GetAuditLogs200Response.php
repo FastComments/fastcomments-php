@@ -58,8 +58,8 @@ class GetAuditLogs200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
-        'audit_logs' => '\FastComments\Client\Model\PickTenantAuditLogTenantAuditLogKeys[]',
+        'status' => '\FastComments\Client\Model\APIStatus',
+        'audit_logs' => '\FastComments\Client\Model\APIAuditLog[]',
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
@@ -361,7 +361,7 @@ class GetAuditLogs200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -371,7 +371,7 @@ class GetAuditLogs200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */
@@ -388,7 +388,7 @@ class GetAuditLogs200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets audit_logs
      *
-     * @return \FastComments\Client\Model\PickTenantAuditLogTenantAuditLogKeys[]
+     * @return \FastComments\Client\Model\APIAuditLog[]
      */
     public function getAuditLogs()
     {
@@ -398,7 +398,7 @@ class GetAuditLogs200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets audit_logs
      *
-     * @param \FastComments\Client\Model\PickTenantAuditLogTenantAuditLogKeys[] $audit_logs audit_logs
+     * @param \FastComments\Client\Model\APIAuditLog[] $audit_logs audit_logs
      *
      * @return self
      */

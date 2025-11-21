@@ -58,7 +58,7 @@ class GetUserNotificationCountResponse implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusSUCCESS',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'count' => 'int'
     ];
 
@@ -306,7 +306,7 @@ class GetUserNotificationCountResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusSUCCESS
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -316,7 +316,7 @@ class GetUserNotificationCountResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusSUCCESS $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

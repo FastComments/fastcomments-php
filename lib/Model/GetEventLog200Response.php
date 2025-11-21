@@ -59,7 +59,7 @@ class GetEventLog200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'events' => '\FastComments\Client\Model\EventLogEntry[]',
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
@@ -388,7 +388,7 @@ class GetEventLog200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -398,7 +398,7 @@ class GetEventLog200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

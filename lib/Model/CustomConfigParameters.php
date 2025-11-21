@@ -110,6 +110,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'no_styles' => 'bool',
         'page_size' => 'int',
         'readonly' => 'bool',
+        'no_new_root_comments' => 'bool',
         'require_sso' => 'bool',
         'enable_resize_handle' => 'bool',
         'restricted_link_domains' => 'string[]',
@@ -192,6 +193,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'no_styles' => null,
         'page_size' => 'int32',
         'readonly' => null,
+        'no_new_root_comments' => null,
         'require_sso' => null,
         'enable_resize_handle' => null,
         'restricted_link_domains' => null,
@@ -272,6 +274,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'no_styles' => false,
         'page_size' => true,
         'readonly' => false,
+        'no_new_root_comments' => false,
         'require_sso' => false,
         'enable_resize_handle' => false,
         'restricted_link_domains' => true,
@@ -432,6 +435,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'no_styles' => 'noStyles',
         'page_size' => 'pageSize',
         'readonly' => 'readonly',
+        'no_new_root_comments' => 'noNewRootComments',
         'require_sso' => 'requireSSO',
         'enable_resize_handle' => 'enableResizeHandle',
         'restricted_link_domains' => 'restrictedLinkDomains',
@@ -512,6 +516,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'no_styles' => 'setNoStyles',
         'page_size' => 'setPageSize',
         'readonly' => 'setReadonly',
+        'no_new_root_comments' => 'setNoNewRootComments',
         'require_sso' => 'setRequireSso',
         'enable_resize_handle' => 'setEnableResizeHandle',
         'restricted_link_domains' => 'setRestrictedLinkDomains',
@@ -592,6 +597,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'no_styles' => 'getNoStyles',
         'page_size' => 'getPageSize',
         'readonly' => 'getReadonly',
+        'no_new_root_comments' => 'getNoNewRootComments',
         'require_sso' => 'getRequireSso',
         'enable_resize_handle' => 'getEnableResizeHandle',
         'restricted_link_domains' => 'getRestrictedLinkDomains',
@@ -723,6 +729,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('no_styles', $data ?? [], null);
         $this->setIfExists('page_size', $data ?? [], null);
         $this->setIfExists('readonly', $data ?? [], null);
+        $this->setIfExists('no_new_root_comments', $data ?? [], null);
         $this->setIfExists('require_sso', $data ?? [], null);
         $this->setIfExists('enable_resize_handle', $data ?? [], null);
         $this->setIfExists('restricted_link_domains', $data ?? [], null);
@@ -2285,6 +2292,33 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable readonly cannot be null');
         }
         $this->container['readonly'] = $readonly;
+
+        return $this;
+    }
+
+    /**
+     * Gets no_new_root_comments
+     *
+     * @return bool|null
+     */
+    public function getNoNewRootComments()
+    {
+        return $this->container['no_new_root_comments'];
+    }
+
+    /**
+     * Sets no_new_root_comments
+     *
+     * @param bool|null $no_new_root_comments no_new_root_comments
+     *
+     * @return self
+     */
+    public function setNoNewRootComments($no_new_root_comments)
+    {
+        if (is_null($no_new_root_comments)) {
+            throw new \InvalidArgumentException('non-nullable no_new_root_comments cannot be null');
+        }
+        $this->container['no_new_root_comments'] = $no_new_root_comments;
 
         return $this;
     }
