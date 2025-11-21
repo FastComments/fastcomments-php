@@ -59,7 +59,8 @@ class APICreateUserBadgeResponse implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'status' => '\FastComments\Client\Model\APIStatus',
-        'user_badge' => '\FastComments\Client\Model\UserBadge'
+        'user_badge' => '\FastComments\Client\Model\UserBadge',
+        'notes' => 'string[]'
     ];
 
     /**
@@ -71,7 +72,8 @@ class APICreateUserBadgeResponse implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPIFormats = [
         'status' => null,
-        'user_badge' => null
+        'user_badge' => null,
+        'notes' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class APICreateUserBadgeResponse implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPINullables = [
         'status' => false,
-        'user_badge' => false
+        'user_badge' => false,
+        'notes' => false
     ];
 
     /**
@@ -171,7 +174,8 @@ class APICreateUserBadgeResponse implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'status' => 'status',
-        'user_badge' => 'userBadge'
+        'user_badge' => 'userBadge',
+        'notes' => 'notes'
     ];
 
     /**
@@ -181,7 +185,8 @@ class APICreateUserBadgeResponse implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'status' => 'setStatus',
-        'user_badge' => 'setUserBadge'
+        'user_badge' => 'setUserBadge',
+        'notes' => 'setNotes'
     ];
 
     /**
@@ -191,7 +196,8 @@ class APICreateUserBadgeResponse implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'status' => 'getStatus',
-        'user_badge' => 'getUserBadge'
+        'user_badge' => 'getUserBadge',
+        'notes' => 'getNotes'
     ];
 
     /**
@@ -253,6 +259,7 @@ class APICreateUserBadgeResponse implements ModelInterface, ArrayAccess, \JsonSe
     {
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('user_badge', $data ?? [], null);
+        $this->setIfExists('notes', $data ?? [], null);
     }
 
     /**
@@ -353,6 +360,33 @@ class APICreateUserBadgeResponse implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable user_badge cannot be null');
         }
         $this->container['user_badge'] = $user_badge;
+
+        return $this;
+    }
+
+    /**
+     * Gets notes
+     *
+     * @return string[]|null
+     */
+    public function getNotes()
+    {
+        return $this->container['notes'];
+    }
+
+    /**
+     * Sets notes
+     *
+     * @param string[]|null $notes notes
+     *
+     * @return self
+     */
+    public function setNotes($notes)
+    {
+        if (is_null($notes)) {
+            throw new \InvalidArgumentException('non-nullable notes cannot be null');
+        }
+        $this->container['notes'] = $notes;
 
         return $this;
     }

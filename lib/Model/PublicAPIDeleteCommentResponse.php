@@ -58,9 +58,9 @@ class PublicAPIDeleteCommentResponse implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'comment' => '\FastComments\Client\Model\PickFCommentIsDeletedOrCommentHTMLOrCommenterNameOrUserId',
+        'comment' => '\FastComments\Client\Model\DeletedCommentResultComment',
         'hard_removed' => 'bool',
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusSUCCESS'
+        'status' => '\FastComments\Client\Model\APIStatus'
     ];
 
     /**
@@ -313,7 +313,7 @@ class PublicAPIDeleteCommentResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets comment
      *
-     * @return \FastComments\Client\Model\PickFCommentIsDeletedOrCommentHTMLOrCommenterNameOrUserId|null
+     * @return \FastComments\Client\Model\DeletedCommentResultComment|null
      */
     public function getComment()
     {
@@ -323,7 +323,7 @@ class PublicAPIDeleteCommentResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets comment
      *
-     * @param \FastComments\Client\Model\PickFCommentIsDeletedOrCommentHTMLOrCommenterNameOrUserId|null $comment comment
+     * @param \FastComments\Client\Model\DeletedCommentResultComment|null $comment comment
      *
      * @return self
      */
@@ -367,7 +367,7 @@ class PublicAPIDeleteCommentResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusSUCCESS
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -377,7 +377,7 @@ class PublicAPIDeleteCommentResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusSUCCESS $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

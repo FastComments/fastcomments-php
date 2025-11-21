@@ -58,7 +58,7 @@ class UpdateUserNotificationStatus200Response implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'matched_count' => 'int',
         'modified_count' => 'int',
         'note' => 'string',
@@ -405,7 +405,7 @@ class UpdateUserNotificationStatus200Response implements ModelInterface, ArrayAc
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -415,7 +415,7 @@ class UpdateUserNotificationStatus200Response implements ModelInterface, ArrayAc
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

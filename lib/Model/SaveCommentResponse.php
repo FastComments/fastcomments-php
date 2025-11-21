@@ -58,7 +58,7 @@ class SaveCommentResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusSUCCESS',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'comment' => '\FastComments\Client\Model\FComment',
         'user' => '\FastComments\Client\Model\UserSessionInfo',
         'module_data' => 'array<string,mixed>'
@@ -323,7 +323,7 @@ class SaveCommentResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusSUCCESS
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -333,7 +333,7 @@ class SaveCommentResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusSUCCESS $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

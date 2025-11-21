@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 **feed_posts** | [**\FastComments\Client\Model\FeedPost[]**](FeedPost.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |

@@ -58,7 +58,7 @@ class CreateFeedPost200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'feed_post' => '\FastComments\Client\Model\FeedPost',
         'reason' => 'string',
         'code' => 'string',
@@ -361,7 +361,7 @@ class CreateFeedPost200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -371,7 +371,7 @@ class CreateFeedPost200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

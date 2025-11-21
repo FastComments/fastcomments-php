@@ -58,7 +58,7 @@ class VoteComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'vote_id' => 'string',
         'is_verified' => 'bool',
         'user' => '\FastComments\Client\Model\VoteResponseUser',
@@ -379,7 +379,7 @@ class VoteComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -389,7 +389,7 @@ class VoteComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

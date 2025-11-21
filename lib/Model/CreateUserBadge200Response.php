@@ -58,8 +58,9 @@ class CreateUserBadge200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'user_badge' => '\FastComments\Client\Model\UserBadge',
+        'notes' => 'string[]',
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
@@ -79,6 +80,7 @@ class CreateUserBadge200Response implements ModelInterface, ArrayAccess, \JsonSe
     protected static $openAPIFormats = [
         'status' => null,
         'user_badge' => null,
+        'notes' => null,
         'reason' => null,
         'code' => null,
         'secondary_code' => null,
@@ -96,6 +98,7 @@ class CreateUserBadge200Response implements ModelInterface, ArrayAccess, \JsonSe
     protected static array $openAPINullables = [
         'status' => false,
         'user_badge' => false,
+        'notes' => false,
         'reason' => false,
         'code' => false,
         'secondary_code' => false,
@@ -193,6 +196,7 @@ class CreateUserBadge200Response implements ModelInterface, ArrayAccess, \JsonSe
     protected static $attributeMap = [
         'status' => 'status',
         'user_badge' => 'userBadge',
+        'notes' => 'notes',
         'reason' => 'reason',
         'code' => 'code',
         'secondary_code' => 'secondaryCode',
@@ -210,6 +214,7 @@ class CreateUserBadge200Response implements ModelInterface, ArrayAccess, \JsonSe
     protected static $setters = [
         'status' => 'setStatus',
         'user_badge' => 'setUserBadge',
+        'notes' => 'setNotes',
         'reason' => 'setReason',
         'code' => 'setCode',
         'secondary_code' => 'setSecondaryCode',
@@ -227,6 +232,7 @@ class CreateUserBadge200Response implements ModelInterface, ArrayAccess, \JsonSe
     protected static $getters = [
         'status' => 'getStatus',
         'user_badge' => 'getUserBadge',
+        'notes' => 'getNotes',
         'reason' => 'getReason',
         'code' => 'getCode',
         'secondary_code' => 'getSecondaryCode',
@@ -295,6 +301,7 @@ class CreateUserBadge200Response implements ModelInterface, ArrayAccess, \JsonSe
     {
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('user_badge', $data ?? [], null);
+        $this->setIfExists('notes', $data ?? [], null);
         $this->setIfExists('reason', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('secondary_code', $data ?? [], null);
@@ -361,7 +368,7 @@ class CreateUserBadge200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -371,7 +378,7 @@ class CreateUserBadge200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */
@@ -408,6 +415,33 @@ class CreateUserBadge200Response implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable user_badge cannot be null');
         }
         $this->container['user_badge'] = $user_badge;
+
+        return $this;
+    }
+
+    /**
+     * Gets notes
+     *
+     * @return string[]|null
+     */
+    public function getNotes()
+    {
+        return $this->container['notes'];
+    }
+
+    /**
+     * Sets notes
+     *
+     * @param string[]|null $notes notes
+     *
+     * @return self
+     */
+    public function setNotes($notes)
+    {
+        if (is_null($notes)) {
+            throw new \InvalidArgumentException('non-nullable notes cannot be null');
+        }
+        $this->container['notes'] = $notes;
 
         return $this;
     }

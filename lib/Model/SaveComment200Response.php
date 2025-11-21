@@ -58,7 +58,7 @@ class SaveComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'comment' => '\FastComments\Client\Model\FComment',
         'user' => '\FastComments\Client\Model\UserSessionInfo',
         'module_data' => 'array<string,object>',
@@ -378,7 +378,7 @@ class SaveComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -388,7 +388,7 @@ class SaveComment200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

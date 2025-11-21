@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusSUCCESS**](ImportedAPIStatusSUCCESS.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 **notification_type** | **object** |  |
 **user_id** | **string** |  |
 **user_id_ws** | **string** |  |

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **is_subscribed** | **bool** |  |
 **has_more** | **bool** |  |
 **notifications** | [**\FastComments\Client\Model\RenderableUserNotification[]**](RenderableUserNotification.md) |  |
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |
 **secondary_code** | **string** |  | [optional]

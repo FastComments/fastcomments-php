@@ -59,7 +59,7 @@ class CheckBlockedCommentsResponse implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'comment_statuses' => 'array<string,bool>',
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusSUCCESS'
+        'status' => '\FastComments\Client\Model\APIStatus'
     ];
 
     /**
@@ -333,7 +333,7 @@ class CheckBlockedCommentsResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusSUCCESS
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -343,7 +343,7 @@ class CheckBlockedCommentsResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusSUCCESS $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

@@ -58,7 +58,7 @@ class GetCommentVoteUserNamesSuccessResponse implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusSUCCESS',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'vote_user_names' => 'string[]',
         'has_more' => 'bool'
     ];
@@ -316,7 +316,7 @@ class GetCommentVoteUserNamesSuccessResponse implements ModelInterface, ArrayAcc
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusSUCCESS
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -326,7 +326,7 @@ class GetCommentVoteUserNamesSuccessResponse implements ModelInterface, ArrayAcc
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusSUCCESS $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

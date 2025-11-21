@@ -59,7 +59,7 @@ class CheckedCommentsForBlocked200Response implements ModelInterface, ArrayAcces
       */
     protected static $openAPITypes = [
         'comment_statuses' => 'array<string,bool>',
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
@@ -388,7 +388,7 @@ class CheckedCommentsForBlocked200Response implements ModelInterface, ArrayAcces
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -398,7 +398,7 @@ class CheckedCommentsForBlocked200Response implements ModelInterface, ArrayAcces
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

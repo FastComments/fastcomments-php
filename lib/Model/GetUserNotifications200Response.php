@@ -62,7 +62,7 @@ class GetUserNotifications200Response implements ModelInterface, ArrayAccess, \J
         'is_subscribed' => 'bool',
         'has_more' => 'bool',
         'notifications' => '\FastComments\Client\Model\RenderableUserNotification[]',
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'reason' => 'string',
         'code' => 'string',
         'secondary_code' => 'string',
@@ -496,7 +496,7 @@ class GetUserNotifications200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -506,7 +506,7 @@ class GetUserNotifications200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

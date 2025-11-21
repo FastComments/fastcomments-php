@@ -59,7 +59,7 @@ class GetAuditLogsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'status' => '\FastComments\Client\Model\APIStatus',
-        'audit_logs' => '\FastComments\Client\Model\PickTenantAuditLogTenantAuditLogKeys[]'
+        'audit_logs' => '\FastComments\Client\Model\APIAuditLog[]'
     ];
 
     /**
@@ -333,7 +333,7 @@ class GetAuditLogsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets audit_logs
      *
-     * @return \FastComments\Client\Model\PickTenantAuditLogTenantAuditLogKeys[]
+     * @return \FastComments\Client\Model\APIAuditLog[]
      */
     public function getAuditLogs()
     {
@@ -343,7 +343,7 @@ class GetAuditLogsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets audit_logs
      *
-     * @param \FastComments\Client\Model\PickTenantAuditLogTenantAuditLogKeys[] $audit_logs audit_logs
+     * @param \FastComments\Client\Model\APIAuditLog[] $audit_logs audit_logs
      *
      * @return self
      */

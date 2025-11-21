@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **my_reacts** | **array<string,array<string,bool>>** |  | [optional]
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 **feed_posts** | [**\FastComments\Client\Model\FeedPost[]**](FeedPost.md) |  |
 **user** | [**\FastComments\Client\Model\UserSessionInfo**](UserSessionInfo.md) |  | [optional]
 **url_id_ws** | **string** |  | [optional]

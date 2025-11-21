@@ -58,7 +58,7 @@ class GetFeedPostsStats200Response implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'stats' => 'array<string,\FastComments\Client\Model\FeedPostStats>',
         'reason' => 'string',
         'code' => 'string',
@@ -361,7 +361,7 @@ class GetFeedPostsStats200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -371,7 +371,7 @@ class GetFeedPostsStats200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

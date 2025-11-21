@@ -124,7 +124,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'autoplay_job_id' => 'string',
         'autoplay_delay_ms' => 'int',
         'feedback_ids' => 'string[]',
-        'logs' => 'array[]',
+        'logs' => '\FastComments\Client\Model\CommentLogEntry[]',
         'group_ids' => 'string[]',
         'view_count' => 'int',
         'requires_verification' => 'bool',
@@ -2808,7 +2808,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets logs
      *
-     * @return array[]|null
+     * @return \FastComments\Client\Model\CommentLogEntry[]|null
      */
     public function getLogs()
     {
@@ -2818,7 +2818,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets logs
      *
-     * @param array[]|null $logs logs
+     * @param \FastComments\Client\Model\CommentLogEntry[]|null $logs logs
      *
      * @return self
      */

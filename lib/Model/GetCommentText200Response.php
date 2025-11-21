@@ -58,7 +58,7 @@ class GetCommentText200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'comment_text' => 'string',
         'sanitized_comment_text' => 'string',
         'reason' => 'string',
@@ -371,7 +371,7 @@ class GetCommentText200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -381,7 +381,7 @@ class GetCommentText200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

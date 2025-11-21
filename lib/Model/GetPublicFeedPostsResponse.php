@@ -58,7 +58,7 @@ class GetPublicFeedPostsResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusSUCCESS',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'feed_posts' => '\FastComments\Client\Model\FeedPost[]',
         'user' => '\FastComments\Client\Model\UserSessionInfo'
     ];
@@ -313,7 +313,7 @@ class GetPublicFeedPostsResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusSUCCESS
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -323,7 +323,7 @@ class GetPublicFeedPostsResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusSUCCESS $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

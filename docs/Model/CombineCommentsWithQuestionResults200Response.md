@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 **data** | [**\FastComments\Client\Model\FindCommentsByRangeResponse**](FindCommentsByRangeResponse.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**comment** | [**\FastComments\Client\Model\PickFCommentIsDeletedOrCommentHTMLOrCommenterNameOrUserId**](PickFCommentIsDeletedOrCommentHTMLOrCommenterNameOrUserId.md) |  | [optional]
+**comment** | [**\FastComments\Client\Model\DeletedCommentResultComment**](DeletedCommentResultComment.md) |  | [optional]
 **hard_removed** | **bool** |  |
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusFAILED**](ImportedAPIStatusFAILED.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |
 **secondary_code** | **string** |  | [optional]

@@ -59,7 +59,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'status_code' => 'int',
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'code' => 'string',
         'reason' => 'string',
         'translated_warning' => 'string',
@@ -548,7 +548,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -558,7 +558,7 @@ class GetCommentsPublic200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

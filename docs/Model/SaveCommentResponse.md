@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusSUCCESS**](ImportedAPIStatusSUCCESS.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 **comment** | [**\FastComments\Client\Model\FComment**](FComment.md) |  |
 **user** | [**\FastComments\Client\Model\UserSessionInfo**](UserSessionInfo.md) |  |
 **module_data** | **array<string,mixed>** | Construct a type with a set of properties K of type T | [optional]

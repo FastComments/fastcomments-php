@@ -58,7 +58,7 @@ class UserNotificationWriteResponse implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusSUCCESS',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'matched_count' => 'int',
         'modified_count' => 'int'
     ];
@@ -316,7 +316,7 @@ class UserNotificationWriteResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusSUCCESS
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -326,7 +326,7 @@ class UserNotificationWriteResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusSUCCESS $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

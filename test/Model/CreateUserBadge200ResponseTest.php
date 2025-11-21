@@ -99,6 +99,15 @@ class CreateUserBadge200ResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "notes"
+     */
+    public function testPropertyNotes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "reason"
      */
     public function testPropertyReason()

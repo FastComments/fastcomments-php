@@ -58,7 +58,7 @@ class BulkAggregateQuestionResults200Response implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => '\FastComments\Client\Model\ImportedAPIStatusFAILED',
+        'status' => '\FastComments\Client\Model\APIStatus',
         'data' => 'array<string,\FastComments\Client\Model\QuestionResultAggregationOverall>',
         'reason' => 'string',
         'code' => 'string',
@@ -361,7 +361,7 @@ class BulkAggregateQuestionResults200Response implements ModelInterface, ArrayAc
     /**
      * Gets status
      *
-     * @return \FastComments\Client\Model\ImportedAPIStatusFAILED
+     * @return \FastComments\Client\Model\APIStatus
      */
     public function getStatus()
     {
@@ -371,7 +371,7 @@ class BulkAggregateQuestionResults200Response implements ModelInterface, ArrayAc
     /**
      * Sets status
      *
-     * @param \FastComments\Client\Model\ImportedAPIStatusFAILED $status status
+     * @param \FastComments\Client\Model\APIStatus $status status
      *
      * @return self
      */

@@ -549,6 +549,15 @@ class CustomConfigParametersTest extends TestCase
     }
 
     /**
+     * Test attribute "no_new_root_comments"
+     */
+    public function testPropertyNoNewRootComments()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "require_sso"
      */
     public function testPropertyRequireSso()

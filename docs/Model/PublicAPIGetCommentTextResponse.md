@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\FastComments\Client\Model\ImportedAPIStatusSUCCESS**](ImportedAPIStatusSUCCESS.md) |  |
+**status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
 **comment_text** | **string** |  |
 **sanitized_comment_text** | **string** |  |
 
