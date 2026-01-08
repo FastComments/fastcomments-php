@@ -1608,7 +1608,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **tenant_id** | **string**|  | |
 | **url_id** | **string**|  | |
-| **username_starts_with** | **string**|  | |
+| **username_starts_with** | **string**|  | [optional] |
 | **mention_group_ids** | [**string[]**](../Model/string.md)|  | [optional] |
 | **sso** | **string**|  | [optional] |
 

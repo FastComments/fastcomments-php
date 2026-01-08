@@ -9520,7 +9520,7 @@ class PublicApi
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $url_id url_id (required)
-     * @param  string $username_starts_with username_starts_with (required)
+     * @param  string|null $username_starts_with username_starts_with (optional)
      * @param  string[]|null $mention_group_ids mention_group_ids (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchUsers'] to see the possible values for this operation
@@ -9529,7 +9529,7 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\SearchUsers200Response
      */
-    public function searchUsers($tenant_id, $url_id, $username_starts_with, $mention_group_ids = null, $sso = null, string $contentType = self::contentTypes['searchUsers'][0])
+    public function searchUsers($tenant_id, $url_id, $username_starts_with = null, $mention_group_ids = null, $sso = null, string $contentType = self::contentTypes['searchUsers'][0])
     {
         list($response) = $this->searchUsersWithHttpInfo($tenant_id, $url_id, $username_starts_with, $mention_group_ids, $sso, $contentType);
         return $response;
@@ -9542,7 +9542,7 @@ class PublicApi
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
-     * @param  string $username_starts_with (required)
+     * @param  string|null $username_starts_with (optional)
      * @param  string[]|null $mention_group_ids (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchUsers'] to see the possible values for this operation
@@ -9551,7 +9551,7 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\SearchUsers200Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchUsersWithHttpInfo($tenant_id, $url_id, $username_starts_with, $mention_group_ids = null, $sso = null, string $contentType = self::contentTypes['searchUsers'][0])
+    public function searchUsersWithHttpInfo($tenant_id, $url_id, $username_starts_with = null, $mention_group_ids = null, $sso = null, string $contentType = self::contentTypes['searchUsers'][0])
     {
         $request = $this->searchUsersRequest($tenant_id, $url_id, $username_starts_with, $mention_group_ids, $sso, $contentType);
 
@@ -9671,7 +9671,7 @@ class PublicApi
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
-     * @param  string $username_starts_with (required)
+     * @param  string|null $username_starts_with (optional)
      * @param  string[]|null $mention_group_ids (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchUsers'] to see the possible values for this operation
@@ -9679,7 +9679,7 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchUsersAsync($tenant_id, $url_id, $username_starts_with, $mention_group_ids = null, $sso = null, string $contentType = self::contentTypes['searchUsers'][0])
+    public function searchUsersAsync($tenant_id, $url_id, $username_starts_with = null, $mention_group_ids = null, $sso = null, string $contentType = self::contentTypes['searchUsers'][0])
     {
         return $this->searchUsersAsyncWithHttpInfo($tenant_id, $url_id, $username_starts_with, $mention_group_ids, $sso, $contentType)
             ->then(
@@ -9696,7 +9696,7 @@ class PublicApi
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
-     * @param  string $username_starts_with (required)
+     * @param  string|null $username_starts_with (optional)
      * @param  string[]|null $mention_group_ids (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchUsers'] to see the possible values for this operation
@@ -9704,7 +9704,7 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchUsersAsyncWithHttpInfo($tenant_id, $url_id, $username_starts_with, $mention_group_ids = null, $sso = null, string $contentType = self::contentTypes['searchUsers'][0])
+    public function searchUsersAsyncWithHttpInfo($tenant_id, $url_id, $username_starts_with = null, $mention_group_ids = null, $sso = null, string $contentType = self::contentTypes['searchUsers'][0])
     {
         $returnType = '\FastComments\Client\Model\SearchUsers200Response';
         $request = $this->searchUsersRequest($tenant_id, $url_id, $username_starts_with, $mention_group_ids, $sso, $contentType);
@@ -9750,7 +9750,7 @@ class PublicApi
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
-     * @param  string $username_starts_with (required)
+     * @param  string|null $username_starts_with (optional)
      * @param  string[]|null $mention_group_ids (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchUsers'] to see the possible values for this operation
@@ -9758,7 +9758,7 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchUsersRequest($tenant_id, $url_id, $username_starts_with, $mention_group_ids = null, $sso = null, string $contentType = self::contentTypes['searchUsers'][0])
+    public function searchUsersRequest($tenant_id, $url_id, $username_starts_with = null, $mention_group_ids = null, $sso = null, string $contentType = self::contentTypes['searchUsers'][0])
     {
 
         // verify the required parameter 'tenant_id' is set
@@ -9775,12 +9775,6 @@ class PublicApi
             );
         }
 
-        // verify the required parameter 'username_starts_with' is set
-        if ($username_starts_with === null || (is_array($username_starts_with) && count($username_starts_with) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $username_starts_with when calling searchUsers'
-            );
-        }
 
 
 
@@ -9808,7 +9802,7 @@ class PublicApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

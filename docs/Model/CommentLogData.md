@@ -47,5 +47,8 @@ Name | Type | Description | Notes
 **trust_factor_before** | **float** |  | [optional]
 **trust_factor_after** | **float** |  | [optional]
 **referenced_comment_id** | **string** |  | [optional]
+**invalid_locale** | **string** |  | [optional]
+**detected_locale** | **string** |  | [optional]
+**detected_language** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
