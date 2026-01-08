@@ -80,6 +80,8 @@ All URIs are relative to *https://fastcomments.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DefaultApi* | [**addDomainConfig**](docs/Api/DefaultApi.md#adddomainconfig) | **POST** /api/v1/domain-configs | 
+*DefaultApi* | [**addHashTag**](docs/Api/DefaultApi.md#addhashtag) | **POST** /api/v1/hash-tags | 
+*DefaultApi* | [**addHashTagsBulk**](docs/Api/DefaultApi.md#addhashtagsbulk) | **POST** /api/v1/hash-tags/bulk | 
 *DefaultApi* | [**addPage**](docs/Api/DefaultApi.md#addpage) | **POST** /api/v1/pages | 
 *DefaultApi* | [**addSSOUser**](docs/Api/DefaultApi.md#addssouser) | **POST** /api/v1/sso-users | 
 *DefaultApi* | [**aggregate**](docs/Api/DefaultApi.md#aggregate) | **POST** /api/v1/aggregate | 
@@ -87,44 +89,104 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**blockUserFromComment**](docs/Api/DefaultApi.md#blockuserfromcomment) | **POST** /api/v1/comments/{id}/block | 
 *DefaultApi* | [**bulkAggregateQuestionResults**](docs/Api/DefaultApi.md#bulkaggregatequestionresults) | **POST** /api/v1/question-results-aggregation/bulk | 
 *DefaultApi* | [**combineCommentsWithQuestionResults**](docs/Api/DefaultApi.md#combinecommentswithquestionresults) | **GET** /api/v1/question-results-aggregation/combine/comments | 
+*DefaultApi* | [**createEmailTemplate**](docs/Api/DefaultApi.md#createemailtemplate) | **POST** /api/v1/email-templates | 
 *DefaultApi* | [**createFeedPost**](docs/Api/DefaultApi.md#createfeedpost) | **POST** /api/v1/feed-posts | 
+*DefaultApi* | [**createModerator**](docs/Api/DefaultApi.md#createmoderator) | **POST** /api/v1/moderators | 
+*DefaultApi* | [**createQuestionConfig**](docs/Api/DefaultApi.md#createquestionconfig) | **POST** /api/v1/question-configs | 
+*DefaultApi* | [**createQuestionResult**](docs/Api/DefaultApi.md#createquestionresult) | **POST** /api/v1/question-results | 
 *DefaultApi* | [**createSubscription**](docs/Api/DefaultApi.md#createsubscription) | **POST** /api/v1/subscriptions | 
+*DefaultApi* | [**createTenant**](docs/Api/DefaultApi.md#createtenant) | **POST** /api/v1/tenants | 
+*DefaultApi* | [**createTenantPackage**](docs/Api/DefaultApi.md#createtenantpackage) | **POST** /api/v1/tenant-packages | 
+*DefaultApi* | [**createTenantUser**](docs/Api/DefaultApi.md#createtenantuser) | **POST** /api/v1/tenant-users | 
 *DefaultApi* | [**createUserBadge**](docs/Api/DefaultApi.md#createuserbadge) | **POST** /api/v1/user-badges | 
+*DefaultApi* | [**createVote**](docs/Api/DefaultApi.md#createvote) | **POST** /api/v1/votes | 
 *DefaultApi* | [**deleteComment**](docs/Api/DefaultApi.md#deletecomment) | **DELETE** /api/v1/comments/{id} | 
 *DefaultApi* | [**deleteDomainConfig**](docs/Api/DefaultApi.md#deletedomainconfig) | **DELETE** /api/v1/domain-configs/{domain} | 
+*DefaultApi* | [**deleteEmailTemplate**](docs/Api/DefaultApi.md#deleteemailtemplate) | **DELETE** /api/v1/email-templates/{id} | 
+*DefaultApi* | [**deleteEmailTemplateRenderError**](docs/Api/DefaultApi.md#deleteemailtemplaterendererror) | **DELETE** /api/v1/email-templates/{id}/render-errors/{errorId} | 
+*DefaultApi* | [**deleteHashTag**](docs/Api/DefaultApi.md#deletehashtag) | **DELETE** /api/v1/hash-tags/{tag} | 
+*DefaultApi* | [**deleteModerator**](docs/Api/DefaultApi.md#deletemoderator) | **DELETE** /api/v1/moderators/{id} | 
+*DefaultApi* | [**deleteNotificationCount**](docs/Api/DefaultApi.md#deletenotificationcount) | **DELETE** /api/v1/notification-count/{id} | 
 *DefaultApi* | [**deletePage**](docs/Api/DefaultApi.md#deletepage) | **DELETE** /api/v1/pages/{id} | 
+*DefaultApi* | [**deletePendingWebhookEvent**](docs/Api/DefaultApi.md#deletependingwebhookevent) | **DELETE** /api/v1/pending-webhook-events/{id} | 
+*DefaultApi* | [**deleteQuestionConfig**](docs/Api/DefaultApi.md#deletequestionconfig) | **DELETE** /api/v1/question-configs/{id} | 
+*DefaultApi* | [**deleteQuestionResult**](docs/Api/DefaultApi.md#deletequestionresult) | **DELETE** /api/v1/question-results/{id} | 
 *DefaultApi* | [**deleteSSOUser**](docs/Api/DefaultApi.md#deletessouser) | **DELETE** /api/v1/sso-users/{id} | 
 *DefaultApi* | [**deleteSubscription**](docs/Api/DefaultApi.md#deletesubscription) | **DELETE** /api/v1/subscriptions/{id} | 
+*DefaultApi* | [**deleteTenant**](docs/Api/DefaultApi.md#deletetenant) | **DELETE** /api/v1/tenants/{id} | 
+*DefaultApi* | [**deleteTenantPackage**](docs/Api/DefaultApi.md#deletetenantpackage) | **DELETE** /api/v1/tenant-packages/{id} | 
+*DefaultApi* | [**deleteTenantUser**](docs/Api/DefaultApi.md#deletetenantuser) | **DELETE** /api/v1/tenant-users/{id} | 
 *DefaultApi* | [**deleteUserBadge**](docs/Api/DefaultApi.md#deleteuserbadge) | **DELETE** /api/v1/user-badges/{id} | 
+*DefaultApi* | [**deleteVote**](docs/Api/DefaultApi.md#deletevote) | **DELETE** /api/v1/votes/{id} | 
 *DefaultApi* | [**flagComment**](docs/Api/DefaultApi.md#flagcomment) | **POST** /api/v1/comments/{id}/flag | 
 *DefaultApi* | [**getAuditLogs**](docs/Api/DefaultApi.md#getauditlogs) | **GET** /api/v1/audit-logs | 
+*DefaultApi* | [**getCachedNotificationCount**](docs/Api/DefaultApi.md#getcachednotificationcount) | **GET** /api/v1/notification-count/{id} | 
 *DefaultApi* | [**getComment**](docs/Api/DefaultApi.md#getcomment) | **GET** /api/v1/comments/{id} | 
 *DefaultApi* | [**getComments**](docs/Api/DefaultApi.md#getcomments) | **GET** /api/v1/comments | 
 *DefaultApi* | [**getDomainConfig**](docs/Api/DefaultApi.md#getdomainconfig) | **GET** /api/v1/domain-configs/{domain} | 
 *DefaultApi* | [**getDomainConfigs**](docs/Api/DefaultApi.md#getdomainconfigs) | **GET** /api/v1/domain-configs | 
+*DefaultApi* | [**getEmailTemplate**](docs/Api/DefaultApi.md#getemailtemplate) | **GET** /api/v1/email-templates/{id} | 
+*DefaultApi* | [**getEmailTemplateDefinitions**](docs/Api/DefaultApi.md#getemailtemplatedefinitions) | **GET** /api/v1/email-templates/definitions | 
+*DefaultApi* | [**getEmailTemplateRenderErrors**](docs/Api/DefaultApi.md#getemailtemplaterendererrors) | **GET** /api/v1/email-templates/{id}/render-errors | 
+*DefaultApi* | [**getEmailTemplates**](docs/Api/DefaultApi.md#getemailtemplates) | **GET** /api/v1/email-templates | 
 *DefaultApi* | [**getFeedPosts**](docs/Api/DefaultApi.md#getfeedposts) | **GET** /api/v1/feed-posts | 
+*DefaultApi* | [**getHashTags**](docs/Api/DefaultApi.md#gethashtags) | **GET** /api/v1/hash-tags | 
+*DefaultApi* | [**getModerator**](docs/Api/DefaultApi.md#getmoderator) | **GET** /api/v1/moderators/{id} | 
+*DefaultApi* | [**getModerators**](docs/Api/DefaultApi.md#getmoderators) | **GET** /api/v1/moderators | 
+*DefaultApi* | [**getNotificationCount**](docs/Api/DefaultApi.md#getnotificationcount) | **GET** /api/v1/notifications/count | 
+*DefaultApi* | [**getNotifications**](docs/Api/DefaultApi.md#getnotifications) | **GET** /api/v1/notifications | 
 *DefaultApi* | [**getPageByURLId**](docs/Api/DefaultApi.md#getpagebyurlid) | **GET** /api/v1/pages/by-url-id | 
 *DefaultApi* | [**getPages**](docs/Api/DefaultApi.md#getpages) | **GET** /api/v1/pages | 
+*DefaultApi* | [**getPendingWebhookEventCount**](docs/Api/DefaultApi.md#getpendingwebhookeventcount) | **GET** /api/v1/pending-webhook-events/count | 
+*DefaultApi* | [**getPendingWebhookEvents**](docs/Api/DefaultApi.md#getpendingwebhookevents) | **GET** /api/v1/pending-webhook-events | 
+*DefaultApi* | [**getQuestionConfig**](docs/Api/DefaultApi.md#getquestionconfig) | **GET** /api/v1/question-configs/{id} | 
+*DefaultApi* | [**getQuestionConfigs**](docs/Api/DefaultApi.md#getquestionconfigs) | **GET** /api/v1/question-configs | 
+*DefaultApi* | [**getQuestionResult**](docs/Api/DefaultApi.md#getquestionresult) | **GET** /api/v1/question-results/{id} | 
+*DefaultApi* | [**getQuestionResults**](docs/Api/DefaultApi.md#getquestionresults) | **GET** /api/v1/question-results | 
 *DefaultApi* | [**getSSOUserByEmail**](docs/Api/DefaultApi.md#getssouserbyemail) | **GET** /api/v1/sso-users/by-email/{email} | 
 *DefaultApi* | [**getSSOUserById**](docs/Api/DefaultApi.md#getssouserbyid) | **GET** /api/v1/sso-users/by-id/{id} | 
 *DefaultApi* | [**getSSOUsers**](docs/Api/DefaultApi.md#getssousers) | **GET** /api/v1/sso-users | 
 *DefaultApi* | [**getSubscriptions**](docs/Api/DefaultApi.md#getsubscriptions) | **GET** /api/v1/subscriptions | 
+*DefaultApi* | [**getTenant**](docs/Api/DefaultApi.md#gettenant) | **GET** /api/v1/tenants/{id} | 
+*DefaultApi* | [**getTenantDailyUsages**](docs/Api/DefaultApi.md#gettenantdailyusages) | **GET** /api/v1/tenant-daily-usage | 
+*DefaultApi* | [**getTenantPackage**](docs/Api/DefaultApi.md#gettenantpackage) | **GET** /api/v1/tenant-packages/{id} | 
+*DefaultApi* | [**getTenantPackages**](docs/Api/DefaultApi.md#gettenantpackages) | **GET** /api/v1/tenant-packages | 
+*DefaultApi* | [**getTenantUser**](docs/Api/DefaultApi.md#gettenantuser) | **GET** /api/v1/tenant-users/{id} | 
+*DefaultApi* | [**getTenantUsers**](docs/Api/DefaultApi.md#gettenantusers) | **GET** /api/v1/tenant-users | 
+*DefaultApi* | [**getTenants**](docs/Api/DefaultApi.md#gettenants) | **GET** /api/v1/tenants | 
+*DefaultApi* | [**getUser**](docs/Api/DefaultApi.md#getuser) | **GET** /api/v1/users/{id} | 
 *DefaultApi* | [**getUserBadge**](docs/Api/DefaultApi.md#getuserbadge) | **GET** /api/v1/user-badges/{id} | 
 *DefaultApi* | [**getUserBadgeProgressById**](docs/Api/DefaultApi.md#getuserbadgeprogressbyid) | **GET** /api/v1/user-badge-progress/{id} | 
 *DefaultApi* | [**getUserBadgeProgressByUserId**](docs/Api/DefaultApi.md#getuserbadgeprogressbyuserid) | **GET** /api/v1/user-badge-progress/user/{userId} | 
 *DefaultApi* | [**getUserBadgeProgressList**](docs/Api/DefaultApi.md#getuserbadgeprogresslist) | **GET** /api/v1/user-badge-progress | 
 *DefaultApi* | [**getUserBadges**](docs/Api/DefaultApi.md#getuserbadges) | **GET** /api/v1/user-badges | 
+*DefaultApi* | [**getVotes**](docs/Api/DefaultApi.md#getvotes) | **GET** /api/v1/votes | 
+*DefaultApi* | [**getVotesForUser**](docs/Api/DefaultApi.md#getvotesforuser) | **GET** /api/v1/votes/for-user | 
 *DefaultApi* | [**patchDomainConfig**](docs/Api/DefaultApi.md#patchdomainconfig) | **PATCH** /api/v1/domain-configs/{domainToUpdate} | 
+*DefaultApi* | [**patchHashTag**](docs/Api/DefaultApi.md#patchhashtag) | **PATCH** /api/v1/hash-tags/{tag} | 
 *DefaultApi* | [**patchPage**](docs/Api/DefaultApi.md#patchpage) | **PATCH** /api/v1/pages/{id} | 
 *DefaultApi* | [**patchSSOUser**](docs/Api/DefaultApi.md#patchssouser) | **PATCH** /api/v1/sso-users/{id} | 
 *DefaultApi* | [**putDomainConfig**](docs/Api/DefaultApi.md#putdomainconfig) | **PUT** /api/v1/domain-configs/{domainToUpdate} | 
 *DefaultApi* | [**putSSOUser**](docs/Api/DefaultApi.md#putssouser) | **PUT** /api/v1/sso-users/{id} | 
+*DefaultApi* | [**renderEmailTemplate**](docs/Api/DefaultApi.md#renderemailtemplate) | **POST** /api/v1/email-templates/render | 
+*DefaultApi* | [**replaceTenantPackage**](docs/Api/DefaultApi.md#replacetenantpackage) | **PUT** /api/v1/tenant-packages/{id} | 
+*DefaultApi* | [**replaceTenantUser**](docs/Api/DefaultApi.md#replacetenantuser) | **PUT** /api/v1/tenant-users/{id} | 
 *DefaultApi* | [**saveComment**](docs/Api/DefaultApi.md#savecomment) | **POST** /api/v1/comments | 
 *DefaultApi* | [**saveCommentsBulk**](docs/Api/DefaultApi.md#savecommentsbulk) | **POST** /api/v1/comments/bulk | 
+*DefaultApi* | [**sendInvite**](docs/Api/DefaultApi.md#sendinvite) | **POST** /api/v1/moderators/{id}/send-invite | 
+*DefaultApi* | [**sendLoginLink**](docs/Api/DefaultApi.md#sendloginlink) | **POST** /api/v1/tenant-users/{id}/send-login-link | 
 *DefaultApi* | [**unBlockUserFromComment**](docs/Api/DefaultApi.md#unblockuserfromcomment) | **POST** /api/v1/comments/{id}/un-block | 
 *DefaultApi* | [**unFlagComment**](docs/Api/DefaultApi.md#unflagcomment) | **POST** /api/v1/comments/{id}/un-flag | 
 *DefaultApi* | [**updateComment**](docs/Api/DefaultApi.md#updatecomment) | **PATCH** /api/v1/comments/{id} | 
+*DefaultApi* | [**updateEmailTemplate**](docs/Api/DefaultApi.md#updateemailtemplate) | **PATCH** /api/v1/email-templates/{id} | 
 *DefaultApi* | [**updateFeedPost**](docs/Api/DefaultApi.md#updatefeedpost) | **PATCH** /api/v1/feed-posts/{id} | 
+*DefaultApi* | [**updateModerator**](docs/Api/DefaultApi.md#updatemoderator) | **PATCH** /api/v1/moderators/{id} | 
+*DefaultApi* | [**updateNotification**](docs/Api/DefaultApi.md#updatenotification) | **PATCH** /api/v1/notifications/{id} | 
+*DefaultApi* | [**updateQuestionConfig**](docs/Api/DefaultApi.md#updatequestionconfig) | **PATCH** /api/v1/question-configs/{id} | 
+*DefaultApi* | [**updateQuestionResult**](docs/Api/DefaultApi.md#updatequestionresult) | **PATCH** /api/v1/question-results/{id} | 
+*DefaultApi* | [**updateTenant**](docs/Api/DefaultApi.md#updatetenant) | **PATCH** /api/v1/tenants/{id} | 
+*DefaultApi* | [**updateTenantPackage**](docs/Api/DefaultApi.md#updatetenantpackage) | **PATCH** /api/v1/tenant-packages/{id} | 
+*DefaultApi* | [**updateTenantUser**](docs/Api/DefaultApi.md#updatetenantuser) | **PATCH** /api/v1/tenant-users/{id} | 
 *DefaultApi* | [**updateUserBadge**](docs/Api/DefaultApi.md#updateuserbadge) | **PUT** /api/v1/user-badges/{id} | 
 *PublicApi* | [**blockFromCommentPublic**](docs/Api/PublicApi.md#blockfromcommentpublic) | **POST** /block-from-comment/{commentId} | 
 *PublicApi* | [**checkedCommentsForBlocked**](docs/Api/PublicApi.md#checkedcommentsforblocked) | **GET** /check-blocked-comments | 
@@ -168,6 +230,7 @@ Class | Method | HTTP request | Description
 - [APIComment](docs/Model/APIComment.md)
 - [APICommentBase](docs/Model/APICommentBase.md)
 - [APICreateUserBadgeResponse](docs/Model/APICreateUserBadgeResponse.md)
+- [APIDomainConfiguration](docs/Model/APIDomainConfiguration.md)
 - [APIEmptyResponse](docs/Model/APIEmptyResponse.md)
 - [APIEmptySuccessResponse](docs/Model/APIEmptySuccessResponse.md)
 - [APIError](docs/Model/APIError.md)
@@ -180,10 +243,14 @@ Class | Method | HTTP request | Description
 - [APIPage](docs/Model/APIPage.md)
 - [APISSOUser](docs/Model/APISSOUser.md)
 - [APIStatus](docs/Model/APIStatus.md)
+- [APITenant](docs/Model/APITenant.md)
+- [APITenantDailyUsage](docs/Model/APITenantDailyUsage.md)
 - [APIUserSubscription](docs/Model/APIUserSubscription.md)
 - [AddDomainConfig200Response](docs/Model/AddDomainConfig200Response.md)
 - [AddDomainConfig200ResponseAnyOf](docs/Model/AddDomainConfig200ResponseAnyOf.md)
 - [AddDomainConfigParams](docs/Model/AddDomainConfigParams.md)
+- [AddHashTag200Response](docs/Model/AddHashTag200Response.md)
+- [AddHashTagsBulk200Response](docs/Model/AddHashTagsBulk200Response.md)
 - [AddPageAPIResponse](docs/Model/AddPageAPIResponse.md)
 - [AddSSOUserAPIResponse](docs/Model/AddSSOUserAPIResponse.md)
 - [AggregateQuestionResults200Response](docs/Model/AggregateQuestionResults200Response.md)
@@ -197,6 +264,7 @@ Class | Method | HTTP request | Description
 - [AggregationResponse](docs/Model/AggregationResponse.md)
 - [AggregationResponseStats](docs/Model/AggregationResponseStats.md)
 - [AggregationValue](docs/Model/AggregationValue.md)
+- [BillingInfo](docs/Model/BillingInfo.md)
 - [BlockFromCommentParams](docs/Model/BlockFromCommentParams.md)
 - [BlockFromCommentPublic200Response](docs/Model/BlockFromCommentPublic200Response.md)
 - [BlockSuccess](docs/Model/BlockSuccess.md)
@@ -204,6 +272,9 @@ Class | Method | HTTP request | Description
 - [BulkAggregateQuestionResults200Response](docs/Model/BulkAggregateQuestionResults200Response.md)
 - [BulkAggregateQuestionResultsRequest](docs/Model/BulkAggregateQuestionResultsRequest.md)
 - [BulkAggregateQuestionResultsResponse](docs/Model/BulkAggregateQuestionResultsResponse.md)
+- [BulkCreateHashTagsBody](docs/Model/BulkCreateHashTagsBody.md)
+- [BulkCreateHashTagsBodyTagsInner](docs/Model/BulkCreateHashTagsBodyTagsInner.md)
+- [BulkCreateHashTagsResponse](docs/Model/BulkCreateHashTagsResponse.md)
 - [ChangeCommentPinStatusResponse](docs/Model/ChangeCommentPinStatusResponse.md)
 - [CheckBlockedCommentsResponse](docs/Model/CheckBlockedCommentsResponse.md)
 - [CheckedCommentsForBlocked200Response](docs/Model/CheckedCommentsForBlocked200Response.md)
@@ -227,15 +298,41 @@ Class | Method | HTTP request | Description
 - [CreateAPIUserSubscriptionData](docs/Model/CreateAPIUserSubscriptionData.md)
 - [CreateCommentParams](docs/Model/CreateCommentParams.md)
 - [CreateCommentPublic200Response](docs/Model/CreateCommentPublic200Response.md)
+- [CreateEmailTemplate200Response](docs/Model/CreateEmailTemplate200Response.md)
+- [CreateEmailTemplateBody](docs/Model/CreateEmailTemplateBody.md)
+- [CreateEmailTemplateResponse](docs/Model/CreateEmailTemplateResponse.md)
 - [CreateFeedPost200Response](docs/Model/CreateFeedPost200Response.md)
 - [CreateFeedPostParams](docs/Model/CreateFeedPostParams.md)
 - [CreateFeedPostPublic200Response](docs/Model/CreateFeedPostPublic200Response.md)
 - [CreateFeedPostResponse](docs/Model/CreateFeedPostResponse.md)
 - [CreateFeedPostsResponse](docs/Model/CreateFeedPostsResponse.md)
+- [CreateHashTagBody](docs/Model/CreateHashTagBody.md)
+- [CreateHashTagResponse](docs/Model/CreateHashTagResponse.md)
+- [CreateModerator200Response](docs/Model/CreateModerator200Response.md)
+- [CreateModeratorBody](docs/Model/CreateModeratorBody.md)
+- [CreateModeratorResponse](docs/Model/CreateModeratorResponse.md)
+- [CreateQuestionConfig200Response](docs/Model/CreateQuestionConfig200Response.md)
+- [CreateQuestionConfigBody](docs/Model/CreateQuestionConfigBody.md)
+- [CreateQuestionConfigResponse](docs/Model/CreateQuestionConfigResponse.md)
+- [CreateQuestionResult200Response](docs/Model/CreateQuestionResult200Response.md)
+- [CreateQuestionResultBody](docs/Model/CreateQuestionResultBody.md)
+- [CreateQuestionResultResponse](docs/Model/CreateQuestionResultResponse.md)
 - [CreateSubscriptionAPIResponse](docs/Model/CreateSubscriptionAPIResponse.md)
+- [CreateTenant200Response](docs/Model/CreateTenant200Response.md)
+- [CreateTenantBody](docs/Model/CreateTenantBody.md)
+- [CreateTenantPackage200Response](docs/Model/CreateTenantPackage200Response.md)
+- [CreateTenantPackageBody](docs/Model/CreateTenantPackageBody.md)
+- [CreateTenantPackageResponse](docs/Model/CreateTenantPackageResponse.md)
+- [CreateTenantResponse](docs/Model/CreateTenantResponse.md)
+- [CreateTenantUser200Response](docs/Model/CreateTenantUser200Response.md)
+- [CreateTenantUserBody](docs/Model/CreateTenantUserBody.md)
+- [CreateTenantUserResponse](docs/Model/CreateTenantUserResponse.md)
 - [CreateUserBadge200Response](docs/Model/CreateUserBadge200Response.md)
 - [CreateUserBadgeParams](docs/Model/CreateUserBadgeParams.md)
+- [CreateVote200Response](docs/Model/CreateVote200Response.md)
+- [CreateVoteResponse](docs/Model/CreateVoteResponse.md)
 - [CustomConfigParameters](docs/Model/CustomConfigParameters.md)
+- [CustomEmailTemplate](docs/Model/CustomEmailTemplate.md)
 - [DeleteComment200Response](docs/Model/DeleteComment200Response.md)
 - [DeleteCommentAction](docs/Model/DeleteCommentAction.md)
 - [DeleteCommentPublic200Response](docs/Model/DeleteCommentPublic200Response.md)
@@ -244,10 +341,16 @@ Class | Method | HTTP request | Description
 - [DeleteDomainConfig200Response](docs/Model/DeleteDomainConfig200Response.md)
 - [DeleteFeedPostPublic200Response](docs/Model/DeleteFeedPostPublic200Response.md)
 - [DeleteFeedPostPublic200ResponseAnyOf](docs/Model/DeleteFeedPostPublic200ResponseAnyOf.md)
+- [DeleteHashTagRequest](docs/Model/DeleteHashTagRequest.md)
 - [DeletePageAPIResponse](docs/Model/DeletePageAPIResponse.md)
 - [DeleteSSOUserAPIResponse](docs/Model/DeleteSSOUserAPIResponse.md)
 - [DeleteSubscriptionAPIResponse](docs/Model/DeleteSubscriptionAPIResponse.md)
+- [DeleteVote200Response](docs/Model/DeleteVote200Response.md)
+- [DeleteVoteResponse](docs/Model/DeleteVoteResponse.md)
 - [DeletedCommentResultComment](docs/Model/DeletedCommentResultComment.md)
+- [DigestEmailFrequency](docs/Model/DigestEmailFrequency.md)
+- [EmailTemplateDefinition](docs/Model/EmailTemplateDefinition.md)
+- [EmailTemplateRenderErrorResponse](docs/Model/EmailTemplateRenderErrorResponse.md)
 - [EventLogEntry](docs/Model/EventLogEntry.md)
 - [FComment](docs/Model/FComment.md)
 - [FCommentMeta](docs/Model/FCommentMeta.md)
@@ -264,6 +367,8 @@ Class | Method | HTTP request | Description
 - [FlagCommentResponse](docs/Model/FlagCommentResponse.md)
 - [GetAuditLogs200Response](docs/Model/GetAuditLogs200Response.md)
 - [GetAuditLogsResponse](docs/Model/GetAuditLogsResponse.md)
+- [GetCachedNotificationCount200Response](docs/Model/GetCachedNotificationCount200Response.md)
+- [GetCachedNotificationCountResponse](docs/Model/GetCachedNotificationCountResponse.md)
 - [GetComment200Response](docs/Model/GetComment200Response.md)
 - [GetCommentText200Response](docs/Model/GetCommentText200Response.md)
 - [GetCommentVoteUserNames200Response](docs/Model/GetCommentVoteUserNames200Response.md)
@@ -276,20 +381,65 @@ Class | Method | HTTP request | Description
 - [GetDomainConfigs200Response](docs/Model/GetDomainConfigs200Response.md)
 - [GetDomainConfigs200ResponseAnyOf](docs/Model/GetDomainConfigs200ResponseAnyOf.md)
 - [GetDomainConfigs200ResponseAnyOf1](docs/Model/GetDomainConfigs200ResponseAnyOf1.md)
+- [GetEmailTemplate200Response](docs/Model/GetEmailTemplate200Response.md)
+- [GetEmailTemplateDefinitions200Response](docs/Model/GetEmailTemplateDefinitions200Response.md)
+- [GetEmailTemplateDefinitionsResponse](docs/Model/GetEmailTemplateDefinitionsResponse.md)
+- [GetEmailTemplateRenderErrors200Response](docs/Model/GetEmailTemplateRenderErrors200Response.md)
+- [GetEmailTemplateRenderErrorsResponse](docs/Model/GetEmailTemplateRenderErrorsResponse.md)
+- [GetEmailTemplateResponse](docs/Model/GetEmailTemplateResponse.md)
+- [GetEmailTemplates200Response](docs/Model/GetEmailTemplates200Response.md)
+- [GetEmailTemplatesResponse](docs/Model/GetEmailTemplatesResponse.md)
 - [GetEventLog200Response](docs/Model/GetEventLog200Response.md)
 - [GetEventLogResponse](docs/Model/GetEventLogResponse.md)
 - [GetFeedPosts200Response](docs/Model/GetFeedPosts200Response.md)
 - [GetFeedPostsPublic200Response](docs/Model/GetFeedPostsPublic200Response.md)
 - [GetFeedPostsResponse](docs/Model/GetFeedPostsResponse.md)
 - [GetFeedPostsStats200Response](docs/Model/GetFeedPostsStats200Response.md)
+- [GetHashTags200Response](docs/Model/GetHashTags200Response.md)
+- [GetHashTagsResponse](docs/Model/GetHashTagsResponse.md)
+- [GetModerator200Response](docs/Model/GetModerator200Response.md)
+- [GetModeratorResponse](docs/Model/GetModeratorResponse.md)
+- [GetModerators200Response](docs/Model/GetModerators200Response.md)
+- [GetModeratorsResponse](docs/Model/GetModeratorsResponse.md)
 - [GetMyNotificationsResponse](docs/Model/GetMyNotificationsResponse.md)
+- [GetNotificationCount200Response](docs/Model/GetNotificationCount200Response.md)
+- [GetNotificationCountResponse](docs/Model/GetNotificationCountResponse.md)
+- [GetNotifications200Response](docs/Model/GetNotifications200Response.md)
+- [GetNotificationsResponse](docs/Model/GetNotificationsResponse.md)
 - [GetPageByURLIdAPIResponse](docs/Model/GetPageByURLIdAPIResponse.md)
 - [GetPagesAPIResponse](docs/Model/GetPagesAPIResponse.md)
+- [GetPendingWebhookEventCount200Response](docs/Model/GetPendingWebhookEventCount200Response.md)
+- [GetPendingWebhookEventCountResponse](docs/Model/GetPendingWebhookEventCountResponse.md)
+- [GetPendingWebhookEvents200Response](docs/Model/GetPendingWebhookEvents200Response.md)
+- [GetPendingWebhookEventsResponse](docs/Model/GetPendingWebhookEventsResponse.md)
 - [GetPublicFeedPostsResponse](docs/Model/GetPublicFeedPostsResponse.md)
+- [GetQuestionConfig200Response](docs/Model/GetQuestionConfig200Response.md)
+- [GetQuestionConfigResponse](docs/Model/GetQuestionConfigResponse.md)
+- [GetQuestionConfigs200Response](docs/Model/GetQuestionConfigs200Response.md)
+- [GetQuestionConfigsResponse](docs/Model/GetQuestionConfigsResponse.md)
+- [GetQuestionResult200Response](docs/Model/GetQuestionResult200Response.md)
+- [GetQuestionResultResponse](docs/Model/GetQuestionResultResponse.md)
+- [GetQuestionResults200Response](docs/Model/GetQuestionResults200Response.md)
+- [GetQuestionResultsResponse](docs/Model/GetQuestionResultsResponse.md)
 - [GetSSOUserByEmailAPIResponse](docs/Model/GetSSOUserByEmailAPIResponse.md)
 - [GetSSOUserByIdAPIResponse](docs/Model/GetSSOUserByIdAPIResponse.md)
 - [GetSSOUsers200Response](docs/Model/GetSSOUsers200Response.md)
 - [GetSubscriptionsAPIResponse](docs/Model/GetSubscriptionsAPIResponse.md)
+- [GetTenant200Response](docs/Model/GetTenant200Response.md)
+- [GetTenantDailyUsages200Response](docs/Model/GetTenantDailyUsages200Response.md)
+- [GetTenantDailyUsagesResponse](docs/Model/GetTenantDailyUsagesResponse.md)
+- [GetTenantPackage200Response](docs/Model/GetTenantPackage200Response.md)
+- [GetTenantPackageResponse](docs/Model/GetTenantPackageResponse.md)
+- [GetTenantPackages200Response](docs/Model/GetTenantPackages200Response.md)
+- [GetTenantPackagesResponse](docs/Model/GetTenantPackagesResponse.md)
+- [GetTenantResponse](docs/Model/GetTenantResponse.md)
+- [GetTenantUser200Response](docs/Model/GetTenantUser200Response.md)
+- [GetTenantUserResponse](docs/Model/GetTenantUserResponse.md)
+- [GetTenantUsers200Response](docs/Model/GetTenantUsers200Response.md)
+- [GetTenantUsersResponse](docs/Model/GetTenantUsersResponse.md)
+- [GetTenants200Response](docs/Model/GetTenants200Response.md)
+- [GetTenantsResponse](docs/Model/GetTenantsResponse.md)
+- [GetUser200Response](docs/Model/GetUser200Response.md)
 - [GetUserBadge200Response](docs/Model/GetUserBadge200Response.md)
 - [GetUserBadgeProgressById200Response](docs/Model/GetUserBadgeProgressById200Response.md)
 - [GetUserBadgeProgressList200Response](docs/Model/GetUserBadgeProgressList200Response.md)
@@ -300,22 +450,31 @@ Class | Method | HTTP request | Description
 - [GetUserPresenceStatuses200Response](docs/Model/GetUserPresenceStatuses200Response.md)
 - [GetUserPresenceStatusesResponse](docs/Model/GetUserPresenceStatusesResponse.md)
 - [GetUserReactsPublic200Response](docs/Model/GetUserReactsPublic200Response.md)
+- [GetUserResponse](docs/Model/GetUserResponse.md)
+- [GetVotes200Response](docs/Model/GetVotes200Response.md)
+- [GetVotesForUser200Response](docs/Model/GetVotesForUser200Response.md)
+- [GetVotesForUserResponse](docs/Model/GetVotesForUserResponse.md)
+- [GetVotesResponse](docs/Model/GetVotesResponse.md)
 - [GifRating](docs/Model/GifRating.md)
 - [HeaderState](docs/Model/HeaderState.md)
 - [IgnoredResponse](docs/Model/IgnoredResponse.md)
 - [ImageContentProfanityLevel](docs/Model/ImageContentProfanityLevel.md)
+- [ImportedSiteType](docs/Model/ImportedSiteType.md)
 - [LiveEvent](docs/Model/LiveEvent.md)
 - [LiveEventExtraInfo](docs/Model/LiveEventExtraInfo.md)
 - [LiveEventType](docs/Model/LiveEventType.md)
 - [LockComment200Response](docs/Model/LockComment200Response.md)
 - [MediaAsset](docs/Model/MediaAsset.md)
 - [MetaItem](docs/Model/MetaItem.md)
+- [Moderator](docs/Model/Moderator.md)
 - [NotificationAndCount](docs/Model/NotificationAndCount.md)
 - [NotificationObjectType](docs/Model/NotificationObjectType.md)
 - [NotificationType](docs/Model/NotificationType.md)
 - [PatchDomainConfigParams](docs/Model/PatchDomainConfigParams.md)
+- [PatchHashTag200Response](docs/Model/PatchHashTag200Response.md)
 - [PatchPageAPIResponse](docs/Model/PatchPageAPIResponse.md)
 - [PatchSSOUserAPIResponse](docs/Model/PatchSSOUserAPIResponse.md)
+- [PendingCommentToSyncOutbound](docs/Model/PendingCommentToSyncOutbound.md)
 - [PinComment200Response](docs/Model/PinComment200Response.md)
 - [PubSubComment](docs/Model/PubSubComment.md)
 - [PubSubCommentBase](docs/Model/PubSubCommentBase.md)
@@ -327,9 +486,12 @@ Class | Method | HTTP request | Description
 - [PublicComment](docs/Model/PublicComment.md)
 - [PublicCommentBase](docs/Model/PublicCommentBase.md)
 - [PublicFeedPostsResponse](docs/Model/PublicFeedPostsResponse.md)
+- [PublicVote](docs/Model/PublicVote.md)
 - [PutSSOUserAPIResponse](docs/Model/PutSSOUserAPIResponse.md)
 - [QueryPredicate](docs/Model/QueryPredicate.md)
 - [QueryPredicateValue](docs/Model/QueryPredicateValue.md)
+- [QuestionConfig](docs/Model/QuestionConfig.md)
+- [QuestionConfigCustomOptionsInner](docs/Model/QuestionConfigCustomOptionsInner.md)
 - [QuestionDatum](docs/Model/QuestionDatum.md)
 - [QuestionRenderingType](docs/Model/QuestionRenderingType.md)
 - [QuestionResult](docs/Model/QuestionResult.md)
@@ -341,9 +503,14 @@ Class | Method | HTTP request | Description
 - [ReactFeedPostResponse](docs/Model/ReactFeedPostResponse.md)
 - [RecordStringBeforeStringOrNullAfterStringOrNullValue](docs/Model/RecordStringBeforeStringOrNullAfterStringOrNullValue.md)
 - [RecordStringStringOrNumberValue](docs/Model/RecordStringStringOrNumberValue.md)
+- [RenderEmailTemplate200Response](docs/Model/RenderEmailTemplate200Response.md)
+- [RenderEmailTemplateBody](docs/Model/RenderEmailTemplateBody.md)
+- [RenderEmailTemplateResponse](docs/Model/RenderEmailTemplateResponse.md)
 - [RenderableUserNotification](docs/Model/RenderableUserNotification.md)
 - [RepeatCommentCheckIgnoredReason](docs/Model/RepeatCommentCheckIgnoredReason.md)
 - [RepeatCommentHandlingAction](docs/Model/RepeatCommentHandlingAction.md)
+- [ReplaceTenantPackageBody](docs/Model/ReplaceTenantPackageBody.md)
+- [ReplaceTenantUserBody](docs/Model/ReplaceTenantUserBody.md)
 - [ResetUserNotifications200Response](docs/Model/ResetUserNotifications200Response.md)
 - [ResetUserNotificationsResponse](docs/Model/ResetUserNotificationsResponse.md)
 - [SORTDIR](docs/Model/SORTDIR.md)
@@ -359,6 +526,8 @@ Class | Method | HTTP request | Description
 - [SizePreset](docs/Model/SizePreset.md)
 - [SortDirections](docs/Model/SortDirections.md)
 - [SpamRule](docs/Model/SpamRule.md)
+- [TenantHashTag](docs/Model/TenantHashTag.md)
+- [TenantPackage](docs/Model/TenantPackage.md)
 - [UnBlockCommentPublic200Response](docs/Model/UnBlockCommentPublic200Response.md)
 - [UnBlockFromCommentParams](docs/Model/UnBlockFromCommentParams.md)
 - [UnblockSuccess](docs/Model/UnblockSuccess.md)
@@ -366,14 +535,26 @@ Class | Method | HTTP request | Description
 - [UpdateAPIPageData](docs/Model/UpdateAPIPageData.md)
 - [UpdateAPISSOUserData](docs/Model/UpdateAPISSOUserData.md)
 - [UpdateDomainConfigParams](docs/Model/UpdateDomainConfigParams.md)
+- [UpdateEmailTemplateBody](docs/Model/UpdateEmailTemplateBody.md)
 - [UpdateFeedPostParams](docs/Model/UpdateFeedPostParams.md)
+- [UpdateHashTagBody](docs/Model/UpdateHashTagBody.md)
+- [UpdateHashTagResponse](docs/Model/UpdateHashTagResponse.md)
+- [UpdateModeratorBody](docs/Model/UpdateModeratorBody.md)
+- [UpdateNotificationBody](docs/Model/UpdateNotificationBody.md)
+- [UpdateQuestionConfigBody](docs/Model/UpdateQuestionConfigBody.md)
+- [UpdateQuestionResultBody](docs/Model/UpdateQuestionResultBody.md)
+- [UpdateTenantBody](docs/Model/UpdateTenantBody.md)
+- [UpdateTenantPackageBody](docs/Model/UpdateTenantPackageBody.md)
+- [UpdateTenantUserBody](docs/Model/UpdateTenantUserBody.md)
 - [UpdateUserBadge200Response](docs/Model/UpdateUserBadge200Response.md)
 - [UpdateUserBadgeParams](docs/Model/UpdateUserBadgeParams.md)
 - [UpdateUserNotificationStatus200Response](docs/Model/UpdateUserNotificationStatus200Response.md)
 - [UploadImageResponse](docs/Model/UploadImageResponse.md)
+- [User](docs/Model/User.md)
 - [UserBadge](docs/Model/UserBadge.md)
 - [UserBadgeProgress](docs/Model/UserBadgeProgress.md)
 - [UserNotification](docs/Model/UserNotification.md)
+- [UserNotificationCount](docs/Model/UserNotificationCount.md)
 - [UserNotificationWriteResponse](docs/Model/UserNotificationWriteResponse.md)
 - [UserPresenceData](docs/Model/UserPresenceData.md)
 - [UserReactsResponse](docs/Model/UserReactsResponse.md)

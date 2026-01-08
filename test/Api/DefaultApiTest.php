@@ -85,6 +85,30 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for addHashTag
+     *
+     * .
+     *
+     */
+    public function testAddHashTag()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for addHashTagsBulk
+     *
+     * .
+     *
+     */
+    public function testAddHashTagsBulk()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for addPage
      *
      * .
@@ -169,12 +193,60 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for createEmailTemplate
+     *
+     * .
+     *
+     */
+    public function testCreateEmailTemplate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for createFeedPost
      *
      * .
      *
      */
     public function testCreateFeedPost()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for createModerator
+     *
+     * .
+     *
+     */
+    public function testCreateModerator()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for createQuestionConfig
+     *
+     * .
+     *
+     */
+    public function testCreateQuestionConfig()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for createQuestionResult
+     *
+     * .
+     *
+     */
+    public function testCreateQuestionResult()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -193,12 +265,60 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for createTenant
+     *
+     * .
+     *
+     */
+    public function testCreateTenant()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for createTenantPackage
+     *
+     * .
+     *
+     */
+    public function testCreateTenantPackage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for createTenantUser
+     *
+     * .
+     *
+     */
+    public function testCreateTenantUser()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for createUserBadge
      *
      * .
      *
      */
     public function testCreateUserBadge()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for createVote
+     *
+     * .
+     *
+     */
+    public function testCreateVote()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -229,12 +349,108 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for deleteEmailTemplate
+     *
+     * .
+     *
+     */
+    public function testDeleteEmailTemplate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deleteEmailTemplateRenderError
+     *
+     * .
+     *
+     */
+    public function testDeleteEmailTemplateRenderError()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deleteHashTag
+     *
+     * .
+     *
+     */
+    public function testDeleteHashTag()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deleteModerator
+     *
+     * .
+     *
+     */
+    public function testDeleteModerator()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deleteNotificationCount
+     *
+     * .
+     *
+     */
+    public function testDeleteNotificationCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for deletePage
      *
      * .
      *
      */
     public function testDeletePage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deletePendingWebhookEvent
+     *
+     * .
+     *
+     */
+    public function testDeletePendingWebhookEvent()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deleteQuestionConfig
+     *
+     * .
+     *
+     */
+    public function testDeleteQuestionConfig()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deleteQuestionResult
+     *
+     * .
+     *
+     */
+    public function testDeleteQuestionResult()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -265,12 +481,60 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for deleteTenant
+     *
+     * .
+     *
+     */
+    public function testDeleteTenant()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deleteTenantPackage
+     *
+     * .
+     *
+     */
+    public function testDeleteTenantPackage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deleteTenantUser
+     *
+     * .
+     *
+     */
+    public function testDeleteTenantUser()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for deleteUserBadge
      *
      * .
      *
      */
     public function testDeleteUserBadge()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deleteVote
+     *
+     * .
+     *
+     */
+    public function testDeleteVote()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -295,6 +559,18 @@ class DefaultApiTest extends TestCase
      *
      */
     public function testGetAuditLogs()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getCachedNotificationCount
+     *
+     * .
+     *
+     */
+    public function testGetCachedNotificationCount()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -349,12 +625,120 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for getEmailTemplate
+     *
+     * .
+     *
+     */
+    public function testGetEmailTemplate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getEmailTemplateDefinitions
+     *
+     * .
+     *
+     */
+    public function testGetEmailTemplateDefinitions()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getEmailTemplateRenderErrors
+     *
+     * .
+     *
+     */
+    public function testGetEmailTemplateRenderErrors()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getEmailTemplates
+     *
+     * .
+     *
+     */
+    public function testGetEmailTemplates()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getFeedPosts
      *
      * .
      *
      */
     public function testGetFeedPosts()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getHashTags
+     *
+     * .
+     *
+     */
+    public function testGetHashTags()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getModerator
+     *
+     * .
+     *
+     */
+    public function testGetModerator()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getModerators
+     *
+     * .
+     *
+     */
+    public function testGetModerators()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getNotificationCount
+     *
+     * .
+     *
+     */
+    public function testGetNotificationCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getNotifications
+     *
+     * .
+     *
+     */
+    public function testGetNotifications()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -379,6 +763,78 @@ class DefaultApiTest extends TestCase
      *
      */
     public function testGetPages()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getPendingWebhookEventCount
+     *
+     * .
+     *
+     */
+    public function testGetPendingWebhookEventCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getPendingWebhookEvents
+     *
+     * .
+     *
+     */
+    public function testGetPendingWebhookEvents()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getQuestionConfig
+     *
+     * .
+     *
+     */
+    public function testGetQuestionConfig()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getQuestionConfigs
+     *
+     * .
+     *
+     */
+    public function testGetQuestionConfigs()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getQuestionResult
+     *
+     * .
+     *
+     */
+    public function testGetQuestionResult()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getQuestionResults
+     *
+     * .
+     *
+     */
+    public function testGetQuestionResults()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -427,6 +883,102 @@ class DefaultApiTest extends TestCase
      *
      */
     public function testGetSubscriptions()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getTenant
+     *
+     * .
+     *
+     */
+    public function testGetTenant()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getTenantDailyUsages
+     *
+     * .
+     *
+     */
+    public function testGetTenantDailyUsages()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getTenantPackage
+     *
+     * .
+     *
+     */
+    public function testGetTenantPackage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getTenantPackages
+     *
+     * .
+     *
+     */
+    public function testGetTenantPackages()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getTenantUser
+     *
+     * .
+     *
+     */
+    public function testGetTenantUser()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getTenantUsers
+     *
+     * .
+     *
+     */
+    public function testGetTenantUsers()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getTenants
+     *
+     * .
+     *
+     */
+    public function testGetTenants()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getUser
+     *
+     * .
+     *
+     */
+    public function testGetUser()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -493,12 +1045,48 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for getVotes
+     *
+     * .
+     *
+     */
+    public function testGetVotes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getVotesForUser
+     *
+     * .
+     *
+     */
+    public function testGetVotesForUser()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for patchDomainConfig
      *
      * .
      *
      */
     public function testPatchDomainConfig()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for patchHashTag
+     *
+     * .
+     *
+     */
+    public function testPatchHashTag()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -553,6 +1141,42 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for renderEmailTemplate
+     *
+     * .
+     *
+     */
+    public function testRenderEmailTemplate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for replaceTenantPackage
+     *
+     * .
+     *
+     */
+    public function testReplaceTenantPackage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for replaceTenantUser
+     *
+     * .
+     *
+     */
+    public function testReplaceTenantUser()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for saveComment
      *
      * .
@@ -571,6 +1195,30 @@ class DefaultApiTest extends TestCase
      *
      */
     public function testSaveCommentsBulk()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for sendInvite
+     *
+     * .
+     *
+     */
+    public function testSendInvite()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for sendLoginLink
+     *
+     * .
+     *
+     */
+    public function testSendLoginLink()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -613,12 +1261,108 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for updateEmailTemplate
+     *
+     * .
+     *
+     */
+    public function testUpdateEmailTemplate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for updateFeedPost
      *
      * .
      *
      */
     public function testUpdateFeedPost()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateModerator
+     *
+     * .
+     *
+     */
+    public function testUpdateModerator()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateNotification
+     *
+     * .
+     *
+     */
+    public function testUpdateNotification()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateQuestionConfig
+     *
+     * .
+     *
+     */
+    public function testUpdateQuestionConfig()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateQuestionResult
+     *
+     * .
+     *
+     */
+    public function testUpdateQuestionResult()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateTenant
+     *
+     * .
+     *
+     */
+    public function testUpdateTenant()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateTenantPackage
+     *
+     * .
+     *
+     */
+    public function testUpdateTenantPackage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateTenantUser
+     *
+     * .
+     *
+     */
+    public function testUpdateTenantUser()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

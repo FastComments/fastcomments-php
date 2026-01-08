@@ -466,4 +466,31 @@ class CommentLogDataTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "invalid_locale"
+     */
+    public function testPropertyInvalidLocale()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "detected_locale"
+     */
+    public function testPropertyDetectedLocale()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "detected_language"
+     */
+    public function testPropertyDetectedLanguage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

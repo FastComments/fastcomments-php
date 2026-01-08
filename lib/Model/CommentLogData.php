@@ -100,7 +100,10 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
         'flag_count_before' => 'float',
         'trust_factor_before' => 'float',
         'trust_factor_after' => 'float',
-        'referenced_comment_id' => 'string'
+        'referenced_comment_id' => 'string',
+        'invalid_locale' => 'string',
+        'detected_locale' => 'string',
+        'detected_language' => 'string'
     ];
 
     /**
@@ -153,7 +156,10 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
         'flag_count_before' => 'double',
         'trust_factor_before' => 'double',
         'trust_factor_after' => 'double',
-        'referenced_comment_id' => null
+        'referenced_comment_id' => null,
+        'invalid_locale' => null,
+        'detected_locale' => null,
+        'detected_language' => null
     ];
 
     /**
@@ -204,7 +210,10 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
         'flag_count_before' => true,
         'trust_factor_before' => false,
         'trust_factor_after' => false,
-        'referenced_comment_id' => false
+        'referenced_comment_id' => false,
+        'invalid_locale' => false,
+        'detected_locale' => false,
+        'detected_language' => false
     ];
 
     /**
@@ -335,7 +344,10 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
         'flag_count_before' => 'flagCountBefore',
         'trust_factor_before' => 'trustFactorBefore',
         'trust_factor_after' => 'trustFactorAfter',
-        'referenced_comment_id' => 'referencedCommentId'
+        'referenced_comment_id' => 'referencedCommentId',
+        'invalid_locale' => 'invalidLocale',
+        'detected_locale' => 'detectedLocale',
+        'detected_language' => 'detectedLanguage'
     ];
 
     /**
@@ -386,7 +398,10 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
         'flag_count_before' => 'setFlagCountBefore',
         'trust_factor_before' => 'setTrustFactorBefore',
         'trust_factor_after' => 'setTrustFactorAfter',
-        'referenced_comment_id' => 'setReferencedCommentId'
+        'referenced_comment_id' => 'setReferencedCommentId',
+        'invalid_locale' => 'setInvalidLocale',
+        'detected_locale' => 'setDetectedLocale',
+        'detected_language' => 'setDetectedLanguage'
     ];
 
     /**
@@ -437,7 +452,10 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
         'flag_count_before' => 'getFlagCountBefore',
         'trust_factor_before' => 'getTrustFactorBefore',
         'trust_factor_after' => 'getTrustFactorAfter',
-        'referenced_comment_id' => 'getReferencedCommentId'
+        'referenced_comment_id' => 'getReferencedCommentId',
+        'invalid_locale' => 'getInvalidLocale',
+        'detected_locale' => 'getDetectedLocale',
+        'detected_language' => 'getDetectedLanguage'
     ];
 
     /**
@@ -553,6 +571,9 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('trust_factor_before', $data ?? [], null);
         $this->setIfExists('trust_factor_after', $data ?? [], null);
         $this->setIfExists('referenced_comment_id', $data ?? [], null);
+        $this->setIfExists('invalid_locale', $data ?? [], null);
+        $this->setIfExists('detected_locale', $data ?? [], null);
+        $this->setIfExists('detected_language', $data ?? [], null);
     }
 
     /**
@@ -1843,6 +1864,87 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable referenced_comment_id cannot be null');
         }
         $this->container['referenced_comment_id'] = $referenced_comment_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets invalid_locale
+     *
+     * @return string|null
+     */
+    public function getInvalidLocale()
+    {
+        return $this->container['invalid_locale'];
+    }
+
+    /**
+     * Sets invalid_locale
+     *
+     * @param string|null $invalid_locale invalid_locale
+     *
+     * @return self
+     */
+    public function setInvalidLocale($invalid_locale)
+    {
+        if (is_null($invalid_locale)) {
+            throw new \InvalidArgumentException('non-nullable invalid_locale cannot be null');
+        }
+        $this->container['invalid_locale'] = $invalid_locale;
+
+        return $this;
+    }
+
+    /**
+     * Gets detected_locale
+     *
+     * @return string|null
+     */
+    public function getDetectedLocale()
+    {
+        return $this->container['detected_locale'];
+    }
+
+    /**
+     * Sets detected_locale
+     *
+     * @param string|null $detected_locale detected_locale
+     *
+     * @return self
+     */
+    public function setDetectedLocale($detected_locale)
+    {
+        if (is_null($detected_locale)) {
+            throw new \InvalidArgumentException('non-nullable detected_locale cannot be null');
+        }
+        $this->container['detected_locale'] = $detected_locale;
+
+        return $this;
+    }
+
+    /**
+     * Gets detected_language
+     *
+     * @return string|null
+     */
+    public function getDetectedLanguage()
+    {
+        return $this->container['detected_language'];
+    }
+
+    /**
+     * Sets detected_language
+     *
+     * @param string|null $detected_language detected_language
+     *
+     * @return self
+     */
+    public function setDetectedLanguage($detected_language)
+    {
+        if (is_null($detected_language)) {
+            throw new \InvalidArgumentException('non-nullable detected_language cannot be null');
+        }
+        $this->container['detected_language'] = $detected_language;
 
         return $this;
     }

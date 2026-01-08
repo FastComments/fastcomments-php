@@ -153,6 +153,8 @@ class CommentLogType
 
     public const NUMBER_54 = 54;
 
+    public const NUMBER_55 = 55;
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -214,7 +216,8 @@ class CommentLogType
             self::NUMBER_51,
             self::NUMBER_52,
             self::NUMBER_53,
-            self::NUMBER_54
+            self::NUMBER_54,
+            self::NUMBER_55
         ];
     }
 }

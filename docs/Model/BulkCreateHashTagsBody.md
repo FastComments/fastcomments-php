@@ -1,0 +1,10 @@
+# # BulkCreateHashTagsBody
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**tenant_id** | **string** |  | [optional]
+**tags** | [**\FastComments\Client\Model\BulkCreateHashTagsBodyTagsInner[]**](BulkCreateHashTagsBodyTagsInner.md) |  |
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
