@@ -108,8 +108,6 @@ docs/Model/CreateTenantUserBody.md
 docs/Model/CreateTenantUserResponse.md
 docs/Model/CreateUserBadge200Response.md
 docs/Model/CreateUserBadgeParams.md
-docs/Model/CreateVote200Response.md
-docs/Model/CreateVoteResponse.md
 docs/Model/CustomConfigParameters.md
 docs/Model/CustomEmailTemplate.md
 docs/Model/DeleteComment200Response.md
@@ -124,8 +122,6 @@ docs/Model/DeleteHashTagRequest.md
 docs/Model/DeletePageAPIResponse.md
 docs/Model/DeleteSSOUserAPIResponse.md
 docs/Model/DeleteSubscriptionAPIResponse.md
-docs/Model/DeleteVote200Response.md
-docs/Model/DeleteVoteResponse.md
 docs/Model/DeletedCommentResultComment.md
 docs/Model/DigestEmailFrequency.md
 docs/Model/EmailTemplateDefinition.md
@@ -455,8 +451,6 @@ lib/Model/CreateTenantUserBody.php
 lib/Model/CreateTenantUserResponse.php
 lib/Model/CreateUserBadge200Response.php
 lib/Model/CreateUserBadgeParams.php
-lib/Model/CreateVote200Response.php
-lib/Model/CreateVoteResponse.php
 lib/Model/CustomConfigParameters.php
 lib/Model/CustomEmailTemplate.php
 lib/Model/DeleteComment200Response.php
@@ -471,8 +465,6 @@ lib/Model/DeleteHashTagRequest.php
 lib/Model/DeletePageAPIResponse.php
 lib/Model/DeleteSSOUserAPIResponse.php
 lib/Model/DeleteSubscriptionAPIResponse.php
-lib/Model/DeleteVote200Response.php
-lib/Model/DeleteVoteResponse.php
 lib/Model/DeletedCommentResultComment.php
 lib/Model/DigestEmailFrequency.php
 lib/Model/EmailTemplateDefinition.php
@@ -801,8 +793,6 @@ test/Model/CreateTenantUserBodyTest.php
 test/Model/CreateTenantUserResponseTest.php
 test/Model/CreateUserBadge200ResponseTest.php
 test/Model/CreateUserBadgeParamsTest.php
-test/Model/CreateVote200ResponseTest.php
-test/Model/CreateVoteResponseTest.php
 test/Model/CustomConfigParametersTest.php
 test/Model/CustomEmailTemplateTest.php
 test/Model/DeleteComment200ResponseTest.php
@@ -817,8 +807,6 @@ test/Model/DeleteHashTagRequestTest.php
 test/Model/DeletePageAPIResponseTest.php
 test/Model/DeleteSSOUserAPIResponseTest.php
 test/Model/DeleteSubscriptionAPIResponseTest.php
-test/Model/DeleteVote200ResponseTest.php
-test/Model/DeleteVoteResponseTest.php
 test/Model/DeletedCommentResultCommentTest.php
 test/Model/DigestEmailFrequencyTest.php
 test/Model/EmailTemplateDefinitionTest.php
