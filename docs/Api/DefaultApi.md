@@ -1406,7 +1406,7 @@ try {
 ## `createVote()`
 
 ```php
-createVote($tenant_id, $comment_id, $direction, $user_id, $anon_user_id): \FastComments\Client\Model\CreateVote200Response
+createVote($tenant_id, $comment_id, $direction, $user_id, $anon_user_id): \FastComments\Client\Model\VoteComment200Response
 ```
 
 
@@ -1456,7 +1456,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateVote200Response**](../Model/CreateVote200Response.md)
+[**\FastComments\Client\Model\VoteComment200Response**](../Model/VoteComment200Response.md)
 
 ### Authorization
 
@@ -2550,7 +2550,7 @@ try {
 ## `deleteVote()`
 
 ```php
-deleteVote($tenant_id, $id, $edit_key): \FastComments\Client\Model\DeleteVote200Response
+deleteVote($tenant_id, $id, $edit_key): \FastComments\Client\Model\DeleteCommentVote200Response
 ```
 
 
@@ -2596,7 +2596,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\DeleteVote200Response**](../Model/DeleteVote200Response.md)
+[**\FastComments\Client\Model\DeleteCommentVote200Response**](../Model/DeleteCommentVote200Response.md)
 
 ### Authorization
 

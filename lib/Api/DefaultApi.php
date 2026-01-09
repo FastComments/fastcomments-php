@@ -7424,7 +7424,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\CreateVote200Response
+     * @return \FastComments\Client\Model\VoteComment200Response
      */
     public function createVote($tenant_id, $comment_id, $direction, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['createVote'][0])
     {
@@ -7446,7 +7446,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\CreateVote200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\VoteComment200Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function createVoteWithHttpInfo($tenant_id, $comment_id, $direction, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['createVote'][0])
     {
@@ -7477,11 +7477,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\CreateVote200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\VoteComment200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\CreateVote200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\VoteComment200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -7499,7 +7499,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateVote200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\VoteComment200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -7518,7 +7518,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\CreateVote200Response';
+            $returnType = '\FastComments\Client\Model\VoteComment200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7551,7 +7551,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\CreateVote200Response',
+                        '\FastComments\Client\Model\VoteComment200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7603,7 +7603,7 @@ class DefaultApi
      */
     public function createVoteAsyncWithHttpInfo($tenant_id, $comment_id, $direction, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['createVote'][0])
     {
-        $returnType = '\FastComments\Client\Model\CreateVote200Response';
+        $returnType = '\FastComments\Client\Model\VoteComment200Response';
         $request = $this->createVoteRequest($tenant_id, $comment_id, $direction, $user_id, $anon_user_id, $contentType);
 
         return $this->client
@@ -13648,7 +13648,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\DeleteVote200Response
+     * @return \FastComments\Client\Model\DeleteCommentVote200Response
      */
     public function deleteVote($tenant_id, $id, $edit_key = null, string $contentType = self::contentTypes['deleteVote'][0])
     {
@@ -13668,7 +13668,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\DeleteVote200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\DeleteCommentVote200Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteVoteWithHttpInfo($tenant_id, $id, $edit_key = null, string $contentType = self::contentTypes['deleteVote'][0])
     {
@@ -13699,11 +13699,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\DeleteVote200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\DeleteCommentVote200Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\DeleteVote200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\DeleteCommentVote200Response' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -13721,7 +13721,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\DeleteVote200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\DeleteCommentVote200Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -13740,7 +13740,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\DeleteVote200Response';
+            $returnType = '\FastComments\Client\Model\DeleteCommentVote200Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -13773,7 +13773,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\DeleteVote200Response',
+                        '\FastComments\Client\Model\DeleteCommentVote200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -13821,7 +13821,7 @@ class DefaultApi
      */
     public function deleteVoteAsyncWithHttpInfo($tenant_id, $id, $edit_key = null, string $contentType = self::contentTypes['deleteVote'][0])
     {
-        $returnType = '\FastComments\Client\Model\DeleteVote200Response';
+        $returnType = '\FastComments\Client\Model\DeleteCommentVote200Response';
         $request = $this->deleteVoteRequest($tenant_id, $id, $edit_key, $contentType);
 
         return $this->client
