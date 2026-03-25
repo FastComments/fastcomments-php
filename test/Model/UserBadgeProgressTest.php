@@ -151,4 +151,13 @@ class UserBadgeProgressTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "tos_accepted_at"
+     */
+    public function testPropertyTosAcceptedAt()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

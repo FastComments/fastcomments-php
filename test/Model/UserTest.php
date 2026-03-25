@@ -144,6 +144,24 @@ class UserTest extends TestCase
     }
 
     /**
+     * Test attribute "backup_email"
+     */
+    public function testPropertyBackupEmail()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "pending_backup_email"
+     */
+    public function testPropertyPendingBackupEmail()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "sign_up_date"
      */
     public function testPropertySignUpDate()
@@ -342,6 +360,15 @@ class UserTest extends TestCase
     }
 
     /**
+     * Test attribute "is_site_admin"
+     */
+    public function testPropertyIsSiteAdmin()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "moderator_ids"
      */
     public function testPropertyModeratorIds()
@@ -381,6 +408,42 @@ class UserTest extends TestCase
      * Test attribute "digest_email_frequency"
      */
     public function testPropertyDigestEmailFrequency()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "notification_frequency"
+     */
+    public function testPropertyNotificationFrequency()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "admin_notification_frequency"
+     */
+    public function testPropertyAdminNotificationFrequency()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "last_tenant_notification_sent_date"
+     */
+    public function testPropertyLastTenantNotificationSentDate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "last_reply_notification_sent_date"
+     */
+    public function testPropertyLastReplyNotificationSentDate()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -534,6 +597,15 @@ class UserTest extends TestCase
      * Test attribute "has_two_factor"
      */
     public function testPropertyHasTwoFactor()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "is_email_suppressed"
+     */
+    public function testPropertyIsEmailSuppressed()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

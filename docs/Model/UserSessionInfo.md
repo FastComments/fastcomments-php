@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **group_ids** | **string[]** |  | [optional]
 **has_blocked_users** | **bool** |  | [optional]
 **is_anon_session** | **bool** |  | [optional]
+**needs_tos** | **bool** |  | [optional]
 **session_id** | **string** |  | [optional]
 **username** | **string** |  | [optional]
 **website_url** | **string** |  | [optional]

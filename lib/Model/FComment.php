@@ -128,7 +128,8 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_ids' => 'string[]',
         'view_count' => 'int',
         'requires_verification' => 'bool',
-        'edit_key' => 'string'
+        'edit_key' => 'string',
+        'tos_accepted_at' => '\DateTime'
     ];
 
     /**
@@ -209,7 +210,8 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_ids' => null,
         'view_count' => 'int64',
         'requires_verification' => null,
-        'edit_key' => null
+        'edit_key' => null,
+        'tos_accepted_at' => 'date-time'
     ];
 
     /**
@@ -288,7 +290,8 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_ids' => true,
         'view_count' => true,
         'requires_verification' => false,
-        'edit_key' => false
+        'edit_key' => false,
+        'tos_accepted_at' => false
     ];
 
     /**
@@ -447,7 +450,8 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_ids' => 'groupIds',
         'view_count' => 'viewCount',
         'requires_verification' => 'requiresVerification',
-        'edit_key' => 'editKey'
+        'edit_key' => 'editKey',
+        'tos_accepted_at' => 'tosAcceptedAt'
     ];
 
     /**
@@ -526,7 +530,8 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_ids' => 'setGroupIds',
         'view_count' => 'setViewCount',
         'requires_verification' => 'setRequiresVerification',
-        'edit_key' => 'setEditKey'
+        'edit_key' => 'setEditKey',
+        'tos_accepted_at' => 'setTosAcceptedAt'
     ];
 
     /**
@@ -605,7 +610,8 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_ids' => 'getGroupIds',
         'view_count' => 'getViewCount',
         'requires_verification' => 'getRequiresVerification',
-        'edit_key' => 'getEditKey'
+        'edit_key' => 'getEditKey',
+        'tos_accepted_at' => 'getTosAcceptedAt'
     ];
 
     /**
@@ -736,6 +742,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('view_count', $data ?? [], null);
         $this->setIfExists('requires_verification', $data ?? [], null);
         $this->setIfExists('edit_key', $data ?? [], null);
+        $this->setIfExists('tos_accepted_at', $data ?? [], null);
     }
 
     /**
@@ -2957,6 +2964,33 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable edit_key cannot be null');
         }
         $this->container['edit_key'] = $edit_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets tos_accepted_at
+     *
+     * @return \DateTime|null
+     */
+    public function getTosAcceptedAt()
+    {
+        return $this->container['tos_accepted_at'];
+    }
+
+    /**
+     * Sets tos_accepted_at
+     *
+     * @param \DateTime|null $tos_accepted_at tos_accepted_at
+     *
+     * @return self
+     */
+    public function setTosAcceptedAt($tos_accepted_at)
+    {
+        if (is_null($tos_accepted_at)) {
+            throw new \InvalidArgumentException('non-nullable tos_accepted_at cannot be null');
+        }
+        $this->container['tos_accepted_at'] = $tos_accepted_at;
 
         return $this;
     }

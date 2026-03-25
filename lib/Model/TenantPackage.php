@@ -77,6 +77,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'max_domains' => 'float',
         'max_white_labeled_tenants' => 'float',
         'max_monthly_event_log_requests' => 'float',
+        'max_custom_collection_size' => 'float',
         'has_white_labeling' => 'bool',
         'has_debranding' => 'bool',
         'has_llm_spam_detection' => 'bool',
@@ -85,6 +86,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'has_auditing' => 'bool',
         'has_flex_pricing' => 'bool',
         'enable_saml' => 'bool',
+        'enable_canvas_lti' => 'bool',
         'flex_page_load_cost_cents' => 'float',
         'flex_page_load_unit' => 'float',
         'flex_comment_cost_cents' => 'float',
@@ -139,6 +141,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'max_domains' => 'double',
         'max_white_labeled_tenants' => 'double',
         'max_monthly_event_log_requests' => 'double',
+        'max_custom_collection_size' => 'double',
         'has_white_labeling' => null,
         'has_debranding' => null,
         'has_llm_spam_detection' => null,
@@ -147,6 +150,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'has_auditing' => null,
         'has_flex_pricing' => null,
         'enable_saml' => null,
+        'enable_canvas_lti' => null,
         'flex_page_load_cost_cents' => 'double',
         'flex_page_load_unit' => 'double',
         'flex_comment_cost_cents' => 'double',
@@ -199,6 +203,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'max_domains' => false,
         'max_white_labeled_tenants' => false,
         'max_monthly_event_log_requests' => false,
+        'max_custom_collection_size' => false,
         'has_white_labeling' => false,
         'has_debranding' => false,
         'has_llm_spam_detection' => false,
@@ -207,6 +212,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'has_auditing' => false,
         'has_flex_pricing' => false,
         'enable_saml' => false,
+        'enable_canvas_lti' => false,
         'flex_page_load_cost_cents' => false,
         'flex_page_load_unit' => false,
         'flex_comment_cost_cents' => false,
@@ -339,6 +345,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'max_domains' => 'maxDomains',
         'max_white_labeled_tenants' => 'maxWhiteLabeledTenants',
         'max_monthly_event_log_requests' => 'maxMonthlyEventLogRequests',
+        'max_custom_collection_size' => 'maxCustomCollectionSize',
         'has_white_labeling' => 'hasWhiteLabeling',
         'has_debranding' => 'hasDebranding',
         'has_llm_spam_detection' => 'hasLLMSpamDetection',
@@ -347,6 +354,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'has_auditing' => 'hasAuditing',
         'has_flex_pricing' => 'hasFlexPricing',
         'enable_saml' => 'enableSAML',
+        'enable_canvas_lti' => 'enableCanvasLTI',
         'flex_page_load_cost_cents' => 'flexPageLoadCostCents',
         'flex_page_load_unit' => 'flexPageLoadUnit',
         'flex_comment_cost_cents' => 'flexCommentCostCents',
@@ -399,6 +407,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'max_domains' => 'setMaxDomains',
         'max_white_labeled_tenants' => 'setMaxWhiteLabeledTenants',
         'max_monthly_event_log_requests' => 'setMaxMonthlyEventLogRequests',
+        'max_custom_collection_size' => 'setMaxCustomCollectionSize',
         'has_white_labeling' => 'setHasWhiteLabeling',
         'has_debranding' => 'setHasDebranding',
         'has_llm_spam_detection' => 'setHasLlmSpamDetection',
@@ -407,6 +416,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'has_auditing' => 'setHasAuditing',
         'has_flex_pricing' => 'setHasFlexPricing',
         'enable_saml' => 'setEnableSaml',
+        'enable_canvas_lti' => 'setEnableCanvasLti',
         'flex_page_load_cost_cents' => 'setFlexPageLoadCostCents',
         'flex_page_load_unit' => 'setFlexPageLoadUnit',
         'flex_comment_cost_cents' => 'setFlexCommentCostCents',
@@ -459,6 +469,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'max_domains' => 'getMaxDomains',
         'max_white_labeled_tenants' => 'getMaxWhiteLabeledTenants',
         'max_monthly_event_log_requests' => 'getMaxMonthlyEventLogRequests',
+        'max_custom_collection_size' => 'getMaxCustomCollectionSize',
         'has_white_labeling' => 'getHasWhiteLabeling',
         'has_debranding' => 'getHasDebranding',
         'has_llm_spam_detection' => 'getHasLlmSpamDetection',
@@ -467,6 +478,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'has_auditing' => 'getHasAuditing',
         'has_flex_pricing' => 'getHasFlexPricing',
         'enable_saml' => 'getEnableSaml',
+        'enable_canvas_lti' => 'getEnableCanvasLti',
         'flex_page_load_cost_cents' => 'getFlexPageLoadCostCents',
         'flex_page_load_unit' => 'getFlexPageLoadUnit',
         'flex_comment_cost_cents' => 'getFlexCommentCostCents',
@@ -570,6 +582,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('max_domains', $data ?? [], null);
         $this->setIfExists('max_white_labeled_tenants', $data ?? [], null);
         $this->setIfExists('max_monthly_event_log_requests', $data ?? [], null);
+        $this->setIfExists('max_custom_collection_size', $data ?? [], null);
         $this->setIfExists('has_white_labeling', $data ?? [], null);
         $this->setIfExists('has_debranding', $data ?? [], null);
         $this->setIfExists('has_llm_spam_detection', $data ?? [], null);
@@ -578,6 +591,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('has_auditing', $data ?? [], null);
         $this->setIfExists('has_flex_pricing', $data ?? [], null);
         $this->setIfExists('enable_saml', $data ?? [], null);
+        $this->setIfExists('enable_canvas_lti', $data ?? [], null);
         $this->setIfExists('flex_page_load_cost_cents', $data ?? [], null);
         $this->setIfExists('flex_page_load_unit', $data ?? [], null);
         $this->setIfExists('flex_comment_cost_cents', $data ?? [], null);
@@ -688,6 +702,9 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['max_monthly_event_log_requests'] === null) {
             $invalidProperties[] = "'max_monthly_event_log_requests' can't be null";
+        }
+        if ($this->container['max_custom_collection_size'] === null) {
+            $invalidProperties[] = "'max_custom_collection_size' can't be null";
         }
         if ($this->container['has_white_labeling'] === null) {
             $invalidProperties[] = "'has_white_labeling' can't be null";
@@ -1267,6 +1284,33 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets max_custom_collection_size
+     *
+     * @return float
+     */
+    public function getMaxCustomCollectionSize()
+    {
+        return $this->container['max_custom_collection_size'];
+    }
+
+    /**
+     * Sets max_custom_collection_size
+     *
+     * @param float $max_custom_collection_size max_custom_collection_size
+     *
+     * @return self
+     */
+    public function setMaxCustomCollectionSize($max_custom_collection_size)
+    {
+        if (is_null($max_custom_collection_size)) {
+            throw new \InvalidArgumentException('non-nullable max_custom_collection_size cannot be null');
+        }
+        $this->container['max_custom_collection_size'] = $max_custom_collection_size;
+
+        return $this;
+    }
+
+    /**
      * Gets has_white_labeling
      *
      * @return bool
@@ -1478,6 +1522,33 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable enable_saml cannot be null');
         }
         $this->container['enable_saml'] = $enable_saml;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_canvas_lti
+     *
+     * @return bool|null
+     */
+    public function getEnableCanvasLti()
+    {
+        return $this->container['enable_canvas_lti'];
+    }
+
+    /**
+     * Sets enable_canvas_lti
+     *
+     * @param bool|null $enable_canvas_lti enable_canvas_lti
+     *
+     * @return self
+     */
+    public function setEnableCanvasLti($enable_canvas_lti)
+    {
+        if (is_null($enable_canvas_lti)) {
+            throw new \InvalidArgumentException('non-nullable enable_canvas_lti cannot be null');
+        }
+        $this->container['enable_canvas_lti'] = $enable_canvas_lti;
 
         return $this;
     }

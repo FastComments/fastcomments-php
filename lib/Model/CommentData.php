@@ -81,7 +81,8 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         'from_offline_restore' => 'bool',
         'autoplay_delay_ms' => 'int',
         'feedback_ids' => 'string[]',
-        'question_values' => 'array<string,\FastComments\Client\Model\RecordStringStringOrNumberValue>'
+        'question_values' => 'array<string,\FastComments\Client\Model\RecordStringStringOrNumberValue>',
+        'tos' => 'bool'
     ];
 
     /**
@@ -115,7 +116,8 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         'from_offline_restore' => null,
         'autoplay_delay_ms' => 'int64',
         'feedback_ids' => null,
-        'question_values' => null
+        'question_values' => null,
+        'tos' => null
     ];
 
     /**
@@ -147,7 +149,8 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         'from_offline_restore' => false,
         'autoplay_delay_ms' => false,
         'feedback_ids' => false,
-        'question_values' => false
+        'question_values' => false,
+        'tos' => false
     ];
 
     /**
@@ -259,7 +262,8 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         'from_offline_restore' => 'fromOfflineRestore',
         'autoplay_delay_ms' => 'autoplayDelayMS',
         'feedback_ids' => 'feedbackIds',
-        'question_values' => 'questionValues'
+        'question_values' => 'questionValues',
+        'tos' => 'tos'
     ];
 
     /**
@@ -291,7 +295,8 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         'from_offline_restore' => 'setFromOfflineRestore',
         'autoplay_delay_ms' => 'setAutoplayDelayMs',
         'feedback_ids' => 'setFeedbackIds',
-        'question_values' => 'setQuestionValues'
+        'question_values' => 'setQuestionValues',
+        'tos' => 'setTos'
     ];
 
     /**
@@ -323,7 +328,8 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         'from_offline_restore' => 'getFromOfflineRestore',
         'autoplay_delay_ms' => 'getAutoplayDelayMs',
         'feedback_ids' => 'getFeedbackIds',
-        'question_values' => 'getQuestionValues'
+        'question_values' => 'getQuestionValues',
+        'tos' => 'getTos'
     ];
 
     /**
@@ -407,6 +413,7 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('autoplay_delay_ms', $data ?? [], null);
         $this->setIfExists('feedback_ids', $data ?? [], null);
         $this->setIfExists('question_values', $data ?? [], null);
+        $this->setIfExists('tos', $data ?? [], null);
     }
 
     /**
@@ -1142,6 +1149,33 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable question_values cannot be null');
         }
         $this->container['question_values'] = $question_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets tos
+     *
+     * @return bool|null
+     */
+    public function getTos()
+    {
+        return $this->container['tos'];
+    }
+
+    /**
+     * Sets tos
+     *
+     * @param bool|null $tos tos
+     *
+     * @return self
+     */
+    public function setTos($tos)
+    {
+        if (is_null($tos)) {
+            throw new \InvalidArgumentException('non-nullable tos cannot be null');
+        }
+        $this->container['tos'] = $tos;
 
         return $this;
     }

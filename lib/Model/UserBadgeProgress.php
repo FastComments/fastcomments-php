@@ -65,7 +65,8 @@ class UserBadgeProgress implements ModelInterface, ArrayAccess, \JsonSerializabl
         'first_comment_date' => '\DateTime',
         'auto_trust_factor' => 'float',
         'manual_trust_factor' => 'float',
-        'progress' => 'array<string,float>'
+        'progress' => 'array<string,float>',
+        'tos_accepted_at' => '\DateTime'
     ];
 
     /**
@@ -83,7 +84,8 @@ class UserBadgeProgress implements ModelInterface, ArrayAccess, \JsonSerializabl
         'first_comment_date' => 'date-time',
         'auto_trust_factor' => 'double',
         'manual_trust_factor' => 'double',
-        'progress' => 'double'
+        'progress' => 'double',
+        'tos_accepted_at' => 'date-time'
     ];
 
     /**
@@ -99,7 +101,8 @@ class UserBadgeProgress implements ModelInterface, ArrayAccess, \JsonSerializabl
         'first_comment_date' => false,
         'auto_trust_factor' => false,
         'manual_trust_factor' => false,
-        'progress' => false
+        'progress' => false,
+        'tos_accepted_at' => false
     ];
 
     /**
@@ -195,7 +198,8 @@ class UserBadgeProgress implements ModelInterface, ArrayAccess, \JsonSerializabl
         'first_comment_date' => 'firstCommentDate',
         'auto_trust_factor' => 'autoTrustFactor',
         'manual_trust_factor' => 'manualTrustFactor',
-        'progress' => 'progress'
+        'progress' => 'progress',
+        'tos_accepted_at' => 'tosAcceptedAt'
     ];
 
     /**
@@ -211,7 +215,8 @@ class UserBadgeProgress implements ModelInterface, ArrayAccess, \JsonSerializabl
         'first_comment_date' => 'setFirstCommentDate',
         'auto_trust_factor' => 'setAutoTrustFactor',
         'manual_trust_factor' => 'setManualTrustFactor',
-        'progress' => 'setProgress'
+        'progress' => 'setProgress',
+        'tos_accepted_at' => 'setTosAcceptedAt'
     ];
 
     /**
@@ -227,7 +232,8 @@ class UserBadgeProgress implements ModelInterface, ArrayAccess, \JsonSerializabl
         'first_comment_date' => 'getFirstCommentDate',
         'auto_trust_factor' => 'getAutoTrustFactor',
         'manual_trust_factor' => 'getManualTrustFactor',
-        'progress' => 'getProgress'
+        'progress' => 'getProgress',
+        'tos_accepted_at' => 'getTosAcceptedAt'
     ];
 
     /**
@@ -295,6 +301,7 @@ class UserBadgeProgress implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('auto_trust_factor', $data ?? [], null);
         $this->setIfExists('manual_trust_factor', $data ?? [], null);
         $this->setIfExists('progress', $data ?? [], null);
+        $this->setIfExists('tos_accepted_at', $data ?? [], null);
     }
 
     /**
@@ -569,6 +576,33 @@ class UserBadgeProgress implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable progress cannot be null');
         }
         $this->container['progress'] = $progress;
+
+        return $this;
+    }
+
+    /**
+     * Gets tos_accepted_at
+     *
+     * @return \DateTime|null
+     */
+    public function getTosAcceptedAt()
+    {
+        return $this->container['tos_accepted_at'];
+    }
+
+    /**
+     * Sets tos_accepted_at
+     *
+     * @param \DateTime|null $tos_accepted_at tos_accepted_at
+     *
+     * @return self
+     */
+    public function setTosAcceptedAt($tos_accepted_at)
+    {
+        if (is_null($tos_accepted_at)) {
+            throw new \InvalidArgumentException('non-nullable tos_accepted_at cannot be null');
+        }
+        $this->container['tos_accepted_at'] = $tos_accepted_at;
 
         return $this;
     }

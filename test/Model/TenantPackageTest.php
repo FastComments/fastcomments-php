@@ -252,6 +252,15 @@ class TenantPackageTest extends TestCase
     }
 
     /**
+     * Test attribute "max_custom_collection_size"
+     */
+    public function testPropertyMaxCustomCollectionSize()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "has_white_labeling"
      */
     public function testPropertyHasWhiteLabeling()
@@ -318,6 +327,15 @@ class TenantPackageTest extends TestCase
      * Test attribute "enable_saml"
      */
     public function testPropertyEnableSaml()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "enable_canvas_lti"
+     */
+    public function testPropertyEnableCanvasLti()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

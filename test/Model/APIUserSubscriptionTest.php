@@ -81,6 +81,15 @@ class APIUserSubscriptionTest extends TestCase
     }
 
     /**
+     * Test attribute "notification_frequency"
+     */
+    public function testPropertyNotificationFrequency()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "created_at"
      */
     public function testPropertyCreatedAt()

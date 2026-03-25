@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **website_url** | **string** |  | [optional]
 **email** | **string** |  |
 **pending_email** | **string** |  | [optional]
+**backup_email** | **string** |  | [optional]
+**pending_backup_email** | **string** |  | [optional]
 **sign_up_date** | **int** |  |
 **created_from_url_id** | **string** |  | [optional]
 **created_from_tenant_id** | **string** |  |
@@ -33,11 +35,16 @@ Name | Type | Description | Notes
 **is_manage_data_admin** | **bool** |  | [optional]
 **is_comment_moderator_admin** | **bool** |  | [optional]
 **is_api_admin** | **bool** |  | [optional]
+**is_site_admin** | **bool** |  | [optional]
 **moderator_ids** | **string[]** |  | [optional]
 **is_impersonator** | **bool** |  | [optional]
 **is_coupon_manager** | **bool** |  | [optional]
 **locale** | **string** |  | [optional]
 **digest_email_frequency** | [**\FastComments\Client\Model\DigestEmailFrequency**](DigestEmailFrequency.md) |  | [optional]
+**notification_frequency** | **float** |  | [optional]
+**admin_notification_frequency** | **float** |  | [optional]
+**last_tenant_notification_sent_date** | **\DateTime** |  | [optional]
+**last_reply_notification_sent_date** | **\DateTime** |  | [optional]
 **ignored_add_to_my_site_messages** | **bool** |  | [optional]
 **last_login_date** | **\DateTime** |  | [optional]
 **display_label** | **string** |  | [optional]
@@ -55,5 +62,6 @@ Name | Type | Description | Notes
 **country_flag** | **string** |  | [optional]
 **social_links** | **string[]** |  | [optional]
 **has_two_factor** | **bool** |  | [optional]
+**is_email_suppressed** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

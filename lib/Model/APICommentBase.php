@@ -93,7 +93,7 @@ class APICommentBase implements ModelInterface, ArrayAccess, \JsonSerializable
         'local_date_string' => 'string',
         'locale' => 'string',
         'mentions' => '\FastComments\Client\Model\CommentUserMentionInfo[]',
-        'meta' => '\FastComments\Client\Model\FCommentMeta',
+        'meta' => '\FastComments\Client\Model\APICommentBaseMeta',
         'moderation_group_ids' => 'string[]',
         'notification_sent_for_parent' => 'bool',
         'notification_sent_for_parent_tenant' => 'bool',
@@ -1747,7 +1747,7 @@ class APICommentBase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets meta
      *
-     * @return \FastComments\Client\Model\FCommentMeta|null
+     * @return \FastComments\Client\Model\APICommentBaseMeta|null
      */
     public function getMeta()
     {
@@ -1757,7 +1757,7 @@ class APICommentBase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets meta
      *
-     * @param \FastComments\Client\Model\FCommentMeta|null $meta meta
+     * @param \FastComments\Client\Model\APICommentBaseMeta|null $meta meta
      *
      * @return self
      */

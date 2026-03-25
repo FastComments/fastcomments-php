@@ -58,6 +58,7 @@ class FCommentMeta implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'wp_id' => 'string',
         'wp_user_id' => 'string',
         'wp_post_id' => 'string'
     ];
@@ -70,6 +71,7 @@ class FCommentMeta implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'wp_id' => null,
         'wp_user_id' => null,
         'wp_post_id' => null
     ];
@@ -80,6 +82,7 @@ class FCommentMeta implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'wp_id' => false,
         'wp_user_id' => false,
         'wp_post_id' => false
     ];
@@ -170,6 +173,7 @@ class FCommentMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'wp_id' => 'wpId',
         'wp_user_id' => 'wpUserId',
         'wp_post_id' => 'wpPostId'
     ];
@@ -180,6 +184,7 @@ class FCommentMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'wp_id' => 'setWpId',
         'wp_user_id' => 'setWpUserId',
         'wp_post_id' => 'setWpPostId'
     ];
@@ -190,6 +195,7 @@ class FCommentMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'wp_id' => 'getWpId',
         'wp_user_id' => 'getWpUserId',
         'wp_post_id' => 'getWpPostId'
     ];
@@ -251,6 +257,7 @@ class FCommentMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('wp_id', $data ?? [], null);
         $this->setIfExists('wp_user_id', $data ?? [], null);
         $this->setIfExists('wp_post_id', $data ?? [], null);
     }
@@ -296,6 +303,33 @@ class FCommentMeta implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets wp_id
+     *
+     * @return string|null
+     */
+    public function getWpId()
+    {
+        return $this->container['wp_id'];
+    }
+
+    /**
+     * Sets wp_id
+     *
+     * @param string|null $wp_id wp_id
+     *
+     * @return self
+     */
+    public function setWpId($wp_id)
+    {
+        if (is_null($wp_id)) {
+            throw new \InvalidArgumentException('non-nullable wp_id cannot be null');
+        }
+        $this->container['wp_id'] = $wp_id;
+
+        return $this;
+    }
 
     /**
      * Gets wp_user_id

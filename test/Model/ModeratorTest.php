@@ -241,4 +241,13 @@ class ModeratorTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "is_email_suppressed"
+     */
+    public function testPropertyIsEmailSuppressed()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

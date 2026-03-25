@@ -124,4 +124,13 @@ class HeaderStateTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "account_notifications"
+     */
+    public function testPropertyAccountNotifications()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

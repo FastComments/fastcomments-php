@@ -28,5 +28,6 @@ Name | Type | Description | Notes
 **autoplay_delay_ms** | **int** |  | [optional]
 **feedback_ids** | **string[]** |  | [optional]
 **question_values** | [**array<string,\FastComments\Client\Model\RecordStringStringOrNumberValue>**](RecordStringStringOrNumberValue.md) | Construct a type with a set of properties K of type T | [optional]
+**tos** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

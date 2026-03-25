@@ -69,6 +69,7 @@ class ReplaceTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeri
         'max_sso_users' => 'float',
         'max_moderators' => 'float',
         'max_domains' => 'float',
+        'max_custom_collection_size' => 'float',
         'has_debranding' => 'bool',
         'for_who_text' => 'string',
         'feature_taglines' => 'string[]',
@@ -109,6 +110,7 @@ class ReplaceTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeri
         'max_sso_users' => 'double',
         'max_moderators' => 'double',
         'max_domains' => 'double',
+        'max_custom_collection_size' => 'double',
         'has_debranding' => null,
         'for_who_text' => null,
         'feature_taglines' => null,
@@ -147,6 +149,7 @@ class ReplaceTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeri
         'max_sso_users' => false,
         'max_moderators' => false,
         'max_domains' => false,
+        'max_custom_collection_size' => false,
         'has_debranding' => false,
         'for_who_text' => false,
         'feature_taglines' => false,
@@ -265,6 +268,7 @@ class ReplaceTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeri
         'max_sso_users' => 'maxSSOUsers',
         'max_moderators' => 'maxModerators',
         'max_domains' => 'maxDomains',
+        'max_custom_collection_size' => 'maxCustomCollectionSize',
         'has_debranding' => 'hasDebranding',
         'for_who_text' => 'forWhoText',
         'feature_taglines' => 'featureTaglines',
@@ -303,6 +307,7 @@ class ReplaceTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeri
         'max_sso_users' => 'setMaxSsoUsers',
         'max_moderators' => 'setMaxModerators',
         'max_domains' => 'setMaxDomains',
+        'max_custom_collection_size' => 'setMaxCustomCollectionSize',
         'has_debranding' => 'setHasDebranding',
         'for_who_text' => 'setForWhoText',
         'feature_taglines' => 'setFeatureTaglines',
@@ -341,6 +346,7 @@ class ReplaceTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeri
         'max_sso_users' => 'getMaxSsoUsers',
         'max_moderators' => 'getMaxModerators',
         'max_domains' => 'getMaxDomains',
+        'max_custom_collection_size' => 'getMaxCustomCollectionSize',
         'has_debranding' => 'getHasDebranding',
         'for_who_text' => 'getForWhoText',
         'feature_taglines' => 'getFeatureTaglines',
@@ -430,6 +436,7 @@ class ReplaceTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('max_sso_users', $data ?? [], null);
         $this->setIfExists('max_moderators', $data ?? [], null);
         $this->setIfExists('max_domains', $data ?? [], null);
+        $this->setIfExists('max_custom_collection_size', $data ?? [], null);
         $this->setIfExists('has_debranding', $data ?? [], null);
         $this->setIfExists('for_who_text', $data ?? [], null);
         $this->setIfExists('feature_taglines', $data ?? [], null);
@@ -831,6 +838,33 @@ class ReplaceTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable max_domains cannot be null');
         }
         $this->container['max_domains'] = $max_domains;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_custom_collection_size
+     *
+     * @return float|null
+     */
+    public function getMaxCustomCollectionSize()
+    {
+        return $this->container['max_custom_collection_size'];
+    }
+
+    /**
+     * Sets max_custom_collection_size
+     *
+     * @param float|null $max_custom_collection_size max_custom_collection_size
+     *
+     * @return self
+     */
+    public function setMaxCustomCollectionSize($max_custom_collection_size)
+    {
+        if (is_null($max_custom_collection_size)) {
+            throw new \InvalidArgumentException('non-nullable max_custom_collection_size cannot be null');
+        }
+        $this->container['max_custom_collection_size'] = $max_custom_collection_size;
 
         return $this;
     }

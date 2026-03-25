@@ -181,6 +181,18 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for changeTicketState
+     *
+     * .
+     *
+     */
+    public function testChangeTicketState()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for combineCommentsWithQuestionResults
      *
      * .
@@ -295,6 +307,18 @@ class DefaultApiTest extends TestCase
      *
      */
     public function testCreateTenantUser()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for createTicket
+     *
+     * .
+     *
+     */
+    public function testCreateTicket()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -973,6 +997,30 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for getTicket
+     *
+     * .
+     *
+     */
+    public function testGetTicket()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getTickets
+     *
+     * .
+     *
+     */
+    public function testGetTickets()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getUser
      *
      * .
@@ -1327,6 +1375,18 @@ class DefaultApiTest extends TestCase
      *
      */
     public function testUpdateQuestionResult()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateSubscription
+     *
+     * .
+     *
+     */
+    public function testUpdateSubscription()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

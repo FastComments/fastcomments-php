@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **max_domains** | **float** |  |
 **max_white_labeled_tenants** | **float** |  |
 **max_monthly_event_log_requests** | **float** |  |
+**max_custom_collection_size** | **float** |  |
 **has_white_labeling** | **bool** |  |
 **has_debranding** | **bool** |  |
 **has_llm_spam_detection** | **bool** |  |
@@ -31,6 +32,7 @@ Name | Type | Description | Notes
 **has_auditing** | **bool** |  |
 **has_flex_pricing** | **bool** |  |
 **enable_saml** | **bool** |  | [optional]
+**enable_canvas_lti** | **bool** |  | [optional]
 **flex_page_load_cost_cents** | **float** |  | [optional]
 **flex_page_load_unit** | **float** |  | [optional]
 **flex_comment_cost_cents** | **float** |  | [optional]

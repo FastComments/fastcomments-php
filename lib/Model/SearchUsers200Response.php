@@ -59,6 +59,7 @@ class SearchUsers200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'status' => '\FastComments\Client\Model\APIStatus',
+        'sections' => '\FastComments\Client\Model\UserSearchSectionResult[]',
         'users' => '\FastComments\Client\Model\UserSearchResult[]',
         'reason' => 'string',
         'code' => 'string',
@@ -78,6 +79,7 @@ class SearchUsers200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'status' => null,
+        'sections' => null,
         'users' => null,
         'reason' => null,
         'code' => null,
@@ -95,6 +97,7 @@ class SearchUsers200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'status' => false,
+        'sections' => false,
         'users' => false,
         'reason' => false,
         'code' => false,
@@ -192,6 +195,7 @@ class SearchUsers200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'status' => 'status',
+        'sections' => 'sections',
         'users' => 'users',
         'reason' => 'reason',
         'code' => 'code',
@@ -209,6 +213,7 @@ class SearchUsers200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'status' => 'setStatus',
+        'sections' => 'setSections',
         'users' => 'setUsers',
         'reason' => 'setReason',
         'code' => 'setCode',
@@ -226,6 +231,7 @@ class SearchUsers200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'status' => 'getStatus',
+        'sections' => 'getSections',
         'users' => 'getUsers',
         'reason' => 'getReason',
         'code' => 'getCode',
@@ -294,6 +300,7 @@ class SearchUsers200Response implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(?array $data = null)
     {
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('sections', $data ?? [], null);
         $this->setIfExists('users', $data ?? [], null);
         $this->setIfExists('reason', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
@@ -333,6 +340,9 @@ class SearchUsers200Response implements ModelInterface, ArrayAccess, \JsonSerial
 
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['sections'] === null) {
+            $invalidProperties[] = "'sections' can't be null";
         }
         if ($this->container['users'] === null) {
             $invalidProperties[] = "'users' can't be null";
@@ -381,6 +391,33 @@ class SearchUsers200Response implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets sections
+     *
+     * @return \FastComments\Client\Model\UserSearchSectionResult[]
+     */
+    public function getSections()
+    {
+        return $this->container['sections'];
+    }
+
+    /**
+     * Sets sections
+     *
+     * @param \FastComments\Client\Model\UserSearchSectionResult[] $sections sections
+     *
+     * @return self
+     */
+    public function setSections($sections)
+    {
+        if (is_null($sections)) {
+            throw new \InvalidArgumentException('non-nullable sections cannot be null');
+        }
+        $this->container['sections'] = $sections;
 
         return $this;
     }

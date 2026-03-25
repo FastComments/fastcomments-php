@@ -58,6 +58,7 @@ class APIUserSubscription implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
+        'notification_frequency' => 'float',
         'created_at' => '\DateTime',
         'page_title' => 'string',
         'url' => 'string',
@@ -75,6 +76,7 @@ class APIUserSubscription implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'notification_frequency' => 'double',
         'created_at' => 'date-time',
         'page_title' => null,
         'url' => null,
@@ -90,6 +92,7 @@ class APIUserSubscription implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'notification_frequency' => false,
         'created_at' => false,
         'page_title' => false,
         'url' => false,
@@ -185,6 +188,7 @@ class APIUserSubscription implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
+        'notification_frequency' => 'notificationFrequency',
         'created_at' => 'createdAt',
         'page_title' => 'pageTitle',
         'url' => 'url',
@@ -200,6 +204,7 @@ class APIUserSubscription implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
+        'notification_frequency' => 'setNotificationFrequency',
         'created_at' => 'setCreatedAt',
         'page_title' => 'setPageTitle',
         'url' => 'setUrl',
@@ -215,6 +220,7 @@ class APIUserSubscription implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
+        'notification_frequency' => 'getNotificationFrequency',
         'created_at' => 'getCreatedAt',
         'page_title' => 'getPageTitle',
         'url' => 'getUrl',
@@ -281,6 +287,7 @@ class APIUserSubscription implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('notification_frequency', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('page_title', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
@@ -340,6 +347,33 @@ class APIUserSubscription implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets notification_frequency
+     *
+     * @return float|null
+     */
+    public function getNotificationFrequency()
+    {
+        return $this->container['notification_frequency'];
+    }
+
+    /**
+     * Sets notification_frequency
+     *
+     * @param float|null $notification_frequency notification_frequency
+     *
+     * @return self
+     */
+    public function setNotificationFrequency($notification_frequency)
+    {
+        if (is_null($notification_frequency)) {
+            throw new \InvalidArgumentException('non-nullable notification_frequency cannot be null');
+        }
+        $this->container['notification_frequency'] = $notification_frequency;
+
+        return $this;
+    }
 
     /**
      * Gets created_at

@@ -297,6 +297,24 @@ class CustomConfigParametersTest extends TestCase
     }
 
     /**
+     * Test attribute "disable_profile_comments"
+     */
+    public function testPropertyDisableProfileComments()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "disable_profile_direct_messages"
+     */
+    public function testPropertyDisableProfileDirectMessages()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "disable_profiles"
      */
     public function testPropertyDisableProfiles()
@@ -513,6 +531,15 @@ class CustomConfigParametersTest extends TestCase
     }
 
     /**
+     * Test attribute "mention_auto_complete_mode"
+     */
+    public function testPropertyMentionAutoCompleteMode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "no_image_uploads"
      */
     public function testPropertyNoImageUploads()
@@ -693,6 +720,15 @@ class CustomConfigParametersTest extends TestCase
     }
 
     /**
+     * Test attribute "widget_question_show_breakdown"
+     */
+    public function testPropertyWidgetQuestionShowBreakdown()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "widget_question_style"
      */
     public function testPropertyWidgetQuestionStyle()
@@ -732,6 +768,60 @@ class CustomConfigParametersTest extends TestCase
      * Test attribute "wrap"
      */
     public function testPropertyWrap()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "ticket_base_url"
+     */
+    public function testPropertyTicketBaseUrl()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "ticket_kb_search_endpoint"
+     */
+    public function testPropertyTicketKbSearchEndpoint()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "ticket_file_uploads_enabled"
+     */
+    public function testPropertyTicketFileUploadsEnabled()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "ticket_max_file_size"
+     */
+    public function testPropertyTicketMaxFileSize()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "ticket_auto_assign_user_ids"
+     */
+    public function testPropertyTicketAutoAssignUserIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "tos"
+     */
+    public function testPropertyTos()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

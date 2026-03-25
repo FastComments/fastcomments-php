@@ -15,6 +15,7 @@ All URIs are relative to https://fastcomments.com, except if the operation defin
 | [**aggregateQuestionResults()**](DefaultApi.md#aggregateQuestionResults) | **GET** /api/v1/question-results-aggregation |  |
 | [**blockUserFromComment()**](DefaultApi.md#blockUserFromComment) | **POST** /api/v1/comments/{id}/block |  |
 | [**bulkAggregateQuestionResults()**](DefaultApi.md#bulkAggregateQuestionResults) | **POST** /api/v1/question-results-aggregation/bulk |  |
+| [**changeTicketState()**](DefaultApi.md#changeTicketState) | **PATCH** /api/v1/tickets/{id}/state |  |
 | [**combineCommentsWithQuestionResults()**](DefaultApi.md#combineCommentsWithQuestionResults) | **GET** /api/v1/question-results-aggregation/combine/comments |  |
 | [**createEmailTemplate()**](DefaultApi.md#createEmailTemplate) | **POST** /api/v1/email-templates |  |
 | [**createFeedPost()**](DefaultApi.md#createFeedPost) | **POST** /api/v1/feed-posts |  |
@@ -25,6 +26,7 @@ All URIs are relative to https://fastcomments.com, except if the operation defin
 | [**createTenant()**](DefaultApi.md#createTenant) | **POST** /api/v1/tenants |  |
 | [**createTenantPackage()**](DefaultApi.md#createTenantPackage) | **POST** /api/v1/tenant-packages |  |
 | [**createTenantUser()**](DefaultApi.md#createTenantUser) | **POST** /api/v1/tenant-users |  |
+| [**createTicket()**](DefaultApi.md#createTicket) | **POST** /api/v1/tickets |  |
 | [**createUserBadge()**](DefaultApi.md#createUserBadge) | **POST** /api/v1/user-badges |  |
 | [**createVote()**](DefaultApi.md#createVote) | **POST** /api/v1/votes |  |
 | [**deleteComment()**](DefaultApi.md#deleteComment) | **DELETE** /api/v1/comments/{id} |  |
@@ -81,6 +83,8 @@ All URIs are relative to https://fastcomments.com, except if the operation defin
 | [**getTenantUser()**](DefaultApi.md#getTenantUser) | **GET** /api/v1/tenant-users/{id} |  |
 | [**getTenantUsers()**](DefaultApi.md#getTenantUsers) | **GET** /api/v1/tenant-users |  |
 | [**getTenants()**](DefaultApi.md#getTenants) | **GET** /api/v1/tenants |  |
+| [**getTicket()**](DefaultApi.md#getTicket) | **GET** /api/v1/tickets/{id} |  |
+| [**getTickets()**](DefaultApi.md#getTickets) | **GET** /api/v1/tickets |  |
 | [**getUser()**](DefaultApi.md#getUser) | **GET** /api/v1/users/{id} |  |
 | [**getUserBadge()**](DefaultApi.md#getUserBadge) | **GET** /api/v1/user-badges/{id} |  |
 | [**getUserBadgeProgressById()**](DefaultApi.md#getUserBadgeProgressById) | **GET** /api/v1/user-badge-progress/{id} |  |
@@ -111,6 +115,7 @@ All URIs are relative to https://fastcomments.com, except if the operation defin
 | [**updateNotification()**](DefaultApi.md#updateNotification) | **PATCH** /api/v1/notifications/{id} |  |
 | [**updateQuestionConfig()**](DefaultApi.md#updateQuestionConfig) | **PATCH** /api/v1/question-configs/{id} |  |
 | [**updateQuestionResult()**](DefaultApi.md#updateQuestionResult) | **PATCH** /api/v1/question-results/{id} |  |
+| [**updateSubscription()**](DefaultApi.md#updateSubscription) | **PATCH** /api/v1/subscriptions/{id} |  |
 | [**updateTenant()**](DefaultApi.md#updateTenant) | **PATCH** /api/v1/tenants/{id} |  |
 | [**updateTenantPackage()**](DefaultApi.md#updateTenantPackage) | **PATCH** /api/v1/tenant-packages/{id} |  |
 | [**updateTenantUser()**](DefaultApi.md#updateTenantUser) | **PATCH** /api/v1/tenant-users/{id} |  |
@@ -685,6 +690,72 @@ try {
 ### Return type
 
 [**\FastComments\Client\Model\BulkAggregateQuestionResults200Response**](../Model/BulkAggregateQuestionResults200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `changeTicketState()`
+
+```php
+changeTicketState($tenant_id, $user_id, $id, $change_ticket_state_body): \FastComments\Client\Model\ChangeTicketState200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$user_id = 'user_id_example'; // string
+$id = 'id_example'; // string
+$change_ticket_state_body = new \FastComments\Client\Model\ChangeTicketStateBody(); // \FastComments\Client\Model\ChangeTicketStateBody
+
+try {
+    $result = $apiInstance->changeTicketState($tenant_id, $user_id, $id, $change_ticket_state_body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->changeTicketState: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **user_id** | **string**|  | |
+| **id** | **string**|  | |
+| **change_ticket_state_body** | [**\FastComments\Client\Model\ChangeTicketStateBody**](../Model/ChangeTicketStateBody.md)|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\ChangeTicketState200Response**](../Model/ChangeTicketState200Response.md)
 
 ### Authorization
 
@@ -1327,6 +1398,70 @@ try {
 ### Return type
 
 [**\FastComments\Client\Model\CreateTenantUser200Response**](../Model/CreateTenantUser200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createTicket()`
+
+```php
+createTicket($tenant_id, $user_id, $create_ticket_body): \FastComments\Client\Model\CreateTicket200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$user_id = 'user_id_example'; // string
+$create_ticket_body = new \FastComments\Client\Model\CreateTicketBody(); // \FastComments\Client\Model\CreateTicketBody
+
+try {
+    $result = $apiInstance->createTicket($tenant_id, $user_id, $create_ticket_body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->createTicket: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **user_id** | **string**|  | |
+| **create_ticket_body** | [**\FastComments\Client\Model\CreateTicketBody**](../Model/CreateTicketBody.md)|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\CreateTicket200Response**](../Model/CreateTicket200Response.md)
 
 ### Authorization
 
@@ -4941,6 +5076,138 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getTicket()`
+
+```php
+getTicket($tenant_id, $id, $user_id): \FastComments\Client\Model\GetTicket200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$id = 'id_example'; // string
+$user_id = 'user_id_example'; // string
+
+try {
+    $result = $apiInstance->getTicket($tenant_id, $id, $user_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getTicket: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **id** | **string**|  | |
+| **user_id** | **string**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\GetTicket200Response**](../Model/GetTicket200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTickets()`
+
+```php
+getTickets($tenant_id, $user_id, $state, $skip, $limit): \FastComments\Client\Model\GetTickets200Response
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$user_id = 'user_id_example'; // string
+$state = 3.4; // float
+$skip = 3.4; // float
+$limit = 3.4; // float
+
+try {
+    $result = $apiInstance->getTickets($tenant_id, $user_id, $state, $skip, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getTickets: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **user_id** | **string**|  | [optional] |
+| **state** | **float**|  | [optional] |
+| **skip** | **float**|  | [optional] |
+| **limit** | **float**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\GetTickets200Response**](../Model/GetTickets200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getUser()`
 
 ```php
@@ -6881,6 +7148,72 @@ try {
 ### Return type
 
 [**\FastComments\Client\Model\FlagCommentPublic200Response**](../Model/FlagCommentPublic200Response.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateSubscription()`
+
+```php
+updateSubscription($tenant_id, $id, $update_api_user_subscription_data, $user_id): \FastComments\Client\Model\UpdateSubscriptionAPIResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKey('x-api-key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = FastComments\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-api-key', 'Bearer');
+
+
+$apiInstance = new FastComments\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_id = 'tenant_id_example'; // string
+$id = 'id_example'; // string
+$update_api_user_subscription_data = new \FastComments\Client\Model\UpdateAPIUserSubscriptionData(); // \FastComments\Client\Model\UpdateAPIUserSubscriptionData
+$user_id = 'user_id_example'; // string
+
+try {
+    $result = $apiInstance->updateSubscription($tenant_id, $id, $update_api_user_subscription_data, $user_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->updateSubscription: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **id** | **string**|  | |
+| **update_api_user_subscription_data** | [**\FastComments\Client\Model\UpdateAPIUserSubscriptionData**](../Model/UpdateAPIUserSubscriptionData.md)|  | |
+| **user_id** | **string**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\UpdateSubscriptionAPIResponse**](../Model/UpdateSubscriptionAPIResponse.md)
 
 ### Authorization
 

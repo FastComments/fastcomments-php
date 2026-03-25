@@ -75,5 +75,6 @@ Name | Type | Description | Notes
 **view_count** | **int** |  | [optional]
 **requires_verification** | **bool** |  | [optional]
 **edit_key** | **string** |  | [optional]
+**tos_accepted_at** | **\DateTime** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

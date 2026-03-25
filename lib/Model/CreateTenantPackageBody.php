@@ -74,6 +74,7 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
         'max_domains' => 'float',
         'max_white_labeled_tenants' => 'float',
         'max_monthly_event_log_requests' => 'float',
+        'max_custom_collection_size' => 'float',
         'has_white_labeling' => 'bool',
         'has_debranding' => 'bool',
         'has_llm_spam_detection' => 'bool',
@@ -132,6 +133,7 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
         'max_domains' => 'double',
         'max_white_labeled_tenants' => 'double',
         'max_monthly_event_log_requests' => 'double',
+        'max_custom_collection_size' => 'double',
         'has_white_labeling' => null,
         'has_debranding' => null,
         'has_llm_spam_detection' => null,
@@ -188,6 +190,7 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
         'max_domains' => false,
         'max_white_labeled_tenants' => false,
         'max_monthly_event_log_requests' => false,
+        'max_custom_collection_size' => false,
         'has_white_labeling' => false,
         'has_debranding' => false,
         'has_llm_spam_detection' => false,
@@ -324,6 +327,7 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
         'max_domains' => 'maxDomains',
         'max_white_labeled_tenants' => 'maxWhiteLabeledTenants',
         'max_monthly_event_log_requests' => 'maxMonthlyEventLogRequests',
+        'max_custom_collection_size' => 'maxCustomCollectionSize',
         'has_white_labeling' => 'hasWhiteLabeling',
         'has_debranding' => 'hasDebranding',
         'has_llm_spam_detection' => 'hasLLMSpamDetection',
@@ -380,6 +384,7 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
         'max_domains' => 'setMaxDomains',
         'max_white_labeled_tenants' => 'setMaxWhiteLabeledTenants',
         'max_monthly_event_log_requests' => 'setMaxMonthlyEventLogRequests',
+        'max_custom_collection_size' => 'setMaxCustomCollectionSize',
         'has_white_labeling' => 'setHasWhiteLabeling',
         'has_debranding' => 'setHasDebranding',
         'has_llm_spam_detection' => 'setHasLlmSpamDetection',
@@ -436,6 +441,7 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
         'max_domains' => 'getMaxDomains',
         'max_white_labeled_tenants' => 'getMaxWhiteLabeledTenants',
         'max_monthly_event_log_requests' => 'getMaxMonthlyEventLogRequests',
+        'max_custom_collection_size' => 'getMaxCustomCollectionSize',
         'has_white_labeling' => 'getHasWhiteLabeling',
         'has_debranding' => 'getHasDebranding',
         'has_llm_spam_detection' => 'getHasLlmSpamDetection',
@@ -543,6 +549,7 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('max_domains', $data ?? [], null);
         $this->setIfExists('max_white_labeled_tenants', $data ?? [], null);
         $this->setIfExists('max_monthly_event_log_requests', $data ?? [], null);
+        $this->setIfExists('max_custom_collection_size', $data ?? [], null);
         $this->setIfExists('has_white_labeling', $data ?? [], null);
         $this->setIfExists('has_debranding', $data ?? [], null);
         $this->setIfExists('has_llm_spam_detection', $data ?? [], null);
@@ -1114,6 +1121,33 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable max_monthly_event_log_requests cannot be null');
         }
         $this->container['max_monthly_event_log_requests'] = $max_monthly_event_log_requests;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_custom_collection_size
+     *
+     * @return float|null
+     */
+    public function getMaxCustomCollectionSize()
+    {
+        return $this->container['max_custom_collection_size'];
+    }
+
+    /**
+     * Sets max_custom_collection_size
+     *
+     * @param float|null $max_custom_collection_size max_custom_collection_size
+     *
+     * @return self
+     */
+    public function setMaxCustomCollectionSize($max_custom_collection_size)
+    {
+        if (is_null($max_custom_collection_size)) {
+            throw new \InvalidArgumentException('non-nullable max_custom_collection_size cannot be null');
+        }
+        $this->container['max_custom_collection_size'] = $max_custom_collection_size;
 
         return $this;
     }

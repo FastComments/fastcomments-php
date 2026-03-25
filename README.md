@@ -88,6 +88,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**aggregateQuestionResults**](docs/Api/DefaultApi.md#aggregatequestionresults) | **GET** /api/v1/question-results-aggregation | 
 *DefaultApi* | [**blockUserFromComment**](docs/Api/DefaultApi.md#blockuserfromcomment) | **POST** /api/v1/comments/{id}/block | 
 *DefaultApi* | [**bulkAggregateQuestionResults**](docs/Api/DefaultApi.md#bulkaggregatequestionresults) | **POST** /api/v1/question-results-aggregation/bulk | 
+*DefaultApi* | [**changeTicketState**](docs/Api/DefaultApi.md#changeticketstate) | **PATCH** /api/v1/tickets/{id}/state | 
 *DefaultApi* | [**combineCommentsWithQuestionResults**](docs/Api/DefaultApi.md#combinecommentswithquestionresults) | **GET** /api/v1/question-results-aggregation/combine/comments | 
 *DefaultApi* | [**createEmailTemplate**](docs/Api/DefaultApi.md#createemailtemplate) | **POST** /api/v1/email-templates | 
 *DefaultApi* | [**createFeedPost**](docs/Api/DefaultApi.md#createfeedpost) | **POST** /api/v1/feed-posts | 
@@ -98,6 +99,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**createTenant**](docs/Api/DefaultApi.md#createtenant) | **POST** /api/v1/tenants | 
 *DefaultApi* | [**createTenantPackage**](docs/Api/DefaultApi.md#createtenantpackage) | **POST** /api/v1/tenant-packages | 
 *DefaultApi* | [**createTenantUser**](docs/Api/DefaultApi.md#createtenantuser) | **POST** /api/v1/tenant-users | 
+*DefaultApi* | [**createTicket**](docs/Api/DefaultApi.md#createticket) | **POST** /api/v1/tickets | 
 *DefaultApi* | [**createUserBadge**](docs/Api/DefaultApi.md#createuserbadge) | **POST** /api/v1/user-badges | 
 *DefaultApi* | [**createVote**](docs/Api/DefaultApi.md#createvote) | **POST** /api/v1/votes | 
 *DefaultApi* | [**deleteComment**](docs/Api/DefaultApi.md#deletecomment) | **DELETE** /api/v1/comments/{id} | 
@@ -154,6 +156,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getTenantUser**](docs/Api/DefaultApi.md#gettenantuser) | **GET** /api/v1/tenant-users/{id} | 
 *DefaultApi* | [**getTenantUsers**](docs/Api/DefaultApi.md#gettenantusers) | **GET** /api/v1/tenant-users | 
 *DefaultApi* | [**getTenants**](docs/Api/DefaultApi.md#gettenants) | **GET** /api/v1/tenants | 
+*DefaultApi* | [**getTicket**](docs/Api/DefaultApi.md#getticket) | **GET** /api/v1/tickets/{id} | 
+*DefaultApi* | [**getTickets**](docs/Api/DefaultApi.md#gettickets) | **GET** /api/v1/tickets | 
 *DefaultApi* | [**getUser**](docs/Api/DefaultApi.md#getuser) | **GET** /api/v1/users/{id} | 
 *DefaultApi* | [**getUserBadge**](docs/Api/DefaultApi.md#getuserbadge) | **GET** /api/v1/user-badges/{id} | 
 *DefaultApi* | [**getUserBadgeProgressById**](docs/Api/DefaultApi.md#getuserbadgeprogressbyid) | **GET** /api/v1/user-badge-progress/{id} | 
@@ -184,6 +188,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**updateNotification**](docs/Api/DefaultApi.md#updatenotification) | **PATCH** /api/v1/notifications/{id} | 
 *DefaultApi* | [**updateQuestionConfig**](docs/Api/DefaultApi.md#updatequestionconfig) | **PATCH** /api/v1/question-configs/{id} | 
 *DefaultApi* | [**updateQuestionResult**](docs/Api/DefaultApi.md#updatequestionresult) | **PATCH** /api/v1/question-results/{id} | 
+*DefaultApi* | [**updateSubscription**](docs/Api/DefaultApi.md#updatesubscription) | **PATCH** /api/v1/subscriptions/{id} | 
 *DefaultApi* | [**updateTenant**](docs/Api/DefaultApi.md#updatetenant) | **PATCH** /api/v1/tenants/{id} | 
 *DefaultApi* | [**updateTenantPackage**](docs/Api/DefaultApi.md#updatetenantpackage) | **PATCH** /api/v1/tenant-packages/{id} | 
 *DefaultApi* | [**updateTenantUser**](docs/Api/DefaultApi.md#updatetenantuser) | **PATCH** /api/v1/tenant-users/{id} | 
@@ -229,6 +234,7 @@ Class | Method | HTTP request | Description
 - [APIAuditLog](docs/Model/APIAuditLog.md)
 - [APIComment](docs/Model/APIComment.md)
 - [APICommentBase](docs/Model/APICommentBase.md)
+- [APICommentBaseMeta](docs/Model/APICommentBaseMeta.md)
 - [APICreateUserBadgeResponse](docs/Model/APICreateUserBadgeResponse.md)
 - [APIDomainConfiguration](docs/Model/APIDomainConfiguration.md)
 - [APIEmptyResponse](docs/Model/APIEmptyResponse.md)
@@ -245,6 +251,9 @@ Class | Method | HTTP request | Description
 - [APIStatus](docs/Model/APIStatus.md)
 - [APITenant](docs/Model/APITenant.md)
 - [APITenantDailyUsage](docs/Model/APITenantDailyUsage.md)
+- [APITicket](docs/Model/APITicket.md)
+- [APITicketDetail](docs/Model/APITicketDetail.md)
+- [APITicketFile](docs/Model/APITicketFile.md)
 - [APIUserSubscription](docs/Model/APIUserSubscription.md)
 - [AddDomainConfig200Response](docs/Model/AddDomainConfig200Response.md)
 - [AddDomainConfig200ResponseAnyOf](docs/Model/AddDomainConfig200ResponseAnyOf.md)
@@ -276,6 +285,9 @@ Class | Method | HTTP request | Description
 - [BulkCreateHashTagsBodyTagsInner](docs/Model/BulkCreateHashTagsBodyTagsInner.md)
 - [BulkCreateHashTagsResponse](docs/Model/BulkCreateHashTagsResponse.md)
 - [ChangeCommentPinStatusResponse](docs/Model/ChangeCommentPinStatusResponse.md)
+- [ChangeTicketState200Response](docs/Model/ChangeTicketState200Response.md)
+- [ChangeTicketStateBody](docs/Model/ChangeTicketStateBody.md)
+- [ChangeTicketStateResponse](docs/Model/ChangeTicketStateResponse.md)
 - [CheckBlockedCommentsResponse](docs/Model/CheckBlockedCommentsResponse.md)
 - [CheckedCommentsForBlocked200Response](docs/Model/CheckedCommentsForBlocked200Response.md)
 - [CombineCommentsWithQuestionResults200Response](docs/Model/CombineCommentsWithQuestionResults200Response.md)
@@ -327,6 +339,9 @@ Class | Method | HTTP request | Description
 - [CreateTenantUser200Response](docs/Model/CreateTenantUser200Response.md)
 - [CreateTenantUserBody](docs/Model/CreateTenantUserBody.md)
 - [CreateTenantUserResponse](docs/Model/CreateTenantUserResponse.md)
+- [CreateTicket200Response](docs/Model/CreateTicket200Response.md)
+- [CreateTicketBody](docs/Model/CreateTicketBody.md)
+- [CreateTicketResponse](docs/Model/CreateTicketResponse.md)
 - [CreateUserBadge200Response](docs/Model/CreateUserBadge200Response.md)
 - [CreateUserBadgeParams](docs/Model/CreateUserBadgeParams.md)
 - [CustomConfigParameters](docs/Model/CustomConfigParameters.md)
@@ -435,6 +450,10 @@ Class | Method | HTTP request | Description
 - [GetTenantUsersResponse](docs/Model/GetTenantUsersResponse.md)
 - [GetTenants200Response](docs/Model/GetTenants200Response.md)
 - [GetTenantsResponse](docs/Model/GetTenantsResponse.md)
+- [GetTicket200Response](docs/Model/GetTicket200Response.md)
+- [GetTicketResponse](docs/Model/GetTicketResponse.md)
+- [GetTickets200Response](docs/Model/GetTickets200Response.md)
+- [GetTicketsResponse](docs/Model/GetTicketsResponse.md)
 - [GetUser200Response](docs/Model/GetUser200Response.md)
 - [GetUserBadge200Response](docs/Model/GetUserBadge200Response.md)
 - [GetUserBadgeProgressById200Response](docs/Model/GetUserBadgeProgressById200Response.md)
@@ -452,6 +471,7 @@ Class | Method | HTTP request | Description
 - [GetVotesForUserResponse](docs/Model/GetVotesForUserResponse.md)
 - [GetVotesResponse](docs/Model/GetVotesResponse.md)
 - [GifRating](docs/Model/GifRating.md)
+- [HeaderAccountNotification](docs/Model/HeaderAccountNotification.md)
 - [HeaderState](docs/Model/HeaderState.md)
 - [IgnoredResponse](docs/Model/IgnoredResponse.md)
 - [ImageContentProfanityLevel](docs/Model/ImageContentProfanityLevel.md)
@@ -461,6 +481,7 @@ Class | Method | HTTP request | Description
 - [LiveEventType](docs/Model/LiveEventType.md)
 - [LockComment200Response](docs/Model/LockComment200Response.md)
 - [MediaAsset](docs/Model/MediaAsset.md)
+- [MentionAutoCompleteMode](docs/Model/MentionAutoCompleteMode.md)
 - [MetaItem](docs/Model/MetaItem.md)
 - [Moderator](docs/Model/Moderator.md)
 - [NotificationAndCount](docs/Model/NotificationAndCount.md)
@@ -517,11 +538,13 @@ Class | Method | HTTP request | Description
 - [SaveCommentsResponseWithPresence](docs/Model/SaveCommentsResponseWithPresence.md)
 - [SearchUsers200Response](docs/Model/SearchUsers200Response.md)
 - [SearchUsersResponse](docs/Model/SearchUsersResponse.md)
+- [SearchUsersSectionedResponse](docs/Model/SearchUsersSectionedResponse.md)
 - [SetCommentText200Response](docs/Model/SetCommentText200Response.md)
 - [SetCommentTextResult](docs/Model/SetCommentTextResult.md)
 - [SizePreset](docs/Model/SizePreset.md)
 - [SortDirections](docs/Model/SortDirections.md)
 - [SpamRule](docs/Model/SpamRule.md)
+- [TOSConfig](docs/Model/TOSConfig.md)
 - [TenantHashTag](docs/Model/TenantHashTag.md)
 - [TenantPackage](docs/Model/TenantPackage.md)
 - [UnBlockCommentPublic200Response](docs/Model/UnBlockCommentPublic200Response.md)
@@ -530,6 +553,7 @@ Class | Method | HTTP request | Description
 - [UpdatableCommentParams](docs/Model/UpdatableCommentParams.md)
 - [UpdateAPIPageData](docs/Model/UpdateAPIPageData.md)
 - [UpdateAPISSOUserData](docs/Model/UpdateAPISSOUserData.md)
+- [UpdateAPIUserSubscriptionData](docs/Model/UpdateAPIUserSubscriptionData.md)
 - [UpdateDomainConfigParams](docs/Model/UpdateDomainConfigParams.md)
 - [UpdateEmailTemplateBody](docs/Model/UpdateEmailTemplateBody.md)
 - [UpdateFeedPostParams](docs/Model/UpdateFeedPostParams.md)
@@ -539,6 +563,7 @@ Class | Method | HTTP request | Description
 - [UpdateNotificationBody](docs/Model/UpdateNotificationBody.md)
 - [UpdateQuestionConfigBody](docs/Model/UpdateQuestionConfigBody.md)
 - [UpdateQuestionResultBody](docs/Model/UpdateQuestionResultBody.md)
+- [UpdateSubscriptionAPIResponse](docs/Model/UpdateSubscriptionAPIResponse.md)
 - [UpdateTenantBody](docs/Model/UpdateTenantBody.md)
 - [UpdateTenantPackageBody](docs/Model/UpdateTenantPackageBody.md)
 - [UpdateTenantUserBody](docs/Model/UpdateTenantUserBody.md)
@@ -555,6 +580,8 @@ Class | Method | HTTP request | Description
 - [UserPresenceData](docs/Model/UserPresenceData.md)
 - [UserReactsResponse](docs/Model/UserReactsResponse.md)
 - [UserSearchResult](docs/Model/UserSearchResult.md)
+- [UserSearchSection](docs/Model/UserSearchSection.md)
+- [UserSearchSectionResult](docs/Model/UserSearchSectionResult.md)
 - [UserSessionInfo](docs/Model/UserSessionInfo.md)
 - [VoteBodyParams](docs/Model/VoteBodyParams.md)
 - [VoteComment200Response](docs/Model/VoteComment200Response.md)

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
+**sections** | [**\FastComments\Client\Model\UserSearchSectionResult[]**](UserSearchSectionResult.md) |  |
 **users** | [**\FastComments\Client\Model\UserSearchResult[]**](UserSearchResult.md) |  |
 **reason** | **string** |  |
 **code** | **string** |  |

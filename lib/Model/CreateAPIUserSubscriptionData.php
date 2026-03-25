@@ -58,6 +58,7 @@ class CreateAPIUserSubscriptionData implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
+        'notification_frequency' => 'float',
         'page_title' => 'string',
         'url' => 'string',
         'url_id' => 'string',
@@ -73,6 +74,7 @@ class CreateAPIUserSubscriptionData implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'notification_frequency' => 'double',
         'page_title' => null,
         'url' => null,
         'url_id' => null,
@@ -86,6 +88,7 @@ class CreateAPIUserSubscriptionData implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'notification_frequency' => false,
         'page_title' => false,
         'url' => false,
         'url_id' => false,
@@ -179,6 +182,7 @@ class CreateAPIUserSubscriptionData implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
+        'notification_frequency' => 'notificationFrequency',
         'page_title' => 'pageTitle',
         'url' => 'url',
         'url_id' => 'urlId',
@@ -192,6 +196,7 @@ class CreateAPIUserSubscriptionData implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
+        'notification_frequency' => 'setNotificationFrequency',
         'page_title' => 'setPageTitle',
         'url' => 'setUrl',
         'url_id' => 'setUrlId',
@@ -205,6 +210,7 @@ class CreateAPIUserSubscriptionData implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
+        'notification_frequency' => 'getNotificationFrequency',
         'page_title' => 'getPageTitle',
         'url' => 'getUrl',
         'url_id' => 'getUrlId',
@@ -269,6 +275,7 @@ class CreateAPIUserSubscriptionData implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('notification_frequency', $data ?? [], null);
         $this->setIfExists('page_title', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('url_id', $data ?? [], null);
@@ -320,6 +327,33 @@ class CreateAPIUserSubscriptionData implements ModelInterface, ArrayAccess, \Jso
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets notification_frequency
+     *
+     * @return float|null
+     */
+    public function getNotificationFrequency()
+    {
+        return $this->container['notification_frequency'];
+    }
+
+    /**
+     * Sets notification_frequency
+     *
+     * @param float|null $notification_frequency notification_frequency
+     *
+     * @return self
+     */
+    public function setNotificationFrequency($notification_frequency)
+    {
+        if (is_null($notification_frequency)) {
+            throw new \InvalidArgumentException('non-nullable notification_frequency cannot be null');
+        }
+        $this->container['notification_frequency'] = $notification_frequency;
+
+        return $this;
+    }
 
     /**
      * Gets page_title

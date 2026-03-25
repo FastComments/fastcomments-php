@@ -90,6 +90,15 @@ class SearchUsers200ResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "sections"
+     */
+    public function testPropertySections()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "users"
      */
     public function testPropertyUsers()

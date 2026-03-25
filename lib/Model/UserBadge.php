@@ -75,7 +75,8 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
         'veteran_user_threshold_millis' => 'int',
         'displayed_on_comments' => 'bool',
         'received_at' => '\DateTime',
-        'order' => 'int'
+        'order' => 'int',
+        'url_id' => 'string'
     ];
 
     /**
@@ -103,7 +104,8 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
         'veteran_user_threshold_millis' => 'int64',
         'displayed_on_comments' => null,
         'received_at' => 'date-time',
-        'order' => 'int32'
+        'order' => 'int32',
+        'url_id' => null
     ];
 
     /**
@@ -129,7 +131,8 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
         'veteran_user_threshold_millis' => false,
         'displayed_on_comments' => false,
         'received_at' => false,
-        'order' => false
+        'order' => false,
+        'url_id' => true
     ];
 
     /**
@@ -235,7 +238,8 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
         'veteran_user_threshold_millis' => 'veteranUserThresholdMillis',
         'displayed_on_comments' => 'displayedOnComments',
         'received_at' => 'receivedAt',
-        'order' => 'order'
+        'order' => 'order',
+        'url_id' => 'urlId'
     ];
 
     /**
@@ -261,7 +265,8 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
         'veteran_user_threshold_millis' => 'setVeteranUserThresholdMillis',
         'displayed_on_comments' => 'setDisplayedOnComments',
         'received_at' => 'setReceivedAt',
-        'order' => 'setOrder'
+        'order' => 'setOrder',
+        'url_id' => 'setUrlId'
     ];
 
     /**
@@ -287,7 +292,8 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
         'veteran_user_threshold_millis' => 'getVeteranUserThresholdMillis',
         'displayed_on_comments' => 'getDisplayedOnComments',
         'received_at' => 'getReceivedAt',
-        'order' => 'getOrder'
+        'order' => 'getOrder',
+        'url_id' => 'getUrlId'
     ];
 
     /**
@@ -365,6 +371,7 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('displayed_on_comments', $data ?? [], null);
         $this->setIfExists('received_at', $data ?? [], null);
         $this->setIfExists('order', $data ?? [], null);
+        $this->setIfExists('url_id', $data ?? [], null);
     }
 
     /**
@@ -962,6 +969,40 @@ class UserBadge implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable order cannot be null');
         }
         $this->container['order'] = $order;
+
+        return $this;
+    }
+
+    /**
+     * Gets url_id
+     *
+     * @return string|null
+     */
+    public function getUrlId()
+    {
+        return $this->container['url_id'];
+    }
+
+    /**
+     * Sets url_id
+     *
+     * @param string|null $url_id url_id
+     *
+     * @return self
+     */
+    public function setUrlId($url_id)
+    {
+        if (is_null($url_id)) {
+            array_push($this->openAPINullablesSetToNull, 'url_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('url_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['url_id'] = $url_id;
 
         return $this;
     }

@@ -75,7 +75,8 @@ class Moderator implements ModelInterface, ArrayAccess, \JsonSerializable
         'un_flagged_count' => 'float',
         'verification_id' => 'string',
         'created_at' => '\DateTime',
-        'moderation_group_ids' => 'string[]'
+        'moderation_group_ids' => 'string[]',
+        'is_email_suppressed' => 'bool'
     ];
 
     /**
@@ -103,7 +104,8 @@ class Moderator implements ModelInterface, ArrayAccess, \JsonSerializable
         'un_flagged_count' => 'double',
         'verification_id' => null,
         'created_at' => 'date-time',
-        'moderation_group_ids' => null
+        'moderation_group_ids' => null,
+        'is_email_suppressed' => null
     ];
 
     /**
@@ -129,7 +131,8 @@ class Moderator implements ModelInterface, ArrayAccess, \JsonSerializable
         'un_flagged_count' => false,
         'verification_id' => true,
         'created_at' => false,
-        'moderation_group_ids' => true
+        'moderation_group_ids' => true,
+        'is_email_suppressed' => false
     ];
 
     /**
@@ -235,7 +238,8 @@ class Moderator implements ModelInterface, ArrayAccess, \JsonSerializable
         'un_flagged_count' => 'unFlaggedCount',
         'verification_id' => 'verificationId',
         'created_at' => 'createdAt',
-        'moderation_group_ids' => 'moderationGroupIds'
+        'moderation_group_ids' => 'moderationGroupIds',
+        'is_email_suppressed' => 'isEmailSuppressed'
     ];
 
     /**
@@ -261,7 +265,8 @@ class Moderator implements ModelInterface, ArrayAccess, \JsonSerializable
         'un_flagged_count' => 'setUnFlaggedCount',
         'verification_id' => 'setVerificationId',
         'created_at' => 'setCreatedAt',
-        'moderation_group_ids' => 'setModerationGroupIds'
+        'moderation_group_ids' => 'setModerationGroupIds',
+        'is_email_suppressed' => 'setIsEmailSuppressed'
     ];
 
     /**
@@ -287,7 +292,8 @@ class Moderator implements ModelInterface, ArrayAccess, \JsonSerializable
         'un_flagged_count' => 'getUnFlaggedCount',
         'verification_id' => 'getVerificationId',
         'created_at' => 'getCreatedAt',
-        'moderation_group_ids' => 'getModerationGroupIds'
+        'moderation_group_ids' => 'getModerationGroupIds',
+        'is_email_suppressed' => 'getIsEmailSuppressed'
     ];
 
     /**
@@ -365,6 +371,7 @@ class Moderator implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('verification_id', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('moderation_group_ids', $data ?? [], null);
+        $this->setIfExists('is_email_suppressed', $data ?? [], null);
     }
 
     /**
@@ -980,6 +987,33 @@ class Moderator implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['moderation_group_ids'] = $moderation_group_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_email_suppressed
+     *
+     * @return bool|null
+     */
+    public function getIsEmailSuppressed()
+    {
+        return $this->container['is_email_suppressed'];
+    }
+
+    /**
+     * Sets is_email_suppressed
+     *
+     * @param bool|null $is_email_suppressed is_email_suppressed
+     *
+     * @return self
+     */
+    public function setIsEmailSuppressed($is_email_suppressed)
+    {
+        if (is_null($is_email_suppressed)) {
+            throw new \InvalidArgumentException('non-nullable is_email_suppressed cannot be null');
+        }
+        $this->container['is_email_suppressed'] = $is_email_suppressed;
 
         return $this;
     }

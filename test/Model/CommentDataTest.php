@@ -295,4 +295,13 @@ class CommentDataTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "tos"
+     */
+    public function testPropertyTos()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

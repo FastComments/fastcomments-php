@@ -82,6 +82,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'autoplay_delay_ms' => 'int',
         'feedback_ids' => 'string[]',
         'question_values' => 'array<string,\FastComments\Client\Model\RecordStringStringOrNumberValue>',
+        'tos' => 'bool',
         'approved' => 'bool',
         'domain' => 'string',
         'ip' => 'string',
@@ -126,6 +127,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'autoplay_delay_ms' => 'int64',
         'feedback_ids' => null,
         'question_values' => null,
+        'tos' => null,
         'approved' => null,
         'domain' => null,
         'ip' => null,
@@ -168,6 +170,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'autoplay_delay_ms' => false,
         'feedback_ids' => false,
         'question_values' => false,
+        'tos' => false,
         'approved' => false,
         'domain' => false,
         'ip' => false,
@@ -290,6 +293,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'autoplay_delay_ms' => 'autoplayDelayMS',
         'feedback_ids' => 'feedbackIds',
         'question_values' => 'questionValues',
+        'tos' => 'tos',
         'approved' => 'approved',
         'domain' => 'domain',
         'ip' => 'ip',
@@ -332,6 +336,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'autoplay_delay_ms' => 'setAutoplayDelayMs',
         'feedback_ids' => 'setFeedbackIds',
         'question_values' => 'setQuestionValues',
+        'tos' => 'setTos',
         'approved' => 'setApproved',
         'domain' => 'setDomain',
         'ip' => 'setIp',
@@ -374,6 +379,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'autoplay_delay_ms' => 'getAutoplayDelayMs',
         'feedback_ids' => 'getFeedbackIds',
         'question_values' => 'getQuestionValues',
+        'tos' => 'getTos',
         'approved' => 'getApproved',
         'domain' => 'getDomain',
         'ip' => 'getIp',
@@ -467,6 +473,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('autoplay_delay_ms', $data ?? [], null);
         $this->setIfExists('feedback_ids', $data ?? [], null);
         $this->setIfExists('question_values', $data ?? [], null);
+        $this->setIfExists('tos', $data ?? [], null);
         $this->setIfExists('approved', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('ip', $data ?? [], null);
@@ -1215,6 +1222,33 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable question_values cannot be null');
         }
         $this->container['question_values'] = $question_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets tos
+     *
+     * @return bool|null
+     */
+    public function getTos()
+    {
+        return $this->container['tos'];
+    }
+
+    /**
+     * Sets tos
+     *
+     * @param bool|null $tos tos
+     *
+     * @return self
+     */
+    public function setTos($tos)
+    {
+        if (is_null($tos)) {
+            throw new \InvalidArgumentException('non-nullable tos cannot be null');
+        }
+        $this->container['tos'] = $tos;
 
         return $this;
     }

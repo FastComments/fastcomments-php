@@ -171,6 +171,15 @@ class UserSessionInfoTest extends TestCase
     }
 
     /**
+     * Test attribute "needs_tos"
+     */
+    public function testPropertyNeedsTos()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "session_id"
      */
     public function testPropertySessionId()

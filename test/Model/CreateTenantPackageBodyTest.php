@@ -225,6 +225,15 @@ class CreateTenantPackageBodyTest extends TestCase
     }
 
     /**
+     * Test attribute "max_custom_collection_size"
+     */
+    public function testPropertyMaxCustomCollectionSize()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "has_white_labeling"
      */
     public function testPropertyHasWhiteLabeling()

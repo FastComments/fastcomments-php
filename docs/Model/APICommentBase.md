@@ -39,7 +39,7 @@ Name | Type | Description | Notes
 **local_date_string** | **string** |  | [optional]
 **locale** | **string** |  |
 **mentions** | [**\FastComments\Client\Model\CommentUserMentionInfo[]**](CommentUserMentionInfo.md) |  | [optional]
-**meta** | [**\FastComments\Client\Model\FCommentMeta**](FCommentMeta.md) |  | [optional]
+**meta** | [**\FastComments\Client\Model\APICommentBaseMeta**](APICommentBaseMeta.md) |  | [optional]
 **moderation_group_ids** | **string[]** |  | [optional]
 **notification_sent_for_parent** | **bool** |  | [optional]
 **notification_sent_for_parent_tenant** | **bool** |  | [optional]

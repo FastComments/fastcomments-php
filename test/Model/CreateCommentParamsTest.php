@@ -297,6 +297,15 @@ class CreateCommentParamsTest extends TestCase
     }
 
     /**
+     * Test attribute "tos"
+     */
+    public function testPropertyTos()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "approved"
      */
     public function testPropertyApproved()

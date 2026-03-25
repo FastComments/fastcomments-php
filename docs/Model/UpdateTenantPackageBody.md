@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **max_sso_users** | **float** |  | [optional]
 **max_moderators** | **float** |  | [optional]
 **max_domains** | **float** |  | [optional]
+**max_custom_collection_size** | **float** |  | [optional]
 **has_debranding** | **bool** |  | [optional]
 **has_white_labeling** | **bool** |  | [optional]
 **for_who_text** | **string** |  | [optional]

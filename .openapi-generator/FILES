@@ -8,6 +8,7 @@ docs/Api/PublicApi.md
 docs/Model/APIAuditLog.md
 docs/Model/APIComment.md
 docs/Model/APICommentBase.md
+docs/Model/APICommentBaseMeta.md
 docs/Model/APICreateUserBadgeResponse.md
 docs/Model/APIDomainConfiguration.md
 docs/Model/APIEmptyResponse.md
@@ -24,6 +25,9 @@ docs/Model/APISSOUser.md
 docs/Model/APIStatus.md
 docs/Model/APITenant.md
 docs/Model/APITenantDailyUsage.md
+docs/Model/APITicket.md
+docs/Model/APITicketDetail.md
+docs/Model/APITicketFile.md
 docs/Model/APIUserSubscription.md
 docs/Model/AddDomainConfig200Response.md
 docs/Model/AddDomainConfig200ResponseAnyOf.md
@@ -55,6 +59,9 @@ docs/Model/BulkCreateHashTagsBody.md
 docs/Model/BulkCreateHashTagsBodyTagsInner.md
 docs/Model/BulkCreateHashTagsResponse.md
 docs/Model/ChangeCommentPinStatusResponse.md
+docs/Model/ChangeTicketState200Response.md
+docs/Model/ChangeTicketStateBody.md
+docs/Model/ChangeTicketStateResponse.md
 docs/Model/CheckBlockedCommentsResponse.md
 docs/Model/CheckedCommentsForBlocked200Response.md
 docs/Model/CombineCommentsWithQuestionResults200Response.md
@@ -106,6 +113,9 @@ docs/Model/CreateTenantResponse.md
 docs/Model/CreateTenantUser200Response.md
 docs/Model/CreateTenantUserBody.md
 docs/Model/CreateTenantUserResponse.md
+docs/Model/CreateTicket200Response.md
+docs/Model/CreateTicketBody.md
+docs/Model/CreateTicketResponse.md
 docs/Model/CreateUserBadge200Response.md
 docs/Model/CreateUserBadgeParams.md
 docs/Model/CustomConfigParameters.md
@@ -214,6 +224,10 @@ docs/Model/GetTenantUsers200Response.md
 docs/Model/GetTenantUsersResponse.md
 docs/Model/GetTenants200Response.md
 docs/Model/GetTenantsResponse.md
+docs/Model/GetTicket200Response.md
+docs/Model/GetTicketResponse.md
+docs/Model/GetTickets200Response.md
+docs/Model/GetTicketsResponse.md
 docs/Model/GetUser200Response.md
 docs/Model/GetUserBadge200Response.md
 docs/Model/GetUserBadgeProgressById200Response.md
@@ -231,6 +245,7 @@ docs/Model/GetVotesForUser200Response.md
 docs/Model/GetVotesForUserResponse.md
 docs/Model/GetVotesResponse.md
 docs/Model/GifRating.md
+docs/Model/HeaderAccountNotification.md
 docs/Model/HeaderState.md
 docs/Model/IgnoredResponse.md
 docs/Model/ImageContentProfanityLevel.md
@@ -240,6 +255,7 @@ docs/Model/LiveEventExtraInfo.md
 docs/Model/LiveEventType.md
 docs/Model/LockComment200Response.md
 docs/Model/MediaAsset.md
+docs/Model/MentionAutoCompleteMode.md
 docs/Model/MetaItem.md
 docs/Model/Moderator.md
 docs/Model/NotificationAndCount.md
@@ -296,11 +312,13 @@ docs/Model/SaveCommentResponseOptimized.md
 docs/Model/SaveCommentsResponseWithPresence.md
 docs/Model/SearchUsers200Response.md
 docs/Model/SearchUsersResponse.md
+docs/Model/SearchUsersSectionedResponse.md
 docs/Model/SetCommentText200Response.md
 docs/Model/SetCommentTextResult.md
 docs/Model/SizePreset.md
 docs/Model/SortDirections.md
 docs/Model/SpamRule.md
+docs/Model/TOSConfig.md
 docs/Model/TenantHashTag.md
 docs/Model/TenantPackage.md
 docs/Model/UnBlockCommentPublic200Response.md
@@ -309,6 +327,7 @@ docs/Model/UnblockSuccess.md
 docs/Model/UpdatableCommentParams.md
 docs/Model/UpdateAPIPageData.md
 docs/Model/UpdateAPISSOUserData.md
+docs/Model/UpdateAPIUserSubscriptionData.md
 docs/Model/UpdateDomainConfigParams.md
 docs/Model/UpdateEmailTemplateBody.md
 docs/Model/UpdateFeedPostParams.md
@@ -318,6 +337,7 @@ docs/Model/UpdateModeratorBody.md
 docs/Model/UpdateNotificationBody.md
 docs/Model/UpdateQuestionConfigBody.md
 docs/Model/UpdateQuestionResultBody.md
+docs/Model/UpdateSubscriptionAPIResponse.md
 docs/Model/UpdateTenantBody.md
 docs/Model/UpdateTenantPackageBody.md
 docs/Model/UpdateTenantUserBody.md
@@ -334,6 +354,8 @@ docs/Model/UserNotificationWriteResponse.md
 docs/Model/UserPresenceData.md
 docs/Model/UserReactsResponse.md
 docs/Model/UserSearchResult.md
+docs/Model/UserSearchSection.md
+docs/Model/UserSearchSectionResult.md
 docs/Model/UserSessionInfo.md
 docs/Model/VoteBodyParams.md
 docs/Model/VoteComment200Response.md
@@ -351,6 +373,7 @@ lib/HeaderSelector.php
 lib/Model/APIAuditLog.php
 lib/Model/APIComment.php
 lib/Model/APICommentBase.php
+lib/Model/APICommentBaseMeta.php
 lib/Model/APICreateUserBadgeResponse.php
 lib/Model/APIDomainConfiguration.php
 lib/Model/APIEmptyResponse.php
@@ -367,6 +390,9 @@ lib/Model/APISSOUser.php
 lib/Model/APIStatus.php
 lib/Model/APITenant.php
 lib/Model/APITenantDailyUsage.php
+lib/Model/APITicket.php
+lib/Model/APITicketDetail.php
+lib/Model/APITicketFile.php
 lib/Model/APIUserSubscription.php
 lib/Model/AddDomainConfig200Response.php
 lib/Model/AddDomainConfig200ResponseAnyOf.php
@@ -398,6 +424,9 @@ lib/Model/BulkCreateHashTagsBody.php
 lib/Model/BulkCreateHashTagsBodyTagsInner.php
 lib/Model/BulkCreateHashTagsResponse.php
 lib/Model/ChangeCommentPinStatusResponse.php
+lib/Model/ChangeTicketState200Response.php
+lib/Model/ChangeTicketStateBody.php
+lib/Model/ChangeTicketStateResponse.php
 lib/Model/CheckBlockedCommentsResponse.php
 lib/Model/CheckedCommentsForBlocked200Response.php
 lib/Model/CombineCommentsWithQuestionResults200Response.php
@@ -449,6 +478,9 @@ lib/Model/CreateTenantResponse.php
 lib/Model/CreateTenantUser200Response.php
 lib/Model/CreateTenantUserBody.php
 lib/Model/CreateTenantUserResponse.php
+lib/Model/CreateTicket200Response.php
+lib/Model/CreateTicketBody.php
+lib/Model/CreateTicketResponse.php
 lib/Model/CreateUserBadge200Response.php
 lib/Model/CreateUserBadgeParams.php
 lib/Model/CustomConfigParameters.php
@@ -557,6 +589,10 @@ lib/Model/GetTenantUsers200Response.php
 lib/Model/GetTenantUsersResponse.php
 lib/Model/GetTenants200Response.php
 lib/Model/GetTenantsResponse.php
+lib/Model/GetTicket200Response.php
+lib/Model/GetTicketResponse.php
+lib/Model/GetTickets200Response.php
+lib/Model/GetTicketsResponse.php
 lib/Model/GetUser200Response.php
 lib/Model/GetUserBadge200Response.php
 lib/Model/GetUserBadgeProgressById200Response.php
@@ -574,6 +610,7 @@ lib/Model/GetVotesForUser200Response.php
 lib/Model/GetVotesForUserResponse.php
 lib/Model/GetVotesResponse.php
 lib/Model/GifRating.php
+lib/Model/HeaderAccountNotification.php
 lib/Model/HeaderState.php
 lib/Model/IgnoredResponse.php
 lib/Model/ImageContentProfanityLevel.php
@@ -583,6 +620,7 @@ lib/Model/LiveEventExtraInfo.php
 lib/Model/LiveEventType.php
 lib/Model/LockComment200Response.php
 lib/Model/MediaAsset.php
+lib/Model/MentionAutoCompleteMode.php
 lib/Model/MetaItem.php
 lib/Model/ModelInterface.php
 lib/Model/Moderator.php
@@ -640,11 +678,13 @@ lib/Model/SaveCommentResponseOptimized.php
 lib/Model/SaveCommentsResponseWithPresence.php
 lib/Model/SearchUsers200Response.php
 lib/Model/SearchUsersResponse.php
+lib/Model/SearchUsersSectionedResponse.php
 lib/Model/SetCommentText200Response.php
 lib/Model/SetCommentTextResult.php
 lib/Model/SizePreset.php
 lib/Model/SortDirections.php
 lib/Model/SpamRule.php
+lib/Model/TOSConfig.php
 lib/Model/TenantHashTag.php
 lib/Model/TenantPackage.php
 lib/Model/UnBlockCommentPublic200Response.php
@@ -653,6 +693,7 @@ lib/Model/UnblockSuccess.php
 lib/Model/UpdatableCommentParams.php
 lib/Model/UpdateAPIPageData.php
 lib/Model/UpdateAPISSOUserData.php
+lib/Model/UpdateAPIUserSubscriptionData.php
 lib/Model/UpdateDomainConfigParams.php
 lib/Model/UpdateEmailTemplateBody.php
 lib/Model/UpdateFeedPostParams.php
@@ -662,6 +703,7 @@ lib/Model/UpdateModeratorBody.php
 lib/Model/UpdateNotificationBody.php
 lib/Model/UpdateQuestionConfigBody.php
 lib/Model/UpdateQuestionResultBody.php
+lib/Model/UpdateSubscriptionAPIResponse.php
 lib/Model/UpdateTenantBody.php
 lib/Model/UpdateTenantPackageBody.php
 lib/Model/UpdateTenantUserBody.php
@@ -678,6 +720,8 @@ lib/Model/UserNotificationWriteResponse.php
 lib/Model/UserPresenceData.php
 lib/Model/UserReactsResponse.php
 lib/Model/UserSearchResult.php
+lib/Model/UserSearchSection.php
+lib/Model/UserSearchSectionResult.php
 lib/Model/UserSessionInfo.php
 lib/Model/VoteBodyParams.php
 lib/Model/VoteComment200Response.php
@@ -691,6 +735,7 @@ phpunit.xml.dist
 test/Api/DefaultApiTest.php
 test/Api/PublicApiTest.php
 test/Model/APIAuditLogTest.php
+test/Model/APICommentBaseMetaTest.php
 test/Model/APICommentBaseTest.php
 test/Model/APICommentTest.php
 test/Model/APICreateUserBadgeResponseTest.php
@@ -709,6 +754,9 @@ test/Model/APISSOUserTest.php
 test/Model/APIStatusTest.php
 test/Model/APITenantDailyUsageTest.php
 test/Model/APITenantTest.php
+test/Model/APITicketDetailTest.php
+test/Model/APITicketFileTest.php
+test/Model/APITicketTest.php
 test/Model/APIUserSubscriptionTest.php
 test/Model/AddDomainConfig200ResponseAnyOfTest.php
 test/Model/AddDomainConfig200ResponseTest.php
@@ -740,6 +788,9 @@ test/Model/BulkCreateHashTagsBodyTagsInnerTest.php
 test/Model/BulkCreateHashTagsBodyTest.php
 test/Model/BulkCreateHashTagsResponseTest.php
 test/Model/ChangeCommentPinStatusResponseTest.php
+test/Model/ChangeTicketState200ResponseTest.php
+test/Model/ChangeTicketStateBodyTest.php
+test/Model/ChangeTicketStateResponseTest.php
 test/Model/CheckBlockedCommentsResponseTest.php
 test/Model/CheckedCommentsForBlocked200ResponseTest.php
 test/Model/CombineCommentsWithQuestionResults200ResponseTest.php
@@ -791,6 +842,9 @@ test/Model/CreateTenantResponseTest.php
 test/Model/CreateTenantUser200ResponseTest.php
 test/Model/CreateTenantUserBodyTest.php
 test/Model/CreateTenantUserResponseTest.php
+test/Model/CreateTicket200ResponseTest.php
+test/Model/CreateTicketBodyTest.php
+test/Model/CreateTicketResponseTest.php
 test/Model/CreateUserBadge200ResponseTest.php
 test/Model/CreateUserBadgeParamsTest.php
 test/Model/CustomConfigParametersTest.php
@@ -899,6 +953,10 @@ test/Model/GetTenantUsers200ResponseTest.php
 test/Model/GetTenantUsersResponseTest.php
 test/Model/GetTenants200ResponseTest.php
 test/Model/GetTenantsResponseTest.php
+test/Model/GetTicket200ResponseTest.php
+test/Model/GetTicketResponseTest.php
+test/Model/GetTickets200ResponseTest.php
+test/Model/GetTicketsResponseTest.php
 test/Model/GetUser200ResponseTest.php
 test/Model/GetUserBadge200ResponseTest.php
 test/Model/GetUserBadgeProgressById200ResponseTest.php
@@ -916,6 +974,7 @@ test/Model/GetVotesForUser200ResponseTest.php
 test/Model/GetVotesForUserResponseTest.php
 test/Model/GetVotesResponseTest.php
 test/Model/GifRatingTest.php
+test/Model/HeaderAccountNotificationTest.php
 test/Model/HeaderStateTest.php
 test/Model/IgnoredResponseTest.php
 test/Model/ImageContentProfanityLevelTest.php
@@ -925,6 +984,7 @@ test/Model/LiveEventTest.php
 test/Model/LiveEventTypeTest.php
 test/Model/LockComment200ResponseTest.php
 test/Model/MediaAssetTest.php
+test/Model/MentionAutoCompleteModeTest.php
 test/Model/MetaItemTest.php
 test/Model/ModeratorTest.php
 test/Model/NotificationAndCountTest.php
@@ -981,11 +1041,13 @@ test/Model/SaveCommentResponseTest.php
 test/Model/SaveCommentsResponseWithPresenceTest.php
 test/Model/SearchUsers200ResponseTest.php
 test/Model/SearchUsersResponseTest.php
+test/Model/SearchUsersSectionedResponseTest.php
 test/Model/SetCommentText200ResponseTest.php
 test/Model/SetCommentTextResultTest.php
 test/Model/SizePresetTest.php
 test/Model/SortDirectionsTest.php
 test/Model/SpamRuleTest.php
+test/Model/TOSConfigTest.php
 test/Model/TenantHashTagTest.php
 test/Model/TenantPackageTest.php
 test/Model/UnBlockCommentPublic200ResponseTest.php
@@ -994,6 +1056,7 @@ test/Model/UnblockSuccessTest.php
 test/Model/UpdatableCommentParamsTest.php
 test/Model/UpdateAPIPageDataTest.php
 test/Model/UpdateAPISSOUserDataTest.php
+test/Model/UpdateAPIUserSubscriptionDataTest.php
 test/Model/UpdateDomainConfigParamsTest.php
 test/Model/UpdateEmailTemplateBodyTest.php
 test/Model/UpdateFeedPostParamsTest.php
@@ -1003,6 +1066,7 @@ test/Model/UpdateModeratorBodyTest.php
 test/Model/UpdateNotificationBodyTest.php
 test/Model/UpdateQuestionConfigBodyTest.php
 test/Model/UpdateQuestionResultBodyTest.php
+test/Model/UpdateSubscriptionAPIResponseTest.php
 test/Model/UpdateTenantBodyTest.php
 test/Model/UpdateTenantPackageBodyTest.php
 test/Model/UpdateTenantUserBodyTest.php
@@ -1018,6 +1082,8 @@ test/Model/UserNotificationWriteResponseTest.php
 test/Model/UserPresenceDataTest.php
 test/Model/UserReactsResponseTest.php
 test/Model/UserSearchResultTest.php
+test/Model/UserSearchSectionResultTest.php
+test/Model/UserSearchSectionTest.php
 test/Model/UserSessionInfoTest.php
 test/Model/UserTest.php
 test/Model/VoteBodyParamsTest.php

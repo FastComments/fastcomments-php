@@ -22,5 +22,6 @@ Name | Type | Description | Notes
 **verification_id** | **string** |  |
 **created_at** | **\DateTime** |  |
 **moderation_group_ids** | **string[]** |  |
+**is_email_suppressed** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

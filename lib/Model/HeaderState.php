@@ -62,7 +62,8 @@ class HeaderState implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification_type' => 'object',
         'user_id' => 'string',
         'user_id_ws' => 'string',
-        'notification_counts' => '\FastComments\Client\Model\NotificationAndCount[]'
+        'notification_counts' => '\FastComments\Client\Model\NotificationAndCount[]',
+        'account_notifications' => '\FastComments\Client\Model\HeaderAccountNotification[]'
     ];
 
     /**
@@ -77,7 +78,8 @@ class HeaderState implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification_type' => null,
         'user_id' => null,
         'user_id_ws' => null,
-        'notification_counts' => null
+        'notification_counts' => null,
+        'account_notifications' => null
     ];
 
     /**
@@ -90,7 +92,8 @@ class HeaderState implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification_type' => false,
         'user_id' => false,
         'user_id_ws' => false,
-        'notification_counts' => false
+        'notification_counts' => false,
+        'account_notifications' => false
     ];
 
     /**
@@ -183,7 +186,8 @@ class HeaderState implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification_type' => 'NotificationType',
         'user_id' => 'userId',
         'user_id_ws' => 'userIdWS',
-        'notification_counts' => 'notificationCounts'
+        'notification_counts' => 'notificationCounts',
+        'account_notifications' => 'accountNotifications'
     ];
 
     /**
@@ -196,7 +200,8 @@ class HeaderState implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification_type' => 'setNotificationType',
         'user_id' => 'setUserId',
         'user_id_ws' => 'setUserIdWs',
-        'notification_counts' => 'setNotificationCounts'
+        'notification_counts' => 'setNotificationCounts',
+        'account_notifications' => 'setAccountNotifications'
     ];
 
     /**
@@ -209,7 +214,8 @@ class HeaderState implements ModelInterface, ArrayAccess, \JsonSerializable
         'notification_type' => 'getNotificationType',
         'user_id' => 'getUserId',
         'user_id_ws' => 'getUserIdWs',
-        'notification_counts' => 'getNotificationCounts'
+        'notification_counts' => 'getNotificationCounts',
+        'account_notifications' => 'getAccountNotifications'
     ];
 
     /**
@@ -274,6 +280,7 @@ class HeaderState implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('user_id', $data ?? [], null);
         $this->setIfExists('user_id_ws', $data ?? [], null);
         $this->setIfExists('notification_counts', $data ?? [], null);
+        $this->setIfExists('account_notifications', $data ?? [], null);
     }
 
     /**
@@ -317,6 +324,9 @@ class HeaderState implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['notification_counts'] === null) {
             $invalidProperties[] = "'notification_counts' can't be null";
+        }
+        if ($this->container['account_notifications'] === null) {
+            $invalidProperties[] = "'account_notifications' can't be null";
         }
         return $invalidProperties;
     }
@@ -464,6 +474,33 @@ class HeaderState implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable notification_counts cannot be null');
         }
         $this->container['notification_counts'] = $notification_counts;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_notifications
+     *
+     * @return \FastComments\Client\Model\HeaderAccountNotification[]
+     */
+    public function getAccountNotifications()
+    {
+        return $this->container['account_notifications'];
+    }
+
+    /**
+     * Sets account_notifications
+     *
+     * @param \FastComments\Client\Model\HeaderAccountNotification[] $account_notifications account_notifications
+     *
+     * @return self
+     */
+    public function setAccountNotifications($account_notifications)
+    {
+        if (is_null($account_notifications)) {
+            throw new \InvalidArgumentException('non-nullable account_notifications cannot be null');
+        }
+        $this->container['account_notifications'] = $account_notifications;
 
         return $this;
     }

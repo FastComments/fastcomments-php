@@ -12,5 +12,6 @@ Name | Type | Description | Notes
 **auto_trust_factor** | **float** |  | [optional]
 **manual_trust_factor** | **float** |  | [optional]
 **progress** | **array<string,float>** | Construct a type with a set of properties K of type T |
+**tos_accepted_at** | **\DateTime** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

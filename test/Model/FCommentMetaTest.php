@@ -81,6 +81,15 @@ class FCommentMetaTest extends TestCase
     }
 
     /**
+     * Test attribute "wp_id"
+     */
+    public function testPropertyWpId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "wp_user_id"
      */
     public function testPropertyWpUserId()

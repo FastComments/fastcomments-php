@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **max_domains** | **float** |  |
 **max_white_labeled_tenants** | **float** |  | [optional]
 **max_monthly_event_log_requests** | **float** |  | [optional]
+**max_custom_collection_size** | **float** |  | [optional]
 **has_white_labeling** | **bool** |  | [optional]
 **has_debranding** | **bool** |  |
 **has_llm_spam_detection** | **bool** |  | [optional]

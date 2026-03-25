@@ -22,5 +22,6 @@ Name | Type | Description | Notes
 **displayed_on_comments** | **bool** |  |
 **received_at** | **\DateTime** |  |
 **order** | **int** |  | [optional]
+**url_id** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

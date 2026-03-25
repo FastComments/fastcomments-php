@@ -82,6 +82,8 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'disable_email_inputs' => 'bool',
         'disable_live_commenting' => 'bool',
         'disable_notification_bell' => 'bool',
+        'disable_profile_comments' => 'bool',
+        'disable_profile_direct_messages' => 'bool',
         'disable_profiles' => 'bool',
         'disable_success_message' => 'bool',
         'disable_toolbar' => 'bool',
@@ -106,6 +108,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'max_comment_character_length' => 'int',
         'max_comment_created_count_pupm' => 'int',
         'no_custom_config' => 'bool',
+        'mention_auto_complete_mode' => '\FastComments\Client\Model\MentionAutoCompleteMode',
         'no_image_uploads' => 'bool',
         'no_styles' => 'bool',
         'page_size' => 'int',
@@ -126,11 +129,18 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'vote_style' => '\FastComments\Client\Model\VoteStyle',
         'widget_question_id' => 'string',
         'widget_question_results_style' => '\FastComments\Client\Model\CommentQuestionResultsRenderingType',
+        'widget_question_show_breakdown' => 'bool',
         'widget_question_style' => '\FastComments\Client\Model\QuestionRenderingType',
         'widget_question_when_to_save' => '\FastComments\Client\Model\QuestionWhenSave',
         'widget_questions_required' => '\FastComments\Client\Model\CommentQuestionsRequired',
         'widget_sub_question_visibility' => '\FastComments\Client\Model\QuestionSubQuestionVisibility',
-        'wrap' => 'bool'
+        'wrap' => 'bool',
+        'ticket_base_url' => 'string',
+        'ticket_kb_search_endpoint' => 'string',
+        'ticket_file_uploads_enabled' => 'bool',
+        'ticket_max_file_size' => 'int',
+        'ticket_auto_assign_user_ids' => 'string[]',
+        'tos' => '\FastComments\Client\Model\TOSConfig'
     ];
 
     /**
@@ -165,6 +175,8 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'disable_email_inputs' => null,
         'disable_live_commenting' => null,
         'disable_notification_bell' => null,
+        'disable_profile_comments' => null,
+        'disable_profile_direct_messages' => null,
         'disable_profiles' => null,
         'disable_success_message' => null,
         'disable_toolbar' => null,
@@ -189,6 +201,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'max_comment_character_length' => 'int32',
         'max_comment_created_count_pupm' => 'int32',
         'no_custom_config' => null,
+        'mention_auto_complete_mode' => null,
         'no_image_uploads' => null,
         'no_styles' => null,
         'page_size' => 'int32',
@@ -209,11 +222,18 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'vote_style' => null,
         'widget_question_id' => null,
         'widget_question_results_style' => null,
+        'widget_question_show_breakdown' => null,
         'widget_question_style' => null,
         'widget_question_when_to_save' => null,
         'widget_questions_required' => null,
         'widget_sub_question_visibility' => null,
-        'wrap' => null
+        'wrap' => null,
+        'ticket_base_url' => null,
+        'ticket_kb_search_endpoint' => null,
+        'ticket_file_uploads_enabled' => null,
+        'ticket_max_file_size' => 'int32',
+        'ticket_auto_assign_user_ids' => null,
+        'tos' => null
     ];
 
     /**
@@ -246,6 +266,8 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'disable_email_inputs' => false,
         'disable_live_commenting' => false,
         'disable_notification_bell' => false,
+        'disable_profile_comments' => false,
+        'disable_profile_direct_messages' => false,
         'disable_profiles' => false,
         'disable_success_message' => false,
         'disable_toolbar' => false,
@@ -270,6 +292,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'max_comment_character_length' => true,
         'max_comment_created_count_pupm' => true,
         'no_custom_config' => false,
+        'mention_auto_complete_mode' => true,
         'no_image_uploads' => false,
         'no_styles' => false,
         'page_size' => true,
@@ -290,11 +313,18 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'vote_style' => false,
         'widget_question_id' => false,
         'widget_question_results_style' => false,
+        'widget_question_show_breakdown' => false,
         'widget_question_style' => false,
         'widget_question_when_to_save' => false,
         'widget_questions_required' => false,
         'widget_sub_question_visibility' => false,
-        'wrap' => false
+        'wrap' => false,
+        'ticket_base_url' => false,
+        'ticket_kb_search_endpoint' => false,
+        'ticket_file_uploads_enabled' => false,
+        'ticket_max_file_size' => false,
+        'ticket_auto_assign_user_ids' => false,
+        'tos' => false
     ];
 
     /**
@@ -407,6 +437,8 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'disable_email_inputs' => 'disableEmailInputs',
         'disable_live_commenting' => 'disableLiveCommenting',
         'disable_notification_bell' => 'disableNotificationBell',
+        'disable_profile_comments' => 'disableProfileComments',
+        'disable_profile_direct_messages' => 'disableProfileDirectMessages',
         'disable_profiles' => 'disableProfiles',
         'disable_success_message' => 'disableSuccessMessage',
         'disable_toolbar' => 'disableToolbar',
@@ -431,6 +463,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'max_comment_character_length' => 'maxCommentCharacterLength',
         'max_comment_created_count_pupm' => 'maxCommentCreatedCountPUPM',
         'no_custom_config' => 'noCustomConfig',
+        'mention_auto_complete_mode' => 'mentionAutoCompleteMode',
         'no_image_uploads' => 'noImageUploads',
         'no_styles' => 'noStyles',
         'page_size' => 'pageSize',
@@ -451,11 +484,18 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'vote_style' => 'voteStyle',
         'widget_question_id' => 'widgetQuestionId',
         'widget_question_results_style' => 'widgetQuestionResultsStyle',
+        'widget_question_show_breakdown' => 'widgetQuestionShowBreakdown',
         'widget_question_style' => 'widgetQuestionStyle',
         'widget_question_when_to_save' => 'widgetQuestionWhenToSave',
         'widget_questions_required' => 'widgetQuestionsRequired',
         'widget_sub_question_visibility' => 'widgetSubQuestionVisibility',
-        'wrap' => 'wrap'
+        'wrap' => 'wrap',
+        'ticket_base_url' => 'ticketBaseUrl',
+        'ticket_kb_search_endpoint' => 'ticketKBSearchEndpoint',
+        'ticket_file_uploads_enabled' => 'ticketFileUploadsEnabled',
+        'ticket_max_file_size' => 'ticketMaxFileSize',
+        'ticket_auto_assign_user_ids' => 'ticketAutoAssignUserIds',
+        'tos' => 'tos'
     ];
 
     /**
@@ -488,6 +528,8 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'disable_email_inputs' => 'setDisableEmailInputs',
         'disable_live_commenting' => 'setDisableLiveCommenting',
         'disable_notification_bell' => 'setDisableNotificationBell',
+        'disable_profile_comments' => 'setDisableProfileComments',
+        'disable_profile_direct_messages' => 'setDisableProfileDirectMessages',
         'disable_profiles' => 'setDisableProfiles',
         'disable_success_message' => 'setDisableSuccessMessage',
         'disable_toolbar' => 'setDisableToolbar',
@@ -512,6 +554,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'max_comment_character_length' => 'setMaxCommentCharacterLength',
         'max_comment_created_count_pupm' => 'setMaxCommentCreatedCountPupm',
         'no_custom_config' => 'setNoCustomConfig',
+        'mention_auto_complete_mode' => 'setMentionAutoCompleteMode',
         'no_image_uploads' => 'setNoImageUploads',
         'no_styles' => 'setNoStyles',
         'page_size' => 'setPageSize',
@@ -532,11 +575,18 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'vote_style' => 'setVoteStyle',
         'widget_question_id' => 'setWidgetQuestionId',
         'widget_question_results_style' => 'setWidgetQuestionResultsStyle',
+        'widget_question_show_breakdown' => 'setWidgetQuestionShowBreakdown',
         'widget_question_style' => 'setWidgetQuestionStyle',
         'widget_question_when_to_save' => 'setWidgetQuestionWhenToSave',
         'widget_questions_required' => 'setWidgetQuestionsRequired',
         'widget_sub_question_visibility' => 'setWidgetSubQuestionVisibility',
-        'wrap' => 'setWrap'
+        'wrap' => 'setWrap',
+        'ticket_base_url' => 'setTicketBaseUrl',
+        'ticket_kb_search_endpoint' => 'setTicketKbSearchEndpoint',
+        'ticket_file_uploads_enabled' => 'setTicketFileUploadsEnabled',
+        'ticket_max_file_size' => 'setTicketMaxFileSize',
+        'ticket_auto_assign_user_ids' => 'setTicketAutoAssignUserIds',
+        'tos' => 'setTos'
     ];
 
     /**
@@ -569,6 +619,8 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'disable_email_inputs' => 'getDisableEmailInputs',
         'disable_live_commenting' => 'getDisableLiveCommenting',
         'disable_notification_bell' => 'getDisableNotificationBell',
+        'disable_profile_comments' => 'getDisableProfileComments',
+        'disable_profile_direct_messages' => 'getDisableProfileDirectMessages',
         'disable_profiles' => 'getDisableProfiles',
         'disable_success_message' => 'getDisableSuccessMessage',
         'disable_toolbar' => 'getDisableToolbar',
@@ -593,6 +645,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'max_comment_character_length' => 'getMaxCommentCharacterLength',
         'max_comment_created_count_pupm' => 'getMaxCommentCreatedCountPupm',
         'no_custom_config' => 'getNoCustomConfig',
+        'mention_auto_complete_mode' => 'getMentionAutoCompleteMode',
         'no_image_uploads' => 'getNoImageUploads',
         'no_styles' => 'getNoStyles',
         'page_size' => 'getPageSize',
@@ -613,11 +666,18 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'vote_style' => 'getVoteStyle',
         'widget_question_id' => 'getWidgetQuestionId',
         'widget_question_results_style' => 'getWidgetQuestionResultsStyle',
+        'widget_question_show_breakdown' => 'getWidgetQuestionShowBreakdown',
         'widget_question_style' => 'getWidgetQuestionStyle',
         'widget_question_when_to_save' => 'getWidgetQuestionWhenToSave',
         'widget_questions_required' => 'getWidgetQuestionsRequired',
         'widget_sub_question_visibility' => 'getWidgetSubQuestionVisibility',
-        'wrap' => 'getWrap'
+        'wrap' => 'getWrap',
+        'ticket_base_url' => 'getTicketBaseUrl',
+        'ticket_kb_search_endpoint' => 'getTicketKbSearchEndpoint',
+        'ticket_file_uploads_enabled' => 'getTicketFileUploadsEnabled',
+        'ticket_max_file_size' => 'getTicketMaxFileSize',
+        'ticket_auto_assign_user_ids' => 'getTicketAutoAssignUserIds',
+        'tos' => 'getTos'
     ];
 
     /**
@@ -701,6 +761,8 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('disable_email_inputs', $data ?? [], null);
         $this->setIfExists('disable_live_commenting', $data ?? [], null);
         $this->setIfExists('disable_notification_bell', $data ?? [], null);
+        $this->setIfExists('disable_profile_comments', $data ?? [], null);
+        $this->setIfExists('disable_profile_direct_messages', $data ?? [], null);
         $this->setIfExists('disable_profiles', $data ?? [], null);
         $this->setIfExists('disable_success_message', $data ?? [], null);
         $this->setIfExists('disable_toolbar', $data ?? [], null);
@@ -725,6 +787,7 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('max_comment_character_length', $data ?? [], null);
         $this->setIfExists('max_comment_created_count_pupm', $data ?? [], null);
         $this->setIfExists('no_custom_config', $data ?? [], null);
+        $this->setIfExists('mention_auto_complete_mode', $data ?? [], null);
         $this->setIfExists('no_image_uploads', $data ?? [], null);
         $this->setIfExists('no_styles', $data ?? [], null);
         $this->setIfExists('page_size', $data ?? [], null);
@@ -745,11 +808,18 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('vote_style', $data ?? [], null);
         $this->setIfExists('widget_question_id', $data ?? [], null);
         $this->setIfExists('widget_question_results_style', $data ?? [], null);
+        $this->setIfExists('widget_question_show_breakdown', $data ?? [], null);
         $this->setIfExists('widget_question_style', $data ?? [], null);
         $this->setIfExists('widget_question_when_to_save', $data ?? [], null);
         $this->setIfExists('widget_questions_required', $data ?? [], null);
         $this->setIfExists('widget_sub_question_visibility', $data ?? [], null);
         $this->setIfExists('wrap', $data ?? [], null);
+        $this->setIfExists('ticket_base_url', $data ?? [], null);
+        $this->setIfExists('ticket_kb_search_endpoint', $data ?? [], null);
+        $this->setIfExists('ticket_file_uploads_enabled', $data ?? [], null);
+        $this->setIfExists('ticket_max_file_size', $data ?? [], null);
+        $this->setIfExists('ticket_auto_assign_user_ids', $data ?? [], null);
+        $this->setIfExists('tos', $data ?? [], null);
     }
 
     /**
@@ -1499,6 +1569,60 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets disable_profile_comments
+     *
+     * @return bool|null
+     */
+    public function getDisableProfileComments()
+    {
+        return $this->container['disable_profile_comments'];
+    }
+
+    /**
+     * Sets disable_profile_comments
+     *
+     * @param bool|null $disable_profile_comments disable_profile_comments
+     *
+     * @return self
+     */
+    public function setDisableProfileComments($disable_profile_comments)
+    {
+        if (is_null($disable_profile_comments)) {
+            throw new \InvalidArgumentException('non-nullable disable_profile_comments cannot be null');
+        }
+        $this->container['disable_profile_comments'] = $disable_profile_comments;
+
+        return $this;
+    }
+
+    /**
+     * Gets disable_profile_direct_messages
+     *
+     * @return bool|null
+     */
+    public function getDisableProfileDirectMessages()
+    {
+        return $this->container['disable_profile_direct_messages'];
+    }
+
+    /**
+     * Sets disable_profile_direct_messages
+     *
+     * @param bool|null $disable_profile_direct_messages disable_profile_direct_messages
+     *
+     * @return self
+     */
+    public function setDisableProfileDirectMessages($disable_profile_direct_messages)
+    {
+        if (is_null($disable_profile_direct_messages)) {
+            throw new \InvalidArgumentException('non-nullable disable_profile_direct_messages cannot be null');
+        }
+        $this->container['disable_profile_direct_messages'] = $disable_profile_direct_messages;
+
+        return $this;
+    }
+
+    /**
      * Gets disable_profiles
      *
      * @return bool|null
@@ -2182,6 +2306,40 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets mention_auto_complete_mode
+     *
+     * @return \FastComments\Client\Model\MentionAutoCompleteMode|null
+     */
+    public function getMentionAutoCompleteMode()
+    {
+        return $this->container['mention_auto_complete_mode'];
+    }
+
+    /**
+     * Sets mention_auto_complete_mode
+     *
+     * @param \FastComments\Client\Model\MentionAutoCompleteMode|null $mention_auto_complete_mode mention_auto_complete_mode
+     *
+     * @return self
+     */
+    public function setMentionAutoCompleteMode($mention_auto_complete_mode)
+    {
+        if (is_null($mention_auto_complete_mode)) {
+            array_push($this->openAPINullablesSetToNull, 'mention_auto_complete_mode');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mention_auto_complete_mode', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['mention_auto_complete_mode'] = $mention_auto_complete_mode;
+
+        return $this;
+    }
+
+    /**
      * Gets no_image_uploads
      *
      * @return bool|null
@@ -2743,6 +2901,33 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets widget_question_show_breakdown
+     *
+     * @return bool|null
+     */
+    public function getWidgetQuestionShowBreakdown()
+    {
+        return $this->container['widget_question_show_breakdown'];
+    }
+
+    /**
+     * Sets widget_question_show_breakdown
+     *
+     * @param bool|null $widget_question_show_breakdown widget_question_show_breakdown
+     *
+     * @return self
+     */
+    public function setWidgetQuestionShowBreakdown($widget_question_show_breakdown)
+    {
+        if (is_null($widget_question_show_breakdown)) {
+            throw new \InvalidArgumentException('non-nullable widget_question_show_breakdown cannot be null');
+        }
+        $this->container['widget_question_show_breakdown'] = $widget_question_show_breakdown;
+
+        return $this;
+    }
+
+    /**
      * Gets widget_question_style
      *
      * @return \FastComments\Client\Model\QuestionRenderingType|null
@@ -2873,6 +3058,168 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable wrap cannot be null');
         }
         $this->container['wrap'] = $wrap;
+
+        return $this;
+    }
+
+    /**
+     * Gets ticket_base_url
+     *
+     * @return string|null
+     */
+    public function getTicketBaseUrl()
+    {
+        return $this->container['ticket_base_url'];
+    }
+
+    /**
+     * Sets ticket_base_url
+     *
+     * @param string|null $ticket_base_url ticket_base_url
+     *
+     * @return self
+     */
+    public function setTicketBaseUrl($ticket_base_url)
+    {
+        if (is_null($ticket_base_url)) {
+            throw new \InvalidArgumentException('non-nullable ticket_base_url cannot be null');
+        }
+        $this->container['ticket_base_url'] = $ticket_base_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets ticket_kb_search_endpoint
+     *
+     * @return string|null
+     */
+    public function getTicketKbSearchEndpoint()
+    {
+        return $this->container['ticket_kb_search_endpoint'];
+    }
+
+    /**
+     * Sets ticket_kb_search_endpoint
+     *
+     * @param string|null $ticket_kb_search_endpoint ticket_kb_search_endpoint
+     *
+     * @return self
+     */
+    public function setTicketKbSearchEndpoint($ticket_kb_search_endpoint)
+    {
+        if (is_null($ticket_kb_search_endpoint)) {
+            throw new \InvalidArgumentException('non-nullable ticket_kb_search_endpoint cannot be null');
+        }
+        $this->container['ticket_kb_search_endpoint'] = $ticket_kb_search_endpoint;
+
+        return $this;
+    }
+
+    /**
+     * Gets ticket_file_uploads_enabled
+     *
+     * @return bool|null
+     */
+    public function getTicketFileUploadsEnabled()
+    {
+        return $this->container['ticket_file_uploads_enabled'];
+    }
+
+    /**
+     * Sets ticket_file_uploads_enabled
+     *
+     * @param bool|null $ticket_file_uploads_enabled ticket_file_uploads_enabled
+     *
+     * @return self
+     */
+    public function setTicketFileUploadsEnabled($ticket_file_uploads_enabled)
+    {
+        if (is_null($ticket_file_uploads_enabled)) {
+            throw new \InvalidArgumentException('non-nullable ticket_file_uploads_enabled cannot be null');
+        }
+        $this->container['ticket_file_uploads_enabled'] = $ticket_file_uploads_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets ticket_max_file_size
+     *
+     * @return int|null
+     */
+    public function getTicketMaxFileSize()
+    {
+        return $this->container['ticket_max_file_size'];
+    }
+
+    /**
+     * Sets ticket_max_file_size
+     *
+     * @param int|null $ticket_max_file_size ticket_max_file_size
+     *
+     * @return self
+     */
+    public function setTicketMaxFileSize($ticket_max_file_size)
+    {
+        if (is_null($ticket_max_file_size)) {
+            throw new \InvalidArgumentException('non-nullable ticket_max_file_size cannot be null');
+        }
+        $this->container['ticket_max_file_size'] = $ticket_max_file_size;
+
+        return $this;
+    }
+
+    /**
+     * Gets ticket_auto_assign_user_ids
+     *
+     * @return string[]|null
+     */
+    public function getTicketAutoAssignUserIds()
+    {
+        return $this->container['ticket_auto_assign_user_ids'];
+    }
+
+    /**
+     * Sets ticket_auto_assign_user_ids
+     *
+     * @param string[]|null $ticket_auto_assign_user_ids ticket_auto_assign_user_ids
+     *
+     * @return self
+     */
+    public function setTicketAutoAssignUserIds($ticket_auto_assign_user_ids)
+    {
+        if (is_null($ticket_auto_assign_user_ids)) {
+            throw new \InvalidArgumentException('non-nullable ticket_auto_assign_user_ids cannot be null');
+        }
+        $this->container['ticket_auto_assign_user_ids'] = $ticket_auto_assign_user_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets tos
+     *
+     * @return \FastComments\Client\Model\TOSConfig|null
+     */
+    public function getTos()
+    {
+        return $this->container['tos'];
+    }
+
+    /**
+     * Sets tos
+     *
+     * @param \FastComments\Client\Model\TOSConfig|null $tos tos
+     *
+     * @return self
+     */
+    public function setTos($tos)
+    {
+        if (is_null($tos)) {
+            throw new \InvalidArgumentException('non-nullable tos cannot be null');
+        }
+        $this->container['tos'] = $tos;
 
         return $this;
     }

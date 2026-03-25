@@ -68,6 +68,7 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_ids' => 'string[]',
         'has_blocked_users' => 'bool',
         'is_anon_session' => 'bool',
+        'needs_tos' => 'bool',
         'session_id' => 'string',
         'username' => 'string',
         'website_url' => 'string'
@@ -91,6 +92,7 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_ids' => null,
         'has_blocked_users' => null,
         'is_anon_session' => null,
+        'needs_tos' => null,
         'session_id' => null,
         'username' => null,
         'website_url' => null
@@ -112,6 +114,7 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_ids' => false,
         'has_blocked_users' => false,
         'is_anon_session' => false,
+        'needs_tos' => false,
         'session_id' => true,
         'username' => false,
         'website_url' => false
@@ -213,6 +216,7 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_ids' => 'groupIds',
         'has_blocked_users' => 'hasBlockedUsers',
         'is_anon_session' => 'isAnonSession',
+        'needs_tos' => 'needsTOS',
         'session_id' => 'sessionId',
         'username' => 'username',
         'website_url' => 'websiteUrl'
@@ -234,6 +238,7 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_ids' => 'setGroupIds',
         'has_blocked_users' => 'setHasBlockedUsers',
         'is_anon_session' => 'setIsAnonSession',
+        'needs_tos' => 'setNeedsTos',
         'session_id' => 'setSessionId',
         'username' => 'setUsername',
         'website_url' => 'setWebsiteUrl'
@@ -255,6 +260,7 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'group_ids' => 'getGroupIds',
         'has_blocked_users' => 'getHasBlockedUsers',
         'is_anon_session' => 'getIsAnonSession',
+        'needs_tos' => 'getNeedsTos',
         'session_id' => 'getSessionId',
         'username' => 'getUsername',
         'website_url' => 'getWebsiteUrl'
@@ -327,6 +333,7 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('group_ids', $data ?? [], null);
         $this->setIfExists('has_blocked_users', $data ?? [], null);
         $this->setIfExists('is_anon_session', $data ?? [], null);
+        $this->setIfExists('needs_tos', $data ?? [], null);
         $this->setIfExists('session_id', $data ?? [], null);
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('website_url', $data ?? [], null);
@@ -654,6 +661,33 @@ class UserSessionInfo implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable is_anon_session cannot be null');
         }
         $this->container['is_anon_session'] = $is_anon_session;
+
+        return $this;
+    }
+
+    /**
+     * Gets needs_tos
+     *
+     * @return bool|null
+     */
+    public function getNeedsTos()
+    {
+        return $this->container['needs_tos'];
+    }
+
+    /**
+     * Sets needs_tos
+     *
+     * @param bool|null $needs_tos needs_tos
+     *
+     * @return self
+     */
+    public function setNeedsTos($needs_tos)
+    {
+        if (is_null($needs_tos)) {
+            throw new \InvalidArgumentException('non-nullable needs_tos cannot be null');
+        }
+        $this->container['needs_tos'] = $needs_tos;
 
         return $this;
     }

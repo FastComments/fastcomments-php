@@ -65,6 +65,8 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'website_url' => 'string',
         'email' => 'string',
         'pending_email' => 'string',
+        'backup_email' => 'string',
+        'pending_backup_email' => 'string',
         'sign_up_date' => 'int',
         'created_from_url_id' => 'string',
         'created_from_tenant_id' => 'string',
@@ -87,11 +89,16 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_manage_data_admin' => 'bool',
         'is_comment_moderator_admin' => 'bool',
         'is_api_admin' => 'bool',
+        'is_site_admin' => 'bool',
         'moderator_ids' => 'string[]',
         'is_impersonator' => 'bool',
         'is_coupon_manager' => 'bool',
         'locale' => 'string',
         'digest_email_frequency' => '\FastComments\Client\Model\DigestEmailFrequency',
+        'notification_frequency' => 'float',
+        'admin_notification_frequency' => 'float',
+        'last_tenant_notification_sent_date' => '\DateTime',
+        'last_reply_notification_sent_date' => '\DateTime',
         'ignored_add_to_my_site_messages' => 'bool',
         'last_login_date' => '\DateTime',
         'display_label' => 'string',
@@ -108,7 +115,8 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'country_code' => 'string',
         'country_flag' => 'string',
         'social_links' => 'string[]',
-        'has_two_factor' => 'bool'
+        'has_two_factor' => 'bool',
+        'is_email_suppressed' => 'bool'
     ];
 
     /**
@@ -126,6 +134,8 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'website_url' => null,
         'email' => null,
         'pending_email' => null,
+        'backup_email' => null,
+        'pending_backup_email' => null,
         'sign_up_date' => 'int64',
         'created_from_url_id' => null,
         'created_from_tenant_id' => null,
@@ -148,11 +158,16 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_manage_data_admin' => null,
         'is_comment_moderator_admin' => null,
         'is_api_admin' => null,
+        'is_site_admin' => null,
         'moderator_ids' => null,
         'is_impersonator' => null,
         'is_coupon_manager' => null,
         'locale' => null,
         'digest_email_frequency' => null,
+        'notification_frequency' => 'double',
+        'admin_notification_frequency' => 'double',
+        'last_tenant_notification_sent_date' => 'date-time',
+        'last_reply_notification_sent_date' => 'date-time',
         'ignored_add_to_my_site_messages' => null,
         'last_login_date' => 'date-time',
         'display_label' => null,
@@ -169,7 +184,8 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'country_code' => null,
         'country_flag' => null,
         'social_links' => null,
-        'has_two_factor' => null
+        'has_two_factor' => null,
+        'is_email_suppressed' => null
     ];
 
     /**
@@ -185,6 +201,8 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'website_url' => true,
         'email' => true,
         'pending_email' => false,
+        'backup_email' => false,
+        'pending_backup_email' => false,
         'sign_up_date' => false,
         'created_from_url_id' => true,
         'created_from_tenant_id' => true,
@@ -207,11 +225,16 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_manage_data_admin' => false,
         'is_comment_moderator_admin' => false,
         'is_api_admin' => false,
+        'is_site_admin' => false,
         'moderator_ids' => false,
         'is_impersonator' => false,
         'is_coupon_manager' => false,
         'locale' => false,
         'digest_email_frequency' => false,
+        'notification_frequency' => false,
+        'admin_notification_frequency' => false,
+        'last_tenant_notification_sent_date' => false,
+        'last_reply_notification_sent_date' => false,
         'ignored_add_to_my_site_messages' => false,
         'last_login_date' => false,
         'display_label' => false,
@@ -228,7 +251,8 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'country_code' => false,
         'country_flag' => false,
         'social_links' => false,
-        'has_two_factor' => false
+        'has_two_factor' => false,
+        'is_email_suppressed' => false
     ];
 
     /**
@@ -324,6 +348,8 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'website_url' => 'websiteUrl',
         'email' => 'email',
         'pending_email' => 'pendingEmail',
+        'backup_email' => 'backupEmail',
+        'pending_backup_email' => 'pendingBackupEmail',
         'sign_up_date' => 'signUpDate',
         'created_from_url_id' => 'createdFromUrlId',
         'created_from_tenant_id' => 'createdFromTenantId',
@@ -346,11 +372,16 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_manage_data_admin' => 'isManageDataAdmin',
         'is_comment_moderator_admin' => 'isCommentModeratorAdmin',
         'is_api_admin' => 'isAPIAdmin',
+        'is_site_admin' => 'isSiteAdmin',
         'moderator_ids' => 'moderatorIds',
         'is_impersonator' => 'isImpersonator',
         'is_coupon_manager' => 'isCouponManager',
         'locale' => 'locale',
         'digest_email_frequency' => 'digestEmailFrequency',
+        'notification_frequency' => 'notificationFrequency',
+        'admin_notification_frequency' => 'adminNotificationFrequency',
+        'last_tenant_notification_sent_date' => 'lastTenantNotificationSentDate',
+        'last_reply_notification_sent_date' => 'lastReplyNotificationSentDate',
         'ignored_add_to_my_site_messages' => 'ignoredAddToMySiteMessages',
         'last_login_date' => 'lastLoginDate',
         'display_label' => 'displayLabel',
@@ -367,7 +398,8 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'country_code' => 'countryCode',
         'country_flag' => 'countryFlag',
         'social_links' => 'socialLinks',
-        'has_two_factor' => 'hasTwoFactor'
+        'has_two_factor' => 'hasTwoFactor',
+        'is_email_suppressed' => 'isEmailSuppressed'
     ];
 
     /**
@@ -383,6 +415,8 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'website_url' => 'setWebsiteUrl',
         'email' => 'setEmail',
         'pending_email' => 'setPendingEmail',
+        'backup_email' => 'setBackupEmail',
+        'pending_backup_email' => 'setPendingBackupEmail',
         'sign_up_date' => 'setSignUpDate',
         'created_from_url_id' => 'setCreatedFromUrlId',
         'created_from_tenant_id' => 'setCreatedFromTenantId',
@@ -405,11 +439,16 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_manage_data_admin' => 'setIsManageDataAdmin',
         'is_comment_moderator_admin' => 'setIsCommentModeratorAdmin',
         'is_api_admin' => 'setIsApiAdmin',
+        'is_site_admin' => 'setIsSiteAdmin',
         'moderator_ids' => 'setModeratorIds',
         'is_impersonator' => 'setIsImpersonator',
         'is_coupon_manager' => 'setIsCouponManager',
         'locale' => 'setLocale',
         'digest_email_frequency' => 'setDigestEmailFrequency',
+        'notification_frequency' => 'setNotificationFrequency',
+        'admin_notification_frequency' => 'setAdminNotificationFrequency',
+        'last_tenant_notification_sent_date' => 'setLastTenantNotificationSentDate',
+        'last_reply_notification_sent_date' => 'setLastReplyNotificationSentDate',
         'ignored_add_to_my_site_messages' => 'setIgnoredAddToMySiteMessages',
         'last_login_date' => 'setLastLoginDate',
         'display_label' => 'setDisplayLabel',
@@ -426,7 +465,8 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'country_code' => 'setCountryCode',
         'country_flag' => 'setCountryFlag',
         'social_links' => 'setSocialLinks',
-        'has_two_factor' => 'setHasTwoFactor'
+        'has_two_factor' => 'setHasTwoFactor',
+        'is_email_suppressed' => 'setIsEmailSuppressed'
     ];
 
     /**
@@ -442,6 +482,8 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'website_url' => 'getWebsiteUrl',
         'email' => 'getEmail',
         'pending_email' => 'getPendingEmail',
+        'backup_email' => 'getBackupEmail',
+        'pending_backup_email' => 'getPendingBackupEmail',
         'sign_up_date' => 'getSignUpDate',
         'created_from_url_id' => 'getCreatedFromUrlId',
         'created_from_tenant_id' => 'getCreatedFromTenantId',
@@ -464,11 +506,16 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_manage_data_admin' => 'getIsManageDataAdmin',
         'is_comment_moderator_admin' => 'getIsCommentModeratorAdmin',
         'is_api_admin' => 'getIsApiAdmin',
+        'is_site_admin' => 'getIsSiteAdmin',
         'moderator_ids' => 'getModeratorIds',
         'is_impersonator' => 'getIsImpersonator',
         'is_coupon_manager' => 'getIsCouponManager',
         'locale' => 'getLocale',
         'digest_email_frequency' => 'getDigestEmailFrequency',
+        'notification_frequency' => 'getNotificationFrequency',
+        'admin_notification_frequency' => 'getAdminNotificationFrequency',
+        'last_tenant_notification_sent_date' => 'getLastTenantNotificationSentDate',
+        'last_reply_notification_sent_date' => 'getLastReplyNotificationSentDate',
         'ignored_add_to_my_site_messages' => 'getIgnoredAddToMySiteMessages',
         'last_login_date' => 'getLastLoginDate',
         'display_label' => 'getDisplayLabel',
@@ -485,7 +532,8 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'country_code' => 'getCountryCode',
         'country_flag' => 'getCountryFlag',
         'social_links' => 'getSocialLinks',
-        'has_two_factor' => 'getHasTwoFactor'
+        'has_two_factor' => 'getHasTwoFactor',
+        'is_email_suppressed' => 'getIsEmailSuppressed'
     ];
 
     /**
@@ -552,6 +600,8 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('website_url', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('pending_email', $data ?? [], null);
+        $this->setIfExists('backup_email', $data ?? [], null);
+        $this->setIfExists('pending_backup_email', $data ?? [], null);
         $this->setIfExists('sign_up_date', $data ?? [], null);
         $this->setIfExists('created_from_url_id', $data ?? [], null);
         $this->setIfExists('created_from_tenant_id', $data ?? [], null);
@@ -574,11 +624,16 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('is_manage_data_admin', $data ?? [], null);
         $this->setIfExists('is_comment_moderator_admin', $data ?? [], null);
         $this->setIfExists('is_api_admin', $data ?? [], null);
+        $this->setIfExists('is_site_admin', $data ?? [], null);
         $this->setIfExists('moderator_ids', $data ?? [], null);
         $this->setIfExists('is_impersonator', $data ?? [], null);
         $this->setIfExists('is_coupon_manager', $data ?? [], null);
         $this->setIfExists('locale', $data ?? [], null);
         $this->setIfExists('digest_email_frequency', $data ?? [], null);
+        $this->setIfExists('notification_frequency', $data ?? [], null);
+        $this->setIfExists('admin_notification_frequency', $data ?? [], null);
+        $this->setIfExists('last_tenant_notification_sent_date', $data ?? [], null);
+        $this->setIfExists('last_reply_notification_sent_date', $data ?? [], null);
         $this->setIfExists('ignored_add_to_my_site_messages', $data ?? [], null);
         $this->setIfExists('last_login_date', $data ?? [], null);
         $this->setIfExists('display_label', $data ?? [], null);
@@ -596,6 +651,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('country_flag', $data ?? [], null);
         $this->setIfExists('social_links', $data ?? [], null);
         $this->setIfExists('has_two_factor', $data ?? [], null);
+        $this->setIfExists('is_email_suppressed', $data ?? [], null);
     }
 
     /**
@@ -873,6 +929,60 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable pending_email cannot be null');
         }
         $this->container['pending_email'] = $pending_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets backup_email
+     *
+     * @return string|null
+     */
+    public function getBackupEmail()
+    {
+        return $this->container['backup_email'];
+    }
+
+    /**
+     * Sets backup_email
+     *
+     * @param string|null $backup_email backup_email
+     *
+     * @return self
+     */
+    public function setBackupEmail($backup_email)
+    {
+        if (is_null($backup_email)) {
+            throw new \InvalidArgumentException('non-nullable backup_email cannot be null');
+        }
+        $this->container['backup_email'] = $backup_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets pending_backup_email
+     *
+     * @return string|null
+     */
+    public function getPendingBackupEmail()
+    {
+        return $this->container['pending_backup_email'];
+    }
+
+    /**
+     * Sets pending_backup_email
+     *
+     * @param string|null $pending_backup_email pending_backup_email
+     *
+     * @return self
+     */
+    public function setPendingBackupEmail($pending_backup_email)
+    {
+        if (is_null($pending_backup_email)) {
+            throw new \InvalidArgumentException('non-nullable pending_backup_email cannot be null');
+        }
+        $this->container['pending_backup_email'] = $pending_backup_email;
 
         return $this;
     }
@@ -1493,6 +1603,33 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets is_site_admin
+     *
+     * @return bool|null
+     */
+    public function getIsSiteAdmin()
+    {
+        return $this->container['is_site_admin'];
+    }
+
+    /**
+     * Sets is_site_admin
+     *
+     * @param bool|null $is_site_admin is_site_admin
+     *
+     * @return self
+     */
+    public function setIsSiteAdmin($is_site_admin)
+    {
+        if (is_null($is_site_admin)) {
+            throw new \InvalidArgumentException('non-nullable is_site_admin cannot be null');
+        }
+        $this->container['is_site_admin'] = $is_site_admin;
+
+        return $this;
+    }
+
+    /**
      * Gets moderator_ids
      *
      * @return string[]|null
@@ -1623,6 +1760,114 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable digest_email_frequency cannot be null');
         }
         $this->container['digest_email_frequency'] = $digest_email_frequency;
+
+        return $this;
+    }
+
+    /**
+     * Gets notification_frequency
+     *
+     * @return float|null
+     */
+    public function getNotificationFrequency()
+    {
+        return $this->container['notification_frequency'];
+    }
+
+    /**
+     * Sets notification_frequency
+     *
+     * @param float|null $notification_frequency notification_frequency
+     *
+     * @return self
+     */
+    public function setNotificationFrequency($notification_frequency)
+    {
+        if (is_null($notification_frequency)) {
+            throw new \InvalidArgumentException('non-nullable notification_frequency cannot be null');
+        }
+        $this->container['notification_frequency'] = $notification_frequency;
+
+        return $this;
+    }
+
+    /**
+     * Gets admin_notification_frequency
+     *
+     * @return float|null
+     */
+    public function getAdminNotificationFrequency()
+    {
+        return $this->container['admin_notification_frequency'];
+    }
+
+    /**
+     * Sets admin_notification_frequency
+     *
+     * @param float|null $admin_notification_frequency admin_notification_frequency
+     *
+     * @return self
+     */
+    public function setAdminNotificationFrequency($admin_notification_frequency)
+    {
+        if (is_null($admin_notification_frequency)) {
+            throw new \InvalidArgumentException('non-nullable admin_notification_frequency cannot be null');
+        }
+        $this->container['admin_notification_frequency'] = $admin_notification_frequency;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_tenant_notification_sent_date
+     *
+     * @return \DateTime|null
+     */
+    public function getLastTenantNotificationSentDate()
+    {
+        return $this->container['last_tenant_notification_sent_date'];
+    }
+
+    /**
+     * Sets last_tenant_notification_sent_date
+     *
+     * @param \DateTime|null $last_tenant_notification_sent_date last_tenant_notification_sent_date
+     *
+     * @return self
+     */
+    public function setLastTenantNotificationSentDate($last_tenant_notification_sent_date)
+    {
+        if (is_null($last_tenant_notification_sent_date)) {
+            throw new \InvalidArgumentException('non-nullable last_tenant_notification_sent_date cannot be null');
+        }
+        $this->container['last_tenant_notification_sent_date'] = $last_tenant_notification_sent_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_reply_notification_sent_date
+     *
+     * @return \DateTime|null
+     */
+    public function getLastReplyNotificationSentDate()
+    {
+        return $this->container['last_reply_notification_sent_date'];
+    }
+
+    /**
+     * Sets last_reply_notification_sent_date
+     *
+     * @param \DateTime|null $last_reply_notification_sent_date last_reply_notification_sent_date
+     *
+     * @return self
+     */
+    public function setLastReplyNotificationSentDate($last_reply_notification_sent_date)
+    {
+        if (is_null($last_reply_notification_sent_date)) {
+            throw new \InvalidArgumentException('non-nullable last_reply_notification_sent_date cannot be null');
+        }
+        $this->container['last_reply_notification_sent_date'] = $last_reply_notification_sent_date;
 
         return $this;
     }
@@ -2089,6 +2334,33 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable has_two_factor cannot be null');
         }
         $this->container['has_two_factor'] = $has_two_factor;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_email_suppressed
+     *
+     * @return bool|null
+     */
+    public function getIsEmailSuppressed()
+    {
+        return $this->container['is_email_suppressed'];
+    }
+
+    /**
+     * Sets is_email_suppressed
+     *
+     * @param bool|null $is_email_suppressed is_email_suppressed
+     *
+     * @return self
+     */
+    public function setIsEmailSuppressed($is_email_suppressed)
+    {
+        if (is_null($is_email_suppressed)) {
+            throw new \InvalidArgumentException('non-nullable is_email_suppressed cannot be null');
+        }
+        $this->container['is_email_suppressed'] = $is_email_suppressed;
 
         return $this;
     }

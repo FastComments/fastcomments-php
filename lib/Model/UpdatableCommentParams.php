@@ -94,7 +94,7 @@ class UpdatableCommentParams implements ModelInterface, ArrayAccess, \JsonSerial
         'is_locked' => 'bool',
         'flag_count' => 'int',
         'display_label' => 'string',
-        'meta' => '\FastComments\Client\Model\FCommentMeta',
+        'meta' => '\FastComments\Client\Model\APICommentBaseMeta',
         'moderation_group_ids' => 'string[]',
         'feedback_ids' => 'string[]'
     ];
@@ -1664,7 +1664,7 @@ class UpdatableCommentParams implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets meta
      *
-     * @return \FastComments\Client\Model\FCommentMeta|null
+     * @return \FastComments\Client\Model\APICommentBaseMeta|null
      */
     public function getMeta()
     {
@@ -1674,7 +1674,7 @@ class UpdatableCommentParams implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets meta
      *
-     * @param \FastComments\Client\Model\FCommentMeta|null $meta meta
+     * @param \FastComments\Client\Model\APICommentBaseMeta|null $meta meta
      *
      * @return self
      */
