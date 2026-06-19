@@ -473,7 +473,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\AddDomainConfig200Response
+     * @return \FastComments\Client\Model\AddDomainConfigResponse
      */
     public function addDomainConfig($tenant_id, $add_domain_config_params, string $contentType = self::contentTypes['addDomainConfig'][0])
     {
@@ -492,7 +492,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\AddDomainConfig200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\AddDomainConfigResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function addDomainConfigWithHttpInfo($tenant_id, $add_domain_config_params, string $contentType = self::contentTypes['addDomainConfig'][0])
     {
@@ -523,11 +523,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\AddDomainConfig200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\AddDomainConfigResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\AddDomainConfig200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\AddDomainConfigResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -545,7 +545,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\AddDomainConfig200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\AddDomainConfigResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -564,7 +564,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\AddDomainConfig200Response';
+            $returnType = '\FastComments\Client\Model\AddDomainConfigResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -597,7 +597,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\AddDomainConfig200Response',
+                        '\FastComments\Client\Model\AddDomainConfigResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -643,7 +643,7 @@ class DefaultApi
      */
     public function addDomainConfigAsyncWithHttpInfo($tenant_id, $add_domain_config_params, string $contentType = self::contentTypes['addDomainConfig'][0])
     {
-        $returnType = '\FastComments\Client\Model\AddDomainConfig200Response';
+        $returnType = '\FastComments\Client\Model\AddDomainConfigResponse';
         $request = $this->addDomainConfigRequest($tenant_id, $add_domain_config_params, $contentType);
 
         return $this->client
@@ -806,7 +806,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\AddHashTag200Response
+     * @return \FastComments\Client\Model\CreateHashTagResponse|\FastComments\Client\Model\APIError
      */
     public function addHashTag($tenant_id = null, $create_hash_tag_body = null, string $contentType = self::contentTypes['addHashTag'][0])
     {
@@ -825,7 +825,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\AddHashTag200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\CreateHashTagResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function addHashTagWithHttpInfo($tenant_id = null, $create_hash_tag_body = null, string $contentType = self::contentTypes['addHashTag'][0])
     {
@@ -856,11 +856,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\AddHashTag200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\CreateHashTagResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\AddHashTag200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\CreateHashTagResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -878,7 +878,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\AddHashTag200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateHashTagResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -897,7 +924,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\AddHashTag200Response';
+            $returnType = '\FastComments\Client\Model\CreateHashTagResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -930,7 +957,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\AddHashTag200Response',
+                        '\FastComments\Client\Model\CreateHashTagResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -976,7 +1011,7 @@ class DefaultApi
      */
     public function addHashTagAsyncWithHttpInfo($tenant_id = null, $create_hash_tag_body = null, string $contentType = self::contentTypes['addHashTag'][0])
     {
-        $returnType = '\FastComments\Client\Model\AddHashTag200Response';
+        $returnType = '\FastComments\Client\Model\CreateHashTagResponse';
         $request = $this->addHashTagRequest($tenant_id, $create_hash_tag_body, $contentType);
 
         return $this->client
@@ -1127,7 +1162,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\AddHashTagsBulk200Response
+     * @return \FastComments\Client\Model\BulkCreateHashTagsResponse|\FastComments\Client\Model\APIError
      */
     public function addHashTagsBulk($tenant_id = null, $bulk_create_hash_tags_body = null, string $contentType = self::contentTypes['addHashTagsBulk'][0])
     {
@@ -1146,7 +1181,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\AddHashTagsBulk200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\BulkCreateHashTagsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function addHashTagsBulkWithHttpInfo($tenant_id = null, $bulk_create_hash_tags_body = null, string $contentType = self::contentTypes['addHashTagsBulk'][0])
     {
@@ -1177,11 +1212,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\AddHashTagsBulk200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\BulkCreateHashTagsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\AddHashTagsBulk200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\BulkCreateHashTagsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1199,7 +1234,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\AddHashTagsBulk200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\BulkCreateHashTagsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1218,7 +1280,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\AddHashTagsBulk200Response';
+            $returnType = '\FastComments\Client\Model\BulkCreateHashTagsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1251,7 +1313,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\AddHashTagsBulk200Response',
+                        '\FastComments\Client\Model\BulkCreateHashTagsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1297,7 +1367,7 @@ class DefaultApi
      */
     public function addHashTagsBulkAsyncWithHttpInfo($tenant_id = null, $bulk_create_hash_tags_body = null, string $contentType = self::contentTypes['addHashTagsBulk'][0])
     {
-        $returnType = '\FastComments\Client\Model\AddHashTagsBulk200Response';
+        $returnType = '\FastComments\Client\Model\BulkCreateHashTagsResponse';
         $request = $this->addHashTagsBulkRequest($tenant_id, $bulk_create_hash_tags_body, $contentType);
 
         return $this->client
@@ -2116,7 +2186,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\AggregationResponse
+     * @return \FastComments\Client\Model\AggregateResponse
      */
     public function aggregate($tenant_id, $aggregation_request, $parent_tenant_id = null, $include_stats = null, string $contentType = self::contentTypes['aggregate'][0])
     {
@@ -2137,7 +2207,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\AggregationResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\AggregateResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aggregateWithHttpInfo($tenant_id, $aggregation_request, $parent_tenant_id = null, $include_stats = null, string $contentType = self::contentTypes['aggregate'][0])
     {
@@ -2168,11 +2238,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\AggregationResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\AggregateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\AggregationResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\AggregateResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2190,7 +2260,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\AggregationResponse', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\AggregateResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2209,7 +2279,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\AggregationResponse';
+            $returnType = '\FastComments\Client\Model\AggregateResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2242,7 +2312,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\AggregationResponse',
+                        '\FastComments\Client\Model\AggregateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2292,7 +2362,7 @@ class DefaultApi
      */
     public function aggregateAsyncWithHttpInfo($tenant_id, $aggregation_request, $parent_tenant_id = null, $include_stats = null, string $contentType = self::contentTypes['aggregate'][0])
     {
-        $returnType = '\FastComments\Client\Model\AggregationResponse';
+        $returnType = '\FastComments\Client\Model\AggregateResponse';
         $request = $this->aggregateRequest($tenant_id, $aggregation_request, $parent_tenant_id, $include_stats, $contentType);
 
         return $this->client
@@ -2482,7 +2552,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\AggregateQuestionResults200Response
+     * @return \FastComments\Client\Model\AggregateQuestionResultsResponse|\FastComments\Client\Model\APIError
      */
     public function aggregateQuestionResults($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $time_bucket = null, $start_date = null, $force_recalculate = null, string $contentType = self::contentTypes['aggregateQuestionResults'][0])
     {
@@ -2506,7 +2576,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\AggregateQuestionResults200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\AggregateQuestionResultsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function aggregateQuestionResultsWithHttpInfo($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $time_bucket = null, $start_date = null, $force_recalculate = null, string $contentType = self::contentTypes['aggregateQuestionResults'][0])
     {
@@ -2537,11 +2607,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\AggregateQuestionResults200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\AggregateQuestionResultsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\AggregateQuestionResults200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\AggregateQuestionResultsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2559,7 +2629,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\AggregateQuestionResults200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\AggregateQuestionResultsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2578,7 +2675,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\AggregateQuestionResults200Response';
+            $returnType = '\FastComments\Client\Model\AggregateQuestionResultsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2611,7 +2708,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\AggregateQuestionResults200Response',
+                        '\FastComments\Client\Model\AggregateQuestionResultsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2667,7 +2772,7 @@ class DefaultApi
      */
     public function aggregateQuestionResultsAsyncWithHttpInfo($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $time_bucket = null, $start_date = null, $force_recalculate = null, string $contentType = self::contentTypes['aggregateQuestionResults'][0])
     {
-        $returnType = '\FastComments\Client\Model\AggregateQuestionResults200Response';
+        $returnType = '\FastComments\Client\Model\AggregateQuestionResultsResponse';
         $request = $this->aggregateQuestionResultsRequest($tenant_id, $question_id, $question_ids, $url_id, $time_bucket, $start_date, $force_recalculate, $contentType);
 
         return $this->client
@@ -2884,7 +2989,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\BlockFromCommentPublic200Response
+     * @return \FastComments\Client\Model\BlockSuccess|\FastComments\Client\Model\APIError
      */
     public function blockUserFromComment($tenant_id, $id, $block_from_comment_params, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['blockUserFromComment'][0])
     {
@@ -2906,7 +3011,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\BlockFromCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\BlockSuccess|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function blockUserFromCommentWithHttpInfo($tenant_id, $id, $block_from_comment_params, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['blockUserFromComment'][0])
     {
@@ -2937,11 +3042,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\BlockFromCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\BlockSuccess' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\BlockFromCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\BlockSuccess' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2959,7 +3064,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\BlockFromCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\BlockSuccess', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2978,7 +3110,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\BlockFromCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\BlockSuccess';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3011,7 +3143,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\BlockFromCommentPublic200Response',
+                        '\FastComments\Client\Model\BlockSuccess',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3063,7 +3203,7 @@ class DefaultApi
      */
     public function blockUserFromCommentAsyncWithHttpInfo($tenant_id, $id, $block_from_comment_params, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['blockUserFromComment'][0])
     {
-        $returnType = '\FastComments\Client\Model\BlockFromCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\BlockSuccess';
         $request = $this->blockUserFromCommentRequest($tenant_id, $id, $block_from_comment_params, $user_id, $anon_user_id, $contentType);
 
         return $this->client
@@ -3265,7 +3405,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\BulkAggregateQuestionResults200Response
+     * @return \FastComments\Client\Model\BulkAggregateQuestionResultsResponse|\FastComments\Client\Model\APIError
      */
     public function bulkAggregateQuestionResults($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate = null, string $contentType = self::contentTypes['bulkAggregateQuestionResults'][0])
     {
@@ -3285,7 +3425,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\BulkAggregateQuestionResults200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\BulkAggregateQuestionResultsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function bulkAggregateQuestionResultsWithHttpInfo($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate = null, string $contentType = self::contentTypes['bulkAggregateQuestionResults'][0])
     {
@@ -3316,11 +3456,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\BulkAggregateQuestionResults200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\BulkAggregateQuestionResultsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\BulkAggregateQuestionResults200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\BulkAggregateQuestionResultsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -3338,7 +3478,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\BulkAggregateQuestionResults200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\BulkAggregateQuestionResultsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -3357,7 +3524,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\BulkAggregateQuestionResults200Response';
+            $returnType = '\FastComments\Client\Model\BulkAggregateQuestionResultsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3390,7 +3557,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\BulkAggregateQuestionResults200Response',
+                        '\FastComments\Client\Model\BulkAggregateQuestionResultsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3438,7 +3613,7 @@ class DefaultApi
      */
     public function bulkAggregateQuestionResultsAsyncWithHttpInfo($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate = null, string $contentType = self::contentTypes['bulkAggregateQuestionResults'][0])
     {
-        $returnType = '\FastComments\Client\Model\BulkAggregateQuestionResults200Response';
+        $returnType = '\FastComments\Client\Model\BulkAggregateQuestionResultsResponse';
         $request = $this->bulkAggregateQuestionResultsRequest($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate, $contentType);
 
         return $this->client
@@ -3614,7 +3789,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\ChangeTicketState200Response
+     * @return \FastComments\Client\Model\ChangeTicketStateResponse|\FastComments\Client\Model\APIError
      */
     public function changeTicketState($tenant_id, $user_id, $id, $change_ticket_state_body, string $contentType = self::contentTypes['changeTicketState'][0])
     {
@@ -3635,7 +3810,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\ChangeTicketState200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\ChangeTicketStateResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function changeTicketStateWithHttpInfo($tenant_id, $user_id, $id, $change_ticket_state_body, string $contentType = self::contentTypes['changeTicketState'][0])
     {
@@ -3666,11 +3841,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\ChangeTicketState200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\ChangeTicketStateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\ChangeTicketState200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\ChangeTicketStateResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -3688,7 +3863,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ChangeTicketState200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ChangeTicketStateResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -3707,7 +3909,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\ChangeTicketState200Response';
+            $returnType = '\FastComments\Client\Model\ChangeTicketStateResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3740,7 +3942,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\ChangeTicketState200Response',
+                        '\FastComments\Client\Model\ChangeTicketStateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3790,7 +4000,7 @@ class DefaultApi
      */
     public function changeTicketStateAsyncWithHttpInfo($tenant_id, $user_id, $id, $change_ticket_state_body, string $contentType = self::contentTypes['changeTicketState'][0])
     {
-        $returnType = '\FastComments\Client\Model\ChangeTicketState200Response';
+        $returnType = '\FastComments\Client\Model\ChangeTicketStateResponse';
         $request = $this->changeTicketStateRequest($tenant_id, $user_id, $id, $change_ticket_state_body, $contentType);
 
         return $this->client
@@ -3993,7 +4203,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\CombineCommentsWithQuestionResults200Response
+     * @return \FastComments\Client\Model\CombineQuestionResultsWithCommentsResponse|\FastComments\Client\Model\APIError
      */
     public function combineCommentsWithQuestionResults($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $start_date = null, $force_recalculate = null, $min_value = null, $max_value = null, $limit = null, string $contentType = self::contentTypes['combineCommentsWithQuestionResults'][0])
     {
@@ -4019,7 +4229,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\CombineCommentsWithQuestionResults200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\CombineQuestionResultsWithCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function combineCommentsWithQuestionResultsWithHttpInfo($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $start_date = null, $force_recalculate = null, $min_value = null, $max_value = null, $limit = null, string $contentType = self::contentTypes['combineCommentsWithQuestionResults'][0])
     {
@@ -4050,11 +4260,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\CombineCommentsWithQuestionResults200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\CombineQuestionResultsWithCommentsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\CombineCommentsWithQuestionResults200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\CombineQuestionResultsWithCommentsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -4072,7 +4282,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CombineCommentsWithQuestionResults200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CombineQuestionResultsWithCommentsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -4091,7 +4328,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\CombineCommentsWithQuestionResults200Response';
+            $returnType = '\FastComments\Client\Model\CombineQuestionResultsWithCommentsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4124,7 +4361,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\CombineCommentsWithQuestionResults200Response',
+                        '\FastComments\Client\Model\CombineQuestionResultsWithCommentsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4184,7 +4429,7 @@ class DefaultApi
      */
     public function combineCommentsWithQuestionResultsAsyncWithHttpInfo($tenant_id, $question_id = null, $question_ids = null, $url_id = null, $start_date = null, $force_recalculate = null, $min_value = null, $max_value = null, $limit = null, string $contentType = self::contentTypes['combineCommentsWithQuestionResults'][0])
     {
-        $returnType = '\FastComments\Client\Model\CombineCommentsWithQuestionResults200Response';
+        $returnType = '\FastComments\Client\Model\CombineQuestionResultsWithCommentsResponse';
         $request = $this->combineCommentsWithQuestionResultsRequest($tenant_id, $question_id, $question_ids, $url_id, $start_date, $force_recalculate, $min_value, $max_value, $limit, $contentType);
 
         return $this->client
@@ -4420,7 +4665,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\CreateEmailTemplate200Response
+     * @return \FastComments\Client\Model\CreateEmailTemplateResponse|\FastComments\Client\Model\APIError
      */
     public function createEmailTemplate($tenant_id, $create_email_template_body, string $contentType = self::contentTypes['createEmailTemplate'][0])
     {
@@ -4439,7 +4684,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\CreateEmailTemplate200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\CreateEmailTemplateResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createEmailTemplateWithHttpInfo($tenant_id, $create_email_template_body, string $contentType = self::contentTypes['createEmailTemplate'][0])
     {
@@ -4470,11 +4715,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\CreateEmailTemplate200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\CreateEmailTemplateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\CreateEmailTemplate200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\CreateEmailTemplateResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -4492,7 +4737,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateEmailTemplate200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateEmailTemplateResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -4511,7 +4783,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\CreateEmailTemplate200Response';
+            $returnType = '\FastComments\Client\Model\CreateEmailTemplateResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4544,7 +4816,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\CreateEmailTemplate200Response',
+                        '\FastComments\Client\Model\CreateEmailTemplateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4590,7 +4870,7 @@ class DefaultApi
      */
     public function createEmailTemplateAsyncWithHttpInfo($tenant_id, $create_email_template_body, string $contentType = self::contentTypes['createEmailTemplate'][0])
     {
-        $returnType = '\FastComments\Client\Model\CreateEmailTemplate200Response';
+        $returnType = '\FastComments\Client\Model\CreateEmailTemplateResponse';
         $request = $this->createEmailTemplateRequest($tenant_id, $create_email_template_body, $contentType);
 
         return $this->client
@@ -4757,7 +5037,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\CreateFeedPost200Response
+     * @return \FastComments\Client\Model\CreateFeedPostsResponse|\FastComments\Client\Model\APIError
      */
     public function createFeedPost($tenant_id, $create_feed_post_params, $broadcast_id = null, $is_live = null, $do_spam_check = null, $skip_dup_check = null, string $contentType = self::contentTypes['createFeedPost'][0])
     {
@@ -4780,7 +5060,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\CreateFeedPost200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\CreateFeedPostsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createFeedPostWithHttpInfo($tenant_id, $create_feed_post_params, $broadcast_id = null, $is_live = null, $do_spam_check = null, $skip_dup_check = null, string $contentType = self::contentTypes['createFeedPost'][0])
     {
@@ -4811,11 +5091,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\CreateFeedPost200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\CreateFeedPostsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\CreateFeedPost200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\CreateFeedPostsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -4833,7 +5113,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateFeedPost200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateFeedPostsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -4852,7 +5159,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\CreateFeedPost200Response';
+            $returnType = '\FastComments\Client\Model\CreateFeedPostsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4885,7 +5192,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\CreateFeedPost200Response',
+                        '\FastComments\Client\Model\CreateFeedPostsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4939,7 +5254,7 @@ class DefaultApi
      */
     public function createFeedPostAsyncWithHttpInfo($tenant_id, $create_feed_post_params, $broadcast_id = null, $is_live = null, $do_spam_check = null, $skip_dup_check = null, string $contentType = self::contentTypes['createFeedPost'][0])
     {
-        $returnType = '\FastComments\Client\Model\CreateFeedPost200Response';
+        $returnType = '\FastComments\Client\Model\CreateFeedPostsResponse';
         $request = $this->createFeedPostRequest($tenant_id, $create_feed_post_params, $broadcast_id, $is_live, $do_spam_check, $skip_dup_check, $contentType);
 
         return $this->client
@@ -5146,7 +5461,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\CreateModerator200Response
+     * @return \FastComments\Client\Model\CreateModeratorResponse|\FastComments\Client\Model\APIError
      */
     public function createModerator($tenant_id, $create_moderator_body, string $contentType = self::contentTypes['createModerator'][0])
     {
@@ -5165,7 +5480,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\CreateModerator200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\CreateModeratorResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createModeratorWithHttpInfo($tenant_id, $create_moderator_body, string $contentType = self::contentTypes['createModerator'][0])
     {
@@ -5196,11 +5511,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\CreateModerator200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\CreateModeratorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\CreateModerator200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\CreateModeratorResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -5218,7 +5533,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateModerator200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateModeratorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -5237,7 +5579,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\CreateModerator200Response';
+            $returnType = '\FastComments\Client\Model\CreateModeratorResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5270,7 +5612,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\CreateModerator200Response',
+                        '\FastComments\Client\Model\CreateModeratorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5316,7 +5666,7 @@ class DefaultApi
      */
     public function createModeratorAsyncWithHttpInfo($tenant_id, $create_moderator_body, string $contentType = self::contentTypes['createModerator'][0])
     {
-        $returnType = '\FastComments\Client\Model\CreateModerator200Response';
+        $returnType = '\FastComments\Client\Model\CreateModeratorResponse';
         $request = $this->createModeratorRequest($tenant_id, $create_moderator_body, $contentType);
 
         return $this->client
@@ -5479,7 +5829,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\CreateQuestionConfig200Response
+     * @return \FastComments\Client\Model\CreateQuestionConfigResponse|\FastComments\Client\Model\APIError
      */
     public function createQuestionConfig($tenant_id, $create_question_config_body, string $contentType = self::contentTypes['createQuestionConfig'][0])
     {
@@ -5498,7 +5848,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\CreateQuestionConfig200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\CreateQuestionConfigResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createQuestionConfigWithHttpInfo($tenant_id, $create_question_config_body, string $contentType = self::contentTypes['createQuestionConfig'][0])
     {
@@ -5529,11 +5879,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\CreateQuestionConfig200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\CreateQuestionConfigResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\CreateQuestionConfig200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\CreateQuestionConfigResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -5551,7 +5901,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateQuestionConfig200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateQuestionConfigResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -5570,7 +5947,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\CreateQuestionConfig200Response';
+            $returnType = '\FastComments\Client\Model\CreateQuestionConfigResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5603,7 +5980,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\CreateQuestionConfig200Response',
+                        '\FastComments\Client\Model\CreateQuestionConfigResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5649,7 +6034,7 @@ class DefaultApi
      */
     public function createQuestionConfigAsyncWithHttpInfo($tenant_id, $create_question_config_body, string $contentType = self::contentTypes['createQuestionConfig'][0])
     {
-        $returnType = '\FastComments\Client\Model\CreateQuestionConfig200Response';
+        $returnType = '\FastComments\Client\Model\CreateQuestionConfigResponse';
         $request = $this->createQuestionConfigRequest($tenant_id, $create_question_config_body, $contentType);
 
         return $this->client
@@ -5812,7 +6197,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\CreateQuestionResult200Response
+     * @return \FastComments\Client\Model\CreateQuestionResultResponse|\FastComments\Client\Model\APIError
      */
     public function createQuestionResult($tenant_id, $create_question_result_body, string $contentType = self::contentTypes['createQuestionResult'][0])
     {
@@ -5831,7 +6216,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\CreateQuestionResult200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\CreateQuestionResultResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createQuestionResultWithHttpInfo($tenant_id, $create_question_result_body, string $contentType = self::contentTypes['createQuestionResult'][0])
     {
@@ -5862,11 +6247,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\CreateQuestionResult200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\CreateQuestionResultResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\CreateQuestionResult200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\CreateQuestionResultResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -5884,7 +6269,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateQuestionResult200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateQuestionResultResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -5903,7 +6315,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\CreateQuestionResult200Response';
+            $returnType = '\FastComments\Client\Model\CreateQuestionResultResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5936,7 +6348,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\CreateQuestionResult200Response',
+                        '\FastComments\Client\Model\CreateQuestionResultResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5982,7 +6402,7 @@ class DefaultApi
      */
     public function createQuestionResultAsyncWithHttpInfo($tenant_id, $create_question_result_body, string $contentType = self::contentTypes['createQuestionResult'][0])
     {
-        $returnType = '\FastComments\Client\Model\CreateQuestionResult200Response';
+        $returnType = '\FastComments\Client\Model\CreateQuestionResultResponse';
         $request = $this->createQuestionResultRequest($tenant_id, $create_question_result_body, $contentType);
 
         return $this->client
@@ -6478,7 +6898,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\CreateTenant200Response
+     * @return \FastComments\Client\Model\CreateTenantResponse|\FastComments\Client\Model\APIError
      */
     public function createTenant($tenant_id, $create_tenant_body, string $contentType = self::contentTypes['createTenant'][0])
     {
@@ -6497,7 +6917,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\CreateTenant200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\CreateTenantResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTenantWithHttpInfo($tenant_id, $create_tenant_body, string $contentType = self::contentTypes['createTenant'][0])
     {
@@ -6528,11 +6948,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\CreateTenant200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\CreateTenantResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\CreateTenant200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\CreateTenantResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -6550,7 +6970,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateTenant200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateTenantResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -6569,7 +7016,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\CreateTenant200Response';
+            $returnType = '\FastComments\Client\Model\CreateTenantResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6602,7 +7049,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\CreateTenant200Response',
+                        '\FastComments\Client\Model\CreateTenantResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6648,7 +7103,7 @@ class DefaultApi
      */
     public function createTenantAsyncWithHttpInfo($tenant_id, $create_tenant_body, string $contentType = self::contentTypes['createTenant'][0])
     {
-        $returnType = '\FastComments\Client\Model\CreateTenant200Response';
+        $returnType = '\FastComments\Client\Model\CreateTenantResponse';
         $request = $this->createTenantRequest($tenant_id, $create_tenant_body, $contentType);
 
         return $this->client
@@ -6811,7 +7266,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\CreateTenantPackage200Response
+     * @return \FastComments\Client\Model\CreateTenantPackageResponse|\FastComments\Client\Model\APIError
      */
     public function createTenantPackage($tenant_id, $create_tenant_package_body, string $contentType = self::contentTypes['createTenantPackage'][0])
     {
@@ -6830,7 +7285,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\CreateTenantPackage200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\CreateTenantPackageResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTenantPackageWithHttpInfo($tenant_id, $create_tenant_package_body, string $contentType = self::contentTypes['createTenantPackage'][0])
     {
@@ -6861,11 +7316,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\CreateTenantPackage200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\CreateTenantPackageResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\CreateTenantPackage200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\CreateTenantPackageResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -6883,7 +7338,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateTenantPackage200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateTenantPackageResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -6902,7 +7384,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\CreateTenantPackage200Response';
+            $returnType = '\FastComments\Client\Model\CreateTenantPackageResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6935,7 +7417,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\CreateTenantPackage200Response',
+                        '\FastComments\Client\Model\CreateTenantPackageResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6981,7 +7471,7 @@ class DefaultApi
      */
     public function createTenantPackageAsyncWithHttpInfo($tenant_id, $create_tenant_package_body, string $contentType = self::contentTypes['createTenantPackage'][0])
     {
-        $returnType = '\FastComments\Client\Model\CreateTenantPackage200Response';
+        $returnType = '\FastComments\Client\Model\CreateTenantPackageResponse';
         $request = $this->createTenantPackageRequest($tenant_id, $create_tenant_package_body, $contentType);
 
         return $this->client
@@ -7144,7 +7634,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\CreateTenantUser200Response
+     * @return \FastComments\Client\Model\CreateTenantUserResponse|\FastComments\Client\Model\APIError
      */
     public function createTenantUser($tenant_id, $create_tenant_user_body, string $contentType = self::contentTypes['createTenantUser'][0])
     {
@@ -7163,7 +7653,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\CreateTenantUser200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\CreateTenantUserResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTenantUserWithHttpInfo($tenant_id, $create_tenant_user_body, string $contentType = self::contentTypes['createTenantUser'][0])
     {
@@ -7194,11 +7684,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\CreateTenantUser200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\CreateTenantUserResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\CreateTenantUser200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\CreateTenantUserResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -7216,7 +7706,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateTenantUser200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateTenantUserResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -7235,7 +7752,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\CreateTenantUser200Response';
+            $returnType = '\FastComments\Client\Model\CreateTenantUserResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7268,7 +7785,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\CreateTenantUser200Response',
+                        '\FastComments\Client\Model\CreateTenantUserResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7314,7 +7839,7 @@ class DefaultApi
      */
     public function createTenantUserAsyncWithHttpInfo($tenant_id, $create_tenant_user_body, string $contentType = self::contentTypes['createTenantUser'][0])
     {
-        $returnType = '\FastComments\Client\Model\CreateTenantUser200Response';
+        $returnType = '\FastComments\Client\Model\CreateTenantUserResponse';
         $request = $this->createTenantUserRequest($tenant_id, $create_tenant_user_body, $contentType);
 
         return $this->client
@@ -7478,7 +8003,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\CreateTicket200Response
+     * @return \FastComments\Client\Model\CreateTicketResponse|\FastComments\Client\Model\APIError
      */
     public function createTicket($tenant_id, $user_id, $create_ticket_body, string $contentType = self::contentTypes['createTicket'][0])
     {
@@ -7498,7 +8023,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\CreateTicket200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\CreateTicketResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTicketWithHttpInfo($tenant_id, $user_id, $create_ticket_body, string $contentType = self::contentTypes['createTicket'][0])
     {
@@ -7529,11 +8054,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\CreateTicket200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\CreateTicketResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\CreateTicket200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\CreateTicketResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -7551,7 +8076,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateTicket200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateTicketResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -7570,7 +8122,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\CreateTicket200Response';
+            $returnType = '\FastComments\Client\Model\CreateTicketResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7603,7 +8155,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\CreateTicket200Response',
+                        '\FastComments\Client\Model\CreateTicketResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7651,7 +8211,7 @@ class DefaultApi
      */
     public function createTicketAsyncWithHttpInfo($tenant_id, $user_id, $create_ticket_body, string $contentType = self::contentTypes['createTicket'][0])
     {
-        $returnType = '\FastComments\Client\Model\CreateTicket200Response';
+        $returnType = '\FastComments\Client\Model\CreateTicketResponse';
         $request = $this->createTicketRequest($tenant_id, $user_id, $create_ticket_body, $contentType);
 
         return $this->client
@@ -7831,7 +8391,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\CreateUserBadge200Response
+     * @return \FastComments\Client\Model\APICreateUserBadgeResponse|\FastComments\Client\Model\APIError
      */
     public function createUserBadge($tenant_id, $create_user_badge_params, string $contentType = self::contentTypes['createUserBadge'][0])
     {
@@ -7850,7 +8410,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\CreateUserBadge200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APICreateUserBadgeResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createUserBadgeWithHttpInfo($tenant_id, $create_user_badge_params, string $contentType = self::contentTypes['createUserBadge'][0])
     {
@@ -7881,11 +8441,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\CreateUserBadge200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APICreateUserBadgeResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\CreateUserBadge200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APICreateUserBadgeResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -7903,7 +8463,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\CreateUserBadge200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APICreateUserBadgeResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -7922,7 +8509,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\CreateUserBadge200Response';
+            $returnType = '\FastComments\Client\Model\APICreateUserBadgeResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7955,7 +8542,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\CreateUserBadge200Response',
+                        '\FastComments\Client\Model\APICreateUserBadgeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8001,7 +8596,7 @@ class DefaultApi
      */
     public function createUserBadgeAsyncWithHttpInfo($tenant_id, $create_user_badge_params, string $contentType = self::contentTypes['createUserBadge'][0])
     {
-        $returnType = '\FastComments\Client\Model\CreateUserBadge200Response';
+        $returnType = '\FastComments\Client\Model\APICreateUserBadgeResponse';
         $request = $this->createUserBadgeRequest($tenant_id, $create_user_badge_params, $contentType);
 
         return $this->client
@@ -8167,7 +8762,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\VoteComment200Response
+     * @return \FastComments\Client\Model\VoteResponse|\FastComments\Client\Model\APIError
      */
     public function createVote($tenant_id, $comment_id, $direction, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['createVote'][0])
     {
@@ -8189,7 +8784,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\VoteComment200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\VoteResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createVoteWithHttpInfo($tenant_id, $comment_id, $direction, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['createVote'][0])
     {
@@ -8220,11 +8815,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\VoteComment200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\VoteResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\VoteComment200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\VoteResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -8242,7 +8837,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\VoteComment200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\VoteResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -8261,7 +8883,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\VoteComment200Response';
+            $returnType = '\FastComments\Client\Model\VoteResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -8294,7 +8916,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\VoteComment200Response',
+                        '\FastComments\Client\Model\VoteResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8346,7 +8976,7 @@ class DefaultApi
      */
     public function createVoteAsyncWithHttpInfo($tenant_id, $comment_id, $direction, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['createVote'][0])
     {
-        $returnType = '\FastComments\Client\Model\VoteComment200Response';
+        $returnType = '\FastComments\Client\Model\VoteResponse';
         $request = $this->createVoteRequest($tenant_id, $comment_id, $direction, $user_id, $anon_user_id, $contentType);
 
         return $this->client
@@ -8552,7 +9182,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\DeleteComment200Response
+     * @return \FastComments\Client\Model\DeleteCommentResult|\FastComments\Client\Model\APIError
      */
     public function deleteComment($tenant_id, $id, $context_user_id = null, $is_live = null, string $contentType = self::contentTypes['deleteComment'][0])
     {
@@ -8573,7 +9203,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\DeleteComment200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\DeleteCommentResult|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteCommentWithHttpInfo($tenant_id, $id, $context_user_id = null, $is_live = null, string $contentType = self::contentTypes['deleteComment'][0])
     {
@@ -8604,11 +9234,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\DeleteComment200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\DeleteCommentResult' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\DeleteComment200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\DeleteCommentResult' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -8626,7 +9256,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\DeleteComment200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\DeleteCommentResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -8645,7 +9302,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\DeleteComment200Response';
+            $returnType = '\FastComments\Client\Model\DeleteCommentResult';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -8678,7 +9335,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\DeleteComment200Response',
+                        '\FastComments\Client\Model\DeleteCommentResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8728,7 +9393,7 @@ class DefaultApi
      */
     public function deleteCommentAsyncWithHttpInfo($tenant_id, $id, $context_user_id = null, $is_live = null, string $contentType = self::contentTypes['deleteComment'][0])
     {
-        $returnType = '\FastComments\Client\Model\DeleteComment200Response';
+        $returnType = '\FastComments\Client\Model\DeleteCommentResult';
         $request = $this->deleteCommentRequest($tenant_id, $id, $context_user_id, $is_live, $contentType);
 
         return $this->client
@@ -8914,7 +9579,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\DeleteDomainConfig200Response
+     * @return \FastComments\Client\Model\DeleteDomainConfigResponse
      */
     public function deleteDomainConfig($tenant_id, $domain, string $contentType = self::contentTypes['deleteDomainConfig'][0])
     {
@@ -8933,7 +9598,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\DeleteDomainConfig200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\DeleteDomainConfigResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteDomainConfigWithHttpInfo($tenant_id, $domain, string $contentType = self::contentTypes['deleteDomainConfig'][0])
     {
@@ -8964,11 +9629,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\DeleteDomainConfig200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\DeleteDomainConfigResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\DeleteDomainConfig200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\DeleteDomainConfigResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -8986,7 +9651,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\DeleteDomainConfig200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\DeleteDomainConfigResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -9005,7 +9670,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\DeleteDomainConfig200Response';
+            $returnType = '\FastComments\Client\Model\DeleteDomainConfigResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -9038,7 +9703,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\DeleteDomainConfig200Response',
+                        '\FastComments\Client\Model\DeleteDomainConfigResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9084,7 +9749,7 @@ class DefaultApi
      */
     public function deleteDomainConfigAsyncWithHttpInfo($tenant_id, $domain, string $contentType = self::contentTypes['deleteDomainConfig'][0])
     {
-        $returnType = '\FastComments\Client\Model\DeleteDomainConfig200Response';
+        $returnType = '\FastComments\Client\Model\DeleteDomainConfigResponse';
         $request = $this->deleteDomainConfigRequest($tenant_id, $domain, $contentType);
 
         return $this->client
@@ -9248,7 +9913,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function deleteEmailTemplate($tenant_id, $id, string $contentType = self::contentTypes['deleteEmailTemplate'][0])
     {
@@ -9267,7 +9932,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteEmailTemplateWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['deleteEmailTemplate'][0])
     {
@@ -9298,11 +9963,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -9320,7 +9985,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -9339,7 +10031,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -9372,7 +10064,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9418,7 +10118,7 @@ class DefaultApi
      */
     public function deleteEmailTemplateAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['deleteEmailTemplate'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->deleteEmailTemplateRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -9583,7 +10283,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function deleteEmailTemplateRenderError($tenant_id, $id, $error_id, string $contentType = self::contentTypes['deleteEmailTemplateRenderError'][0])
     {
@@ -9603,7 +10303,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteEmailTemplateRenderErrorWithHttpInfo($tenant_id, $id, $error_id, string $contentType = self::contentTypes['deleteEmailTemplateRenderError'][0])
     {
@@ -9634,11 +10334,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -9656,7 +10356,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -9675,7 +10402,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -9708,7 +10435,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9756,7 +10491,7 @@ class DefaultApi
      */
     public function deleteEmailTemplateRenderErrorAsyncWithHttpInfo($tenant_id, $id, $error_id, string $contentType = self::contentTypes['deleteEmailTemplateRenderError'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->deleteEmailTemplateRenderErrorRequest($tenant_id, $id, $error_id, $contentType);
 
         return $this->client
@@ -9932,16 +10667,16 @@ class DefaultApi
      *
      * @param  string $tag tag (required)
      * @param  string|null $tenant_id tenant_id (optional)
-     * @param  \FastComments\Client\Model\DeleteHashTagRequest|null $delete_hash_tag_request delete_hash_tag_request (optional)
+     * @param  \FastComments\Client\Model\DeleteHashTagRequestBody|null $delete_hash_tag_request_body delete_hash_tag_request_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteHashTag'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteHashTag($tag, $tenant_id = null, $delete_hash_tag_request = null, string $contentType = self::contentTypes['deleteHashTag'][0])
+    public function deleteHashTag($tag, $tenant_id = null, $delete_hash_tag_request_body = null, string $contentType = self::contentTypes['deleteHashTag'][0])
     {
-        list($response) = $this->deleteHashTagWithHttpInfo($tag, $tenant_id, $delete_hash_tag_request, $contentType);
+        list($response) = $this->deleteHashTagWithHttpInfo($tag, $tenant_id, $delete_hash_tag_request_body, $contentType);
         return $response;
     }
 
@@ -9952,16 +10687,16 @@ class DefaultApi
      *
      * @param  string $tag (required)
      * @param  string|null $tenant_id (optional)
-     * @param  \FastComments\Client\Model\DeleteHashTagRequest|null $delete_hash_tag_request (optional)
+     * @param  \FastComments\Client\Model\DeleteHashTagRequestBody|null $delete_hash_tag_request_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteHashTag'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteHashTagWithHttpInfo($tag, $tenant_id = null, $delete_hash_tag_request = null, string $contentType = self::contentTypes['deleteHashTag'][0])
+    public function deleteHashTagWithHttpInfo($tag, $tenant_id = null, $delete_hash_tag_request_body = null, string $contentType = self::contentTypes['deleteHashTag'][0])
     {
-        $request = $this->deleteHashTagRequest($tag, $tenant_id, $delete_hash_tag_request, $contentType);
+        $request = $this->deleteHashTagRequest($tag, $tenant_id, $delete_hash_tag_request_body, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9988,11 +10723,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -10010,7 +10745,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -10029,7 +10791,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -10062,7 +10824,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10079,15 +10849,15 @@ class DefaultApi
      *
      * @param  string $tag (required)
      * @param  string|null $tenant_id (optional)
-     * @param  \FastComments\Client\Model\DeleteHashTagRequest|null $delete_hash_tag_request (optional)
+     * @param  \FastComments\Client\Model\DeleteHashTagRequestBody|null $delete_hash_tag_request_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteHashTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteHashTagAsync($tag, $tenant_id = null, $delete_hash_tag_request = null, string $contentType = self::contentTypes['deleteHashTag'][0])
+    public function deleteHashTagAsync($tag, $tenant_id = null, $delete_hash_tag_request_body = null, string $contentType = self::contentTypes['deleteHashTag'][0])
     {
-        return $this->deleteHashTagAsyncWithHttpInfo($tag, $tenant_id, $delete_hash_tag_request, $contentType)
+        return $this->deleteHashTagAsyncWithHttpInfo($tag, $tenant_id, $delete_hash_tag_request_body, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10102,16 +10872,16 @@ class DefaultApi
      *
      * @param  string $tag (required)
      * @param  string|null $tenant_id (optional)
-     * @param  \FastComments\Client\Model\DeleteHashTagRequest|null $delete_hash_tag_request (optional)
+     * @param  \FastComments\Client\Model\DeleteHashTagRequestBody|null $delete_hash_tag_request_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteHashTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteHashTagAsyncWithHttpInfo($tag, $tenant_id = null, $delete_hash_tag_request = null, string $contentType = self::contentTypes['deleteHashTag'][0])
+    public function deleteHashTagAsyncWithHttpInfo($tag, $tenant_id = null, $delete_hash_tag_request_body = null, string $contentType = self::contentTypes['deleteHashTag'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
-        $request = $this->deleteHashTagRequest($tag, $tenant_id, $delete_hash_tag_request, $contentType);
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
+        $request = $this->deleteHashTagRequest($tag, $tenant_id, $delete_hash_tag_request_body, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10154,13 +10924,13 @@ class DefaultApi
      *
      * @param  string $tag (required)
      * @param  string|null $tenant_id (optional)
-     * @param  \FastComments\Client\Model\DeleteHashTagRequest|null $delete_hash_tag_request (optional)
+     * @param  \FastComments\Client\Model\DeleteHashTagRequestBody|null $delete_hash_tag_request_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteHashTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteHashTagRequest($tag, $tenant_id = null, $delete_hash_tag_request = null, string $contentType = self::contentTypes['deleteHashTag'][0])
+    public function deleteHashTagRequest($tag, $tenant_id = null, $delete_hash_tag_request_body = null, string $contentType = self::contentTypes['deleteHashTag'][0])
     {
 
         // verify the required parameter 'tag' is set
@@ -10208,12 +10978,12 @@ class DefaultApi
         );
 
         // for model (json/xml)
-        if (isset($delete_hash_tag_request)) {
+        if (isset($delete_hash_tag_request_body)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_hash_tag_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_hash_tag_request_body));
             } else {
-                $httpBody = $delete_hash_tag_request;
+                $httpBody = $delete_hash_tag_request_body;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -10278,7 +11048,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function deleteModerator($tenant_id, $id, $send_email = null, string $contentType = self::contentTypes['deleteModerator'][0])
     {
@@ -10298,7 +11068,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteModeratorWithHttpInfo($tenant_id, $id, $send_email = null, string $contentType = self::contentTypes['deleteModerator'][0])
     {
@@ -10329,11 +11099,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -10351,7 +11121,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -10370,7 +11167,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -10403,7 +11200,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10451,7 +11256,7 @@ class DefaultApi
      */
     public function deleteModeratorAsyncWithHttpInfo($tenant_id, $id, $send_email = null, string $contentType = self::contentTypes['deleteModerator'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->deleteModeratorRequest($tenant_id, $id, $send_email, $contentType);
 
         return $this->client
@@ -10626,7 +11431,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function deleteNotificationCount($tenant_id, $id, string $contentType = self::contentTypes['deleteNotificationCount'][0])
     {
@@ -10645,7 +11450,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteNotificationCountWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['deleteNotificationCount'][0])
     {
@@ -10676,11 +11481,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -10698,7 +11503,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -10717,7 +11549,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -10750,7 +11582,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10796,7 +11636,7 @@ class DefaultApi
      */
     public function deleteNotificationCountAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['deleteNotificationCount'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->deleteNotificationCountRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -11294,7 +12134,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function deletePendingWebhookEvent($tenant_id, $id, string $contentType = self::contentTypes['deletePendingWebhookEvent'][0])
     {
@@ -11313,7 +12153,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deletePendingWebhookEventWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['deletePendingWebhookEvent'][0])
     {
@@ -11344,11 +12184,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -11366,7 +12206,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -11385,7 +12252,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -11418,7 +12285,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11464,7 +12339,7 @@ class DefaultApi
      */
     public function deletePendingWebhookEventAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['deletePendingWebhookEvent'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->deletePendingWebhookEventRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -11628,7 +12503,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function deleteQuestionConfig($tenant_id, $id, string $contentType = self::contentTypes['deleteQuestionConfig'][0])
     {
@@ -11647,7 +12522,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteQuestionConfigWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['deleteQuestionConfig'][0])
     {
@@ -11678,11 +12553,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -11700,7 +12575,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -11719,7 +12621,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -11752,7 +12654,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11798,7 +12708,7 @@ class DefaultApi
      */
     public function deleteQuestionConfigAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['deleteQuestionConfig'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->deleteQuestionConfigRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -11962,7 +12872,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function deleteQuestionResult($tenant_id, $id, string $contentType = self::contentTypes['deleteQuestionResult'][0])
     {
@@ -11981,7 +12891,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteQuestionResultWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['deleteQuestionResult'][0])
     {
@@ -12012,11 +12922,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -12034,7 +12944,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -12053,7 +12990,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -12086,7 +13023,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -12132,7 +13077,7 @@ class DefaultApi
      */
     public function deleteQuestionResultAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['deleteQuestionResult'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->deleteQuestionResultRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -13010,7 +13955,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function deleteTenant($tenant_id, $id, $sure = null, string $contentType = self::contentTypes['deleteTenant'][0])
     {
@@ -13030,7 +13975,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteTenantWithHttpInfo($tenant_id, $id, $sure = null, string $contentType = self::contentTypes['deleteTenant'][0])
     {
@@ -13061,11 +14006,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -13083,7 +14028,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -13102,7 +14074,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -13135,7 +14107,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -13183,7 +14163,7 @@ class DefaultApi
      */
     public function deleteTenantAsyncWithHttpInfo($tenant_id, $id, $sure = null, string $contentType = self::contentTypes['deleteTenant'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->deleteTenantRequest($tenant_id, $id, $sure, $contentType);
 
         return $this->client
@@ -13358,7 +14338,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function deleteTenantPackage($tenant_id, $id, string $contentType = self::contentTypes['deleteTenantPackage'][0])
     {
@@ -13377,7 +14357,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteTenantPackageWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['deleteTenantPackage'][0])
     {
@@ -13408,11 +14388,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -13430,7 +14410,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -13449,7 +14456,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -13482,7 +14489,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -13528,7 +14543,7 @@ class DefaultApi
      */
     public function deleteTenantPackageAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['deleteTenantPackage'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->deleteTenantPackageRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -13694,7 +14709,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function deleteTenantUser($tenant_id, $id, $delete_comments = null, $comment_delete_mode = null, string $contentType = self::contentTypes['deleteTenantUser'][0])
     {
@@ -13715,7 +14730,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteTenantUserWithHttpInfo($tenant_id, $id, $delete_comments = null, $comment_delete_mode = null, string $contentType = self::contentTypes['deleteTenantUser'][0])
     {
@@ -13746,11 +14761,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -13768,7 +14783,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -13787,7 +14829,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -13820,7 +14862,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -13870,7 +14920,7 @@ class DefaultApi
      */
     public function deleteTenantUserAsyncWithHttpInfo($tenant_id, $id, $delete_comments = null, $comment_delete_mode = null, string $contentType = self::contentTypes['deleteTenantUser'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->deleteTenantUserRequest($tenant_id, $id, $delete_comments, $comment_delete_mode, $contentType);
 
         return $this->client
@@ -14056,7 +15106,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\UpdateUserBadge200Response
+     * @return \FastComments\Client\Model\APIEmptySuccessResponse|\FastComments\Client\Model\APIError
      */
     public function deleteUserBadge($tenant_id, $id, string $contentType = self::contentTypes['deleteUserBadge'][0])
     {
@@ -14075,7 +15125,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\UpdateUserBadge200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptySuccessResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteUserBadgeWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['deleteUserBadge'][0])
     {
@@ -14106,11 +15156,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\UpdateUserBadge200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptySuccessResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\UpdateUserBadge200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptySuccessResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -14128,7 +15178,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\UpdateUserBadge200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptySuccessResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -14147,7 +15224,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\UpdateUserBadge200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptySuccessResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -14180,7 +15257,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\UpdateUserBadge200Response',
+                        '\FastComments\Client\Model\APIEmptySuccessResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -14226,7 +15311,7 @@ class DefaultApi
      */
     public function deleteUserBadgeAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['deleteUserBadge'][0])
     {
-        $returnType = '\FastComments\Client\Model\UpdateUserBadge200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptySuccessResponse';
         $request = $this->deleteUserBadgeRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -14391,7 +15476,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\DeleteCommentVote200Response
+     * @return \FastComments\Client\Model\VoteDeleteResponse|\FastComments\Client\Model\APIError
      */
     public function deleteVote($tenant_id, $id, $edit_key = null, string $contentType = self::contentTypes['deleteVote'][0])
     {
@@ -14411,7 +15496,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\DeleteCommentVote200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\VoteDeleteResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteVoteWithHttpInfo($tenant_id, $id, $edit_key = null, string $contentType = self::contentTypes['deleteVote'][0])
     {
@@ -14442,11 +15527,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\DeleteCommentVote200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\VoteDeleteResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\DeleteCommentVote200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\VoteDeleteResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -14464,7 +15549,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\DeleteCommentVote200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\VoteDeleteResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -14483,7 +15595,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\DeleteCommentVote200Response';
+            $returnType = '\FastComments\Client\Model\VoteDeleteResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -14516,7 +15628,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\DeleteCommentVote200Response',
+                        '\FastComments\Client\Model\VoteDeleteResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -14564,7 +15684,7 @@ class DefaultApi
      */
     public function deleteVoteAsyncWithHttpInfo($tenant_id, $id, $edit_key = null, string $contentType = self::contentTypes['deleteVote'][0])
     {
-        $returnType = '\FastComments\Client\Model\DeleteCommentVote200Response';
+        $returnType = '\FastComments\Client\Model\VoteDeleteResponse';
         $request = $this->deleteVoteRequest($tenant_id, $id, $edit_key, $contentType);
 
         return $this->client
@@ -14741,7 +15861,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagComment200Response
+     * @return \FastComments\Client\Model\FlagCommentResponse|\FastComments\Client\Model\APIError
      */
     public function flagComment($tenant_id, $id, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['flagComment'][0])
     {
@@ -14762,7 +15882,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagComment200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\FlagCommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function flagCommentWithHttpInfo($tenant_id, $id, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['flagComment'][0])
     {
@@ -14793,11 +15913,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagComment200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\FlagCommentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagComment200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\FlagCommentResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -14815,7 +15935,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagComment200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -14834,7 +15981,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagComment200Response';
+            $returnType = '\FastComments\Client\Model\FlagCommentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -14867,7 +16014,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagComment200Response',
+                        '\FastComments\Client\Model\FlagCommentResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -14917,7 +16072,7 @@ class DefaultApi
      */
     public function flagCommentAsyncWithHttpInfo($tenant_id, $id, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['flagComment'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagComment200Response';
+        $returnType = '\FastComments\Client\Model\FlagCommentResponse';
         $request = $this->flagCommentRequest($tenant_id, $id, $user_id, $anon_user_id, $contentType);
 
         return $this->client
@@ -15107,7 +16262,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetAuditLogs200Response
+     * @return \FastComments\Client\Model\GetAuditLogsResponse|\FastComments\Client\Model\APIError
      */
     public function getAuditLogs($tenant_id, $limit = null, $skip = null, $order = null, $after = null, $before = null, string $contentType = self::contentTypes['getAuditLogs'][0])
     {
@@ -15130,7 +16285,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetAuditLogs200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetAuditLogsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAuditLogsWithHttpInfo($tenant_id, $limit = null, $skip = null, $order = null, $after = null, $before = null, string $contentType = self::contentTypes['getAuditLogs'][0])
     {
@@ -15161,11 +16316,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetAuditLogs200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetAuditLogsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetAuditLogs200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetAuditLogsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -15183,7 +16338,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetAuditLogs200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetAuditLogsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -15202,7 +16384,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetAuditLogs200Response';
+            $returnType = '\FastComments\Client\Model\GetAuditLogsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -15235,7 +16417,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetAuditLogs200Response',
+                        '\FastComments\Client\Model\GetAuditLogsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -15289,7 +16479,7 @@ class DefaultApi
      */
     public function getAuditLogsAsyncWithHttpInfo($tenant_id, $limit = null, $skip = null, $order = null, $after = null, $before = null, string $contentType = self::contentTypes['getAuditLogs'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetAuditLogs200Response';
+        $returnType = '\FastComments\Client\Model\GetAuditLogsResponse';
         $request = $this->getAuditLogsRequest($tenant_id, $limit, $skip, $order, $after, $before, $contentType);
 
         return $this->client
@@ -15492,7 +16682,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetCachedNotificationCount200Response
+     * @return \FastComments\Client\Model\GetCachedNotificationCountResponse|\FastComments\Client\Model\APIError
      */
     public function getCachedNotificationCount($tenant_id, $id, string $contentType = self::contentTypes['getCachedNotificationCount'][0])
     {
@@ -15511,7 +16701,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetCachedNotificationCount200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetCachedNotificationCountResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCachedNotificationCountWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getCachedNotificationCount'][0])
     {
@@ -15542,11 +16732,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetCachedNotificationCount200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetCachedNotificationCountResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetCachedNotificationCount200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetCachedNotificationCountResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -15564,7 +16754,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetCachedNotificationCount200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetCachedNotificationCountResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -15583,7 +16800,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetCachedNotificationCount200Response';
+            $returnType = '\FastComments\Client\Model\GetCachedNotificationCountResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -15616,7 +16833,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetCachedNotificationCount200Response',
+                        '\FastComments\Client\Model\GetCachedNotificationCountResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -15662,7 +16887,7 @@ class DefaultApi
      */
     public function getCachedNotificationCountAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getCachedNotificationCount'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetCachedNotificationCount200Response';
+        $returnType = '\FastComments\Client\Model\GetCachedNotificationCountResponse';
         $request = $this->getCachedNotificationCountRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -15826,7 +17051,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetComment200Response
+     * @return \FastComments\Client\Model\APIGetCommentResponse|\FastComments\Client\Model\APIError
      */
     public function getComment($tenant_id, $id, string $contentType = self::contentTypes['getComment'][0])
     {
@@ -15845,7 +17070,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetComment200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIGetCommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCommentWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getComment'][0])
     {
@@ -15876,11 +17101,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetComment200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIGetCommentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetComment200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIGetCommentResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -15898,7 +17123,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetComment200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIGetCommentResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -15917,7 +17169,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetComment200Response';
+            $returnType = '\FastComments\Client\Model\APIGetCommentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -15950,7 +17202,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetComment200Response',
+                        '\FastComments\Client\Model\APIGetCommentResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -15996,7 +17256,7 @@ class DefaultApi
      */
     public function getCommentAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getComment'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetComment200Response';
+        $returnType = '\FastComments\Client\Model\APIGetCommentResponse';
         $request = $this->getCommentRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -16169,15 +17429,17 @@ class DefaultApi
      * @param  string|null $hash_tag hash_tag (optional)
      * @param  string|null $parent_id parent_id (optional)
      * @param  \FastComments\Client\Model\SortDirections|null $direction direction (optional)
+     * @param  int|null $from_date from_date (optional)
+     * @param  int|null $to_date to_date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComments'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetComments200Response
+     * @return \FastComments\Client\Model\APIGetCommentsResponse|\FastComments\Client\Model\APIError
      */
-    public function getComments($tenant_id, $page = null, $limit = null, $skip = null, $as_tree = null, $skip_children = null, $limit_children = null, $max_tree_depth = null, $url_id = null, $user_id = null, $anon_user_id = null, $context_user_id = null, $hash_tag = null, $parent_id = null, $direction = null, string $contentType = self::contentTypes['getComments'][0])
+    public function getComments($tenant_id, $page = null, $limit = null, $skip = null, $as_tree = null, $skip_children = null, $limit_children = null, $max_tree_depth = null, $url_id = null, $user_id = null, $anon_user_id = null, $context_user_id = null, $hash_tag = null, $parent_id = null, $direction = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getComments'][0])
     {
-        list($response) = $this->getCommentsWithHttpInfo($tenant_id, $page, $limit, $skip, $as_tree, $skip_children, $limit_children, $max_tree_depth, $url_id, $user_id, $anon_user_id, $context_user_id, $hash_tag, $parent_id, $direction, $contentType);
+        list($response) = $this->getCommentsWithHttpInfo($tenant_id, $page, $limit, $skip, $as_tree, $skip_children, $limit_children, $max_tree_depth, $url_id, $user_id, $anon_user_id, $context_user_id, $hash_tag, $parent_id, $direction, $from_date, $to_date, $contentType);
         return $response;
     }
 
@@ -16201,15 +17463,17 @@ class DefaultApi
      * @param  string|null $hash_tag (optional)
      * @param  string|null $parent_id (optional)
      * @param  \FastComments\Client\Model\SortDirections|null $direction (optional)
+     * @param  int|null $from_date (optional)
+     * @param  int|null $to_date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComments'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetComments200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIGetCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCommentsWithHttpInfo($tenant_id, $page = null, $limit = null, $skip = null, $as_tree = null, $skip_children = null, $limit_children = null, $max_tree_depth = null, $url_id = null, $user_id = null, $anon_user_id = null, $context_user_id = null, $hash_tag = null, $parent_id = null, $direction = null, string $contentType = self::contentTypes['getComments'][0])
+    public function getCommentsWithHttpInfo($tenant_id, $page = null, $limit = null, $skip = null, $as_tree = null, $skip_children = null, $limit_children = null, $max_tree_depth = null, $url_id = null, $user_id = null, $anon_user_id = null, $context_user_id = null, $hash_tag = null, $parent_id = null, $direction = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getComments'][0])
     {
-        $request = $this->getCommentsRequest($tenant_id, $page, $limit, $skip, $as_tree, $skip_children, $limit_children, $max_tree_depth, $url_id, $user_id, $anon_user_id, $context_user_id, $hash_tag, $parent_id, $direction, $contentType);
+        $request = $this->getCommentsRequest($tenant_id, $page, $limit, $skip, $as_tree, $skip_children, $limit_children, $max_tree_depth, $url_id, $user_id, $anon_user_id, $context_user_id, $hash_tag, $parent_id, $direction, $from_date, $to_date, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -16236,11 +17500,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetComments200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIGetCommentsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetComments200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIGetCommentsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -16258,7 +17522,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetComments200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIGetCommentsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -16277,7 +17568,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetComments200Response';
+            $returnType = '\FastComments\Client\Model\APIGetCommentsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -16310,7 +17601,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetComments200Response',
+                        '\FastComments\Client\Model\APIGetCommentsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -16340,14 +17639,16 @@ class DefaultApi
      * @param  string|null $hash_tag (optional)
      * @param  string|null $parent_id (optional)
      * @param  \FastComments\Client\Model\SortDirections|null $direction (optional)
+     * @param  int|null $from_date (optional)
+     * @param  int|null $to_date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentsAsync($tenant_id, $page = null, $limit = null, $skip = null, $as_tree = null, $skip_children = null, $limit_children = null, $max_tree_depth = null, $url_id = null, $user_id = null, $anon_user_id = null, $context_user_id = null, $hash_tag = null, $parent_id = null, $direction = null, string $contentType = self::contentTypes['getComments'][0])
+    public function getCommentsAsync($tenant_id, $page = null, $limit = null, $skip = null, $as_tree = null, $skip_children = null, $limit_children = null, $max_tree_depth = null, $url_id = null, $user_id = null, $anon_user_id = null, $context_user_id = null, $hash_tag = null, $parent_id = null, $direction = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getComments'][0])
     {
-        return $this->getCommentsAsyncWithHttpInfo($tenant_id, $page, $limit, $skip, $as_tree, $skip_children, $limit_children, $max_tree_depth, $url_id, $user_id, $anon_user_id, $context_user_id, $hash_tag, $parent_id, $direction, $contentType)
+        return $this->getCommentsAsyncWithHttpInfo($tenant_id, $page, $limit, $skip, $as_tree, $skip_children, $limit_children, $max_tree_depth, $url_id, $user_id, $anon_user_id, $context_user_id, $hash_tag, $parent_id, $direction, $from_date, $to_date, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -16375,15 +17676,17 @@ class DefaultApi
      * @param  string|null $hash_tag (optional)
      * @param  string|null $parent_id (optional)
      * @param  \FastComments\Client\Model\SortDirections|null $direction (optional)
+     * @param  int|null $from_date (optional)
+     * @param  int|null $to_date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentsAsyncWithHttpInfo($tenant_id, $page = null, $limit = null, $skip = null, $as_tree = null, $skip_children = null, $limit_children = null, $max_tree_depth = null, $url_id = null, $user_id = null, $anon_user_id = null, $context_user_id = null, $hash_tag = null, $parent_id = null, $direction = null, string $contentType = self::contentTypes['getComments'][0])
+    public function getCommentsAsyncWithHttpInfo($tenant_id, $page = null, $limit = null, $skip = null, $as_tree = null, $skip_children = null, $limit_children = null, $max_tree_depth = null, $url_id = null, $user_id = null, $anon_user_id = null, $context_user_id = null, $hash_tag = null, $parent_id = null, $direction = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getComments'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetComments200Response';
-        $request = $this->getCommentsRequest($tenant_id, $page, $limit, $skip, $as_tree, $skip_children, $limit_children, $max_tree_depth, $url_id, $user_id, $anon_user_id, $context_user_id, $hash_tag, $parent_id, $direction, $contentType);
+        $returnType = '\FastComments\Client\Model\APIGetCommentsResponse';
+        $request = $this->getCommentsRequest($tenant_id, $page, $limit, $skip, $as_tree, $skip_children, $limit_children, $max_tree_depth, $url_id, $user_id, $anon_user_id, $context_user_id, $hash_tag, $parent_id, $direction, $from_date, $to_date, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -16439,12 +17742,14 @@ class DefaultApi
      * @param  string|null $hash_tag (optional)
      * @param  string|null $parent_id (optional)
      * @param  \FastComments\Client\Model\SortDirections|null $direction (optional)
+     * @param  int|null $from_date (optional)
+     * @param  int|null $to_date (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCommentsRequest($tenant_id, $page = null, $limit = null, $skip = null, $as_tree = null, $skip_children = null, $limit_children = null, $max_tree_depth = null, $url_id = null, $user_id = null, $anon_user_id = null, $context_user_id = null, $hash_tag = null, $parent_id = null, $direction = null, string $contentType = self::contentTypes['getComments'][0])
+    public function getCommentsRequest($tenant_id, $page = null, $limit = null, $skip = null, $as_tree = null, $skip_children = null, $limit_children = null, $max_tree_depth = null, $url_id = null, $user_id = null, $anon_user_id = null, $context_user_id = null, $hash_tag = null, $parent_id = null, $direction = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getComments'][0])
     {
 
         // verify the required parameter 'tenant_id' is set
@@ -16453,6 +17758,8 @@ class DefaultApi
                 'Missing the required parameter $tenant_id when calling getComments'
             );
         }
+
+
 
 
 
@@ -16611,6 +17918,24 @@ class DefaultApi
             true, // explode
             false // required
         ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from_date,
+            'fromDate', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to_date,
+            'toDate', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
 
@@ -16684,7 +18009,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetDomainConfig200Response
+     * @return \FastComments\Client\Model\GetDomainConfigResponse
      */
     public function getDomainConfig($tenant_id, $domain, string $contentType = self::contentTypes['getDomainConfig'][0])
     {
@@ -16703,7 +18028,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetDomainConfig200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetDomainConfigResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDomainConfigWithHttpInfo($tenant_id, $domain, string $contentType = self::contentTypes['getDomainConfig'][0])
     {
@@ -16734,11 +18059,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetDomainConfig200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetDomainConfigResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetDomainConfig200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetDomainConfigResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -16756,7 +18081,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetDomainConfig200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetDomainConfigResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -16775,7 +18100,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetDomainConfig200Response';
+            $returnType = '\FastComments\Client\Model\GetDomainConfigResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -16808,7 +18133,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetDomainConfig200Response',
+                        '\FastComments\Client\Model\GetDomainConfigResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -16854,7 +18179,7 @@ class DefaultApi
      */
     public function getDomainConfigAsyncWithHttpInfo($tenant_id, $domain, string $contentType = self::contentTypes['getDomainConfig'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetDomainConfig200Response';
+        $returnType = '\FastComments\Client\Model\GetDomainConfigResponse';
         $request = $this->getDomainConfigRequest($tenant_id, $domain, $contentType);
 
         return $this->client
@@ -17017,7 +18342,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetDomainConfigs200Response
+     * @return \FastComments\Client\Model\GetDomainConfigsResponse
      */
     public function getDomainConfigs($tenant_id, string $contentType = self::contentTypes['getDomainConfigs'][0])
     {
@@ -17035,7 +18360,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetDomainConfigs200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetDomainConfigsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDomainConfigsWithHttpInfo($tenant_id, string $contentType = self::contentTypes['getDomainConfigs'][0])
     {
@@ -17066,11 +18391,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetDomainConfigs200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetDomainConfigsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetDomainConfigs200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetDomainConfigsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -17088,7 +18413,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetDomainConfigs200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetDomainConfigsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -17107,7 +18432,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetDomainConfigs200Response';
+            $returnType = '\FastComments\Client\Model\GetDomainConfigsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -17140,7 +18465,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetDomainConfigs200Response',
+                        '\FastComments\Client\Model\GetDomainConfigsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -17184,7 +18509,7 @@ class DefaultApi
      */
     public function getDomainConfigsAsyncWithHttpInfo($tenant_id, string $contentType = self::contentTypes['getDomainConfigs'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetDomainConfigs200Response';
+        $returnType = '\FastComments\Client\Model\GetDomainConfigsResponse';
         $request = $this->getDomainConfigsRequest($tenant_id, $contentType);
 
         return $this->client
@@ -17332,7 +18657,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetEmailTemplate200Response
+     * @return \FastComments\Client\Model\GetEmailTemplateResponse|\FastComments\Client\Model\APIError
      */
     public function getEmailTemplate($tenant_id, $id, string $contentType = self::contentTypes['getEmailTemplate'][0])
     {
@@ -17351,7 +18676,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetEmailTemplate200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetEmailTemplateResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getEmailTemplateWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getEmailTemplate'][0])
     {
@@ -17382,11 +18707,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetEmailTemplate200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetEmailTemplateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetEmailTemplate200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetEmailTemplateResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -17404,7 +18729,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetEmailTemplate200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetEmailTemplateResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -17423,7 +18775,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetEmailTemplate200Response';
+            $returnType = '\FastComments\Client\Model\GetEmailTemplateResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -17456,7 +18808,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetEmailTemplate200Response',
+                        '\FastComments\Client\Model\GetEmailTemplateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -17502,7 +18862,7 @@ class DefaultApi
      */
     public function getEmailTemplateAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getEmailTemplate'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetEmailTemplate200Response';
+        $returnType = '\FastComments\Client\Model\GetEmailTemplateResponse';
         $request = $this->getEmailTemplateRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -17665,7 +19025,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetEmailTemplateDefinitions200Response
+     * @return \FastComments\Client\Model\GetEmailTemplateDefinitionsResponse|\FastComments\Client\Model\APIError
      */
     public function getEmailTemplateDefinitions($tenant_id, string $contentType = self::contentTypes['getEmailTemplateDefinitions'][0])
     {
@@ -17683,7 +19043,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetEmailTemplateDefinitions200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetEmailTemplateDefinitionsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getEmailTemplateDefinitionsWithHttpInfo($tenant_id, string $contentType = self::contentTypes['getEmailTemplateDefinitions'][0])
     {
@@ -17714,11 +19074,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetEmailTemplateDefinitions200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetEmailTemplateDefinitionsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetEmailTemplateDefinitions200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetEmailTemplateDefinitionsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -17736,7 +19096,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetEmailTemplateDefinitions200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetEmailTemplateDefinitionsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -17755,7 +19142,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetEmailTemplateDefinitions200Response';
+            $returnType = '\FastComments\Client\Model\GetEmailTemplateDefinitionsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -17788,7 +19175,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetEmailTemplateDefinitions200Response',
+                        '\FastComments\Client\Model\GetEmailTemplateDefinitionsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -17832,7 +19227,7 @@ class DefaultApi
      */
     public function getEmailTemplateDefinitionsAsyncWithHttpInfo($tenant_id, string $contentType = self::contentTypes['getEmailTemplateDefinitions'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetEmailTemplateDefinitions200Response';
+        $returnType = '\FastComments\Client\Model\GetEmailTemplateDefinitionsResponse';
         $request = $this->getEmailTemplateDefinitionsRequest($tenant_id, $contentType);
 
         return $this->client
@@ -17981,7 +19376,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetEmailTemplateRenderErrors200Response
+     * @return \FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse|\FastComments\Client\Model\APIError
      */
     public function getEmailTemplateRenderErrors($tenant_id, $id, $skip = null, string $contentType = self::contentTypes['getEmailTemplateRenderErrors'][0])
     {
@@ -18001,7 +19396,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetEmailTemplateRenderErrors200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getEmailTemplateRenderErrorsWithHttpInfo($tenant_id, $id, $skip = null, string $contentType = self::contentTypes['getEmailTemplateRenderErrors'][0])
     {
@@ -18032,11 +19427,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetEmailTemplateRenderErrors200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetEmailTemplateRenderErrors200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -18054,7 +19449,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetEmailTemplateRenderErrors200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -18073,7 +19495,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetEmailTemplateRenderErrors200Response';
+            $returnType = '\FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -18106,7 +19528,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetEmailTemplateRenderErrors200Response',
+                        '\FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -18154,7 +19584,7 @@ class DefaultApi
      */
     public function getEmailTemplateRenderErrorsAsyncWithHttpInfo($tenant_id, $id, $skip = null, string $contentType = self::contentTypes['getEmailTemplateRenderErrors'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetEmailTemplateRenderErrors200Response';
+        $returnType = '\FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse';
         $request = $this->getEmailTemplateRenderErrorsRequest($tenant_id, $id, $skip, $contentType);
 
         return $this->client
@@ -18329,7 +19759,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetEmailTemplates200Response
+     * @return \FastComments\Client\Model\GetEmailTemplatesResponse|\FastComments\Client\Model\APIError
      */
     public function getEmailTemplates($tenant_id, $skip = null, string $contentType = self::contentTypes['getEmailTemplates'][0])
     {
@@ -18348,7 +19778,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetEmailTemplates200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetEmailTemplatesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getEmailTemplatesWithHttpInfo($tenant_id, $skip = null, string $contentType = self::contentTypes['getEmailTemplates'][0])
     {
@@ -18379,11 +19809,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetEmailTemplates200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetEmailTemplatesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetEmailTemplates200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetEmailTemplatesResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -18401,7 +19831,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetEmailTemplates200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetEmailTemplatesResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -18420,7 +19877,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetEmailTemplates200Response';
+            $returnType = '\FastComments\Client\Model\GetEmailTemplatesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -18453,7 +19910,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetEmailTemplates200Response',
+                        '\FastComments\Client\Model\GetEmailTemplatesResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -18499,7 +19964,7 @@ class DefaultApi
      */
     public function getEmailTemplatesAsyncWithHttpInfo($tenant_id, $skip = null, string $contentType = self::contentTypes['getEmailTemplates'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetEmailTemplates200Response';
+        $returnType = '\FastComments\Client\Model\GetEmailTemplatesResponse';
         $request = $this->getEmailTemplatesRequest($tenant_id, $skip, $contentType);
 
         return $this->client
@@ -18660,7 +20125,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetFeedPosts200Response
+     * @return \FastComments\Client\Model\GetFeedPostsResponse|\FastComments\Client\Model\APIError
      */
     public function getFeedPosts($tenant_id, $after_id = null, $limit = null, $tags = null, string $contentType = self::contentTypes['getFeedPosts'][0])
     {
@@ -18681,7 +20146,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetFeedPosts200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetFeedPostsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFeedPostsWithHttpInfo($tenant_id, $after_id = null, $limit = null, $tags = null, string $contentType = self::contentTypes['getFeedPosts'][0])
     {
@@ -18712,11 +20177,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetFeedPosts200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetFeedPostsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetFeedPosts200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetFeedPostsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -18734,7 +20199,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetFeedPosts200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetFeedPostsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -18753,7 +20245,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetFeedPosts200Response';
+            $returnType = '\FastComments\Client\Model\GetFeedPostsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -18786,7 +20278,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetFeedPosts200Response',
+                        '\FastComments\Client\Model\GetFeedPostsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -18836,7 +20336,7 @@ class DefaultApi
      */
     public function getFeedPostsAsyncWithHttpInfo($tenant_id, $after_id = null, $limit = null, $tags = null, string $contentType = self::contentTypes['getFeedPosts'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetFeedPosts200Response';
+        $returnType = '\FastComments\Client\Model\GetFeedPostsResponse';
         $request = $this->getFeedPostsRequest($tenant_id, $after_id, $limit, $tags, $contentType);
 
         return $this->client
@@ -19017,7 +20517,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetHashTags200Response
+     * @return \FastComments\Client\Model\GetHashTagsResponse|\FastComments\Client\Model\APIError
      */
     public function getHashTags($tenant_id, $page = null, string $contentType = self::contentTypes['getHashTags'][0])
     {
@@ -19036,7 +20536,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetHashTags200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetHashTagsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getHashTagsWithHttpInfo($tenant_id, $page = null, string $contentType = self::contentTypes['getHashTags'][0])
     {
@@ -19067,11 +20567,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetHashTags200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetHashTagsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetHashTags200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetHashTagsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -19089,7 +20589,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetHashTags200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetHashTagsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -19108,7 +20635,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetHashTags200Response';
+            $returnType = '\FastComments\Client\Model\GetHashTagsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -19141,7 +20668,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetHashTags200Response',
+                        '\FastComments\Client\Model\GetHashTagsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -19187,7 +20722,7 @@ class DefaultApi
      */
     public function getHashTagsAsyncWithHttpInfo($tenant_id, $page = null, string $contentType = self::contentTypes['getHashTags'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetHashTags200Response';
+        $returnType = '\FastComments\Client\Model\GetHashTagsResponse';
         $request = $this->getHashTagsRequest($tenant_id, $page, $contentType);
 
         return $this->client
@@ -19346,7 +20881,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetModerator200Response
+     * @return \FastComments\Client\Model\GetModeratorResponse|\FastComments\Client\Model\APIError
      */
     public function getModerator($tenant_id, $id, string $contentType = self::contentTypes['getModerator'][0])
     {
@@ -19365,7 +20900,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetModerator200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetModeratorResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getModeratorWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getModerator'][0])
     {
@@ -19396,11 +20931,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetModerator200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetModeratorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetModerator200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetModeratorResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -19418,7 +20953,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetModerator200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetModeratorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -19437,7 +20999,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetModerator200Response';
+            $returnType = '\FastComments\Client\Model\GetModeratorResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -19470,7 +21032,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetModerator200Response',
+                        '\FastComments\Client\Model\GetModeratorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -19516,7 +21086,7 @@ class DefaultApi
      */
     public function getModeratorAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getModerator'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetModerator200Response';
+        $returnType = '\FastComments\Client\Model\GetModeratorResponse';
         $request = $this->getModeratorRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -19680,7 +21250,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetModerators200Response
+     * @return \FastComments\Client\Model\GetModeratorsResponse|\FastComments\Client\Model\APIError
      */
     public function getModerators($tenant_id, $skip = null, string $contentType = self::contentTypes['getModerators'][0])
     {
@@ -19699,7 +21269,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetModerators200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetModeratorsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getModeratorsWithHttpInfo($tenant_id, $skip = null, string $contentType = self::contentTypes['getModerators'][0])
     {
@@ -19730,11 +21300,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetModerators200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetModeratorsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetModerators200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetModeratorsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -19752,7 +21322,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetModerators200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetModeratorsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -19771,7 +21368,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetModerators200Response';
+            $returnType = '\FastComments\Client\Model\GetModeratorsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -19804,7 +21401,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetModerators200Response',
+                        '\FastComments\Client\Model\GetModeratorsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -19850,7 +21455,7 @@ class DefaultApi
      */
     public function getModeratorsAsyncWithHttpInfo($tenant_id, $skip = null, string $contentType = self::contentTypes['getModerators'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetModerators200Response';
+        $returnType = '\FastComments\Client\Model\GetModeratorsResponse';
         $request = $this->getModeratorsRequest($tenant_id, $skip, $contentType);
 
         return $this->client
@@ -20013,7 +21618,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetNotificationCount200Response
+     * @return \FastComments\Client\Model\GetNotificationCountResponse|\FastComments\Client\Model\APIError
      */
     public function getNotificationCount($tenant_id, $user_id = null, $url_id = null, $from_comment_id = null, $viewed = null, $type = null, string $contentType = self::contentTypes['getNotificationCount'][0])
     {
@@ -20036,7 +21641,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetNotificationCount200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetNotificationCountResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getNotificationCountWithHttpInfo($tenant_id, $user_id = null, $url_id = null, $from_comment_id = null, $viewed = null, $type = null, string $contentType = self::contentTypes['getNotificationCount'][0])
     {
@@ -20067,11 +21672,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetNotificationCount200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetNotificationCountResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetNotificationCount200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetNotificationCountResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -20089,7 +21694,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetNotificationCount200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetNotificationCountResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -20108,7 +21740,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetNotificationCount200Response';
+            $returnType = '\FastComments\Client\Model\GetNotificationCountResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -20141,7 +21773,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetNotificationCount200Response',
+                        '\FastComments\Client\Model\GetNotificationCountResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -20195,7 +21835,7 @@ class DefaultApi
      */
     public function getNotificationCountAsyncWithHttpInfo($tenant_id, $user_id = null, $url_id = null, $from_comment_id = null, $viewed = null, $type = null, string $contentType = self::contentTypes['getNotificationCount'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetNotificationCount200Response';
+        $returnType = '\FastComments\Client\Model\GetNotificationCountResponse';
         $request = $this->getNotificationCountRequest($tenant_id, $user_id, $url_id, $from_comment_id, $viewed, $type, $contentType);
 
         return $this->client
@@ -20403,7 +22043,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetNotifications200Response
+     * @return \FastComments\Client\Model\GetNotificationsResponse|\FastComments\Client\Model\APIError
      */
     public function getNotifications($tenant_id, $user_id = null, $url_id = null, $from_comment_id = null, $viewed = null, $type = null, $skip = null, string $contentType = self::contentTypes['getNotifications'][0])
     {
@@ -20427,7 +22067,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetNotifications200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetNotificationsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getNotificationsWithHttpInfo($tenant_id, $user_id = null, $url_id = null, $from_comment_id = null, $viewed = null, $type = null, $skip = null, string $contentType = self::contentTypes['getNotifications'][0])
     {
@@ -20458,11 +22098,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetNotifications200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetNotificationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetNotifications200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetNotificationsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -20480,7 +22120,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetNotifications200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetNotificationsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -20499,7 +22166,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetNotifications200Response';
+            $returnType = '\FastComments\Client\Model\GetNotificationsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -20532,7 +22199,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetNotifications200Response',
+                        '\FastComments\Client\Model\GetNotificationsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -20588,7 +22263,7 @@ class DefaultApi
      */
     public function getNotificationsAsyncWithHttpInfo($tenant_id, $user_id = null, $url_id = null, $from_comment_id = null, $viewed = null, $type = null, $skip = null, string $contentType = self::contentTypes['getNotifications'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetNotifications200Response';
+        $returnType = '\FastComments\Client\Model\GetNotificationsResponse';
         $request = $this->getNotificationsRequest($tenant_id, $user_id, $url_id, $from_comment_id, $viewed, $type, $skip, $contentType);
 
         return $this->client
@@ -21456,7 +23131,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetPendingWebhookEventCount200Response
+     * @return \FastComments\Client\Model\GetPendingWebhookEventCountResponse|\FastComments\Client\Model\APIError
      */
     public function getPendingWebhookEventCount($tenant_id, $comment_id = null, $external_id = null, $event_type = null, $type = null, $domain = null, $attempt_count_gt = null, string $contentType = self::contentTypes['getPendingWebhookEventCount'][0])
     {
@@ -21480,7 +23155,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetPendingWebhookEventCount200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetPendingWebhookEventCountResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPendingWebhookEventCountWithHttpInfo($tenant_id, $comment_id = null, $external_id = null, $event_type = null, $type = null, $domain = null, $attempt_count_gt = null, string $contentType = self::contentTypes['getPendingWebhookEventCount'][0])
     {
@@ -21511,11 +23186,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetPendingWebhookEventCount200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetPendingWebhookEventCountResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetPendingWebhookEventCount200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetPendingWebhookEventCountResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -21533,7 +23208,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetPendingWebhookEventCount200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetPendingWebhookEventCountResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -21552,7 +23254,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetPendingWebhookEventCount200Response';
+            $returnType = '\FastComments\Client\Model\GetPendingWebhookEventCountResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -21585,7 +23287,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetPendingWebhookEventCount200Response',
+                        '\FastComments\Client\Model\GetPendingWebhookEventCountResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -21641,7 +23351,7 @@ class DefaultApi
      */
     public function getPendingWebhookEventCountAsyncWithHttpInfo($tenant_id, $comment_id = null, $external_id = null, $event_type = null, $type = null, $domain = null, $attempt_count_gt = null, string $contentType = self::contentTypes['getPendingWebhookEventCount'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetPendingWebhookEventCount200Response';
+        $returnType = '\FastComments\Client\Model\GetPendingWebhookEventCountResponse';
         $request = $this->getPendingWebhookEventCountRequest($tenant_id, $comment_id, $external_id, $event_type, $type, $domain, $attempt_count_gt, $contentType);
 
         return $this->client
@@ -21861,7 +23571,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetPendingWebhookEvents200Response
+     * @return \FastComments\Client\Model\GetPendingWebhookEventsResponse|\FastComments\Client\Model\APIError
      */
     public function getPendingWebhookEvents($tenant_id, $comment_id = null, $external_id = null, $event_type = null, $type = null, $domain = null, $attempt_count_gt = null, $skip = null, string $contentType = self::contentTypes['getPendingWebhookEvents'][0])
     {
@@ -21886,7 +23596,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetPendingWebhookEvents200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetPendingWebhookEventsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPendingWebhookEventsWithHttpInfo($tenant_id, $comment_id = null, $external_id = null, $event_type = null, $type = null, $domain = null, $attempt_count_gt = null, $skip = null, string $contentType = self::contentTypes['getPendingWebhookEvents'][0])
     {
@@ -21917,11 +23627,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetPendingWebhookEvents200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetPendingWebhookEventsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetPendingWebhookEvents200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetPendingWebhookEventsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -21939,7 +23649,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetPendingWebhookEvents200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetPendingWebhookEventsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -21958,7 +23695,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetPendingWebhookEvents200Response';
+            $returnType = '\FastComments\Client\Model\GetPendingWebhookEventsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -21991,7 +23728,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetPendingWebhookEvents200Response',
+                        '\FastComments\Client\Model\GetPendingWebhookEventsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -22049,7 +23794,7 @@ class DefaultApi
      */
     public function getPendingWebhookEventsAsyncWithHttpInfo($tenant_id, $comment_id = null, $external_id = null, $event_type = null, $type = null, $domain = null, $attempt_count_gt = null, $skip = null, string $contentType = self::contentTypes['getPendingWebhookEvents'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetPendingWebhookEvents200Response';
+        $returnType = '\FastComments\Client\Model\GetPendingWebhookEventsResponse';
         $request = $this->getPendingWebhookEventsRequest($tenant_id, $comment_id, $external_id, $event_type, $type, $domain, $attempt_count_gt, $skip, $contentType);
 
         return $this->client
@@ -22274,7 +24019,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetQuestionConfig200Response
+     * @return \FastComments\Client\Model\GetQuestionConfigResponse|\FastComments\Client\Model\APIError
      */
     public function getQuestionConfig($tenant_id, $id, string $contentType = self::contentTypes['getQuestionConfig'][0])
     {
@@ -22293,7 +24038,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetQuestionConfig200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetQuestionConfigResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getQuestionConfigWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getQuestionConfig'][0])
     {
@@ -22324,11 +24069,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetQuestionConfig200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetQuestionConfigResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetQuestionConfig200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetQuestionConfigResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -22346,7 +24091,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetQuestionConfig200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetQuestionConfigResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -22365,7 +24137,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetQuestionConfig200Response';
+            $returnType = '\FastComments\Client\Model\GetQuestionConfigResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -22398,7 +24170,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetQuestionConfig200Response',
+                        '\FastComments\Client\Model\GetQuestionConfigResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -22444,7 +24224,7 @@ class DefaultApi
      */
     public function getQuestionConfigAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getQuestionConfig'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetQuestionConfig200Response';
+        $returnType = '\FastComments\Client\Model\GetQuestionConfigResponse';
         $request = $this->getQuestionConfigRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -22608,7 +24388,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetQuestionConfigs200Response
+     * @return \FastComments\Client\Model\GetQuestionConfigsResponse|\FastComments\Client\Model\APIError
      */
     public function getQuestionConfigs($tenant_id, $skip = null, string $contentType = self::contentTypes['getQuestionConfigs'][0])
     {
@@ -22627,7 +24407,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetQuestionConfigs200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetQuestionConfigsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getQuestionConfigsWithHttpInfo($tenant_id, $skip = null, string $contentType = self::contentTypes['getQuestionConfigs'][0])
     {
@@ -22658,11 +24438,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetQuestionConfigs200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetQuestionConfigsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetQuestionConfigs200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetQuestionConfigsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -22680,7 +24460,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetQuestionConfigs200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetQuestionConfigsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -22699,7 +24506,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetQuestionConfigs200Response';
+            $returnType = '\FastComments\Client\Model\GetQuestionConfigsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -22732,7 +24539,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetQuestionConfigs200Response',
+                        '\FastComments\Client\Model\GetQuestionConfigsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -22778,7 +24593,7 @@ class DefaultApi
      */
     public function getQuestionConfigsAsyncWithHttpInfo($tenant_id, $skip = null, string $contentType = self::contentTypes['getQuestionConfigs'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetQuestionConfigs200Response';
+        $returnType = '\FastComments\Client\Model\GetQuestionConfigsResponse';
         $request = $this->getQuestionConfigsRequest($tenant_id, $skip, $contentType);
 
         return $this->client
@@ -22937,7 +24752,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetQuestionResult200Response
+     * @return \FastComments\Client\Model\GetQuestionResultResponse|\FastComments\Client\Model\APIError
      */
     public function getQuestionResult($tenant_id, $id, string $contentType = self::contentTypes['getQuestionResult'][0])
     {
@@ -22956,7 +24771,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetQuestionResult200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetQuestionResultResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getQuestionResultWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getQuestionResult'][0])
     {
@@ -22987,11 +24802,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetQuestionResult200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetQuestionResultResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetQuestionResult200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetQuestionResultResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -23009,7 +24824,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetQuestionResult200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetQuestionResultResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -23028,7 +24870,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetQuestionResult200Response';
+            $returnType = '\FastComments\Client\Model\GetQuestionResultResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -23061,7 +24903,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetQuestionResult200Response',
+                        '\FastComments\Client\Model\GetQuestionResultResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -23107,7 +24957,7 @@ class DefaultApi
      */
     public function getQuestionResultAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getQuestionResult'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetQuestionResult200Response';
+        $returnType = '\FastComments\Client\Model\GetQuestionResultResponse';
         $request = $this->getQuestionResultRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -23276,7 +25126,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetQuestionResults200Response
+     * @return \FastComments\Client\Model\GetQuestionResultsResponse|\FastComments\Client\Model\APIError
      */
     public function getQuestionResults($tenant_id, $url_id = null, $user_id = null, $start_date = null, $question_id = null, $question_ids = null, $skip = null, string $contentType = self::contentTypes['getQuestionResults'][0])
     {
@@ -23300,7 +25150,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetQuestionResults200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetQuestionResultsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getQuestionResultsWithHttpInfo($tenant_id, $url_id = null, $user_id = null, $start_date = null, $question_id = null, $question_ids = null, $skip = null, string $contentType = self::contentTypes['getQuestionResults'][0])
     {
@@ -23331,11 +25181,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetQuestionResults200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetQuestionResultsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetQuestionResults200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetQuestionResultsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -23353,7 +25203,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetQuestionResults200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetQuestionResultsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -23372,7 +25249,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetQuestionResults200Response';
+            $returnType = '\FastComments\Client\Model\GetQuestionResultsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -23405,7 +25282,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetQuestionResults200Response',
+                        '\FastComments\Client\Model\GetQuestionResultsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -23461,7 +25346,7 @@ class DefaultApi
      */
     public function getQuestionResultsAsyncWithHttpInfo($tenant_id, $url_id = null, $user_id = null, $start_date = null, $question_id = null, $question_ids = null, $skip = null, string $contentType = self::contentTypes['getQuestionResults'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetQuestionResults200Response';
+        $returnType = '\FastComments\Client\Model\GetQuestionResultsResponse';
         $request = $this->getQuestionResultsRequest($tenant_id, $url_id, $user_id, $start_date, $question_id, $question_ids, $skip, $contentType);
 
         return $this->client
@@ -24343,7 +26228,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetSSOUsers200Response
+     * @return \FastComments\Client\Model\GetSSOUsersResponse
      */
     public function getSSOUsers($tenant_id, $skip = null, string $contentType = self::contentTypes['getSSOUsers'][0])
     {
@@ -24362,7 +26247,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetSSOUsers200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetSSOUsersResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSSOUsersWithHttpInfo($tenant_id, $skip = null, string $contentType = self::contentTypes['getSSOUsers'][0])
     {
@@ -24393,11 +26278,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetSSOUsers200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetSSOUsersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetSSOUsers200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetSSOUsersResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -24415,7 +26300,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetSSOUsers200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetSSOUsersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -24434,7 +26319,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetSSOUsers200Response';
+            $returnType = '\FastComments\Client\Model\GetSSOUsersResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -24467,7 +26352,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetSSOUsers200Response',
+                        '\FastComments\Client\Model\GetSSOUsersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -24513,7 +26398,7 @@ class DefaultApi
      */
     public function getSSOUsersAsyncWithHttpInfo($tenant_id, $skip = null, string $contentType = self::contentTypes['getSSOUsers'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetSSOUsers200Response';
+        $returnType = '\FastComments\Client\Model\GetSSOUsersResponse';
         $request = $this->getSSOUsersRequest($tenant_id, $skip, $contentType);
 
         return $this->client
@@ -25001,7 +26886,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetTenant200Response
+     * @return \FastComments\Client\Model\GetTenantResponse|\FastComments\Client\Model\APIError
      */
     public function getTenant($tenant_id, $id, string $contentType = self::contentTypes['getTenant'][0])
     {
@@ -25020,7 +26905,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetTenant200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetTenantResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTenantWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getTenant'][0])
     {
@@ -25051,11 +26936,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetTenant200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetTenantResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetTenant200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetTenantResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -25073,7 +26958,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTenant200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTenantResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -25092,7 +27004,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetTenant200Response';
+            $returnType = '\FastComments\Client\Model\GetTenantResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -25125,7 +27037,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetTenant200Response',
+                        '\FastComments\Client\Model\GetTenantResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -25171,7 +27091,7 @@ class DefaultApi
      */
     public function getTenantAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getTenant'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetTenant200Response';
+        $returnType = '\FastComments\Client\Model\GetTenantResponse';
         $request = $this->getTenantRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -25338,7 +27258,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetTenantDailyUsages200Response
+     * @return \FastComments\Client\Model\GetTenantDailyUsagesResponse|\FastComments\Client\Model\APIError
      */
     public function getTenantDailyUsages($tenant_id, $year_number = null, $month_number = null, $day_number = null, $skip = null, string $contentType = self::contentTypes['getTenantDailyUsages'][0])
     {
@@ -25360,7 +27280,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetTenantDailyUsages200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetTenantDailyUsagesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTenantDailyUsagesWithHttpInfo($tenant_id, $year_number = null, $month_number = null, $day_number = null, $skip = null, string $contentType = self::contentTypes['getTenantDailyUsages'][0])
     {
@@ -25391,11 +27311,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetTenantDailyUsages200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetTenantDailyUsagesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetTenantDailyUsages200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetTenantDailyUsagesResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -25413,7 +27333,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTenantDailyUsages200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTenantDailyUsagesResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -25432,7 +27379,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetTenantDailyUsages200Response';
+            $returnType = '\FastComments\Client\Model\GetTenantDailyUsagesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -25465,7 +27412,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetTenantDailyUsages200Response',
+                        '\FastComments\Client\Model\GetTenantDailyUsagesResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -25517,7 +27472,7 @@ class DefaultApi
      */
     public function getTenantDailyUsagesAsyncWithHttpInfo($tenant_id, $year_number = null, $month_number = null, $day_number = null, $skip = null, string $contentType = self::contentTypes['getTenantDailyUsages'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetTenantDailyUsages200Response';
+        $returnType = '\FastComments\Client\Model\GetTenantDailyUsagesResponse';
         $request = $this->getTenantDailyUsagesRequest($tenant_id, $year_number, $month_number, $day_number, $skip, $contentType);
 
         return $this->client
@@ -25709,7 +27664,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetTenantPackage200Response
+     * @return \FastComments\Client\Model\GetTenantPackageResponse|\FastComments\Client\Model\APIError
      */
     public function getTenantPackage($tenant_id, $id, string $contentType = self::contentTypes['getTenantPackage'][0])
     {
@@ -25728,7 +27683,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetTenantPackage200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetTenantPackageResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTenantPackageWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getTenantPackage'][0])
     {
@@ -25759,11 +27714,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetTenantPackage200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetTenantPackageResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetTenantPackage200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetTenantPackageResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -25781,7 +27736,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTenantPackage200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTenantPackageResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -25800,7 +27782,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetTenantPackage200Response';
+            $returnType = '\FastComments\Client\Model\GetTenantPackageResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -25833,7 +27815,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetTenantPackage200Response',
+                        '\FastComments\Client\Model\GetTenantPackageResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -25879,7 +27869,7 @@ class DefaultApi
      */
     public function getTenantPackageAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getTenantPackage'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetTenantPackage200Response';
+        $returnType = '\FastComments\Client\Model\GetTenantPackageResponse';
         $request = $this->getTenantPackageRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -26043,7 +28033,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetTenantPackages200Response
+     * @return \FastComments\Client\Model\GetTenantPackagesResponse|\FastComments\Client\Model\APIError
      */
     public function getTenantPackages($tenant_id, $skip = null, string $contentType = self::contentTypes['getTenantPackages'][0])
     {
@@ -26062,7 +28052,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetTenantPackages200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetTenantPackagesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTenantPackagesWithHttpInfo($tenant_id, $skip = null, string $contentType = self::contentTypes['getTenantPackages'][0])
     {
@@ -26093,11 +28083,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetTenantPackages200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetTenantPackagesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetTenantPackages200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetTenantPackagesResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -26115,7 +28105,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTenantPackages200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTenantPackagesResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -26134,7 +28151,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetTenantPackages200Response';
+            $returnType = '\FastComments\Client\Model\GetTenantPackagesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -26167,7 +28184,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetTenantPackages200Response',
+                        '\FastComments\Client\Model\GetTenantPackagesResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -26213,7 +28238,7 @@ class DefaultApi
      */
     public function getTenantPackagesAsyncWithHttpInfo($tenant_id, $skip = null, string $contentType = self::contentTypes['getTenantPackages'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetTenantPackages200Response';
+        $returnType = '\FastComments\Client\Model\GetTenantPackagesResponse';
         $request = $this->getTenantPackagesRequest($tenant_id, $skip, $contentType);
 
         return $this->client
@@ -26372,7 +28397,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetTenantUser200Response
+     * @return \FastComments\Client\Model\GetTenantUserResponse|\FastComments\Client\Model\APIError
      */
     public function getTenantUser($tenant_id, $id, string $contentType = self::contentTypes['getTenantUser'][0])
     {
@@ -26391,7 +28416,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetTenantUser200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetTenantUserResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTenantUserWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getTenantUser'][0])
     {
@@ -26422,11 +28447,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetTenantUser200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetTenantUserResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetTenantUser200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetTenantUserResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -26444,7 +28469,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTenantUser200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTenantUserResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -26463,7 +28515,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetTenantUser200Response';
+            $returnType = '\FastComments\Client\Model\GetTenantUserResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -26496,7 +28548,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetTenantUser200Response',
+                        '\FastComments\Client\Model\GetTenantUserResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -26542,7 +28602,7 @@ class DefaultApi
      */
     public function getTenantUserAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getTenantUser'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetTenantUser200Response';
+        $returnType = '\FastComments\Client\Model\GetTenantUserResponse';
         $request = $this->getTenantUserRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -26706,7 +28766,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetTenantUsers200Response
+     * @return \FastComments\Client\Model\GetTenantUsersResponse|\FastComments\Client\Model\APIError
      */
     public function getTenantUsers($tenant_id, $skip = null, string $contentType = self::contentTypes['getTenantUsers'][0])
     {
@@ -26725,7 +28785,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetTenantUsers200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetTenantUsersResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTenantUsersWithHttpInfo($tenant_id, $skip = null, string $contentType = self::contentTypes['getTenantUsers'][0])
     {
@@ -26756,11 +28816,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetTenantUsers200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetTenantUsersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetTenantUsers200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetTenantUsersResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -26778,7 +28838,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTenantUsers200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTenantUsersResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -26797,7 +28884,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetTenantUsers200Response';
+            $returnType = '\FastComments\Client\Model\GetTenantUsersResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -26830,7 +28917,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetTenantUsers200Response',
+                        '\FastComments\Client\Model\GetTenantUsersResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -26876,7 +28971,7 @@ class DefaultApi
      */
     public function getTenantUsersAsyncWithHttpInfo($tenant_id, $skip = null, string $contentType = self::contentTypes['getTenantUsers'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetTenantUsers200Response';
+        $returnType = '\FastComments\Client\Model\GetTenantUsersResponse';
         $request = $this->getTenantUsersRequest($tenant_id, $skip, $contentType);
 
         return $this->client
@@ -27036,7 +29131,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetTenants200Response
+     * @return \FastComments\Client\Model\GetTenantsResponse|\FastComments\Client\Model\APIError
      */
     public function getTenants($tenant_id, $meta = null, $skip = null, string $contentType = self::contentTypes['getTenants'][0])
     {
@@ -27056,7 +29151,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetTenants200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetTenantsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTenantsWithHttpInfo($tenant_id, $meta = null, $skip = null, string $contentType = self::contentTypes['getTenants'][0])
     {
@@ -27087,11 +29182,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetTenants200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetTenantsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetTenants200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetTenantsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -27109,7 +29204,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTenants200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTenantsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -27128,7 +29250,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetTenants200Response';
+            $returnType = '\FastComments\Client\Model\GetTenantsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -27161,7 +29283,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetTenants200Response',
+                        '\FastComments\Client\Model\GetTenantsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -27209,7 +29339,7 @@ class DefaultApi
      */
     public function getTenantsAsyncWithHttpInfo($tenant_id, $meta = null, $skip = null, string $contentType = self::contentTypes['getTenants'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetTenants200Response';
+        $returnType = '\FastComments\Client\Model\GetTenantsResponse';
         $request = $this->getTenantsRequest($tenant_id, $meta, $skip, $contentType);
 
         return $this->client
@@ -27380,7 +29510,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetTicket200Response
+     * @return \FastComments\Client\Model\GetTicketResponse|\FastComments\Client\Model\APIError
      */
     public function getTicket($tenant_id, $id, $user_id = null, string $contentType = self::contentTypes['getTicket'][0])
     {
@@ -27400,7 +29530,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetTicket200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetTicketResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTicketWithHttpInfo($tenant_id, $id, $user_id = null, string $contentType = self::contentTypes['getTicket'][0])
     {
@@ -27431,11 +29561,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetTicket200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetTicketResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetTicket200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetTicketResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -27453,7 +29583,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTicket200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTicketResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -27472,7 +29629,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetTicket200Response';
+            $returnType = '\FastComments\Client\Model\GetTicketResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -27505,7 +29662,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetTicket200Response',
+                        '\FastComments\Client\Model\GetTicketResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -27553,7 +29718,7 @@ class DefaultApi
      */
     public function getTicketAsyncWithHttpInfo($tenant_id, $id, $user_id = null, string $contentType = self::contentTypes['getTicket'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetTicket200Response';
+        $returnType = '\FastComments\Client\Model\GetTicketResponse';
         $request = $this->getTicketRequest($tenant_id, $id, $user_id, $contentType);
 
         return $this->client
@@ -27731,7 +29896,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetTickets200Response
+     * @return \FastComments\Client\Model\GetTicketsResponse|\FastComments\Client\Model\APIError
      */
     public function getTickets($tenant_id, $user_id = null, $state = null, $skip = null, $limit = null, string $contentType = self::contentTypes['getTickets'][0])
     {
@@ -27753,7 +29918,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetTickets200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetTicketsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTicketsWithHttpInfo($tenant_id, $user_id = null, $state = null, $skip = null, $limit = null, string $contentType = self::contentTypes['getTickets'][0])
     {
@@ -27784,11 +29949,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetTickets200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetTicketsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetTickets200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetTicketsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -27806,7 +29971,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTickets200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTicketsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -27825,7 +30017,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetTickets200Response';
+            $returnType = '\FastComments\Client\Model\GetTicketsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -27858,7 +30050,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetTickets200Response',
+                        '\FastComments\Client\Model\GetTicketsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -27910,7 +30110,7 @@ class DefaultApi
      */
     public function getTicketsAsyncWithHttpInfo($tenant_id, $user_id = null, $state = null, $skip = null, $limit = null, string $contentType = self::contentTypes['getTickets'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetTickets200Response';
+        $returnType = '\FastComments\Client\Model\GetTicketsResponse';
         $request = $this->getTicketsRequest($tenant_id, $user_id, $state, $skip, $limit, $contentType);
 
         return $this->client
@@ -28102,7 +30302,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetUser200Response
+     * @return \FastComments\Client\Model\GetUserResponse|\FastComments\Client\Model\APIError
      */
     public function getUser($tenant_id, $id, string $contentType = self::contentTypes['getUser'][0])
     {
@@ -28121,7 +30321,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetUser200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetUserResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getUser'][0])
     {
@@ -28152,11 +30352,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetUser200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetUserResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetUser200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetUserResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -28174,7 +30374,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetUser200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetUserResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -28193,7 +30420,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetUser200Response';
+            $returnType = '\FastComments\Client\Model\GetUserResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -28226,7 +30453,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetUser200Response',
+                        '\FastComments\Client\Model\GetUserResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -28272,7 +30507,7 @@ class DefaultApi
      */
     public function getUserAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getUser'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetUser200Response';
+        $returnType = '\FastComments\Client\Model\GetUserResponse';
         $request = $this->getUserRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -28436,7 +30671,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetUserBadge200Response
+     * @return \FastComments\Client\Model\APIGetUserBadgeResponse|\FastComments\Client\Model\APIError
      */
     public function getUserBadge($tenant_id, $id, string $contentType = self::contentTypes['getUserBadge'][0])
     {
@@ -28455,7 +30690,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetUserBadge200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIGetUserBadgeResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserBadgeWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getUserBadge'][0])
     {
@@ -28486,11 +30721,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetUserBadge200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIGetUserBadgeResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetUserBadge200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIGetUserBadgeResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -28508,7 +30743,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetUserBadge200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIGetUserBadgeResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -28527,7 +30789,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetUserBadge200Response';
+            $returnType = '\FastComments\Client\Model\APIGetUserBadgeResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -28560,7 +30822,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetUserBadge200Response',
+                        '\FastComments\Client\Model\APIGetUserBadgeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -28606,7 +30876,7 @@ class DefaultApi
      */
     public function getUserBadgeAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getUserBadge'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetUserBadge200Response';
+        $returnType = '\FastComments\Client\Model\APIGetUserBadgeResponse';
         $request = $this->getUserBadgeRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -28770,7 +31040,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetUserBadgeProgressById200Response
+     * @return \FastComments\Client\Model\APIGetUserBadgeProgressResponse|\FastComments\Client\Model\APIError
      */
     public function getUserBadgeProgressById($tenant_id, $id, string $contentType = self::contentTypes['getUserBadgeProgressById'][0])
     {
@@ -28789,7 +31059,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetUserBadgeProgressById200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIGetUserBadgeProgressResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserBadgeProgressByIdWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getUserBadgeProgressById'][0])
     {
@@ -28820,11 +31090,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetUserBadgeProgressById200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIGetUserBadgeProgressResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetUserBadgeProgressById200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIGetUserBadgeProgressResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -28842,7 +31112,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetUserBadgeProgressById200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIGetUserBadgeProgressResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -28861,7 +31158,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetUserBadgeProgressById200Response';
+            $returnType = '\FastComments\Client\Model\APIGetUserBadgeProgressResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -28894,7 +31191,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetUserBadgeProgressById200Response',
+                        '\FastComments\Client\Model\APIGetUserBadgeProgressResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -28940,7 +31245,7 @@ class DefaultApi
      */
     public function getUserBadgeProgressByIdAsyncWithHttpInfo($tenant_id, $id, string $contentType = self::contentTypes['getUserBadgeProgressById'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetUserBadgeProgressById200Response';
+        $returnType = '\FastComments\Client\Model\APIGetUserBadgeProgressResponse';
         $request = $this->getUserBadgeProgressByIdRequest($tenant_id, $id, $contentType);
 
         return $this->client
@@ -29104,7 +31409,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetUserBadgeProgressById200Response
+     * @return \FastComments\Client\Model\APIGetUserBadgeProgressResponse|\FastComments\Client\Model\APIError
      */
     public function getUserBadgeProgressByUserId($tenant_id, $user_id, string $contentType = self::contentTypes['getUserBadgeProgressByUserId'][0])
     {
@@ -29123,7 +31428,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetUserBadgeProgressById200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIGetUserBadgeProgressResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserBadgeProgressByUserIdWithHttpInfo($tenant_id, $user_id, string $contentType = self::contentTypes['getUserBadgeProgressByUserId'][0])
     {
@@ -29154,11 +31459,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetUserBadgeProgressById200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIGetUserBadgeProgressResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetUserBadgeProgressById200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIGetUserBadgeProgressResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -29176,7 +31481,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetUserBadgeProgressById200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIGetUserBadgeProgressResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -29195,7 +31527,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetUserBadgeProgressById200Response';
+            $returnType = '\FastComments\Client\Model\APIGetUserBadgeProgressResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -29228,7 +31560,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetUserBadgeProgressById200Response',
+                        '\FastComments\Client\Model\APIGetUserBadgeProgressResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -29274,7 +31614,7 @@ class DefaultApi
      */
     public function getUserBadgeProgressByUserIdAsyncWithHttpInfo($tenant_id, $user_id, string $contentType = self::contentTypes['getUserBadgeProgressByUserId'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetUserBadgeProgressById200Response';
+        $returnType = '\FastComments\Client\Model\APIGetUserBadgeProgressResponse';
         $request = $this->getUserBadgeProgressByUserIdRequest($tenant_id, $user_id, $contentType);
 
         return $this->client
@@ -29440,7 +31780,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetUserBadgeProgressList200Response
+     * @return \FastComments\Client\Model\APIGetUserBadgeProgressListResponse|\FastComments\Client\Model\APIError
      */
     public function getUserBadgeProgressList($tenant_id, $user_id = null, $limit = null, $skip = null, string $contentType = self::contentTypes['getUserBadgeProgressList'][0])
     {
@@ -29461,7 +31801,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetUserBadgeProgressList200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIGetUserBadgeProgressListResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserBadgeProgressListWithHttpInfo($tenant_id, $user_id = null, $limit = null, $skip = null, string $contentType = self::contentTypes['getUserBadgeProgressList'][0])
     {
@@ -29492,11 +31832,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetUserBadgeProgressList200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIGetUserBadgeProgressListResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetUserBadgeProgressList200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIGetUserBadgeProgressListResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -29514,7 +31854,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetUserBadgeProgressList200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIGetUserBadgeProgressListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -29533,7 +31900,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetUserBadgeProgressList200Response';
+            $returnType = '\FastComments\Client\Model\APIGetUserBadgeProgressListResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -29566,7 +31933,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetUserBadgeProgressList200Response',
+                        '\FastComments\Client\Model\APIGetUserBadgeProgressListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -29616,7 +31991,7 @@ class DefaultApi
      */
     public function getUserBadgeProgressListAsyncWithHttpInfo($tenant_id, $user_id = null, $limit = null, $skip = null, string $contentType = self::contentTypes['getUserBadgeProgressList'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetUserBadgeProgressList200Response';
+        $returnType = '\FastComments\Client\Model\APIGetUserBadgeProgressListResponse';
         $request = $this->getUserBadgeProgressListRequest($tenant_id, $user_id, $limit, $skip, $contentType);
 
         return $this->client
@@ -29802,7 +32177,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetUserBadges200Response
+     * @return \FastComments\Client\Model\APIGetUserBadgesResponse|\FastComments\Client\Model\APIError
      */
     public function getUserBadges($tenant_id, $user_id = null, $badge_id = null, $type = null, $displayed_on_comments = null, $limit = null, $skip = null, string $contentType = self::contentTypes['getUserBadges'][0])
     {
@@ -29826,7 +32201,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetUserBadges200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIGetUserBadgesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserBadgesWithHttpInfo($tenant_id, $user_id = null, $badge_id = null, $type = null, $displayed_on_comments = null, $limit = null, $skip = null, string $contentType = self::contentTypes['getUserBadges'][0])
     {
@@ -29857,11 +32232,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetUserBadges200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIGetUserBadgesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetUserBadges200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIGetUserBadgesResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -29879,7 +32254,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetUserBadges200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIGetUserBadgesResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -29898,7 +32300,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetUserBadges200Response';
+            $returnType = '\FastComments\Client\Model\APIGetUserBadgesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -29931,7 +32333,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetUserBadges200Response',
+                        '\FastComments\Client\Model\APIGetUserBadgesResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -29987,7 +32397,7 @@ class DefaultApi
      */
     public function getUserBadgesAsyncWithHttpInfo($tenant_id, $user_id = null, $badge_id = null, $type = null, $displayed_on_comments = null, $limit = null, $skip = null, string $contentType = self::contentTypes['getUserBadges'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetUserBadges200Response';
+        $returnType = '\FastComments\Client\Model\APIGetUserBadgesResponse';
         $request = $this->getUserBadgesRequest($tenant_id, $user_id, $badge_id, $type, $displayed_on_comments, $limit, $skip, $contentType);
 
         return $this->client
@@ -30201,7 +32611,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetVotes200Response
+     * @return \FastComments\Client\Model\GetVotesResponse|\FastComments\Client\Model\APIError
      */
     public function getVotes($tenant_id, $url_id, string $contentType = self::contentTypes['getVotes'][0])
     {
@@ -30220,7 +32630,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetVotes200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetVotesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getVotesWithHttpInfo($tenant_id, $url_id, string $contentType = self::contentTypes['getVotes'][0])
     {
@@ -30251,11 +32661,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetVotes200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetVotesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetVotes200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetVotesResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -30273,7 +32683,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetVotes200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetVotesResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -30292,7 +32729,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetVotes200Response';
+            $returnType = '\FastComments\Client\Model\GetVotesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -30325,7 +32762,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetVotes200Response',
+                        '\FastComments\Client\Model\GetVotesResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -30371,7 +32816,7 @@ class DefaultApi
      */
     public function getVotesAsyncWithHttpInfo($tenant_id, $url_id, string $contentType = self::contentTypes['getVotes'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetVotes200Response';
+        $returnType = '\FastComments\Client\Model\GetVotesResponse';
         $request = $this->getVotesRequest($tenant_id, $url_id, $contentType);
 
         return $this->client
@@ -30538,7 +32983,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetVotesForUser200Response
+     * @return \FastComments\Client\Model\GetVotesForUserResponse|\FastComments\Client\Model\APIError
      */
     public function getVotesForUser($tenant_id, $url_id, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['getVotesForUser'][0])
     {
@@ -30559,7 +33004,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetVotesForUser200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetVotesForUserResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getVotesForUserWithHttpInfo($tenant_id, $url_id, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['getVotesForUser'][0])
     {
@@ -30590,11 +33035,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetVotesForUser200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetVotesForUserResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetVotesForUser200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\GetVotesForUserResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -30612,7 +33057,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetVotesForUser200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetVotesForUserResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -30631,7 +33103,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetVotesForUser200Response';
+            $returnType = '\FastComments\Client\Model\GetVotesForUserResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -30664,7 +33136,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetVotesForUser200Response',
+                        '\FastComments\Client\Model\GetVotesForUserResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -30714,7 +33194,7 @@ class DefaultApi
      */
     public function getVotesForUserAsyncWithHttpInfo($tenant_id, $url_id, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['getVotesForUser'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetVotesForUser200Response';
+        $returnType = '\FastComments\Client\Model\GetVotesForUserResponse';
         $request = $this->getVotesForUserRequest($tenant_id, $url_id, $user_id, $anon_user_id, $contentType);
 
         return $this->client
@@ -30902,7 +33382,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetDomainConfig200Response
+     * @return \FastComments\Client\Model\PatchDomainConfigResponse
      */
     public function patchDomainConfig($tenant_id, $domain_to_update, $patch_domain_config_params, string $contentType = self::contentTypes['patchDomainConfig'][0])
     {
@@ -30922,7 +33402,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetDomainConfig200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PatchDomainConfigResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function patchDomainConfigWithHttpInfo($tenant_id, $domain_to_update, $patch_domain_config_params, string $contentType = self::contentTypes['patchDomainConfig'][0])
     {
@@ -30953,11 +33433,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetDomainConfig200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PatchDomainConfigResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetDomainConfig200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\PatchDomainConfigResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -30975,7 +33455,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetDomainConfig200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PatchDomainConfigResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -30994,7 +33474,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetDomainConfig200Response';
+            $returnType = '\FastComments\Client\Model\PatchDomainConfigResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -31027,7 +33507,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetDomainConfig200Response',
+                        '\FastComments\Client\Model\PatchDomainConfigResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -31075,7 +33555,7 @@ class DefaultApi
      */
     public function patchDomainConfigAsyncWithHttpInfo($tenant_id, $domain_to_update, $patch_domain_config_params, string $contentType = self::contentTypes['patchDomainConfig'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetDomainConfig200Response';
+        $returnType = '\FastComments\Client\Model\PatchDomainConfigResponse';
         $request = $this->patchDomainConfigRequest($tenant_id, $domain_to_update, $patch_domain_config_params, $contentType);
 
         return $this->client
@@ -31255,7 +33735,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\PatchHashTag200Response
+     * @return \FastComments\Client\Model\UpdateHashTagResponse|\FastComments\Client\Model\APIError
      */
     public function patchHashTag($tag, $tenant_id = null, $update_hash_tag_body = null, string $contentType = self::contentTypes['patchHashTag'][0])
     {
@@ -31275,7 +33755,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\PatchHashTag200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\UpdateHashTagResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function patchHashTagWithHttpInfo($tag, $tenant_id = null, $update_hash_tag_body = null, string $contentType = self::contentTypes['patchHashTag'][0])
     {
@@ -31306,11 +33786,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\PatchHashTag200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\UpdateHashTagResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\PatchHashTag200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\UpdateHashTagResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -31328,7 +33808,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PatchHashTag200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\UpdateHashTagResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -31347,7 +33854,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\PatchHashTag200Response';
+            $returnType = '\FastComments\Client\Model\UpdateHashTagResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -31380,7 +33887,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\PatchHashTag200Response',
+                        '\FastComments\Client\Model\UpdateHashTagResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -31428,7 +33943,7 @@ class DefaultApi
      */
     public function patchHashTagAsyncWithHttpInfo($tag, $tenant_id = null, $update_hash_tag_body = null, string $contentType = self::contentTypes['patchHashTag'][0])
     {
-        $returnType = '\FastComments\Client\Model\PatchHashTag200Response';
+        $returnType = '\FastComments\Client\Model\UpdateHashTagResponse';
         $request = $this->patchHashTagRequest($tag, $tenant_id, $update_hash_tag_body, $contentType);
 
         return $this->client
@@ -32317,7 +34832,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetDomainConfig200Response
+     * @return \FastComments\Client\Model\PutDomainConfigResponse
      */
     public function putDomainConfig($tenant_id, $domain_to_update, $update_domain_config_params, string $contentType = self::contentTypes['putDomainConfig'][0])
     {
@@ -32337,7 +34852,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetDomainConfig200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PutDomainConfigResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function putDomainConfigWithHttpInfo($tenant_id, $domain_to_update, $update_domain_config_params, string $contentType = self::contentTypes['putDomainConfig'][0])
     {
@@ -32368,11 +34883,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetDomainConfig200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PutDomainConfigResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetDomainConfig200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\PutDomainConfigResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -32390,7 +34905,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetDomainConfig200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PutDomainConfigResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -32409,7 +34924,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetDomainConfig200Response';
+            $returnType = '\FastComments\Client\Model\PutDomainConfigResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -32442,7 +34957,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetDomainConfig200Response',
+                        '\FastComments\Client\Model\PutDomainConfigResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -32490,7 +35005,7 @@ class DefaultApi
      */
     public function putDomainConfigAsyncWithHttpInfo($tenant_id, $domain_to_update, $update_domain_config_params, string $contentType = self::contentTypes['putDomainConfig'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetDomainConfig200Response';
+        $returnType = '\FastComments\Client\Model\PutDomainConfigResponse';
         $request = $this->putDomainConfigRequest($tenant_id, $domain_to_update, $update_domain_config_params, $contentType);
 
         return $this->client
@@ -33038,7 +35553,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\RenderEmailTemplate200Response
+     * @return \FastComments\Client\Model\RenderEmailTemplateResponse|\FastComments\Client\Model\APIError
      */
     public function renderEmailTemplate($tenant_id, $render_email_template_body, $locale = null, string $contentType = self::contentTypes['renderEmailTemplate'][0])
     {
@@ -33058,7 +35573,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\RenderEmailTemplate200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\RenderEmailTemplateResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function renderEmailTemplateWithHttpInfo($tenant_id, $render_email_template_body, $locale = null, string $contentType = self::contentTypes['renderEmailTemplate'][0])
     {
@@ -33089,11 +35604,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\RenderEmailTemplate200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\RenderEmailTemplateResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\RenderEmailTemplate200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\RenderEmailTemplateResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -33111,7 +35626,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\RenderEmailTemplate200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\RenderEmailTemplateResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -33130,7 +35672,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\RenderEmailTemplate200Response';
+            $returnType = '\FastComments\Client\Model\RenderEmailTemplateResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -33163,7 +35705,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\RenderEmailTemplate200Response',
+                        '\FastComments\Client\Model\RenderEmailTemplateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -33211,7 +35761,7 @@ class DefaultApi
      */
     public function renderEmailTemplateAsyncWithHttpInfo($tenant_id, $render_email_template_body, $locale = null, string $contentType = self::contentTypes['renderEmailTemplate'][0])
     {
-        $returnType = '\FastComments\Client\Model\RenderEmailTemplate200Response';
+        $returnType = '\FastComments\Client\Model\RenderEmailTemplateResponse';
         $request = $this->renderEmailTemplateRequest($tenant_id, $render_email_template_body, $locale, $contentType);
 
         return $this->client
@@ -33386,7 +35936,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function replaceTenantPackage($tenant_id, $id, $replace_tenant_package_body, string $contentType = self::contentTypes['replaceTenantPackage'][0])
     {
@@ -33406,7 +35956,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function replaceTenantPackageWithHttpInfo($tenant_id, $id, $replace_tenant_package_body, string $contentType = self::contentTypes['replaceTenantPackage'][0])
     {
@@ -33437,11 +35987,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -33459,7 +36009,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -33478,7 +36055,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -33511,7 +36088,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -33559,7 +36144,7 @@ class DefaultApi
      */
     public function replaceTenantPackageAsyncWithHttpInfo($tenant_id, $id, $replace_tenant_package_body, string $contentType = self::contentTypes['replaceTenantPackage'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->replaceTenantPackageRequest($tenant_id, $id, $replace_tenant_package_body, $contentType);
 
         return $this->client
@@ -33740,7 +36325,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function replaceTenantUser($tenant_id, $id, $replace_tenant_user_body, $update_comments = null, string $contentType = self::contentTypes['replaceTenantUser'][0])
     {
@@ -33761,7 +36346,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function replaceTenantUserWithHttpInfo($tenant_id, $id, $replace_tenant_user_body, $update_comments = null, string $contentType = self::contentTypes['replaceTenantUser'][0])
     {
@@ -33792,11 +36377,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -33814,7 +36399,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -33833,7 +36445,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -33866,7 +36478,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -33916,7 +36536,7 @@ class DefaultApi
      */
     public function replaceTenantUserAsyncWithHttpInfo($tenant_id, $id, $replace_tenant_user_body, $update_comments = null, string $contentType = self::contentTypes['replaceTenantUser'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->replaceTenantUserRequest($tenant_id, $id, $replace_tenant_user_body, $update_comments, $contentType);
 
         return $this->client
@@ -34110,7 +36730,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\SaveComment200Response
+     * @return \FastComments\Client\Model\APISaveCommentResponse|\FastComments\Client\Model\APIError
      */
     public function saveComment($tenant_id, $create_comment_params, $is_live = null, $do_spam_check = null, $send_emails = null, $populate_notifications = null, string $contentType = self::contentTypes['saveComment'][0])
     {
@@ -34133,7 +36753,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\SaveComment200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APISaveCommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function saveCommentWithHttpInfo($tenant_id, $create_comment_params, $is_live = null, $do_spam_check = null, $send_emails = null, $populate_notifications = null, string $contentType = self::contentTypes['saveComment'][0])
     {
@@ -34164,11 +36784,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\SaveComment200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APISaveCommentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\SaveComment200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APISaveCommentResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -34186,7 +36806,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\SaveComment200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APISaveCommentResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -34205,7 +36852,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\SaveComment200Response';
+            $returnType = '\FastComments\Client\Model\APISaveCommentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -34238,7 +36885,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\SaveComment200Response',
+                        '\FastComments\Client\Model\APISaveCommentResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -34292,7 +36947,7 @@ class DefaultApi
      */
     public function saveCommentAsyncWithHttpInfo($tenant_id, $create_comment_params, $is_live = null, $do_spam_check = null, $send_emails = null, $populate_notifications = null, string $contentType = self::contentTypes['saveComment'][0])
     {
-        $returnType = '\FastComments\Client\Model\SaveComment200Response';
+        $returnType = '\FastComments\Client\Model\APISaveCommentResponse';
         $request = $this->saveCommentRequest($tenant_id, $create_comment_params, $is_live, $do_spam_check, $send_emails, $populate_notifications, $contentType);
 
         return $this->client
@@ -34503,7 +37158,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\SaveComment200Response[]
+     * @return \FastComments\Client\Model\SaveCommentsBulkResponse[]
      */
     public function saveCommentsBulk($tenant_id, $create_comment_params, $is_live = null, $do_spam_check = null, $send_emails = null, $populate_notifications = null, string $contentType = self::contentTypes['saveCommentsBulk'][0])
     {
@@ -34526,7 +37181,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\SaveComment200Response[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\SaveCommentsBulkResponse[], HTTP status code, HTTP response headers (array of strings)
      */
     public function saveCommentsBulkWithHttpInfo($tenant_id, $create_comment_params, $is_live = null, $do_spam_check = null, $send_emails = null, $populate_notifications = null, string $contentType = self::contentTypes['saveCommentsBulk'][0])
     {
@@ -34557,11 +37212,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\SaveComment200Response[]' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\SaveCommentsBulkResponse[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\SaveComment200Response[]' !== 'string') {
+                        if ('\FastComments\Client\Model\SaveCommentsBulkResponse[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -34579,7 +37234,7 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\SaveComment200Response[]', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\SaveCommentsBulkResponse[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -34598,7 +37253,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\SaveComment200Response[]';
+            $returnType = '\FastComments\Client\Model\SaveCommentsBulkResponse[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -34631,7 +37286,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\SaveComment200Response[]',
+                        '\FastComments\Client\Model\SaveCommentsBulkResponse[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -34685,7 +37340,7 @@ class DefaultApi
      */
     public function saveCommentsBulkAsyncWithHttpInfo($tenant_id, $create_comment_params, $is_live = null, $do_spam_check = null, $send_emails = null, $populate_notifications = null, string $contentType = self::contentTypes['saveCommentsBulk'][0])
     {
-        $returnType = '\FastComments\Client\Model\SaveComment200Response[]';
+        $returnType = '\FastComments\Client\Model\SaveCommentsBulkResponse[]';
         $request = $this->saveCommentsBulkRequest($tenant_id, $create_comment_params, $is_live, $do_spam_check, $send_emails, $populate_notifications, $contentType);
 
         return $this->client
@@ -34893,7 +37548,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function sendInvite($tenant_id, $id, $from_name, string $contentType = self::contentTypes['sendInvite'][0])
     {
@@ -34913,7 +37568,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendInviteWithHttpInfo($tenant_id, $id, $from_name, string $contentType = self::contentTypes['sendInvite'][0])
     {
@@ -34944,11 +37599,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -34966,7 +37621,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -34985,7 +37667,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -35018,7 +37700,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -35066,7 +37756,7 @@ class DefaultApi
      */
     public function sendInviteAsyncWithHttpInfo($tenant_id, $id, $from_name, string $contentType = self::contentTypes['sendInvite'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->sendInviteRequest($tenant_id, $id, $from_name, $contentType);
 
         return $this->client
@@ -35248,7 +37938,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function sendLoginLink($tenant_id, $id, $redirect_url = null, string $contentType = self::contentTypes['sendLoginLink'][0])
     {
@@ -35268,7 +37958,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendLoginLinkWithHttpInfo($tenant_id, $id, $redirect_url = null, string $contentType = self::contentTypes['sendLoginLink'][0])
     {
@@ -35299,11 +37989,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -35321,7 +38011,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -35340,7 +38057,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -35373,7 +38090,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -35421,7 +38146,7 @@ class DefaultApi
      */
     public function sendLoginLinkAsyncWithHttpInfo($tenant_id, $id, $redirect_url = null, string $contentType = self::contentTypes['sendLoginLink'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->sendLoginLinkRequest($tenant_id, $id, $redirect_url, $contentType);
 
         return $this->client
@@ -35599,7 +38324,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\UnBlockCommentPublic200Response
+     * @return \FastComments\Client\Model\UnblockSuccess|\FastComments\Client\Model\APIError
      */
     public function unBlockUserFromComment($tenant_id, $id, $un_block_from_comment_params, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['unBlockUserFromComment'][0])
     {
@@ -35621,7 +38346,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\UnBlockCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\UnblockSuccess|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function unBlockUserFromCommentWithHttpInfo($tenant_id, $id, $un_block_from_comment_params, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['unBlockUserFromComment'][0])
     {
@@ -35652,11 +38377,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\UnBlockCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\UnblockSuccess' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\UnBlockCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\UnblockSuccess' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -35674,7 +38399,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\UnBlockCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\UnblockSuccess', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -35693,7 +38445,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\UnBlockCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\UnblockSuccess';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -35726,7 +38478,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\UnBlockCommentPublic200Response',
+                        '\FastComments\Client\Model\UnblockSuccess',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -35778,7 +38538,7 @@ class DefaultApi
      */
     public function unBlockUserFromCommentAsyncWithHttpInfo($tenant_id, $id, $un_block_from_comment_params, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['unBlockUserFromComment'][0])
     {
-        $returnType = '\FastComments\Client\Model\UnBlockCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\UnblockSuccess';
         $request = $this->unBlockUserFromCommentRequest($tenant_id, $id, $un_block_from_comment_params, $user_id, $anon_user_id, $contentType);
 
         return $this->client
@@ -35981,7 +38741,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagComment200Response
+     * @return \FastComments\Client\Model\FlagCommentResponse|\FastComments\Client\Model\APIError
      */
     public function unFlagComment($tenant_id, $id, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['unFlagComment'][0])
     {
@@ -36002,7 +38762,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagComment200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\FlagCommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function unFlagCommentWithHttpInfo($tenant_id, $id, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['unFlagComment'][0])
     {
@@ -36033,11 +38793,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagComment200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\FlagCommentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagComment200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\FlagCommentResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -36055,7 +38815,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagComment200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -36074,7 +38861,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagComment200Response';
+            $returnType = '\FastComments\Client\Model\FlagCommentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -36107,7 +38894,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagComment200Response',
+                        '\FastComments\Client\Model\FlagCommentResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -36157,7 +38952,7 @@ class DefaultApi
      */
     public function unFlagCommentAsyncWithHttpInfo($tenant_id, $id, $user_id = null, $anon_user_id = null, string $contentType = self::contentTypes['unFlagComment'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagComment200Response';
+        $returnType = '\FastComments\Client\Model\FlagCommentResponse';
         $request = $this->unFlagCommentRequest($tenant_id, $id, $user_id, $anon_user_id, $contentType);
 
         return $this->client
@@ -36347,7 +39142,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function updateComment($tenant_id, $id, $updatable_comment_params, $context_user_id = null, $do_spam_check = null, $is_live = null, string $contentType = self::contentTypes['updateComment'][0])
     {
@@ -36370,7 +39165,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateCommentWithHttpInfo($tenant_id, $id, $updatable_comment_params, $context_user_id = null, $do_spam_check = null, $is_live = null, string $contentType = self::contentTypes['updateComment'][0])
     {
@@ -36401,11 +39196,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -36423,7 +39218,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -36442,7 +39264,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -36475,7 +39297,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -36529,7 +39359,7 @@ class DefaultApi
      */
     public function updateCommentAsyncWithHttpInfo($tenant_id, $id, $updatable_comment_params, $context_user_id = null, $do_spam_check = null, $is_live = null, string $contentType = self::contentTypes['updateComment'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->updateCommentRequest($tenant_id, $id, $updatable_comment_params, $context_user_id, $do_spam_check, $is_live, $contentType);
 
         return $this->client
@@ -36742,7 +39572,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function updateEmailTemplate($tenant_id, $id, $update_email_template_body, string $contentType = self::contentTypes['updateEmailTemplate'][0])
     {
@@ -36762,7 +39592,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateEmailTemplateWithHttpInfo($tenant_id, $id, $update_email_template_body, string $contentType = self::contentTypes['updateEmailTemplate'][0])
     {
@@ -36793,11 +39623,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -36815,7 +39645,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -36834,7 +39691,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -36867,7 +39724,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -36915,7 +39780,7 @@ class DefaultApi
      */
     public function updateEmailTemplateAsyncWithHttpInfo($tenant_id, $id, $update_email_template_body, string $contentType = self::contentTypes['updateEmailTemplate'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->updateEmailTemplateRequest($tenant_id, $id, $update_email_template_body, $contentType);
 
         return $this->client
@@ -37095,7 +39960,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function updateFeedPost($tenant_id, $id, $feed_post, string $contentType = self::contentTypes['updateFeedPost'][0])
     {
@@ -37115,7 +39980,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateFeedPostWithHttpInfo($tenant_id, $id, $feed_post, string $contentType = self::contentTypes['updateFeedPost'][0])
     {
@@ -37146,11 +40011,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -37168,7 +40033,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -37187,7 +40079,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -37220,7 +40112,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -37268,7 +40168,7 @@ class DefaultApi
      */
     public function updateFeedPostAsyncWithHttpInfo($tenant_id, $id, $feed_post, string $contentType = self::contentTypes['updateFeedPost'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->updateFeedPostRequest($tenant_id, $id, $feed_post, $contentType);
 
         return $this->client
@@ -37448,7 +40348,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function updateModerator($tenant_id, $id, $update_moderator_body, string $contentType = self::contentTypes['updateModerator'][0])
     {
@@ -37468,7 +40368,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateModeratorWithHttpInfo($tenant_id, $id, $update_moderator_body, string $contentType = self::contentTypes['updateModerator'][0])
     {
@@ -37499,11 +40399,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -37521,7 +40421,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -37540,7 +40467,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -37573,7 +40500,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -37621,7 +40556,7 @@ class DefaultApi
      */
     public function updateModeratorAsyncWithHttpInfo($tenant_id, $id, $update_moderator_body, string $contentType = self::contentTypes['updateModerator'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->updateModeratorRequest($tenant_id, $id, $update_moderator_body, $contentType);
 
         return $this->client
@@ -37802,7 +40737,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function updateNotification($tenant_id, $id, $update_notification_body, $user_id = null, string $contentType = self::contentTypes['updateNotification'][0])
     {
@@ -37823,7 +40758,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateNotificationWithHttpInfo($tenant_id, $id, $update_notification_body, $user_id = null, string $contentType = self::contentTypes['updateNotification'][0])
     {
@@ -37854,11 +40789,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -37876,7 +40811,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -37895,7 +40857,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -37928,7 +40890,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -37978,7 +40948,7 @@ class DefaultApi
      */
     public function updateNotificationAsyncWithHttpInfo($tenant_id, $id, $update_notification_body, $user_id = null, string $contentType = self::contentTypes['updateNotification'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->updateNotificationRequest($tenant_id, $id, $update_notification_body, $user_id, $contentType);
 
         return $this->client
@@ -38169,7 +41139,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function updateQuestionConfig($tenant_id, $id, $update_question_config_body, string $contentType = self::contentTypes['updateQuestionConfig'][0])
     {
@@ -38189,7 +41159,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateQuestionConfigWithHttpInfo($tenant_id, $id, $update_question_config_body, string $contentType = self::contentTypes['updateQuestionConfig'][0])
     {
@@ -38220,11 +41190,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -38242,7 +41212,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -38261,7 +41258,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -38294,7 +41291,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -38342,7 +41347,7 @@ class DefaultApi
      */
     public function updateQuestionConfigAsyncWithHttpInfo($tenant_id, $id, $update_question_config_body, string $contentType = self::contentTypes['updateQuestionConfig'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->updateQuestionConfigRequest($tenant_id, $id, $update_question_config_body, $contentType);
 
         return $this->client
@@ -38522,7 +41527,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function updateQuestionResult($tenant_id, $id, $update_question_result_body, string $contentType = self::contentTypes['updateQuestionResult'][0])
     {
@@ -38542,7 +41547,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateQuestionResultWithHttpInfo($tenant_id, $id, $update_question_result_body, string $contentType = self::contentTypes['updateQuestionResult'][0])
     {
@@ -38573,11 +41578,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -38595,7 +41600,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -38614,7 +41646,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -38647,7 +41679,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -38695,7 +41735,7 @@ class DefaultApi
      */
     public function updateQuestionResultAsyncWithHttpInfo($tenant_id, $id, $update_question_result_body, string $contentType = self::contentTypes['updateQuestionResult'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->updateQuestionResultRequest($tenant_id, $id, $update_question_result_body, $contentType);
 
         return $this->client
@@ -39243,7 +42283,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function updateTenant($tenant_id, $id, $update_tenant_body, string $contentType = self::contentTypes['updateTenant'][0])
     {
@@ -39263,7 +42303,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateTenantWithHttpInfo($tenant_id, $id, $update_tenant_body, string $contentType = self::contentTypes['updateTenant'][0])
     {
@@ -39294,11 +42334,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -39316,7 +42356,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -39335,7 +42402,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -39368,7 +42435,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -39416,7 +42491,7 @@ class DefaultApi
      */
     public function updateTenantAsyncWithHttpInfo($tenant_id, $id, $update_tenant_body, string $contentType = self::contentTypes['updateTenant'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->updateTenantRequest($tenant_id, $id, $update_tenant_body, $contentType);
 
         return $this->client
@@ -39596,7 +42671,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function updateTenantPackage($tenant_id, $id, $update_tenant_package_body, string $contentType = self::contentTypes['updateTenantPackage'][0])
     {
@@ -39616,7 +42691,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateTenantPackageWithHttpInfo($tenant_id, $id, $update_tenant_package_body, string $contentType = self::contentTypes['updateTenantPackage'][0])
     {
@@ -39647,11 +42722,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -39669,7 +42744,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -39688,7 +42790,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -39721,7 +42823,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -39769,7 +42879,7 @@ class DefaultApi
      */
     public function updateTenantPackageAsyncWithHttpInfo($tenant_id, $id, $update_tenant_package_body, string $contentType = self::contentTypes['updateTenantPackage'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->updateTenantPackageRequest($tenant_id, $id, $update_tenant_package_body, $contentType);
 
         return $this->client
@@ -39950,7 +43060,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\FlagCommentPublic200Response
+     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
     public function updateTenantUser($tenant_id, $id, $update_tenant_user_body, $update_comments = null, string $contentType = self::contentTypes['updateTenantUser'][0])
     {
@@ -39971,7 +43081,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\FlagCommentPublic200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateTenantUserWithHttpInfo($tenant_id, $id, $update_tenant_user_body, $update_comments = null, string $contentType = self::contentTypes['updateTenantUser'][0])
     {
@@ -40002,11 +43112,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\FlagCommentPublic200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\FlagCommentPublic200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -40024,7 +43134,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\FlagCommentPublic200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -40043,7 +43180,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -40076,7 +43213,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\FlagCommentPublic200Response',
+                        '\FastComments\Client\Model\APIEmptyResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -40126,7 +43271,7 @@ class DefaultApi
      */
     public function updateTenantUserAsyncWithHttpInfo($tenant_id, $id, $update_tenant_user_body, $update_comments = null, string $contentType = self::contentTypes['updateTenantUser'][0])
     {
-        $returnType = '\FastComments\Client\Model\FlagCommentPublic200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
         $request = $this->updateTenantUserRequest($tenant_id, $id, $update_tenant_user_body, $update_comments, $contentType);
 
         return $this->client
@@ -40317,7 +43462,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\UpdateUserBadge200Response
+     * @return \FastComments\Client\Model\APIEmptySuccessResponse|\FastComments\Client\Model\APIError
      */
     public function updateUserBadge($tenant_id, $id, $update_user_badge_params, string $contentType = self::contentTypes['updateUserBadge'][0])
     {
@@ -40337,7 +43482,7 @@ class DefaultApi
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\UpdateUserBadge200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\APIEmptySuccessResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateUserBadgeWithHttpInfo($tenant_id, $id, $update_user_badge_params, string $contentType = self::contentTypes['updateUserBadge'][0])
     {
@@ -40368,11 +43513,11 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\UpdateUserBadge200Response' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\APIEmptySuccessResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\UpdateUserBadge200Response' !== 'string') {
+                        if ('\FastComments\Client\Model\APIEmptySuccessResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -40390,7 +43535,34 @@ class DefaultApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\UpdateUserBadge200Response', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptySuccessResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                default:
+                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\FastComments\Client\Model\APIError' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -40409,7 +43581,7 @@ class DefaultApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\UpdateUserBadge200Response';
+            $returnType = '\FastComments\Client\Model\APIEmptySuccessResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -40442,7 +43614,15 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\UpdateUserBadge200Response',
+                        '\FastComments\Client\Model\APIEmptySuccessResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\FastComments\Client\Model\APIError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -40490,7 +43670,7 @@ class DefaultApi
      */
     public function updateUserBadgeAsyncWithHttpInfo($tenant_id, $id, $update_user_badge_params, string $contentType = self::contentTypes['updateUserBadge'][0])
     {
-        $returnType = '\FastComments\Client\Model\UpdateUserBadge200Response';
+        $returnType = '\FastComments\Client\Model\APIEmptySuccessResponse';
         $request = $this->updateUserBadgeRequest($tenant_id, $id, $update_user_badge_params, $contentType);
 
         return $this->client

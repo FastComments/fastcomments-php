@@ -77,6 +77,18 @@ class LiveEventType
 
     public const DELETED_FEED_POST = 'deleted-feed-post';
 
+    public const NEW_TICKET = 'new-ticket';
+
+    public const UPDATED_TICKET_STATE = 'updated-ticket-state';
+
+    public const UPDATED_TICKET_ASSIGNMENT = 'updated-ticket-assignment';
+
+    public const DELETED_TICKET = 'deleted-ticket';
+
+    public const PAGE_REACT = 'page-react';
+
+    public const QUESTION_RESULT = 'question-result';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -100,7 +112,13 @@ class LiveEventType
             self::DFR,
             self::NEW_FEED_POST,
             self::UPDATED_FEED_POST,
-            self::DELETED_FEED_POST
+            self::DELETED_FEED_POST,
+            self::NEW_TICKET,
+            self::UPDATED_TICKET_STATE,
+            self::UPDATED_TICKET_ASSIGNMENT,
+            self::DELETED_TICKET,
+            self::PAGE_REACT,
+            self::QUESTION_RESULT
         ];
     }
 }

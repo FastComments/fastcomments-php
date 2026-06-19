@@ -110,11 +110,14 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'no_custom_config' => 'bool',
         'mention_auto_complete_mode' => '\FastComments\Client\Model\MentionAutoCompleteMode',
         'no_image_uploads' => 'bool',
+        'allow_embeds' => 'bool',
+        'allowed_embed_domains' => 'string[]',
         'no_styles' => 'bool',
         'page_size' => 'int',
         'readonly' => 'bool',
         'no_new_root_comments' => 'bool',
         'require_sso' => 'bool',
+        'enable_f_chat' => 'bool',
         'enable_resize_handle' => 'bool',
         'restricted_link_domains' => 'string[]',
         'show_badges_in_top_bar' => 'bool',
@@ -135,6 +138,8 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'widget_questions_required' => '\FastComments\Client\Model\CommentQuestionsRequired',
         'widget_sub_question_visibility' => '\FastComments\Client\Model\QuestionSubQuestionVisibility',
         'wrap' => 'bool',
+        'users_list_location' => '\FastComments\Client\Model\UsersListLocation',
+        'users_list_include_offline' => 'bool',
         'ticket_base_url' => 'string',
         'ticket_kb_search_endpoint' => 'string',
         'ticket_file_uploads_enabled' => 'bool',
@@ -203,11 +208,14 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'no_custom_config' => null,
         'mention_auto_complete_mode' => null,
         'no_image_uploads' => null,
+        'allow_embeds' => null,
+        'allowed_embed_domains' => null,
         'no_styles' => null,
         'page_size' => 'int32',
         'readonly' => null,
         'no_new_root_comments' => null,
         'require_sso' => null,
+        'enable_f_chat' => null,
         'enable_resize_handle' => null,
         'restricted_link_domains' => null,
         'show_badges_in_top_bar' => null,
@@ -228,6 +236,8 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'widget_questions_required' => null,
         'widget_sub_question_visibility' => null,
         'wrap' => null,
+        'users_list_location' => null,
+        'users_list_include_offline' => null,
         'ticket_base_url' => null,
         'ticket_kb_search_endpoint' => null,
         'ticket_file_uploads_enabled' => null,
@@ -294,11 +304,14 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'no_custom_config' => false,
         'mention_auto_complete_mode' => true,
         'no_image_uploads' => false,
+        'allow_embeds' => false,
+        'allowed_embed_domains' => true,
         'no_styles' => false,
         'page_size' => true,
         'readonly' => false,
         'no_new_root_comments' => false,
         'require_sso' => false,
+        'enable_f_chat' => false,
         'enable_resize_handle' => false,
         'restricted_link_domains' => true,
         'show_badges_in_top_bar' => false,
@@ -319,6 +332,8 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'widget_questions_required' => false,
         'widget_sub_question_visibility' => false,
         'wrap' => false,
+        'users_list_location' => false,
+        'users_list_include_offline' => false,
         'ticket_base_url' => false,
         'ticket_kb_search_endpoint' => false,
         'ticket_file_uploads_enabled' => false,
@@ -465,11 +480,14 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'no_custom_config' => 'noCustomConfig',
         'mention_auto_complete_mode' => 'mentionAutoCompleteMode',
         'no_image_uploads' => 'noImageUploads',
+        'allow_embeds' => 'allowEmbeds',
+        'allowed_embed_domains' => 'allowedEmbedDomains',
         'no_styles' => 'noStyles',
         'page_size' => 'pageSize',
         'readonly' => 'readonly',
         'no_new_root_comments' => 'noNewRootComments',
         'require_sso' => 'requireSSO',
+        'enable_f_chat' => 'enableFChat',
         'enable_resize_handle' => 'enableResizeHandle',
         'restricted_link_domains' => 'restrictedLinkDomains',
         'show_badges_in_top_bar' => 'showBadgesInTopBar',
@@ -490,6 +508,8 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'widget_questions_required' => 'widgetQuestionsRequired',
         'widget_sub_question_visibility' => 'widgetSubQuestionVisibility',
         'wrap' => 'wrap',
+        'users_list_location' => 'usersListLocation',
+        'users_list_include_offline' => 'usersListIncludeOffline',
         'ticket_base_url' => 'ticketBaseUrl',
         'ticket_kb_search_endpoint' => 'ticketKBSearchEndpoint',
         'ticket_file_uploads_enabled' => 'ticketFileUploadsEnabled',
@@ -556,11 +576,14 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'no_custom_config' => 'setNoCustomConfig',
         'mention_auto_complete_mode' => 'setMentionAutoCompleteMode',
         'no_image_uploads' => 'setNoImageUploads',
+        'allow_embeds' => 'setAllowEmbeds',
+        'allowed_embed_domains' => 'setAllowedEmbedDomains',
         'no_styles' => 'setNoStyles',
         'page_size' => 'setPageSize',
         'readonly' => 'setReadonly',
         'no_new_root_comments' => 'setNoNewRootComments',
         'require_sso' => 'setRequireSso',
+        'enable_f_chat' => 'setEnableFChat',
         'enable_resize_handle' => 'setEnableResizeHandle',
         'restricted_link_domains' => 'setRestrictedLinkDomains',
         'show_badges_in_top_bar' => 'setShowBadgesInTopBar',
@@ -581,6 +604,8 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'widget_questions_required' => 'setWidgetQuestionsRequired',
         'widget_sub_question_visibility' => 'setWidgetSubQuestionVisibility',
         'wrap' => 'setWrap',
+        'users_list_location' => 'setUsersListLocation',
+        'users_list_include_offline' => 'setUsersListIncludeOffline',
         'ticket_base_url' => 'setTicketBaseUrl',
         'ticket_kb_search_endpoint' => 'setTicketKbSearchEndpoint',
         'ticket_file_uploads_enabled' => 'setTicketFileUploadsEnabled',
@@ -647,11 +672,14 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'no_custom_config' => 'getNoCustomConfig',
         'mention_auto_complete_mode' => 'getMentionAutoCompleteMode',
         'no_image_uploads' => 'getNoImageUploads',
+        'allow_embeds' => 'getAllowEmbeds',
+        'allowed_embed_domains' => 'getAllowedEmbedDomains',
         'no_styles' => 'getNoStyles',
         'page_size' => 'getPageSize',
         'readonly' => 'getReadonly',
         'no_new_root_comments' => 'getNoNewRootComments',
         'require_sso' => 'getRequireSso',
+        'enable_f_chat' => 'getEnableFChat',
         'enable_resize_handle' => 'getEnableResizeHandle',
         'restricted_link_domains' => 'getRestrictedLinkDomains',
         'show_badges_in_top_bar' => 'getShowBadgesInTopBar',
@@ -672,6 +700,8 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         'widget_questions_required' => 'getWidgetQuestionsRequired',
         'widget_sub_question_visibility' => 'getWidgetSubQuestionVisibility',
         'wrap' => 'getWrap',
+        'users_list_location' => 'getUsersListLocation',
+        'users_list_include_offline' => 'getUsersListIncludeOffline',
         'ticket_base_url' => 'getTicketBaseUrl',
         'ticket_kb_search_endpoint' => 'getTicketKbSearchEndpoint',
         'ticket_file_uploads_enabled' => 'getTicketFileUploadsEnabled',
@@ -789,11 +819,14 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('no_custom_config', $data ?? [], null);
         $this->setIfExists('mention_auto_complete_mode', $data ?? [], null);
         $this->setIfExists('no_image_uploads', $data ?? [], null);
+        $this->setIfExists('allow_embeds', $data ?? [], null);
+        $this->setIfExists('allowed_embed_domains', $data ?? [], null);
         $this->setIfExists('no_styles', $data ?? [], null);
         $this->setIfExists('page_size', $data ?? [], null);
         $this->setIfExists('readonly', $data ?? [], null);
         $this->setIfExists('no_new_root_comments', $data ?? [], null);
         $this->setIfExists('require_sso', $data ?? [], null);
+        $this->setIfExists('enable_f_chat', $data ?? [], null);
         $this->setIfExists('enable_resize_handle', $data ?? [], null);
         $this->setIfExists('restricted_link_domains', $data ?? [], null);
         $this->setIfExists('show_badges_in_top_bar', $data ?? [], null);
@@ -814,6 +847,8 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('widget_questions_required', $data ?? [], null);
         $this->setIfExists('widget_sub_question_visibility', $data ?? [], null);
         $this->setIfExists('wrap', $data ?? [], null);
+        $this->setIfExists('users_list_location', $data ?? [], null);
+        $this->setIfExists('users_list_include_offline', $data ?? [], null);
         $this->setIfExists('ticket_base_url', $data ?? [], null);
         $this->setIfExists('ticket_kb_search_endpoint', $data ?? [], null);
         $this->setIfExists('ticket_file_uploads_enabled', $data ?? [], null);
@@ -2367,6 +2402,67 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets allow_embeds
+     *
+     * @return bool|null
+     */
+    public function getAllowEmbeds()
+    {
+        return $this->container['allow_embeds'];
+    }
+
+    /**
+     * Sets allow_embeds
+     *
+     * @param bool|null $allow_embeds allow_embeds
+     *
+     * @return self
+     */
+    public function setAllowEmbeds($allow_embeds)
+    {
+        if (is_null($allow_embeds)) {
+            throw new \InvalidArgumentException('non-nullable allow_embeds cannot be null');
+        }
+        $this->container['allow_embeds'] = $allow_embeds;
+
+        return $this;
+    }
+
+    /**
+     * Gets allowed_embed_domains
+     *
+     * @return string[]|null
+     */
+    public function getAllowedEmbedDomains()
+    {
+        return $this->container['allowed_embed_domains'];
+    }
+
+    /**
+     * Sets allowed_embed_domains
+     *
+     * @param string[]|null $allowed_embed_domains allowed_embed_domains
+     *
+     * @return self
+     */
+    public function setAllowedEmbedDomains($allowed_embed_domains)
+    {
+        if (is_null($allowed_embed_domains)) {
+            array_push($this->openAPINullablesSetToNull, 'allowed_embed_domains');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('allowed_embed_domains', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['allowed_embed_domains'] = $allowed_embed_domains;
+
+        return $this;
+    }
+
+    /**
      * Gets no_styles
      *
      * @return bool|null
@@ -2504,6 +2600,33 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable require_sso cannot be null');
         }
         $this->container['require_sso'] = $require_sso;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_f_chat
+     *
+     * @return bool|null
+     */
+    public function getEnableFChat()
+    {
+        return $this->container['enable_f_chat'];
+    }
+
+    /**
+     * Sets enable_f_chat
+     *
+     * @param bool|null $enable_f_chat enable_f_chat
+     *
+     * @return self
+     */
+    public function setEnableFChat($enable_f_chat)
+    {
+        if (is_null($enable_f_chat)) {
+            throw new \InvalidArgumentException('non-nullable enable_f_chat cannot be null');
+        }
+        $this->container['enable_f_chat'] = $enable_f_chat;
 
         return $this;
     }
@@ -3058,6 +3181,60 @@ class CustomConfigParameters implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable wrap cannot be null');
         }
         $this->container['wrap'] = $wrap;
+
+        return $this;
+    }
+
+    /**
+     * Gets users_list_location
+     *
+     * @return \FastComments\Client\Model\UsersListLocation|null
+     */
+    public function getUsersListLocation()
+    {
+        return $this->container['users_list_location'];
+    }
+
+    /**
+     * Sets users_list_location
+     *
+     * @param \FastComments\Client\Model\UsersListLocation|null $users_list_location users_list_location
+     *
+     * @return self
+     */
+    public function setUsersListLocation($users_list_location)
+    {
+        if (is_null($users_list_location)) {
+            throw new \InvalidArgumentException('non-nullable users_list_location cannot be null');
+        }
+        $this->container['users_list_location'] = $users_list_location;
+
+        return $this;
+    }
+
+    /**
+     * Gets users_list_include_offline
+     *
+     * @return bool|null
+     */
+    public function getUsersListIncludeOffline()
+    {
+        return $this->container['users_list_include_offline'];
+    }
+
+    /**
+     * Sets users_list_include_offline
+     *
+     * @param bool|null $users_list_include_offline users_list_include_offline
+     *
+     * @return self
+     */
+    public function setUsersListIncludeOffline($users_list_include_offline)
+    {
+        if (is_null($users_list_include_offline)) {
+            throw new \InvalidArgumentException('non-nullable users_list_include_offline cannot be null');
+        }
+        $this->container['users_list_include_offline'] = $users_list_include_offline;
 
         return $this;
     }

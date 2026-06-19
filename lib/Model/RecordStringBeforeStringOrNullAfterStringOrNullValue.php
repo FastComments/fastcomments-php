@@ -80,8 +80,8 @@ class RecordStringBeforeStringOrNullAfterStringOrNullValue implements ModelInter
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'after' => false,
-        'before' => false
+        'after' => true,
+        'before' => true
     ];
 
     /**
@@ -323,7 +323,14 @@ class RecordStringBeforeStringOrNullAfterStringOrNullValue implements ModelInter
     public function setAfter($after)
     {
         if (is_null($after)) {
-            throw new \InvalidArgumentException('non-nullable after cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'after');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('after', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['after'] = $after;
 
@@ -350,7 +357,14 @@ class RecordStringBeforeStringOrNullAfterStringOrNullValue implements ModelInter
     public function setBefore($before)
     {
         if (is_null($before)) {
-            throw new \InvalidArgumentException('non-nullable before cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'before');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('before', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['before'] = $before;
 

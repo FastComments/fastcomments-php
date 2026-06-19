@@ -81,8 +81,9 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'from_offline_restore' => 'bool',
         'autoplay_delay_ms' => 'int',
         'feedback_ids' => 'string[]',
-        'question_values' => 'array<string,\FastComments\Client\Model\RecordStringStringOrNumberValue>',
+        'question_values' => 'array<string,\FastComments\Client\Model\GifSearchResponseImagesInnerInner>',
         'tos' => 'bool',
+        'bot_id' => 'string',
         'approved' => 'bool',
         'domain' => 'string',
         'ip' => 'string',
@@ -128,6 +129,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'feedback_ids' => null,
         'question_values' => null,
         'tos' => null,
+        'bot_id' => null,
         'approved' => null,
         'domain' => null,
         'ip' => null,
@@ -171,6 +173,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'feedback_ids' => false,
         'question_values' => false,
         'tos' => false,
+        'bot_id' => false,
         'approved' => false,
         'domain' => false,
         'ip' => false,
@@ -294,6 +297,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'feedback_ids' => 'feedbackIds',
         'question_values' => 'questionValues',
         'tos' => 'tos',
+        'bot_id' => 'botId',
         'approved' => 'approved',
         'domain' => 'domain',
         'ip' => 'ip',
@@ -337,6 +341,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'feedback_ids' => 'setFeedbackIds',
         'question_values' => 'setQuestionValues',
         'tos' => 'setTos',
+        'bot_id' => 'setBotId',
         'approved' => 'setApproved',
         'domain' => 'setDomain',
         'ip' => 'setIp',
@@ -380,6 +385,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         'feedback_ids' => 'getFeedbackIds',
         'question_values' => 'getQuestionValues',
         'tos' => 'getTos',
+        'bot_id' => 'getBotId',
         'approved' => 'getApproved',
         'domain' => 'getDomain',
         'ip' => 'getIp',
@@ -474,6 +480,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('feedback_ids', $data ?? [], null);
         $this->setIfExists('question_values', $data ?? [], null);
         $this->setIfExists('tos', $data ?? [], null);
+        $this->setIfExists('bot_id', $data ?? [], null);
         $this->setIfExists('approved', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('ip', $data ?? [], null);
@@ -1202,7 +1209,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets question_values
      *
-     * @return array<string,\FastComments\Client\Model\RecordStringStringOrNumberValue>|null
+     * @return array<string,\FastComments\Client\Model\GifSearchResponseImagesInnerInner>|null
      */
     public function getQuestionValues()
     {
@@ -1212,7 +1219,7 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets question_values
      *
-     * @param array<string,\FastComments\Client\Model\RecordStringStringOrNumberValue>|null $question_values Construct a type with a set of properties K of type T
+     * @param array<string,\FastComments\Client\Model\GifSearchResponseImagesInnerInner>|null $question_values Construct a type with a set of properties K of type T
      *
      * @return self
      */
@@ -1249,6 +1256,33 @@ class CreateCommentParams implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable tos cannot be null');
         }
         $this->container['tos'] = $tos;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_id
+     *
+     * @return string|null
+     */
+    public function getBotId()
+    {
+        return $this->container['bot_id'];
+    }
+
+    /**
+     * Sets bot_id
+     *
+     * @param string|null $bot_id bot_id
+     *
+     * @return self
+     */
+    public function setBotId($bot_id)
+    {
+        if (is_null($bot_id)) {
+            throw new \InvalidArgumentException('non-nullable bot_id cannot be null');
+        }
+        $this->container['bot_id'] = $bot_id;
 
         return $this;
     }

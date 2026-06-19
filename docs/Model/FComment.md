@@ -76,5 +76,6 @@ Name | Type | Description | Notes
 **requires_verification** | **bool** |  | [optional]
 **edit_key** | **string** |  | [optional]
 **tos_accepted_at** | **\DateTime** |  | [optional]
+**bot_id** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

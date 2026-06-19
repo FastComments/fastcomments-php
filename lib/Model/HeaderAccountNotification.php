@@ -66,7 +66,8 @@ class HeaderAccountNotification implements ModelInterface, ArrayAccess, \JsonSer
         'severity' => 'string',
         'link_url' => 'string',
         'link_text' => 'string',
-        'created_at' => '\DateTime'
+        'created_at' => '\DateTime',
+        'type' => 'string'
     ];
 
     /**
@@ -85,7 +86,8 @@ class HeaderAccountNotification implements ModelInterface, ArrayAccess, \JsonSer
         'severity' => null,
         'link_url' => null,
         'link_text' => null,
-        'created_at' => 'date-time'
+        'created_at' => 'date-time',
+        'type' => null
     ];
 
     /**
@@ -102,7 +104,8 @@ class HeaderAccountNotification implements ModelInterface, ArrayAccess, \JsonSer
         'severity' => false,
         'link_url' => true,
         'link_text' => true,
-        'created_at' => false
+        'created_at' => false,
+        'type' => true
     ];
 
     /**
@@ -199,7 +202,8 @@ class HeaderAccountNotification implements ModelInterface, ArrayAccess, \JsonSer
         'severity' => 'severity',
         'link_url' => 'linkUrl',
         'link_text' => 'linkText',
-        'created_at' => 'createdAt'
+        'created_at' => 'createdAt',
+        'type' => 'type'
     ];
 
     /**
@@ -216,7 +220,8 @@ class HeaderAccountNotification implements ModelInterface, ArrayAccess, \JsonSer
         'severity' => 'setSeverity',
         'link_url' => 'setLinkUrl',
         'link_text' => 'setLinkText',
-        'created_at' => 'setCreatedAt'
+        'created_at' => 'setCreatedAt',
+        'type' => 'setType'
     ];
 
     /**
@@ -233,7 +238,8 @@ class HeaderAccountNotification implements ModelInterface, ArrayAccess, \JsonSer
         'severity' => 'getSeverity',
         'link_url' => 'getLinkUrl',
         'link_text' => 'getLinkText',
-        'created_at' => 'getCreatedAt'
+        'created_at' => 'getCreatedAt',
+        'type' => 'getType'
     ];
 
     /**
@@ -302,6 +308,7 @@ class HeaderAccountNotification implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('link_url', $data ?? [], null);
         $this->setIfExists('link_text', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -640,6 +647,40 @@ class HeaderAccountNotification implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
         $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Discriminator for notifications with a special layout/click handler (e.g. \"feedback-offer\").
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

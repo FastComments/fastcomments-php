@@ -81,7 +81,7 @@ class APICommentBaseTest extends TestCase
     }
 
     /**
-     * Test attribute "_id"
+     * Test attribute "id"
      */
     public function testPropertyId()
     {

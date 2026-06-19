@@ -27,7 +27,8 @@ Name | Type | Description | Notes
 **from_offline_restore** | **bool** |  | [optional]
 **autoplay_delay_ms** | **int** |  | [optional]
 **feedback_ids** | **string[]** |  | [optional]
-**question_values** | [**array<string,\FastComments\Client\Model\RecordStringStringOrNumberValue>**](RecordStringStringOrNumberValue.md) | Construct a type with a set of properties K of type T | [optional]
+**question_values** | [**array<string,\FastComments\Client\Model\GifSearchResponseImagesInnerInner>**](GifSearchResponseImagesInnerInner.md) | Construct a type with a set of properties K of type T | [optional]
 **tos** | **bool** |  | [optional]
+**bot_id** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

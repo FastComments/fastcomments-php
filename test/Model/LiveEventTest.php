@@ -216,6 +216,15 @@ class LiveEventTest extends TestCase
     }
 
     /**
+     * Test attribute "sc"
+     */
+    public function testPropertySc()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "changes"
      */
     public function testPropertyChanges()

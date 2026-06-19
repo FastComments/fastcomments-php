@@ -58,7 +58,7 @@ class APICommentBase implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_id' => 'string',
+        'id' => 'string',
         'ai_determined_spam' => 'bool',
         'anon_user_id' => 'string',
         'approved' => 'bool',
@@ -121,7 +121,7 @@ class APICommentBase implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        '_id' => null,
+        'id' => null,
         'ai_determined_spam' => null,
         'anon_user_id' => null,
         'approved' => null,
@@ -182,7 +182,7 @@ class APICommentBase implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        '_id' => false,
+        'id' => false,
         'ai_determined_spam' => false,
         'anon_user_id' => true,
         'approved' => false,
@@ -323,7 +323,7 @@ class APICommentBase implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        '_id' => '_id',
+        'id' => 'id',
         'ai_determined_spam' => 'aiDeterminedSpam',
         'anon_user_id' => 'anonUserId',
         'approved' => 'approved',
@@ -384,7 +384,7 @@ class APICommentBase implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        '_id' => 'setId',
+        'id' => 'setId',
         'ai_determined_spam' => 'setAiDeterminedSpam',
         'anon_user_id' => 'setAnonUserId',
         'approved' => 'setApproved',
@@ -445,7 +445,7 @@ class APICommentBase implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        '_id' => 'getId',
+        'id' => 'getId',
         'ai_determined_spam' => 'getAiDeterminedSpam',
         'anon_user_id' => 'getAnonUserId',
         'approved' => 'getApproved',
@@ -557,7 +557,7 @@ class APICommentBase implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('_id', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('ai_determined_spam', $data ?? [], null);
         $this->setIfExists('anon_user_id', $data ?? [], null);
         $this->setIfExists('approved', $data ?? [], null);
@@ -639,8 +639,8 @@ class APICommentBase implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['_id'] === null) {
-            $invalidProperties[] = "'_id' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['approved'] === null) {
             $invalidProperties[] = "'approved' can't be null";
@@ -688,28 +688,28 @@ class APICommentBase implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets _id
+     * Gets id
      *
      * @return string
      */
     public function getId()
     {
-        return $this->container['_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets _id
+     * Sets id
      *
-     * @param string $_id _id
+     * @param string $id id
      *
      * @return self
      */
-    public function setId($_id)
+    public function setId($id)
     {
-        if (is_null($_id)) {
-            throw new \InvalidArgumentException('non-nullable _id cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['_id'] = $_id;
+        $this->container['id'] = $id;
 
         return $this;
     }

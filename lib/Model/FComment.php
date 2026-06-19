@@ -129,7 +129,8 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'view_count' => 'int',
         'requires_verification' => 'bool',
         'edit_key' => 'string',
-        'tos_accepted_at' => '\DateTime'
+        'tos_accepted_at' => '\DateTime',
+        'bot_id' => 'string'
     ];
 
     /**
@@ -211,7 +212,8 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'view_count' => 'int64',
         'requires_verification' => null,
         'edit_key' => null,
-        'tos_accepted_at' => 'date-time'
+        'tos_accepted_at' => 'date-time',
+        'bot_id' => null
     ];
 
     /**
@@ -291,7 +293,8 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'view_count' => true,
         'requires_verification' => false,
         'edit_key' => false,
-        'tos_accepted_at' => false
+        'tos_accepted_at' => false,
+        'bot_id' => false
     ];
 
     /**
@@ -451,7 +454,8 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'view_count' => 'viewCount',
         'requires_verification' => 'requiresVerification',
         'edit_key' => 'editKey',
-        'tos_accepted_at' => 'tosAcceptedAt'
+        'tos_accepted_at' => 'tosAcceptedAt',
+        'bot_id' => 'botId'
     ];
 
     /**
@@ -531,7 +535,8 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'view_count' => 'setViewCount',
         'requires_verification' => 'setRequiresVerification',
         'edit_key' => 'setEditKey',
-        'tos_accepted_at' => 'setTosAcceptedAt'
+        'tos_accepted_at' => 'setTosAcceptedAt',
+        'bot_id' => 'setBotId'
     ];
 
     /**
@@ -611,7 +616,8 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         'view_count' => 'getViewCount',
         'requires_verification' => 'getRequiresVerification',
         'edit_key' => 'getEditKey',
-        'tos_accepted_at' => 'getTosAcceptedAt'
+        'tos_accepted_at' => 'getTosAcceptedAt',
+        'bot_id' => 'getBotId'
     ];
 
     /**
@@ -743,6 +749,7 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('requires_verification', $data ?? [], null);
         $this->setIfExists('edit_key', $data ?? [], null);
         $this->setIfExists('tos_accepted_at', $data ?? [], null);
+        $this->setIfExists('bot_id', $data ?? [], null);
     }
 
     /**
@@ -2991,6 +2998,33 @@ class FComment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable tos_accepted_at cannot be null');
         }
         $this->container['tos_accepted_at'] = $tos_accepted_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_id
+     *
+     * @return string|null
+     */
+    public function getBotId()
+    {
+        return $this->container['bot_id'];
+    }
+
+    /**
+     * Sets bot_id
+     *
+     * @param string|null $bot_id bot_id
+     *
+     * @return self
+     */
+    public function setBotId($bot_id)
+    {
+        if (is_null($bot_id)) {
+            throw new \InvalidArgumentException('non-nullable bot_id cannot be null');
+        }
+        $this->container['bot_id'] = $bot_id;
 
         return $this;
     }

@@ -549,6 +549,24 @@ class CustomConfigParametersTest extends TestCase
     }
 
     /**
+     * Test attribute "allow_embeds"
+     */
+    public function testPropertyAllowEmbeds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "allowed_embed_domains"
+     */
+    public function testPropertyAllowedEmbedDomains()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "no_styles"
      */
     public function testPropertyNoStyles()
@@ -588,6 +606,15 @@ class CustomConfigParametersTest extends TestCase
      * Test attribute "require_sso"
      */
     public function testPropertyRequireSso()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "enable_f_chat"
+     */
+    public function testPropertyEnableFChat()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -768,6 +795,24 @@ class CustomConfigParametersTest extends TestCase
      * Test attribute "wrap"
      */
     public function testPropertyWrap()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "users_list_location"
+     */
+    public function testPropertyUsersListLocation()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "users_list_include_offline"
+     */
+    public function testPropertyUsersListIncludeOffline()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

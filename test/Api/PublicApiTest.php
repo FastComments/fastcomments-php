@@ -121,6 +121,30 @@ class PublicApiTest extends TestCase
     }
 
     /**
+     * Test case for createV1PageReact
+     *
+     * .
+     *
+     */
+    public function testCreateV1PageReact()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for createV2PageReact
+     *
+     * .
+     *
+     */
+    public function testCreateV2PageReact()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for deleteCommentPublic
      *
      * .
@@ -157,6 +181,30 @@ class PublicApiTest extends TestCase
     }
 
     /**
+     * Test case for deleteV1PageReact
+     *
+     * .
+     *
+     */
+    public function testDeleteV1PageReact()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for deleteV2PageReact
+     *
+     * .
+     *
+     */
+    public function testDeleteV2PageReact()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for flagCommentPublic
      *
      * .
@@ -187,6 +235,18 @@ class PublicApiTest extends TestCase
      *
      */
     public function testGetCommentVoteUserNames()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getCommentsForUser
+     *
+     * .
+     *
+     */
+    public function testGetCommentsForUser()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -241,12 +301,96 @@ class PublicApiTest extends TestCase
     }
 
     /**
+     * Test case for getGifLarge
+     *
+     * .
+     *
+     */
+    public function testGetGifLarge()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getGifsSearch
+     *
+     * .
+     *
+     */
+    public function testGetGifsSearch()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getGifsTrending
+     *
+     * .
+     *
+     */
+    public function testGetGifsTrending()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getGlobalEventLog
      *
      * .
      *
      */
     public function testGetGlobalEventLog()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getOfflineUsers
+     *
+     * .
+     *
+     */
+    public function testGetOfflineUsers()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getOnlineUsers
+     *
+     * .
+     *
+     */
+    public function testGetOnlineUsers()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getPagesPublic
+     *
+     * .
+     *
+     */
+    public function testGetPagesPublic()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getTranslations
+     *
+     * .
+     *
+     */
+    public function testGetTranslations()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -301,12 +445,72 @@ class PublicApiTest extends TestCase
     }
 
     /**
+     * Test case for getUsersInfo
+     *
+     * .
+     *
+     */
+    public function testGetUsersInfo()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getV1PageLikes
+     *
+     * .
+     *
+     */
+    public function testGetV1PageLikes()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getV2PageReactUsers
+     *
+     * .
+     *
+     */
+    public function testGetV2PageReactUsers()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getV2PageReacts
+     *
+     * .
+     *
+     */
+    public function testGetV2PageReacts()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for lockComment
      *
      * .
      *
      */
     public function testLockComment()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for logoutPublic
+     *
+     * .
+     *
+     */
+    public function testLogoutPublic()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -99,8 +99,8 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
         'flex_admin_unit' => 'float',
         'flex_domain_cost_cents' => 'float',
         'flex_domain_unit' => 'float',
-        'flex_chat_gpt_cost_cents' => 'float',
-        'flex_chat_gpt_unit' => 'float',
+        'flex_llm_cost_cents' => 'float',
+        'flex_llm_unit' => 'float',
         'flex_minimum_cost_cents' => 'float',
         'flex_managed_tenant_cost_cents' => 'float',
         'flex_sso_admin_cost_cents' => 'float',
@@ -158,8 +158,8 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
         'flex_admin_unit' => 'double',
         'flex_domain_cost_cents' => 'double',
         'flex_domain_unit' => 'double',
-        'flex_chat_gpt_cost_cents' => 'double',
-        'flex_chat_gpt_unit' => 'double',
+        'flex_llm_cost_cents' => 'double',
+        'flex_llm_unit' => 'double',
         'flex_minimum_cost_cents' => 'double',
         'flex_managed_tenant_cost_cents' => 'double',
         'flex_sso_admin_cost_cents' => 'double',
@@ -215,8 +215,8 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
         'flex_admin_unit' => false,
         'flex_domain_cost_cents' => false,
         'flex_domain_unit' => false,
-        'flex_chat_gpt_cost_cents' => false,
-        'flex_chat_gpt_unit' => false,
+        'flex_llm_cost_cents' => false,
+        'flex_llm_unit' => false,
         'flex_minimum_cost_cents' => false,
         'flex_managed_tenant_cost_cents' => false,
         'flex_sso_admin_cost_cents' => false,
@@ -352,8 +352,8 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
         'flex_admin_unit' => 'flexAdminUnit',
         'flex_domain_cost_cents' => 'flexDomainCostCents',
         'flex_domain_unit' => 'flexDomainUnit',
-        'flex_chat_gpt_cost_cents' => 'flexChatGPTCostCents',
-        'flex_chat_gpt_unit' => 'flexChatGPTUnit',
+        'flex_llm_cost_cents' => 'flexLLMCostCents',
+        'flex_llm_unit' => 'flexLLMUnit',
         'flex_minimum_cost_cents' => 'flexMinimumCostCents',
         'flex_managed_tenant_cost_cents' => 'flexManagedTenantCostCents',
         'flex_sso_admin_cost_cents' => 'flexSSOAdminCostCents',
@@ -409,8 +409,8 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
         'flex_admin_unit' => 'setFlexAdminUnit',
         'flex_domain_cost_cents' => 'setFlexDomainCostCents',
         'flex_domain_unit' => 'setFlexDomainUnit',
-        'flex_chat_gpt_cost_cents' => 'setFlexChatGptCostCents',
-        'flex_chat_gpt_unit' => 'setFlexChatGptUnit',
+        'flex_llm_cost_cents' => 'setFlexLlmCostCents',
+        'flex_llm_unit' => 'setFlexLlmUnit',
         'flex_minimum_cost_cents' => 'setFlexMinimumCostCents',
         'flex_managed_tenant_cost_cents' => 'setFlexManagedTenantCostCents',
         'flex_sso_admin_cost_cents' => 'setFlexSsoAdminCostCents',
@@ -466,8 +466,8 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
         'flex_admin_unit' => 'getFlexAdminUnit',
         'flex_domain_cost_cents' => 'getFlexDomainCostCents',
         'flex_domain_unit' => 'getFlexDomainUnit',
-        'flex_chat_gpt_cost_cents' => 'getFlexChatGptCostCents',
-        'flex_chat_gpt_unit' => 'getFlexChatGptUnit',
+        'flex_llm_cost_cents' => 'getFlexLlmCostCents',
+        'flex_llm_unit' => 'getFlexLlmUnit',
         'flex_minimum_cost_cents' => 'getFlexMinimumCostCents',
         'flex_managed_tenant_cost_cents' => 'getFlexManagedTenantCostCents',
         'flex_sso_admin_cost_cents' => 'getFlexSsoAdminCostCents',
@@ -574,8 +574,8 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('flex_admin_unit', $data ?? [], null);
         $this->setIfExists('flex_domain_cost_cents', $data ?? [], null);
         $this->setIfExists('flex_domain_unit', $data ?? [], null);
-        $this->setIfExists('flex_chat_gpt_cost_cents', $data ?? [], null);
-        $this->setIfExists('flex_chat_gpt_unit', $data ?? [], null);
+        $this->setIfExists('flex_llm_cost_cents', $data ?? [], null);
+        $this->setIfExists('flex_llm_unit', $data ?? [], null);
         $this->setIfExists('flex_minimum_cost_cents', $data ?? [], null);
         $this->setIfExists('flex_managed_tenant_cost_cents', $data ?? [], null);
         $this->setIfExists('flex_sso_admin_cost_cents', $data ?? [], null);
@@ -1801,55 +1801,55 @@ class CreateTenantPackageBody implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets flex_chat_gpt_cost_cents
+     * Gets flex_llm_cost_cents
      *
      * @return float|null
      */
-    public function getFlexChatGptCostCents()
+    public function getFlexLlmCostCents()
     {
-        return $this->container['flex_chat_gpt_cost_cents'];
+        return $this->container['flex_llm_cost_cents'];
     }
 
     /**
-     * Sets flex_chat_gpt_cost_cents
+     * Sets flex_llm_cost_cents
      *
-     * @param float|null $flex_chat_gpt_cost_cents flex_chat_gpt_cost_cents
+     * @param float|null $flex_llm_cost_cents flex_llm_cost_cents
      *
      * @return self
      */
-    public function setFlexChatGptCostCents($flex_chat_gpt_cost_cents)
+    public function setFlexLlmCostCents($flex_llm_cost_cents)
     {
-        if (is_null($flex_chat_gpt_cost_cents)) {
-            throw new \InvalidArgumentException('non-nullable flex_chat_gpt_cost_cents cannot be null');
+        if (is_null($flex_llm_cost_cents)) {
+            throw new \InvalidArgumentException('non-nullable flex_llm_cost_cents cannot be null');
         }
-        $this->container['flex_chat_gpt_cost_cents'] = $flex_chat_gpt_cost_cents;
+        $this->container['flex_llm_cost_cents'] = $flex_llm_cost_cents;
 
         return $this;
     }
 
     /**
-     * Gets flex_chat_gpt_unit
+     * Gets flex_llm_unit
      *
      * @return float|null
      */
-    public function getFlexChatGptUnit()
+    public function getFlexLlmUnit()
     {
-        return $this->container['flex_chat_gpt_unit'];
+        return $this->container['flex_llm_unit'];
     }
 
     /**
-     * Sets flex_chat_gpt_unit
+     * Sets flex_llm_unit
      *
-     * @param float|null $flex_chat_gpt_unit flex_chat_gpt_unit
+     * @param float|null $flex_llm_unit flex_llm_unit
      *
      * @return self
      */
-    public function setFlexChatGptUnit($flex_chat_gpt_unit)
+    public function setFlexLlmUnit($flex_llm_unit)
     {
-        if (is_null($flex_chat_gpt_unit)) {
-            throw new \InvalidArgumentException('non-nullable flex_chat_gpt_unit cannot be null');
+        if (is_null($flex_llm_unit)) {
+            throw new \InvalidArgumentException('non-nullable flex_llm_unit cannot be null');
         }
-        $this->container['flex_chat_gpt_unit'] = $flex_chat_gpt_unit;
+        $this->container['flex_llm_unit'] = $flex_llm_unit;
 
         return $this;
     }

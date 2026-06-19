@@ -73,6 +73,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_closed' => 'bool',
         'uj' => 'string[]',
         'ul' => 'string[]',
+        'sc' => 'int',
         'changes' => 'array<string,int>'
     ];
 
@@ -99,6 +100,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_closed' => null,
         'uj' => null,
         'ul' => null,
+        'sc' => 'int32',
         'changes' => 'int32'
     ];
 
@@ -123,6 +125,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_closed' => false,
         'uj' => false,
         'ul' => false,
+        'sc' => false,
         'changes' => false
     ];
 
@@ -227,6 +230,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_closed' => 'isClosed',
         'uj' => 'uj',
         'ul' => 'ul',
+        'sc' => 'sc',
         'changes' => 'changes'
     ];
 
@@ -251,6 +255,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_closed' => 'setIsClosed',
         'uj' => 'setUj',
         'ul' => 'setUl',
+        'sc' => 'setSc',
         'changes' => 'setChanges'
     ];
 
@@ -275,6 +280,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_closed' => 'getIsClosed',
         'uj' => 'getUj',
         'ul' => 'getUl',
+        'sc' => 'getSc',
         'changes' => 'getChanges'
     ];
 
@@ -350,6 +356,7 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('is_closed', $data ?? [], null);
         $this->setIfExists('uj', $data ?? [], null);
         $this->setIfExists('ul', $data ?? [], null);
+        $this->setIfExists('sc', $data ?? [], null);
         $this->setIfExists('changes', $data ?? [], null);
     }
 
@@ -799,6 +806,33 @@ class LiveEvent implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable ul cannot be null');
         }
         $this->container['ul'] = $ul;
+
+        return $this;
+    }
+
+    /**
+     * Gets sc
+     *
+     * @return int|null
+     */
+    public function getSc()
+    {
+        return $this->container['sc'];
+    }
+
+    /**
+     * Sets sc
+     *
+     * @param int|null $sc sc
+     *
+     * @return self
+     */
+    public function setSc($sc)
+    {
+        if (is_null($sc)) {
+            throw new \InvalidArgumentException('non-nullable sc cannot be null');
+        }
+        $this->container['sc'] = $sc;
 
         return $this;
     }

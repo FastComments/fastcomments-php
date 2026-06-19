@@ -73,6 +73,7 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
         'engine_response' => 'string',
         'engine_tokens' => 'float',
         'trust_factor' => 'float',
+        'source' => 'string',
         'rule' => '\FastComments\Client\Model\SpamRule',
         'user_id' => 'string',
         'subscribers' => 'float',
@@ -129,6 +130,7 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
         'engine_response' => null,
         'engine_tokens' => 'double',
         'trust_factor' => 'double',
+        'source' => null,
         'rule' => null,
         'user_id' => null,
         'subscribers' => 'double',
@@ -183,6 +185,7 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
         'engine_response' => false,
         'engine_tokens' => false,
         'trust_factor' => false,
+        'source' => false,
         'rule' => false,
         'user_id' => false,
         'subscribers' => false,
@@ -317,6 +320,7 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
         'engine_response' => 'engineResponse',
         'engine_tokens' => 'engineTokens',
         'trust_factor' => 'trustFactor',
+        'source' => 'source',
         'rule' => 'rule',
         'user_id' => 'userId',
         'subscribers' => 'subscribers',
@@ -371,6 +375,7 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
         'engine_response' => 'setEngineResponse',
         'engine_tokens' => 'setEngineTokens',
         'trust_factor' => 'setTrustFactor',
+        'source' => 'setSource',
         'rule' => 'setRule',
         'user_id' => 'setUserId',
         'subscribers' => 'setSubscribers',
@@ -425,6 +430,7 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
         'engine_response' => 'getEngineResponse',
         'engine_tokens' => 'getEngineTokens',
         'trust_factor' => 'getTrustFactor',
+        'source' => 'getSource',
         'rule' => 'getRule',
         'user_id' => 'getUserId',
         'subscribers' => 'getSubscribers',
@@ -543,6 +549,7 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('engine_response', $data ?? [], null);
         $this->setIfExists('engine_tokens', $data ?? [], null);
         $this->setIfExists('trust_factor', $data ?? [], null);
+        $this->setIfExists('source', $data ?? [], null);
         $this->setIfExists('rule', $data ?? [], null);
         $this->setIfExists('user_id', $data ?? [], null);
         $this->setIfExists('subscribers', $data ?? [], null);
@@ -1028,6 +1035,33 @@ class CommentLogData implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable trust_factor cannot be null');
         }
         $this->container['trust_factor'] = $trust_factor;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string|null
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string|null $source source
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        if (is_null($source)) {
+            throw new \InvalidArgumentException('non-nullable source cannot be null');
+        }
+        $this->container['source'] = $source;
 
         return $this;
     }
