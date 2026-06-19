@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **engine_response** | **string** |  | [optional]
 **engine_tokens** | **float** |  | [optional]
 **trust_factor** | **float** |  | [optional]
+**source** | **string** |  | [optional]
 **rule** | [**\FastComments\Client\Model\SpamRule**](SpamRule.md) |  | [optional]
 **user_id** | **string** |  | [optional]
 **subscribers** | **float** |  | [optional]

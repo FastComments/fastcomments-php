@@ -43,6 +43,7 @@ Name | Type | Description | Notes
 **digest_email_frequency** | [**\FastComments\Client\Model\DigestEmailFrequency**](DigestEmailFrequency.md) |  | [optional]
 **notification_frequency** | **float** |  | [optional]
 **admin_notification_frequency** | **float** |  | [optional]
+**agent_approval_notification_frequency** | [**\FastComments\Client\Model\ImportedAgentApprovalNotificationFrequency**](ImportedAgentApprovalNotificationFrequency.md) |  | [optional]
 **last_tenant_notification_sent_date** | **\DateTime** |  | [optional]
 **last_reply_notification_sent_date** | **\DateTime** |  | [optional]
 **ignored_add_to_my_site_messages** | **bool** |  | [optional]

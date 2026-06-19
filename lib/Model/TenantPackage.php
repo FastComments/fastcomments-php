@@ -62,6 +62,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'tenant_id' => 'string',
         'created_at' => '\DateTime',
+        'template_id' => 'string',
         'monthly_cost_usd' => 'float',
         'yearly_cost_usd' => 'float',
         'monthly_stripe_plan_id' => 'string',
@@ -105,13 +106,19 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'flex_domain_unit' => 'float',
         'flex_chat_gpt_cost_cents' => 'float',
         'flex_chat_gpt_unit' => 'float',
+        'flex_llm_cost_cents' => 'float',
+        'flex_llm_unit' => 'float',
         'flex_minimum_cost_cents' => 'float',
         'flex_managed_tenant_cost_cents' => 'float',
         'flex_sso_admin_cost_cents' => 'float',
         'flex_sso_admin_unit' => 'float',
         'flex_sso_moderator_cost_cents' => 'float',
         'flex_sso_moderator_unit' => 'float',
-        'is_sso_billing_monthly_active_users' => 'bool'
+        'is_sso_billing_monthly_active_users' => 'bool',
+        'has_ai_agents' => 'bool',
+        'max_ai_agents' => 'float',
+        'ai_agent_daily_budget_cents' => 'float',
+        'ai_agent_monthly_budget_cents' => 'float'
     ];
 
     /**
@@ -126,6 +133,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'tenant_id' => null,
         'created_at' => 'date-time',
+        'template_id' => null,
         'monthly_cost_usd' => 'double',
         'yearly_cost_usd' => 'double',
         'monthly_stripe_plan_id' => null,
@@ -169,13 +177,19 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'flex_domain_unit' => 'double',
         'flex_chat_gpt_cost_cents' => 'double',
         'flex_chat_gpt_unit' => 'double',
+        'flex_llm_cost_cents' => 'double',
+        'flex_llm_unit' => 'double',
         'flex_minimum_cost_cents' => 'double',
         'flex_managed_tenant_cost_cents' => 'double',
         'flex_sso_admin_cost_cents' => 'double',
         'flex_sso_admin_unit' => 'double',
         'flex_sso_moderator_cost_cents' => 'double',
         'flex_sso_moderator_unit' => 'double',
-        'is_sso_billing_monthly_active_users' => null
+        'is_sso_billing_monthly_active_users' => null,
+        'has_ai_agents' => null,
+        'max_ai_agents' => 'double',
+        'ai_agent_daily_budget_cents' => 'double',
+        'ai_agent_monthly_budget_cents' => 'double'
     ];
 
     /**
@@ -188,6 +202,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => false,
         'tenant_id' => false,
         'created_at' => false,
+        'template_id' => false,
         'monthly_cost_usd' => true,
         'yearly_cost_usd' => true,
         'monthly_stripe_plan_id' => true,
@@ -231,13 +246,19 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'flex_domain_unit' => false,
         'flex_chat_gpt_cost_cents' => false,
         'flex_chat_gpt_unit' => false,
+        'flex_llm_cost_cents' => false,
+        'flex_llm_unit' => false,
         'flex_minimum_cost_cents' => false,
         'flex_managed_tenant_cost_cents' => false,
         'flex_sso_admin_cost_cents' => false,
         'flex_sso_admin_unit' => false,
         'flex_sso_moderator_cost_cents' => false,
         'flex_sso_moderator_unit' => false,
-        'is_sso_billing_monthly_active_users' => false
+        'is_sso_billing_monthly_active_users' => false,
+        'has_ai_agents' => false,
+        'max_ai_agents' => false,
+        'ai_agent_daily_budget_cents' => false,
+        'ai_agent_monthly_budget_cents' => false
     ];
 
     /**
@@ -330,6 +351,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'tenant_id' => 'tenantId',
         'created_at' => 'createdAt',
+        'template_id' => 'templateId',
         'monthly_cost_usd' => 'monthlyCostUSD',
         'yearly_cost_usd' => 'yearlyCostUSD',
         'monthly_stripe_plan_id' => 'monthlyStripePlanId',
@@ -373,13 +395,19 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'flex_domain_unit' => 'flexDomainUnit',
         'flex_chat_gpt_cost_cents' => 'flexChatGPTCostCents',
         'flex_chat_gpt_unit' => 'flexChatGPTUnit',
+        'flex_llm_cost_cents' => 'flexLLMCostCents',
+        'flex_llm_unit' => 'flexLLMUnit',
         'flex_minimum_cost_cents' => 'flexMinimumCostCents',
         'flex_managed_tenant_cost_cents' => 'flexManagedTenantCostCents',
         'flex_sso_admin_cost_cents' => 'flexSSOAdminCostCents',
         'flex_sso_admin_unit' => 'flexSSOAdminUnit',
         'flex_sso_moderator_cost_cents' => 'flexSSOModeratorCostCents',
         'flex_sso_moderator_unit' => 'flexSSOModeratorUnit',
-        'is_sso_billing_monthly_active_users' => 'isSSOBillingMonthlyActiveUsers'
+        'is_sso_billing_monthly_active_users' => 'isSSOBillingMonthlyActiveUsers',
+        'has_ai_agents' => 'hasAIAgents',
+        'max_ai_agents' => 'maxAIAgents',
+        'ai_agent_daily_budget_cents' => 'aiAgentDailyBudgetCents',
+        'ai_agent_monthly_budget_cents' => 'aiAgentMonthlyBudgetCents'
     ];
 
     /**
@@ -392,6 +420,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'tenant_id' => 'setTenantId',
         'created_at' => 'setCreatedAt',
+        'template_id' => 'setTemplateId',
         'monthly_cost_usd' => 'setMonthlyCostUsd',
         'yearly_cost_usd' => 'setYearlyCostUsd',
         'monthly_stripe_plan_id' => 'setMonthlyStripePlanId',
@@ -435,13 +464,19 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'flex_domain_unit' => 'setFlexDomainUnit',
         'flex_chat_gpt_cost_cents' => 'setFlexChatGptCostCents',
         'flex_chat_gpt_unit' => 'setFlexChatGptUnit',
+        'flex_llm_cost_cents' => 'setFlexLlmCostCents',
+        'flex_llm_unit' => 'setFlexLlmUnit',
         'flex_minimum_cost_cents' => 'setFlexMinimumCostCents',
         'flex_managed_tenant_cost_cents' => 'setFlexManagedTenantCostCents',
         'flex_sso_admin_cost_cents' => 'setFlexSsoAdminCostCents',
         'flex_sso_admin_unit' => 'setFlexSsoAdminUnit',
         'flex_sso_moderator_cost_cents' => 'setFlexSsoModeratorCostCents',
         'flex_sso_moderator_unit' => 'setFlexSsoModeratorUnit',
-        'is_sso_billing_monthly_active_users' => 'setIsSsoBillingMonthlyActiveUsers'
+        'is_sso_billing_monthly_active_users' => 'setIsSsoBillingMonthlyActiveUsers',
+        'has_ai_agents' => 'setHasAiAgents',
+        'max_ai_agents' => 'setMaxAiAgents',
+        'ai_agent_daily_budget_cents' => 'setAiAgentDailyBudgetCents',
+        'ai_agent_monthly_budget_cents' => 'setAiAgentMonthlyBudgetCents'
     ];
 
     /**
@@ -454,6 +489,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'tenant_id' => 'getTenantId',
         'created_at' => 'getCreatedAt',
+        'template_id' => 'getTemplateId',
         'monthly_cost_usd' => 'getMonthlyCostUsd',
         'yearly_cost_usd' => 'getYearlyCostUsd',
         'monthly_stripe_plan_id' => 'getMonthlyStripePlanId',
@@ -497,13 +533,19 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         'flex_domain_unit' => 'getFlexDomainUnit',
         'flex_chat_gpt_cost_cents' => 'getFlexChatGptCostCents',
         'flex_chat_gpt_unit' => 'getFlexChatGptUnit',
+        'flex_llm_cost_cents' => 'getFlexLlmCostCents',
+        'flex_llm_unit' => 'getFlexLlmUnit',
         'flex_minimum_cost_cents' => 'getFlexMinimumCostCents',
         'flex_managed_tenant_cost_cents' => 'getFlexManagedTenantCostCents',
         'flex_sso_admin_cost_cents' => 'getFlexSsoAdminCostCents',
         'flex_sso_admin_unit' => 'getFlexSsoAdminUnit',
         'flex_sso_moderator_cost_cents' => 'getFlexSsoModeratorCostCents',
         'flex_sso_moderator_unit' => 'getFlexSsoModeratorUnit',
-        'is_sso_billing_monthly_active_users' => 'getIsSsoBillingMonthlyActiveUsers'
+        'is_sso_billing_monthly_active_users' => 'getIsSsoBillingMonthlyActiveUsers',
+        'has_ai_agents' => 'getHasAiAgents',
+        'max_ai_agents' => 'getMaxAiAgents',
+        'ai_agent_daily_budget_cents' => 'getAiAgentDailyBudgetCents',
+        'ai_agent_monthly_budget_cents' => 'getAiAgentMonthlyBudgetCents'
     ];
 
     /**
@@ -567,6 +609,7 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('tenant_id', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('template_id', $data ?? [], null);
         $this->setIfExists('monthly_cost_usd', $data ?? [], null);
         $this->setIfExists('yearly_cost_usd', $data ?? [], null);
         $this->setIfExists('monthly_stripe_plan_id', $data ?? [], null);
@@ -610,6 +653,8 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('flex_domain_unit', $data ?? [], null);
         $this->setIfExists('flex_chat_gpt_cost_cents', $data ?? [], null);
         $this->setIfExists('flex_chat_gpt_unit', $data ?? [], null);
+        $this->setIfExists('flex_llm_cost_cents', $data ?? [], null);
+        $this->setIfExists('flex_llm_unit', $data ?? [], null);
         $this->setIfExists('flex_minimum_cost_cents', $data ?? [], null);
         $this->setIfExists('flex_managed_tenant_cost_cents', $data ?? [], null);
         $this->setIfExists('flex_sso_admin_cost_cents', $data ?? [], null);
@@ -617,6 +662,10 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('flex_sso_moderator_cost_cents', $data ?? [], null);
         $this->setIfExists('flex_sso_moderator_unit', $data ?? [], null);
         $this->setIfExists('is_sso_billing_monthly_active_users', $data ?? [], null);
+        $this->setIfExists('has_ai_agents', $data ?? [], null);
+        $this->setIfExists('max_ai_agents', $data ?? [], null);
+        $this->setIfExists('ai_agent_daily_budget_cents', $data ?? [], null);
+        $this->setIfExists('ai_agent_monthly_budget_cents', $data ?? [], null);
     }
 
     /**
@@ -846,6 +895,33 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
         $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_id
+     *
+     * @return string|null
+     */
+    public function getTemplateId()
+    {
+        return $this->container['template_id'];
+    }
+
+    /**
+     * Sets template_id
+     *
+     * @param string|null $template_id template_id
+     *
+     * @return self
+     */
+    public function setTemplateId($template_id)
+    {
+        if (is_null($template_id)) {
+            throw new \InvalidArgumentException('non-nullable template_id cannot be null');
+        }
+        $this->container['template_id'] = $template_id;
 
         return $this;
     }
@@ -2040,6 +2116,60 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets flex_llm_cost_cents
+     *
+     * @return float|null
+     */
+    public function getFlexLlmCostCents()
+    {
+        return $this->container['flex_llm_cost_cents'];
+    }
+
+    /**
+     * Sets flex_llm_cost_cents
+     *
+     * @param float|null $flex_llm_cost_cents flex_llm_cost_cents
+     *
+     * @return self
+     */
+    public function setFlexLlmCostCents($flex_llm_cost_cents)
+    {
+        if (is_null($flex_llm_cost_cents)) {
+            throw new \InvalidArgumentException('non-nullable flex_llm_cost_cents cannot be null');
+        }
+        $this->container['flex_llm_cost_cents'] = $flex_llm_cost_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets flex_llm_unit
+     *
+     * @return float|null
+     */
+    public function getFlexLlmUnit()
+    {
+        return $this->container['flex_llm_unit'];
+    }
+
+    /**
+     * Sets flex_llm_unit
+     *
+     * @param float|null $flex_llm_unit flex_llm_unit
+     *
+     * @return self
+     */
+    public function setFlexLlmUnit($flex_llm_unit)
+    {
+        if (is_null($flex_llm_unit)) {
+            throw new \InvalidArgumentException('non-nullable flex_llm_unit cannot be null');
+        }
+        $this->container['flex_llm_unit'] = $flex_llm_unit;
+
+        return $this;
+    }
+
+    /**
      * Gets flex_minimum_cost_cents
      *
      * @return float|null
@@ -2224,6 +2354,114 @@ class TenantPackage implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable is_sso_billing_monthly_active_users cannot be null');
         }
         $this->container['is_sso_billing_monthly_active_users'] = $is_sso_billing_monthly_active_users;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_ai_agents
+     *
+     * @return bool|null
+     */
+    public function getHasAiAgents()
+    {
+        return $this->container['has_ai_agents'];
+    }
+
+    /**
+     * Sets has_ai_agents
+     *
+     * @param bool|null $has_ai_agents has_ai_agents
+     *
+     * @return self
+     */
+    public function setHasAiAgents($has_ai_agents)
+    {
+        if (is_null($has_ai_agents)) {
+            throw new \InvalidArgumentException('non-nullable has_ai_agents cannot be null');
+        }
+        $this->container['has_ai_agents'] = $has_ai_agents;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_ai_agents
+     *
+     * @return float|null
+     */
+    public function getMaxAiAgents()
+    {
+        return $this->container['max_ai_agents'];
+    }
+
+    /**
+     * Sets max_ai_agents
+     *
+     * @param float|null $max_ai_agents max_ai_agents
+     *
+     * @return self
+     */
+    public function setMaxAiAgents($max_ai_agents)
+    {
+        if (is_null($max_ai_agents)) {
+            throw new \InvalidArgumentException('non-nullable max_ai_agents cannot be null');
+        }
+        $this->container['max_ai_agents'] = $max_ai_agents;
+
+        return $this;
+    }
+
+    /**
+     * Gets ai_agent_daily_budget_cents
+     *
+     * @return float|null
+     */
+    public function getAiAgentDailyBudgetCents()
+    {
+        return $this->container['ai_agent_daily_budget_cents'];
+    }
+
+    /**
+     * Sets ai_agent_daily_budget_cents
+     *
+     * @param float|null $ai_agent_daily_budget_cents ai_agent_daily_budget_cents
+     *
+     * @return self
+     */
+    public function setAiAgentDailyBudgetCents($ai_agent_daily_budget_cents)
+    {
+        if (is_null($ai_agent_daily_budget_cents)) {
+            throw new \InvalidArgumentException('non-nullable ai_agent_daily_budget_cents cannot be null');
+        }
+        $this->container['ai_agent_daily_budget_cents'] = $ai_agent_daily_budget_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets ai_agent_monthly_budget_cents
+     *
+     * @return float|null
+     */
+    public function getAiAgentMonthlyBudgetCents()
+    {
+        return $this->container['ai_agent_monthly_budget_cents'];
+    }
+
+    /**
+     * Sets ai_agent_monthly_budget_cents
+     *
+     * @param float|null $ai_agent_monthly_budget_cents ai_agent_monthly_budget_cents
+     *
+     * @return self
+     */
+    public function setAiAgentMonthlyBudgetCents($ai_agent_monthly_budget_cents)
+    {
+        if (is_null($ai_agent_monthly_budget_cents)) {
+            throw new \InvalidArgumentException('non-nullable ai_agent_monthly_budget_cents cannot be null');
+        }
+        $this->container['ai_agent_monthly_budget_cents'] = $ai_agent_monthly_budget_cents;
 
         return $this;
     }

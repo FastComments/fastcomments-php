@@ -10,22 +10,39 @@ All URIs are relative to https://fastcomments.com, except if the operation defin
 | [**checkedCommentsForBlocked()**](PublicApi.md#checkedCommentsForBlocked) | **GET** /check-blocked-comments |  |
 | [**createCommentPublic()**](PublicApi.md#createCommentPublic) | **POST** /comments/{tenantId} |  |
 | [**createFeedPostPublic()**](PublicApi.md#createFeedPostPublic) | **POST** /feed-posts/{tenantId} |  |
+| [**createV1PageReact()**](PublicApi.md#createV1PageReact) | **POST** /page-reacts/v1/likes/{tenantId} |  |
+| [**createV2PageReact()**](PublicApi.md#createV2PageReact) | **POST** /page-reacts/v2/{tenantId} |  |
 | [**deleteCommentPublic()**](PublicApi.md#deleteCommentPublic) | **DELETE** /comments/{tenantId}/{commentId} |  |
 | [**deleteCommentVote()**](PublicApi.md#deleteCommentVote) | **DELETE** /comments/{tenantId}/{commentId}/vote/{voteId} |  |
 | [**deleteFeedPostPublic()**](PublicApi.md#deleteFeedPostPublic) | **DELETE** /feed-posts/{tenantId}/{postId} |  |
+| [**deleteV1PageReact()**](PublicApi.md#deleteV1PageReact) | **DELETE** /page-reacts/v1/likes/{tenantId} |  |
+| [**deleteV2PageReact()**](PublicApi.md#deleteV2PageReact) | **DELETE** /page-reacts/v2/{tenantId} |  |
 | [**flagCommentPublic()**](PublicApi.md#flagCommentPublic) | **POST** /flag-comment/{commentId} |  |
 | [**getCommentText()**](PublicApi.md#getCommentText) | **GET** /comments/{tenantId}/{commentId}/text |  |
 | [**getCommentVoteUserNames()**](PublicApi.md#getCommentVoteUserNames) | **GET** /comments/{tenantId}/{commentId}/votes |  |
+| [**getCommentsForUser()**](PublicApi.md#getCommentsForUser) | **GET** /comments-for-user |  |
 | [**getCommentsPublic()**](PublicApi.md#getCommentsPublic) | **GET** /comments/{tenantId} |  |
 | [**getEventLog()**](PublicApi.md#getEventLog) | **GET** /event-log/{tenantId} |  |
 | [**getFeedPostsPublic()**](PublicApi.md#getFeedPostsPublic) | **GET** /feed-posts/{tenantId} |  |
 | [**getFeedPostsStats()**](PublicApi.md#getFeedPostsStats) | **GET** /feed-posts/{tenantId}/stats |  |
+| [**getGifLarge()**](PublicApi.md#getGifLarge) | **GET** /gifs/get-large/{tenantId} |  |
+| [**getGifsSearch()**](PublicApi.md#getGifsSearch) | **GET** /gifs/search/{tenantId} |  |
+| [**getGifsTrending()**](PublicApi.md#getGifsTrending) | **GET** /gifs/trending/{tenantId} |  |
 | [**getGlobalEventLog()**](PublicApi.md#getGlobalEventLog) | **GET** /event-log/global/{tenantId} |  |
+| [**getOfflineUsers()**](PublicApi.md#getOfflineUsers) | **GET** /pages/{tenantId}/users/offline |  |
+| [**getOnlineUsers()**](PublicApi.md#getOnlineUsers) | **GET** /pages/{tenantId}/users/online |  |
+| [**getPagesPublic()**](PublicApi.md#getPagesPublic) | **GET** /pages/{tenantId} |  |
+| [**getTranslations()**](PublicApi.md#getTranslations) | **GET** /translations/{namespace}/{component} |  |
 | [**getUserNotificationCount()**](PublicApi.md#getUserNotificationCount) | **GET** /user-notifications/get-count |  |
 | [**getUserNotifications()**](PublicApi.md#getUserNotifications) | **GET** /user-notifications |  |
 | [**getUserPresenceStatuses()**](PublicApi.md#getUserPresenceStatuses) | **GET** /user-presence-status |  |
 | [**getUserReactsPublic()**](PublicApi.md#getUserReactsPublic) | **GET** /feed-posts/{tenantId}/user-reacts |  |
+| [**getUsersInfo()**](PublicApi.md#getUsersInfo) | **GET** /pages/{tenantId}/users/info |  |
+| [**getV1PageLikes()**](PublicApi.md#getV1PageLikes) | **GET** /page-reacts/v1/likes/{tenantId} |  |
+| [**getV2PageReactUsers()**](PublicApi.md#getV2PageReactUsers) | **GET** /page-reacts/v2/{tenantId}/list |  |
+| [**getV2PageReacts()**](PublicApi.md#getV2PageReacts) | **GET** /page-reacts/v2/{tenantId} |  |
 | [**lockComment()**](PublicApi.md#lockComment) | **POST** /comments/{tenantId}/{commentId}/lock |  |
+| [**logoutPublic()**](PublicApi.md#logoutPublic) | **PUT** /auth/logout |  |
 | [**pinComment()**](PublicApi.md#pinComment) | **POST** /comments/{tenantId}/{commentId}/pin |  |
 | [**reactFeedPostPublic()**](PublicApi.md#reactFeedPostPublic) | **POST** /feed-posts/{tenantId}/react/{postId} |  |
 | [**resetUserNotificationCount()**](PublicApi.md#resetUserNotificationCount) | **POST** /user-notifications/reset-count |  |
@@ -46,7 +63,7 @@ All URIs are relative to https://fastcomments.com, except if the operation defin
 ## `blockFromCommentPublic()`
 
 ```php
-blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \FastComments\Client\Model\BlockFromCommentPublic200Response
+blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \FastComments\Client\Model\BlockSuccess
 ```
 
 
@@ -88,7 +105,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\BlockFromCommentPublic200Response**](../Model/BlockFromCommentPublic200Response.md)
+[**\FastComments\Client\Model\BlockSuccess**](../Model/BlockSuccess.md)
 
 ### Authorization
 
@@ -106,7 +123,7 @@ No authorization required
 ## `checkedCommentsForBlocked()`
 
 ```php
-checkedCommentsForBlocked($tenant_id, $comment_ids, $sso): \FastComments\Client\Model\CheckedCommentsForBlocked200Response
+checkedCommentsForBlocked($tenant_id, $comment_ids, $sso): \FastComments\Client\Model\CheckBlockedCommentsResponse
 ```
 
 
@@ -146,7 +163,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CheckedCommentsForBlocked200Response**](../Model/CheckedCommentsForBlocked200Response.md)
+[**\FastComments\Client\Model\CheckBlockedCommentsResponse**](../Model/CheckBlockedCommentsResponse.md)
 
 ### Authorization
 
@@ -164,7 +181,7 @@ No authorization required
 ## `createCommentPublic()`
 
 ```php
-createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $session_id, $sso): \FastComments\Client\Model\CreateCommentPublic200Response
+createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $session_id, $sso): \FastComments\Client\Model\SaveCommentsResponseWithPresence
 ```
 
 
@@ -210,7 +227,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateCommentPublic200Response**](../Model/CreateCommentPublic200Response.md)
+[**\FastComments\Client\Model\SaveCommentsResponseWithPresence**](../Model/SaveCommentsResponseWithPresence.md)
 
 ### Authorization
 
@@ -228,7 +245,7 @@ No authorization required
 ## `createFeedPostPublic()`
 
 ```php
-createFeedPostPublic($tenant_id, $create_feed_post_params, $broadcast_id, $sso): \FastComments\Client\Model\CreateFeedPostPublic200Response
+createFeedPostPublic($tenant_id, $create_feed_post_params, $broadcast_id, $sso): \FastComments\Client\Model\CreateFeedPostResponse
 ```
 
 
@@ -270,7 +287,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateFeedPostPublic200Response**](../Model/CreateFeedPostPublic200Response.md)
+[**\FastComments\Client\Model\CreateFeedPostResponse**](../Model/CreateFeedPostResponse.md)
 
 ### Authorization
 
@@ -285,10 +302,128 @@ No authorization required
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createV1PageReact()`
+
+```php
+createV1PageReact($tenant_id, $url_id, $title): \FastComments\Client\Model\CreateV1PageReact
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$title = 'title_example'; // string
+
+try {
+    $result = $apiInstance->createV1PageReact($tenant_id, $url_id, $title);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->createV1PageReact: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id** | **string**|  | |
+| **title** | **string**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\CreateV1PageReact**](../Model/CreateV1PageReact.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createV2PageReact()`
+
+```php
+createV2PageReact($tenant_id, $url_id, $id, $title): \FastComments\Client\Model\CreateV1PageReact
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$id = 'id_example'; // string
+$title = 'title_example'; // string
+
+try {
+    $result = $apiInstance->createV2PageReact($tenant_id, $url_id, $id, $title);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->createV2PageReact: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id** | **string**|  | |
+| **id** | **string**|  | |
+| **title** | **string**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\CreateV1PageReact**](../Model/CreateV1PageReact.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteCommentPublic()`
 
 ```php
-deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $edit_key, $sso): \FastComments\Client\Model\DeleteCommentPublic200Response
+deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $edit_key, $sso): \FastComments\Client\Model\PublicAPIDeleteCommentResponse
 ```
 
 
@@ -332,7 +467,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\DeleteCommentPublic200Response**](../Model/DeleteCommentPublic200Response.md)
+[**\FastComments\Client\Model\PublicAPIDeleteCommentResponse**](../Model/PublicAPIDeleteCommentResponse.md)
 
 ### Authorization
 
@@ -350,7 +485,7 @@ No authorization required
 ## `deleteCommentVote()`
 
 ```php
-deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $edit_key, $sso): \FastComments\Client\Model\DeleteCommentVote200Response
+deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $edit_key, $sso): \FastComments\Client\Model\VoteDeleteResponse
 ```
 
 
@@ -398,7 +533,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\DeleteCommentVote200Response**](../Model/DeleteCommentVote200Response.md)
+[**\FastComments\Client\Model\VoteDeleteResponse**](../Model/VoteDeleteResponse.md)
 
 ### Authorization
 
@@ -416,7 +551,7 @@ No authorization required
 ## `deleteFeedPostPublic()`
 
 ```php
-deleteFeedPostPublic($tenant_id, $post_id, $broadcast_id, $sso): \FastComments\Client\Model\DeleteFeedPostPublic200Response
+deleteFeedPostPublic($tenant_id, $post_id, $broadcast_id, $sso): \FastComments\Client\Model\DeleteFeedPostPublicResponse
 ```
 
 
@@ -458,7 +593,121 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\DeleteFeedPostPublic200Response**](../Model/DeleteFeedPostPublic200Response.md)
+[**\FastComments\Client\Model\DeleteFeedPostPublicResponse**](../Model/DeleteFeedPostPublicResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteV1PageReact()`
+
+```php
+deleteV1PageReact($tenant_id, $url_id): \FastComments\Client\Model\CreateV1PageReact
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+
+try {
+    $result = $apiInstance->deleteV1PageReact($tenant_id, $url_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->deleteV1PageReact: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id** | **string**|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\CreateV1PageReact**](../Model/CreateV1PageReact.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteV2PageReact()`
+
+```php
+deleteV2PageReact($tenant_id, $url_id, $id): \FastComments\Client\Model\CreateV1PageReact
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->deleteV2PageReact($tenant_id, $url_id, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->deleteV2PageReact: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id** | **string**|  | |
+| **id** | **string**|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\CreateV1PageReact**](../Model/CreateV1PageReact.md)
 
 ### Authorization
 
@@ -476,7 +725,7 @@ No authorization required
 ## `flagCommentPublic()`
 
 ```php
-flagCommentPublic($tenant_id, $comment_id, $is_flagged, $sso): \FastComments\Client\Model\FlagCommentPublic200Response
+flagCommentPublic($tenant_id, $comment_id, $is_flagged, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -518,7 +767,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\FlagCommentPublic200Response**](../Model/FlagCommentPublic200Response.md)
+[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
 
 ### Authorization
 
@@ -536,7 +785,7 @@ No authorization required
 ## `getCommentText()`
 
 ```php
-getCommentText($tenant_id, $comment_id, $edit_key, $sso): \FastComments\Client\Model\GetCommentText200Response
+getCommentText($tenant_id, $comment_id, $edit_key, $sso): \FastComments\Client\Model\PublicAPIGetCommentTextResponse
 ```
 
 
@@ -578,7 +827,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetCommentText200Response**](../Model/GetCommentText200Response.md)
+[**\FastComments\Client\Model\PublicAPIGetCommentTextResponse**](../Model/PublicAPIGetCommentTextResponse.md)
 
 ### Authorization
 
@@ -596,7 +845,7 @@ No authorization required
 ## `getCommentVoteUserNames()`
 
 ```php
-getCommentVoteUserNames($tenant_id, $comment_id, $dir, $sso): \FastComments\Client\Model\GetCommentVoteUserNames200Response
+getCommentVoteUserNames($tenant_id, $comment_id, $dir, $sso): \FastComments\Client\Model\GetCommentVoteUserNamesSuccessResponse
 ```
 
 
@@ -638,7 +887,73 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetCommentVoteUserNames200Response**](../Model/GetCommentVoteUserNames200Response.md)
+[**\FastComments\Client\Model\GetCommentVoteUserNamesSuccessResponse**](../Model/GetCommentVoteUserNamesSuccessResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCommentsForUser()`
+
+```php
+getCommentsForUser($user_id, $direction, $replies_to_user_id, $page, $includei10n, $locale, $is_crawler): \FastComments\Client\Model\GetCommentsForUserResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$user_id = 'user_id_example'; // string
+$direction = new \FastComments\Client\Model\\FastComments\Client\Model\SortDirections(); // \FastComments\Client\Model\SortDirections
+$replies_to_user_id = 'replies_to_user_id_example'; // string
+$page = 3.4; // float
+$includei10n = True; // bool
+$locale = 'locale_example'; // string
+$is_crawler = True; // bool
+
+try {
+    $result = $apiInstance->getCommentsForUser($user_id, $direction, $replies_to_user_id, $page, $includei10n, $locale, $is_crawler);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getCommentsForUser: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **user_id** | **string**|  | [optional] |
+| **direction** | [**\FastComments\Client\Model\SortDirections**](../Model/.md)|  | [optional] |
+| **replies_to_user_id** | **string**|  | [optional] |
+| **page** | **float**|  | [optional] |
+| **includei10n** | **bool**|  | [optional] |
+| **locale** | **string**|  | [optional] |
+| **is_crawler** | **bool**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\GetCommentsForUserResponse**](../Model/GetCommentsForUserResponse.md)
 
 ### Authorization
 
@@ -656,7 +971,7 @@ No authorization required
 ## `getCommentsPublic()`
 
 ```php
-getCommentsPublic($tenant_id, $url_id, $page, $direction, $sso, $skip, $skip_children, $limit, $limit_children, $count_children, $fetch_page_for_comment_id, $include_config, $count_all, $includei10n, $locale, $modules, $is_crawler, $include_notification_count, $as_tree, $max_tree_depth, $use_full_translation_ids, $parent_id, $search_text, $hash_tags, $user_id, $custom_config_str, $after_comment_id, $before_comment_id): \FastComments\Client\Model\GetCommentsPublic200Response
+getCommentsPublic($tenant_id, $url_id, $page, $direction, $sso, $skip, $skip_children, $limit, $limit_children, $count_children, $fetch_page_for_comment_id, $include_config, $count_all, $includei10n, $locale, $modules, $is_crawler, $include_notification_count, $as_tree, $max_tree_depth, $use_full_translation_ids, $parent_id, $search_text, $hash_tags, $user_id, $custom_config_str, $after_comment_id, $before_comment_id): \FastComments\Client\Model\GetCommentsResponseWithPresencePublicComment
 ```
 
 
@@ -748,7 +1063,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetCommentsPublic200Response**](../Model/GetCommentsPublic200Response.md)
+[**\FastComments\Client\Model\GetCommentsResponseWithPresencePublicComment**](../Model/GetCommentsResponseWithPresencePublicComment.md)
 
 ### Authorization
 
@@ -766,7 +1081,7 @@ No authorization required
 ## `getEventLog()`
 
 ```php
-getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \FastComments\Client\Model\GetEventLog200Response
+getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \FastComments\Client\Model\GetEventLogResponse
 ```
 
 
@@ -808,11 +1123,11 @@ try {
 | **url_id** | **string**|  | |
 | **user_id_ws** | **string**|  | |
 | **start_time** | **int**|  | |
-| **end_time** | **int**|  | |
+| **end_time** | **int**|  | [optional] |
 
 ### Return type
 
-[**\FastComments\Client\Model\GetEventLog200Response**](../Model/GetEventLog200Response.md)
+[**\FastComments\Client\Model\GetEventLogResponse**](../Model/GetEventLogResponse.md)
 
 ### Authorization
 
@@ -830,7 +1145,7 @@ No authorization required
 ## `getFeedPostsPublic()`
 
 ```php
-getFeedPostsPublic($tenant_id, $after_id, $limit, $tags, $sso, $is_crawler, $include_user_info): \FastComments\Client\Model\GetFeedPostsPublic200Response
+getFeedPostsPublic($tenant_id, $after_id, $limit, $tags, $sso, $is_crawler, $include_user_info): \FastComments\Client\Model\PublicFeedPostsResponse
 ```
 
 
@@ -880,7 +1195,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetFeedPostsPublic200Response**](../Model/GetFeedPostsPublic200Response.md)
+[**\FastComments\Client\Model\PublicFeedPostsResponse**](../Model/PublicFeedPostsResponse.md)
 
 ### Authorization
 
@@ -898,7 +1213,7 @@ No authorization required
 ## `getFeedPostsStats()`
 
 ```php
-getFeedPostsStats($tenant_id, $post_ids, $sso): \FastComments\Client\Model\GetFeedPostsStats200Response
+getFeedPostsStats($tenant_id, $post_ids, $sso): \FastComments\Client\Model\FeedPostsStatsResponse
 ```
 
 
@@ -938,7 +1253,185 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetFeedPostsStats200Response**](../Model/GetFeedPostsStats200Response.md)
+[**\FastComments\Client\Model\FeedPostsStatsResponse**](../Model/FeedPostsStatsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getGifLarge()`
+
+```php
+getGifLarge($tenant_id, $large_internal_url_sanitized): \FastComments\Client\Model\GifGetLargeResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$large_internal_url_sanitized = 'large_internal_url_sanitized_example'; // string
+
+try {
+    $result = $apiInstance->getGifLarge($tenant_id, $large_internal_url_sanitized);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getGifLarge: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **large_internal_url_sanitized** | **string**|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\GifGetLargeResponse**](../Model/GifGetLargeResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getGifsSearch()`
+
+```php
+getGifsSearch($tenant_id, $search, $locale, $rating, $page): \FastComments\Client\Model\GetGifsSearchResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$search = 'search_example'; // string
+$locale = 'locale_example'; // string
+$rating = 'rating_example'; // string
+$page = 3.4; // float
+
+try {
+    $result = $apiInstance->getGifsSearch($tenant_id, $search, $locale, $rating, $page);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getGifsSearch: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **search** | **string**|  | |
+| **locale** | **string**|  | [optional] |
+| **rating** | **string**|  | [optional] |
+| **page** | **float**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\GetGifsSearchResponse**](../Model/GetGifsSearchResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getGifsTrending()`
+
+```php
+getGifsTrending($tenant_id, $locale, $rating, $page): \FastComments\Client\Model\GetGifsTrendingResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$locale = 'locale_example'; // string
+$rating = 'rating_example'; // string
+$page = 3.4; // float
+
+try {
+    $result = $apiInstance->getGifsTrending($tenant_id, $locale, $rating, $page);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getGifsTrending: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **locale** | **string**|  | [optional] |
+| **rating** | **string**|  | [optional] |
+| **page** | **float**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\GetGifsTrendingResponse**](../Model/GetGifsTrendingResponse.md)
 
 ### Authorization
 
@@ -956,7 +1449,7 @@ No authorization required
 ## `getGlobalEventLog()`
 
 ```php
-getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \FastComments\Client\Model\GetEventLog200Response
+getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \FastComments\Client\Model\GetEventLogResponse
 ```
 
 
@@ -998,11 +1491,261 @@ try {
 | **url_id** | **string**|  | |
 | **user_id_ws** | **string**|  | |
 | **start_time** | **int**|  | |
-| **end_time** | **int**|  | |
+| **end_time** | **int**|  | [optional] |
 
 ### Return type
 
-[**\FastComments\Client\Model\GetEventLog200Response**](../Model/GetEventLog200Response.md)
+[**\FastComments\Client\Model\GetEventLogResponse**](../Model/GetEventLogResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getOfflineUsers()`
+
+```php
+getOfflineUsers($tenant_id, $url_id, $after_name, $after_user_id): \FastComments\Client\Model\PageUsersOfflineResponse
+```
+
+
+
+Past commenters on the page who are NOT currently online. Sorted by displayName. Use this after exhausting /users/online to render a \"Members\" section. Cursor pagination on commenterName: server walks the partial {tenantId, urlId, commenterName} index from afterName forward via $gt, no $skip cost.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string | Page URL identifier (cleaned server-side).
+$after_name = 'after_name_example'; // string | Cursor: pass nextAfterName from the previous response.
+$after_user_id = 'after_user_id_example'; // string | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries.
+
+try {
+    $result = $apiInstance->getOfflineUsers($tenant_id, $url_id, $after_name, $after_user_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getOfflineUsers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id** | **string**| Page URL identifier (cleaned server-side). | |
+| **after_name** | **string**| Cursor: pass nextAfterName from the previous response. | [optional] |
+| **after_user_id** | **string**| Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don&#39;t drop entries. | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\PageUsersOfflineResponse**](../Model/PageUsersOfflineResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getOnlineUsers()`
+
+```php
+getOnlineUsers($tenant_id, $url_id, $after_name, $after_user_id): \FastComments\Client\Model\PageUsersOnlineResponse
+```
+
+
+
+Currently-online viewers of a page: people whose websocket session is subscribed to the page right now. Returns anonCount + totalCount (room-wide subscribers, including anon viewers we don't enumerate).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string | Page URL identifier (cleaned server-side).
+$after_name = 'after_name_example'; // string | Cursor: pass nextAfterName from the previous response.
+$after_user_id = 'after_user_id_example'; // string | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries.
+
+try {
+    $result = $apiInstance->getOnlineUsers($tenant_id, $url_id, $after_name, $after_user_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getOnlineUsers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id** | **string**| Page URL identifier (cleaned server-side). | |
+| **after_name** | **string**| Cursor: pass nextAfterName from the previous response. | [optional] |
+| **after_user_id** | **string**| Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don&#39;t drop entries. | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\PageUsersOnlineResponse**](../Model/PageUsersOnlineResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getPagesPublic()`
+
+```php
+getPagesPublic($tenant_id, $cursor, $limit, $q, $sort_by, $has_comments): \FastComments\Client\Model\GetPublicPagesResponse
+```
+
+
+
+List pages for a tenant. Used by the FChat desktop client to populate its room list. Requires `enableFChat` to be true on the resolved custom config for each page. Pages that require SSO are filtered against the requesting user's group access.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$cursor = 'cursor_example'; // string | Opaque pagination cursor returned as `nextCursor` from a prior request. Tied to the same `sortBy`.
+$limit = 56; // int | 1..200, default 50
+$q = 'q_example'; // string | Optional case-insensitive title prefix filter.
+$sort_by = new \FastComments\Client\Model\\FastComments\Client\Model\PagesSortBy(); // \FastComments\Client\Model\PagesSortBy | Sort order. `updatedAt` (default, newest first), `commentCount` (most comments first), or `title` (alphabetical).
+$has_comments = True; // bool | If true, only return pages with at least one comment.
+
+try {
+    $result = $apiInstance->getPagesPublic($tenant_id, $cursor, $limit, $q, $sort_by, $has_comments);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getPagesPublic: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **cursor** | **string**| Opaque pagination cursor returned as &#x60;nextCursor&#x60; from a prior request. Tied to the same &#x60;sortBy&#x60;. | [optional] |
+| **limit** | **int**| 1..200, default 50 | [optional] |
+| **q** | **string**| Optional case-insensitive title prefix filter. | [optional] |
+| **sort_by** | [**\FastComments\Client\Model\PagesSortBy**](../Model/.md)| Sort order. &#x60;updatedAt&#x60; (default, newest first), &#x60;commentCount&#x60; (most comments first), or &#x60;title&#x60; (alphabetical). | [optional] |
+| **has_comments** | **bool**| If true, only return pages with at least one comment. | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\GetPublicPagesResponse**](../Model/GetPublicPagesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTranslations()`
+
+```php
+getTranslations($namespace, $component, $locale, $use_full_translation_ids): \FastComments\Client\Model\GetTranslationsResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$namespace = 'namespace_example'; // string
+$component = 'component_example'; // string
+$locale = 'locale_example'; // string
+$use_full_translation_ids = True; // bool
+
+try {
+    $result = $apiInstance->getTranslations($namespace, $component, $locale, $use_full_translation_ids);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getTranslations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **namespace** | **string**|  | |
+| **component** | **string**|  | |
+| **locale** | **string**|  | [optional] |
+| **use_full_translation_ids** | **bool**|  | [optional] |
+
+### Return type
+
+[**\FastComments\Client\Model\GetTranslationsResponse**](../Model/GetTranslationsResponse.md)
 
 ### Authorization
 
@@ -1020,7 +1763,7 @@ No authorization required
 ## `getUserNotificationCount()`
 
 ```php
-getUserNotificationCount($tenant_id, $sso): \FastComments\Client\Model\GetUserNotificationCount200Response
+getUserNotificationCount($tenant_id, $sso): \FastComments\Client\Model\GetUserNotificationCountResponse
 ```
 
 
@@ -1058,7 +1801,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetUserNotificationCount200Response**](../Model/GetUserNotificationCount200Response.md)
+[**\FastComments\Client\Model\GetUserNotificationCountResponse**](../Model/GetUserNotificationCountResponse.md)
 
 ### Authorization
 
@@ -1076,7 +1819,7 @@ No authorization required
 ## `getUserNotifications()`
 
 ```php
-getUserNotifications($tenant_id, $page_size, $after_id, $include_context, $after_created_at, $unread_only, $dm_only, $no_dm, $include_translations, $sso): \FastComments\Client\Model\GetUserNotifications200Response
+getUserNotifications($tenant_id, $url_id, $page_size, $after_id, $include_context, $after_created_at, $unread_only, $dm_only, $no_dm, $include_translations, $include_tenant_notifications, $sso): \FastComments\Client\Model\GetMyNotificationsResponse
 ```
 
 
@@ -1095,6 +1838,7 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 $tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string | Used to determine whether the current page is subscribed.
 $page_size = 56; // int
 $after_id = 'after_id_example'; // string
 $include_context = True; // bool
@@ -1103,10 +1847,11 @@ $unread_only = True; // bool
 $dm_only = True; // bool
 $no_dm = True; // bool
 $include_translations = True; // bool
+$include_tenant_notifications = True; // bool
 $sso = 'sso_example'; // string
 
 try {
-    $result = $apiInstance->getUserNotifications($tenant_id, $page_size, $after_id, $include_context, $after_created_at, $unread_only, $dm_only, $no_dm, $include_translations, $sso);
+    $result = $apiInstance->getUserNotifications($tenant_id, $url_id, $page_size, $after_id, $include_context, $after_created_at, $unread_only, $dm_only, $no_dm, $include_translations, $include_tenant_notifications, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getUserNotifications: ', $e->getMessage(), PHP_EOL;
@@ -1118,6 +1863,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **tenant_id** | **string**|  | |
+| **url_id** | **string**| Used to determine whether the current page is subscribed. | [optional] |
 | **page_size** | **int**|  | [optional] |
 | **after_id** | **string**|  | [optional] |
 | **include_context** | **bool**|  | [optional] |
@@ -1126,11 +1872,12 @@ try {
 | **dm_only** | **bool**|  | [optional] |
 | **no_dm** | **bool**|  | [optional] |
 | **include_translations** | **bool**|  | [optional] |
+| **include_tenant_notifications** | **bool**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
 
-[**\FastComments\Client\Model\GetUserNotifications200Response**](../Model/GetUserNotifications200Response.md)
+[**\FastComments\Client\Model\GetMyNotificationsResponse**](../Model/GetMyNotificationsResponse.md)
 
 ### Authorization
 
@@ -1148,7 +1895,7 @@ No authorization required
 ## `getUserPresenceStatuses()`
 
 ```php
-getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids): \FastComments\Client\Model\GetUserPresenceStatuses200Response
+getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids): \FastComments\Client\Model\GetUserPresenceStatusesResponse
 ```
 
 
@@ -1188,7 +1935,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetUserPresenceStatuses200Response**](../Model/GetUserPresenceStatuses200Response.md)
+[**\FastComments\Client\Model\GetUserPresenceStatusesResponse**](../Model/GetUserPresenceStatusesResponse.md)
 
 ### Authorization
 
@@ -1206,7 +1953,7 @@ No authorization required
 ## `getUserReactsPublic()`
 
 ```php
-getUserReactsPublic($tenant_id, $post_ids, $sso): \FastComments\Client\Model\GetUserReactsPublic200Response
+getUserReactsPublic($tenant_id, $post_ids, $sso): \FastComments\Client\Model\UserReactsResponse
 ```
 
 
@@ -1246,7 +1993,235 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetUserReactsPublic200Response**](../Model/GetUserReactsPublic200Response.md)
+[**\FastComments\Client\Model\UserReactsResponse**](../Model/UserReactsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getUsersInfo()`
+
+```php
+getUsersInfo($tenant_id, $ids): \FastComments\Client\Model\PageUsersInfoResponse
+```
+
+
+
+Bulk user info for a tenant. Given userIds, return display info from User / SSOUser. Used by the comment widget to enrich users that just appeared via a presence event. No page context: privacy is enforced uniformly (private profiles are masked).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$ids = 'ids_example'; // string | Comma-delimited userIds.
+
+try {
+    $result = $apiInstance->getUsersInfo($tenant_id, $ids);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getUsersInfo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **ids** | **string**| Comma-delimited userIds. | |
+
+### Return type
+
+[**\FastComments\Client\Model\PageUsersInfoResponse**](../Model/PageUsersInfoResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getV1PageLikes()`
+
+```php
+getV1PageLikes($tenant_id, $url_id): \FastComments\Client\Model\GetV1PageLikes
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+
+try {
+    $result = $apiInstance->getV1PageLikes($tenant_id, $url_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getV1PageLikes: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id** | **string**|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\GetV1PageLikes**](../Model/GetV1PageLikes.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getV2PageReactUsers()`
+
+```php
+getV2PageReactUsers($tenant_id, $url_id, $id): \FastComments\Client\Model\GetV2PageReactUsersResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$id = 'id_example'; // string
+
+try {
+    $result = $apiInstance->getV2PageReactUsers($tenant_id, $url_id, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getV2PageReactUsers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id** | **string**|  | |
+| **id** | **string**|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\GetV2PageReactUsersResponse**](../Model/GetV2PageReactUsersResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getV2PageReacts()`
+
+```php
+getV2PageReacts($tenant_id, $url_id): \FastComments\Client\Model\GetV2PageReacts
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+
+try {
+    $result = $apiInstance->getV2PageReacts($tenant_id, $url_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getV2PageReacts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
+| **url_id** | **string**|  | |
+
+### Return type
+
+[**\FastComments\Client\Model\GetV2PageReacts**](../Model/GetV2PageReacts.md)
 
 ### Authorization
 
@@ -1264,7 +2239,7 @@ No authorization required
 ## `lockComment()`
 
 ```php
-lockComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\LockComment200Response
+lockComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -1306,7 +2281,58 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\LockComment200Response**](../Model/LockComment200Response.md)
+[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `logoutPublic()`
+
+```php
+logoutPublic(): \FastComments\Client\Model\APIEmptyResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+
+try {
+    $result = $apiInstance->logoutPublic();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->logoutPublic: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
 
 ### Authorization
 
@@ -1324,7 +2350,7 @@ No authorization required
 ## `pinComment()`
 
 ```php
-pinComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\PinComment200Response
+pinComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\ChangeCommentPinStatusResponse
 ```
 
 
@@ -1366,7 +2392,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PinComment200Response**](../Model/PinComment200Response.md)
+[**\FastComments\Client\Model\ChangeCommentPinStatusResponse**](../Model/ChangeCommentPinStatusResponse.md)
 
 ### Authorization
 
@@ -1384,7 +2410,7 @@ No authorization required
 ## `reactFeedPostPublic()`
 
 ```php
-reactFeedPostPublic($tenant_id, $post_id, $react_body_params, $is_undo, $broadcast_id, $sso): \FastComments\Client\Model\ReactFeedPostPublic200Response
+reactFeedPostPublic($tenant_id, $post_id, $react_body_params, $is_undo, $broadcast_id, $sso): \FastComments\Client\Model\ReactFeedPostResponse
 ```
 
 
@@ -1430,7 +2456,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\ReactFeedPostPublic200Response**](../Model/ReactFeedPostPublic200Response.md)
+[**\FastComments\Client\Model\ReactFeedPostResponse**](../Model/ReactFeedPostResponse.md)
 
 ### Authorization
 
@@ -1448,7 +2474,7 @@ No authorization required
 ## `resetUserNotificationCount()`
 
 ```php
-resetUserNotificationCount($tenant_id, $sso): \FastComments\Client\Model\ResetUserNotifications200Response
+resetUserNotificationCount($tenant_id, $sso): \FastComments\Client\Model\ResetUserNotificationsResponse
 ```
 
 
@@ -1486,7 +2512,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\ResetUserNotifications200Response**](../Model/ResetUserNotifications200Response.md)
+[**\FastComments\Client\Model\ResetUserNotificationsResponse**](../Model/ResetUserNotificationsResponse.md)
 
 ### Authorization
 
@@ -1504,7 +2530,7 @@ No authorization required
 ## `resetUserNotifications()`
 
 ```php
-resetUserNotifications($tenant_id, $after_id, $after_created_at, $unread_only, $dm_only, $no_dm, $sso): \FastComments\Client\Model\ResetUserNotifications200Response
+resetUserNotifications($tenant_id, $after_id, $after_created_at, $unread_only, $dm_only, $no_dm, $sso): \FastComments\Client\Model\ResetUserNotificationsResponse
 ```
 
 
@@ -1552,7 +2578,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\ResetUserNotifications200Response**](../Model/ResetUserNotifications200Response.md)
+[**\FastComments\Client\Model\ResetUserNotificationsResponse**](../Model/ResetUserNotificationsResponse.md)
 
 ### Authorization
 
@@ -1570,7 +2596,7 @@ No authorization required
 ## `searchUsers()`
 
 ```php
-searchUsers($tenant_id, $url_id, $username_starts_with, $mention_group_ids, $sso, $search_section): \FastComments\Client\Model\SearchUsers200Response
+searchUsers($tenant_id, $url_id, $username_starts_with, $mention_group_ids, $sso, $search_section): \FastComments\Client\Model\SearchUsersResult
 ```
 
 
@@ -1616,7 +2642,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\SearchUsers200Response**](../Model/SearchUsers200Response.md)
+[**\FastComments\Client\Model\SearchUsersResult**](../Model/SearchUsersResult.md)
 
 ### Authorization
 
@@ -1634,7 +2660,7 @@ No authorization required
 ## `setCommentText()`
 
 ```php
-setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key, $sso): \FastComments\Client\Model\SetCommentText200Response
+setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key, $sso): \FastComments\Client\Model\PublicAPISetCommentTextResponse
 ```
 
 
@@ -1680,7 +2706,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\SetCommentText200Response**](../Model/SetCommentText200Response.md)
+[**\FastComments\Client\Model\PublicAPISetCommentTextResponse**](../Model/PublicAPISetCommentTextResponse.md)
 
 ### Authorization
 
@@ -1698,7 +2724,7 @@ No authorization required
 ## `unBlockCommentPublic()`
 
 ```php
-unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \FastComments\Client\Model\UnBlockCommentPublic200Response
+unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \FastComments\Client\Model\UnblockSuccess
 ```
 
 
@@ -1740,7 +2766,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\UnBlockCommentPublic200Response**](../Model/UnBlockCommentPublic200Response.md)
+[**\FastComments\Client\Model\UnblockSuccess**](../Model/UnblockSuccess.md)
 
 ### Authorization
 
@@ -1758,7 +2784,7 @@ No authorization required
 ## `unLockComment()`
 
 ```php
-unLockComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\LockComment200Response
+unLockComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -1800,7 +2826,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\LockComment200Response**](../Model/LockComment200Response.md)
+[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
 
 ### Authorization
 
@@ -1818,7 +2844,7 @@ No authorization required
 ## `unPinComment()`
 
 ```php
-unPinComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\PinComment200Response
+unPinComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\ChangeCommentPinStatusResponse
 ```
 
 
@@ -1860,7 +2886,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PinComment200Response**](../Model/PinComment200Response.md)
+[**\FastComments\Client\Model\ChangeCommentPinStatusResponse**](../Model/ChangeCommentPinStatusResponse.md)
 
 ### Authorization
 
@@ -1878,7 +2904,7 @@ No authorization required
 ## `updateFeedPostPublic()`
 
 ```php
-updateFeedPostPublic($tenant_id, $post_id, $update_feed_post_params, $broadcast_id, $sso): \FastComments\Client\Model\CreateFeedPostPublic200Response
+updateFeedPostPublic($tenant_id, $post_id, $update_feed_post_params, $broadcast_id, $sso): \FastComments\Client\Model\CreateFeedPostResponse
 ```
 
 
@@ -1922,7 +2948,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateFeedPostPublic200Response**](../Model/CreateFeedPostPublic200Response.md)
+[**\FastComments\Client\Model\CreateFeedPostResponse**](../Model/CreateFeedPostResponse.md)
 
 ### Authorization
 
@@ -1940,7 +2966,7 @@ No authorization required
 ## `updateUserNotificationCommentSubscriptionStatus()`
 
 ```php
-updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso): \FastComments\Client\Model\UpdateUserNotificationStatus200Response
+updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso): \FastComments\Client\Model\UpdateUserNotificationCommentSubscriptionStatusResponse
 ```
 
 
@@ -1986,7 +3012,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\UpdateUserNotificationStatus200Response**](../Model/UpdateUserNotificationStatus200Response.md)
+[**\FastComments\Client\Model\UpdateUserNotificationCommentSubscriptionStatusResponse**](../Model/UpdateUserNotificationCommentSubscriptionStatusResponse.md)
 
 ### Authorization
 
@@ -2004,7 +3030,7 @@ No authorization required
 ## `updateUserNotificationPageSubscriptionStatus()`
 
 ```php
-updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso): \FastComments\Client\Model\UpdateUserNotificationStatus200Response
+updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso): \FastComments\Client\Model\UpdateUserNotificationPageSubscriptionStatusResponse
 ```
 
 
@@ -2052,7 +3078,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\UpdateUserNotificationStatus200Response**](../Model/UpdateUserNotificationStatus200Response.md)
+[**\FastComments\Client\Model\UpdateUserNotificationPageSubscriptionStatusResponse**](../Model/UpdateUserNotificationPageSubscriptionStatusResponse.md)
 
 ### Authorization
 
@@ -2070,7 +3096,7 @@ No authorization required
 ## `updateUserNotificationStatus()`
 
 ```php
-updateUserNotificationStatus($tenant_id, $notification_id, $new_status, $sso): \FastComments\Client\Model\UpdateUserNotificationStatus200Response
+updateUserNotificationStatus($tenant_id, $notification_id, $new_status, $sso): \FastComments\Client\Model\UpdateUserNotificationStatusResponse
 ```
 
 
@@ -2112,7 +3138,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\UpdateUserNotificationStatus200Response**](../Model/UpdateUserNotificationStatus200Response.md)
+[**\FastComments\Client\Model\UpdateUserNotificationStatusResponse**](../Model/UpdateUserNotificationStatusResponse.md)
 
 ### Authorization
 
@@ -2192,7 +3218,7 @@ No authorization required
 ## `voteComment()`
 
 ```php
-voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $session_id, $sso): \FastComments\Client\Model\VoteComment200Response
+voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $session_id, $sso): \FastComments\Client\Model\VoteResponse
 ```
 
 
@@ -2240,7 +3266,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\VoteComment200Response**](../Model/VoteComment200Response.md)
+[**\FastComments\Client\Model\VoteResponse**](../Model/VoteResponse.md)
 
 ### Authorization
 

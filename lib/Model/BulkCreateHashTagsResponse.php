@@ -59,7 +59,7 @@ class BulkCreateHashTagsResponse implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'status' => '\FastComments\Client\Model\APIStatus',
-        'results' => '\FastComments\Client\Model\AddHashTag200Response[]'
+        'results' => '\FastComments\Client\Model\BulkCreateHashTagsResponseResultsInner[]'
     ];
 
     /**
@@ -333,7 +333,7 @@ class BulkCreateHashTagsResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets results
      *
-     * @return \FastComments\Client\Model\AddHashTag200Response[]
+     * @return \FastComments\Client\Model\BulkCreateHashTagsResponseResultsInner[]
      */
     public function getResults()
     {
@@ -343,7 +343,7 @@ class BulkCreateHashTagsResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets results
      *
-     * @param \FastComments\Client\Model\AddHashTag200Response[] $results results
+     * @param \FastComments\Client\Model\BulkCreateHashTagsResponseResultsInner[] $results results
      *
      * @return self
      */

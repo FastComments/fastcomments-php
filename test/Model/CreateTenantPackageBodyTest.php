@@ -450,18 +450,18 @@ class CreateTenantPackageBodyTest extends TestCase
     }
 
     /**
-     * Test attribute "flex_chat_gpt_cost_cents"
+     * Test attribute "flex_llm_cost_cents"
      */
-    public function testPropertyFlexChatGptCostCents()
+    public function testPropertyFlexLlmCostCents()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "flex_chat_gpt_unit"
+     * Test attribute "flex_llm_unit"
      */
-    public function testPropertyFlexChatGptUnit()
+    public function testPropertyFlexLlmUnit()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

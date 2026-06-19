@@ -306,6 +306,15 @@ class CreateCommentParamsTest extends TestCase
     }
 
     /**
+     * Test attribute "bot_id"
+     */
+    public function testPropertyBotId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "approved"
      */
     public function testPropertyApproved()

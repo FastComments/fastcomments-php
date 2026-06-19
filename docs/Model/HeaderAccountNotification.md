@@ -13,5 +13,6 @@ Name | Type | Description | Notes
 **link_url** | **string** |  |
 **link_text** | **string** |  |
 **created_at** | **\DateTime** |  |
+**type** | **string** | Discriminator for notifications with a special layout/click handler (e.g. \&quot;feedback-offer\&quot;). | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

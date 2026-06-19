@@ -432,6 +432,15 @@ class UserTest extends TestCase
     }
 
     /**
+     * Test attribute "agent_approval_notification_frequency"
+     */
+    public function testPropertyAgentApprovalNotificationFrequency()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "last_tenant_notification_sent_date"
      */
     public function testPropertyLastTenantNotificationSentDate()

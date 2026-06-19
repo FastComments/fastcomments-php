@@ -97,6 +97,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'digest_email_frequency' => '\FastComments\Client\Model\DigestEmailFrequency',
         'notification_frequency' => 'float',
         'admin_notification_frequency' => 'float',
+        'agent_approval_notification_frequency' => '\FastComments\Client\Model\ImportedAgentApprovalNotificationFrequency',
         'last_tenant_notification_sent_date' => '\DateTime',
         'last_reply_notification_sent_date' => '\DateTime',
         'ignored_add_to_my_site_messages' => 'bool',
@@ -166,6 +167,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'digest_email_frequency' => null,
         'notification_frequency' => 'double',
         'admin_notification_frequency' => 'double',
+        'agent_approval_notification_frequency' => null,
         'last_tenant_notification_sent_date' => 'date-time',
         'last_reply_notification_sent_date' => 'date-time',
         'ignored_add_to_my_site_messages' => null,
@@ -233,6 +235,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'digest_email_frequency' => false,
         'notification_frequency' => false,
         'admin_notification_frequency' => false,
+        'agent_approval_notification_frequency' => false,
         'last_tenant_notification_sent_date' => false,
         'last_reply_notification_sent_date' => false,
         'ignored_add_to_my_site_messages' => false,
@@ -380,6 +383,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'digest_email_frequency' => 'digestEmailFrequency',
         'notification_frequency' => 'notificationFrequency',
         'admin_notification_frequency' => 'adminNotificationFrequency',
+        'agent_approval_notification_frequency' => 'agentApprovalNotificationFrequency',
         'last_tenant_notification_sent_date' => 'lastTenantNotificationSentDate',
         'last_reply_notification_sent_date' => 'lastReplyNotificationSentDate',
         'ignored_add_to_my_site_messages' => 'ignoredAddToMySiteMessages',
@@ -447,6 +451,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'digest_email_frequency' => 'setDigestEmailFrequency',
         'notification_frequency' => 'setNotificationFrequency',
         'admin_notification_frequency' => 'setAdminNotificationFrequency',
+        'agent_approval_notification_frequency' => 'setAgentApprovalNotificationFrequency',
         'last_tenant_notification_sent_date' => 'setLastTenantNotificationSentDate',
         'last_reply_notification_sent_date' => 'setLastReplyNotificationSentDate',
         'ignored_add_to_my_site_messages' => 'setIgnoredAddToMySiteMessages',
@@ -514,6 +519,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         'digest_email_frequency' => 'getDigestEmailFrequency',
         'notification_frequency' => 'getNotificationFrequency',
         'admin_notification_frequency' => 'getAdminNotificationFrequency',
+        'agent_approval_notification_frequency' => 'getAgentApprovalNotificationFrequency',
         'last_tenant_notification_sent_date' => 'getLastTenantNotificationSentDate',
         'last_reply_notification_sent_date' => 'getLastReplyNotificationSentDate',
         'ignored_add_to_my_site_messages' => 'getIgnoredAddToMySiteMessages',
@@ -632,6 +638,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('digest_email_frequency', $data ?? [], null);
         $this->setIfExists('notification_frequency', $data ?? [], null);
         $this->setIfExists('admin_notification_frequency', $data ?? [], null);
+        $this->setIfExists('agent_approval_notification_frequency', $data ?? [], null);
         $this->setIfExists('last_tenant_notification_sent_date', $data ?? [], null);
         $this->setIfExists('last_reply_notification_sent_date', $data ?? [], null);
         $this->setIfExists('ignored_add_to_my_site_messages', $data ?? [], null);
@@ -1814,6 +1821,33 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable admin_notification_frequency cannot be null');
         }
         $this->container['admin_notification_frequency'] = $admin_notification_frequency;
+
+        return $this;
+    }
+
+    /**
+     * Gets agent_approval_notification_frequency
+     *
+     * @return \FastComments\Client\Model\ImportedAgentApprovalNotificationFrequency|null
+     */
+    public function getAgentApprovalNotificationFrequency()
+    {
+        return $this->container['agent_approval_notification_frequency'];
+    }
+
+    /**
+     * Sets agent_approval_notification_frequency
+     *
+     * @param \FastComments\Client\Model\ImportedAgentApprovalNotificationFrequency|null $agent_approval_notification_frequency agent_approval_notification_frequency
+     *
+     * @return self
+     */
+    public function setAgentApprovalNotificationFrequency($agent_approval_notification_frequency)
+    {
+        if (is_null($agent_approval_notification_frequency)) {
+            throw new \InvalidArgumentException('non-nullable agent_approval_notification_frequency cannot be null');
+        }
+        $this->container['agent_approval_notification_frequency'] = $agent_approval_notification_frequency;
 
         return $this;
     }

@@ -117,6 +117,15 @@ class TenantPackageTest extends TestCase
     }
 
     /**
+     * Test attribute "template_id"
+     */
+    public function testPropertyTemplateId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "monthly_cost_usd"
      */
     public function testPropertyMonthlyCostUsd()
@@ -504,6 +513,24 @@ class TenantPackageTest extends TestCase
     }
 
     /**
+     * Test attribute "flex_llm_cost_cents"
+     */
+    public function testPropertyFlexLlmCostCents()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "flex_llm_unit"
+     */
+    public function testPropertyFlexLlmUnit()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "flex_minimum_cost_cents"
      */
     public function testPropertyFlexMinimumCostCents()
@@ -561,6 +588,42 @@ class TenantPackageTest extends TestCase
      * Test attribute "is_sso_billing_monthly_active_users"
      */
     public function testPropertyIsSsoBillingMonthlyActiveUsers()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "has_ai_agents"
+     */
+    public function testPropertyHasAiAgents()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "max_ai_agents"
+     */
+    public function testPropertyMaxAiAgents()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "ai_agent_daily_budget_cents"
+     */
+    public function testPropertyAiAgentDailyBudgetCents()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "ai_agent_monthly_budget_cents"
+     */
+    public function testPropertyAiAgentMonthlyBudgetCents()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

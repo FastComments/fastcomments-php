@@ -216,6 +216,15 @@ class CommentLogDataTest extends TestCase
     }
 
     /**
+     * Test attribute "source"
+     */
+    public function testPropertySource()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "rule"
      */
     public function testPropertyRule()

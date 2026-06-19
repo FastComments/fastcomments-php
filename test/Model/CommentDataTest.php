@@ -304,4 +304,13 @@ class CommentDataTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "bot_id"
+     */
+    public function testPropertyBotId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

@@ -73,7 +73,55 @@ try {
 
 ```
 
-## API Endpoints
+## API Clients
+
+The SDK exposes three API client classes:
+
+- **`DefaultApi`** — API-key-authenticated methods for server-side use. Configure an API key as shown in [Getting Started](#getting-started).
+- **`PublicApi`** — public methods that do not require an API key, safe to call from browsers and mobile apps.
+- **`ModerationApi`** — methods for the moderator dashboard: listing, counting, searching, logging and exporting comments; moderation actions (remove/restore, flag, set review/spam/approval status, votes, reopen/close thread); bans (ban from comment, undo, pre-ban summaries, ban status and preferences, banned-user counts); and badges & trust (award/remove badge, manual badges, get/set trust factor, user internal profile). Every `ModerationApi` method accepts an `$sso` parameter to authenticate the acting moderator via SSO.
+
+### Using PublicApi
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Public methods do not require an API key.
+$apiInstance = new FastComments\Client\Api\PublicApi(
+    new GuzzleHttp\Client()
+);
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+
+try {
+    $result = $apiInstance->getCommentsPublic($tenant_id, $url_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PublicApi->getCommentsPublic: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Using ModerationApi
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new FastComments\Client\Api\ModerationApi(
+    new GuzzleHttp\Client()
+);
+$sso = 'sso_example'; // string - SSO payload authenticating the moderator
+
+try {
+    $result = $apiInstance->getCount(null, null, null, null, null, $sso);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ModerationApi->getCount: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+## API Methods
 
 All URIs are relative to *https://fastcomments.com*
 
@@ -193,26 +241,86 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**updateTenantPackage**](docs/Api/DefaultApi.md#updatetenantpackage) | **PATCH** /api/v1/tenant-packages/{id} | 
 *DefaultApi* | [**updateTenantUser**](docs/Api/DefaultApi.md#updatetenantuser) | **PATCH** /api/v1/tenant-users/{id} | 
 *DefaultApi* | [**updateUserBadge**](docs/Api/DefaultApi.md#updateuserbadge) | **PUT** /api/v1/user-badges/{id} | 
+*ModerationApi* | [**deleteModerationVote**](docs/Api/ModerationApi.md#deletemoderationvote) | **DELETE** /auth/my-account/moderate-comments/vote/{commentId}/{voteId} | 
+*ModerationApi* | [**getApiComments**](docs/Api/ModerationApi.md#getapicomments) | **GET** /auth/my-account/moderate-comments/api/comments | 
+*ModerationApi* | [**getApiExportStatus**](docs/Api/ModerationApi.md#getapiexportstatus) | **GET** /auth/my-account/moderate-comments/api/export/status | 
+*ModerationApi* | [**getApiIds**](docs/Api/ModerationApi.md#getapiids) | **GET** /auth/my-account/moderate-comments/api/ids | 
+*ModerationApi* | [**getBanUsersFromComment**](docs/Api/ModerationApi.md#getbanusersfromcomment) | **GET** /auth/my-account/moderate-comments/ban-users/from-comment/{commentId} | 
+*ModerationApi* | [**getCommentBanStatus**](docs/Api/ModerationApi.md#getcommentbanstatus) | **GET** /auth/my-account/moderate-comments/get-comment-ban-status/{commentId} | 
+*ModerationApi* | [**getCommentChildren**](docs/Api/ModerationApi.md#getcommentchildren) | **GET** /auth/my-account/moderate-comments/comment-children/{commentId} | 
+*ModerationApi* | [**getCount**](docs/Api/ModerationApi.md#getcount) | **GET** /auth/my-account/moderate-comments/count | 
+*ModerationApi* | [**getCounts**](docs/Api/ModerationApi.md#getcounts) | **GET** /auth/my-account/moderate-comments/banned-users/counts | 
+*ModerationApi* | [**getLogs**](docs/Api/ModerationApi.md#getlogs) | **GET** /auth/my-account/moderate-comments/logs/{commentId} | 
+*ModerationApi* | [**getManualBadges**](docs/Api/ModerationApi.md#getmanualbadges) | **GET** /auth/my-account/moderate-comments/get-manual-badges | 
+*ModerationApi* | [**getManualBadgesForUser**](docs/Api/ModerationApi.md#getmanualbadgesforuser) | **GET** /auth/my-account/moderate-comments/get-manual-badges-for-user | 
+*ModerationApi* | [**getModerationComment**](docs/Api/ModerationApi.md#getmoderationcomment) | **GET** /auth/my-account/moderate-comments/comment/{commentId} | 
+*ModerationApi* | [**getModerationCommentText**](docs/Api/ModerationApi.md#getmoderationcommenttext) | **GET** /auth/my-account/moderate-comments/get-comment-text/{commentId} | 
+*ModerationApi* | [**getPreBanSummary**](docs/Api/ModerationApi.md#getprebansummary) | **GET** /auth/my-account/moderate-comments/pre-ban-summary/{commentId} | 
+*ModerationApi* | [**getSearchCommentsSummary**](docs/Api/ModerationApi.md#getsearchcommentssummary) | **GET** /auth/my-account/moderate-comments/search/comments/summary | 
+*ModerationApi* | [**getSearchPages**](docs/Api/ModerationApi.md#getsearchpages) | **GET** /auth/my-account/moderate-comments/search/pages | 
+*ModerationApi* | [**getSearchSites**](docs/Api/ModerationApi.md#getsearchsites) | **GET** /auth/my-account/moderate-comments/search/sites | 
+*ModerationApi* | [**getSearchSuggest**](docs/Api/ModerationApi.md#getsearchsuggest) | **GET** /auth/my-account/moderate-comments/search/suggest | 
+*ModerationApi* | [**getSearchUsers**](docs/Api/ModerationApi.md#getsearchusers) | **GET** /auth/my-account/moderate-comments/search/users | 
+*ModerationApi* | [**getTrustFactor**](docs/Api/ModerationApi.md#gettrustfactor) | **GET** /auth/my-account/moderate-comments/get-trust-factor | 
+*ModerationApi* | [**getUserBanPreference**](docs/Api/ModerationApi.md#getuserbanpreference) | **GET** /auth/my-account/moderate-comments/user-ban-preference | 
+*ModerationApi* | [**getUserInternalProfile**](docs/Api/ModerationApi.md#getuserinternalprofile) | **GET** /auth/my-account/moderate-comments/get-user-internal-profile | 
+*ModerationApi* | [**postAdjustCommentVotes**](docs/Api/ModerationApi.md#postadjustcommentvotes) | **POST** /auth/my-account/moderate-comments/adjust-comment-votes/{commentId} | 
+*ModerationApi* | [**postApiExport**](docs/Api/ModerationApi.md#postapiexport) | **POST** /auth/my-account/moderate-comments/api/export | 
+*ModerationApi* | [**postBanUserFromComment**](docs/Api/ModerationApi.md#postbanuserfromcomment) | **POST** /auth/my-account/moderate-comments/ban-user/from-comment/{commentId} | 
+*ModerationApi* | [**postBanUserUndo**](docs/Api/ModerationApi.md#postbanuserundo) | **POST** /auth/my-account/moderate-comments/ban-user/undo | 
+*ModerationApi* | [**postBulkPreBanSummary**](docs/Api/ModerationApi.md#postbulkprebansummary) | **POST** /auth/my-account/moderate-comments/bulk-pre-ban-summary | 
+*ModerationApi* | [**postCommentsByIds**](docs/Api/ModerationApi.md#postcommentsbyids) | **POST** /auth/my-account/moderate-comments/comments-by-ids | 
+*ModerationApi* | [**postFlagComment**](docs/Api/ModerationApi.md#postflagcomment) | **POST** /auth/my-account/moderate-comments/flag-comment/{commentId} | 
+*ModerationApi* | [**postRemoveComment**](docs/Api/ModerationApi.md#postremovecomment) | **POST** /auth/my-account/moderate-comments/remove-comment/{commentId} | 
+*ModerationApi* | [**postRestoreDeletedComment**](docs/Api/ModerationApi.md#postrestoredeletedcomment) | **POST** /auth/my-account/moderate-comments/restore-deleted-comment/{commentId} | 
+*ModerationApi* | [**postSetCommentApprovalStatus**](docs/Api/ModerationApi.md#postsetcommentapprovalstatus) | **POST** /auth/my-account/moderate-comments/set-comment-approval-status/{commentId} | 
+*ModerationApi* | [**postSetCommentReviewStatus**](docs/Api/ModerationApi.md#postsetcommentreviewstatus) | **POST** /auth/my-account/moderate-comments/set-comment-review-status/{commentId} | 
+*ModerationApi* | [**postSetCommentSpamStatus**](docs/Api/ModerationApi.md#postsetcommentspamstatus) | **POST** /auth/my-account/moderate-comments/set-comment-spam-status/{commentId} | 
+*ModerationApi* | [**postSetCommentText**](docs/Api/ModerationApi.md#postsetcommenttext) | **POST** /auth/my-account/moderate-comments/set-comment-text/{commentId} | 
+*ModerationApi* | [**postUnFlagComment**](docs/Api/ModerationApi.md#postunflagcomment) | **POST** /auth/my-account/moderate-comments/un-flag-comment/{commentId} | 
+*ModerationApi* | [**postVote**](docs/Api/ModerationApi.md#postvote) | **POST** /auth/my-account/moderate-comments/vote/{commentId} | 
+*ModerationApi* | [**putAwardBadge**](docs/Api/ModerationApi.md#putawardbadge) | **PUT** /auth/my-account/moderate-comments/award-badge | 
+*ModerationApi* | [**putCloseThread**](docs/Api/ModerationApi.md#putclosethread) | **PUT** /auth/my-account/moderate-comments/close-thread | 
+*ModerationApi* | [**putRemoveBadge**](docs/Api/ModerationApi.md#putremovebadge) | **PUT** /auth/my-account/moderate-comments/remove-badge | 
+*ModerationApi* | [**putReopenThread**](docs/Api/ModerationApi.md#putreopenthread) | **PUT** /auth/my-account/moderate-comments/reopen-thread | 
+*ModerationApi* | [**setTrustFactor**](docs/Api/ModerationApi.md#settrustfactor) | **PUT** /auth/my-account/moderate-comments/set-trust-factor | 
 *PublicApi* | [**blockFromCommentPublic**](docs/Api/PublicApi.md#blockfromcommentpublic) | **POST** /block-from-comment/{commentId} | 
 *PublicApi* | [**checkedCommentsForBlocked**](docs/Api/PublicApi.md#checkedcommentsforblocked) | **GET** /check-blocked-comments | 
 *PublicApi* | [**createCommentPublic**](docs/Api/PublicApi.md#createcommentpublic) | **POST** /comments/{tenantId} | 
 *PublicApi* | [**createFeedPostPublic**](docs/Api/PublicApi.md#createfeedpostpublic) | **POST** /feed-posts/{tenantId} | 
+*PublicApi* | [**createV1PageReact**](docs/Api/PublicApi.md#createv1pagereact) | **POST** /page-reacts/v1/likes/{tenantId} | 
+*PublicApi* | [**createV2PageReact**](docs/Api/PublicApi.md#createv2pagereact) | **POST** /page-reacts/v2/{tenantId} | 
 *PublicApi* | [**deleteCommentPublic**](docs/Api/PublicApi.md#deletecommentpublic) | **DELETE** /comments/{tenantId}/{commentId} | 
 *PublicApi* | [**deleteCommentVote**](docs/Api/PublicApi.md#deletecommentvote) | **DELETE** /comments/{tenantId}/{commentId}/vote/{voteId} | 
 *PublicApi* | [**deleteFeedPostPublic**](docs/Api/PublicApi.md#deletefeedpostpublic) | **DELETE** /feed-posts/{tenantId}/{postId} | 
+*PublicApi* | [**deleteV1PageReact**](docs/Api/PublicApi.md#deletev1pagereact) | **DELETE** /page-reacts/v1/likes/{tenantId} | 
+*PublicApi* | [**deleteV2PageReact**](docs/Api/PublicApi.md#deletev2pagereact) | **DELETE** /page-reacts/v2/{tenantId} | 
 *PublicApi* | [**flagCommentPublic**](docs/Api/PublicApi.md#flagcommentpublic) | **POST** /flag-comment/{commentId} | 
 *PublicApi* | [**getCommentText**](docs/Api/PublicApi.md#getcommenttext) | **GET** /comments/{tenantId}/{commentId}/text | 
 *PublicApi* | [**getCommentVoteUserNames**](docs/Api/PublicApi.md#getcommentvoteusernames) | **GET** /comments/{tenantId}/{commentId}/votes | 
+*PublicApi* | [**getCommentsForUser**](docs/Api/PublicApi.md#getcommentsforuser) | **GET** /comments-for-user | 
 *PublicApi* | [**getCommentsPublic**](docs/Api/PublicApi.md#getcommentspublic) | **GET** /comments/{tenantId} | 
 *PublicApi* | [**getEventLog**](docs/Api/PublicApi.md#geteventlog) | **GET** /event-log/{tenantId} | 
 *PublicApi* | [**getFeedPostsPublic**](docs/Api/PublicApi.md#getfeedpostspublic) | **GET** /feed-posts/{tenantId} | 
 *PublicApi* | [**getFeedPostsStats**](docs/Api/PublicApi.md#getfeedpostsstats) | **GET** /feed-posts/{tenantId}/stats | 
+*PublicApi* | [**getGifLarge**](docs/Api/PublicApi.md#getgiflarge) | **GET** /gifs/get-large/{tenantId} | 
+*PublicApi* | [**getGifsSearch**](docs/Api/PublicApi.md#getgifssearch) | **GET** /gifs/search/{tenantId} | 
+*PublicApi* | [**getGifsTrending**](docs/Api/PublicApi.md#getgifstrending) | **GET** /gifs/trending/{tenantId} | 
 *PublicApi* | [**getGlobalEventLog**](docs/Api/PublicApi.md#getglobaleventlog) | **GET** /event-log/global/{tenantId} | 
+*PublicApi* | [**getOfflineUsers**](docs/Api/PublicApi.md#getofflineusers) | **GET** /pages/{tenantId}/users/offline | 
+*PublicApi* | [**getOnlineUsers**](docs/Api/PublicApi.md#getonlineusers) | **GET** /pages/{tenantId}/users/online | 
+*PublicApi* | [**getPagesPublic**](docs/Api/PublicApi.md#getpagespublic) | **GET** /pages/{tenantId} | 
+*PublicApi* | [**getTranslations**](docs/Api/PublicApi.md#gettranslations) | **GET** /translations/{namespace}/{component} | 
 *PublicApi* | [**getUserNotificationCount**](docs/Api/PublicApi.md#getusernotificationcount) | **GET** /user-notifications/get-count | 
 *PublicApi* | [**getUserNotifications**](docs/Api/PublicApi.md#getusernotifications) | **GET** /user-notifications | 
 *PublicApi* | [**getUserPresenceStatuses**](docs/Api/PublicApi.md#getuserpresencestatuses) | **GET** /user-presence-status | 
 *PublicApi* | [**getUserReactsPublic**](docs/Api/PublicApi.md#getuserreactspublic) | **GET** /feed-posts/{tenantId}/user-reacts | 
+*PublicApi* | [**getUsersInfo**](docs/Api/PublicApi.md#getusersinfo) | **GET** /pages/{tenantId}/users/info | 
+*PublicApi* | [**getV1PageLikes**](docs/Api/PublicApi.md#getv1pagelikes) | **GET** /page-reacts/v1/likes/{tenantId} | 
+*PublicApi* | [**getV2PageReactUsers**](docs/Api/PublicApi.md#getv2pagereactusers) | **GET** /page-reacts/v2/{tenantId}/list | 
+*PublicApi* | [**getV2PageReacts**](docs/Api/PublicApi.md#getv2pagereacts) | **GET** /page-reacts/v2/{tenantId} | 
 *PublicApi* | [**lockComment**](docs/Api/PublicApi.md#lockcomment) | **POST** /comments/{tenantId}/{commentId}/lock | 
+*PublicApi* | [**logoutPublic**](docs/Api/PublicApi.md#logoutpublic) | **PUT** /auth/logout | 
 *PublicApi* | [**pinComment**](docs/Api/PublicApi.md#pincomment) | **POST** /comments/{tenantId}/{commentId}/pin | 
 *PublicApi* | [**reactFeedPostPublic**](docs/Api/PublicApi.md#reactfeedpostpublic) | **POST** /feed-posts/{tenantId}/react/{postId} | 
 *PublicApi* | [**resetUserNotificationCount**](docs/Api/PublicApi.md#resetusernotificationcount) | **POST** /user-notifications/reset-count | 
@@ -232,9 +340,14 @@ Class | Method | HTTP request | Description
 ## Models
 
 - [APIAuditLog](docs/Model/APIAuditLog.md)
+- [APIBanUserChangeLog](docs/Model/APIBanUserChangeLog.md)
+- [APIBanUserChangedValues](docs/Model/APIBanUserChangedValues.md)
+- [APIBannedUser](docs/Model/APIBannedUser.md)
+- [APIBannedUserWithMultiMatchInfo](docs/Model/APIBannedUserWithMultiMatchInfo.md)
 - [APIComment](docs/Model/APIComment.md)
 - [APICommentBase](docs/Model/APICommentBase.md)
 - [APICommentBaseMeta](docs/Model/APICommentBaseMeta.md)
+- [APICommentCommonBannedUser](docs/Model/APICommentCommonBannedUser.md)
 - [APICreateUserBadgeResponse](docs/Model/APICreateUserBadgeResponse.md)
 - [APIDomainConfiguration](docs/Model/APIDomainConfiguration.md)
 - [APIEmptyResponse](docs/Model/APIEmptyResponse.md)
@@ -246,8 +359,11 @@ Class | Method | HTTP request | Description
 - [APIGetUserBadgeProgressResponse](docs/Model/APIGetUserBadgeProgressResponse.md)
 - [APIGetUserBadgeResponse](docs/Model/APIGetUserBadgeResponse.md)
 - [APIGetUserBadgesResponse](docs/Model/APIGetUserBadgesResponse.md)
+- [APIModerateGetUserBanPreferencesResponse](docs/Model/APIModerateGetUserBanPreferencesResponse.md)
+- [APIModerateUserBanPreferences](docs/Model/APIModerateUserBanPreferences.md)
 - [APIPage](docs/Model/APIPage.md)
 - [APISSOUser](docs/Model/APISSOUser.md)
+- [APISaveCommentResponse](docs/Model/APISaveCommentResponse.md)
 - [APIStatus](docs/Model/APIStatus.md)
 - [APITenant](docs/Model/APITenant.md)
 - [APITenantDailyUsage](docs/Model/APITenantDailyUsage.md)
@@ -255,16 +371,17 @@ Class | Method | HTTP request | Description
 - [APITicketDetail](docs/Model/APITicketDetail.md)
 - [APITicketFile](docs/Model/APITicketFile.md)
 - [APIUserSubscription](docs/Model/APIUserSubscription.md)
-- [AddDomainConfig200Response](docs/Model/AddDomainConfig200Response.md)
-- [AddDomainConfig200ResponseAnyOf](docs/Model/AddDomainConfig200ResponseAnyOf.md)
 - [AddDomainConfigParams](docs/Model/AddDomainConfigParams.md)
-- [AddHashTag200Response](docs/Model/AddHashTag200Response.md)
-- [AddHashTagsBulk200Response](docs/Model/AddHashTagsBulk200Response.md)
+- [AddDomainConfigResponse](docs/Model/AddDomainConfigResponse.md)
+- [AddDomainConfigResponseAnyOf](docs/Model/AddDomainConfigResponseAnyOf.md)
 - [AddPageAPIResponse](docs/Model/AddPageAPIResponse.md)
 - [AddSSOUserAPIResponse](docs/Model/AddSSOUserAPIResponse.md)
-- [AggregateQuestionResults200Response](docs/Model/AggregateQuestionResults200Response.md)
+- [AdjustCommentVotesParams](docs/Model/AdjustCommentVotesParams.md)
+- [AdjustVotesResponse](docs/Model/AdjustVotesResponse.md)
 - [AggregateQuestionResultsResponse](docs/Model/AggregateQuestionResultsResponse.md)
+- [AggregateResponse](docs/Model/AggregateResponse.md)
 - [AggregateTimeBucket](docs/Model/AggregateTimeBucket.md)
+- [AggregationAPIError](docs/Model/AggregationAPIError.md)
 - [AggregationItem](docs/Model/AggregationItem.md)
 - [AggregationOpType](docs/Model/AggregationOpType.md)
 - [AggregationOperation](docs/Model/AggregationOperation.md)
@@ -273,24 +390,30 @@ Class | Method | HTTP request | Description
 - [AggregationResponse](docs/Model/AggregationResponse.md)
 - [AggregationResponseStats](docs/Model/AggregationResponseStats.md)
 - [AggregationValue](docs/Model/AggregationValue.md)
+- [AwardUserBadgeResponse](docs/Model/AwardUserBadgeResponse.md)
+- [BanUserFromCommentResult](docs/Model/BanUserFromCommentResult.md)
+- [BanUserUndoParams](docs/Model/BanUserUndoParams.md)
+- [BannedUserMatch](docs/Model/BannedUserMatch.md)
+- [BannedUserMatchMatchedOnValue](docs/Model/BannedUserMatchMatchedOnValue.md)
+- [BannedUserMatchType](docs/Model/BannedUserMatchType.md)
 - [BillingInfo](docs/Model/BillingInfo.md)
 - [BlockFromCommentParams](docs/Model/BlockFromCommentParams.md)
-- [BlockFromCommentPublic200Response](docs/Model/BlockFromCommentPublic200Response.md)
 - [BlockSuccess](docs/Model/BlockSuccess.md)
+- [BuildModerationFilterParams](docs/Model/BuildModerationFilterParams.md)
+- [BuildModerationFilterResponse](docs/Model/BuildModerationFilterResponse.md)
 - [BulkAggregateQuestionItem](docs/Model/BulkAggregateQuestionItem.md)
-- [BulkAggregateQuestionResults200Response](docs/Model/BulkAggregateQuestionResults200Response.md)
 - [BulkAggregateQuestionResultsRequest](docs/Model/BulkAggregateQuestionResultsRequest.md)
 - [BulkAggregateQuestionResultsResponse](docs/Model/BulkAggregateQuestionResultsResponse.md)
 - [BulkCreateHashTagsBody](docs/Model/BulkCreateHashTagsBody.md)
 - [BulkCreateHashTagsBodyTagsInner](docs/Model/BulkCreateHashTagsBodyTagsInner.md)
 - [BulkCreateHashTagsResponse](docs/Model/BulkCreateHashTagsResponse.md)
+- [BulkCreateHashTagsResponseResultsInner](docs/Model/BulkCreateHashTagsResponseResultsInner.md)
+- [BulkPreBanParams](docs/Model/BulkPreBanParams.md)
+- [BulkPreBanSummary](docs/Model/BulkPreBanSummary.md)
 - [ChangeCommentPinStatusResponse](docs/Model/ChangeCommentPinStatusResponse.md)
-- [ChangeTicketState200Response](docs/Model/ChangeTicketState200Response.md)
 - [ChangeTicketStateBody](docs/Model/ChangeTicketStateBody.md)
 - [ChangeTicketStateResponse](docs/Model/ChangeTicketStateResponse.md)
 - [CheckBlockedCommentsResponse](docs/Model/CheckBlockedCommentsResponse.md)
-- [CheckedCommentsForBlocked200Response](docs/Model/CheckedCommentsForBlocked200Response.md)
-- [CombineCommentsWithQuestionResults200Response](docs/Model/CombineCommentsWithQuestionResults200Response.md)
 - [CombineQuestionResultsWithCommentsResponse](docs/Model/CombineQuestionResultsWithCommentsResponse.md)
 - [CommentData](docs/Model/CommentData.md)
 - [CommentHTMLRenderingMode](docs/Model/CommentHTMLRenderingMode.md)
@@ -305,56 +428,42 @@ Class | Method | HTTP request | Description
 - [CommentUserHashTagInfo](docs/Model/CommentUserHashTagInfo.md)
 - [CommentUserMentionInfo](docs/Model/CommentUserMentionInfo.md)
 - [CommenterNameFormats](docs/Model/CommenterNameFormats.md)
+- [CommentsByIdsParams](docs/Model/CommentsByIdsParams.md)
 - [CreateAPIPageData](docs/Model/CreateAPIPageData.md)
 - [CreateAPISSOUserData](docs/Model/CreateAPISSOUserData.md)
 - [CreateAPIUserSubscriptionData](docs/Model/CreateAPIUserSubscriptionData.md)
 - [CreateCommentParams](docs/Model/CreateCommentParams.md)
-- [CreateCommentPublic200Response](docs/Model/CreateCommentPublic200Response.md)
-- [CreateEmailTemplate200Response](docs/Model/CreateEmailTemplate200Response.md)
 - [CreateEmailTemplateBody](docs/Model/CreateEmailTemplateBody.md)
 - [CreateEmailTemplateResponse](docs/Model/CreateEmailTemplateResponse.md)
-- [CreateFeedPost200Response](docs/Model/CreateFeedPost200Response.md)
 - [CreateFeedPostParams](docs/Model/CreateFeedPostParams.md)
-- [CreateFeedPostPublic200Response](docs/Model/CreateFeedPostPublic200Response.md)
 - [CreateFeedPostResponse](docs/Model/CreateFeedPostResponse.md)
 - [CreateFeedPostsResponse](docs/Model/CreateFeedPostsResponse.md)
 - [CreateHashTagBody](docs/Model/CreateHashTagBody.md)
 - [CreateHashTagResponse](docs/Model/CreateHashTagResponse.md)
-- [CreateModerator200Response](docs/Model/CreateModerator200Response.md)
 - [CreateModeratorBody](docs/Model/CreateModeratorBody.md)
 - [CreateModeratorResponse](docs/Model/CreateModeratorResponse.md)
-- [CreateQuestionConfig200Response](docs/Model/CreateQuestionConfig200Response.md)
 - [CreateQuestionConfigBody](docs/Model/CreateQuestionConfigBody.md)
 - [CreateQuestionConfigResponse](docs/Model/CreateQuestionConfigResponse.md)
-- [CreateQuestionResult200Response](docs/Model/CreateQuestionResult200Response.md)
 - [CreateQuestionResultBody](docs/Model/CreateQuestionResultBody.md)
 - [CreateQuestionResultResponse](docs/Model/CreateQuestionResultResponse.md)
 - [CreateSubscriptionAPIResponse](docs/Model/CreateSubscriptionAPIResponse.md)
-- [CreateTenant200Response](docs/Model/CreateTenant200Response.md)
 - [CreateTenantBody](docs/Model/CreateTenantBody.md)
-- [CreateTenantPackage200Response](docs/Model/CreateTenantPackage200Response.md)
 - [CreateTenantPackageBody](docs/Model/CreateTenantPackageBody.md)
 - [CreateTenantPackageResponse](docs/Model/CreateTenantPackageResponse.md)
 - [CreateTenantResponse](docs/Model/CreateTenantResponse.md)
-- [CreateTenantUser200Response](docs/Model/CreateTenantUser200Response.md)
 - [CreateTenantUserBody](docs/Model/CreateTenantUserBody.md)
 - [CreateTenantUserResponse](docs/Model/CreateTenantUserResponse.md)
-- [CreateTicket200Response](docs/Model/CreateTicket200Response.md)
 - [CreateTicketBody](docs/Model/CreateTicketBody.md)
 - [CreateTicketResponse](docs/Model/CreateTicketResponse.md)
-- [CreateUserBadge200Response](docs/Model/CreateUserBadge200Response.md)
 - [CreateUserBadgeParams](docs/Model/CreateUserBadgeParams.md)
+- [CreateV1PageReact](docs/Model/CreateV1PageReact.md)
 - [CustomConfigParameters](docs/Model/CustomConfigParameters.md)
 - [CustomEmailTemplate](docs/Model/CustomEmailTemplate.md)
-- [DeleteComment200Response](docs/Model/DeleteComment200Response.md)
 - [DeleteCommentAction](docs/Model/DeleteCommentAction.md)
-- [DeleteCommentPublic200Response](docs/Model/DeleteCommentPublic200Response.md)
 - [DeleteCommentResult](docs/Model/DeleteCommentResult.md)
-- [DeleteCommentVote200Response](docs/Model/DeleteCommentVote200Response.md)
-- [DeleteDomainConfig200Response](docs/Model/DeleteDomainConfig200Response.md)
-- [DeleteFeedPostPublic200Response](docs/Model/DeleteFeedPostPublic200Response.md)
-- [DeleteFeedPostPublic200ResponseAnyOf](docs/Model/DeleteFeedPostPublic200ResponseAnyOf.md)
-- [DeleteHashTagRequest](docs/Model/DeleteHashTagRequest.md)
+- [DeleteDomainConfigResponse](docs/Model/DeleteDomainConfigResponse.md)
+- [DeleteFeedPostPublicResponse](docs/Model/DeleteFeedPostPublicResponse.md)
+- [DeleteHashTagRequestBody](docs/Model/DeleteHashTagRequestBody.md)
 - [DeletePageAPIResponse](docs/Model/DeletePageAPIResponse.md)
 - [DeleteSSOUserAPIResponse](docs/Model/DeleteSSOUserAPIResponse.md)
 - [DeleteSubscriptionAPIResponse](docs/Model/DeleteSubscriptionAPIResponse.md)
@@ -373,126 +482,124 @@ Class | Method | HTTP request | Description
 - [FeedPostsStatsResponse](docs/Model/FeedPostsStatsResponse.md)
 - [FindCommentsByRangeItem](docs/Model/FindCommentsByRangeItem.md)
 - [FindCommentsByRangeResponse](docs/Model/FindCommentsByRangeResponse.md)
-- [FlagComment200Response](docs/Model/FlagComment200Response.md)
-- [FlagCommentPublic200Response](docs/Model/FlagCommentPublic200Response.md)
 - [FlagCommentResponse](docs/Model/FlagCommentResponse.md)
-- [GetAuditLogs200Response](docs/Model/GetAuditLogs200Response.md)
 - [GetAuditLogsResponse](docs/Model/GetAuditLogsResponse.md)
-- [GetCachedNotificationCount200Response](docs/Model/GetCachedNotificationCount200Response.md)
+- [GetBannedUsersCountResponse](docs/Model/GetBannedUsersCountResponse.md)
+- [GetBannedUsersFromCommentResponse](docs/Model/GetBannedUsersFromCommentResponse.md)
 - [GetCachedNotificationCountResponse](docs/Model/GetCachedNotificationCountResponse.md)
-- [GetComment200Response](docs/Model/GetComment200Response.md)
-- [GetCommentText200Response](docs/Model/GetCommentText200Response.md)
-- [GetCommentVoteUserNames200Response](docs/Model/GetCommentVoteUserNames200Response.md)
+- [GetCommentBanStatusResponse](docs/Model/GetCommentBanStatusResponse.md)
+- [GetCommentTextResponse](docs/Model/GetCommentTextResponse.md)
 - [GetCommentVoteUserNamesSuccessResponse](docs/Model/GetCommentVoteUserNamesSuccessResponse.md)
-- [GetComments200Response](docs/Model/GetComments200Response.md)
-- [GetCommentsPublic200Response](docs/Model/GetCommentsPublic200Response.md)
+- [GetCommentsForUserResponse](docs/Model/GetCommentsForUserResponse.md)
 - [GetCommentsResponsePublicComment](docs/Model/GetCommentsResponsePublicComment.md)
 - [GetCommentsResponseWithPresencePublicComment](docs/Model/GetCommentsResponseWithPresencePublicComment.md)
-- [GetDomainConfig200Response](docs/Model/GetDomainConfig200Response.md)
-- [GetDomainConfigs200Response](docs/Model/GetDomainConfigs200Response.md)
-- [GetDomainConfigs200ResponseAnyOf](docs/Model/GetDomainConfigs200ResponseAnyOf.md)
-- [GetDomainConfigs200ResponseAnyOf1](docs/Model/GetDomainConfigs200ResponseAnyOf1.md)
-- [GetEmailTemplate200Response](docs/Model/GetEmailTemplate200Response.md)
-- [GetEmailTemplateDefinitions200Response](docs/Model/GetEmailTemplateDefinitions200Response.md)
+- [GetDomainConfigResponse](docs/Model/GetDomainConfigResponse.md)
+- [GetDomainConfigsResponse](docs/Model/GetDomainConfigsResponse.md)
+- [GetDomainConfigsResponseAnyOf](docs/Model/GetDomainConfigsResponseAnyOf.md)
+- [GetDomainConfigsResponseAnyOf1](docs/Model/GetDomainConfigsResponseAnyOf1.md)
 - [GetEmailTemplateDefinitionsResponse](docs/Model/GetEmailTemplateDefinitionsResponse.md)
-- [GetEmailTemplateRenderErrors200Response](docs/Model/GetEmailTemplateRenderErrors200Response.md)
 - [GetEmailTemplateRenderErrorsResponse](docs/Model/GetEmailTemplateRenderErrorsResponse.md)
 - [GetEmailTemplateResponse](docs/Model/GetEmailTemplateResponse.md)
-- [GetEmailTemplates200Response](docs/Model/GetEmailTemplates200Response.md)
 - [GetEmailTemplatesResponse](docs/Model/GetEmailTemplatesResponse.md)
-- [GetEventLog200Response](docs/Model/GetEventLog200Response.md)
 - [GetEventLogResponse](docs/Model/GetEventLogResponse.md)
-- [GetFeedPosts200Response](docs/Model/GetFeedPosts200Response.md)
-- [GetFeedPostsPublic200Response](docs/Model/GetFeedPostsPublic200Response.md)
 - [GetFeedPostsResponse](docs/Model/GetFeedPostsResponse.md)
-- [GetFeedPostsStats200Response](docs/Model/GetFeedPostsStats200Response.md)
-- [GetHashTags200Response](docs/Model/GetHashTags200Response.md)
+- [GetGifsSearchResponse](docs/Model/GetGifsSearchResponse.md)
+- [GetGifsTrendingResponse](docs/Model/GetGifsTrendingResponse.md)
 - [GetHashTagsResponse](docs/Model/GetHashTagsResponse.md)
-- [GetModerator200Response](docs/Model/GetModerator200Response.md)
 - [GetModeratorResponse](docs/Model/GetModeratorResponse.md)
-- [GetModerators200Response](docs/Model/GetModerators200Response.md)
 - [GetModeratorsResponse](docs/Model/GetModeratorsResponse.md)
 - [GetMyNotificationsResponse](docs/Model/GetMyNotificationsResponse.md)
-- [GetNotificationCount200Response](docs/Model/GetNotificationCount200Response.md)
 - [GetNotificationCountResponse](docs/Model/GetNotificationCountResponse.md)
-- [GetNotifications200Response](docs/Model/GetNotifications200Response.md)
 - [GetNotificationsResponse](docs/Model/GetNotificationsResponse.md)
 - [GetPageByURLIdAPIResponse](docs/Model/GetPageByURLIdAPIResponse.md)
 - [GetPagesAPIResponse](docs/Model/GetPagesAPIResponse.md)
-- [GetPendingWebhookEventCount200Response](docs/Model/GetPendingWebhookEventCount200Response.md)
 - [GetPendingWebhookEventCountResponse](docs/Model/GetPendingWebhookEventCountResponse.md)
-- [GetPendingWebhookEvents200Response](docs/Model/GetPendingWebhookEvents200Response.md)
 - [GetPendingWebhookEventsResponse](docs/Model/GetPendingWebhookEventsResponse.md)
 - [GetPublicFeedPostsResponse](docs/Model/GetPublicFeedPostsResponse.md)
-- [GetQuestionConfig200Response](docs/Model/GetQuestionConfig200Response.md)
+- [GetPublicPagesResponse](docs/Model/GetPublicPagesResponse.md)
 - [GetQuestionConfigResponse](docs/Model/GetQuestionConfigResponse.md)
-- [GetQuestionConfigs200Response](docs/Model/GetQuestionConfigs200Response.md)
 - [GetQuestionConfigsResponse](docs/Model/GetQuestionConfigsResponse.md)
-- [GetQuestionResult200Response](docs/Model/GetQuestionResult200Response.md)
 - [GetQuestionResultResponse](docs/Model/GetQuestionResultResponse.md)
-- [GetQuestionResults200Response](docs/Model/GetQuestionResults200Response.md)
 - [GetQuestionResultsResponse](docs/Model/GetQuestionResultsResponse.md)
 - [GetSSOUserByEmailAPIResponse](docs/Model/GetSSOUserByEmailAPIResponse.md)
 - [GetSSOUserByIdAPIResponse](docs/Model/GetSSOUserByIdAPIResponse.md)
-- [GetSSOUsers200Response](docs/Model/GetSSOUsers200Response.md)
+- [GetSSOUsersResponse](docs/Model/GetSSOUsersResponse.md)
 - [GetSubscriptionsAPIResponse](docs/Model/GetSubscriptionsAPIResponse.md)
-- [GetTenant200Response](docs/Model/GetTenant200Response.md)
-- [GetTenantDailyUsages200Response](docs/Model/GetTenantDailyUsages200Response.md)
 - [GetTenantDailyUsagesResponse](docs/Model/GetTenantDailyUsagesResponse.md)
-- [GetTenantPackage200Response](docs/Model/GetTenantPackage200Response.md)
+- [GetTenantManualBadgesResponse](docs/Model/GetTenantManualBadgesResponse.md)
 - [GetTenantPackageResponse](docs/Model/GetTenantPackageResponse.md)
-- [GetTenantPackages200Response](docs/Model/GetTenantPackages200Response.md)
 - [GetTenantPackagesResponse](docs/Model/GetTenantPackagesResponse.md)
 - [GetTenantResponse](docs/Model/GetTenantResponse.md)
-- [GetTenantUser200Response](docs/Model/GetTenantUser200Response.md)
 - [GetTenantUserResponse](docs/Model/GetTenantUserResponse.md)
-- [GetTenantUsers200Response](docs/Model/GetTenantUsers200Response.md)
 - [GetTenantUsersResponse](docs/Model/GetTenantUsersResponse.md)
-- [GetTenants200Response](docs/Model/GetTenants200Response.md)
 - [GetTenantsResponse](docs/Model/GetTenantsResponse.md)
-- [GetTicket200Response](docs/Model/GetTicket200Response.md)
 - [GetTicketResponse](docs/Model/GetTicketResponse.md)
-- [GetTickets200Response](docs/Model/GetTickets200Response.md)
 - [GetTicketsResponse](docs/Model/GetTicketsResponse.md)
-- [GetUser200Response](docs/Model/GetUser200Response.md)
-- [GetUserBadge200Response](docs/Model/GetUserBadge200Response.md)
-- [GetUserBadgeProgressById200Response](docs/Model/GetUserBadgeProgressById200Response.md)
-- [GetUserBadgeProgressList200Response](docs/Model/GetUserBadgeProgressList200Response.md)
-- [GetUserBadges200Response](docs/Model/GetUserBadges200Response.md)
-- [GetUserNotificationCount200Response](docs/Model/GetUserNotificationCount200Response.md)
+- [GetTranslationsResponse](docs/Model/GetTranslationsResponse.md)
+- [GetUserInternalProfileResponse](docs/Model/GetUserInternalProfileResponse.md)
+- [GetUserInternalProfileResponseProfile](docs/Model/GetUserInternalProfileResponseProfile.md)
+- [GetUserManualBadgesResponse](docs/Model/GetUserManualBadgesResponse.md)
 - [GetUserNotificationCountResponse](docs/Model/GetUserNotificationCountResponse.md)
-- [GetUserNotifications200Response](docs/Model/GetUserNotifications200Response.md)
-- [GetUserPresenceStatuses200Response](docs/Model/GetUserPresenceStatuses200Response.md)
 - [GetUserPresenceStatusesResponse](docs/Model/GetUserPresenceStatusesResponse.md)
-- [GetUserReactsPublic200Response](docs/Model/GetUserReactsPublic200Response.md)
 - [GetUserResponse](docs/Model/GetUserResponse.md)
-- [GetVotes200Response](docs/Model/GetVotes200Response.md)
-- [GetVotesForUser200Response](docs/Model/GetVotesForUser200Response.md)
+- [GetUserTrustFactorResponse](docs/Model/GetUserTrustFactorResponse.md)
+- [GetV1PageLikes](docs/Model/GetV1PageLikes.md)
+- [GetV2PageReactUsersResponse](docs/Model/GetV2PageReactUsersResponse.md)
+- [GetV2PageReacts](docs/Model/GetV2PageReacts.md)
 - [GetVotesForUserResponse](docs/Model/GetVotesForUserResponse.md)
 - [GetVotesResponse](docs/Model/GetVotesResponse.md)
+- [GifGetLargeResponse](docs/Model/GifGetLargeResponse.md)
 - [GifRating](docs/Model/GifRating.md)
+- [GifSearchInternalError](docs/Model/GifSearchInternalError.md)
+- [GifSearchResponse](docs/Model/GifSearchResponse.md)
+- [GifSearchResponseImagesInnerInner](docs/Model/GifSearchResponseImagesInnerInner.md)
 - [HeaderAccountNotification](docs/Model/HeaderAccountNotification.md)
 - [HeaderState](docs/Model/HeaderState.md)
 - [IgnoredResponse](docs/Model/IgnoredResponse.md)
 - [ImageContentProfanityLevel](docs/Model/ImageContentProfanityLevel.md)
+- [ImportedAgentApprovalNotificationFrequency](docs/Model/ImportedAgentApprovalNotificationFrequency.md)
 - [ImportedSiteType](docs/Model/ImportedSiteType.md)
 - [LiveEvent](docs/Model/LiveEvent.md)
 - [LiveEventExtraInfo](docs/Model/LiveEventExtraInfo.md)
 - [LiveEventType](docs/Model/LiveEventType.md)
-- [LockComment200Response](docs/Model/LockComment200Response.md)
 - [MediaAsset](docs/Model/MediaAsset.md)
 - [MentionAutoCompleteMode](docs/Model/MentionAutoCompleteMode.md)
 - [MetaItem](docs/Model/MetaItem.md)
+- [ModerationAPIChildCommentsResponse](docs/Model/ModerationAPIChildCommentsResponse.md)
+- [ModerationAPIComment](docs/Model/ModerationAPIComment.md)
+- [ModerationAPICommentLog](docs/Model/ModerationAPICommentLog.md)
+- [ModerationAPICommentResponse](docs/Model/ModerationAPICommentResponse.md)
+- [ModerationAPICountCommentsResponse](docs/Model/ModerationAPICountCommentsResponse.md)
+- [ModerationAPIGetCommentIdsResponse](docs/Model/ModerationAPIGetCommentIdsResponse.md)
+- [ModerationAPIGetCommentsResponse](docs/Model/ModerationAPIGetCommentsResponse.md)
+- [ModerationAPIGetLogsResponse](docs/Model/ModerationAPIGetLogsResponse.md)
+- [ModerationCommentSearchResponse](docs/Model/ModerationCommentSearchResponse.md)
+- [ModerationExportResponse](docs/Model/ModerationExportResponse.md)
+- [ModerationExportStatusResponse](docs/Model/ModerationExportStatusResponse.md)
+- [ModerationFilter](docs/Model/ModerationFilter.md)
+- [ModerationPageSearchProjected](docs/Model/ModerationPageSearchProjected.md)
+- [ModerationPageSearchResponse](docs/Model/ModerationPageSearchResponse.md)
+- [ModerationSiteSearchProjected](docs/Model/ModerationSiteSearchProjected.md)
+- [ModerationSiteSearchResponse](docs/Model/ModerationSiteSearchResponse.md)
+- [ModerationSuggestResponse](docs/Model/ModerationSuggestResponse.md)
+- [ModerationUserSearchProjected](docs/Model/ModerationUserSearchProjected.md)
+- [ModerationUserSearchResponse](docs/Model/ModerationUserSearchResponse.md)
 - [Moderator](docs/Model/Moderator.md)
 - [NotificationAndCount](docs/Model/NotificationAndCount.md)
 - [NotificationObjectType](docs/Model/NotificationObjectType.md)
 - [NotificationType](docs/Model/NotificationType.md)
+- [PageUserEntry](docs/Model/PageUserEntry.md)
+- [PageUsersInfoResponse](docs/Model/PageUsersInfoResponse.md)
+- [PageUsersOfflineResponse](docs/Model/PageUsersOfflineResponse.md)
+- [PageUsersOnlineResponse](docs/Model/PageUsersOnlineResponse.md)
+- [PagesSortBy](docs/Model/PagesSortBy.md)
 - [PatchDomainConfigParams](docs/Model/PatchDomainConfigParams.md)
-- [PatchHashTag200Response](docs/Model/PatchHashTag200Response.md)
+- [PatchDomainConfigResponse](docs/Model/PatchDomainConfigResponse.md)
 - [PatchPageAPIResponse](docs/Model/PatchPageAPIResponse.md)
 - [PatchSSOUserAPIResponse](docs/Model/PatchSSOUserAPIResponse.md)
 - [PendingCommentToSyncOutbound](docs/Model/PendingCommentToSyncOutbound.md)
-- [PinComment200Response](docs/Model/PinComment200Response.md)
+- [PostRemoveCommentResponse](docs/Model/PostRemoveCommentResponse.md)
+- [PreBanSummary](docs/Model/PreBanSummary.md)
 - [PubSubComment](docs/Model/PubSubComment.md)
 - [PubSubCommentBase](docs/Model/PubSubCommentBase.md)
 - [PubSubVote](docs/Model/PubSubVote.md)
@@ -503,7 +610,9 @@ Class | Method | HTTP request | Description
 - [PublicComment](docs/Model/PublicComment.md)
 - [PublicCommentBase](docs/Model/PublicCommentBase.md)
 - [PublicFeedPostsResponse](docs/Model/PublicFeedPostsResponse.md)
+- [PublicPage](docs/Model/PublicPage.md)
 - [PublicVote](docs/Model/PublicVote.md)
+- [PutDomainConfigResponse](docs/Model/PutDomainConfigResponse.md)
 - [PutSSOUserAPIResponse](docs/Model/PutSSOUserAPIResponse.md)
 - [QueryPredicate](docs/Model/QueryPredicate.md)
 - [QueryPredicateValue](docs/Model/QueryPredicateValue.md)
@@ -516,11 +625,10 @@ Class | Method | HTTP request | Description
 - [QuestionSubQuestionVisibility](docs/Model/QuestionSubQuestionVisibility.md)
 - [QuestionWhenSave](docs/Model/QuestionWhenSave.md)
 - [ReactBodyParams](docs/Model/ReactBodyParams.md)
-- [ReactFeedPostPublic200Response](docs/Model/ReactFeedPostPublic200Response.md)
 - [ReactFeedPostResponse](docs/Model/ReactFeedPostResponse.md)
 - [RecordStringBeforeStringOrNullAfterStringOrNullValue](docs/Model/RecordStringBeforeStringOrNullAfterStringOrNullValue.md)
-- [RecordStringStringOrNumberValue](docs/Model/RecordStringStringOrNumberValue.md)
-- [RenderEmailTemplate200Response](docs/Model/RenderEmailTemplate200Response.md)
+- [RemoveCommentActionResponse](docs/Model/RemoveCommentActionResponse.md)
+- [RemoveUserBadgeResponse](docs/Model/RemoveUserBadgeResponse.md)
 - [RenderEmailTemplateBody](docs/Model/RenderEmailTemplateBody.md)
 - [RenderEmailTemplateResponse](docs/Model/RenderEmailTemplateResponse.md)
 - [RenderableUserNotification](docs/Model/RenderableUserNotification.md)
@@ -528,26 +636,27 @@ Class | Method | HTTP request | Description
 - [RepeatCommentHandlingAction](docs/Model/RepeatCommentHandlingAction.md)
 - [ReplaceTenantPackageBody](docs/Model/ReplaceTenantPackageBody.md)
 - [ReplaceTenantUserBody](docs/Model/ReplaceTenantUserBody.md)
-- [ResetUserNotifications200Response](docs/Model/ResetUserNotifications200Response.md)
 - [ResetUserNotificationsResponse](docs/Model/ResetUserNotificationsResponse.md)
 - [SORTDIR](docs/Model/SORTDIR.md)
 - [SSOSecurityLevel](docs/Model/SSOSecurityLevel.md)
-- [SaveComment200Response](docs/Model/SaveComment200Response.md)
-- [SaveCommentResponse](docs/Model/SaveCommentResponse.md)
 - [SaveCommentResponseOptimized](docs/Model/SaveCommentResponseOptimized.md)
+- [SaveCommentsBulkResponse](docs/Model/SaveCommentsBulkResponse.md)
 - [SaveCommentsResponseWithPresence](docs/Model/SaveCommentsResponseWithPresence.md)
-- [SearchUsers200Response](docs/Model/SearchUsers200Response.md)
 - [SearchUsersResponse](docs/Model/SearchUsersResponse.md)
+- [SearchUsersResult](docs/Model/SearchUsersResult.md)
 - [SearchUsersSectionedResponse](docs/Model/SearchUsersSectionedResponse.md)
-- [SetCommentText200Response](docs/Model/SetCommentText200Response.md)
+- [SetCommentApprovedResponse](docs/Model/SetCommentApprovedResponse.md)
+- [SetCommentTextParams](docs/Model/SetCommentTextParams.md)
+- [SetCommentTextResponse](docs/Model/SetCommentTextResponse.md)
 - [SetCommentTextResult](docs/Model/SetCommentTextResult.md)
+- [SetUserTrustFactorResponse](docs/Model/SetUserTrustFactorResponse.md)
 - [SizePreset](docs/Model/SizePreset.md)
 - [SortDirections](docs/Model/SortDirections.md)
 - [SpamRule](docs/Model/SpamRule.md)
 - [TOSConfig](docs/Model/TOSConfig.md)
+- [TenantBadge](docs/Model/TenantBadge.md)
 - [TenantHashTag](docs/Model/TenantHashTag.md)
 - [TenantPackage](docs/Model/TenantPackage.md)
-- [UnBlockCommentPublic200Response](docs/Model/UnBlockCommentPublic200Response.md)
 - [UnBlockFromCommentParams](docs/Model/UnBlockFromCommentParams.md)
 - [UnblockSuccess](docs/Model/UnblockSuccess.md)
 - [UpdatableCommentParams](docs/Model/UpdatableCommentParams.md)
@@ -567,9 +676,10 @@ Class | Method | HTTP request | Description
 - [UpdateTenantBody](docs/Model/UpdateTenantBody.md)
 - [UpdateTenantPackageBody](docs/Model/UpdateTenantPackageBody.md)
 - [UpdateTenantUserBody](docs/Model/UpdateTenantUserBody.md)
-- [UpdateUserBadge200Response](docs/Model/UpdateUserBadge200Response.md)
 - [UpdateUserBadgeParams](docs/Model/UpdateUserBadgeParams.md)
-- [UpdateUserNotificationStatus200Response](docs/Model/UpdateUserNotificationStatus200Response.md)
+- [UpdateUserNotificationCommentSubscriptionStatusResponse](docs/Model/UpdateUserNotificationCommentSubscriptionStatusResponse.md)
+- [UpdateUserNotificationPageSubscriptionStatusResponse](docs/Model/UpdateUserNotificationPageSubscriptionStatusResponse.md)
+- [UpdateUserNotificationStatusResponse](docs/Model/UpdateUserNotificationStatusResponse.md)
 - [UploadImageResponse](docs/Model/UploadImageResponse.md)
 - [User](docs/Model/User.md)
 - [UserBadge](docs/Model/UserBadge.md)
@@ -583,8 +693,8 @@ Class | Method | HTTP request | Description
 - [UserSearchSection](docs/Model/UserSearchSection.md)
 - [UserSearchSectionResult](docs/Model/UserSearchSectionResult.md)
 - [UserSessionInfo](docs/Model/UserSessionInfo.md)
+- [UsersListLocation](docs/Model/UsersListLocation.md)
 - [VoteBodyParams](docs/Model/VoteBodyParams.md)
-- [VoteComment200Response](docs/Model/VoteComment200Response.md)
 - [VoteDeleteResponse](docs/Model/VoteDeleteResponse.md)
 - [VoteResponse](docs/Model/VoteResponse.md)
 - [VoteResponseStatus](docs/Model/VoteResponseStatus.md)

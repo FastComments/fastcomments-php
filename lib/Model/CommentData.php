@@ -81,8 +81,9 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         'from_offline_restore' => 'bool',
         'autoplay_delay_ms' => 'int',
         'feedback_ids' => 'string[]',
-        'question_values' => 'array<string,\FastComments\Client\Model\RecordStringStringOrNumberValue>',
-        'tos' => 'bool'
+        'question_values' => 'array<string,\FastComments\Client\Model\GifSearchResponseImagesInnerInner>',
+        'tos' => 'bool',
+        'bot_id' => 'string'
     ];
 
     /**
@@ -117,7 +118,8 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         'autoplay_delay_ms' => 'int64',
         'feedback_ids' => null,
         'question_values' => null,
-        'tos' => null
+        'tos' => null,
+        'bot_id' => null
     ];
 
     /**
@@ -150,7 +152,8 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         'autoplay_delay_ms' => false,
         'feedback_ids' => false,
         'question_values' => false,
-        'tos' => false
+        'tos' => false,
+        'bot_id' => false
     ];
 
     /**
@@ -263,7 +266,8 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         'autoplay_delay_ms' => 'autoplayDelayMS',
         'feedback_ids' => 'feedbackIds',
         'question_values' => 'questionValues',
-        'tos' => 'tos'
+        'tos' => 'tos',
+        'bot_id' => 'botId'
     ];
 
     /**
@@ -296,7 +300,8 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         'autoplay_delay_ms' => 'setAutoplayDelayMs',
         'feedback_ids' => 'setFeedbackIds',
         'question_values' => 'setQuestionValues',
-        'tos' => 'setTos'
+        'tos' => 'setTos',
+        'bot_id' => 'setBotId'
     ];
 
     /**
@@ -329,7 +334,8 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         'autoplay_delay_ms' => 'getAutoplayDelayMs',
         'feedback_ids' => 'getFeedbackIds',
         'question_values' => 'getQuestionValues',
-        'tos' => 'getTos'
+        'tos' => 'getTos',
+        'bot_id' => 'getBotId'
     ];
 
     /**
@@ -414,6 +420,7 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('feedback_ids', $data ?? [], null);
         $this->setIfExists('question_values', $data ?? [], null);
         $this->setIfExists('tos', $data ?? [], null);
+        $this->setIfExists('bot_id', $data ?? [], null);
     }
 
     /**
@@ -1129,7 +1136,7 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets question_values
      *
-     * @return array<string,\FastComments\Client\Model\RecordStringStringOrNumberValue>|null
+     * @return array<string,\FastComments\Client\Model\GifSearchResponseImagesInnerInner>|null
      */
     public function getQuestionValues()
     {
@@ -1139,7 +1146,7 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets question_values
      *
-     * @param array<string,\FastComments\Client\Model\RecordStringStringOrNumberValue>|null $question_values Construct a type with a set of properties K of type T
+     * @param array<string,\FastComments\Client\Model\GifSearchResponseImagesInnerInner>|null $question_values Construct a type with a set of properties K of type T
      *
      * @return self
      */
@@ -1176,6 +1183,33 @@ class CommentData implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable tos cannot be null');
         }
         $this->container['tos'] = $tos;
+
+        return $this;
+    }
+
+    /**
+     * Gets bot_id
+     *
+     * @return string|null
+     */
+    public function getBotId()
+    {
+        return $this->container['bot_id'];
+    }
+
+    /**
+     * Sets bot_id
+     *
+     * @param string|null $bot_id bot_id
+     *
+     * @return self
+     */
+    public function setBotId($bot_id)
+    {
+        if (is_null($bot_id)) {
+            throw new \InvalidArgumentException('non-nullable bot_id cannot be null');
+        }
+        $this->container['bot_id'] = $bot_id;
 
         return $this;
     }

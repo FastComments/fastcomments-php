@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_id** | **string** |  |
+**id** | **string** |  |
 **ai_determined_spam** | **bool** |  | [optional]
 **anon_user_id** | **string** |  | [optional]
 **approved** | **bool** |  |
