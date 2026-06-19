@@ -1,0 +1,32 @@
+name: CI
+
+# Runs on PRs and pushes to the default branch. We use `pull_request` (never
+# `pull_request_target`), so secrets are NOT exposed to pull requests from forks.
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: composer
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+      - name: Run tests
+        run: vendor/bin/phpunit
+        env:
+          FASTCOMMENTS_API_KEY: ${{ secrets.FASTCOMMENTS_API_KEY }}
+          FASTCOMMENTS_TENANT_ID: ${{ secrets.FASTCOMMENTS_TENANT_ID }}
