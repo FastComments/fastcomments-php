@@ -115,4 +115,67 @@ class UpdateUserNotificationPageSubscriptionStatusResponseTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "reason"
+     */
+    public function testPropertyReason()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "code"
+     */
+    public function testPropertyCode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "secondary_code"
+     */
+    public function testPropertySecondaryCode()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "banned_until"
+     */
+    public function testPropertyBannedUntil()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "max_character_length"
+     */
+    public function testPropertyMaxCharacterLength()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "translated_error"
+     */
+    public function testPropertyTranslatedError()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "custom_config"
+     */
+    public function testPropertyCustomConfig()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

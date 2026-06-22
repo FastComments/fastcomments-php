@@ -187,7 +187,7 @@ try {
 ## `addHashTag()`
 
 ```php
-addHashTag($tenant_id, $create_hash_tag_body): \FastComments\Client\Model\CreateHashTagResponse
+addHashTag($tenant_id, $create_hash_tag_body): \FastComments\Client\Model\AddHashTagResponse
 ```
 
 
@@ -231,7 +231,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateHashTagResponse**](../Model/CreateHashTagResponse.md)
+[**\FastComments\Client\Model\AddHashTagResponse**](../Model/AddHashTagResponse.md)
 
 ### Authorization
 
@@ -249,7 +249,7 @@ try {
 ## `addHashTagsBulk()`
 
 ```php
-addHashTagsBulk($tenant_id, $bulk_create_hash_tags_body): \FastComments\Client\Model\BulkCreateHashTagsResponse
+addHashTagsBulk($tenant_id, $bulk_create_hash_tags_body): \FastComments\Client\Model\AddHashTagsBulkResponse
 ```
 
 
@@ -293,7 +293,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\BulkCreateHashTagsResponse**](../Model/BulkCreateHashTagsResponse.md)
+[**\FastComments\Client\Model\AddHashTagsBulkResponse**](../Model/AddHashTagsBulkResponse.md)
 
 ### Authorization
 
@@ -503,7 +503,7 @@ try {
 ## `aggregateQuestionResults()`
 
 ```php
-aggregateQuestionResults($tenant_id, $question_id, $question_ids, $url_id, $time_bucket, $start_date, $force_recalculate): \FastComments\Client\Model\AggregateQuestionResultsResponse
+aggregateQuestionResults($tenant_id, $question_id, $question_ids, $url_id, $time_bucket, $start_date, $force_recalculate): \FastComments\Client\Model\AggregateQuestionResultsResponse1
 ```
 
 
@@ -557,7 +557,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\AggregateQuestionResultsResponse**](../Model/AggregateQuestionResultsResponse.md)
+[**\FastComments\Client\Model\AggregateQuestionResultsResponse1**](../Model/AggregateQuestionResultsResponse1.md)
 
 ### Authorization
 
@@ -575,7 +575,7 @@ try {
 ## `blockUserFromComment()`
 
 ```php
-blockUserFromComment($tenant_id, $id, $block_from_comment_params, $user_id, $anon_user_id): \FastComments\Client\Model\BlockSuccess
+blockUserFromComment($tenant_id, $id, $block_from_comment_params, $user_id, $anon_user_id): \FastComments\Client\Model\BlockUserFromCommentResponse
 ```
 
 
@@ -625,7 +625,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\BlockSuccess**](../Model/BlockSuccess.md)
+[**\FastComments\Client\Model\BlockUserFromCommentResponse**](../Model/BlockUserFromCommentResponse.md)
 
 ### Authorization
 
@@ -643,7 +643,7 @@ try {
 ## `bulkAggregateQuestionResults()`
 
 ```php
-bulkAggregateQuestionResults($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate): \FastComments\Client\Model\BulkAggregateQuestionResultsResponse
+bulkAggregateQuestionResults($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate): \FastComments\Client\Model\BulkAggregateQuestionResultsResponse1
 ```
 
 
@@ -689,7 +689,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\BulkAggregateQuestionResultsResponse**](../Model/BulkAggregateQuestionResultsResponse.md)
+[**\FastComments\Client\Model\BulkAggregateQuestionResultsResponse1**](../Model/BulkAggregateQuestionResultsResponse1.md)
 
 ### Authorization
 
@@ -707,7 +707,7 @@ try {
 ## `changeTicketState()`
 
 ```php
-changeTicketState($tenant_id, $user_id, $id, $change_ticket_state_body): \FastComments\Client\Model\ChangeTicketStateResponse
+changeTicketState($tenant_id, $user_id, $id, $change_ticket_state_body): \FastComments\Client\Model\ChangeTicketStateResponse1
 ```
 
 
@@ -755,7 +755,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\ChangeTicketStateResponse**](../Model/ChangeTicketStateResponse.md)
+[**\FastComments\Client\Model\ChangeTicketStateResponse1**](../Model/ChangeTicketStateResponse1.md)
 
 ### Authorization
 
@@ -773,7 +773,7 @@ try {
 ## `combineCommentsWithQuestionResults()`
 
 ```php
-combineCommentsWithQuestionResults($tenant_id, $question_id, $question_ids, $url_id, $start_date, $force_recalculate, $min_value, $max_value, $limit): \FastComments\Client\Model\CombineQuestionResultsWithCommentsResponse
+combineCommentsWithQuestionResults($tenant_id, $question_id, $question_ids, $url_id, $start_date, $force_recalculate, $min_value, $max_value, $limit): \FastComments\Client\Model\CombineCommentsWithQuestionResultsResponse
 ```
 
 
@@ -831,7 +831,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CombineQuestionResultsWithCommentsResponse**](../Model/CombineQuestionResultsWithCommentsResponse.md)
+[**\FastComments\Client\Model\CombineCommentsWithQuestionResultsResponse**](../Model/CombineCommentsWithQuestionResultsResponse.md)
 
 ### Authorization
 
@@ -849,7 +849,7 @@ try {
 ## `createEmailTemplate()`
 
 ```php
-createEmailTemplate($tenant_id, $create_email_template_body): \FastComments\Client\Model\CreateEmailTemplateResponse
+createEmailTemplate($tenant_id, $create_email_template_body): \FastComments\Client\Model\CreateEmailTemplateResponse1
 ```
 
 
@@ -893,7 +893,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateEmailTemplateResponse**](../Model/CreateEmailTemplateResponse.md)
+[**\FastComments\Client\Model\CreateEmailTemplateResponse1**](../Model/CreateEmailTemplateResponse1.md)
 
 ### Authorization
 
@@ -911,7 +911,7 @@ try {
 ## `createFeedPost()`
 
 ```php
-createFeedPost($tenant_id, $create_feed_post_params, $broadcast_id, $is_live, $do_spam_check, $skip_dup_check): \FastComments\Client\Model\CreateFeedPostsResponse
+createFeedPost($tenant_id, $create_feed_post_params, $broadcast_id, $is_live, $do_spam_check, $skip_dup_check): \FastComments\Client\Model\CreateFeedPostResponse1
 ```
 
 
@@ -963,7 +963,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateFeedPostsResponse**](../Model/CreateFeedPostsResponse.md)
+[**\FastComments\Client\Model\CreateFeedPostResponse1**](../Model/CreateFeedPostResponse1.md)
 
 ### Authorization
 
@@ -981,7 +981,7 @@ try {
 ## `createModerator()`
 
 ```php
-createModerator($tenant_id, $create_moderator_body): \FastComments\Client\Model\CreateModeratorResponse
+createModerator($tenant_id, $create_moderator_body): \FastComments\Client\Model\CreateModeratorResponse1
 ```
 
 
@@ -1025,7 +1025,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateModeratorResponse**](../Model/CreateModeratorResponse.md)
+[**\FastComments\Client\Model\CreateModeratorResponse1**](../Model/CreateModeratorResponse1.md)
 
 ### Authorization
 
@@ -1043,7 +1043,7 @@ try {
 ## `createQuestionConfig()`
 
 ```php
-createQuestionConfig($tenant_id, $create_question_config_body): \FastComments\Client\Model\CreateQuestionConfigResponse
+createQuestionConfig($tenant_id, $create_question_config_body): \FastComments\Client\Model\CreateQuestionConfigResponse1
 ```
 
 
@@ -1087,7 +1087,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateQuestionConfigResponse**](../Model/CreateQuestionConfigResponse.md)
+[**\FastComments\Client\Model\CreateQuestionConfigResponse1**](../Model/CreateQuestionConfigResponse1.md)
 
 ### Authorization
 
@@ -1105,7 +1105,7 @@ try {
 ## `createQuestionResult()`
 
 ```php
-createQuestionResult($tenant_id, $create_question_result_body): \FastComments\Client\Model\CreateQuestionResultResponse
+createQuestionResult($tenant_id, $create_question_result_body): \FastComments\Client\Model\CreateQuestionResultResponse1
 ```
 
 
@@ -1149,7 +1149,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateQuestionResultResponse**](../Model/CreateQuestionResultResponse.md)
+[**\FastComments\Client\Model\CreateQuestionResultResponse1**](../Model/CreateQuestionResultResponse1.md)
 
 ### Authorization
 
@@ -1229,7 +1229,7 @@ try {
 ## `createTenant()`
 
 ```php
-createTenant($tenant_id, $create_tenant_body): \FastComments\Client\Model\CreateTenantResponse
+createTenant($tenant_id, $create_tenant_body): \FastComments\Client\Model\CreateTenantResponse1
 ```
 
 
@@ -1273,7 +1273,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateTenantResponse**](../Model/CreateTenantResponse.md)
+[**\FastComments\Client\Model\CreateTenantResponse1**](../Model/CreateTenantResponse1.md)
 
 ### Authorization
 
@@ -1291,7 +1291,7 @@ try {
 ## `createTenantPackage()`
 
 ```php
-createTenantPackage($tenant_id, $create_tenant_package_body): \FastComments\Client\Model\CreateTenantPackageResponse
+createTenantPackage($tenant_id, $create_tenant_package_body): \FastComments\Client\Model\CreateTenantPackageResponse1
 ```
 
 
@@ -1335,7 +1335,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateTenantPackageResponse**](../Model/CreateTenantPackageResponse.md)
+[**\FastComments\Client\Model\CreateTenantPackageResponse1**](../Model/CreateTenantPackageResponse1.md)
 
 ### Authorization
 
@@ -1353,7 +1353,7 @@ try {
 ## `createTenantUser()`
 
 ```php
-createTenantUser($tenant_id, $create_tenant_user_body): \FastComments\Client\Model\CreateTenantUserResponse
+createTenantUser($tenant_id, $create_tenant_user_body): \FastComments\Client\Model\CreateTenantUserResponse1
 ```
 
 
@@ -1397,7 +1397,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateTenantUserResponse**](../Model/CreateTenantUserResponse.md)
+[**\FastComments\Client\Model\CreateTenantUserResponse1**](../Model/CreateTenantUserResponse1.md)
 
 ### Authorization
 
@@ -1415,7 +1415,7 @@ try {
 ## `createTicket()`
 
 ```php
-createTicket($tenant_id, $user_id, $create_ticket_body): \FastComments\Client\Model\CreateTicketResponse
+createTicket($tenant_id, $user_id, $create_ticket_body): \FastComments\Client\Model\CreateTicketResponse1
 ```
 
 
@@ -1461,7 +1461,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateTicketResponse**](../Model/CreateTicketResponse.md)
+[**\FastComments\Client\Model\CreateTicketResponse1**](../Model/CreateTicketResponse1.md)
 
 ### Authorization
 
@@ -1479,7 +1479,7 @@ try {
 ## `createUserBadge()`
 
 ```php
-createUserBadge($tenant_id, $create_user_badge_params): \FastComments\Client\Model\APICreateUserBadgeResponse
+createUserBadge($tenant_id, $create_user_badge_params): \FastComments\Client\Model\CreateUserBadgeResponse
 ```
 
 
@@ -1523,7 +1523,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APICreateUserBadgeResponse**](../Model/APICreateUserBadgeResponse.md)
+[**\FastComments\Client\Model\CreateUserBadgeResponse**](../Model/CreateUserBadgeResponse.md)
 
 ### Authorization
 
@@ -1541,7 +1541,7 @@ try {
 ## `createVote()`
 
 ```php
-createVote($tenant_id, $comment_id, $direction, $user_id, $anon_user_id): \FastComments\Client\Model\VoteResponse
+createVote($tenant_id, $comment_id, $direction, $user_id, $anon_user_id): \FastComments\Client\Model\CreateVoteResponse
 ```
 
 
@@ -1591,7 +1591,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\VoteResponse**](../Model/VoteResponse.md)
+[**\FastComments\Client\Model\CreateVoteResponse**](../Model/CreateVoteResponse.md)
 
 ### Authorization
 
@@ -1609,7 +1609,7 @@ try {
 ## `deleteComment()`
 
 ```php
-deleteComment($tenant_id, $id, $context_user_id, $is_live): \FastComments\Client\Model\DeleteCommentResult
+deleteComment($tenant_id, $id, $context_user_id, $is_live): \FastComments\Client\Model\DeleteCommentResponse
 ```
 
 
@@ -1657,7 +1657,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\DeleteCommentResult**](../Model/DeleteCommentResult.md)
+[**\FastComments\Client\Model\DeleteCommentResponse**](../Model/DeleteCommentResponse.md)
 
 ### Authorization
 
@@ -1737,7 +1737,7 @@ try {
 ## `deleteEmailTemplate()`
 
 ```php
-deleteEmailTemplate($tenant_id, $id): \FastComments\Client\Model\APIEmptyResponse
+deleteEmailTemplate($tenant_id, $id): \FastComments\Client\Model\DeleteEmailTemplateResponse
 ```
 
 
@@ -1781,7 +1781,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\DeleteEmailTemplateResponse**](../Model/DeleteEmailTemplateResponse.md)
 
 ### Authorization
 
@@ -1799,7 +1799,7 @@ try {
 ## `deleteEmailTemplateRenderError()`
 
 ```php
-deleteEmailTemplateRenderError($tenant_id, $id, $error_id): \FastComments\Client\Model\APIEmptyResponse
+deleteEmailTemplateRenderError($tenant_id, $id, $error_id): \FastComments\Client\Model\DeleteEmailTemplateRenderErrorResponse
 ```
 
 
@@ -1845,7 +1845,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\DeleteEmailTemplateRenderErrorResponse**](../Model/DeleteEmailTemplateRenderErrorResponse.md)
 
 ### Authorization
 
@@ -1863,7 +1863,7 @@ try {
 ## `deleteHashTag()`
 
 ```php
-deleteHashTag($tag, $tenant_id, $delete_hash_tag_request_body): \FastComments\Client\Model\APIEmptyResponse
+deleteHashTag($tag, $tenant_id, $delete_hash_tag_request_body): \FastComments\Client\Model\DeleteHashTagResponse
 ```
 
 
@@ -1909,7 +1909,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\DeleteHashTagResponse**](../Model/DeleteHashTagResponse.md)
 
 ### Authorization
 
@@ -1927,7 +1927,7 @@ try {
 ## `deleteModerator()`
 
 ```php
-deleteModerator($tenant_id, $id, $send_email): \FastComments\Client\Model\APIEmptyResponse
+deleteModerator($tenant_id, $id, $send_email): \FastComments\Client\Model\DeleteModeratorResponse
 ```
 
 
@@ -1973,7 +1973,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\DeleteModeratorResponse**](../Model/DeleteModeratorResponse.md)
 
 ### Authorization
 
@@ -1991,7 +1991,7 @@ try {
 ## `deleteNotificationCount()`
 
 ```php
-deleteNotificationCount($tenant_id, $id): \FastComments\Client\Model\APIEmptyResponse
+deleteNotificationCount($tenant_id, $id): \FastComments\Client\Model\DeleteNotificationCountResponse
 ```
 
 
@@ -2035,7 +2035,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\DeleteNotificationCountResponse**](../Model/DeleteNotificationCountResponse.md)
 
 ### Authorization
 
@@ -2115,7 +2115,7 @@ try {
 ## `deletePendingWebhookEvent()`
 
 ```php
-deletePendingWebhookEvent($tenant_id, $id): \FastComments\Client\Model\APIEmptyResponse
+deletePendingWebhookEvent($tenant_id, $id): \FastComments\Client\Model\DeletePendingWebhookEventResponse
 ```
 
 
@@ -2159,7 +2159,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\DeletePendingWebhookEventResponse**](../Model/DeletePendingWebhookEventResponse.md)
 
 ### Authorization
 
@@ -2177,7 +2177,7 @@ try {
 ## `deleteQuestionConfig()`
 
 ```php
-deleteQuestionConfig($tenant_id, $id): \FastComments\Client\Model\APIEmptyResponse
+deleteQuestionConfig($tenant_id, $id): \FastComments\Client\Model\DeleteQuestionConfigResponse
 ```
 
 
@@ -2221,7 +2221,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\DeleteQuestionConfigResponse**](../Model/DeleteQuestionConfigResponse.md)
 
 ### Authorization
 
@@ -2239,7 +2239,7 @@ try {
 ## `deleteQuestionResult()`
 
 ```php
-deleteQuestionResult($tenant_id, $id): \FastComments\Client\Model\APIEmptyResponse
+deleteQuestionResult($tenant_id, $id): \FastComments\Client\Model\DeleteQuestionResultResponse
 ```
 
 
@@ -2283,7 +2283,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\DeleteQuestionResultResponse**](../Model/DeleteQuestionResultResponse.md)
 
 ### Authorization
 
@@ -2431,7 +2431,7 @@ try {
 ## `deleteTenant()`
 
 ```php
-deleteTenant($tenant_id, $id, $sure): \FastComments\Client\Model\APIEmptyResponse
+deleteTenant($tenant_id, $id, $sure): \FastComments\Client\Model\DeleteTenantResponse
 ```
 
 
@@ -2477,7 +2477,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\DeleteTenantResponse**](../Model/DeleteTenantResponse.md)
 
 ### Authorization
 
@@ -2495,7 +2495,7 @@ try {
 ## `deleteTenantPackage()`
 
 ```php
-deleteTenantPackage($tenant_id, $id): \FastComments\Client\Model\APIEmptyResponse
+deleteTenantPackage($tenant_id, $id): \FastComments\Client\Model\DeleteTenantPackageResponse
 ```
 
 
@@ -2539,7 +2539,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\DeleteTenantPackageResponse**](../Model/DeleteTenantPackageResponse.md)
 
 ### Authorization
 
@@ -2557,7 +2557,7 @@ try {
 ## `deleteTenantUser()`
 
 ```php
-deleteTenantUser($tenant_id, $id, $delete_comments, $comment_delete_mode): \FastComments\Client\Model\APIEmptyResponse
+deleteTenantUser($tenant_id, $id, $delete_comments, $comment_delete_mode): \FastComments\Client\Model\DeleteTenantUserResponse
 ```
 
 
@@ -2605,7 +2605,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\DeleteTenantUserResponse**](../Model/DeleteTenantUserResponse.md)
 
 ### Authorization
 
@@ -2623,7 +2623,7 @@ try {
 ## `deleteUserBadge()`
 
 ```php
-deleteUserBadge($tenant_id, $id): \FastComments\Client\Model\APIEmptySuccessResponse
+deleteUserBadge($tenant_id, $id): \FastComments\Client\Model\DeleteUserBadgeResponse
 ```
 
 
@@ -2667,7 +2667,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptySuccessResponse**](../Model/APIEmptySuccessResponse.md)
+[**\FastComments\Client\Model\DeleteUserBadgeResponse**](../Model/DeleteUserBadgeResponse.md)
 
 ### Authorization
 
@@ -2685,7 +2685,7 @@ try {
 ## `deleteVote()`
 
 ```php
-deleteVote($tenant_id, $id, $edit_key): \FastComments\Client\Model\VoteDeleteResponse
+deleteVote($tenant_id, $id, $edit_key): \FastComments\Client\Model\DeleteVoteResponse
 ```
 
 
@@ -2731,7 +2731,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\VoteDeleteResponse**](../Model/VoteDeleteResponse.md)
+[**\FastComments\Client\Model\DeleteVoteResponse**](../Model/DeleteVoteResponse.md)
 
 ### Authorization
 
@@ -2749,7 +2749,7 @@ try {
 ## `flagComment()`
 
 ```php
-flagComment($tenant_id, $id, $user_id, $anon_user_id): \FastComments\Client\Model\FlagCommentResponse
+flagComment($tenant_id, $id, $user_id, $anon_user_id): \FastComments\Client\Model\FlagCommentResponse1
 ```
 
 
@@ -2797,7 +2797,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\FlagCommentResponse**](../Model/FlagCommentResponse.md)
+[**\FastComments\Client\Model\FlagCommentResponse1**](../Model/FlagCommentResponse1.md)
 
 ### Authorization
 
@@ -2815,7 +2815,7 @@ try {
 ## `getAuditLogs()`
 
 ```php
-getAuditLogs($tenant_id, $limit, $skip, $order, $after, $before): \FastComments\Client\Model\GetAuditLogsResponse
+getAuditLogs($tenant_id, $limit, $skip, $order, $after, $before): \FastComments\Client\Model\GetAuditLogsResponse1
 ```
 
 
@@ -2867,7 +2867,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetAuditLogsResponse**](../Model/GetAuditLogsResponse.md)
+[**\FastComments\Client\Model\GetAuditLogsResponse1**](../Model/GetAuditLogsResponse1.md)
 
 ### Authorization
 
@@ -2885,7 +2885,7 @@ try {
 ## `getCachedNotificationCount()`
 
 ```php
-getCachedNotificationCount($tenant_id, $id): \FastComments\Client\Model\GetCachedNotificationCountResponse
+getCachedNotificationCount($tenant_id, $id): \FastComments\Client\Model\GetCachedNotificationCountResponse1
 ```
 
 
@@ -2929,7 +2929,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetCachedNotificationCountResponse**](../Model/GetCachedNotificationCountResponse.md)
+[**\FastComments\Client\Model\GetCachedNotificationCountResponse1**](../Model/GetCachedNotificationCountResponse1.md)
 
 ### Authorization
 
@@ -2947,7 +2947,7 @@ try {
 ## `getComment()`
 
 ```php
-getComment($tenant_id, $id): \FastComments\Client\Model\APIGetCommentResponse
+getComment($tenant_id, $id): \FastComments\Client\Model\GetCommentResponse
 ```
 
 
@@ -2991,7 +2991,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIGetCommentResponse**](../Model/APIGetCommentResponse.md)
+[**\FastComments\Client\Model\GetCommentResponse**](../Model/GetCommentResponse.md)
 
 ### Authorization
 
@@ -3009,7 +3009,7 @@ try {
 ## `getComments()`
 
 ```php
-getComments($tenant_id, $page, $limit, $skip, $as_tree, $skip_children, $limit_children, $max_tree_depth, $url_id, $user_id, $anon_user_id, $context_user_id, $hash_tag, $parent_id, $direction, $from_date, $to_date): \FastComments\Client\Model\APIGetCommentsResponse
+getComments($tenant_id, $page, $limit, $skip, $as_tree, $skip_children, $limit_children, $max_tree_depth, $url_id, $user_id, $anon_user_id, $context_user_id, $hash_tag, $parent_id, $direction, $from_date, $to_date): \FastComments\Client\Model\GetCommentsResponse
 ```
 
 
@@ -3083,7 +3083,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIGetCommentsResponse**](../Model/APIGetCommentsResponse.md)
+[**\FastComments\Client\Model\GetCommentsResponse**](../Model/GetCommentsResponse.md)
 
 ### Authorization
 
@@ -3223,7 +3223,7 @@ try {
 ## `getEmailTemplate()`
 
 ```php
-getEmailTemplate($tenant_id, $id): \FastComments\Client\Model\GetEmailTemplateResponse
+getEmailTemplate($tenant_id, $id): \FastComments\Client\Model\GetEmailTemplateResponse1
 ```
 
 
@@ -3267,7 +3267,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetEmailTemplateResponse**](../Model/GetEmailTemplateResponse.md)
+[**\FastComments\Client\Model\GetEmailTemplateResponse1**](../Model/GetEmailTemplateResponse1.md)
 
 ### Authorization
 
@@ -3285,7 +3285,7 @@ try {
 ## `getEmailTemplateDefinitions()`
 
 ```php
-getEmailTemplateDefinitions($tenant_id): \FastComments\Client\Model\GetEmailTemplateDefinitionsResponse
+getEmailTemplateDefinitions($tenant_id): \FastComments\Client\Model\GetEmailTemplateDefinitionsResponse1
 ```
 
 
@@ -3327,7 +3327,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetEmailTemplateDefinitionsResponse**](../Model/GetEmailTemplateDefinitionsResponse.md)
+[**\FastComments\Client\Model\GetEmailTemplateDefinitionsResponse1**](../Model/GetEmailTemplateDefinitionsResponse1.md)
 
 ### Authorization
 
@@ -3345,7 +3345,7 @@ try {
 ## `getEmailTemplateRenderErrors()`
 
 ```php
-getEmailTemplateRenderErrors($tenant_id, $id, $skip): \FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse
+getEmailTemplateRenderErrors($tenant_id, $id, $skip): \FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse1
 ```
 
 
@@ -3391,7 +3391,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse**](../Model/GetEmailTemplateRenderErrorsResponse.md)
+[**\FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse1**](../Model/GetEmailTemplateRenderErrorsResponse1.md)
 
 ### Authorization
 
@@ -3409,7 +3409,7 @@ try {
 ## `getEmailTemplates()`
 
 ```php
-getEmailTemplates($tenant_id, $skip): \FastComments\Client\Model\GetEmailTemplatesResponse
+getEmailTemplates($tenant_id, $skip): \FastComments\Client\Model\GetEmailTemplatesResponse1
 ```
 
 
@@ -3453,7 +3453,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetEmailTemplatesResponse**](../Model/GetEmailTemplatesResponse.md)
+[**\FastComments\Client\Model\GetEmailTemplatesResponse1**](../Model/GetEmailTemplatesResponse1.md)
 
 ### Authorization
 
@@ -3471,7 +3471,7 @@ try {
 ## `getFeedPosts()`
 
 ```php
-getFeedPosts($tenant_id, $after_id, $limit, $tags): \FastComments\Client\Model\GetFeedPostsResponse
+getFeedPosts($tenant_id, $after_id, $limit, $tags): \FastComments\Client\Model\GetFeedPostsResponse1
 ```
 
 
@@ -3521,7 +3521,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetFeedPostsResponse**](../Model/GetFeedPostsResponse.md)
+[**\FastComments\Client\Model\GetFeedPostsResponse1**](../Model/GetFeedPostsResponse1.md)
 
 ### Authorization
 
@@ -3539,7 +3539,7 @@ try {
 ## `getHashTags()`
 
 ```php
-getHashTags($tenant_id, $page): \FastComments\Client\Model\GetHashTagsResponse
+getHashTags($tenant_id, $page): \FastComments\Client\Model\GetHashTagsResponse1
 ```
 
 
@@ -3583,7 +3583,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetHashTagsResponse**](../Model/GetHashTagsResponse.md)
+[**\FastComments\Client\Model\GetHashTagsResponse1**](../Model/GetHashTagsResponse1.md)
 
 ### Authorization
 
@@ -3601,7 +3601,7 @@ try {
 ## `getModerator()`
 
 ```php
-getModerator($tenant_id, $id): \FastComments\Client\Model\GetModeratorResponse
+getModerator($tenant_id, $id): \FastComments\Client\Model\GetModeratorResponse1
 ```
 
 
@@ -3645,7 +3645,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetModeratorResponse**](../Model/GetModeratorResponse.md)
+[**\FastComments\Client\Model\GetModeratorResponse1**](../Model/GetModeratorResponse1.md)
 
 ### Authorization
 
@@ -3663,7 +3663,7 @@ try {
 ## `getModerators()`
 
 ```php
-getModerators($tenant_id, $skip): \FastComments\Client\Model\GetModeratorsResponse
+getModerators($tenant_id, $skip): \FastComments\Client\Model\GetModeratorsResponse1
 ```
 
 
@@ -3707,7 +3707,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetModeratorsResponse**](../Model/GetModeratorsResponse.md)
+[**\FastComments\Client\Model\GetModeratorsResponse1**](../Model/GetModeratorsResponse1.md)
 
 ### Authorization
 
@@ -3725,7 +3725,7 @@ try {
 ## `getNotificationCount()`
 
 ```php
-getNotificationCount($tenant_id, $user_id, $url_id, $from_comment_id, $viewed, $type): \FastComments\Client\Model\GetNotificationCountResponse
+getNotificationCount($tenant_id, $user_id, $url_id, $from_comment_id, $viewed, $type): \FastComments\Client\Model\GetNotificationCountResponse1
 ```
 
 
@@ -3777,7 +3777,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetNotificationCountResponse**](../Model/GetNotificationCountResponse.md)
+[**\FastComments\Client\Model\GetNotificationCountResponse1**](../Model/GetNotificationCountResponse1.md)
 
 ### Authorization
 
@@ -3795,7 +3795,7 @@ try {
 ## `getNotifications()`
 
 ```php
-getNotifications($tenant_id, $user_id, $url_id, $from_comment_id, $viewed, $type, $skip): \FastComments\Client\Model\GetNotificationsResponse
+getNotifications($tenant_id, $user_id, $url_id, $from_comment_id, $viewed, $type, $skip): \FastComments\Client\Model\GetNotificationsResponse1
 ```
 
 
@@ -3849,7 +3849,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetNotificationsResponse**](../Model/GetNotificationsResponse.md)
+[**\FastComments\Client\Model\GetNotificationsResponse1**](../Model/GetNotificationsResponse1.md)
 
 ### Authorization
 
@@ -3989,7 +3989,7 @@ try {
 ## `getPendingWebhookEventCount()`
 
 ```php
-getPendingWebhookEventCount($tenant_id, $comment_id, $external_id, $event_type, $type, $domain, $attempt_count_gt): \FastComments\Client\Model\GetPendingWebhookEventCountResponse
+getPendingWebhookEventCount($tenant_id, $comment_id, $external_id, $event_type, $type, $domain, $attempt_count_gt): \FastComments\Client\Model\GetPendingWebhookEventCountResponse1
 ```
 
 
@@ -4043,7 +4043,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetPendingWebhookEventCountResponse**](../Model/GetPendingWebhookEventCountResponse.md)
+[**\FastComments\Client\Model\GetPendingWebhookEventCountResponse1**](../Model/GetPendingWebhookEventCountResponse1.md)
 
 ### Authorization
 
@@ -4061,7 +4061,7 @@ try {
 ## `getPendingWebhookEvents()`
 
 ```php
-getPendingWebhookEvents($tenant_id, $comment_id, $external_id, $event_type, $type, $domain, $attempt_count_gt, $skip): \FastComments\Client\Model\GetPendingWebhookEventsResponse
+getPendingWebhookEvents($tenant_id, $comment_id, $external_id, $event_type, $type, $domain, $attempt_count_gt, $skip): \FastComments\Client\Model\GetPendingWebhookEventsResponse1
 ```
 
 
@@ -4117,7 +4117,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetPendingWebhookEventsResponse**](../Model/GetPendingWebhookEventsResponse.md)
+[**\FastComments\Client\Model\GetPendingWebhookEventsResponse1**](../Model/GetPendingWebhookEventsResponse1.md)
 
 ### Authorization
 
@@ -4135,7 +4135,7 @@ try {
 ## `getQuestionConfig()`
 
 ```php
-getQuestionConfig($tenant_id, $id): \FastComments\Client\Model\GetQuestionConfigResponse
+getQuestionConfig($tenant_id, $id): \FastComments\Client\Model\GetQuestionConfigResponse1
 ```
 
 
@@ -4179,7 +4179,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetQuestionConfigResponse**](../Model/GetQuestionConfigResponse.md)
+[**\FastComments\Client\Model\GetQuestionConfigResponse1**](../Model/GetQuestionConfigResponse1.md)
 
 ### Authorization
 
@@ -4197,7 +4197,7 @@ try {
 ## `getQuestionConfigs()`
 
 ```php
-getQuestionConfigs($tenant_id, $skip): \FastComments\Client\Model\GetQuestionConfigsResponse
+getQuestionConfigs($tenant_id, $skip): \FastComments\Client\Model\GetQuestionConfigsResponse1
 ```
 
 
@@ -4241,7 +4241,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetQuestionConfigsResponse**](../Model/GetQuestionConfigsResponse.md)
+[**\FastComments\Client\Model\GetQuestionConfigsResponse1**](../Model/GetQuestionConfigsResponse1.md)
 
 ### Authorization
 
@@ -4259,7 +4259,7 @@ try {
 ## `getQuestionResult()`
 
 ```php
-getQuestionResult($tenant_id, $id): \FastComments\Client\Model\GetQuestionResultResponse
+getQuestionResult($tenant_id, $id): \FastComments\Client\Model\GetQuestionResultResponse1
 ```
 
 
@@ -4303,7 +4303,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetQuestionResultResponse**](../Model/GetQuestionResultResponse.md)
+[**\FastComments\Client\Model\GetQuestionResultResponse1**](../Model/GetQuestionResultResponse1.md)
 
 ### Authorization
 
@@ -4321,7 +4321,7 @@ try {
 ## `getQuestionResults()`
 
 ```php
-getQuestionResults($tenant_id, $url_id, $user_id, $start_date, $question_id, $question_ids, $skip): \FastComments\Client\Model\GetQuestionResultsResponse
+getQuestionResults($tenant_id, $url_id, $user_id, $start_date, $question_id, $question_ids, $skip): \FastComments\Client\Model\GetQuestionResultsResponse1
 ```
 
 
@@ -4375,7 +4375,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetQuestionResultsResponse**](../Model/GetQuestionResultsResponse.md)
+[**\FastComments\Client\Model\GetQuestionResultsResponse1**](../Model/GetQuestionResultsResponse1.md)
 
 ### Authorization
 
@@ -4641,7 +4641,7 @@ try {
 ## `getTenant()`
 
 ```php
-getTenant($tenant_id, $id): \FastComments\Client\Model\GetTenantResponse
+getTenant($tenant_id, $id): \FastComments\Client\Model\GetTenantResponse1
 ```
 
 
@@ -4685,7 +4685,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetTenantResponse**](../Model/GetTenantResponse.md)
+[**\FastComments\Client\Model\GetTenantResponse1**](../Model/GetTenantResponse1.md)
 
 ### Authorization
 
@@ -4703,7 +4703,7 @@ try {
 ## `getTenantDailyUsages()`
 
 ```php
-getTenantDailyUsages($tenant_id, $year_number, $month_number, $day_number, $skip): \FastComments\Client\Model\GetTenantDailyUsagesResponse
+getTenantDailyUsages($tenant_id, $year_number, $month_number, $day_number, $skip): \FastComments\Client\Model\GetTenantDailyUsagesResponse1
 ```
 
 
@@ -4753,7 +4753,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetTenantDailyUsagesResponse**](../Model/GetTenantDailyUsagesResponse.md)
+[**\FastComments\Client\Model\GetTenantDailyUsagesResponse1**](../Model/GetTenantDailyUsagesResponse1.md)
 
 ### Authorization
 
@@ -4771,7 +4771,7 @@ try {
 ## `getTenantPackage()`
 
 ```php
-getTenantPackage($tenant_id, $id): \FastComments\Client\Model\GetTenantPackageResponse
+getTenantPackage($tenant_id, $id): \FastComments\Client\Model\GetTenantPackageResponse1
 ```
 
 
@@ -4815,7 +4815,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetTenantPackageResponse**](../Model/GetTenantPackageResponse.md)
+[**\FastComments\Client\Model\GetTenantPackageResponse1**](../Model/GetTenantPackageResponse1.md)
 
 ### Authorization
 
@@ -4833,7 +4833,7 @@ try {
 ## `getTenantPackages()`
 
 ```php
-getTenantPackages($tenant_id, $skip): \FastComments\Client\Model\GetTenantPackagesResponse
+getTenantPackages($tenant_id, $skip): \FastComments\Client\Model\GetTenantPackagesResponse1
 ```
 
 
@@ -4877,7 +4877,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetTenantPackagesResponse**](../Model/GetTenantPackagesResponse.md)
+[**\FastComments\Client\Model\GetTenantPackagesResponse1**](../Model/GetTenantPackagesResponse1.md)
 
 ### Authorization
 
@@ -4895,7 +4895,7 @@ try {
 ## `getTenantUser()`
 
 ```php
-getTenantUser($tenant_id, $id): \FastComments\Client\Model\GetTenantUserResponse
+getTenantUser($tenant_id, $id): \FastComments\Client\Model\GetTenantUserResponse1
 ```
 
 
@@ -4939,7 +4939,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetTenantUserResponse**](../Model/GetTenantUserResponse.md)
+[**\FastComments\Client\Model\GetTenantUserResponse1**](../Model/GetTenantUserResponse1.md)
 
 ### Authorization
 
@@ -4957,7 +4957,7 @@ try {
 ## `getTenantUsers()`
 
 ```php
-getTenantUsers($tenant_id, $skip): \FastComments\Client\Model\GetTenantUsersResponse
+getTenantUsers($tenant_id, $skip): \FastComments\Client\Model\GetTenantUsersResponse1
 ```
 
 
@@ -5001,7 +5001,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetTenantUsersResponse**](../Model/GetTenantUsersResponse.md)
+[**\FastComments\Client\Model\GetTenantUsersResponse1**](../Model/GetTenantUsersResponse1.md)
 
 ### Authorization
 
@@ -5019,7 +5019,7 @@ try {
 ## `getTenants()`
 
 ```php
-getTenants($tenant_id, $meta, $skip): \FastComments\Client\Model\GetTenantsResponse
+getTenants($tenant_id, $meta, $skip): \FastComments\Client\Model\GetTenantsResponse1
 ```
 
 
@@ -5065,7 +5065,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetTenantsResponse**](../Model/GetTenantsResponse.md)
+[**\FastComments\Client\Model\GetTenantsResponse1**](../Model/GetTenantsResponse1.md)
 
 ### Authorization
 
@@ -5083,7 +5083,7 @@ try {
 ## `getTicket()`
 
 ```php
-getTicket($tenant_id, $id, $user_id): \FastComments\Client\Model\GetTicketResponse
+getTicket($tenant_id, $id, $user_id): \FastComments\Client\Model\GetTicketResponse1
 ```
 
 
@@ -5129,7 +5129,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetTicketResponse**](../Model/GetTicketResponse.md)
+[**\FastComments\Client\Model\GetTicketResponse1**](../Model/GetTicketResponse1.md)
 
 ### Authorization
 
@@ -5147,7 +5147,7 @@ try {
 ## `getTickets()`
 
 ```php
-getTickets($tenant_id, $user_id, $state, $skip, $limit): \FastComments\Client\Model\GetTicketsResponse
+getTickets($tenant_id, $user_id, $state, $skip, $limit): \FastComments\Client\Model\GetTicketsResponse1
 ```
 
 
@@ -5197,7 +5197,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetTicketsResponse**](../Model/GetTicketsResponse.md)
+[**\FastComments\Client\Model\GetTicketsResponse1**](../Model/GetTicketsResponse1.md)
 
 ### Authorization
 
@@ -5215,7 +5215,7 @@ try {
 ## `getUser()`
 
 ```php
-getUser($tenant_id, $id): \FastComments\Client\Model\GetUserResponse
+getUser($tenant_id, $id): \FastComments\Client\Model\GetUserResponse1
 ```
 
 
@@ -5259,7 +5259,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetUserResponse**](../Model/GetUserResponse.md)
+[**\FastComments\Client\Model\GetUserResponse1**](../Model/GetUserResponse1.md)
 
 ### Authorization
 
@@ -5277,7 +5277,7 @@ try {
 ## `getUserBadge()`
 
 ```php
-getUserBadge($tenant_id, $id): \FastComments\Client\Model\APIGetUserBadgeResponse
+getUserBadge($tenant_id, $id): \FastComments\Client\Model\GetUserBadgeResponse
 ```
 
 
@@ -5321,7 +5321,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIGetUserBadgeResponse**](../Model/APIGetUserBadgeResponse.md)
+[**\FastComments\Client\Model\GetUserBadgeResponse**](../Model/GetUserBadgeResponse.md)
 
 ### Authorization
 
@@ -5339,7 +5339,7 @@ try {
 ## `getUserBadgeProgressById()`
 
 ```php
-getUserBadgeProgressById($tenant_id, $id): \FastComments\Client\Model\APIGetUserBadgeProgressResponse
+getUserBadgeProgressById($tenant_id, $id): \FastComments\Client\Model\GetUserBadgeProgressByIdResponse
 ```
 
 
@@ -5383,7 +5383,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIGetUserBadgeProgressResponse**](../Model/APIGetUserBadgeProgressResponse.md)
+[**\FastComments\Client\Model\GetUserBadgeProgressByIdResponse**](../Model/GetUserBadgeProgressByIdResponse.md)
 
 ### Authorization
 
@@ -5401,7 +5401,7 @@ try {
 ## `getUserBadgeProgressByUserId()`
 
 ```php
-getUserBadgeProgressByUserId($tenant_id, $user_id): \FastComments\Client\Model\APIGetUserBadgeProgressResponse
+getUserBadgeProgressByUserId($tenant_id, $user_id): \FastComments\Client\Model\GetUserBadgeProgressByUserIdResponse
 ```
 
 
@@ -5445,7 +5445,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIGetUserBadgeProgressResponse**](../Model/APIGetUserBadgeProgressResponse.md)
+[**\FastComments\Client\Model\GetUserBadgeProgressByUserIdResponse**](../Model/GetUserBadgeProgressByUserIdResponse.md)
 
 ### Authorization
 
@@ -5463,7 +5463,7 @@ try {
 ## `getUserBadgeProgressList()`
 
 ```php
-getUserBadgeProgressList($tenant_id, $user_id, $limit, $skip): \FastComments\Client\Model\APIGetUserBadgeProgressListResponse
+getUserBadgeProgressList($tenant_id, $user_id, $limit, $skip): \FastComments\Client\Model\GetUserBadgeProgressListResponse
 ```
 
 
@@ -5511,7 +5511,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIGetUserBadgeProgressListResponse**](../Model/APIGetUserBadgeProgressListResponse.md)
+[**\FastComments\Client\Model\GetUserBadgeProgressListResponse**](../Model/GetUserBadgeProgressListResponse.md)
 
 ### Authorization
 
@@ -5529,7 +5529,7 @@ try {
 ## `getUserBadges()`
 
 ```php
-getUserBadges($tenant_id, $user_id, $badge_id, $type, $displayed_on_comments, $limit, $skip): \FastComments\Client\Model\APIGetUserBadgesResponse
+getUserBadges($tenant_id, $user_id, $badge_id, $type, $displayed_on_comments, $limit, $skip): \FastComments\Client\Model\GetUserBadgesResponse
 ```
 
 
@@ -5583,7 +5583,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIGetUserBadgesResponse**](../Model/APIGetUserBadgesResponse.md)
+[**\FastComments\Client\Model\GetUserBadgesResponse**](../Model/GetUserBadgesResponse.md)
 
 ### Authorization
 
@@ -5601,7 +5601,7 @@ try {
 ## `getVotes()`
 
 ```php
-getVotes($tenant_id, $url_id): \FastComments\Client\Model\GetVotesResponse
+getVotes($tenant_id, $url_id): \FastComments\Client\Model\GetVotesResponse1
 ```
 
 
@@ -5645,7 +5645,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetVotesResponse**](../Model/GetVotesResponse.md)
+[**\FastComments\Client\Model\GetVotesResponse1**](../Model/GetVotesResponse1.md)
 
 ### Authorization
 
@@ -5663,7 +5663,7 @@ try {
 ## `getVotesForUser()`
 
 ```php
-getVotesForUser($tenant_id, $url_id, $user_id, $anon_user_id): \FastComments\Client\Model\GetVotesForUserResponse
+getVotesForUser($tenant_id, $url_id, $user_id, $anon_user_id): \FastComments\Client\Model\GetVotesForUserResponse1
 ```
 
 
@@ -5711,7 +5711,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetVotesForUserResponse**](../Model/GetVotesForUserResponse.md)
+[**\FastComments\Client\Model\GetVotesForUserResponse1**](../Model/GetVotesForUserResponse1.md)
 
 ### Authorization
 
@@ -5793,7 +5793,7 @@ try {
 ## `patchHashTag()`
 
 ```php
-patchHashTag($tag, $tenant_id, $update_hash_tag_body): \FastComments\Client\Model\UpdateHashTagResponse
+patchHashTag($tag, $tenant_id, $update_hash_tag_body): \FastComments\Client\Model\PatchHashTagResponse
 ```
 
 
@@ -5839,7 +5839,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\UpdateHashTagResponse**](../Model/UpdateHashTagResponse.md)
+[**\FastComments\Client\Model\PatchHashTagResponse**](../Model/PatchHashTagResponse.md)
 
 ### Authorization
 
@@ -6117,7 +6117,7 @@ try {
 ## `renderEmailTemplate()`
 
 ```php
-renderEmailTemplate($tenant_id, $render_email_template_body, $locale): \FastComments\Client\Model\RenderEmailTemplateResponse
+renderEmailTemplate($tenant_id, $render_email_template_body, $locale): \FastComments\Client\Model\RenderEmailTemplateResponse1
 ```
 
 
@@ -6163,7 +6163,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\RenderEmailTemplateResponse**](../Model/RenderEmailTemplateResponse.md)
+[**\FastComments\Client\Model\RenderEmailTemplateResponse1**](../Model/RenderEmailTemplateResponse1.md)
 
 ### Authorization
 
@@ -6181,7 +6181,7 @@ try {
 ## `replaceTenantPackage()`
 
 ```php
-replaceTenantPackage($tenant_id, $id, $replace_tenant_package_body): \FastComments\Client\Model\APIEmptyResponse
+replaceTenantPackage($tenant_id, $id, $replace_tenant_package_body): \FastComments\Client\Model\ReplaceTenantPackageResponse
 ```
 
 
@@ -6227,7 +6227,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\ReplaceTenantPackageResponse**](../Model/ReplaceTenantPackageResponse.md)
 
 ### Authorization
 
@@ -6245,7 +6245,7 @@ try {
 ## `replaceTenantUser()`
 
 ```php
-replaceTenantUser($tenant_id, $id, $replace_tenant_user_body, $update_comments): \FastComments\Client\Model\APIEmptyResponse
+replaceTenantUser($tenant_id, $id, $replace_tenant_user_body, $update_comments): \FastComments\Client\Model\ReplaceTenantUserResponse
 ```
 
 
@@ -6293,7 +6293,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\ReplaceTenantUserResponse**](../Model/ReplaceTenantUserResponse.md)
 
 ### Authorization
 
@@ -6311,7 +6311,7 @@ try {
 ## `saveComment()`
 
 ```php
-saveComment($tenant_id, $create_comment_params, $is_live, $do_spam_check, $send_emails, $populate_notifications): \FastComments\Client\Model\APISaveCommentResponse
+saveComment($tenant_id, $create_comment_params, $is_live, $do_spam_check, $send_emails, $populate_notifications): \FastComments\Client\Model\SaveCommentResponse
 ```
 
 
@@ -6363,7 +6363,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APISaveCommentResponse**](../Model/APISaveCommentResponse.md)
+[**\FastComments\Client\Model\SaveCommentResponse**](../Model/SaveCommentResponse.md)
 
 ### Authorization
 
@@ -6451,7 +6451,7 @@ try {
 ## `sendInvite()`
 
 ```php
-sendInvite($tenant_id, $id, $from_name): \FastComments\Client\Model\APIEmptyResponse
+sendInvite($tenant_id, $id, $from_name): \FastComments\Client\Model\SendInviteResponse
 ```
 
 
@@ -6497,7 +6497,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\SendInviteResponse**](../Model/SendInviteResponse.md)
 
 ### Authorization
 
@@ -6515,7 +6515,7 @@ try {
 ## `sendLoginLink()`
 
 ```php
-sendLoginLink($tenant_id, $id, $redirect_url): \FastComments\Client\Model\APIEmptyResponse
+sendLoginLink($tenant_id, $id, $redirect_url): \FastComments\Client\Model\SendLoginLinkResponse
 ```
 
 
@@ -6561,7 +6561,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\SendLoginLinkResponse**](../Model/SendLoginLinkResponse.md)
 
 ### Authorization
 
@@ -6579,7 +6579,7 @@ try {
 ## `unBlockUserFromComment()`
 
 ```php
-unBlockUserFromComment($tenant_id, $id, $un_block_from_comment_params, $user_id, $anon_user_id): \FastComments\Client\Model\UnblockSuccess
+unBlockUserFromComment($tenant_id, $id, $un_block_from_comment_params, $user_id, $anon_user_id): \FastComments\Client\Model\UnBlockUserFromCommentResponse
 ```
 
 
@@ -6629,7 +6629,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\UnblockSuccess**](../Model/UnblockSuccess.md)
+[**\FastComments\Client\Model\UnBlockUserFromCommentResponse**](../Model/UnBlockUserFromCommentResponse.md)
 
 ### Authorization
 
@@ -6647,7 +6647,7 @@ try {
 ## `unFlagComment()`
 
 ```php
-unFlagComment($tenant_id, $id, $user_id, $anon_user_id): \FastComments\Client\Model\FlagCommentResponse
+unFlagComment($tenant_id, $id, $user_id, $anon_user_id): \FastComments\Client\Model\UnFlagCommentResponse
 ```
 
 
@@ -6695,7 +6695,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\FlagCommentResponse**](../Model/FlagCommentResponse.md)
+[**\FastComments\Client\Model\UnFlagCommentResponse**](../Model/UnFlagCommentResponse.md)
 
 ### Authorization
 
@@ -6713,7 +6713,7 @@ try {
 ## `updateComment()`
 
 ```php
-updateComment($tenant_id, $id, $updatable_comment_params, $context_user_id, $do_spam_check, $is_live): \FastComments\Client\Model\APIEmptyResponse
+updateComment($tenant_id, $id, $updatable_comment_params, $context_user_id, $do_spam_check, $is_live): \FastComments\Client\Model\UpdateCommentResponse
 ```
 
 
@@ -6765,7 +6765,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\UpdateCommentResponse**](../Model/UpdateCommentResponse.md)
 
 ### Authorization
 
@@ -6783,7 +6783,7 @@ try {
 ## `updateEmailTemplate()`
 
 ```php
-updateEmailTemplate($tenant_id, $id, $update_email_template_body): \FastComments\Client\Model\APIEmptyResponse
+updateEmailTemplate($tenant_id, $id, $update_email_template_body): \FastComments\Client\Model\UpdateEmailTemplateResponse
 ```
 
 
@@ -6829,7 +6829,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\UpdateEmailTemplateResponse**](../Model/UpdateEmailTemplateResponse.md)
 
 ### Authorization
 
@@ -6847,7 +6847,7 @@ try {
 ## `updateFeedPost()`
 
 ```php
-updateFeedPost($tenant_id, $id, $feed_post): \FastComments\Client\Model\APIEmptyResponse
+updateFeedPost($tenant_id, $id, $feed_post): \FastComments\Client\Model\UpdateFeedPostResponse
 ```
 
 
@@ -6893,7 +6893,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\UpdateFeedPostResponse**](../Model/UpdateFeedPostResponse.md)
 
 ### Authorization
 
@@ -6911,7 +6911,7 @@ try {
 ## `updateModerator()`
 
 ```php
-updateModerator($tenant_id, $id, $update_moderator_body): \FastComments\Client\Model\APIEmptyResponse
+updateModerator($tenant_id, $id, $update_moderator_body): \FastComments\Client\Model\UpdateModeratorResponse
 ```
 
 
@@ -6957,7 +6957,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\UpdateModeratorResponse**](../Model/UpdateModeratorResponse.md)
 
 ### Authorization
 
@@ -6975,7 +6975,7 @@ try {
 ## `updateNotification()`
 
 ```php
-updateNotification($tenant_id, $id, $update_notification_body, $user_id): \FastComments\Client\Model\APIEmptyResponse
+updateNotification($tenant_id, $id, $update_notification_body, $user_id): \FastComments\Client\Model\UpdateNotificationResponse
 ```
 
 
@@ -7023,7 +7023,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\UpdateNotificationResponse**](../Model/UpdateNotificationResponse.md)
 
 ### Authorization
 
@@ -7041,7 +7041,7 @@ try {
 ## `updateQuestionConfig()`
 
 ```php
-updateQuestionConfig($tenant_id, $id, $update_question_config_body): \FastComments\Client\Model\APIEmptyResponse
+updateQuestionConfig($tenant_id, $id, $update_question_config_body): \FastComments\Client\Model\UpdateQuestionConfigResponse
 ```
 
 
@@ -7087,7 +7087,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\UpdateQuestionConfigResponse**](../Model/UpdateQuestionConfigResponse.md)
 
 ### Authorization
 
@@ -7105,7 +7105,7 @@ try {
 ## `updateQuestionResult()`
 
 ```php
-updateQuestionResult($tenant_id, $id, $update_question_result_body): \FastComments\Client\Model\APIEmptyResponse
+updateQuestionResult($tenant_id, $id, $update_question_result_body): \FastComments\Client\Model\UpdateQuestionResultResponse
 ```
 
 
@@ -7151,7 +7151,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\UpdateQuestionResultResponse**](../Model/UpdateQuestionResultResponse.md)
 
 ### Authorization
 
@@ -7235,7 +7235,7 @@ try {
 ## `updateTenant()`
 
 ```php
-updateTenant($tenant_id, $id, $update_tenant_body): \FastComments\Client\Model\APIEmptyResponse
+updateTenant($tenant_id, $id, $update_tenant_body): \FastComments\Client\Model\UpdateTenantResponse
 ```
 
 
@@ -7281,7 +7281,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\UpdateTenantResponse**](../Model/UpdateTenantResponse.md)
 
 ### Authorization
 
@@ -7299,7 +7299,7 @@ try {
 ## `updateTenantPackage()`
 
 ```php
-updateTenantPackage($tenant_id, $id, $update_tenant_package_body): \FastComments\Client\Model\APIEmptyResponse
+updateTenantPackage($tenant_id, $id, $update_tenant_package_body): \FastComments\Client\Model\UpdateTenantPackageResponse
 ```
 
 
@@ -7345,7 +7345,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\UpdateTenantPackageResponse**](../Model/UpdateTenantPackageResponse.md)
 
 ### Authorization
 
@@ -7363,7 +7363,7 @@ try {
 ## `updateTenantUser()`
 
 ```php
-updateTenantUser($tenant_id, $id, $update_tenant_user_body, $update_comments): \FastComments\Client\Model\APIEmptyResponse
+updateTenantUser($tenant_id, $id, $update_tenant_user_body, $update_comments): \FastComments\Client\Model\UpdateTenantUserResponse
 ```
 
 
@@ -7411,7 +7411,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\UpdateTenantUserResponse**](../Model/UpdateTenantUserResponse.md)
 
 ### Authorization
 
@@ -7429,7 +7429,7 @@ try {
 ## `updateUserBadge()`
 
 ```php
-updateUserBadge($tenant_id, $id, $update_user_badge_params): \FastComments\Client\Model\APIEmptySuccessResponse
+updateUserBadge($tenant_id, $id, $update_user_badge_params): \FastComments\Client\Model\UpdateUserBadgeResponse
 ```
 
 
@@ -7475,7 +7475,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptySuccessResponse**](../Model/APIEmptySuccessResponse.md)
+[**\FastComments\Client\Model\UpdateUserBadgeResponse**](../Model/UpdateUserBadgeResponse.md)
 
 ### Authorization
 

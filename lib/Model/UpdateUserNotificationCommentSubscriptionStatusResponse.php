@@ -61,7 +61,14 @@ class UpdateUserNotificationCommentSubscriptionStatusResponse implements ModelIn
         'status' => '\FastComments\Client\Model\APIStatus',
         'matched_count' => 'int',
         'modified_count' => 'int',
-        'note' => 'string'
+        'note' => 'string',
+        'reason' => 'string',
+        'code' => 'string',
+        'secondary_code' => 'string',
+        'banned_until' => 'int',
+        'max_character_length' => 'int',
+        'translated_error' => 'string',
+        'custom_config' => '\FastComments\Client\Model\CustomConfigParameters'
     ];
 
     /**
@@ -75,7 +82,14 @@ class UpdateUserNotificationCommentSubscriptionStatusResponse implements ModelIn
         'status' => null,
         'matched_count' => 'int64',
         'modified_count' => 'int64',
-        'note' => null
+        'note' => null,
+        'reason' => null,
+        'code' => null,
+        'secondary_code' => null,
+        'banned_until' => 'int64',
+        'max_character_length' => 'int32',
+        'translated_error' => null,
+        'custom_config' => null
     ];
 
     /**
@@ -87,7 +101,14 @@ class UpdateUserNotificationCommentSubscriptionStatusResponse implements ModelIn
         'status' => false,
         'matched_count' => false,
         'modified_count' => false,
-        'note' => false
+        'note' => false,
+        'reason' => false,
+        'code' => false,
+        'secondary_code' => false,
+        'banned_until' => false,
+        'max_character_length' => false,
+        'translated_error' => false,
+        'custom_config' => false
     ];
 
     /**
@@ -179,7 +200,14 @@ class UpdateUserNotificationCommentSubscriptionStatusResponse implements ModelIn
         'status' => 'status',
         'matched_count' => 'matchedCount',
         'modified_count' => 'modifiedCount',
-        'note' => 'note'
+        'note' => 'note',
+        'reason' => 'reason',
+        'code' => 'code',
+        'secondary_code' => 'secondaryCode',
+        'banned_until' => 'bannedUntil',
+        'max_character_length' => 'maxCharacterLength',
+        'translated_error' => 'translatedError',
+        'custom_config' => 'customConfig'
     ];
 
     /**
@@ -191,7 +219,14 @@ class UpdateUserNotificationCommentSubscriptionStatusResponse implements ModelIn
         'status' => 'setStatus',
         'matched_count' => 'setMatchedCount',
         'modified_count' => 'setModifiedCount',
-        'note' => 'setNote'
+        'note' => 'setNote',
+        'reason' => 'setReason',
+        'code' => 'setCode',
+        'secondary_code' => 'setSecondaryCode',
+        'banned_until' => 'setBannedUntil',
+        'max_character_length' => 'setMaxCharacterLength',
+        'translated_error' => 'setTranslatedError',
+        'custom_config' => 'setCustomConfig'
     ];
 
     /**
@@ -203,7 +238,14 @@ class UpdateUserNotificationCommentSubscriptionStatusResponse implements ModelIn
         'status' => 'getStatus',
         'matched_count' => 'getMatchedCount',
         'modified_count' => 'getModifiedCount',
-        'note' => 'getNote'
+        'note' => 'getNote',
+        'reason' => 'getReason',
+        'code' => 'getCode',
+        'secondary_code' => 'getSecondaryCode',
+        'banned_until' => 'getBannedUntil',
+        'max_character_length' => 'getMaxCharacterLength',
+        'translated_error' => 'getTranslatedError',
+        'custom_config' => 'getCustomConfig'
     ];
 
     /**
@@ -282,6 +324,13 @@ class UpdateUserNotificationCommentSubscriptionStatusResponse implements ModelIn
         $this->setIfExists('matched_count', $data ?? [], null);
         $this->setIfExists('modified_count', $data ?? [], null);
         $this->setIfExists('note', $data ?? [], null);
+        $this->setIfExists('reason', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('secondary_code', $data ?? [], null);
+        $this->setIfExists('banned_until', $data ?? [], null);
+        $this->setIfExists('max_character_length', $data ?? [], null);
+        $this->setIfExists('translated_error', $data ?? [], null);
+        $this->setIfExists('custom_config', $data ?? [], null);
     }
 
     /**
@@ -332,6 +381,12 @@ class UpdateUserNotificationCommentSubscriptionStatusResponse implements ModelIn
             );
         }
 
+        if ($this->container['reason'] === null) {
+            $invalidProperties[] = "'reason' can't be null";
+        }
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -461,6 +516,195 @@ class UpdateUserNotificationCommentSubscriptionStatusResponse implements ModelIn
             );
         }
         $this->container['note'] = $note;
+
+        return $this;
+    }
+
+    /**
+     * Gets reason
+     *
+     * @return string
+     */
+    public function getReason()
+    {
+        return $this->container['reason'];
+    }
+
+    /**
+     * Sets reason
+     *
+     * @param string $reason reason
+     *
+     * @return self
+     */
+    public function setReason($reason)
+    {
+        if (is_null($reason)) {
+            throw new \InvalidArgumentException('non-nullable reason cannot be null');
+        }
+        $this->container['reason'] = $reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param string $code code
+     *
+     * @return self
+     */
+    public function setCode($code)
+    {
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        }
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets secondary_code
+     *
+     * @return string|null
+     */
+    public function getSecondaryCode()
+    {
+        return $this->container['secondary_code'];
+    }
+
+    /**
+     * Sets secondary_code
+     *
+     * @param string|null $secondary_code secondary_code
+     *
+     * @return self
+     */
+    public function setSecondaryCode($secondary_code)
+    {
+        if (is_null($secondary_code)) {
+            throw new \InvalidArgumentException('non-nullable secondary_code cannot be null');
+        }
+        $this->container['secondary_code'] = $secondary_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets banned_until
+     *
+     * @return int|null
+     */
+    public function getBannedUntil()
+    {
+        return $this->container['banned_until'];
+    }
+
+    /**
+     * Sets banned_until
+     *
+     * @param int|null $banned_until banned_until
+     *
+     * @return self
+     */
+    public function setBannedUntil($banned_until)
+    {
+        if (is_null($banned_until)) {
+            throw new \InvalidArgumentException('non-nullable banned_until cannot be null');
+        }
+        $this->container['banned_until'] = $banned_until;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_character_length
+     *
+     * @return int|null
+     */
+    public function getMaxCharacterLength()
+    {
+        return $this->container['max_character_length'];
+    }
+
+    /**
+     * Sets max_character_length
+     *
+     * @param int|null $max_character_length max_character_length
+     *
+     * @return self
+     */
+    public function setMaxCharacterLength($max_character_length)
+    {
+        if (is_null($max_character_length)) {
+            throw new \InvalidArgumentException('non-nullable max_character_length cannot be null');
+        }
+        $this->container['max_character_length'] = $max_character_length;
+
+        return $this;
+    }
+
+    /**
+     * Gets translated_error
+     *
+     * @return string|null
+     */
+    public function getTranslatedError()
+    {
+        return $this->container['translated_error'];
+    }
+
+    /**
+     * Sets translated_error
+     *
+     * @param string|null $translated_error translated_error
+     *
+     * @return self
+     */
+    public function setTranslatedError($translated_error)
+    {
+        if (is_null($translated_error)) {
+            throw new \InvalidArgumentException('non-nullable translated_error cannot be null');
+        }
+        $this->container['translated_error'] = $translated_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_config
+     *
+     * @return \FastComments\Client\Model\CustomConfigParameters|null
+     */
+    public function getCustomConfig()
+    {
+        return $this->container['custom_config'];
+    }
+
+    /**
+     * Sets custom_config
+     *
+     * @param \FastComments\Client\Model\CustomConfigParameters|null $custom_config custom_config
+     *
+     * @return self
+     */
+    public function setCustomConfig($custom_config)
+    {
+        if (is_null($custom_config)) {
+            throw new \InvalidArgumentException('non-nullable custom_config cannot be null');
+        }
+        $this->container['custom_config'] = $custom_config;
 
         return $this;
     }

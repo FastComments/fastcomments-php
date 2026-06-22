@@ -256,16 +256,18 @@ class ModerationApi
      *
      * @param  string $comment_id comment_id (required)
      * @param  string $vote_id vote_id (required)
+     * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteModerationVote'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\VoteDeleteResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\DeleteModerationVoteResponse
      */
-    public function deleteModerationVote($comment_id, $vote_id, $sso = null, string $contentType = self::contentTypes['deleteModerationVote'][0])
+    public function deleteModerationVote($comment_id, $vote_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['deleteModerationVote'][0])
     {
-        list($response) = $this->deleteModerationVoteWithHttpInfo($comment_id, $vote_id, $sso, $contentType);
+        list($response) = $this->deleteModerationVoteWithHttpInfo($comment_id, $vote_id, $broadcast_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -276,16 +278,18 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  string $vote_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteModerationVote'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\VoteDeleteResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\DeleteModerationVoteResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteModerationVoteWithHttpInfo($comment_id, $vote_id, $sso = null, string $contentType = self::contentTypes['deleteModerationVote'][0])
+    public function deleteModerationVoteWithHttpInfo($comment_id, $vote_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['deleteModerationVote'][0])
     {
-        $request = $this->deleteModerationVoteRequest($comment_id, $vote_id, $sso, $contentType);
+        $request = $this->deleteModerationVoteRequest($comment_id, $vote_id, $broadcast_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -312,11 +316,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\VoteDeleteResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\DeleteModerationVoteResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\VoteDeleteResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\DeleteModerationVoteResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -334,34 +338,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\VoteDeleteResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\DeleteModerationVoteResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -380,7 +357,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\VoteDeleteResponse';
+            $returnType = '\FastComments\Client\Model\DeleteModerationVoteResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -413,15 +390,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\VoteDeleteResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\DeleteModerationVoteResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -438,15 +407,17 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  string $vote_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteModerationVote'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteModerationVoteAsync($comment_id, $vote_id, $sso = null, string $contentType = self::contentTypes['deleteModerationVote'][0])
+    public function deleteModerationVoteAsync($comment_id, $vote_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['deleteModerationVote'][0])
     {
-        return $this->deleteModerationVoteAsyncWithHttpInfo($comment_id, $vote_id, $sso, $contentType)
+        return $this->deleteModerationVoteAsyncWithHttpInfo($comment_id, $vote_id, $broadcast_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -461,16 +432,18 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  string $vote_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteModerationVote'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteModerationVoteAsyncWithHttpInfo($comment_id, $vote_id, $sso = null, string $contentType = self::contentTypes['deleteModerationVote'][0])
+    public function deleteModerationVoteAsyncWithHttpInfo($comment_id, $vote_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['deleteModerationVote'][0])
     {
-        $returnType = '\FastComments\Client\Model\VoteDeleteResponse';
-        $request = $this->deleteModerationVoteRequest($comment_id, $vote_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\DeleteModerationVoteResponse';
+        $request = $this->deleteModerationVoteRequest($comment_id, $vote_id, $broadcast_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -513,13 +486,15 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  string $vote_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteModerationVote'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteModerationVoteRequest($comment_id, $vote_id, $sso = null, string $contentType = self::contentTypes['deleteModerationVote'][0])
+    public function deleteModerationVoteRequest($comment_id, $vote_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['deleteModerationVote'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -538,6 +513,8 @@ class ModerationApi
 
 
 
+
+
         $resourcePath = '/auth/my-account/moderate-comments/vote/{commentId}/{voteId}';
         $formParams = [];
         $queryParams = [];
@@ -545,6 +522,24 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $broadcast_id,
+            'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -640,16 +635,17 @@ class ModerationApi
      * @param  string|null $search_filters search_filters (optional)
      * @param  string|null $sorts sorts (optional)
      * @param  bool|null $demo demo (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiComments'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\ModerationAPIGetCommentsResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetApiCommentsResponse
      */
-    public function getApiComments($page = null, $count = null, $text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $demo = null, $sso = null, string $contentType = self::contentTypes['getApiComments'][0])
+    public function getApiComments($page = null, $count = null, $text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $demo = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getApiComments'][0])
     {
-        list($response) = $this->getApiCommentsWithHttpInfo($page, $count, $text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $demo, $sso, $contentType);
+        list($response) = $this->getApiCommentsWithHttpInfo($page, $count, $text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $demo, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -666,16 +662,17 @@ class ModerationApi
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
      * @param  bool|null $demo (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiComments'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\ModerationAPIGetCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetApiCommentsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiCommentsWithHttpInfo($page = null, $count = null, $text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $demo = null, $sso = null, string $contentType = self::contentTypes['getApiComments'][0])
+    public function getApiCommentsWithHttpInfo($page = null, $count = null, $text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $demo = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getApiComments'][0])
     {
-        $request = $this->getApiCommentsRequest($page, $count, $text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $demo, $sso, $contentType);
+        $request = $this->getApiCommentsRequest($page, $count, $text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $demo, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -702,11 +699,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\ModerationAPIGetCommentsResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetApiCommentsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\ModerationAPIGetCommentsResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetApiCommentsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -724,34 +721,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ModerationAPIGetCommentsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetApiCommentsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -770,7 +740,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\ModerationAPIGetCommentsResponse';
+            $returnType = '\FastComments\Client\Model\GetApiCommentsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -803,15 +773,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\ModerationAPIGetCommentsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetApiCommentsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -834,15 +796,16 @@ class ModerationApi
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
      * @param  bool|null $demo (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiComments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiCommentsAsync($page = null, $count = null, $text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $demo = null, $sso = null, string $contentType = self::contentTypes['getApiComments'][0])
+    public function getApiCommentsAsync($page = null, $count = null, $text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $demo = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getApiComments'][0])
     {
-        return $this->getApiCommentsAsyncWithHttpInfo($page, $count, $text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $demo, $sso, $contentType)
+        return $this->getApiCommentsAsyncWithHttpInfo($page, $count, $text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $demo, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -863,16 +826,17 @@ class ModerationApi
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
      * @param  bool|null $demo (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiComments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiCommentsAsyncWithHttpInfo($page = null, $count = null, $text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $demo = null, $sso = null, string $contentType = self::contentTypes['getApiComments'][0])
+    public function getApiCommentsAsyncWithHttpInfo($page = null, $count = null, $text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $demo = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getApiComments'][0])
     {
-        $returnType = '\FastComments\Client\Model\ModerationAPIGetCommentsResponse';
-        $request = $this->getApiCommentsRequest($page, $count, $text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $demo, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetApiCommentsResponse';
+        $request = $this->getApiCommentsRequest($page, $count, $text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $demo, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -921,14 +885,16 @@ class ModerationApi
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
      * @param  bool|null $demo (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiComments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiCommentsRequest($page = null, $count = null, $text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $demo = null, $sso = null, string $contentType = self::contentTypes['getApiComments'][0])
+    public function getApiCommentsRequest($page = null, $count = null, $text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $demo = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getApiComments'][0])
     {
+
 
 
 
@@ -1021,6 +987,15 @@ class ModerationApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
             'sso', // param base name
             'string', // openApiType
@@ -1091,16 +1066,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $batch_job_id batch_job_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExportStatus'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\ModerationExportStatusResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetApiExportStatusResponse
      */
-    public function getApiExportStatus($batch_job_id = null, $sso = null, string $contentType = self::contentTypes['getApiExportStatus'][0])
+    public function getApiExportStatus($batch_job_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getApiExportStatus'][0])
     {
-        list($response) = $this->getApiExportStatusWithHttpInfo($batch_job_id, $sso, $contentType);
+        list($response) = $this->getApiExportStatusWithHttpInfo($batch_job_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -1110,16 +1086,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $batch_job_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExportStatus'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\ModerationExportStatusResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetApiExportStatusResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiExportStatusWithHttpInfo($batch_job_id = null, $sso = null, string $contentType = self::contentTypes['getApiExportStatus'][0])
+    public function getApiExportStatusWithHttpInfo($batch_job_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getApiExportStatus'][0])
     {
-        $request = $this->getApiExportStatusRequest($batch_job_id, $sso, $contentType);
+        $request = $this->getApiExportStatusRequest($batch_job_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1146,11 +1123,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\ModerationExportStatusResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetApiExportStatusResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\ModerationExportStatusResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetApiExportStatusResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1168,34 +1145,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ModerationExportStatusResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetApiExportStatusResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1214,7 +1164,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\ModerationExportStatusResponse';
+            $returnType = '\FastComments\Client\Model\GetApiExportStatusResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1247,15 +1197,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\ModerationExportStatusResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetApiExportStatusResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1271,15 +1213,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $batch_job_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExportStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiExportStatusAsync($batch_job_id = null, $sso = null, string $contentType = self::contentTypes['getApiExportStatus'][0])
+    public function getApiExportStatusAsync($batch_job_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getApiExportStatus'][0])
     {
-        return $this->getApiExportStatusAsyncWithHttpInfo($batch_job_id, $sso, $contentType)
+        return $this->getApiExportStatusAsyncWithHttpInfo($batch_job_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1293,16 +1236,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $batch_job_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExportStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiExportStatusAsyncWithHttpInfo($batch_job_id = null, $sso = null, string $contentType = self::contentTypes['getApiExportStatus'][0])
+    public function getApiExportStatusAsyncWithHttpInfo($batch_job_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getApiExportStatus'][0])
     {
-        $returnType = '\FastComments\Client\Model\ModerationExportStatusResponse';
-        $request = $this->getApiExportStatusRequest($batch_job_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetApiExportStatusResponse';
+        $request = $this->getApiExportStatusRequest($batch_job_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1344,14 +1288,16 @@ class ModerationApi
      * Create request for operation 'getApiExportStatus'
      *
      * @param  string|null $batch_job_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExportStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiExportStatusRequest($batch_job_id = null, $sso = null, string $contentType = self::contentTypes['getApiExportStatus'][0])
+    public function getApiExportStatusRequest($batch_job_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getApiExportStatus'][0])
     {
+
 
 
 
@@ -1367,6 +1313,15 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $batch_job_id,
             'batchJobId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1449,16 +1404,17 @@ class ModerationApi
      * @param  string|null $search_filters search_filters (optional)
      * @param  string|null $after_id after_id (optional)
      * @param  bool|null $demo demo (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiIds'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\ModerationAPIGetCommentIdsResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetApiIdsResponse
      */
-    public function getApiIds($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $after_id = null, $demo = null, $sso = null, string $contentType = self::contentTypes['getApiIds'][0])
+    public function getApiIds($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $after_id = null, $demo = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getApiIds'][0])
     {
-        list($response) = $this->getApiIdsWithHttpInfo($text_search, $by_ip_from_comment, $filters, $search_filters, $after_id, $demo, $sso, $contentType);
+        list($response) = $this->getApiIdsWithHttpInfo($text_search, $by_ip_from_comment, $filters, $search_filters, $after_id, $demo, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -1473,16 +1429,17 @@ class ModerationApi
      * @param  string|null $search_filters (optional)
      * @param  string|null $after_id (optional)
      * @param  bool|null $demo (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiIds'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\ModerationAPIGetCommentIdsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetApiIdsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiIdsWithHttpInfo($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $after_id = null, $demo = null, $sso = null, string $contentType = self::contentTypes['getApiIds'][0])
+    public function getApiIdsWithHttpInfo($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $after_id = null, $demo = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getApiIds'][0])
     {
-        $request = $this->getApiIdsRequest($text_search, $by_ip_from_comment, $filters, $search_filters, $after_id, $demo, $sso, $contentType);
+        $request = $this->getApiIdsRequest($text_search, $by_ip_from_comment, $filters, $search_filters, $after_id, $demo, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1509,11 +1466,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\ModerationAPIGetCommentIdsResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetApiIdsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\ModerationAPIGetCommentIdsResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetApiIdsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1531,34 +1488,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ModerationAPIGetCommentIdsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetApiIdsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1577,7 +1507,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\ModerationAPIGetCommentIdsResponse';
+            $returnType = '\FastComments\Client\Model\GetApiIdsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1610,15 +1540,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\ModerationAPIGetCommentIdsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetApiIdsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1639,15 +1561,16 @@ class ModerationApi
      * @param  string|null $search_filters (optional)
      * @param  string|null $after_id (optional)
      * @param  bool|null $demo (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiIds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiIdsAsync($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $after_id = null, $demo = null, $sso = null, string $contentType = self::contentTypes['getApiIds'][0])
+    public function getApiIdsAsync($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $after_id = null, $demo = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getApiIds'][0])
     {
-        return $this->getApiIdsAsyncWithHttpInfo($text_search, $by_ip_from_comment, $filters, $search_filters, $after_id, $demo, $sso, $contentType)
+        return $this->getApiIdsAsyncWithHttpInfo($text_search, $by_ip_from_comment, $filters, $search_filters, $after_id, $demo, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1666,16 +1589,17 @@ class ModerationApi
      * @param  string|null $search_filters (optional)
      * @param  string|null $after_id (optional)
      * @param  bool|null $demo (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiIds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiIdsAsyncWithHttpInfo($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $after_id = null, $demo = null, $sso = null, string $contentType = self::contentTypes['getApiIds'][0])
+    public function getApiIdsAsyncWithHttpInfo($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $after_id = null, $demo = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getApiIds'][0])
     {
-        $returnType = '\FastComments\Client\Model\ModerationAPIGetCommentIdsResponse';
-        $request = $this->getApiIdsRequest($text_search, $by_ip_from_comment, $filters, $search_filters, $after_id, $demo, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetApiIdsResponse';
+        $request = $this->getApiIdsRequest($text_search, $by_ip_from_comment, $filters, $search_filters, $after_id, $demo, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1722,14 +1646,16 @@ class ModerationApi
      * @param  string|null $search_filters (optional)
      * @param  string|null $after_id (optional)
      * @param  bool|null $demo (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiIds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiIdsRequest($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $after_id = null, $demo = null, $sso = null, string $contentType = self::contentTypes['getApiIds'][0])
+    public function getApiIdsRequest($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $after_id = null, $demo = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getApiIds'][0])
     {
+
 
 
 
@@ -1796,6 +1722,15 @@ class ModerationApi
             $demo,
             'demo', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1872,16 +1807,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id comment_id (required)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBanUsersFromComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetBannedUsersFromCommentResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetBanUsersFromCommentResponse
      */
-    public function getBanUsersFromComment($comment_id, $sso = null, string $contentType = self::contentTypes['getBanUsersFromComment'][0])
+    public function getBanUsersFromComment($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getBanUsersFromComment'][0])
     {
-        list($response) = $this->getBanUsersFromCommentWithHttpInfo($comment_id, $sso, $contentType);
+        list($response) = $this->getBanUsersFromCommentWithHttpInfo($comment_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -1891,16 +1827,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBanUsersFromComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetBannedUsersFromCommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetBanUsersFromCommentResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getBanUsersFromCommentWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['getBanUsersFromComment'][0])
+    public function getBanUsersFromCommentWithHttpInfo($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getBanUsersFromComment'][0])
     {
-        $request = $this->getBanUsersFromCommentRequest($comment_id, $sso, $contentType);
+        $request = $this->getBanUsersFromCommentRequest($comment_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1927,11 +1864,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetBannedUsersFromCommentResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetBanUsersFromCommentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetBannedUsersFromCommentResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetBanUsersFromCommentResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1949,34 +1886,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetBannedUsersFromCommentResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetBanUsersFromCommentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1995,7 +1905,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetBannedUsersFromCommentResponse';
+            $returnType = '\FastComments\Client\Model\GetBanUsersFromCommentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2028,15 +1938,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetBannedUsersFromCommentResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetBanUsersFromCommentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2052,15 +1954,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBanUsersFromComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBanUsersFromCommentAsync($comment_id, $sso = null, string $contentType = self::contentTypes['getBanUsersFromComment'][0])
+    public function getBanUsersFromCommentAsync($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getBanUsersFromComment'][0])
     {
-        return $this->getBanUsersFromCommentAsyncWithHttpInfo($comment_id, $sso, $contentType)
+        return $this->getBanUsersFromCommentAsyncWithHttpInfo($comment_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2074,16 +1977,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBanUsersFromComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBanUsersFromCommentAsyncWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['getBanUsersFromComment'][0])
+    public function getBanUsersFromCommentAsyncWithHttpInfo($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getBanUsersFromComment'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetBannedUsersFromCommentResponse';
-        $request = $this->getBanUsersFromCommentRequest($comment_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetBanUsersFromCommentResponse';
+        $request = $this->getBanUsersFromCommentRequest($comment_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2125,13 +2029,14 @@ class ModerationApi
      * Create request for operation 'getBanUsersFromComment'
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBanUsersFromComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getBanUsersFromCommentRequest($comment_id, $sso = null, string $contentType = self::contentTypes['getBanUsersFromComment'][0])
+    public function getBanUsersFromCommentRequest($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getBanUsersFromComment'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -2143,6 +2048,7 @@ class ModerationApi
 
 
 
+
         $resourcePath = '/auth/my-account/moderate-comments/ban-users/from-comment/{commentId}';
         $formParams = [];
         $queryParams = [];
@@ -2150,6 +2056,15 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -2230,16 +2145,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id comment_id (required)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentBanStatus'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetCommentBanStatusResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetCommentBanStatusResponse1
      */
-    public function getCommentBanStatus($comment_id, $sso = null, string $contentType = self::contentTypes['getCommentBanStatus'][0])
+    public function getCommentBanStatus($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCommentBanStatus'][0])
     {
-        list($response) = $this->getCommentBanStatusWithHttpInfo($comment_id, $sso, $contentType);
+        list($response) = $this->getCommentBanStatusWithHttpInfo($comment_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -2249,16 +2165,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentBanStatus'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetCommentBanStatusResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetCommentBanStatusResponse1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCommentBanStatusWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['getCommentBanStatus'][0])
+    public function getCommentBanStatusWithHttpInfo($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCommentBanStatus'][0])
     {
-        $request = $this->getCommentBanStatusRequest($comment_id, $sso, $contentType);
+        $request = $this->getCommentBanStatusRequest($comment_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2285,11 +2202,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetCommentBanStatusResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetCommentBanStatusResponse1' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetCommentBanStatusResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetCommentBanStatusResponse1' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2307,34 +2224,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetCommentBanStatusResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetCommentBanStatusResponse1', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2353,7 +2243,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetCommentBanStatusResponse';
+            $returnType = '\FastComments\Client\Model\GetCommentBanStatusResponse1';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2386,15 +2276,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetCommentBanStatusResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetCommentBanStatusResponse1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2410,15 +2292,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentBanStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentBanStatusAsync($comment_id, $sso = null, string $contentType = self::contentTypes['getCommentBanStatus'][0])
+    public function getCommentBanStatusAsync($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCommentBanStatus'][0])
     {
-        return $this->getCommentBanStatusAsyncWithHttpInfo($comment_id, $sso, $contentType)
+        return $this->getCommentBanStatusAsyncWithHttpInfo($comment_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2432,16 +2315,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentBanStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentBanStatusAsyncWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['getCommentBanStatus'][0])
+    public function getCommentBanStatusAsyncWithHttpInfo($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCommentBanStatus'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetCommentBanStatusResponse';
-        $request = $this->getCommentBanStatusRequest($comment_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetCommentBanStatusResponse1';
+        $request = $this->getCommentBanStatusRequest($comment_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2483,13 +2367,14 @@ class ModerationApi
      * Create request for operation 'getCommentBanStatus'
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentBanStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCommentBanStatusRequest($comment_id, $sso = null, string $contentType = self::contentTypes['getCommentBanStatus'][0])
+    public function getCommentBanStatusRequest($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCommentBanStatus'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -2501,6 +2386,7 @@ class ModerationApi
 
 
 
+
         $resourcePath = '/auth/my-account/moderate-comments/get-comment-ban-status/{commentId}';
         $formParams = [];
         $queryParams = [];
@@ -2508,6 +2394,15 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -2588,16 +2483,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id comment_id (required)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentChildren'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\ModerationAPIChildCommentsResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetCommentChildrenResponse
      */
-    public function getCommentChildren($comment_id, $sso = null, string $contentType = self::contentTypes['getCommentChildren'][0])
+    public function getCommentChildren($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCommentChildren'][0])
     {
-        list($response) = $this->getCommentChildrenWithHttpInfo($comment_id, $sso, $contentType);
+        list($response) = $this->getCommentChildrenWithHttpInfo($comment_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -2607,16 +2503,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentChildren'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\ModerationAPIChildCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetCommentChildrenResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCommentChildrenWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['getCommentChildren'][0])
+    public function getCommentChildrenWithHttpInfo($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCommentChildren'][0])
     {
-        $request = $this->getCommentChildrenRequest($comment_id, $sso, $contentType);
+        $request = $this->getCommentChildrenRequest($comment_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2643,11 +2540,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\ModerationAPIChildCommentsResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetCommentChildrenResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\ModerationAPIChildCommentsResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetCommentChildrenResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2665,34 +2562,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ModerationAPIChildCommentsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetCommentChildrenResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2711,7 +2581,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\ModerationAPIChildCommentsResponse';
+            $returnType = '\FastComments\Client\Model\GetCommentChildrenResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2744,15 +2614,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\ModerationAPIChildCommentsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetCommentChildrenResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2768,15 +2630,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentChildren'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentChildrenAsync($comment_id, $sso = null, string $contentType = self::contentTypes['getCommentChildren'][0])
+    public function getCommentChildrenAsync($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCommentChildren'][0])
     {
-        return $this->getCommentChildrenAsyncWithHttpInfo($comment_id, $sso, $contentType)
+        return $this->getCommentChildrenAsyncWithHttpInfo($comment_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2790,16 +2653,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentChildren'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentChildrenAsyncWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['getCommentChildren'][0])
+    public function getCommentChildrenAsyncWithHttpInfo($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCommentChildren'][0])
     {
-        $returnType = '\FastComments\Client\Model\ModerationAPIChildCommentsResponse';
-        $request = $this->getCommentChildrenRequest($comment_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetCommentChildrenResponse';
+        $request = $this->getCommentChildrenRequest($comment_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2841,13 +2705,14 @@ class ModerationApi
      * Create request for operation 'getCommentChildren'
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentChildren'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCommentChildrenRequest($comment_id, $sso = null, string $contentType = self::contentTypes['getCommentChildren'][0])
+    public function getCommentChildrenRequest($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCommentChildren'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -2859,6 +2724,7 @@ class ModerationApi
 
 
 
+
         $resourcePath = '/auth/my-account/moderate-comments/comment-children/{commentId}';
         $formParams = [];
         $queryParams = [];
@@ -2866,6 +2732,15 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -2950,16 +2825,17 @@ class ModerationApi
      * @param  string|null $filter filter (optional)
      * @param  string|null $search_filters search_filters (optional)
      * @param  bool|null $demo demo (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCount'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\ModerationAPICountCommentsResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetCountResponse
      */
-    public function getCount($text_search = null, $by_ip_from_comment = null, $filter = null, $search_filters = null, $demo = null, $sso = null, string $contentType = self::contentTypes['getCount'][0])
+    public function getCount($text_search = null, $by_ip_from_comment = null, $filter = null, $search_filters = null, $demo = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCount'][0])
     {
-        list($response) = $this->getCountWithHttpInfo($text_search, $by_ip_from_comment, $filter, $search_filters, $demo, $sso, $contentType);
+        list($response) = $this->getCountWithHttpInfo($text_search, $by_ip_from_comment, $filter, $search_filters, $demo, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -2973,16 +2849,17 @@ class ModerationApi
      * @param  string|null $filter (optional)
      * @param  string|null $search_filters (optional)
      * @param  bool|null $demo (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCount'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\ModerationAPICountCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetCountResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCountWithHttpInfo($text_search = null, $by_ip_from_comment = null, $filter = null, $search_filters = null, $demo = null, $sso = null, string $contentType = self::contentTypes['getCount'][0])
+    public function getCountWithHttpInfo($text_search = null, $by_ip_from_comment = null, $filter = null, $search_filters = null, $demo = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCount'][0])
     {
-        $request = $this->getCountRequest($text_search, $by_ip_from_comment, $filter, $search_filters, $demo, $sso, $contentType);
+        $request = $this->getCountRequest($text_search, $by_ip_from_comment, $filter, $search_filters, $demo, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3009,11 +2886,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\ModerationAPICountCommentsResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetCountResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\ModerationAPICountCommentsResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetCountResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -3031,34 +2908,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ModerationAPICountCommentsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetCountResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -3077,7 +2927,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\ModerationAPICountCommentsResponse';
+            $returnType = '\FastComments\Client\Model\GetCountResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3110,15 +2960,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\ModerationAPICountCommentsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetCountResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3138,15 +2980,16 @@ class ModerationApi
      * @param  string|null $filter (optional)
      * @param  string|null $search_filters (optional)
      * @param  bool|null $demo (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCountAsync($text_search = null, $by_ip_from_comment = null, $filter = null, $search_filters = null, $demo = null, $sso = null, string $contentType = self::contentTypes['getCount'][0])
+    public function getCountAsync($text_search = null, $by_ip_from_comment = null, $filter = null, $search_filters = null, $demo = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCount'][0])
     {
-        return $this->getCountAsyncWithHttpInfo($text_search, $by_ip_from_comment, $filter, $search_filters, $demo, $sso, $contentType)
+        return $this->getCountAsyncWithHttpInfo($text_search, $by_ip_from_comment, $filter, $search_filters, $demo, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3164,16 +3007,17 @@ class ModerationApi
      * @param  string|null $filter (optional)
      * @param  string|null $search_filters (optional)
      * @param  bool|null $demo (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCountAsyncWithHttpInfo($text_search = null, $by_ip_from_comment = null, $filter = null, $search_filters = null, $demo = null, $sso = null, string $contentType = self::contentTypes['getCount'][0])
+    public function getCountAsyncWithHttpInfo($text_search = null, $by_ip_from_comment = null, $filter = null, $search_filters = null, $demo = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCount'][0])
     {
-        $returnType = '\FastComments\Client\Model\ModerationAPICountCommentsResponse';
-        $request = $this->getCountRequest($text_search, $by_ip_from_comment, $filter, $search_filters, $demo, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetCountResponse';
+        $request = $this->getCountRequest($text_search, $by_ip_from_comment, $filter, $search_filters, $demo, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3219,14 +3063,16 @@ class ModerationApi
      * @param  string|null $filter (optional)
      * @param  string|null $search_filters (optional)
      * @param  bool|null $demo (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCountRequest($text_search = null, $by_ip_from_comment = null, $filter = null, $search_filters = null, $demo = null, $sso = null, string $contentType = self::contentTypes['getCount'][0])
+    public function getCountRequest($text_search = null, $by_ip_from_comment = null, $filter = null, $search_filters = null, $demo = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCount'][0])
     {
+
 
 
 
@@ -3283,6 +3129,15 @@ class ModerationApi
             $demo,
             'demo', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -3358,16 +3213,17 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCounts'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetBannedUsersCountResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetCountsResponse
      */
-    public function getCounts($sso = null, string $contentType = self::contentTypes['getCounts'][0])
+    public function getCounts($tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCounts'][0])
     {
-        list($response) = $this->getCountsWithHttpInfo($sso, $contentType);
+        list($response) = $this->getCountsWithHttpInfo($tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -3376,16 +3232,17 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCounts'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetBannedUsersCountResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetCountsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCountsWithHttpInfo($sso = null, string $contentType = self::contentTypes['getCounts'][0])
+    public function getCountsWithHttpInfo($tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCounts'][0])
     {
-        $request = $this->getCountsRequest($sso, $contentType);
+        $request = $this->getCountsRequest($tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3412,11 +3269,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetBannedUsersCountResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetCountsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetBannedUsersCountResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetCountsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -3434,34 +3291,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetBannedUsersCountResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetCountsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -3480,7 +3310,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetBannedUsersCountResponse';
+            $returnType = '\FastComments\Client\Model\GetCountsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3513,15 +3343,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetBannedUsersCountResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetCountsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3536,15 +3358,16 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCountsAsync($sso = null, string $contentType = self::contentTypes['getCounts'][0])
+    public function getCountsAsync($tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCounts'][0])
     {
-        return $this->getCountsAsyncWithHttpInfo($sso, $contentType)
+        return $this->getCountsAsyncWithHttpInfo($tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3557,16 +3380,17 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCountsAsyncWithHttpInfo($sso = null, string $contentType = self::contentTypes['getCounts'][0])
+    public function getCountsAsyncWithHttpInfo($tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCounts'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetBannedUsersCountResponse';
-        $request = $this->getCountsRequest($sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetCountsResponse';
+        $request = $this->getCountsRequest($tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3607,14 +3431,16 @@ class ModerationApi
     /**
      * Create request for operation 'getCounts'
      *
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCountsRequest($sso = null, string $contentType = self::contentTypes['getCounts'][0])
+    public function getCountsRequest($tenant_id = null, $sso = null, string $contentType = self::contentTypes['getCounts'][0])
     {
+
 
 
 
@@ -3625,6 +3451,15 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -3697,16 +3532,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id comment_id (required)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLogs'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\ModerationAPIGetLogsResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetLogsResponse
      */
-    public function getLogs($comment_id, $sso = null, string $contentType = self::contentTypes['getLogs'][0])
+    public function getLogs($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getLogs'][0])
     {
-        list($response) = $this->getLogsWithHttpInfo($comment_id, $sso, $contentType);
+        list($response) = $this->getLogsWithHttpInfo($comment_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -3716,16 +3552,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLogs'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\ModerationAPIGetLogsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetLogsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLogsWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['getLogs'][0])
+    public function getLogsWithHttpInfo($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getLogs'][0])
     {
-        $request = $this->getLogsRequest($comment_id, $sso, $contentType);
+        $request = $this->getLogsRequest($comment_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3752,11 +3589,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\ModerationAPIGetLogsResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetLogsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\ModerationAPIGetLogsResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetLogsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -3774,34 +3611,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ModerationAPIGetLogsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetLogsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -3820,7 +3630,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\ModerationAPIGetLogsResponse';
+            $returnType = '\FastComments\Client\Model\GetLogsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3853,15 +3663,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\ModerationAPIGetLogsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetLogsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3877,15 +3679,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLogs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLogsAsync($comment_id, $sso = null, string $contentType = self::contentTypes['getLogs'][0])
+    public function getLogsAsync($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getLogs'][0])
     {
-        return $this->getLogsAsyncWithHttpInfo($comment_id, $sso, $contentType)
+        return $this->getLogsAsyncWithHttpInfo($comment_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3899,16 +3702,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLogs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLogsAsyncWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['getLogs'][0])
+    public function getLogsAsyncWithHttpInfo($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getLogs'][0])
     {
-        $returnType = '\FastComments\Client\Model\ModerationAPIGetLogsResponse';
-        $request = $this->getLogsRequest($comment_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetLogsResponse';
+        $request = $this->getLogsRequest($comment_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3950,13 +3754,14 @@ class ModerationApi
      * Create request for operation 'getLogs'
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLogs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getLogsRequest($comment_id, $sso = null, string $contentType = self::contentTypes['getLogs'][0])
+    public function getLogsRequest($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getLogs'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -3968,6 +3773,7 @@ class ModerationApi
 
 
 
+
         $resourcePath = '/auth/my-account/moderate-comments/logs/{commentId}';
         $formParams = [];
         $queryParams = [];
@@ -3975,6 +3781,15 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -4054,16 +3869,17 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadges'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetTenantManualBadgesResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetManualBadgesResponse
      */
-    public function getManualBadges($sso = null, string $contentType = self::contentTypes['getManualBadges'][0])
+    public function getManualBadges($tenant_id = null, $sso = null, string $contentType = self::contentTypes['getManualBadges'][0])
     {
-        list($response) = $this->getManualBadgesWithHttpInfo($sso, $contentType);
+        list($response) = $this->getManualBadgesWithHttpInfo($tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -4072,16 +3888,17 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadges'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetTenantManualBadgesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetManualBadgesResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getManualBadgesWithHttpInfo($sso = null, string $contentType = self::contentTypes['getManualBadges'][0])
+    public function getManualBadgesWithHttpInfo($tenant_id = null, $sso = null, string $contentType = self::contentTypes['getManualBadges'][0])
     {
-        $request = $this->getManualBadgesRequest($sso, $contentType);
+        $request = $this->getManualBadgesRequest($tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4108,11 +3925,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetTenantManualBadgesResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetManualBadgesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetTenantManualBadgesResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetManualBadgesResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -4130,34 +3947,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTenantManualBadgesResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetManualBadgesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -4176,7 +3966,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetTenantManualBadgesResponse';
+            $returnType = '\FastComments\Client\Model\GetManualBadgesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4209,15 +3999,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetTenantManualBadgesResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetManualBadgesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4232,15 +4014,16 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadges'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getManualBadgesAsync($sso = null, string $contentType = self::contentTypes['getManualBadges'][0])
+    public function getManualBadgesAsync($tenant_id = null, $sso = null, string $contentType = self::contentTypes['getManualBadges'][0])
     {
-        return $this->getManualBadgesAsyncWithHttpInfo($sso, $contentType)
+        return $this->getManualBadgesAsyncWithHttpInfo($tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4253,16 +4036,17 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadges'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getManualBadgesAsyncWithHttpInfo($sso = null, string $contentType = self::contentTypes['getManualBadges'][0])
+    public function getManualBadgesAsyncWithHttpInfo($tenant_id = null, $sso = null, string $contentType = self::contentTypes['getManualBadges'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetTenantManualBadgesResponse';
-        $request = $this->getManualBadgesRequest($sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetManualBadgesResponse';
+        $request = $this->getManualBadgesRequest($tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4303,14 +4087,16 @@ class ModerationApi
     /**
      * Create request for operation 'getManualBadges'
      *
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadges'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getManualBadgesRequest($sso = null, string $contentType = self::contentTypes['getManualBadges'][0])
+    public function getManualBadgesRequest($tenant_id = null, $sso = null, string $contentType = self::contentTypes['getManualBadges'][0])
     {
+
 
 
 
@@ -4321,6 +4107,15 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -4394,16 +4189,17 @@ class ModerationApi
      *
      * @param  string|null $badges_user_id badges_user_id (optional)
      * @param  string|null $comment_id comment_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadgesForUser'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetUserManualBadgesResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetManualBadgesForUserResponse
      */
-    public function getManualBadgesForUser($badges_user_id = null, $comment_id = null, $sso = null, string $contentType = self::contentTypes['getManualBadgesForUser'][0])
+    public function getManualBadgesForUser($badges_user_id = null, $comment_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getManualBadgesForUser'][0])
     {
-        list($response) = $this->getManualBadgesForUserWithHttpInfo($badges_user_id, $comment_id, $sso, $contentType);
+        list($response) = $this->getManualBadgesForUserWithHttpInfo($badges_user_id, $comment_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -4414,16 +4210,17 @@ class ModerationApi
      *
      * @param  string|null $badges_user_id (optional)
      * @param  string|null $comment_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadgesForUser'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetUserManualBadgesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetManualBadgesForUserResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getManualBadgesForUserWithHttpInfo($badges_user_id = null, $comment_id = null, $sso = null, string $contentType = self::contentTypes['getManualBadgesForUser'][0])
+    public function getManualBadgesForUserWithHttpInfo($badges_user_id = null, $comment_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getManualBadgesForUser'][0])
     {
-        $request = $this->getManualBadgesForUserRequest($badges_user_id, $comment_id, $sso, $contentType);
+        $request = $this->getManualBadgesForUserRequest($badges_user_id, $comment_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4450,11 +4247,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetUserManualBadgesResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetManualBadgesForUserResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetUserManualBadgesResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetManualBadgesForUserResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -4472,34 +4269,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetUserManualBadgesResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetManualBadgesForUserResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -4518,7 +4288,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetUserManualBadgesResponse';
+            $returnType = '\FastComments\Client\Model\GetManualBadgesForUserResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4551,15 +4321,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetUserManualBadgesResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetManualBadgesForUserResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4576,15 +4338,16 @@ class ModerationApi
      *
      * @param  string|null $badges_user_id (optional)
      * @param  string|null $comment_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadgesForUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getManualBadgesForUserAsync($badges_user_id = null, $comment_id = null, $sso = null, string $contentType = self::contentTypes['getManualBadgesForUser'][0])
+    public function getManualBadgesForUserAsync($badges_user_id = null, $comment_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getManualBadgesForUser'][0])
     {
-        return $this->getManualBadgesForUserAsyncWithHttpInfo($badges_user_id, $comment_id, $sso, $contentType)
+        return $this->getManualBadgesForUserAsyncWithHttpInfo($badges_user_id, $comment_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4599,16 +4362,17 @@ class ModerationApi
      *
      * @param  string|null $badges_user_id (optional)
      * @param  string|null $comment_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadgesForUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getManualBadgesForUserAsyncWithHttpInfo($badges_user_id = null, $comment_id = null, $sso = null, string $contentType = self::contentTypes['getManualBadgesForUser'][0])
+    public function getManualBadgesForUserAsyncWithHttpInfo($badges_user_id = null, $comment_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getManualBadgesForUser'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetUserManualBadgesResponse';
-        $request = $this->getManualBadgesForUserRequest($badges_user_id, $comment_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetManualBadgesForUserResponse';
+        $request = $this->getManualBadgesForUserRequest($badges_user_id, $comment_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4651,14 +4415,16 @@ class ModerationApi
      *
      * @param  string|null $badges_user_id (optional)
      * @param  string|null $comment_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadgesForUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getManualBadgesForUserRequest($badges_user_id = null, $comment_id = null, $sso = null, string $contentType = self::contentTypes['getManualBadgesForUser'][0])
+    public function getManualBadgesForUserRequest($badges_user_id = null, $comment_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getManualBadgesForUser'][0])
     {
+
 
 
 
@@ -4684,6 +4450,15 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $comment_id,
             'commentId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -4763,16 +4538,17 @@ class ModerationApi
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $include_email include_email (optional)
      * @param  bool|null $include_ip include_ip (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\ModerationAPICommentResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetModerationCommentResponse
      */
-    public function getModerationComment($comment_id, $include_email = null, $include_ip = null, $sso = null, string $contentType = self::contentTypes['getModerationComment'][0])
+    public function getModerationComment($comment_id, $include_email = null, $include_ip = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getModerationComment'][0])
     {
-        list($response) = $this->getModerationCommentWithHttpInfo($comment_id, $include_email, $include_ip, $sso, $contentType);
+        list($response) = $this->getModerationCommentWithHttpInfo($comment_id, $include_email, $include_ip, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -4784,16 +4560,17 @@ class ModerationApi
      * @param  string $comment_id (required)
      * @param  bool|null $include_email (optional)
      * @param  bool|null $include_ip (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\ModerationAPICommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetModerationCommentResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getModerationCommentWithHttpInfo($comment_id, $include_email = null, $include_ip = null, $sso = null, string $contentType = self::contentTypes['getModerationComment'][0])
+    public function getModerationCommentWithHttpInfo($comment_id, $include_email = null, $include_ip = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getModerationComment'][0])
     {
-        $request = $this->getModerationCommentRequest($comment_id, $include_email, $include_ip, $sso, $contentType);
+        $request = $this->getModerationCommentRequest($comment_id, $include_email, $include_ip, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4820,11 +4597,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\ModerationAPICommentResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetModerationCommentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\ModerationAPICommentResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetModerationCommentResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -4842,34 +4619,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ModerationAPICommentResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetModerationCommentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -4888,7 +4638,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\ModerationAPICommentResponse';
+            $returnType = '\FastComments\Client\Model\GetModerationCommentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4921,15 +4671,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\ModerationAPICommentResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetModerationCommentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4947,15 +4689,16 @@ class ModerationApi
      * @param  string $comment_id (required)
      * @param  bool|null $include_email (optional)
      * @param  bool|null $include_ip (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModerationCommentAsync($comment_id, $include_email = null, $include_ip = null, $sso = null, string $contentType = self::contentTypes['getModerationComment'][0])
+    public function getModerationCommentAsync($comment_id, $include_email = null, $include_ip = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getModerationComment'][0])
     {
-        return $this->getModerationCommentAsyncWithHttpInfo($comment_id, $include_email, $include_ip, $sso, $contentType)
+        return $this->getModerationCommentAsyncWithHttpInfo($comment_id, $include_email, $include_ip, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4971,16 +4714,17 @@ class ModerationApi
      * @param  string $comment_id (required)
      * @param  bool|null $include_email (optional)
      * @param  bool|null $include_ip (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModerationCommentAsyncWithHttpInfo($comment_id, $include_email = null, $include_ip = null, $sso = null, string $contentType = self::contentTypes['getModerationComment'][0])
+    public function getModerationCommentAsyncWithHttpInfo($comment_id, $include_email = null, $include_ip = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getModerationComment'][0])
     {
-        $returnType = '\FastComments\Client\Model\ModerationAPICommentResponse';
-        $request = $this->getModerationCommentRequest($comment_id, $include_email, $include_ip, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetModerationCommentResponse';
+        $request = $this->getModerationCommentRequest($comment_id, $include_email, $include_ip, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5024,13 +4768,14 @@ class ModerationApi
      * @param  string $comment_id (required)
      * @param  bool|null $include_email (optional)
      * @param  bool|null $include_ip (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getModerationCommentRequest($comment_id, $include_email = null, $include_ip = null, $sso = null, string $contentType = self::contentTypes['getModerationComment'][0])
+    public function getModerationCommentRequest($comment_id, $include_email = null, $include_ip = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getModerationComment'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -5039,6 +4784,7 @@ class ModerationApi
                 'Missing the required parameter $comment_id when calling getModerationComment'
             );
         }
+
 
 
 
@@ -5065,6 +4811,15 @@ class ModerationApi
             $include_ip,
             'includeIP', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -5149,16 +4904,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id comment_id (required)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationCommentText'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetCommentTextResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetModerationCommentTextResponse
      */
-    public function getModerationCommentText($comment_id, $sso = null, string $contentType = self::contentTypes['getModerationCommentText'][0])
+    public function getModerationCommentText($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getModerationCommentText'][0])
     {
-        list($response) = $this->getModerationCommentTextWithHttpInfo($comment_id, $sso, $contentType);
+        list($response) = $this->getModerationCommentTextWithHttpInfo($comment_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -5168,16 +4924,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationCommentText'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetCommentTextResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetModerationCommentTextResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getModerationCommentTextWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['getModerationCommentText'][0])
+    public function getModerationCommentTextWithHttpInfo($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getModerationCommentText'][0])
     {
-        $request = $this->getModerationCommentTextRequest($comment_id, $sso, $contentType);
+        $request = $this->getModerationCommentTextRequest($comment_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5204,11 +4961,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetCommentTextResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetModerationCommentTextResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetCommentTextResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetModerationCommentTextResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -5226,34 +4983,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetCommentTextResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetModerationCommentTextResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -5272,7 +5002,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetCommentTextResponse';
+            $returnType = '\FastComments\Client\Model\GetModerationCommentTextResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5305,15 +5035,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetCommentTextResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetModerationCommentTextResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5329,15 +5051,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationCommentText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModerationCommentTextAsync($comment_id, $sso = null, string $contentType = self::contentTypes['getModerationCommentText'][0])
+    public function getModerationCommentTextAsync($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getModerationCommentText'][0])
     {
-        return $this->getModerationCommentTextAsyncWithHttpInfo($comment_id, $sso, $contentType)
+        return $this->getModerationCommentTextAsyncWithHttpInfo($comment_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5351,16 +5074,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationCommentText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModerationCommentTextAsyncWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['getModerationCommentText'][0])
+    public function getModerationCommentTextAsyncWithHttpInfo($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getModerationCommentText'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetCommentTextResponse';
-        $request = $this->getModerationCommentTextRequest($comment_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetModerationCommentTextResponse';
+        $request = $this->getModerationCommentTextRequest($comment_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5402,13 +5126,14 @@ class ModerationApi
      * Create request for operation 'getModerationCommentText'
      *
      * @param  string $comment_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationCommentText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getModerationCommentTextRequest($comment_id, $sso = null, string $contentType = self::contentTypes['getModerationCommentText'][0])
+    public function getModerationCommentTextRequest($comment_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getModerationCommentText'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -5420,6 +5145,7 @@ class ModerationApi
 
 
 
+
         $resourcePath = '/auth/my-account/moderate-comments/get-comment-text/{commentId}';
         $formParams = [];
         $queryParams = [];
@@ -5427,6 +5153,15 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -5510,16 +5245,17 @@ class ModerationApi
      * @param  bool|null $include_by_user_id_and_email include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip include_by_ip (optional)
      * @param  bool|null $include_by_email_domain include_by_email_domain (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreBanSummary'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\PreBanSummary|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetPreBanSummaryResponse
      */
-    public function getPreBanSummary($comment_id, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $sso = null, string $contentType = self::contentTypes['getPreBanSummary'][0])
+    public function getPreBanSummary($comment_id, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getPreBanSummary'][0])
     {
-        list($response) = $this->getPreBanSummaryWithHttpInfo($comment_id, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $sso, $contentType);
+        list($response) = $this->getPreBanSummaryWithHttpInfo($comment_id, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -5532,16 +5268,17 @@ class ModerationApi
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreBanSummary'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\PreBanSummary|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetPreBanSummaryResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPreBanSummaryWithHttpInfo($comment_id, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $sso = null, string $contentType = self::contentTypes['getPreBanSummary'][0])
+    public function getPreBanSummaryWithHttpInfo($comment_id, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getPreBanSummary'][0])
     {
-        $request = $this->getPreBanSummaryRequest($comment_id, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $sso, $contentType);
+        $request = $this->getPreBanSummaryRequest($comment_id, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5568,11 +5305,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\PreBanSummary' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetPreBanSummaryResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\PreBanSummary' !== 'string') {
+                        if ('\FastComments\Client\Model\GetPreBanSummaryResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -5590,34 +5327,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PreBanSummary', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetPreBanSummaryResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -5636,7 +5346,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\PreBanSummary';
+            $returnType = '\FastComments\Client\Model\GetPreBanSummaryResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -5669,15 +5379,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\PreBanSummary',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetPreBanSummaryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5696,15 +5398,16 @@ class ModerationApi
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreBanSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPreBanSummaryAsync($comment_id, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $sso = null, string $contentType = self::contentTypes['getPreBanSummary'][0])
+    public function getPreBanSummaryAsync($comment_id, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getPreBanSummary'][0])
     {
-        return $this->getPreBanSummaryAsyncWithHttpInfo($comment_id, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $sso, $contentType)
+        return $this->getPreBanSummaryAsyncWithHttpInfo($comment_id, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5721,16 +5424,17 @@ class ModerationApi
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreBanSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPreBanSummaryAsyncWithHttpInfo($comment_id, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $sso = null, string $contentType = self::contentTypes['getPreBanSummary'][0])
+    public function getPreBanSummaryAsyncWithHttpInfo($comment_id, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getPreBanSummary'][0])
     {
-        $returnType = '\FastComments\Client\Model\PreBanSummary';
-        $request = $this->getPreBanSummaryRequest($comment_id, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetPreBanSummaryResponse';
+        $request = $this->getPreBanSummaryRequest($comment_id, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5775,13 +5479,14 @@ class ModerationApi
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreBanSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPreBanSummaryRequest($comment_id, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $sso = null, string $contentType = self::contentTypes['getPreBanSummary'][0])
+    public function getPreBanSummaryRequest($comment_id, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getPreBanSummary'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -5790,6 +5495,7 @@ class ModerationApi
                 'Missing the required parameter $comment_id when calling getPreBanSummary'
             );
         }
+
 
 
 
@@ -5826,6 +5532,15 @@ class ModerationApi
             $include_by_email_domain,
             'includeByEmailDomain', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -5912,16 +5627,17 @@ class ModerationApi
      * @param  string|null $value value (optional)
      * @param  string|null $filters filters (optional)
      * @param  string|null $search_filters search_filters (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchCommentsSummary'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\ModerationCommentSearchResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetSearchCommentsSummaryResponse
      */
-    public function getSearchCommentsSummary($value = null, $filters = null, $search_filters = null, $sso = null, string $contentType = self::contentTypes['getSearchCommentsSummary'][0])
+    public function getSearchCommentsSummary($value = null, $filters = null, $search_filters = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchCommentsSummary'][0])
     {
-        list($response) = $this->getSearchCommentsSummaryWithHttpInfo($value, $filters, $search_filters, $sso, $contentType);
+        list($response) = $this->getSearchCommentsSummaryWithHttpInfo($value, $filters, $search_filters, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -5933,16 +5649,17 @@ class ModerationApi
      * @param  string|null $value (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchCommentsSummary'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\ModerationCommentSearchResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetSearchCommentsSummaryResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchCommentsSummaryWithHttpInfo($value = null, $filters = null, $search_filters = null, $sso = null, string $contentType = self::contentTypes['getSearchCommentsSummary'][0])
+    public function getSearchCommentsSummaryWithHttpInfo($value = null, $filters = null, $search_filters = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchCommentsSummary'][0])
     {
-        $request = $this->getSearchCommentsSummaryRequest($value, $filters, $search_filters, $sso, $contentType);
+        $request = $this->getSearchCommentsSummaryRequest($value, $filters, $search_filters, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5969,11 +5686,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\ModerationCommentSearchResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetSearchCommentsSummaryResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\ModerationCommentSearchResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetSearchCommentsSummaryResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -5991,34 +5708,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ModerationCommentSearchResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetSearchCommentsSummaryResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -6037,7 +5727,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\ModerationCommentSearchResponse';
+            $returnType = '\FastComments\Client\Model\GetSearchCommentsSummaryResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6070,15 +5760,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\ModerationCommentSearchResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetSearchCommentsSummaryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6096,15 +5778,16 @@ class ModerationApi
      * @param  string|null $value (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchCommentsSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchCommentsSummaryAsync($value = null, $filters = null, $search_filters = null, $sso = null, string $contentType = self::contentTypes['getSearchCommentsSummary'][0])
+    public function getSearchCommentsSummaryAsync($value = null, $filters = null, $search_filters = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchCommentsSummary'][0])
     {
-        return $this->getSearchCommentsSummaryAsyncWithHttpInfo($value, $filters, $search_filters, $sso, $contentType)
+        return $this->getSearchCommentsSummaryAsyncWithHttpInfo($value, $filters, $search_filters, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6120,16 +5803,17 @@ class ModerationApi
      * @param  string|null $value (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchCommentsSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchCommentsSummaryAsyncWithHttpInfo($value = null, $filters = null, $search_filters = null, $sso = null, string $contentType = self::contentTypes['getSearchCommentsSummary'][0])
+    public function getSearchCommentsSummaryAsyncWithHttpInfo($value = null, $filters = null, $search_filters = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchCommentsSummary'][0])
     {
-        $returnType = '\FastComments\Client\Model\ModerationCommentSearchResponse';
-        $request = $this->getSearchCommentsSummaryRequest($value, $filters, $search_filters, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetSearchCommentsSummaryResponse';
+        $request = $this->getSearchCommentsSummaryRequest($value, $filters, $search_filters, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6173,14 +5857,16 @@ class ModerationApi
      * @param  string|null $value (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchCommentsSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchCommentsSummaryRequest($value = null, $filters = null, $search_filters = null, $sso = null, string $contentType = self::contentTypes['getSearchCommentsSummary'][0])
+    public function getSearchCommentsSummaryRequest($value = null, $filters = null, $search_filters = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchCommentsSummary'][0])
     {
+
 
 
 
@@ -6216,6 +5902,15 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $search_filters,
             'searchFilters', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -6293,16 +5988,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $value value (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchPages'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\ModerationPageSearchResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetSearchPagesResponse
      */
-    public function getSearchPages($value = null, $sso = null, string $contentType = self::contentTypes['getSearchPages'][0])
+    public function getSearchPages($value = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchPages'][0])
     {
-        list($response) = $this->getSearchPagesWithHttpInfo($value, $sso, $contentType);
+        list($response) = $this->getSearchPagesWithHttpInfo($value, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -6312,16 +6008,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $value (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchPages'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\ModerationPageSearchResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetSearchPagesResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchPagesWithHttpInfo($value = null, $sso = null, string $contentType = self::contentTypes['getSearchPages'][0])
+    public function getSearchPagesWithHttpInfo($value = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchPages'][0])
     {
-        $request = $this->getSearchPagesRequest($value, $sso, $contentType);
+        $request = $this->getSearchPagesRequest($value, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6348,11 +6045,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\ModerationPageSearchResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetSearchPagesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\ModerationPageSearchResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetSearchPagesResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -6370,34 +6067,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ModerationPageSearchResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetSearchPagesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -6416,7 +6086,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\ModerationPageSearchResponse';
+            $returnType = '\FastComments\Client\Model\GetSearchPagesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6449,15 +6119,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\ModerationPageSearchResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetSearchPagesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6473,15 +6135,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $value (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchPages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchPagesAsync($value = null, $sso = null, string $contentType = self::contentTypes['getSearchPages'][0])
+    public function getSearchPagesAsync($value = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchPages'][0])
     {
-        return $this->getSearchPagesAsyncWithHttpInfo($value, $sso, $contentType)
+        return $this->getSearchPagesAsyncWithHttpInfo($value, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6495,16 +6158,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $value (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchPages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchPagesAsyncWithHttpInfo($value = null, $sso = null, string $contentType = self::contentTypes['getSearchPages'][0])
+    public function getSearchPagesAsyncWithHttpInfo($value = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchPages'][0])
     {
-        $returnType = '\FastComments\Client\Model\ModerationPageSearchResponse';
-        $request = $this->getSearchPagesRequest($value, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetSearchPagesResponse';
+        $request = $this->getSearchPagesRequest($value, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6546,14 +6210,16 @@ class ModerationApi
      * Create request for operation 'getSearchPages'
      *
      * @param  string|null $value (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchPages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchPagesRequest($value = null, $sso = null, string $contentType = self::contentTypes['getSearchPages'][0])
+    public function getSearchPagesRequest($value = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchPages'][0])
     {
+
 
 
 
@@ -6569,6 +6235,15 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $value,
             'value', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -6646,16 +6321,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $value value (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSites'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\ModerationSiteSearchResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetSearchSitesResponse
      */
-    public function getSearchSites($value = null, $sso = null, string $contentType = self::contentTypes['getSearchSites'][0])
+    public function getSearchSites($value = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchSites'][0])
     {
-        list($response) = $this->getSearchSitesWithHttpInfo($value, $sso, $contentType);
+        list($response) = $this->getSearchSitesWithHttpInfo($value, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -6665,16 +6341,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $value (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSites'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\ModerationSiteSearchResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetSearchSitesResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchSitesWithHttpInfo($value = null, $sso = null, string $contentType = self::contentTypes['getSearchSites'][0])
+    public function getSearchSitesWithHttpInfo($value = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchSites'][0])
     {
-        $request = $this->getSearchSitesRequest($value, $sso, $contentType);
+        $request = $this->getSearchSitesRequest($value, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6701,11 +6378,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\ModerationSiteSearchResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetSearchSitesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\ModerationSiteSearchResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetSearchSitesResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -6723,34 +6400,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ModerationSiteSearchResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetSearchSitesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -6769,7 +6419,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\ModerationSiteSearchResponse';
+            $returnType = '\FastComments\Client\Model\GetSearchSitesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6802,15 +6452,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\ModerationSiteSearchResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetSearchSitesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6826,15 +6468,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $value (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSites'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchSitesAsync($value = null, $sso = null, string $contentType = self::contentTypes['getSearchSites'][0])
+    public function getSearchSitesAsync($value = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchSites'][0])
     {
-        return $this->getSearchSitesAsyncWithHttpInfo($value, $sso, $contentType)
+        return $this->getSearchSitesAsyncWithHttpInfo($value, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6848,16 +6491,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $value (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSites'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchSitesAsyncWithHttpInfo($value = null, $sso = null, string $contentType = self::contentTypes['getSearchSites'][0])
+    public function getSearchSitesAsyncWithHttpInfo($value = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchSites'][0])
     {
-        $returnType = '\FastComments\Client\Model\ModerationSiteSearchResponse';
-        $request = $this->getSearchSitesRequest($value, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetSearchSitesResponse';
+        $request = $this->getSearchSitesRequest($value, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6899,14 +6543,16 @@ class ModerationApi
      * Create request for operation 'getSearchSites'
      *
      * @param  string|null $value (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSites'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchSitesRequest($value = null, $sso = null, string $contentType = self::contentTypes['getSearchSites'][0])
+    public function getSearchSitesRequest($value = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchSites'][0])
     {
+
 
 
 
@@ -6922,6 +6568,15 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $value,
             'value', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -6999,16 +6654,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $text_search text_search (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSuggest'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\ModerationSuggestResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetSearchSuggestResponse
      */
-    public function getSearchSuggest($text_search = null, $sso = null, string $contentType = self::contentTypes['getSearchSuggest'][0])
+    public function getSearchSuggest($text_search = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchSuggest'][0])
     {
-        list($response) = $this->getSearchSuggestWithHttpInfo($text_search, $sso, $contentType);
+        list($response) = $this->getSearchSuggestWithHttpInfo($text_search, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -7018,16 +6674,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $text_search (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSuggest'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\ModerationSuggestResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetSearchSuggestResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchSuggestWithHttpInfo($text_search = null, $sso = null, string $contentType = self::contentTypes['getSearchSuggest'][0])
+    public function getSearchSuggestWithHttpInfo($text_search = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchSuggest'][0])
     {
-        $request = $this->getSearchSuggestRequest($text_search, $sso, $contentType);
+        $request = $this->getSearchSuggestRequest($text_search, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7054,11 +6711,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\ModerationSuggestResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetSearchSuggestResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\ModerationSuggestResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetSearchSuggestResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -7076,34 +6733,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ModerationSuggestResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetSearchSuggestResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -7122,7 +6752,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\ModerationSuggestResponse';
+            $returnType = '\FastComments\Client\Model\GetSearchSuggestResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7155,15 +6785,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\ModerationSuggestResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetSearchSuggestResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7179,15 +6801,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $text_search (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSuggest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchSuggestAsync($text_search = null, $sso = null, string $contentType = self::contentTypes['getSearchSuggest'][0])
+    public function getSearchSuggestAsync($text_search = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchSuggest'][0])
     {
-        return $this->getSearchSuggestAsyncWithHttpInfo($text_search, $sso, $contentType)
+        return $this->getSearchSuggestAsyncWithHttpInfo($text_search, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7201,16 +6824,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $text_search (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSuggest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchSuggestAsyncWithHttpInfo($text_search = null, $sso = null, string $contentType = self::contentTypes['getSearchSuggest'][0])
+    public function getSearchSuggestAsyncWithHttpInfo($text_search = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchSuggest'][0])
     {
-        $returnType = '\FastComments\Client\Model\ModerationSuggestResponse';
-        $request = $this->getSearchSuggestRequest($text_search, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetSearchSuggestResponse';
+        $request = $this->getSearchSuggestRequest($text_search, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7252,14 +6876,16 @@ class ModerationApi
      * Create request for operation 'getSearchSuggest'
      *
      * @param  string|null $text_search (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSuggest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchSuggestRequest($text_search = null, $sso = null, string $contentType = self::contentTypes['getSearchSuggest'][0])
+    public function getSearchSuggestRequest($text_search = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchSuggest'][0])
     {
+
 
 
 
@@ -7275,6 +6901,15 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $text_search,
             'text-search', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -7352,16 +6987,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $value value (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchUsers'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\ModerationUserSearchResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetSearchUsersResponse
      */
-    public function getSearchUsers($value = null, $sso = null, string $contentType = self::contentTypes['getSearchUsers'][0])
+    public function getSearchUsers($value = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchUsers'][0])
     {
-        list($response) = $this->getSearchUsersWithHttpInfo($value, $sso, $contentType);
+        list($response) = $this->getSearchUsersWithHttpInfo($value, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -7371,16 +7007,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $value (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchUsers'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\ModerationUserSearchResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetSearchUsersResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchUsersWithHttpInfo($value = null, $sso = null, string $contentType = self::contentTypes['getSearchUsers'][0])
+    public function getSearchUsersWithHttpInfo($value = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchUsers'][0])
     {
-        $request = $this->getSearchUsersRequest($value, $sso, $contentType);
+        $request = $this->getSearchUsersRequest($value, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7407,11 +7044,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\ModerationUserSearchResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetSearchUsersResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\ModerationUserSearchResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetSearchUsersResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -7429,34 +7066,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ModerationUserSearchResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetSearchUsersResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -7475,7 +7085,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\ModerationUserSearchResponse';
+            $returnType = '\FastComments\Client\Model\GetSearchUsersResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7508,15 +7118,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\ModerationUserSearchResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetSearchUsersResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7532,15 +7134,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $value (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchUsersAsync($value = null, $sso = null, string $contentType = self::contentTypes['getSearchUsers'][0])
+    public function getSearchUsersAsync($value = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchUsers'][0])
     {
-        return $this->getSearchUsersAsyncWithHttpInfo($value, $sso, $contentType)
+        return $this->getSearchUsersAsyncWithHttpInfo($value, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7554,16 +7157,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $value (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchUsersAsyncWithHttpInfo($value = null, $sso = null, string $contentType = self::contentTypes['getSearchUsers'][0])
+    public function getSearchUsersAsyncWithHttpInfo($value = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchUsers'][0])
     {
-        $returnType = '\FastComments\Client\Model\ModerationUserSearchResponse';
-        $request = $this->getSearchUsersRequest($value, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetSearchUsersResponse';
+        $request = $this->getSearchUsersRequest($value, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7605,14 +7209,16 @@ class ModerationApi
      * Create request for operation 'getSearchUsers'
      *
      * @param  string|null $value (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchUsersRequest($value = null, $sso = null, string $contentType = self::contentTypes['getSearchUsers'][0])
+    public function getSearchUsersRequest($value = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getSearchUsers'][0])
     {
+
 
 
 
@@ -7628,6 +7234,15 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $value,
             'value', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -7705,16 +7320,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $user_id user_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrustFactor'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetUserTrustFactorResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetTrustFactorResponse
      */
-    public function getTrustFactor($user_id = null, $sso = null, string $contentType = self::contentTypes['getTrustFactor'][0])
+    public function getTrustFactor($user_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getTrustFactor'][0])
     {
-        list($response) = $this->getTrustFactorWithHttpInfo($user_id, $sso, $contentType);
+        list($response) = $this->getTrustFactorWithHttpInfo($user_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -7724,16 +7340,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $user_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrustFactor'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetUserTrustFactorResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetTrustFactorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTrustFactorWithHttpInfo($user_id = null, $sso = null, string $contentType = self::contentTypes['getTrustFactor'][0])
+    public function getTrustFactorWithHttpInfo($user_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getTrustFactor'][0])
     {
-        $request = $this->getTrustFactorRequest($user_id, $sso, $contentType);
+        $request = $this->getTrustFactorRequest($user_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7760,11 +7377,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetUserTrustFactorResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetTrustFactorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetUserTrustFactorResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetTrustFactorResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -7782,34 +7399,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetUserTrustFactorResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetTrustFactorResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -7828,7 +7418,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetUserTrustFactorResponse';
+            $returnType = '\FastComments\Client\Model\GetTrustFactorResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7861,15 +7451,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetUserTrustFactorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetTrustFactorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7885,15 +7467,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $user_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrustFactor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTrustFactorAsync($user_id = null, $sso = null, string $contentType = self::contentTypes['getTrustFactor'][0])
+    public function getTrustFactorAsync($user_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getTrustFactor'][0])
     {
-        return $this->getTrustFactorAsyncWithHttpInfo($user_id, $sso, $contentType)
+        return $this->getTrustFactorAsyncWithHttpInfo($user_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7907,16 +7490,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $user_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrustFactor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTrustFactorAsyncWithHttpInfo($user_id = null, $sso = null, string $contentType = self::contentTypes['getTrustFactor'][0])
+    public function getTrustFactorAsyncWithHttpInfo($user_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getTrustFactor'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetUserTrustFactorResponse';
-        $request = $this->getTrustFactorRequest($user_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetTrustFactorResponse';
+        $request = $this->getTrustFactorRequest($user_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7958,14 +7542,16 @@ class ModerationApi
      * Create request for operation 'getTrustFactor'
      *
      * @param  string|null $user_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrustFactor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTrustFactorRequest($user_id = null, $sso = null, string $contentType = self::contentTypes['getTrustFactor'][0])
+    public function getTrustFactorRequest($user_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getTrustFactor'][0])
     {
+
 
 
 
@@ -7981,6 +7567,15 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $user_id,
             'userId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -8057,16 +7652,17 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBanPreference'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetUserBanPreferenceResponse
      */
-    public function getUserBanPreference($sso = null, string $contentType = self::contentTypes['getUserBanPreference'][0])
+    public function getUserBanPreference($tenant_id = null, $sso = null, string $contentType = self::contentTypes['getUserBanPreference'][0])
     {
-        list($response) = $this->getUserBanPreferenceWithHttpInfo($sso, $contentType);
+        list($response) = $this->getUserBanPreferenceWithHttpInfo($tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -8075,16 +7671,17 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBanPreference'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetUserBanPreferenceResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserBanPreferenceWithHttpInfo($sso = null, string $contentType = self::contentTypes['getUserBanPreference'][0])
+    public function getUserBanPreferenceWithHttpInfo($tenant_id = null, $sso = null, string $contentType = self::contentTypes['getUserBanPreference'][0])
     {
-        $request = $this->getUserBanPreferenceRequest($sso, $contentType);
+        $request = $this->getUserBanPreferenceRequest($tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8111,11 +7708,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetUserBanPreferenceResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetUserBanPreferenceResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -8133,34 +7730,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetUserBanPreferenceResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -8179,7 +7749,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse';
+            $returnType = '\FastComments\Client\Model\GetUserBanPreferenceResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -8212,15 +7782,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetUserBanPreferenceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8235,15 +7797,16 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBanPreference'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBanPreferenceAsync($sso = null, string $contentType = self::contentTypes['getUserBanPreference'][0])
+    public function getUserBanPreferenceAsync($tenant_id = null, $sso = null, string $contentType = self::contentTypes['getUserBanPreference'][0])
     {
-        return $this->getUserBanPreferenceAsyncWithHttpInfo($sso, $contentType)
+        return $this->getUserBanPreferenceAsyncWithHttpInfo($tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8256,16 +7819,17 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBanPreference'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBanPreferenceAsyncWithHttpInfo($sso = null, string $contentType = self::contentTypes['getUserBanPreference'][0])
+    public function getUserBanPreferenceAsyncWithHttpInfo($tenant_id = null, $sso = null, string $contentType = self::contentTypes['getUserBanPreference'][0])
     {
-        $returnType = '\FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse';
-        $request = $this->getUserBanPreferenceRequest($sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetUserBanPreferenceResponse';
+        $request = $this->getUserBanPreferenceRequest($tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8306,14 +7870,16 @@ class ModerationApi
     /**
      * Create request for operation 'getUserBanPreference'
      *
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBanPreference'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserBanPreferenceRequest($sso = null, string $contentType = self::contentTypes['getUserBanPreference'][0])
+    public function getUserBanPreferenceRequest($tenant_id = null, $sso = null, string $contentType = self::contentTypes['getUserBanPreference'][0])
     {
+
 
 
 
@@ -8324,6 +7890,15 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -8396,16 +7971,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $comment_id comment_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserInternalProfile'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\GetUserInternalProfileResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\GetUserInternalProfileResponse1
      */
-    public function getUserInternalProfile($comment_id = null, $sso = null, string $contentType = self::contentTypes['getUserInternalProfile'][0])
+    public function getUserInternalProfile($comment_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getUserInternalProfile'][0])
     {
-        list($response) = $this->getUserInternalProfileWithHttpInfo($comment_id, $sso, $contentType);
+        list($response) = $this->getUserInternalProfileWithHttpInfo($comment_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -8415,16 +7991,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $comment_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserInternalProfile'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\GetUserInternalProfileResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\GetUserInternalProfileResponse1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserInternalProfileWithHttpInfo($comment_id = null, $sso = null, string $contentType = self::contentTypes['getUserInternalProfile'][0])
+    public function getUserInternalProfileWithHttpInfo($comment_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getUserInternalProfile'][0])
     {
-        $request = $this->getUserInternalProfileRequest($comment_id, $sso, $contentType);
+        $request = $this->getUserInternalProfileRequest($comment_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8451,11 +8028,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\GetUserInternalProfileResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\GetUserInternalProfileResponse1' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\GetUserInternalProfileResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\GetUserInternalProfileResponse1' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -8473,34 +8050,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetUserInternalProfileResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\GetUserInternalProfileResponse1', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -8519,7 +8069,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\GetUserInternalProfileResponse';
+            $returnType = '\FastComments\Client\Model\GetUserInternalProfileResponse1';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -8552,15 +8102,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\GetUserInternalProfileResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\GetUserInternalProfileResponse1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8576,15 +8118,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $comment_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserInternalProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserInternalProfileAsync($comment_id = null, $sso = null, string $contentType = self::contentTypes['getUserInternalProfile'][0])
+    public function getUserInternalProfileAsync($comment_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getUserInternalProfile'][0])
     {
-        return $this->getUserInternalProfileAsyncWithHttpInfo($comment_id, $sso, $contentType)
+        return $this->getUserInternalProfileAsyncWithHttpInfo($comment_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8598,16 +8141,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string|null $comment_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserInternalProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserInternalProfileAsyncWithHttpInfo($comment_id = null, $sso = null, string $contentType = self::contentTypes['getUserInternalProfile'][0])
+    public function getUserInternalProfileAsyncWithHttpInfo($comment_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getUserInternalProfile'][0])
     {
-        $returnType = '\FastComments\Client\Model\GetUserInternalProfileResponse';
-        $request = $this->getUserInternalProfileRequest($comment_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\GetUserInternalProfileResponse1';
+        $request = $this->getUserInternalProfileRequest($comment_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8649,14 +8193,16 @@ class ModerationApi
      * Create request for operation 'getUserInternalProfile'
      *
      * @param  string|null $comment_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserInternalProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserInternalProfileRequest($comment_id = null, $sso = null, string $contentType = self::contentTypes['getUserInternalProfile'][0])
+    public function getUserInternalProfileRequest($comment_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['getUserInternalProfile'][0])
     {
+
 
 
 
@@ -8672,6 +8218,15 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $comment_id,
             'commentId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -8750,16 +8305,18 @@ class ModerationApi
      *
      * @param  string $comment_id comment_id (required)
      * @param  \FastComments\Client\Model\AdjustCommentVotesParams $adjust_comment_votes_params adjust_comment_votes_params (required)
+     * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAdjustCommentVotes'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\AdjustVotesResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostAdjustCommentVotesResponse
      */
-    public function postAdjustCommentVotes($comment_id, $adjust_comment_votes_params, $sso = null, string $contentType = self::contentTypes['postAdjustCommentVotes'][0])
+    public function postAdjustCommentVotes($comment_id, $adjust_comment_votes_params, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postAdjustCommentVotes'][0])
     {
-        list($response) = $this->postAdjustCommentVotesWithHttpInfo($comment_id, $adjust_comment_votes_params, $sso, $contentType);
+        list($response) = $this->postAdjustCommentVotesWithHttpInfo($comment_id, $adjust_comment_votes_params, $broadcast_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -8770,16 +8327,18 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\AdjustCommentVotesParams $adjust_comment_votes_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAdjustCommentVotes'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\AdjustVotesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostAdjustCommentVotesResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postAdjustCommentVotesWithHttpInfo($comment_id, $adjust_comment_votes_params, $sso = null, string $contentType = self::contentTypes['postAdjustCommentVotes'][0])
+    public function postAdjustCommentVotesWithHttpInfo($comment_id, $adjust_comment_votes_params, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postAdjustCommentVotes'][0])
     {
-        $request = $this->postAdjustCommentVotesRequest($comment_id, $adjust_comment_votes_params, $sso, $contentType);
+        $request = $this->postAdjustCommentVotesRequest($comment_id, $adjust_comment_votes_params, $broadcast_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8806,11 +8365,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\AdjustVotesResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PostAdjustCommentVotesResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\AdjustVotesResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PostAdjustCommentVotesResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -8828,34 +8387,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\AdjustVotesResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PostAdjustCommentVotesResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -8874,7 +8406,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\AdjustVotesResponse';
+            $returnType = '\FastComments\Client\Model\PostAdjustCommentVotesResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -8907,15 +8439,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\AdjustVotesResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PostAdjustCommentVotesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8932,15 +8456,17 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\AdjustCommentVotesParams $adjust_comment_votes_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAdjustCommentVotes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postAdjustCommentVotesAsync($comment_id, $adjust_comment_votes_params, $sso = null, string $contentType = self::contentTypes['postAdjustCommentVotes'][0])
+    public function postAdjustCommentVotesAsync($comment_id, $adjust_comment_votes_params, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postAdjustCommentVotes'][0])
     {
-        return $this->postAdjustCommentVotesAsyncWithHttpInfo($comment_id, $adjust_comment_votes_params, $sso, $contentType)
+        return $this->postAdjustCommentVotesAsyncWithHttpInfo($comment_id, $adjust_comment_votes_params, $broadcast_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8955,16 +8481,18 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\AdjustCommentVotesParams $adjust_comment_votes_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAdjustCommentVotes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postAdjustCommentVotesAsyncWithHttpInfo($comment_id, $adjust_comment_votes_params, $sso = null, string $contentType = self::contentTypes['postAdjustCommentVotes'][0])
+    public function postAdjustCommentVotesAsyncWithHttpInfo($comment_id, $adjust_comment_votes_params, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postAdjustCommentVotes'][0])
     {
-        $returnType = '\FastComments\Client\Model\AdjustVotesResponse';
-        $request = $this->postAdjustCommentVotesRequest($comment_id, $adjust_comment_votes_params, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PostAdjustCommentVotesResponse';
+        $request = $this->postAdjustCommentVotesRequest($comment_id, $adjust_comment_votes_params, $broadcast_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9007,13 +8535,15 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\AdjustCommentVotesParams $adjust_comment_votes_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAdjustCommentVotes'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postAdjustCommentVotesRequest($comment_id, $adjust_comment_votes_params, $sso = null, string $contentType = self::contentTypes['postAdjustCommentVotes'][0])
+    public function postAdjustCommentVotesRequest($comment_id, $adjust_comment_votes_params, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postAdjustCommentVotes'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -9032,6 +8562,8 @@ class ModerationApi
 
 
 
+
+
         $resourcePath = '/auth/my-account/moderate-comments/adjust-comment-votes/{commentId}';
         $formParams = [];
         $queryParams = [];
@@ -9039,6 +8571,24 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $broadcast_id,
+            'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -9130,16 +8680,17 @@ class ModerationApi
      * @param  string|null $filters filters (optional)
      * @param  string|null $search_filters search_filters (optional)
      * @param  string|null $sorts sorts (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExport'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\ModerationExportResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostApiExportResponse
      */
-    public function postApiExport($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $sso = null, string $contentType = self::contentTypes['postApiExport'][0])
+    public function postApiExport($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postApiExport'][0])
     {
-        list($response) = $this->postApiExportWithHttpInfo($text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $sso, $contentType);
+        list($response) = $this->postApiExportWithHttpInfo($text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -9153,16 +8704,17 @@ class ModerationApi
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExport'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\ModerationExportResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostApiExportResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postApiExportWithHttpInfo($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $sso = null, string $contentType = self::contentTypes['postApiExport'][0])
+    public function postApiExportWithHttpInfo($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postApiExport'][0])
     {
-        $request = $this->postApiExportRequest($text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $sso, $contentType);
+        $request = $this->postApiExportRequest($text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9189,11 +8741,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\ModerationExportResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PostApiExportResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\ModerationExportResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PostApiExportResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -9211,34 +8763,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ModerationExportResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PostApiExportResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -9257,7 +8782,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\ModerationExportResponse';
+            $returnType = '\FastComments\Client\Model\PostApiExportResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -9290,15 +8815,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\ModerationExportResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PostApiExportResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9318,15 +8835,16 @@ class ModerationApi
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postApiExportAsync($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $sso = null, string $contentType = self::contentTypes['postApiExport'][0])
+    public function postApiExportAsync($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postApiExport'][0])
     {
-        return $this->postApiExportAsyncWithHttpInfo($text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $sso, $contentType)
+        return $this->postApiExportAsyncWithHttpInfo($text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9344,16 +8862,17 @@ class ModerationApi
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postApiExportAsyncWithHttpInfo($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $sso = null, string $contentType = self::contentTypes['postApiExport'][0])
+    public function postApiExportAsyncWithHttpInfo($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postApiExport'][0])
     {
-        $returnType = '\FastComments\Client\Model\ModerationExportResponse';
-        $request = $this->postApiExportRequest($text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PostApiExportResponse';
+        $request = $this->postApiExportRequest($text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9399,14 +8918,16 @@ class ModerationApi
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postApiExportRequest($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $sso = null, string $contentType = self::contentTypes['postApiExport'][0])
+    public function postApiExportRequest($text_search = null, $by_ip_from_comment = null, $filters = null, $search_filters = null, $sorts = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postApiExport'][0])
     {
+
 
 
 
@@ -9462,6 +8983,15 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sorts,
             'sorts', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -9547,16 +9077,17 @@ class ModerationApi
      * @param  bool|null $is_shadow_ban is_shadow_ban (optional)
      * @param  string|null $update_id update_id (optional)
      * @param  string|null $ban_reason ban_reason (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserFromComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\BanUserFromCommentResult|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostBanUserFromCommentResponse
      */
-    public function postBanUserFromComment($comment_id, $ban_email = null, $ban_email_domain = null, $ban_ip = null, $delete_all_users_comments = null, $banned_until = null, $is_shadow_ban = null, $update_id = null, $ban_reason = null, $sso = null, string $contentType = self::contentTypes['postBanUserFromComment'][0])
+    public function postBanUserFromComment($comment_id, $ban_email = null, $ban_email_domain = null, $ban_ip = null, $delete_all_users_comments = null, $banned_until = null, $is_shadow_ban = null, $update_id = null, $ban_reason = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postBanUserFromComment'][0])
     {
-        list($response) = $this->postBanUserFromCommentWithHttpInfo($comment_id, $ban_email, $ban_email_domain, $ban_ip, $delete_all_users_comments, $banned_until, $is_shadow_ban, $update_id, $ban_reason, $sso, $contentType);
+        list($response) = $this->postBanUserFromCommentWithHttpInfo($comment_id, $ban_email, $ban_email_domain, $ban_ip, $delete_all_users_comments, $banned_until, $is_shadow_ban, $update_id, $ban_reason, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -9574,16 +9105,17 @@ class ModerationApi
      * @param  bool|null $is_shadow_ban (optional)
      * @param  string|null $update_id (optional)
      * @param  string|null $ban_reason (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserFromComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\BanUserFromCommentResult|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostBanUserFromCommentResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postBanUserFromCommentWithHttpInfo($comment_id, $ban_email = null, $ban_email_domain = null, $ban_ip = null, $delete_all_users_comments = null, $banned_until = null, $is_shadow_ban = null, $update_id = null, $ban_reason = null, $sso = null, string $contentType = self::contentTypes['postBanUserFromComment'][0])
+    public function postBanUserFromCommentWithHttpInfo($comment_id, $ban_email = null, $ban_email_domain = null, $ban_ip = null, $delete_all_users_comments = null, $banned_until = null, $is_shadow_ban = null, $update_id = null, $ban_reason = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postBanUserFromComment'][0])
     {
-        $request = $this->postBanUserFromCommentRequest($comment_id, $ban_email, $ban_email_domain, $ban_ip, $delete_all_users_comments, $banned_until, $is_shadow_ban, $update_id, $ban_reason, $sso, $contentType);
+        $request = $this->postBanUserFromCommentRequest($comment_id, $ban_email, $ban_email_domain, $ban_ip, $delete_all_users_comments, $banned_until, $is_shadow_ban, $update_id, $ban_reason, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9610,11 +9142,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\BanUserFromCommentResult' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PostBanUserFromCommentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\BanUserFromCommentResult' !== 'string') {
+                        if ('\FastComments\Client\Model\PostBanUserFromCommentResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -9632,34 +9164,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\BanUserFromCommentResult', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PostBanUserFromCommentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -9678,7 +9183,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\BanUserFromCommentResult';
+            $returnType = '\FastComments\Client\Model\PostBanUserFromCommentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -9711,15 +9216,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\BanUserFromCommentResult',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PostBanUserFromCommentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9743,15 +9240,16 @@ class ModerationApi
      * @param  bool|null $is_shadow_ban (optional)
      * @param  string|null $update_id (optional)
      * @param  string|null $ban_reason (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserFromComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBanUserFromCommentAsync($comment_id, $ban_email = null, $ban_email_domain = null, $ban_ip = null, $delete_all_users_comments = null, $banned_until = null, $is_shadow_ban = null, $update_id = null, $ban_reason = null, $sso = null, string $contentType = self::contentTypes['postBanUserFromComment'][0])
+    public function postBanUserFromCommentAsync($comment_id, $ban_email = null, $ban_email_domain = null, $ban_ip = null, $delete_all_users_comments = null, $banned_until = null, $is_shadow_ban = null, $update_id = null, $ban_reason = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postBanUserFromComment'][0])
     {
-        return $this->postBanUserFromCommentAsyncWithHttpInfo($comment_id, $ban_email, $ban_email_domain, $ban_ip, $delete_all_users_comments, $banned_until, $is_shadow_ban, $update_id, $ban_reason, $sso, $contentType)
+        return $this->postBanUserFromCommentAsyncWithHttpInfo($comment_id, $ban_email, $ban_email_domain, $ban_ip, $delete_all_users_comments, $banned_until, $is_shadow_ban, $update_id, $ban_reason, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9773,16 +9271,17 @@ class ModerationApi
      * @param  bool|null $is_shadow_ban (optional)
      * @param  string|null $update_id (optional)
      * @param  string|null $ban_reason (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserFromComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBanUserFromCommentAsyncWithHttpInfo($comment_id, $ban_email = null, $ban_email_domain = null, $ban_ip = null, $delete_all_users_comments = null, $banned_until = null, $is_shadow_ban = null, $update_id = null, $ban_reason = null, $sso = null, string $contentType = self::contentTypes['postBanUserFromComment'][0])
+    public function postBanUserFromCommentAsyncWithHttpInfo($comment_id, $ban_email = null, $ban_email_domain = null, $ban_ip = null, $delete_all_users_comments = null, $banned_until = null, $is_shadow_ban = null, $update_id = null, $ban_reason = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postBanUserFromComment'][0])
     {
-        $returnType = '\FastComments\Client\Model\BanUserFromCommentResult';
-        $request = $this->postBanUserFromCommentRequest($comment_id, $ban_email, $ban_email_domain, $ban_ip, $delete_all_users_comments, $banned_until, $is_shadow_ban, $update_id, $ban_reason, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PostBanUserFromCommentResponse';
+        $request = $this->postBanUserFromCommentRequest($comment_id, $ban_email, $ban_email_domain, $ban_ip, $delete_all_users_comments, $banned_until, $is_shadow_ban, $update_id, $ban_reason, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9832,13 +9331,14 @@ class ModerationApi
      * @param  bool|null $is_shadow_ban (optional)
      * @param  string|null $update_id (optional)
      * @param  string|null $ban_reason (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserFromComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postBanUserFromCommentRequest($comment_id, $ban_email = null, $ban_email_domain = null, $ban_ip = null, $delete_all_users_comments = null, $banned_until = null, $is_shadow_ban = null, $update_id = null, $ban_reason = null, $sso = null, string $contentType = self::contentTypes['postBanUserFromComment'][0])
+    public function postBanUserFromCommentRequest($comment_id, $ban_email = null, $ban_email_domain = null, $ban_ip = null, $delete_all_users_comments = null, $banned_until = null, $is_shadow_ban = null, $update_id = null, $ban_reason = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postBanUserFromComment'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -9847,6 +9347,7 @@ class ModerationApi
                 'Missing the required parameter $comment_id when calling postBanUserFromComment'
             );
         }
+
 
 
 
@@ -9939,6 +9440,15 @@ class ModerationApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
             'sso', // param base name
             'string', // openApiType
@@ -10017,16 +9527,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  \FastComments\Client\Model\BanUserUndoParams $ban_user_undo_params ban_user_undo_params (required)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserUndo'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostBanUserUndoResponse
      */
-    public function postBanUserUndo($ban_user_undo_params, $sso = null, string $contentType = self::contentTypes['postBanUserUndo'][0])
+    public function postBanUserUndo($ban_user_undo_params, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postBanUserUndo'][0])
     {
-        list($response) = $this->postBanUserUndoWithHttpInfo($ban_user_undo_params, $sso, $contentType);
+        list($response) = $this->postBanUserUndoWithHttpInfo($ban_user_undo_params, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -10036,16 +9547,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  \FastComments\Client\Model\BanUserUndoParams $ban_user_undo_params (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserUndo'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostBanUserUndoResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postBanUserUndoWithHttpInfo($ban_user_undo_params, $sso = null, string $contentType = self::contentTypes['postBanUserUndo'][0])
+    public function postBanUserUndoWithHttpInfo($ban_user_undo_params, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postBanUserUndo'][0])
     {
-        $request = $this->postBanUserUndoRequest($ban_user_undo_params, $sso, $contentType);
+        $request = $this->postBanUserUndoRequest($ban_user_undo_params, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10072,11 +9584,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PostBanUserUndoResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PostBanUserUndoResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -10094,34 +9606,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PostBanUserUndoResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -10140,7 +9625,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
+            $returnType = '\FastComments\Client\Model\PostBanUserUndoResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -10173,15 +9658,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIEmptyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PostBanUserUndoResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10197,15 +9674,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  \FastComments\Client\Model\BanUserUndoParams $ban_user_undo_params (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserUndo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBanUserUndoAsync($ban_user_undo_params, $sso = null, string $contentType = self::contentTypes['postBanUserUndo'][0])
+    public function postBanUserUndoAsync($ban_user_undo_params, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postBanUserUndo'][0])
     {
-        return $this->postBanUserUndoAsyncWithHttpInfo($ban_user_undo_params, $sso, $contentType)
+        return $this->postBanUserUndoAsyncWithHttpInfo($ban_user_undo_params, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10219,16 +9697,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  \FastComments\Client\Model\BanUserUndoParams $ban_user_undo_params (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserUndo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBanUserUndoAsyncWithHttpInfo($ban_user_undo_params, $sso = null, string $contentType = self::contentTypes['postBanUserUndo'][0])
+    public function postBanUserUndoAsyncWithHttpInfo($ban_user_undo_params, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postBanUserUndo'][0])
     {
-        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postBanUserUndoRequest($ban_user_undo_params, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PostBanUserUndoResponse';
+        $request = $this->postBanUserUndoRequest($ban_user_undo_params, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10270,13 +9749,14 @@ class ModerationApi
      * Create request for operation 'postBanUserUndo'
      *
      * @param  \FastComments\Client\Model\BanUserUndoParams $ban_user_undo_params (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserUndo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postBanUserUndoRequest($ban_user_undo_params, $sso = null, string $contentType = self::contentTypes['postBanUserUndo'][0])
+    public function postBanUserUndoRequest($ban_user_undo_params, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postBanUserUndo'][0])
     {
 
         // verify the required parameter 'ban_user_undo_params' is set
@@ -10288,6 +9768,7 @@ class ModerationApi
 
 
 
+
         $resourcePath = '/auth/my-account/moderate-comments/ban-user/undo';
         $formParams = [];
         $queryParams = [];
@@ -10295,6 +9776,15 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -10377,16 +9867,17 @@ class ModerationApi
      * @param  bool|null $include_by_user_id_and_email include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip include_by_ip (optional)
      * @param  bool|null $include_by_email_domain include_by_email_domain (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBulkPreBanSummary'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\BulkPreBanSummary|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostBulkPreBanSummaryResponse
      */
-    public function postBulkPreBanSummary($bulk_pre_ban_params, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $sso = null, string $contentType = self::contentTypes['postBulkPreBanSummary'][0])
+    public function postBulkPreBanSummary($bulk_pre_ban_params, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postBulkPreBanSummary'][0])
     {
-        list($response) = $this->postBulkPreBanSummaryWithHttpInfo($bulk_pre_ban_params, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $sso, $contentType);
+        list($response) = $this->postBulkPreBanSummaryWithHttpInfo($bulk_pre_ban_params, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -10399,16 +9890,17 @@ class ModerationApi
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBulkPreBanSummary'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\BulkPreBanSummary|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostBulkPreBanSummaryResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postBulkPreBanSummaryWithHttpInfo($bulk_pre_ban_params, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $sso = null, string $contentType = self::contentTypes['postBulkPreBanSummary'][0])
+    public function postBulkPreBanSummaryWithHttpInfo($bulk_pre_ban_params, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postBulkPreBanSummary'][0])
     {
-        $request = $this->postBulkPreBanSummaryRequest($bulk_pre_ban_params, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $sso, $contentType);
+        $request = $this->postBulkPreBanSummaryRequest($bulk_pre_ban_params, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10435,11 +9927,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\BulkPreBanSummary' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PostBulkPreBanSummaryResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\BulkPreBanSummary' !== 'string') {
+                        if ('\FastComments\Client\Model\PostBulkPreBanSummaryResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -10457,34 +9949,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\BulkPreBanSummary', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PostBulkPreBanSummaryResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -10503,7 +9968,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\BulkPreBanSummary';
+            $returnType = '\FastComments\Client\Model\PostBulkPreBanSummaryResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -10536,15 +10001,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\BulkPreBanSummary',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PostBulkPreBanSummaryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10563,15 +10020,16 @@ class ModerationApi
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBulkPreBanSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBulkPreBanSummaryAsync($bulk_pre_ban_params, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $sso = null, string $contentType = self::contentTypes['postBulkPreBanSummary'][0])
+    public function postBulkPreBanSummaryAsync($bulk_pre_ban_params, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postBulkPreBanSummary'][0])
     {
-        return $this->postBulkPreBanSummaryAsyncWithHttpInfo($bulk_pre_ban_params, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $sso, $contentType)
+        return $this->postBulkPreBanSummaryAsyncWithHttpInfo($bulk_pre_ban_params, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10588,16 +10046,17 @@ class ModerationApi
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBulkPreBanSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBulkPreBanSummaryAsyncWithHttpInfo($bulk_pre_ban_params, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $sso = null, string $contentType = self::contentTypes['postBulkPreBanSummary'][0])
+    public function postBulkPreBanSummaryAsyncWithHttpInfo($bulk_pre_ban_params, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postBulkPreBanSummary'][0])
     {
-        $returnType = '\FastComments\Client\Model\BulkPreBanSummary';
-        $request = $this->postBulkPreBanSummaryRequest($bulk_pre_ban_params, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PostBulkPreBanSummaryResponse';
+        $request = $this->postBulkPreBanSummaryRequest($bulk_pre_ban_params, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10642,13 +10101,14 @@ class ModerationApi
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBulkPreBanSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postBulkPreBanSummaryRequest($bulk_pre_ban_params, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $sso = null, string $contentType = self::contentTypes['postBulkPreBanSummary'][0])
+    public function postBulkPreBanSummaryRequest($bulk_pre_ban_params, $include_by_user_id_and_email = null, $include_by_ip = null, $include_by_email_domain = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postBulkPreBanSummary'][0])
     {
 
         // verify the required parameter 'bulk_pre_ban_params' is set
@@ -10657,6 +10117,7 @@ class ModerationApi
                 'Missing the required parameter $bulk_pre_ban_params when calling postBulkPreBanSummary'
             );
         }
+
 
 
 
@@ -10693,6 +10154,15 @@ class ModerationApi
             $include_by_email_domain,
             'includeByEmailDomain', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -10776,16 +10246,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  \FastComments\Client\Model\CommentsByIdsParams $comments_by_ids_params comments_by_ids_params (required)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postCommentsByIds'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\ModerationAPIChildCommentsResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostCommentsByIdsResponse
      */
-    public function postCommentsByIds($comments_by_ids_params, $sso = null, string $contentType = self::contentTypes['postCommentsByIds'][0])
+    public function postCommentsByIds($comments_by_ids_params, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postCommentsByIds'][0])
     {
-        list($response) = $this->postCommentsByIdsWithHttpInfo($comments_by_ids_params, $sso, $contentType);
+        list($response) = $this->postCommentsByIdsWithHttpInfo($comments_by_ids_params, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -10795,16 +10266,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  \FastComments\Client\Model\CommentsByIdsParams $comments_by_ids_params (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postCommentsByIds'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\ModerationAPIChildCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostCommentsByIdsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postCommentsByIdsWithHttpInfo($comments_by_ids_params, $sso = null, string $contentType = self::contentTypes['postCommentsByIds'][0])
+    public function postCommentsByIdsWithHttpInfo($comments_by_ids_params, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postCommentsByIds'][0])
     {
-        $request = $this->postCommentsByIdsRequest($comments_by_ids_params, $sso, $contentType);
+        $request = $this->postCommentsByIdsRequest($comments_by_ids_params, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10831,11 +10303,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\ModerationAPIChildCommentsResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PostCommentsByIdsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\ModerationAPIChildCommentsResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PostCommentsByIdsResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -10853,34 +10325,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\ModerationAPIChildCommentsResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PostCommentsByIdsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -10899,7 +10344,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\ModerationAPIChildCommentsResponse';
+            $returnType = '\FastComments\Client\Model\PostCommentsByIdsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -10932,15 +10377,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\ModerationAPIChildCommentsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PostCommentsByIdsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10956,15 +10393,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  \FastComments\Client\Model\CommentsByIdsParams $comments_by_ids_params (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postCommentsByIds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCommentsByIdsAsync($comments_by_ids_params, $sso = null, string $contentType = self::contentTypes['postCommentsByIds'][0])
+    public function postCommentsByIdsAsync($comments_by_ids_params, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postCommentsByIds'][0])
     {
-        return $this->postCommentsByIdsAsyncWithHttpInfo($comments_by_ids_params, $sso, $contentType)
+        return $this->postCommentsByIdsAsyncWithHttpInfo($comments_by_ids_params, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10978,16 +10416,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  \FastComments\Client\Model\CommentsByIdsParams $comments_by_ids_params (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postCommentsByIds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCommentsByIdsAsyncWithHttpInfo($comments_by_ids_params, $sso = null, string $contentType = self::contentTypes['postCommentsByIds'][0])
+    public function postCommentsByIdsAsyncWithHttpInfo($comments_by_ids_params, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postCommentsByIds'][0])
     {
-        $returnType = '\FastComments\Client\Model\ModerationAPIChildCommentsResponse';
-        $request = $this->postCommentsByIdsRequest($comments_by_ids_params, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PostCommentsByIdsResponse';
+        $request = $this->postCommentsByIdsRequest($comments_by_ids_params, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11029,13 +10468,14 @@ class ModerationApi
      * Create request for operation 'postCommentsByIds'
      *
      * @param  \FastComments\Client\Model\CommentsByIdsParams $comments_by_ids_params (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postCommentsByIds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postCommentsByIdsRequest($comments_by_ids_params, $sso = null, string $contentType = self::contentTypes['postCommentsByIds'][0])
+    public function postCommentsByIdsRequest($comments_by_ids_params, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postCommentsByIds'][0])
     {
 
         // verify the required parameter 'comments_by_ids_params' is set
@@ -11047,6 +10487,7 @@ class ModerationApi
 
 
 
+
         $resourcePath = '/auth/my-account/moderate-comments/comments-by-ids';
         $formParams = [];
         $queryParams = [];
@@ -11054,6 +10495,15 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -11133,16 +10583,18 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id comment_id (required)
+     * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postFlagComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostFlagCommentResponse
      */
-    public function postFlagComment($comment_id, $sso = null, string $contentType = self::contentTypes['postFlagComment'][0])
+    public function postFlagComment($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postFlagComment'][0])
     {
-        list($response) = $this->postFlagCommentWithHttpInfo($comment_id, $sso, $contentType);
+        list($response) = $this->postFlagCommentWithHttpInfo($comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -11152,16 +10604,18 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postFlagComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostFlagCommentResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postFlagCommentWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['postFlagComment'][0])
+    public function postFlagCommentWithHttpInfo($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postFlagComment'][0])
     {
-        $request = $this->postFlagCommentRequest($comment_id, $sso, $contentType);
+        $request = $this->postFlagCommentRequest($comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11188,11 +10642,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PostFlagCommentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PostFlagCommentResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -11210,34 +10664,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PostFlagCommentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -11256,7 +10683,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
+            $returnType = '\FastComments\Client\Model\PostFlagCommentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -11289,15 +10716,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIEmptyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PostFlagCommentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11313,15 +10732,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postFlagComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postFlagCommentAsync($comment_id, $sso = null, string $contentType = self::contentTypes['postFlagComment'][0])
+    public function postFlagCommentAsync($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postFlagComment'][0])
     {
-        return $this->postFlagCommentAsyncWithHttpInfo($comment_id, $sso, $contentType)
+        return $this->postFlagCommentAsyncWithHttpInfo($comment_id, $broadcast_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11335,16 +10756,18 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postFlagComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postFlagCommentAsyncWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['postFlagComment'][0])
+    public function postFlagCommentAsyncWithHttpInfo($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postFlagComment'][0])
     {
-        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postFlagCommentRequest($comment_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PostFlagCommentResponse';
+        $request = $this->postFlagCommentRequest($comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11386,13 +10809,15 @@ class ModerationApi
      * Create request for operation 'postFlagComment'
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postFlagComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postFlagCommentRequest($comment_id, $sso = null, string $contentType = self::contentTypes['postFlagComment'][0])
+    public function postFlagCommentRequest($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postFlagComment'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -11404,6 +10829,8 @@ class ModerationApi
 
 
 
+
+
         $resourcePath = '/auth/my-account/moderate-comments/flag-comment/{commentId}';
         $formParams = [];
         $queryParams = [];
@@ -11411,6 +10838,24 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $broadcast_id,
+            'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -11491,16 +10936,18 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id comment_id (required)
+     * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRemoveComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\PostRemoveCommentResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostRemoveCommentResponse
      */
-    public function postRemoveComment($comment_id, $sso = null, string $contentType = self::contentTypes['postRemoveComment'][0])
+    public function postRemoveComment($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postRemoveComment'][0])
     {
-        list($response) = $this->postRemoveCommentWithHttpInfo($comment_id, $sso, $contentType);
+        list($response) = $this->postRemoveCommentWithHttpInfo($comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -11510,16 +10957,18 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRemoveComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\PostRemoveCommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostRemoveCommentResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postRemoveCommentWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['postRemoveComment'][0])
+    public function postRemoveCommentWithHttpInfo($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postRemoveComment'][0])
     {
-        $request = $this->postRemoveCommentRequest($comment_id, $sso, $contentType);
+        $request = $this->postRemoveCommentRequest($comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11569,33 +11018,6 @@ class ModerationApi
 
                     return [
                         ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PostRemoveCommentResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -11652,14 +11074,6 @@ class ModerationApi
                     );
                     $e->setResponseObject($data);
                     break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
             }
             throw $e;
         }
@@ -11671,15 +11085,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRemoveComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRemoveCommentAsync($comment_id, $sso = null, string $contentType = self::contentTypes['postRemoveComment'][0])
+    public function postRemoveCommentAsync($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postRemoveComment'][0])
     {
-        return $this->postRemoveCommentAsyncWithHttpInfo($comment_id, $sso, $contentType)
+        return $this->postRemoveCommentAsyncWithHttpInfo($comment_id, $broadcast_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11693,16 +11109,18 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRemoveComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRemoveCommentAsyncWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['postRemoveComment'][0])
+    public function postRemoveCommentAsyncWithHttpInfo($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postRemoveComment'][0])
     {
         $returnType = '\FastComments\Client\Model\PostRemoveCommentResponse';
-        $request = $this->postRemoveCommentRequest($comment_id, $sso, $contentType);
+        $request = $this->postRemoveCommentRequest($comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11744,13 +11162,15 @@ class ModerationApi
      * Create request for operation 'postRemoveComment'
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRemoveComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postRemoveCommentRequest($comment_id, $sso = null, string $contentType = self::contentTypes['postRemoveComment'][0])
+    public function postRemoveCommentRequest($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postRemoveComment'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -11762,6 +11182,8 @@ class ModerationApi
 
 
 
+
+
         $resourcePath = '/auth/my-account/moderate-comments/remove-comment/{commentId}';
         $formParams = [];
         $queryParams = [];
@@ -11769,6 +11191,24 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $broadcast_id,
+            'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -11849,16 +11289,18 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id comment_id (required)
+     * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRestoreDeletedComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostRestoreDeletedCommentResponse
      */
-    public function postRestoreDeletedComment($comment_id, $sso = null, string $contentType = self::contentTypes['postRestoreDeletedComment'][0])
+    public function postRestoreDeletedComment($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postRestoreDeletedComment'][0])
     {
-        list($response) = $this->postRestoreDeletedCommentWithHttpInfo($comment_id, $sso, $contentType);
+        list($response) = $this->postRestoreDeletedCommentWithHttpInfo($comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -11868,16 +11310,18 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRestoreDeletedComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostRestoreDeletedCommentResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postRestoreDeletedCommentWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['postRestoreDeletedComment'][0])
+    public function postRestoreDeletedCommentWithHttpInfo($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postRestoreDeletedComment'][0])
     {
-        $request = $this->postRestoreDeletedCommentRequest($comment_id, $sso, $contentType);
+        $request = $this->postRestoreDeletedCommentRequest($comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11904,11 +11348,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PostRestoreDeletedCommentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PostRestoreDeletedCommentResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -11926,34 +11370,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PostRestoreDeletedCommentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -11972,7 +11389,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
+            $returnType = '\FastComments\Client\Model\PostRestoreDeletedCommentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -12005,15 +11422,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIEmptyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PostRestoreDeletedCommentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -12029,15 +11438,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRestoreDeletedComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRestoreDeletedCommentAsync($comment_id, $sso = null, string $contentType = self::contentTypes['postRestoreDeletedComment'][0])
+    public function postRestoreDeletedCommentAsync($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postRestoreDeletedComment'][0])
     {
-        return $this->postRestoreDeletedCommentAsyncWithHttpInfo($comment_id, $sso, $contentType)
+        return $this->postRestoreDeletedCommentAsyncWithHttpInfo($comment_id, $broadcast_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12051,16 +11462,18 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRestoreDeletedComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRestoreDeletedCommentAsyncWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['postRestoreDeletedComment'][0])
+    public function postRestoreDeletedCommentAsyncWithHttpInfo($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postRestoreDeletedComment'][0])
     {
-        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postRestoreDeletedCommentRequest($comment_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PostRestoreDeletedCommentResponse';
+        $request = $this->postRestoreDeletedCommentRequest($comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12102,13 +11515,15 @@ class ModerationApi
      * Create request for operation 'postRestoreDeletedComment'
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRestoreDeletedComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postRestoreDeletedCommentRequest($comment_id, $sso = null, string $contentType = self::contentTypes['postRestoreDeletedComment'][0])
+    public function postRestoreDeletedCommentRequest($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postRestoreDeletedComment'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -12120,6 +11535,8 @@ class ModerationApi
 
 
 
+
+
         $resourcePath = '/auth/my-account/moderate-comments/restore-deleted-comment/{commentId}';
         $formParams = [];
         $queryParams = [];
@@ -12127,6 +11544,24 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $broadcast_id,
+            'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -12208,16 +11643,18 @@ class ModerationApi
      *
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $approved approved (optional)
+     * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentApprovalStatus'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\SetCommentApprovedResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostSetCommentApprovalStatusResponse
      */
-    public function postSetCommentApprovalStatus($comment_id, $approved = null, $sso = null, string $contentType = self::contentTypes['postSetCommentApprovalStatus'][0])
+    public function postSetCommentApprovalStatus($comment_id, $approved = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentApprovalStatus'][0])
     {
-        list($response) = $this->postSetCommentApprovalStatusWithHttpInfo($comment_id, $approved, $sso, $contentType);
+        list($response) = $this->postSetCommentApprovalStatusWithHttpInfo($comment_id, $approved, $broadcast_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -12228,16 +11665,18 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  bool|null $approved (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentApprovalStatus'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\SetCommentApprovedResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostSetCommentApprovalStatusResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postSetCommentApprovalStatusWithHttpInfo($comment_id, $approved = null, $sso = null, string $contentType = self::contentTypes['postSetCommentApprovalStatus'][0])
+    public function postSetCommentApprovalStatusWithHttpInfo($comment_id, $approved = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentApprovalStatus'][0])
     {
-        $request = $this->postSetCommentApprovalStatusRequest($comment_id, $approved, $sso, $contentType);
+        $request = $this->postSetCommentApprovalStatusRequest($comment_id, $approved, $broadcast_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12264,11 +11703,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\SetCommentApprovedResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PostSetCommentApprovalStatusResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\SetCommentApprovedResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PostSetCommentApprovalStatusResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -12286,34 +11725,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\SetCommentApprovedResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PostSetCommentApprovalStatusResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -12332,7 +11744,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\SetCommentApprovedResponse';
+            $returnType = '\FastComments\Client\Model\PostSetCommentApprovalStatusResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -12365,15 +11777,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\SetCommentApprovedResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PostSetCommentApprovalStatusResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -12390,15 +11794,17 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  bool|null $approved (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentApprovalStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentApprovalStatusAsync($comment_id, $approved = null, $sso = null, string $contentType = self::contentTypes['postSetCommentApprovalStatus'][0])
+    public function postSetCommentApprovalStatusAsync($comment_id, $approved = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentApprovalStatus'][0])
     {
-        return $this->postSetCommentApprovalStatusAsyncWithHttpInfo($comment_id, $approved, $sso, $contentType)
+        return $this->postSetCommentApprovalStatusAsyncWithHttpInfo($comment_id, $approved, $broadcast_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12413,16 +11819,18 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  bool|null $approved (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentApprovalStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentApprovalStatusAsyncWithHttpInfo($comment_id, $approved = null, $sso = null, string $contentType = self::contentTypes['postSetCommentApprovalStatus'][0])
+    public function postSetCommentApprovalStatusAsyncWithHttpInfo($comment_id, $approved = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentApprovalStatus'][0])
     {
-        $returnType = '\FastComments\Client\Model\SetCommentApprovedResponse';
-        $request = $this->postSetCommentApprovalStatusRequest($comment_id, $approved, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PostSetCommentApprovalStatusResponse';
+        $request = $this->postSetCommentApprovalStatusRequest($comment_id, $approved, $broadcast_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12465,13 +11873,15 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  bool|null $approved (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentApprovalStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postSetCommentApprovalStatusRequest($comment_id, $approved = null, $sso = null, string $contentType = self::contentTypes['postSetCommentApprovalStatus'][0])
+    public function postSetCommentApprovalStatusRequest($comment_id, $approved = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentApprovalStatus'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -12480,6 +11890,8 @@ class ModerationApi
                 'Missing the required parameter $comment_id when calling postSetCommentApprovalStatus'
             );
         }
+
+
 
 
 
@@ -12496,6 +11908,24 @@ class ModerationApi
             $approved,
             'approved', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $broadcast_id,
+            'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -12581,16 +12011,18 @@ class ModerationApi
      *
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $reviewed reviewed (optional)
+     * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentReviewStatus'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostSetCommentReviewStatusResponse
      */
-    public function postSetCommentReviewStatus($comment_id, $reviewed = null, $sso = null, string $contentType = self::contentTypes['postSetCommentReviewStatus'][0])
+    public function postSetCommentReviewStatus($comment_id, $reviewed = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentReviewStatus'][0])
     {
-        list($response) = $this->postSetCommentReviewStatusWithHttpInfo($comment_id, $reviewed, $sso, $contentType);
+        list($response) = $this->postSetCommentReviewStatusWithHttpInfo($comment_id, $reviewed, $broadcast_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -12601,16 +12033,18 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  bool|null $reviewed (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentReviewStatus'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostSetCommentReviewStatusResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postSetCommentReviewStatusWithHttpInfo($comment_id, $reviewed = null, $sso = null, string $contentType = self::contentTypes['postSetCommentReviewStatus'][0])
+    public function postSetCommentReviewStatusWithHttpInfo($comment_id, $reviewed = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentReviewStatus'][0])
     {
-        $request = $this->postSetCommentReviewStatusRequest($comment_id, $reviewed, $sso, $contentType);
+        $request = $this->postSetCommentReviewStatusRequest($comment_id, $reviewed, $broadcast_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12637,11 +12071,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PostSetCommentReviewStatusResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PostSetCommentReviewStatusResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -12659,34 +12093,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PostSetCommentReviewStatusResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -12705,7 +12112,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
+            $returnType = '\FastComments\Client\Model\PostSetCommentReviewStatusResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -12738,15 +12145,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIEmptyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PostSetCommentReviewStatusResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -12763,15 +12162,17 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  bool|null $reviewed (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentReviewStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentReviewStatusAsync($comment_id, $reviewed = null, $sso = null, string $contentType = self::contentTypes['postSetCommentReviewStatus'][0])
+    public function postSetCommentReviewStatusAsync($comment_id, $reviewed = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentReviewStatus'][0])
     {
-        return $this->postSetCommentReviewStatusAsyncWithHttpInfo($comment_id, $reviewed, $sso, $contentType)
+        return $this->postSetCommentReviewStatusAsyncWithHttpInfo($comment_id, $reviewed, $broadcast_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12786,16 +12187,18 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  bool|null $reviewed (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentReviewStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentReviewStatusAsyncWithHttpInfo($comment_id, $reviewed = null, $sso = null, string $contentType = self::contentTypes['postSetCommentReviewStatus'][0])
+    public function postSetCommentReviewStatusAsyncWithHttpInfo($comment_id, $reviewed = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentReviewStatus'][0])
     {
-        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postSetCommentReviewStatusRequest($comment_id, $reviewed, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PostSetCommentReviewStatusResponse';
+        $request = $this->postSetCommentReviewStatusRequest($comment_id, $reviewed, $broadcast_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12838,13 +12241,15 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  bool|null $reviewed (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentReviewStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postSetCommentReviewStatusRequest($comment_id, $reviewed = null, $sso = null, string $contentType = self::contentTypes['postSetCommentReviewStatus'][0])
+    public function postSetCommentReviewStatusRequest($comment_id, $reviewed = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentReviewStatus'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -12853,6 +12258,8 @@ class ModerationApi
                 'Missing the required parameter $comment_id when calling postSetCommentReviewStatus'
             );
         }
+
+
 
 
 
@@ -12869,6 +12276,24 @@ class ModerationApi
             $reviewed,
             'reviewed', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $broadcast_id,
+            'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -12955,16 +12380,18 @@ class ModerationApi
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $spam spam (optional)
      * @param  bool|null $perm_not_spam perm_not_spam (optional)
+     * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentSpamStatus'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostSetCommentSpamStatusResponse
      */
-    public function postSetCommentSpamStatus($comment_id, $spam = null, $perm_not_spam = null, $sso = null, string $contentType = self::contentTypes['postSetCommentSpamStatus'][0])
+    public function postSetCommentSpamStatus($comment_id, $spam = null, $perm_not_spam = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentSpamStatus'][0])
     {
-        list($response) = $this->postSetCommentSpamStatusWithHttpInfo($comment_id, $spam, $perm_not_spam, $sso, $contentType);
+        list($response) = $this->postSetCommentSpamStatusWithHttpInfo($comment_id, $spam, $perm_not_spam, $broadcast_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -12976,16 +12403,18 @@ class ModerationApi
      * @param  string $comment_id (required)
      * @param  bool|null $spam (optional)
      * @param  bool|null $perm_not_spam (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentSpamStatus'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostSetCommentSpamStatusResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postSetCommentSpamStatusWithHttpInfo($comment_id, $spam = null, $perm_not_spam = null, $sso = null, string $contentType = self::contentTypes['postSetCommentSpamStatus'][0])
+    public function postSetCommentSpamStatusWithHttpInfo($comment_id, $spam = null, $perm_not_spam = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentSpamStatus'][0])
     {
-        $request = $this->postSetCommentSpamStatusRequest($comment_id, $spam, $perm_not_spam, $sso, $contentType);
+        $request = $this->postSetCommentSpamStatusRequest($comment_id, $spam, $perm_not_spam, $broadcast_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13012,11 +12441,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PostSetCommentSpamStatusResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PostSetCommentSpamStatusResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -13034,34 +12463,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PostSetCommentSpamStatusResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -13080,7 +12482,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
+            $returnType = '\FastComments\Client\Model\PostSetCommentSpamStatusResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -13113,15 +12515,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIEmptyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PostSetCommentSpamStatusResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -13139,15 +12533,17 @@ class ModerationApi
      * @param  string $comment_id (required)
      * @param  bool|null $spam (optional)
      * @param  bool|null $perm_not_spam (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentSpamStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentSpamStatusAsync($comment_id, $spam = null, $perm_not_spam = null, $sso = null, string $contentType = self::contentTypes['postSetCommentSpamStatus'][0])
+    public function postSetCommentSpamStatusAsync($comment_id, $spam = null, $perm_not_spam = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentSpamStatus'][0])
     {
-        return $this->postSetCommentSpamStatusAsyncWithHttpInfo($comment_id, $spam, $perm_not_spam, $sso, $contentType)
+        return $this->postSetCommentSpamStatusAsyncWithHttpInfo($comment_id, $spam, $perm_not_spam, $broadcast_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13163,16 +12559,18 @@ class ModerationApi
      * @param  string $comment_id (required)
      * @param  bool|null $spam (optional)
      * @param  bool|null $perm_not_spam (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentSpamStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentSpamStatusAsyncWithHttpInfo($comment_id, $spam = null, $perm_not_spam = null, $sso = null, string $contentType = self::contentTypes['postSetCommentSpamStatus'][0])
+    public function postSetCommentSpamStatusAsyncWithHttpInfo($comment_id, $spam = null, $perm_not_spam = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentSpamStatus'][0])
     {
-        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postSetCommentSpamStatusRequest($comment_id, $spam, $perm_not_spam, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PostSetCommentSpamStatusResponse';
+        $request = $this->postSetCommentSpamStatusRequest($comment_id, $spam, $perm_not_spam, $broadcast_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13216,13 +12614,15 @@ class ModerationApi
      * @param  string $comment_id (required)
      * @param  bool|null $spam (optional)
      * @param  bool|null $perm_not_spam (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentSpamStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postSetCommentSpamStatusRequest($comment_id, $spam = null, $perm_not_spam = null, $sso = null, string $contentType = self::contentTypes['postSetCommentSpamStatus'][0])
+    public function postSetCommentSpamStatusRequest($comment_id, $spam = null, $perm_not_spam = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentSpamStatus'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -13231,6 +12631,8 @@ class ModerationApi
                 'Missing the required parameter $comment_id when calling postSetCommentSpamStatus'
             );
         }
+
+
 
 
 
@@ -13257,6 +12659,24 @@ class ModerationApi
             $perm_not_spam,
             'permNotSpam', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $broadcast_id,
+            'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -13342,16 +12762,18 @@ class ModerationApi
      *
      * @param  string $comment_id comment_id (required)
      * @param  \FastComments\Client\Model\SetCommentTextParams $set_comment_text_params set_comment_text_params (required)
+     * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentText'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\SetCommentTextResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostSetCommentTextResponse
      */
-    public function postSetCommentText($comment_id, $set_comment_text_params, $sso = null, string $contentType = self::contentTypes['postSetCommentText'][0])
+    public function postSetCommentText($comment_id, $set_comment_text_params, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentText'][0])
     {
-        list($response) = $this->postSetCommentTextWithHttpInfo($comment_id, $set_comment_text_params, $sso, $contentType);
+        list($response) = $this->postSetCommentTextWithHttpInfo($comment_id, $set_comment_text_params, $broadcast_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -13362,16 +12784,18 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\SetCommentTextParams $set_comment_text_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentText'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\SetCommentTextResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostSetCommentTextResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postSetCommentTextWithHttpInfo($comment_id, $set_comment_text_params, $sso = null, string $contentType = self::contentTypes['postSetCommentText'][0])
+    public function postSetCommentTextWithHttpInfo($comment_id, $set_comment_text_params, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentText'][0])
     {
-        $request = $this->postSetCommentTextRequest($comment_id, $set_comment_text_params, $sso, $contentType);
+        $request = $this->postSetCommentTextRequest($comment_id, $set_comment_text_params, $broadcast_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13398,11 +12822,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\SetCommentTextResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PostSetCommentTextResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\SetCommentTextResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PostSetCommentTextResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -13420,34 +12844,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\SetCommentTextResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PostSetCommentTextResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -13466,7 +12863,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\SetCommentTextResponse';
+            $returnType = '\FastComments\Client\Model\PostSetCommentTextResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -13499,15 +12896,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\SetCommentTextResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PostSetCommentTextResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -13524,15 +12913,17 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\SetCommentTextParams $set_comment_text_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentTextAsync($comment_id, $set_comment_text_params, $sso = null, string $contentType = self::contentTypes['postSetCommentText'][0])
+    public function postSetCommentTextAsync($comment_id, $set_comment_text_params, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentText'][0])
     {
-        return $this->postSetCommentTextAsyncWithHttpInfo($comment_id, $set_comment_text_params, $sso, $contentType)
+        return $this->postSetCommentTextAsyncWithHttpInfo($comment_id, $set_comment_text_params, $broadcast_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13547,16 +12938,18 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\SetCommentTextParams $set_comment_text_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentTextAsyncWithHttpInfo($comment_id, $set_comment_text_params, $sso = null, string $contentType = self::contentTypes['postSetCommentText'][0])
+    public function postSetCommentTextAsyncWithHttpInfo($comment_id, $set_comment_text_params, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentText'][0])
     {
-        $returnType = '\FastComments\Client\Model\SetCommentTextResponse';
-        $request = $this->postSetCommentTextRequest($comment_id, $set_comment_text_params, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PostSetCommentTextResponse';
+        $request = $this->postSetCommentTextRequest($comment_id, $set_comment_text_params, $broadcast_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13599,13 +12992,15 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\SetCommentTextParams $set_comment_text_params (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postSetCommentTextRequest($comment_id, $set_comment_text_params, $sso = null, string $contentType = self::contentTypes['postSetCommentText'][0])
+    public function postSetCommentTextRequest($comment_id, $set_comment_text_params, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postSetCommentText'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -13624,6 +13019,8 @@ class ModerationApi
 
 
 
+
+
         $resourcePath = '/auth/my-account/moderate-comments/set-comment-text/{commentId}';
         $formParams = [];
         $queryParams = [];
@@ -13631,6 +13028,24 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $broadcast_id,
+            'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -13718,16 +13133,18 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id comment_id (required)
+     * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postUnFlagComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostUnFlagCommentResponse
      */
-    public function postUnFlagComment($comment_id, $sso = null, string $contentType = self::contentTypes['postUnFlagComment'][0])
+    public function postUnFlagComment($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postUnFlagComment'][0])
     {
-        list($response) = $this->postUnFlagCommentWithHttpInfo($comment_id, $sso, $contentType);
+        list($response) = $this->postUnFlagCommentWithHttpInfo($comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -13737,16 +13154,18 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postUnFlagComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostUnFlagCommentResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postUnFlagCommentWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['postUnFlagComment'][0])
+    public function postUnFlagCommentWithHttpInfo($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postUnFlagComment'][0])
     {
-        $request = $this->postUnFlagCommentRequest($comment_id, $sso, $contentType);
+        $request = $this->postUnFlagCommentRequest($comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13773,11 +13192,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PostUnFlagCommentResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PostUnFlagCommentResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -13795,34 +13214,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PostUnFlagCommentResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -13841,7 +13233,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
+            $returnType = '\FastComments\Client\Model\PostUnFlagCommentResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -13874,15 +13266,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIEmptyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PostUnFlagCommentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -13898,15 +13282,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postUnFlagComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postUnFlagCommentAsync($comment_id, $sso = null, string $contentType = self::contentTypes['postUnFlagComment'][0])
+    public function postUnFlagCommentAsync($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postUnFlagComment'][0])
     {
-        return $this->postUnFlagCommentAsyncWithHttpInfo($comment_id, $sso, $contentType)
+        return $this->postUnFlagCommentAsyncWithHttpInfo($comment_id, $broadcast_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13920,16 +13306,18 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postUnFlagComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postUnFlagCommentAsyncWithHttpInfo($comment_id, $sso = null, string $contentType = self::contentTypes['postUnFlagComment'][0])
+    public function postUnFlagCommentAsyncWithHttpInfo($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postUnFlagComment'][0])
     {
-        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postUnFlagCommentRequest($comment_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PostUnFlagCommentResponse';
+        $request = $this->postUnFlagCommentRequest($comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13971,13 +13359,15 @@ class ModerationApi
      * Create request for operation 'postUnFlagComment'
      *
      * @param  string $comment_id (required)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postUnFlagComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postUnFlagCommentRequest($comment_id, $sso = null, string $contentType = self::contentTypes['postUnFlagComment'][0])
+    public function postUnFlagCommentRequest($comment_id, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postUnFlagComment'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -13989,6 +13379,8 @@ class ModerationApi
 
 
 
+
+
         $resourcePath = '/auth/my-account/moderate-comments/un-flag-comment/{commentId}';
         $formParams = [];
         $queryParams = [];
@@ -13996,6 +13388,24 @@ class ModerationApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $broadcast_id,
+            'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sso,
@@ -14077,16 +13487,18 @@ class ModerationApi
      *
      * @param  string $comment_id comment_id (required)
      * @param  string|null $direction direction (optional)
+     * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postVote'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\VoteResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostVoteResponse
      */
-    public function postVote($comment_id, $direction = null, $sso = null, string $contentType = self::contentTypes['postVote'][0])
+    public function postVote($comment_id, $direction = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postVote'][0])
     {
-        list($response) = $this->postVoteWithHttpInfo($comment_id, $direction, $sso, $contentType);
+        list($response) = $this->postVoteWithHttpInfo($comment_id, $direction, $broadcast_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -14097,16 +13509,18 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  string|null $direction (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postVote'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\VoteResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostVoteResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postVoteWithHttpInfo($comment_id, $direction = null, $sso = null, string $contentType = self::contentTypes['postVote'][0])
+    public function postVoteWithHttpInfo($comment_id, $direction = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postVote'][0])
     {
-        $request = $this->postVoteRequest($comment_id, $direction, $sso, $contentType);
+        $request = $this->postVoteRequest($comment_id, $direction, $broadcast_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14133,11 +13547,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\VoteResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PostVoteResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\VoteResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PostVoteResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -14155,34 +13569,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\VoteResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PostVoteResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -14201,7 +13588,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\VoteResponse';
+            $returnType = '\FastComments\Client\Model\PostVoteResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -14234,15 +13621,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\VoteResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PostVoteResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -14259,15 +13638,17 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  string|null $direction (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postVote'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postVoteAsync($comment_id, $direction = null, $sso = null, string $contentType = self::contentTypes['postVote'][0])
+    public function postVoteAsync($comment_id, $direction = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postVote'][0])
     {
-        return $this->postVoteAsyncWithHttpInfo($comment_id, $direction, $sso, $contentType)
+        return $this->postVoteAsyncWithHttpInfo($comment_id, $direction, $broadcast_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -14282,16 +13663,18 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  string|null $direction (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postVote'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postVoteAsyncWithHttpInfo($comment_id, $direction = null, $sso = null, string $contentType = self::contentTypes['postVote'][0])
+    public function postVoteAsyncWithHttpInfo($comment_id, $direction = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postVote'][0])
     {
-        $returnType = '\FastComments\Client\Model\VoteResponse';
-        $request = $this->postVoteRequest($comment_id, $direction, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PostVoteResponse';
+        $request = $this->postVoteRequest($comment_id, $direction, $broadcast_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14334,13 +13717,15 @@ class ModerationApi
      *
      * @param  string $comment_id (required)
      * @param  string|null $direction (optional)
+     * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postVote'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postVoteRequest($comment_id, $direction = null, $sso = null, string $contentType = self::contentTypes['postVote'][0])
+    public function postVoteRequest($comment_id, $direction = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['postVote'][0])
     {
 
         // verify the required parameter 'comment_id' is set
@@ -14349,6 +13734,8 @@ class ModerationApi
                 'Missing the required parameter $comment_id when calling postVote'
             );
         }
+
+
 
 
 
@@ -14364,6 +13751,24 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $direction,
             'direction', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $broadcast_id,
+            'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -14452,16 +13857,17 @@ class ModerationApi
      * @param  string|null $user_id user_id (optional)
      * @param  string|null $comment_id comment_id (optional)
      * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAwardBadge'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\AwardUserBadgeResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PutAwardBadgeResponse
      */
-    public function putAwardBadge($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['putAwardBadge'][0])
+    public function putAwardBadge($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putAwardBadge'][0])
     {
-        list($response) = $this->putAwardBadgeWithHttpInfo($badge_id, $user_id, $comment_id, $broadcast_id, $sso, $contentType);
+        list($response) = $this->putAwardBadgeWithHttpInfo($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -14474,16 +13880,17 @@ class ModerationApi
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
      * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAwardBadge'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\AwardUserBadgeResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PutAwardBadgeResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putAwardBadgeWithHttpInfo($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['putAwardBadge'][0])
+    public function putAwardBadgeWithHttpInfo($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putAwardBadge'][0])
     {
-        $request = $this->putAwardBadgeRequest($badge_id, $user_id, $comment_id, $broadcast_id, $sso, $contentType);
+        $request = $this->putAwardBadgeRequest($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14510,11 +13917,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\AwardUserBadgeResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PutAwardBadgeResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\AwardUserBadgeResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PutAwardBadgeResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -14532,34 +13939,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\AwardUserBadgeResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PutAwardBadgeResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -14578,7 +13958,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\AwardUserBadgeResponse';
+            $returnType = '\FastComments\Client\Model\PutAwardBadgeResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -14611,15 +13991,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\AwardUserBadgeResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PutAwardBadgeResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -14638,15 +14010,16 @@ class ModerationApi
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
      * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAwardBadge'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAwardBadgeAsync($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['putAwardBadge'][0])
+    public function putAwardBadgeAsync($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putAwardBadge'][0])
     {
-        return $this->putAwardBadgeAsyncWithHttpInfo($badge_id, $user_id, $comment_id, $broadcast_id, $sso, $contentType)
+        return $this->putAwardBadgeAsyncWithHttpInfo($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -14663,16 +14036,17 @@ class ModerationApi
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
      * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAwardBadge'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAwardBadgeAsyncWithHttpInfo($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['putAwardBadge'][0])
+    public function putAwardBadgeAsyncWithHttpInfo($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putAwardBadge'][0])
     {
-        $returnType = '\FastComments\Client\Model\AwardUserBadgeResponse';
-        $request = $this->putAwardBadgeRequest($badge_id, $user_id, $comment_id, $broadcast_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PutAwardBadgeResponse';
+        $request = $this->putAwardBadgeRequest($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14717,13 +14091,14 @@ class ModerationApi
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
      * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAwardBadge'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putAwardBadgeRequest($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['putAwardBadge'][0])
+    public function putAwardBadgeRequest($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putAwardBadge'][0])
     {
 
         // verify the required parameter 'badge_id' is set
@@ -14732,6 +14107,7 @@ class ModerationApi
                 'Missing the required parameter $badge_id when calling putAwardBadge'
             );
         }
+
 
 
 
@@ -14776,6 +14152,15 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $broadcast_id,
             'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -14853,16 +14238,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $url_id url_id (required)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCloseThread'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PutCloseThreadResponse
      */
-    public function putCloseThread($url_id, $sso = null, string $contentType = self::contentTypes['putCloseThread'][0])
+    public function putCloseThread($url_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putCloseThread'][0])
     {
-        list($response) = $this->putCloseThreadWithHttpInfo($url_id, $sso, $contentType);
+        list($response) = $this->putCloseThreadWithHttpInfo($url_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -14872,16 +14258,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $url_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCloseThread'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PutCloseThreadResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putCloseThreadWithHttpInfo($url_id, $sso = null, string $contentType = self::contentTypes['putCloseThread'][0])
+    public function putCloseThreadWithHttpInfo($url_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putCloseThread'][0])
     {
-        $request = $this->putCloseThreadRequest($url_id, $sso, $contentType);
+        $request = $this->putCloseThreadRequest($url_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14908,11 +14295,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PutCloseThreadResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PutCloseThreadResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -14930,34 +14317,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PutCloseThreadResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -14976,7 +14336,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
+            $returnType = '\FastComments\Client\Model\PutCloseThreadResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -15009,15 +14369,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIEmptyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PutCloseThreadResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -15033,15 +14385,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $url_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCloseThread'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putCloseThreadAsync($url_id, $sso = null, string $contentType = self::contentTypes['putCloseThread'][0])
+    public function putCloseThreadAsync($url_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putCloseThread'][0])
     {
-        return $this->putCloseThreadAsyncWithHttpInfo($url_id, $sso, $contentType)
+        return $this->putCloseThreadAsyncWithHttpInfo($url_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -15055,16 +14408,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $url_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCloseThread'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putCloseThreadAsyncWithHttpInfo($url_id, $sso = null, string $contentType = self::contentTypes['putCloseThread'][0])
+    public function putCloseThreadAsyncWithHttpInfo($url_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putCloseThread'][0])
     {
-        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->putCloseThreadRequest($url_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PutCloseThreadResponse';
+        $request = $this->putCloseThreadRequest($url_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -15106,13 +14460,14 @@ class ModerationApi
      * Create request for operation 'putCloseThread'
      *
      * @param  string $url_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCloseThread'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putCloseThreadRequest($url_id, $sso = null, string $contentType = self::contentTypes['putCloseThread'][0])
+    public function putCloseThreadRequest($url_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putCloseThread'][0])
     {
 
         // verify the required parameter 'url_id' is set
@@ -15121,6 +14476,7 @@ class ModerationApi
                 'Missing the required parameter $url_id when calling putCloseThread'
             );
         }
+
 
 
 
@@ -15139,6 +14495,15 @@ class ModerationApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -15215,16 +14580,17 @@ class ModerationApi
      * @param  string|null $user_id user_id (optional)
      * @param  string|null $comment_id comment_id (optional)
      * @param  string|null $broadcast_id broadcast_id (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRemoveBadge'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\RemoveUserBadgeResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PutRemoveBadgeResponse
      */
-    public function putRemoveBadge($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['putRemoveBadge'][0])
+    public function putRemoveBadge($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putRemoveBadge'][0])
     {
-        list($response) = $this->putRemoveBadgeWithHttpInfo($badge_id, $user_id, $comment_id, $broadcast_id, $sso, $contentType);
+        list($response) = $this->putRemoveBadgeWithHttpInfo($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -15237,16 +14603,17 @@ class ModerationApi
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
      * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRemoveBadge'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\RemoveUserBadgeResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PutRemoveBadgeResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putRemoveBadgeWithHttpInfo($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['putRemoveBadge'][0])
+    public function putRemoveBadgeWithHttpInfo($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putRemoveBadge'][0])
     {
-        $request = $this->putRemoveBadgeRequest($badge_id, $user_id, $comment_id, $broadcast_id, $sso, $contentType);
+        $request = $this->putRemoveBadgeRequest($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -15273,11 +14640,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\RemoveUserBadgeResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PutRemoveBadgeResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\RemoveUserBadgeResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PutRemoveBadgeResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -15295,34 +14662,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\RemoveUserBadgeResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PutRemoveBadgeResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -15341,7 +14681,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\RemoveUserBadgeResponse';
+            $returnType = '\FastComments\Client\Model\PutRemoveBadgeResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -15374,15 +14714,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\RemoveUserBadgeResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PutRemoveBadgeResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -15401,15 +14733,16 @@ class ModerationApi
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
      * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRemoveBadge'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putRemoveBadgeAsync($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['putRemoveBadge'][0])
+    public function putRemoveBadgeAsync($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putRemoveBadge'][0])
     {
-        return $this->putRemoveBadgeAsyncWithHttpInfo($badge_id, $user_id, $comment_id, $broadcast_id, $sso, $contentType)
+        return $this->putRemoveBadgeAsyncWithHttpInfo($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -15426,16 +14759,17 @@ class ModerationApi
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
      * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRemoveBadge'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putRemoveBadgeAsyncWithHttpInfo($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['putRemoveBadge'][0])
+    public function putRemoveBadgeAsyncWithHttpInfo($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putRemoveBadge'][0])
     {
-        $returnType = '\FastComments\Client\Model\RemoveUserBadgeResponse';
-        $request = $this->putRemoveBadgeRequest($badge_id, $user_id, $comment_id, $broadcast_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PutRemoveBadgeResponse';
+        $request = $this->putRemoveBadgeRequest($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -15480,13 +14814,14 @@ class ModerationApi
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
      * @param  string|null $broadcast_id (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRemoveBadge'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putRemoveBadgeRequest($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $sso = null, string $contentType = self::contentTypes['putRemoveBadge'][0])
+    public function putRemoveBadgeRequest($badge_id, $user_id = null, $comment_id = null, $broadcast_id = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putRemoveBadge'][0])
     {
 
         // verify the required parameter 'badge_id' is set
@@ -15495,6 +14830,7 @@ class ModerationApi
                 'Missing the required parameter $badge_id when calling putRemoveBadge'
             );
         }
+
 
 
 
@@ -15539,6 +14875,15 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $broadcast_id,
             'broadcastId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -15616,16 +14961,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $url_id url_id (required)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putReopenThread'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PutReopenThreadResponse
      */
-    public function putReopenThread($url_id, $sso = null, string $contentType = self::contentTypes['putReopenThread'][0])
+    public function putReopenThread($url_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putReopenThread'][0])
     {
-        list($response) = $this->putReopenThreadWithHttpInfo($url_id, $sso, $contentType);
+        list($response) = $this->putReopenThreadWithHttpInfo($url_id, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -15635,16 +14981,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $url_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putReopenThread'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PutReopenThreadResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putReopenThreadWithHttpInfo($url_id, $sso = null, string $contentType = self::contentTypes['putReopenThread'][0])
+    public function putReopenThreadWithHttpInfo($url_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putReopenThread'][0])
     {
-        $request = $this->putReopenThreadRequest($url_id, $sso, $contentType);
+        $request = $this->putReopenThreadRequest($url_id, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -15671,11 +15018,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\APIEmptyResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\PutReopenThreadResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIEmptyResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\PutReopenThreadResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -15693,34 +15040,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIEmptyResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\PutReopenThreadResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -15739,7 +15059,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\APIEmptyResponse';
+            $returnType = '\FastComments\Client\Model\PutReopenThreadResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -15772,15 +15092,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIEmptyResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\PutReopenThreadResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -15796,15 +15108,16 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $url_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putReopenThread'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putReopenThreadAsync($url_id, $sso = null, string $contentType = self::contentTypes['putReopenThread'][0])
+    public function putReopenThreadAsync($url_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putReopenThread'][0])
     {
-        return $this->putReopenThreadAsyncWithHttpInfo($url_id, $sso, $contentType)
+        return $this->putReopenThreadAsyncWithHttpInfo($url_id, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -15818,16 +15131,17 @@ class ModerationApi
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
      * @param  string $url_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putReopenThread'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putReopenThreadAsyncWithHttpInfo($url_id, $sso = null, string $contentType = self::contentTypes['putReopenThread'][0])
+    public function putReopenThreadAsyncWithHttpInfo($url_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putReopenThread'][0])
     {
-        $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->putReopenThreadRequest($url_id, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\PutReopenThreadResponse';
+        $request = $this->putReopenThreadRequest($url_id, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -15869,13 +15183,14 @@ class ModerationApi
      * Create request for operation 'putReopenThread'
      *
      * @param  string $url_id (required)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putReopenThread'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putReopenThreadRequest($url_id, $sso = null, string $contentType = self::contentTypes['putReopenThread'][0])
+    public function putReopenThreadRequest($url_id, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['putReopenThread'][0])
     {
 
         // verify the required parameter 'url_id' is set
@@ -15884,6 +15199,7 @@ class ModerationApi
                 'Missing the required parameter $url_id when calling putReopenThread'
             );
         }
+
 
 
 
@@ -15902,6 +15218,15 @@ class ModerationApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -15976,16 +15301,17 @@ class ModerationApi
      *
      * @param  string|null $user_id user_id (optional)
      * @param  string|null $trust_factor trust_factor (optional)
+     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTrustFactor'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\SetUserTrustFactorResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\SetTrustFactorResponse
      */
-    public function setTrustFactor($user_id = null, $trust_factor = null, $sso = null, string $contentType = self::contentTypes['setTrustFactor'][0])
+    public function setTrustFactor($user_id = null, $trust_factor = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['setTrustFactor'][0])
     {
-        list($response) = $this->setTrustFactorWithHttpInfo($user_id, $trust_factor, $sso, $contentType);
+        list($response) = $this->setTrustFactorWithHttpInfo($user_id, $trust_factor, $tenant_id, $sso, $contentType);
         return $response;
     }
 
@@ -15996,16 +15322,17 @@ class ModerationApi
      *
      * @param  string|null $user_id (optional)
      * @param  string|null $trust_factor (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTrustFactor'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\SetUserTrustFactorResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\SetTrustFactorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setTrustFactorWithHttpInfo($user_id = null, $trust_factor = null, $sso = null, string $contentType = self::contentTypes['setTrustFactor'][0])
+    public function setTrustFactorWithHttpInfo($user_id = null, $trust_factor = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['setTrustFactor'][0])
     {
-        $request = $this->setTrustFactorRequest($user_id, $trust_factor, $sso, $contentType);
+        $request = $this->setTrustFactorRequest($user_id, $trust_factor, $tenant_id, $sso, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -16032,11 +15359,11 @@ class ModerationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\FastComments\Client\Model\SetUserTrustFactorResponse' === '\SplFileObject') {
+                    if ('\FastComments\Client\Model\SetTrustFactorResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\SetUserTrustFactorResponse' !== 'string') {
+                        if ('\FastComments\Client\Model\SetTrustFactorResponse' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -16054,34 +15381,7 @@ class ModerationApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\SetUserTrustFactorResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                default:
-                    if ('\FastComments\Client\Model\APIError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\FastComments\Client\Model\APIError' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\APIError', []),
+                        ObjectSerializer::deserialize($content, '\FastComments\Client\Model\SetTrustFactorResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -16100,7 +15400,7 @@ class ModerationApi
                 );
             }
 
-            $returnType = '\FastComments\Client\Model\SetUserTrustFactorResponse';
+            $returnType = '\FastComments\Client\Model\SetTrustFactorResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -16133,15 +15433,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\SetUserTrustFactorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\FastComments\Client\Model\APIError',
+                        '\FastComments\Client\Model\SetTrustFactorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -16158,15 +15450,16 @@ class ModerationApi
      *
      * @param  string|null $user_id (optional)
      * @param  string|null $trust_factor (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTrustFactor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTrustFactorAsync($user_id = null, $trust_factor = null, $sso = null, string $contentType = self::contentTypes['setTrustFactor'][0])
+    public function setTrustFactorAsync($user_id = null, $trust_factor = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['setTrustFactor'][0])
     {
-        return $this->setTrustFactorAsyncWithHttpInfo($user_id, $trust_factor, $sso, $contentType)
+        return $this->setTrustFactorAsyncWithHttpInfo($user_id, $trust_factor, $tenant_id, $sso, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -16181,16 +15474,17 @@ class ModerationApi
      *
      * @param  string|null $user_id (optional)
      * @param  string|null $trust_factor (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTrustFactor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTrustFactorAsyncWithHttpInfo($user_id = null, $trust_factor = null, $sso = null, string $contentType = self::contentTypes['setTrustFactor'][0])
+    public function setTrustFactorAsyncWithHttpInfo($user_id = null, $trust_factor = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['setTrustFactor'][0])
     {
-        $returnType = '\FastComments\Client\Model\SetUserTrustFactorResponse';
-        $request = $this->setTrustFactorRequest($user_id, $trust_factor, $sso, $contentType);
+        $returnType = '\FastComments\Client\Model\SetTrustFactorResponse';
+        $request = $this->setTrustFactorRequest($user_id, $trust_factor, $tenant_id, $sso, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -16233,14 +15527,16 @@ class ModerationApi
      *
      * @param  string|null $user_id (optional)
      * @param  string|null $trust_factor (optional)
+     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTrustFactor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setTrustFactorRequest($user_id = null, $trust_factor = null, $sso = null, string $contentType = self::contentTypes['setTrustFactor'][0])
+    public function setTrustFactorRequest($user_id = null, $trust_factor = null, $tenant_id = null, $sso = null, string $contentType = self::contentTypes['setTrustFactor'][0])
     {
+
 
 
 
@@ -16266,6 +15562,15 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $trust_factor,
             'trustFactor', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

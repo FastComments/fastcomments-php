@@ -63,7 +63,7 @@ All URIs are relative to https://fastcomments.com, except if the operation defin
 ## `blockFromCommentPublic()`
 
 ```php
-blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \FastComments\Client\Model\BlockSuccess
+blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \FastComments\Client\Model\BlockFromCommentPublicResponse
 ```
 
 
@@ -105,7 +105,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\BlockSuccess**](../Model/BlockSuccess.md)
+[**\FastComments\Client\Model\BlockFromCommentPublicResponse**](../Model/BlockFromCommentPublicResponse.md)
 
 ### Authorization
 
@@ -123,7 +123,7 @@ No authorization required
 ## `checkedCommentsForBlocked()`
 
 ```php
-checkedCommentsForBlocked($tenant_id, $comment_ids, $sso): \FastComments\Client\Model\CheckBlockedCommentsResponse
+checkedCommentsForBlocked($tenant_id, $comment_ids, $sso): \FastComments\Client\Model\CheckedCommentsForBlockedResponse
 ```
 
 
@@ -163,7 +163,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CheckBlockedCommentsResponse**](../Model/CheckBlockedCommentsResponse.md)
+[**\FastComments\Client\Model\CheckedCommentsForBlockedResponse**](../Model/CheckedCommentsForBlockedResponse.md)
 
 ### Authorization
 
@@ -181,7 +181,7 @@ No authorization required
 ## `createCommentPublic()`
 
 ```php
-createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $session_id, $sso): \FastComments\Client\Model\SaveCommentsResponseWithPresence
+createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $session_id, $sso): \FastComments\Client\Model\CreateCommentPublicResponse
 ```
 
 
@@ -227,7 +227,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\SaveCommentsResponseWithPresence**](../Model/SaveCommentsResponseWithPresence.md)
+[**\FastComments\Client\Model\CreateCommentPublicResponse**](../Model/CreateCommentPublicResponse.md)
 
 ### Authorization
 
@@ -245,7 +245,7 @@ No authorization required
 ## `createFeedPostPublic()`
 
 ```php
-createFeedPostPublic($tenant_id, $create_feed_post_params, $broadcast_id, $sso): \FastComments\Client\Model\CreateFeedPostResponse
+createFeedPostPublic($tenant_id, $create_feed_post_params, $broadcast_id, $sso): \FastComments\Client\Model\CreateFeedPostPublicResponse
 ```
 
 
@@ -287,7 +287,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateFeedPostResponse**](../Model/CreateFeedPostResponse.md)
+[**\FastComments\Client\Model\CreateFeedPostPublicResponse**](../Model/CreateFeedPostPublicResponse.md)
 
 ### Authorization
 
@@ -305,7 +305,7 @@ No authorization required
 ## `createV1PageReact()`
 
 ```php
-createV1PageReact($tenant_id, $url_id, $title): \FastComments\Client\Model\CreateV1PageReact
+createV1PageReact($tenant_id, $url_id, $title): \FastComments\Client\Model\CreateV1PageReactResponse
 ```
 
 
@@ -345,7 +345,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateV1PageReact**](../Model/CreateV1PageReact.md)
+[**\FastComments\Client\Model\CreateV1PageReactResponse**](../Model/CreateV1PageReactResponse.md)
 
 ### Authorization
 
@@ -363,7 +363,7 @@ No authorization required
 ## `createV2PageReact()`
 
 ```php
-createV2PageReact($tenant_id, $url_id, $id, $title): \FastComments\Client\Model\CreateV1PageReact
+createV2PageReact($tenant_id, $url_id, $id, $title): \FastComments\Client\Model\CreateV2PageReactResponse
 ```
 
 
@@ -405,7 +405,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateV1PageReact**](../Model/CreateV1PageReact.md)
+[**\FastComments\Client\Model\CreateV2PageReactResponse**](../Model/CreateV2PageReactResponse.md)
 
 ### Authorization
 
@@ -423,7 +423,7 @@ No authorization required
 ## `deleteCommentPublic()`
 
 ```php
-deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $edit_key, $sso): \FastComments\Client\Model\PublicAPIDeleteCommentResponse
+deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $edit_key, $sso): \FastComments\Client\Model\DeleteCommentPublicResponse
 ```
 
 
@@ -467,7 +467,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PublicAPIDeleteCommentResponse**](../Model/PublicAPIDeleteCommentResponse.md)
+[**\FastComments\Client\Model\DeleteCommentPublicResponse**](../Model/DeleteCommentPublicResponse.md)
 
 ### Authorization
 
@@ -485,7 +485,7 @@ No authorization required
 ## `deleteCommentVote()`
 
 ```php
-deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $edit_key, $sso): \FastComments\Client\Model\VoteDeleteResponse
+deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $edit_key, $sso): \FastComments\Client\Model\DeleteCommentVoteResponse
 ```
 
 
@@ -533,7 +533,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\VoteDeleteResponse**](../Model/VoteDeleteResponse.md)
+[**\FastComments\Client\Model\DeleteCommentVoteResponse**](../Model/DeleteCommentVoteResponse.md)
 
 ### Authorization
 
@@ -611,7 +611,7 @@ No authorization required
 ## `deleteV1PageReact()`
 
 ```php
-deleteV1PageReact($tenant_id, $url_id): \FastComments\Client\Model\CreateV1PageReact
+deleteV1PageReact($tenant_id, $url_id): \FastComments\Client\Model\DeleteV1PageReactResponse
 ```
 
 
@@ -649,7 +649,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateV1PageReact**](../Model/CreateV1PageReact.md)
+[**\FastComments\Client\Model\DeleteV1PageReactResponse**](../Model/DeleteV1PageReactResponse.md)
 
 ### Authorization
 
@@ -667,7 +667,7 @@ No authorization required
 ## `deleteV2PageReact()`
 
 ```php
-deleteV2PageReact($tenant_id, $url_id, $id): \FastComments\Client\Model\CreateV1PageReact
+deleteV2PageReact($tenant_id, $url_id, $id): \FastComments\Client\Model\DeleteV2PageReactResponse
 ```
 
 
@@ -707,7 +707,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateV1PageReact**](../Model/CreateV1PageReact.md)
+[**\FastComments\Client\Model\DeleteV2PageReactResponse**](../Model/DeleteV2PageReactResponse.md)
 
 ### Authorization
 
@@ -725,7 +725,7 @@ No authorization required
 ## `flagCommentPublic()`
 
 ```php
-flagCommentPublic($tenant_id, $comment_id, $is_flagged, $sso): \FastComments\Client\Model\APIEmptyResponse
+flagCommentPublic($tenant_id, $comment_id, $is_flagged, $sso): \FastComments\Client\Model\FlagCommentPublicResponse
 ```
 
 
@@ -767,7 +767,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\FlagCommentPublicResponse**](../Model/FlagCommentPublicResponse.md)
 
 ### Authorization
 
@@ -785,7 +785,7 @@ No authorization required
 ## `getCommentText()`
 
 ```php
-getCommentText($tenant_id, $comment_id, $edit_key, $sso): \FastComments\Client\Model\PublicAPIGetCommentTextResponse
+getCommentText($tenant_id, $comment_id, $edit_key, $sso): \FastComments\Client\Model\GetCommentTextResponse1
 ```
 
 
@@ -827,7 +827,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PublicAPIGetCommentTextResponse**](../Model/PublicAPIGetCommentTextResponse.md)
+[**\FastComments\Client\Model\GetCommentTextResponse1**](../Model/GetCommentTextResponse1.md)
 
 ### Authorization
 
@@ -845,7 +845,7 @@ No authorization required
 ## `getCommentVoteUserNames()`
 
 ```php
-getCommentVoteUserNames($tenant_id, $comment_id, $dir, $sso): \FastComments\Client\Model\GetCommentVoteUserNamesSuccessResponse
+getCommentVoteUserNames($tenant_id, $comment_id, $dir, $sso): \FastComments\Client\Model\GetCommentVoteUserNamesResponse
 ```
 
 
@@ -887,7 +887,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetCommentVoteUserNamesSuccessResponse**](../Model/GetCommentVoteUserNamesSuccessResponse.md)
+[**\FastComments\Client\Model\GetCommentVoteUserNamesResponse**](../Model/GetCommentVoteUserNamesResponse.md)
 
 ### Authorization
 
@@ -905,7 +905,7 @@ No authorization required
 ## `getCommentsForUser()`
 
 ```php
-getCommentsForUser($user_id, $direction, $replies_to_user_id, $page, $includei10n, $locale, $is_crawler): \FastComments\Client\Model\GetCommentsForUserResponse
+getCommentsForUser($user_id, $direction, $replies_to_user_id, $page, $includei10n, $locale, $is_crawler): \FastComments\Client\Model\GetCommentsForUserResponse1
 ```
 
 
@@ -953,7 +953,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetCommentsForUserResponse**](../Model/GetCommentsForUserResponse.md)
+[**\FastComments\Client\Model\GetCommentsForUserResponse1**](../Model/GetCommentsForUserResponse1.md)
 
 ### Authorization
 
@@ -971,7 +971,7 @@ No authorization required
 ## `getCommentsPublic()`
 
 ```php
-getCommentsPublic($tenant_id, $url_id, $page, $direction, $sso, $skip, $skip_children, $limit, $limit_children, $count_children, $fetch_page_for_comment_id, $include_config, $count_all, $includei10n, $locale, $modules, $is_crawler, $include_notification_count, $as_tree, $max_tree_depth, $use_full_translation_ids, $parent_id, $search_text, $hash_tags, $user_id, $custom_config_str, $after_comment_id, $before_comment_id): \FastComments\Client\Model\GetCommentsResponseWithPresencePublicComment
+getCommentsPublic($tenant_id, $url_id, $page, $direction, $sso, $skip, $skip_children, $limit, $limit_children, $count_children, $fetch_page_for_comment_id, $include_config, $count_all, $includei10n, $locale, $modules, $is_crawler, $include_notification_count, $as_tree, $max_tree_depth, $use_full_translation_ids, $parent_id, $search_text, $hash_tags, $user_id, $custom_config_str, $after_comment_id, $before_comment_id): \FastComments\Client\Model\GetCommentsPublicResponse
 ```
 
 
@@ -1063,7 +1063,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetCommentsResponseWithPresencePublicComment**](../Model/GetCommentsResponseWithPresencePublicComment.md)
+[**\FastComments\Client\Model\GetCommentsPublicResponse**](../Model/GetCommentsPublicResponse.md)
 
 ### Authorization
 
@@ -1081,7 +1081,7 @@ No authorization required
 ## `getEventLog()`
 
 ```php
-getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \FastComments\Client\Model\GetEventLogResponse
+getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \FastComments\Client\Model\GetEventLogResponse1
 ```
 
 
@@ -1127,7 +1127,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetEventLogResponse**](../Model/GetEventLogResponse.md)
+[**\FastComments\Client\Model\GetEventLogResponse1**](../Model/GetEventLogResponse1.md)
 
 ### Authorization
 
@@ -1145,7 +1145,7 @@ No authorization required
 ## `getFeedPostsPublic()`
 
 ```php
-getFeedPostsPublic($tenant_id, $after_id, $limit, $tags, $sso, $is_crawler, $include_user_info): \FastComments\Client\Model\PublicFeedPostsResponse
+getFeedPostsPublic($tenant_id, $after_id, $limit, $tags, $sso, $is_crawler, $include_user_info): \FastComments\Client\Model\GetFeedPostsPublicResponse
 ```
 
 
@@ -1195,7 +1195,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PublicFeedPostsResponse**](../Model/PublicFeedPostsResponse.md)
+[**\FastComments\Client\Model\GetFeedPostsPublicResponse**](../Model/GetFeedPostsPublicResponse.md)
 
 ### Authorization
 
@@ -1213,7 +1213,7 @@ No authorization required
 ## `getFeedPostsStats()`
 
 ```php
-getFeedPostsStats($tenant_id, $post_ids, $sso): \FastComments\Client\Model\FeedPostsStatsResponse
+getFeedPostsStats($tenant_id, $post_ids, $sso): \FastComments\Client\Model\GetFeedPostsStatsResponse
 ```
 
 
@@ -1253,7 +1253,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\FeedPostsStatsResponse**](../Model/FeedPostsStatsResponse.md)
+[**\FastComments\Client\Model\GetFeedPostsStatsResponse**](../Model/GetFeedPostsStatsResponse.md)
 
 ### Authorization
 
@@ -1271,7 +1271,7 @@ No authorization required
 ## `getGifLarge()`
 
 ```php
-getGifLarge($tenant_id, $large_internal_url_sanitized): \FastComments\Client\Model\GifGetLargeResponse
+getGifLarge($tenant_id, $large_internal_url_sanitized): \FastComments\Client\Model\GetGifLargeResponse
 ```
 
 
@@ -1309,7 +1309,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GifGetLargeResponse**](../Model/GifGetLargeResponse.md)
+[**\FastComments\Client\Model\GetGifLargeResponse**](../Model/GetGifLargeResponse.md)
 
 ### Authorization
 
@@ -1449,7 +1449,7 @@ No authorization required
 ## `getGlobalEventLog()`
 
 ```php
-getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \FastComments\Client\Model\GetEventLogResponse
+getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \FastComments\Client\Model\GetGlobalEventLogResponse
 ```
 
 
@@ -1495,7 +1495,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetEventLogResponse**](../Model/GetEventLogResponse.md)
+[**\FastComments\Client\Model\GetGlobalEventLogResponse**](../Model/GetGlobalEventLogResponse.md)
 
 ### Authorization
 
@@ -1513,7 +1513,7 @@ No authorization required
 ## `getOfflineUsers()`
 
 ```php
-getOfflineUsers($tenant_id, $url_id, $after_name, $after_user_id): \FastComments\Client\Model\PageUsersOfflineResponse
+getOfflineUsers($tenant_id, $url_id, $after_name, $after_user_id): \FastComments\Client\Model\GetOfflineUsersResponse
 ```
 
 
@@ -1557,7 +1557,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PageUsersOfflineResponse**](../Model/PageUsersOfflineResponse.md)
+[**\FastComments\Client\Model\GetOfflineUsersResponse**](../Model/GetOfflineUsersResponse.md)
 
 ### Authorization
 
@@ -1575,7 +1575,7 @@ No authorization required
 ## `getOnlineUsers()`
 
 ```php
-getOnlineUsers($tenant_id, $url_id, $after_name, $after_user_id): \FastComments\Client\Model\PageUsersOnlineResponse
+getOnlineUsers($tenant_id, $url_id, $after_name, $after_user_id): \FastComments\Client\Model\GetOnlineUsersResponse
 ```
 
 
@@ -1619,7 +1619,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PageUsersOnlineResponse**](../Model/PageUsersOnlineResponse.md)
+[**\FastComments\Client\Model\GetOnlineUsersResponse**](../Model/GetOnlineUsersResponse.md)
 
 ### Authorization
 
@@ -1637,7 +1637,7 @@ No authorization required
 ## `getPagesPublic()`
 
 ```php
-getPagesPublic($tenant_id, $cursor, $limit, $q, $sort_by, $has_comments): \FastComments\Client\Model\GetPublicPagesResponse
+getPagesPublic($tenant_id, $cursor, $limit, $q, $sort_by, $has_comments): \FastComments\Client\Model\GetPagesPublicResponse
 ```
 
 
@@ -1685,7 +1685,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetPublicPagesResponse**](../Model/GetPublicPagesResponse.md)
+[**\FastComments\Client\Model\GetPagesPublicResponse**](../Model/GetPagesPublicResponse.md)
 
 ### Authorization
 
@@ -1703,7 +1703,7 @@ No authorization required
 ## `getTranslations()`
 
 ```php
-getTranslations($namespace, $component, $locale, $use_full_translation_ids): \FastComments\Client\Model\GetTranslationsResponse
+getTranslations($namespace, $component, $locale, $use_full_translation_ids): \FastComments\Client\Model\GetTranslationsResponse1
 ```
 
 
@@ -1745,7 +1745,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetTranslationsResponse**](../Model/GetTranslationsResponse.md)
+[**\FastComments\Client\Model\GetTranslationsResponse1**](../Model/GetTranslationsResponse1.md)
 
 ### Authorization
 
@@ -1763,7 +1763,7 @@ No authorization required
 ## `getUserNotificationCount()`
 
 ```php
-getUserNotificationCount($tenant_id, $sso): \FastComments\Client\Model\GetUserNotificationCountResponse
+getUserNotificationCount($tenant_id, $sso): \FastComments\Client\Model\GetUserNotificationCountResponse1
 ```
 
 
@@ -1801,7 +1801,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetUserNotificationCountResponse**](../Model/GetUserNotificationCountResponse.md)
+[**\FastComments\Client\Model\GetUserNotificationCountResponse1**](../Model/GetUserNotificationCountResponse1.md)
 
 ### Authorization
 
@@ -1819,7 +1819,7 @@ No authorization required
 ## `getUserNotifications()`
 
 ```php
-getUserNotifications($tenant_id, $url_id, $page_size, $after_id, $include_context, $after_created_at, $unread_only, $dm_only, $no_dm, $include_translations, $include_tenant_notifications, $sso): \FastComments\Client\Model\GetMyNotificationsResponse
+getUserNotifications($tenant_id, $url_id, $page_size, $after_id, $include_context, $after_created_at, $unread_only, $dm_only, $no_dm, $include_translations, $include_tenant_notifications, $sso): \FastComments\Client\Model\GetUserNotificationsResponse
 ```
 
 
@@ -1877,7 +1877,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetMyNotificationsResponse**](../Model/GetMyNotificationsResponse.md)
+[**\FastComments\Client\Model\GetUserNotificationsResponse**](../Model/GetUserNotificationsResponse.md)
 
 ### Authorization
 
@@ -1895,7 +1895,7 @@ No authorization required
 ## `getUserPresenceStatuses()`
 
 ```php
-getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids): \FastComments\Client\Model\GetUserPresenceStatusesResponse
+getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids): \FastComments\Client\Model\GetUserPresenceStatusesResponse1
 ```
 
 
@@ -1935,7 +1935,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetUserPresenceStatusesResponse**](../Model/GetUserPresenceStatusesResponse.md)
+[**\FastComments\Client\Model\GetUserPresenceStatusesResponse1**](../Model/GetUserPresenceStatusesResponse1.md)
 
 ### Authorization
 
@@ -1953,7 +1953,7 @@ No authorization required
 ## `getUserReactsPublic()`
 
 ```php
-getUserReactsPublic($tenant_id, $post_ids, $sso): \FastComments\Client\Model\UserReactsResponse
+getUserReactsPublic($tenant_id, $post_ids, $sso): \FastComments\Client\Model\GetUserReactsPublicResponse
 ```
 
 
@@ -1993,7 +1993,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\UserReactsResponse**](../Model/UserReactsResponse.md)
+[**\FastComments\Client\Model\GetUserReactsPublicResponse**](../Model/GetUserReactsPublicResponse.md)
 
 ### Authorization
 
@@ -2011,7 +2011,7 @@ No authorization required
 ## `getUsersInfo()`
 
 ```php
-getUsersInfo($tenant_id, $ids): \FastComments\Client\Model\PageUsersInfoResponse
+getUsersInfo($tenant_id, $ids): \FastComments\Client\Model\GetUsersInfoResponse
 ```
 
 
@@ -2051,7 +2051,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PageUsersInfoResponse**](../Model/PageUsersInfoResponse.md)
+[**\FastComments\Client\Model\GetUsersInfoResponse**](../Model/GetUsersInfoResponse.md)
 
 ### Authorization
 
@@ -2069,7 +2069,7 @@ No authorization required
 ## `getV1PageLikes()`
 
 ```php
-getV1PageLikes($tenant_id, $url_id): \FastComments\Client\Model\GetV1PageLikes
+getV1PageLikes($tenant_id, $url_id): \FastComments\Client\Model\GetV1PageLikesResponse
 ```
 
 
@@ -2107,7 +2107,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetV1PageLikes**](../Model/GetV1PageLikes.md)
+[**\FastComments\Client\Model\GetV1PageLikesResponse**](../Model/GetV1PageLikesResponse.md)
 
 ### Authorization
 
@@ -2125,7 +2125,7 @@ No authorization required
 ## `getV2PageReactUsers()`
 
 ```php
-getV2PageReactUsers($tenant_id, $url_id, $id): \FastComments\Client\Model\GetV2PageReactUsersResponse
+getV2PageReactUsers($tenant_id, $url_id, $id): \FastComments\Client\Model\GetV2PageReactUsersResponse1
 ```
 
 
@@ -2165,7 +2165,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetV2PageReactUsersResponse**](../Model/GetV2PageReactUsersResponse.md)
+[**\FastComments\Client\Model\GetV2PageReactUsersResponse1**](../Model/GetV2PageReactUsersResponse1.md)
 
 ### Authorization
 
@@ -2183,7 +2183,7 @@ No authorization required
 ## `getV2PageReacts()`
 
 ```php
-getV2PageReacts($tenant_id, $url_id): \FastComments\Client\Model\GetV2PageReacts
+getV2PageReacts($tenant_id, $url_id): \FastComments\Client\Model\GetV2PageReactsResponse
 ```
 
 
@@ -2221,7 +2221,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetV2PageReacts**](../Model/GetV2PageReacts.md)
+[**\FastComments\Client\Model\GetV2PageReactsResponse**](../Model/GetV2PageReactsResponse.md)
 
 ### Authorization
 
@@ -2239,7 +2239,7 @@ No authorization required
 ## `lockComment()`
 
 ```php
-lockComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\APIEmptyResponse
+lockComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\LockCommentResponse
 ```
 
 
@@ -2281,7 +2281,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\LockCommentResponse**](../Model/LockCommentResponse.md)
 
 ### Authorization
 
@@ -2350,7 +2350,7 @@ No authorization required
 ## `pinComment()`
 
 ```php
-pinComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\ChangeCommentPinStatusResponse
+pinComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\PinCommentResponse
 ```
 
 
@@ -2392,7 +2392,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\ChangeCommentPinStatusResponse**](../Model/ChangeCommentPinStatusResponse.md)
+[**\FastComments\Client\Model\PinCommentResponse**](../Model/PinCommentResponse.md)
 
 ### Authorization
 
@@ -2410,7 +2410,7 @@ No authorization required
 ## `reactFeedPostPublic()`
 
 ```php
-reactFeedPostPublic($tenant_id, $post_id, $react_body_params, $is_undo, $broadcast_id, $sso): \FastComments\Client\Model\ReactFeedPostResponse
+reactFeedPostPublic($tenant_id, $post_id, $react_body_params, $is_undo, $broadcast_id, $sso): \FastComments\Client\Model\ReactFeedPostPublicResponse
 ```
 
 
@@ -2456,7 +2456,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\ReactFeedPostResponse**](../Model/ReactFeedPostResponse.md)
+[**\FastComments\Client\Model\ReactFeedPostPublicResponse**](../Model/ReactFeedPostPublicResponse.md)
 
 ### Authorization
 
@@ -2474,7 +2474,7 @@ No authorization required
 ## `resetUserNotificationCount()`
 
 ```php
-resetUserNotificationCount($tenant_id, $sso): \FastComments\Client\Model\ResetUserNotificationsResponse
+resetUserNotificationCount($tenant_id, $sso): \FastComments\Client\Model\ResetUserNotificationCountResponse
 ```
 
 
@@ -2512,7 +2512,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\ResetUserNotificationsResponse**](../Model/ResetUserNotificationsResponse.md)
+[**\FastComments\Client\Model\ResetUserNotificationCountResponse**](../Model/ResetUserNotificationCountResponse.md)
 
 ### Authorization
 
@@ -2530,7 +2530,7 @@ No authorization required
 ## `resetUserNotifications()`
 
 ```php
-resetUserNotifications($tenant_id, $after_id, $after_created_at, $unread_only, $dm_only, $no_dm, $sso): \FastComments\Client\Model\ResetUserNotificationsResponse
+resetUserNotifications($tenant_id, $after_id, $after_created_at, $unread_only, $dm_only, $no_dm, $sso): \FastComments\Client\Model\ResetUserNotificationsResponse1
 ```
 
 
@@ -2578,7 +2578,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\ResetUserNotificationsResponse**](../Model/ResetUserNotificationsResponse.md)
+[**\FastComments\Client\Model\ResetUserNotificationsResponse1**](../Model/ResetUserNotificationsResponse1.md)
 
 ### Authorization
 
@@ -2596,7 +2596,7 @@ No authorization required
 ## `searchUsers()`
 
 ```php
-searchUsers($tenant_id, $url_id, $username_starts_with, $mention_group_ids, $sso, $search_section): \FastComments\Client\Model\SearchUsersResult
+searchUsers($tenant_id, $url_id, $username_starts_with, $mention_group_ids, $sso, $search_section): \FastComments\Client\Model\SearchUsersResponse1
 ```
 
 
@@ -2642,7 +2642,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\SearchUsersResult**](../Model/SearchUsersResult.md)
+[**\FastComments\Client\Model\SearchUsersResponse1**](../Model/SearchUsersResponse1.md)
 
 ### Authorization
 
@@ -2660,7 +2660,7 @@ No authorization required
 ## `setCommentText()`
 
 ```php
-setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key, $sso): \FastComments\Client\Model\PublicAPISetCommentTextResponse
+setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key, $sso): \FastComments\Client\Model\SetCommentTextResponse1
 ```
 
 
@@ -2706,7 +2706,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PublicAPISetCommentTextResponse**](../Model/PublicAPISetCommentTextResponse.md)
+[**\FastComments\Client\Model\SetCommentTextResponse1**](../Model/SetCommentTextResponse1.md)
 
 ### Authorization
 
@@ -2724,7 +2724,7 @@ No authorization required
 ## `unBlockCommentPublic()`
 
 ```php
-unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \FastComments\Client\Model\UnblockSuccess
+unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \FastComments\Client\Model\UnBlockCommentPublicResponse
 ```
 
 
@@ -2766,7 +2766,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\UnblockSuccess**](../Model/UnblockSuccess.md)
+[**\FastComments\Client\Model\UnBlockCommentPublicResponse**](../Model/UnBlockCommentPublicResponse.md)
 
 ### Authorization
 
@@ -2784,7 +2784,7 @@ No authorization required
 ## `unLockComment()`
 
 ```php
-unLockComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\APIEmptyResponse
+unLockComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\UnLockCommentResponse
 ```
 
 
@@ -2826,7 +2826,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
+[**\FastComments\Client\Model\UnLockCommentResponse**](../Model/UnLockCommentResponse.md)
 
 ### Authorization
 
@@ -2844,7 +2844,7 @@ No authorization required
 ## `unPinComment()`
 
 ```php
-unPinComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\ChangeCommentPinStatusResponse
+unPinComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\UnPinCommentResponse
 ```
 
 
@@ -2886,7 +2886,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\ChangeCommentPinStatusResponse**](../Model/ChangeCommentPinStatusResponse.md)
+[**\FastComments\Client\Model\UnPinCommentResponse**](../Model/UnPinCommentResponse.md)
 
 ### Authorization
 
@@ -2904,7 +2904,7 @@ No authorization required
 ## `updateFeedPostPublic()`
 
 ```php
-updateFeedPostPublic($tenant_id, $post_id, $update_feed_post_params, $broadcast_id, $sso): \FastComments\Client\Model\CreateFeedPostResponse
+updateFeedPostPublic($tenant_id, $post_id, $update_feed_post_params, $broadcast_id, $sso): \FastComments\Client\Model\UpdateFeedPostPublicResponse
 ```
 
 
@@ -2948,7 +2948,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\CreateFeedPostResponse**](../Model/CreateFeedPostResponse.md)
+[**\FastComments\Client\Model\UpdateFeedPostPublicResponse**](../Model/UpdateFeedPostPublicResponse.md)
 
 ### Authorization
 
@@ -3218,7 +3218,7 @@ No authorization required
 ## `voteComment()`
 
 ```php
-voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $session_id, $sso): \FastComments\Client\Model\VoteResponse
+voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $session_id, $sso): \FastComments\Client\Model\VoteCommentResponse
 ```
 
 
@@ -3266,7 +3266,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\VoteResponse**](../Model/VoteResponse.md)
+[**\FastComments\Client\Model\VoteCommentResponse**](../Model/VoteCommentResponse.md)
 
 ### Authorization
 
