@@ -54,7 +54,7 @@ All URIs are relative to https://fastcomments.com, except if the operation defin
 ## `deleteModerationVote()`
 
 ```php
-deleteModerationVote($comment_id, $vote_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\DeleteModerationVoteResponse
+deleteModerationVote($comment_id, $vote_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\VoteDeleteResponse
 ```
 
 
@@ -98,7 +98,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\DeleteModerationVoteResponse**](../Model/DeleteModerationVoteResponse.md)
+[**\FastComments\Client\Model\VoteDeleteResponse**](../Model/VoteDeleteResponse.md)
 
 ### Authorization
 
@@ -116,7 +116,7 @@ No authorization required
 ## `getApiComments()`
 
 ```php
-getApiComments($page, $count, $text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $demo, $tenant_id, $sso): \FastComments\Client\Model\GetApiCommentsResponse
+getApiComments($page, $count, $text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $demo, $tenant_id, $sso): \FastComments\Client\Model\ModerationAPIGetCommentsResponse
 ```
 
 
@@ -170,7 +170,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetApiCommentsResponse**](../Model/GetApiCommentsResponse.md)
+[**\FastComments\Client\Model\ModerationAPIGetCommentsResponse**](../Model/ModerationAPIGetCommentsResponse.md)
 
 ### Authorization
 
@@ -188,7 +188,7 @@ No authorization required
 ## `getApiExportStatus()`
 
 ```php
-getApiExportStatus($batch_job_id, $tenant_id, $sso): \FastComments\Client\Model\GetApiExportStatusResponse
+getApiExportStatus($batch_job_id, $tenant_id, $sso): \FastComments\Client\Model\ModerationExportStatusResponse
 ```
 
 
@@ -228,7 +228,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetApiExportStatusResponse**](../Model/GetApiExportStatusResponse.md)
+[**\FastComments\Client\Model\ModerationExportStatusResponse**](../Model/ModerationExportStatusResponse.md)
 
 ### Authorization
 
@@ -246,7 +246,7 @@ No authorization required
 ## `getApiIds()`
 
 ```php
-getApiIds($text_search, $by_ip_from_comment, $filters, $search_filters, $after_id, $demo, $tenant_id, $sso): \FastComments\Client\Model\GetApiIdsResponse
+getApiIds($text_search, $by_ip_from_comment, $filters, $search_filters, $after_id, $demo, $tenant_id, $sso): \FastComments\Client\Model\ModerationAPIGetCommentIdsResponse
 ```
 
 
@@ -296,7 +296,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetApiIdsResponse**](../Model/GetApiIdsResponse.md)
+[**\FastComments\Client\Model\ModerationAPIGetCommentIdsResponse**](../Model/ModerationAPIGetCommentIdsResponse.md)
 
 ### Authorization
 
@@ -314,7 +314,7 @@ No authorization required
 ## `getBanUsersFromComment()`
 
 ```php
-getBanUsersFromComment($comment_id, $tenant_id, $sso): \FastComments\Client\Model\GetBanUsersFromCommentResponse
+getBanUsersFromComment($comment_id, $tenant_id, $sso): \FastComments\Client\Model\GetBannedUsersFromCommentResponse
 ```
 
 
@@ -354,7 +354,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetBanUsersFromCommentResponse**](../Model/GetBanUsersFromCommentResponse.md)
+[**\FastComments\Client\Model\GetBannedUsersFromCommentResponse**](../Model/GetBannedUsersFromCommentResponse.md)
 
 ### Authorization
 
@@ -372,7 +372,7 @@ No authorization required
 ## `getCommentBanStatus()`
 
 ```php
-getCommentBanStatus($comment_id, $tenant_id, $sso): \FastComments\Client\Model\GetCommentBanStatusResponse1
+getCommentBanStatus($comment_id, $tenant_id, $sso): \FastComments\Client\Model\GetCommentBanStatusResponse
 ```
 
 
@@ -412,7 +412,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetCommentBanStatusResponse1**](../Model/GetCommentBanStatusResponse1.md)
+[**\FastComments\Client\Model\GetCommentBanStatusResponse**](../Model/GetCommentBanStatusResponse.md)
 
 ### Authorization
 
@@ -430,7 +430,7 @@ No authorization required
 ## `getCommentChildren()`
 
 ```php
-getCommentChildren($comment_id, $tenant_id, $sso): \FastComments\Client\Model\GetCommentChildrenResponse
+getCommentChildren($comment_id, $tenant_id, $sso): \FastComments\Client\Model\ModerationAPIChildCommentsResponse
 ```
 
 
@@ -470,7 +470,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetCommentChildrenResponse**](../Model/GetCommentChildrenResponse.md)
+[**\FastComments\Client\Model\ModerationAPIChildCommentsResponse**](../Model/ModerationAPIChildCommentsResponse.md)
 
 ### Authorization
 
@@ -488,7 +488,7 @@ No authorization required
 ## `getCount()`
 
 ```php
-getCount($text_search, $by_ip_from_comment, $filter, $search_filters, $demo, $tenant_id, $sso): \FastComments\Client\Model\GetCountResponse
+getCount($text_search, $by_ip_from_comment, $filter, $search_filters, $demo, $tenant_id, $sso): \FastComments\Client\Model\ModerationAPICountCommentsResponse
 ```
 
 
@@ -536,7 +536,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetCountResponse**](../Model/GetCountResponse.md)
+[**\FastComments\Client\Model\ModerationAPICountCommentsResponse**](../Model/ModerationAPICountCommentsResponse.md)
 
 ### Authorization
 
@@ -554,7 +554,7 @@ No authorization required
 ## `getCounts()`
 
 ```php
-getCounts($tenant_id, $sso): \FastComments\Client\Model\GetCountsResponse
+getCounts($tenant_id, $sso): \FastComments\Client\Model\GetBannedUsersCountResponse
 ```
 
 
@@ -592,7 +592,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetCountsResponse**](../Model/GetCountsResponse.md)
+[**\FastComments\Client\Model\GetBannedUsersCountResponse**](../Model/GetBannedUsersCountResponse.md)
 
 ### Authorization
 
@@ -610,7 +610,7 @@ No authorization required
 ## `getLogs()`
 
 ```php
-getLogs($comment_id, $tenant_id, $sso): \FastComments\Client\Model\GetLogsResponse
+getLogs($comment_id, $tenant_id, $sso): \FastComments\Client\Model\ModerationAPIGetLogsResponse
 ```
 
 
@@ -650,7 +650,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetLogsResponse**](../Model/GetLogsResponse.md)
+[**\FastComments\Client\Model\ModerationAPIGetLogsResponse**](../Model/ModerationAPIGetLogsResponse.md)
 
 ### Authorization
 
@@ -668,7 +668,7 @@ No authorization required
 ## `getManualBadges()`
 
 ```php
-getManualBadges($tenant_id, $sso): \FastComments\Client\Model\GetManualBadgesResponse
+getManualBadges($tenant_id, $sso): \FastComments\Client\Model\GetTenantManualBadgesResponse
 ```
 
 
@@ -706,7 +706,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetManualBadgesResponse**](../Model/GetManualBadgesResponse.md)
+[**\FastComments\Client\Model\GetTenantManualBadgesResponse**](../Model/GetTenantManualBadgesResponse.md)
 
 ### Authorization
 
@@ -724,7 +724,7 @@ No authorization required
 ## `getManualBadgesForUser()`
 
 ```php
-getManualBadgesForUser($badges_user_id, $comment_id, $tenant_id, $sso): \FastComments\Client\Model\GetManualBadgesForUserResponse
+getManualBadgesForUser($badges_user_id, $comment_id, $tenant_id, $sso): \FastComments\Client\Model\GetUserManualBadgesResponse
 ```
 
 
@@ -766,7 +766,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetManualBadgesForUserResponse**](../Model/GetManualBadgesForUserResponse.md)
+[**\FastComments\Client\Model\GetUserManualBadgesResponse**](../Model/GetUserManualBadgesResponse.md)
 
 ### Authorization
 
@@ -784,7 +784,7 @@ No authorization required
 ## `getModerationComment()`
 
 ```php
-getModerationComment($comment_id, $include_email, $include_ip, $tenant_id, $sso): \FastComments\Client\Model\GetModerationCommentResponse
+getModerationComment($comment_id, $include_email, $include_ip, $tenant_id, $sso): \FastComments\Client\Model\ModerationAPICommentResponse
 ```
 
 
@@ -828,7 +828,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetModerationCommentResponse**](../Model/GetModerationCommentResponse.md)
+[**\FastComments\Client\Model\ModerationAPICommentResponse**](../Model/ModerationAPICommentResponse.md)
 
 ### Authorization
 
@@ -846,7 +846,7 @@ No authorization required
 ## `getModerationCommentText()`
 
 ```php
-getModerationCommentText($comment_id, $tenant_id, $sso): \FastComments\Client\Model\GetModerationCommentTextResponse
+getModerationCommentText($comment_id, $tenant_id, $sso): \FastComments\Client\Model\GetCommentTextResponse
 ```
 
 
@@ -886,7 +886,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetModerationCommentTextResponse**](../Model/GetModerationCommentTextResponse.md)
+[**\FastComments\Client\Model\GetCommentTextResponse**](../Model/GetCommentTextResponse.md)
 
 ### Authorization
 
@@ -904,7 +904,7 @@ No authorization required
 ## `getPreBanSummary()`
 
 ```php
-getPreBanSummary($comment_id, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $tenant_id, $sso): \FastComments\Client\Model\GetPreBanSummaryResponse
+getPreBanSummary($comment_id, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $tenant_id, $sso): \FastComments\Client\Model\PreBanSummary
 ```
 
 
@@ -950,7 +950,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetPreBanSummaryResponse**](../Model/GetPreBanSummaryResponse.md)
+[**\FastComments\Client\Model\PreBanSummary**](../Model/PreBanSummary.md)
 
 ### Authorization
 
@@ -968,7 +968,7 @@ No authorization required
 ## `getSearchCommentsSummary()`
 
 ```php
-getSearchCommentsSummary($value, $filters, $search_filters, $tenant_id, $sso): \FastComments\Client\Model\GetSearchCommentsSummaryResponse
+getSearchCommentsSummary($value, $filters, $search_filters, $tenant_id, $sso): \FastComments\Client\Model\ModerationCommentSearchResponse
 ```
 
 
@@ -1012,7 +1012,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetSearchCommentsSummaryResponse**](../Model/GetSearchCommentsSummaryResponse.md)
+[**\FastComments\Client\Model\ModerationCommentSearchResponse**](../Model/ModerationCommentSearchResponse.md)
 
 ### Authorization
 
@@ -1030,7 +1030,7 @@ No authorization required
 ## `getSearchPages()`
 
 ```php
-getSearchPages($value, $tenant_id, $sso): \FastComments\Client\Model\GetSearchPagesResponse
+getSearchPages($value, $tenant_id, $sso): \FastComments\Client\Model\ModerationPageSearchResponse
 ```
 
 
@@ -1070,7 +1070,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetSearchPagesResponse**](../Model/GetSearchPagesResponse.md)
+[**\FastComments\Client\Model\ModerationPageSearchResponse**](../Model/ModerationPageSearchResponse.md)
 
 ### Authorization
 
@@ -1088,7 +1088,7 @@ No authorization required
 ## `getSearchSites()`
 
 ```php
-getSearchSites($value, $tenant_id, $sso): \FastComments\Client\Model\GetSearchSitesResponse
+getSearchSites($value, $tenant_id, $sso): \FastComments\Client\Model\ModerationSiteSearchResponse
 ```
 
 
@@ -1128,7 +1128,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetSearchSitesResponse**](../Model/GetSearchSitesResponse.md)
+[**\FastComments\Client\Model\ModerationSiteSearchResponse**](../Model/ModerationSiteSearchResponse.md)
 
 ### Authorization
 
@@ -1146,7 +1146,7 @@ No authorization required
 ## `getSearchSuggest()`
 
 ```php
-getSearchSuggest($text_search, $tenant_id, $sso): \FastComments\Client\Model\GetSearchSuggestResponse
+getSearchSuggest($text_search, $tenant_id, $sso): \FastComments\Client\Model\ModerationSuggestResponse
 ```
 
 
@@ -1186,7 +1186,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetSearchSuggestResponse**](../Model/GetSearchSuggestResponse.md)
+[**\FastComments\Client\Model\ModerationSuggestResponse**](../Model/ModerationSuggestResponse.md)
 
 ### Authorization
 
@@ -1204,7 +1204,7 @@ No authorization required
 ## `getSearchUsers()`
 
 ```php
-getSearchUsers($value, $tenant_id, $sso): \FastComments\Client\Model\GetSearchUsersResponse
+getSearchUsers($value, $tenant_id, $sso): \FastComments\Client\Model\ModerationUserSearchResponse
 ```
 
 
@@ -1244,7 +1244,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetSearchUsersResponse**](../Model/GetSearchUsersResponse.md)
+[**\FastComments\Client\Model\ModerationUserSearchResponse**](../Model/ModerationUserSearchResponse.md)
 
 ### Authorization
 
@@ -1262,7 +1262,7 @@ No authorization required
 ## `getTrustFactor()`
 
 ```php
-getTrustFactor($user_id, $tenant_id, $sso): \FastComments\Client\Model\GetTrustFactorResponse
+getTrustFactor($user_id, $tenant_id, $sso): \FastComments\Client\Model\GetUserTrustFactorResponse
 ```
 
 
@@ -1302,7 +1302,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetTrustFactorResponse**](../Model/GetTrustFactorResponse.md)
+[**\FastComments\Client\Model\GetUserTrustFactorResponse**](../Model/GetUserTrustFactorResponse.md)
 
 ### Authorization
 
@@ -1320,7 +1320,7 @@ No authorization required
 ## `getUserBanPreference()`
 
 ```php
-getUserBanPreference($tenant_id, $sso): \FastComments\Client\Model\GetUserBanPreferenceResponse
+getUserBanPreference($tenant_id, $sso): \FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse
 ```
 
 
@@ -1358,7 +1358,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetUserBanPreferenceResponse**](../Model/GetUserBanPreferenceResponse.md)
+[**\FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse**](../Model/APIModerateGetUserBanPreferencesResponse.md)
 
 ### Authorization
 
@@ -1376,7 +1376,7 @@ No authorization required
 ## `getUserInternalProfile()`
 
 ```php
-getUserInternalProfile($comment_id, $tenant_id, $sso): \FastComments\Client\Model\GetUserInternalProfileResponse1
+getUserInternalProfile($comment_id, $tenant_id, $sso): \FastComments\Client\Model\GetUserInternalProfileResponse
 ```
 
 
@@ -1416,7 +1416,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\GetUserInternalProfileResponse1**](../Model/GetUserInternalProfileResponse1.md)
+[**\FastComments\Client\Model\GetUserInternalProfileResponse**](../Model/GetUserInternalProfileResponse.md)
 
 ### Authorization
 
@@ -1434,7 +1434,7 @@ No authorization required
 ## `postAdjustCommentVotes()`
 
 ```php
-postAdjustCommentVotes($comment_id, $adjust_comment_votes_params, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\PostAdjustCommentVotesResponse
+postAdjustCommentVotes($comment_id, $adjust_comment_votes_params, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\AdjustVotesResponse
 ```
 
 
@@ -1478,7 +1478,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PostAdjustCommentVotesResponse**](../Model/PostAdjustCommentVotesResponse.md)
+[**\FastComments\Client\Model\AdjustVotesResponse**](../Model/AdjustVotesResponse.md)
 
 ### Authorization
 
@@ -1496,7 +1496,7 @@ No authorization required
 ## `postApiExport()`
 
 ```php
-postApiExport($text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $tenant_id, $sso): \FastComments\Client\Model\PostApiExportResponse
+postApiExport($text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $tenant_id, $sso): \FastComments\Client\Model\ModerationExportResponse
 ```
 
 
@@ -1544,7 +1544,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PostApiExportResponse**](../Model/PostApiExportResponse.md)
+[**\FastComments\Client\Model\ModerationExportResponse**](../Model/ModerationExportResponse.md)
 
 ### Authorization
 
@@ -1562,7 +1562,7 @@ No authorization required
 ## `postBanUserFromComment()`
 
 ```php
-postBanUserFromComment($comment_id, $ban_email, $ban_email_domain, $ban_ip, $delete_all_users_comments, $banned_until, $is_shadow_ban, $update_id, $ban_reason, $tenant_id, $sso): \FastComments\Client\Model\PostBanUserFromCommentResponse
+postBanUserFromComment($comment_id, $ban_email, $ban_email_domain, $ban_ip, $delete_all_users_comments, $banned_until, $is_shadow_ban, $update_id, $ban_reason, $tenant_id, $sso): \FastComments\Client\Model\BanUserFromCommentResult
 ```
 
 
@@ -1618,7 +1618,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PostBanUserFromCommentResponse**](../Model/PostBanUserFromCommentResponse.md)
+[**\FastComments\Client\Model\BanUserFromCommentResult**](../Model/BanUserFromCommentResult.md)
 
 ### Authorization
 
@@ -1636,7 +1636,7 @@ No authorization required
 ## `postBanUserUndo()`
 
 ```php
-postBanUserUndo($ban_user_undo_params, $tenant_id, $sso): \FastComments\Client\Model\PostBanUserUndoResponse
+postBanUserUndo($ban_user_undo_params, $tenant_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -1676,7 +1676,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PostBanUserUndoResponse**](../Model/PostBanUserUndoResponse.md)
+[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
 
 ### Authorization
 
@@ -1694,7 +1694,7 @@ No authorization required
 ## `postBulkPreBanSummary()`
 
 ```php
-postBulkPreBanSummary($bulk_pre_ban_params, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $tenant_id, $sso): \FastComments\Client\Model\PostBulkPreBanSummaryResponse
+postBulkPreBanSummary($bulk_pre_ban_params, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $tenant_id, $sso): \FastComments\Client\Model\BulkPreBanSummary
 ```
 
 
@@ -1740,7 +1740,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PostBulkPreBanSummaryResponse**](../Model/PostBulkPreBanSummaryResponse.md)
+[**\FastComments\Client\Model\BulkPreBanSummary**](../Model/BulkPreBanSummary.md)
 
 ### Authorization
 
@@ -1758,7 +1758,7 @@ No authorization required
 ## `postCommentsByIds()`
 
 ```php
-postCommentsByIds($comments_by_ids_params, $tenant_id, $sso): \FastComments\Client\Model\PostCommentsByIdsResponse
+postCommentsByIds($comments_by_ids_params, $tenant_id, $sso): \FastComments\Client\Model\ModerationAPIChildCommentsResponse
 ```
 
 
@@ -1798,7 +1798,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PostCommentsByIdsResponse**](../Model/PostCommentsByIdsResponse.md)
+[**\FastComments\Client\Model\ModerationAPIChildCommentsResponse**](../Model/ModerationAPIChildCommentsResponse.md)
 
 ### Authorization
 
@@ -1816,7 +1816,7 @@ No authorization required
 ## `postFlagComment()`
 
 ```php
-postFlagComment($comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\PostFlagCommentResponse
+postFlagComment($comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -1858,7 +1858,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PostFlagCommentResponse**](../Model/PostFlagCommentResponse.md)
+[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
 
 ### Authorization
 
@@ -1936,7 +1936,7 @@ No authorization required
 ## `postRestoreDeletedComment()`
 
 ```php
-postRestoreDeletedComment($comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\PostRestoreDeletedCommentResponse
+postRestoreDeletedComment($comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -1978,7 +1978,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PostRestoreDeletedCommentResponse**](../Model/PostRestoreDeletedCommentResponse.md)
+[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
 
 ### Authorization
 
@@ -1996,7 +1996,7 @@ No authorization required
 ## `postSetCommentApprovalStatus()`
 
 ```php
-postSetCommentApprovalStatus($comment_id, $approved, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\PostSetCommentApprovalStatusResponse
+postSetCommentApprovalStatus($comment_id, $approved, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\SetCommentApprovedResponse
 ```
 
 
@@ -2040,7 +2040,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PostSetCommentApprovalStatusResponse**](../Model/PostSetCommentApprovalStatusResponse.md)
+[**\FastComments\Client\Model\SetCommentApprovedResponse**](../Model/SetCommentApprovedResponse.md)
 
 ### Authorization
 
@@ -2058,7 +2058,7 @@ No authorization required
 ## `postSetCommentReviewStatus()`
 
 ```php
-postSetCommentReviewStatus($comment_id, $reviewed, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\PostSetCommentReviewStatusResponse
+postSetCommentReviewStatus($comment_id, $reviewed, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2102,7 +2102,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PostSetCommentReviewStatusResponse**](../Model/PostSetCommentReviewStatusResponse.md)
+[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
 
 ### Authorization
 
@@ -2120,7 +2120,7 @@ No authorization required
 ## `postSetCommentSpamStatus()`
 
 ```php
-postSetCommentSpamStatus($comment_id, $spam, $perm_not_spam, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\PostSetCommentSpamStatusResponse
+postSetCommentSpamStatus($comment_id, $spam, $perm_not_spam, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2166,7 +2166,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PostSetCommentSpamStatusResponse**](../Model/PostSetCommentSpamStatusResponse.md)
+[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
 
 ### Authorization
 
@@ -2184,7 +2184,7 @@ No authorization required
 ## `postSetCommentText()`
 
 ```php
-postSetCommentText($comment_id, $set_comment_text_params, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\PostSetCommentTextResponse
+postSetCommentText($comment_id, $set_comment_text_params, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\SetCommentTextResponse
 ```
 
 
@@ -2228,7 +2228,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PostSetCommentTextResponse**](../Model/PostSetCommentTextResponse.md)
+[**\FastComments\Client\Model\SetCommentTextResponse**](../Model/SetCommentTextResponse.md)
 
 ### Authorization
 
@@ -2246,7 +2246,7 @@ No authorization required
 ## `postUnFlagComment()`
 
 ```php
-postUnFlagComment($comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\PostUnFlagCommentResponse
+postUnFlagComment($comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2288,7 +2288,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PostUnFlagCommentResponse**](../Model/PostUnFlagCommentResponse.md)
+[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
 
 ### Authorization
 
@@ -2306,7 +2306,7 @@ No authorization required
 ## `postVote()`
 
 ```php
-postVote($comment_id, $direction, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\PostVoteResponse
+postVote($comment_id, $direction, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\VoteResponse
 ```
 
 
@@ -2350,7 +2350,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PostVoteResponse**](../Model/PostVoteResponse.md)
+[**\FastComments\Client\Model\VoteResponse**](../Model/VoteResponse.md)
 
 ### Authorization
 
@@ -2368,7 +2368,7 @@ No authorization required
 ## `putAwardBadge()`
 
 ```php
-putAwardBadge($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\PutAwardBadgeResponse
+putAwardBadge($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\AwardUserBadgeResponse
 ```
 
 
@@ -2414,7 +2414,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PutAwardBadgeResponse**](../Model/PutAwardBadgeResponse.md)
+[**\FastComments\Client\Model\AwardUserBadgeResponse**](../Model/AwardUserBadgeResponse.md)
 
 ### Authorization
 
@@ -2432,7 +2432,7 @@ No authorization required
 ## `putCloseThread()`
 
 ```php
-putCloseThread($url_id, $tenant_id, $sso): \FastComments\Client\Model\PutCloseThreadResponse
+putCloseThread($url_id, $tenant_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2472,7 +2472,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PutCloseThreadResponse**](../Model/PutCloseThreadResponse.md)
+[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
 
 ### Authorization
 
@@ -2490,7 +2490,7 @@ No authorization required
 ## `putRemoveBadge()`
 
 ```php
-putRemoveBadge($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\PutRemoveBadgeResponse
+putRemoveBadge($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\RemoveUserBadgeResponse
 ```
 
 
@@ -2536,7 +2536,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PutRemoveBadgeResponse**](../Model/PutRemoveBadgeResponse.md)
+[**\FastComments\Client\Model\RemoveUserBadgeResponse**](../Model/RemoveUserBadgeResponse.md)
 
 ### Authorization
 
@@ -2554,7 +2554,7 @@ No authorization required
 ## `putReopenThread()`
 
 ```php
-putReopenThread($url_id, $tenant_id, $sso): \FastComments\Client\Model\PutReopenThreadResponse
+putReopenThread($url_id, $tenant_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2594,7 +2594,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\PutReopenThreadResponse**](../Model/PutReopenThreadResponse.md)
+[**\FastComments\Client\Model\APIEmptyResponse**](../Model/APIEmptyResponse.md)
 
 ### Authorization
 
@@ -2612,7 +2612,7 @@ No authorization required
 ## `setTrustFactor()`
 
 ```php
-setTrustFactor($user_id, $trust_factor, $tenant_id, $sso): \FastComments\Client\Model\SetTrustFactorResponse
+setTrustFactor($user_id, $trust_factor, $tenant_id, $sso): \FastComments\Client\Model\SetUserTrustFactorResponse
 ```
 
 
@@ -2654,7 +2654,7 @@ try {
 
 ### Return type
 
-[**\FastComments\Client\Model\SetTrustFactorResponse**](../Model/SetTrustFactorResponse.md)
+[**\FastComments\Client\Model\SetUserTrustFactorResponse**](../Model/SetUserTrustFactorResponse.md)
 
 ### Authorization
 
