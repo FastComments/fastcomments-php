@@ -296,9 +296,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\BlockSuccess|\FastComments\Client\Model\APIError
      */
-    public function blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, array $options = [])
+    public function blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null)
     {
-        list($response) = $this->blockFromCommentPublicWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $options);
+        list($response) = $this->blockFromCommentPublicWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
         return $response;
     }
 
@@ -319,9 +319,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\BlockSuccess|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function blockFromCommentPublicWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, array $options = [])
+    public function blockFromCommentPublicWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null)
     {
-        $request = $this->blockFromCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $options);
+        $request = $this->blockFromCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -422,9 +422,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function blockFromCommentPublicAsync($tenant_id, $comment_id, $public_block_from_comment_params, array $options = [])
+    public function blockFromCommentPublicAsync($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null)
     {
-        return $this->blockFromCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $options)
+        return $this->blockFromCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -448,10 +448,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function blockFromCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, array $options = [])
+    public function blockFromCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\BlockSuccess';
-        $request = $this->blockFromCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $options);
+        $request = $this->blockFromCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -503,11 +503,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function blockFromCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, array $options = [])
+    public function blockFromCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['blockFromCommentPublic'][0];
+        $contentType = self::contentTypes['blockFromCommentPublic'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -645,9 +643,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CheckBlockedCommentsResponse|\FastComments\Client\Model\APIError
      */
-    public function checkedCommentsForBlocked($tenant_id, $comment_ids, array $options = [])
+    public function checkedCommentsForBlocked($tenant_id, $comment_ids, $sso = null)
     {
-        list($response) = $this->checkedCommentsForBlockedWithHttpInfo($tenant_id, $comment_ids, $options);
+        list($response) = $this->checkedCommentsForBlockedWithHttpInfo($tenant_id, $comment_ids, $sso);
         return $response;
     }
 
@@ -667,9 +665,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CheckBlockedCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function checkedCommentsForBlockedWithHttpInfo($tenant_id, $comment_ids, array $options = [])
+    public function checkedCommentsForBlockedWithHttpInfo($tenant_id, $comment_ids, $sso = null)
     {
-        $request = $this->checkedCommentsForBlockedRequest($tenant_id, $comment_ids, $options);
+        $request = $this->checkedCommentsForBlockedRequest($tenant_id, $comment_ids, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -769,9 +767,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkedCommentsForBlockedAsync($tenant_id, $comment_ids, array $options = [])
+    public function checkedCommentsForBlockedAsync($tenant_id, $comment_ids, $sso = null)
     {
-        return $this->checkedCommentsForBlockedAsyncWithHttpInfo($tenant_id, $comment_ids, $options)
+        return $this->checkedCommentsForBlockedAsyncWithHttpInfo($tenant_id, $comment_ids, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -794,10 +792,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkedCommentsForBlockedAsyncWithHttpInfo($tenant_id, $comment_ids, array $options = [])
+    public function checkedCommentsForBlockedAsyncWithHttpInfo($tenant_id, $comment_ids, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\CheckBlockedCommentsResponse';
-        $request = $this->checkedCommentsForBlockedRequest($tenant_id, $comment_ids, $options);
+        $request = $this->checkedCommentsForBlockedRequest($tenant_id, $comment_ids, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -848,11 +846,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function checkedCommentsForBlockedRequest($tenant_id, $comment_ids, array $options = [])
+    public function checkedCommentsForBlockedRequest($tenant_id, $comment_ids, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['checkedCommentsForBlocked'][0];
+        $contentType = self::contentTypes['checkedCommentsForBlocked'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -1709,9 +1705,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateV1PageReact|\FastComments\Client\Model\APIError
      */
-    public function createV1PageReact($tenant_id, $url_id, array $options = [])
+    public function createV1PageReact($tenant_id, $url_id, $title = null)
     {
-        list($response) = $this->createV1PageReactWithHttpInfo($tenant_id, $url_id, $options);
+        list($response) = $this->createV1PageReactWithHttpInfo($tenant_id, $url_id, $title);
         return $response;
     }
 
@@ -1731,9 +1727,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateV1PageReact|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createV1PageReactWithHttpInfo($tenant_id, $url_id, array $options = [])
+    public function createV1PageReactWithHttpInfo($tenant_id, $url_id, $title = null)
     {
-        $request = $this->createV1PageReactRequest($tenant_id, $url_id, $options);
+        $request = $this->createV1PageReactRequest($tenant_id, $url_id, $title);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1833,9 +1829,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createV1PageReactAsync($tenant_id, $url_id, array $options = [])
+    public function createV1PageReactAsync($tenant_id, $url_id, $title = null)
     {
-        return $this->createV1PageReactAsyncWithHttpInfo($tenant_id, $url_id, $options)
+        return $this->createV1PageReactAsyncWithHttpInfo($tenant_id, $url_id, $title)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1858,10 +1854,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createV1PageReactAsyncWithHttpInfo($tenant_id, $url_id, array $options = [])
+    public function createV1PageReactAsyncWithHttpInfo($tenant_id, $url_id, $title = null)
     {
         $returnType = '\FastComments\Client\Model\CreateV1PageReact';
-        $request = $this->createV1PageReactRequest($tenant_id, $url_id, $options);
+        $request = $this->createV1PageReactRequest($tenant_id, $url_id, $title);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1912,11 +1908,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createV1PageReactRequest($tenant_id, $url_id, array $options = [])
+    public function createV1PageReactRequest($tenant_id, $url_id, $title = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $title = array_key_exists('title', $options) ? $options['title'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['createV1PageReact'][0];
+        $contentType = self::contentTypes['createV1PageReact'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -2041,9 +2035,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateV1PageReact|\FastComments\Client\Model\APIError
      */
-    public function createV2PageReact($tenant_id, $url_id, $id, array $options = [])
+    public function createV2PageReact($tenant_id, $url_id, $id, $title = null)
     {
-        list($response) = $this->createV2PageReactWithHttpInfo($tenant_id, $url_id, $id, $options);
+        list($response) = $this->createV2PageReactWithHttpInfo($tenant_id, $url_id, $id, $title);
         return $response;
     }
 
@@ -2064,9 +2058,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateV1PageReact|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createV2PageReactWithHttpInfo($tenant_id, $url_id, $id, array $options = [])
+    public function createV2PageReactWithHttpInfo($tenant_id, $url_id, $id, $title = null)
     {
-        $request = $this->createV2PageReactRequest($tenant_id, $url_id, $id, $options);
+        $request = $this->createV2PageReactRequest($tenant_id, $url_id, $id, $title);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2167,9 +2161,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createV2PageReactAsync($tenant_id, $url_id, $id, array $options = [])
+    public function createV2PageReactAsync($tenant_id, $url_id, $id, $title = null)
     {
-        return $this->createV2PageReactAsyncWithHttpInfo($tenant_id, $url_id, $id, $options)
+        return $this->createV2PageReactAsyncWithHttpInfo($tenant_id, $url_id, $id, $title)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2193,10 +2187,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createV2PageReactAsyncWithHttpInfo($tenant_id, $url_id, $id, array $options = [])
+    public function createV2PageReactAsyncWithHttpInfo($tenant_id, $url_id, $id, $title = null)
     {
         $returnType = '\FastComments\Client\Model\CreateV1PageReact';
-        $request = $this->createV2PageReactRequest($tenant_id, $url_id, $id, $options);
+        $request = $this->createV2PageReactRequest($tenant_id, $url_id, $id, $title);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2248,11 +2242,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createV2PageReactRequest($tenant_id, $url_id, $id, array $options = [])
+    public function createV2PageReactRequest($tenant_id, $url_id, $id, $title = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $title = array_key_exists('title', $options) ? $options['title'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['createV2PageReact'][0];
+        $contentType = self::contentTypes['createV2PageReact'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -3510,9 +3502,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateV1PageReact|\FastComments\Client\Model\APIError
      */
-    public function deleteV1PageReact($tenant_id, $url_id, array $options = [])
+    public function deleteV1PageReact($tenant_id, $url_id)
     {
-        list($response) = $this->deleteV1PageReactWithHttpInfo($tenant_id, $url_id, $options);
+        list($response) = $this->deleteV1PageReactWithHttpInfo($tenant_id, $url_id);
         return $response;
     }
 
@@ -3529,9 +3521,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateV1PageReact|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteV1PageReactWithHttpInfo($tenant_id, $url_id, array $options = [])
+    public function deleteV1PageReactWithHttpInfo($tenant_id, $url_id)
     {
-        $request = $this->deleteV1PageReactRequest($tenant_id, $url_id, $options);
+        $request = $this->deleteV1PageReactRequest($tenant_id, $url_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3628,9 +3620,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteV1PageReactAsync($tenant_id, $url_id, array $options = [])
+    public function deleteV1PageReactAsync($tenant_id, $url_id)
     {
-        return $this->deleteV1PageReactAsyncWithHttpInfo($tenant_id, $url_id, $options)
+        return $this->deleteV1PageReactAsyncWithHttpInfo($tenant_id, $url_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3650,10 +3642,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteV1PageReactAsyncWithHttpInfo($tenant_id, $url_id, array $options = [])
+    public function deleteV1PageReactAsyncWithHttpInfo($tenant_id, $url_id)
     {
         $returnType = '\FastComments\Client\Model\CreateV1PageReact';
-        $request = $this->deleteV1PageReactRequest($tenant_id, $url_id, $options);
+        $request = $this->deleteV1PageReactRequest($tenant_id, $url_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3701,10 +3693,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteV1PageReactRequest($tenant_id, $url_id, array $options = [])
+    public function deleteV1PageReactRequest($tenant_id, $url_id)
     {
-        // unbox the optional parameters and request options from the $options array
-        $contentType = $options['contentType'] ?? self::contentTypes['deleteV1PageReact'][0];
+        $contentType = self::contentTypes['deleteV1PageReact'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -3816,9 +3807,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateV1PageReact|\FastComments\Client\Model\APIError
      */
-    public function deleteV2PageReact($tenant_id, $url_id, $id, array $options = [])
+    public function deleteV2PageReact($tenant_id, $url_id, $id)
     {
-        list($response) = $this->deleteV2PageReactWithHttpInfo($tenant_id, $url_id, $id, $options);
+        list($response) = $this->deleteV2PageReactWithHttpInfo($tenant_id, $url_id, $id);
         return $response;
     }
 
@@ -3836,9 +3827,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateV1PageReact|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteV2PageReactWithHttpInfo($tenant_id, $url_id, $id, array $options = [])
+    public function deleteV2PageReactWithHttpInfo($tenant_id, $url_id, $id)
     {
-        $request = $this->deleteV2PageReactRequest($tenant_id, $url_id, $id, $options);
+        $request = $this->deleteV2PageReactRequest($tenant_id, $url_id, $id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3936,9 +3927,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteV2PageReactAsync($tenant_id, $url_id, $id, array $options = [])
+    public function deleteV2PageReactAsync($tenant_id, $url_id, $id)
     {
-        return $this->deleteV2PageReactAsyncWithHttpInfo($tenant_id, $url_id, $id, $options)
+        return $this->deleteV2PageReactAsyncWithHttpInfo($tenant_id, $url_id, $id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3959,10 +3950,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteV2PageReactAsyncWithHttpInfo($tenant_id, $url_id, $id, array $options = [])
+    public function deleteV2PageReactAsyncWithHttpInfo($tenant_id, $url_id, $id)
     {
         $returnType = '\FastComments\Client\Model\CreateV1PageReact';
-        $request = $this->deleteV2PageReactRequest($tenant_id, $url_id, $id, $options);
+        $request = $this->deleteV2PageReactRequest($tenant_id, $url_id, $id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4011,10 +4002,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteV2PageReactRequest($tenant_id, $url_id, $id, array $options = [])
+    public function deleteV2PageReactRequest($tenant_id, $url_id, $id)
     {
-        // unbox the optional parameters and request options from the $options array
-        $contentType = $options['contentType'] ?? self::contentTypes['deleteV2PageReact'][0];
+        $contentType = self::contentTypes['deleteV2PageReact'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -4145,9 +4135,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function flagCommentPublic($tenant_id, $comment_id, $is_flagged, array $options = [])
+    public function flagCommentPublic($tenant_id, $comment_id, $is_flagged, $sso = null)
     {
-        list($response) = $this->flagCommentPublicWithHttpInfo($tenant_id, $comment_id, $is_flagged, $options);
+        list($response) = $this->flagCommentPublicWithHttpInfo($tenant_id, $comment_id, $is_flagged, $sso);
         return $response;
     }
 
@@ -4168,9 +4158,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function flagCommentPublicWithHttpInfo($tenant_id, $comment_id, $is_flagged, array $options = [])
+    public function flagCommentPublicWithHttpInfo($tenant_id, $comment_id, $is_flagged, $sso = null)
     {
-        $request = $this->flagCommentPublicRequest($tenant_id, $comment_id, $is_flagged, $options);
+        $request = $this->flagCommentPublicRequest($tenant_id, $comment_id, $is_flagged, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4271,9 +4261,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function flagCommentPublicAsync($tenant_id, $comment_id, $is_flagged, array $options = [])
+    public function flagCommentPublicAsync($tenant_id, $comment_id, $is_flagged, $sso = null)
     {
-        return $this->flagCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $is_flagged, $options)
+        return $this->flagCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $is_flagged, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4297,10 +4287,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function flagCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $is_flagged, array $options = [])
+    public function flagCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $is_flagged, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->flagCommentPublicRequest($tenant_id, $comment_id, $is_flagged, $options);
+        $request = $this->flagCommentPublicRequest($tenant_id, $comment_id, $is_flagged, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4352,11 +4342,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function flagCommentPublicRequest($tenant_id, $comment_id, $is_flagged, array $options = [])
+    public function flagCommentPublicRequest($tenant_id, $comment_id, $is_flagged, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['flagCommentPublic'][0];
+        $contentType = self::contentTypes['flagCommentPublic'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -4843,9 +4831,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetCommentVoteUserNamesSuccessResponse|\FastComments\Client\Model\APIError
      */
-    public function getCommentVoteUserNames($tenant_id, $comment_id, $dir, array $options = [])
+    public function getCommentVoteUserNames($tenant_id, $comment_id, $dir, $sso = null)
     {
-        list($response) = $this->getCommentVoteUserNamesWithHttpInfo($tenant_id, $comment_id, $dir, $options);
+        list($response) = $this->getCommentVoteUserNamesWithHttpInfo($tenant_id, $comment_id, $dir, $sso);
         return $response;
     }
 
@@ -4866,9 +4854,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetCommentVoteUserNamesSuccessResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCommentVoteUserNamesWithHttpInfo($tenant_id, $comment_id, $dir, array $options = [])
+    public function getCommentVoteUserNamesWithHttpInfo($tenant_id, $comment_id, $dir, $sso = null)
     {
-        $request = $this->getCommentVoteUserNamesRequest($tenant_id, $comment_id, $dir, $options);
+        $request = $this->getCommentVoteUserNamesRequest($tenant_id, $comment_id, $dir, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4969,9 +4957,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentVoteUserNamesAsync($tenant_id, $comment_id, $dir, array $options = [])
+    public function getCommentVoteUserNamesAsync($tenant_id, $comment_id, $dir, $sso = null)
     {
-        return $this->getCommentVoteUserNamesAsyncWithHttpInfo($tenant_id, $comment_id, $dir, $options)
+        return $this->getCommentVoteUserNamesAsyncWithHttpInfo($tenant_id, $comment_id, $dir, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4995,10 +4983,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentVoteUserNamesAsyncWithHttpInfo($tenant_id, $comment_id, $dir, array $options = [])
+    public function getCommentVoteUserNamesAsyncWithHttpInfo($tenant_id, $comment_id, $dir, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\GetCommentVoteUserNamesSuccessResponse';
-        $request = $this->getCommentVoteUserNamesRequest($tenant_id, $comment_id, $dir, $options);
+        $request = $this->getCommentVoteUserNamesRequest($tenant_id, $comment_id, $dir, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5050,11 +5038,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCommentVoteUserNamesRequest($tenant_id, $comment_id, $dir, array $options = [])
+    public function getCommentVoteUserNamesRequest($tenant_id, $comment_id, $dir, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['getCommentVoteUserNames'][0];
+        $contentType = self::contentTypes['getCommentVoteUserNames'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -6312,9 +6298,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetEventLogResponse|\FastComments\Client\Model\APIError
      */
-    public function getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, array $options = [])
+    public function getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time = null)
     {
-        list($response) = $this->getEventLogWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, $options);
+        list($response) = $this->getEventLogWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, $end_time);
         return $response;
     }
 
@@ -6336,9 +6322,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetEventLogResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getEventLogWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, array $options = [])
+    public function getEventLogWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, $end_time = null)
     {
-        $request = $this->getEventLogRequest($tenant_id, $url_id, $user_id_ws, $start_time, $options);
+        $request = $this->getEventLogRequest($tenant_id, $url_id, $user_id_ws, $start_time, $end_time);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6440,9 +6426,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEventLogAsync($tenant_id, $url_id, $user_id_ws, $start_time, array $options = [])
+    public function getEventLogAsync($tenant_id, $url_id, $user_id_ws, $start_time, $end_time = null)
     {
-        return $this->getEventLogAsyncWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, $options)
+        return $this->getEventLogAsyncWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, $end_time)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6467,10 +6453,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEventLogAsyncWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, array $options = [])
+    public function getEventLogAsyncWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, $end_time = null)
     {
         $returnType = '\FastComments\Client\Model\GetEventLogResponse';
-        $request = $this->getEventLogRequest($tenant_id, $url_id, $user_id_ws, $start_time, $options);
+        $request = $this->getEventLogRequest($tenant_id, $url_id, $user_id_ws, $start_time, $end_time);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6523,11 +6509,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getEventLogRequest($tenant_id, $url_id, $user_id_ws, $start_time, array $options = [])
+    public function getEventLogRequest($tenant_id, $url_id, $user_id_ws, $start_time, $end_time = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $end_time = array_key_exists('end_time', $options) ? $options['end_time'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['getEventLog'][0];
+        $contentType = self::contentTypes['getEventLog'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -7073,9 +7057,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\FeedPostsStatsResponse|\FastComments\Client\Model\APIError
      */
-    public function getFeedPostsStats($tenant_id, $post_ids, array $options = [])
+    public function getFeedPostsStats($tenant_id, $post_ids, $sso = null)
     {
-        list($response) = $this->getFeedPostsStatsWithHttpInfo($tenant_id, $post_ids, $options);
+        list($response) = $this->getFeedPostsStatsWithHttpInfo($tenant_id, $post_ids, $sso);
         return $response;
     }
 
@@ -7095,9 +7079,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\FeedPostsStatsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFeedPostsStatsWithHttpInfo($tenant_id, $post_ids, array $options = [])
+    public function getFeedPostsStatsWithHttpInfo($tenant_id, $post_ids, $sso = null)
     {
-        $request = $this->getFeedPostsStatsRequest($tenant_id, $post_ids, $options);
+        $request = $this->getFeedPostsStatsRequest($tenant_id, $post_ids, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7197,9 +7181,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFeedPostsStatsAsync($tenant_id, $post_ids, array $options = [])
+    public function getFeedPostsStatsAsync($tenant_id, $post_ids, $sso = null)
     {
-        return $this->getFeedPostsStatsAsyncWithHttpInfo($tenant_id, $post_ids, $options)
+        return $this->getFeedPostsStatsAsyncWithHttpInfo($tenant_id, $post_ids, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7222,10 +7206,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFeedPostsStatsAsyncWithHttpInfo($tenant_id, $post_ids, array $options = [])
+    public function getFeedPostsStatsAsyncWithHttpInfo($tenant_id, $post_ids, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\FeedPostsStatsResponse';
-        $request = $this->getFeedPostsStatsRequest($tenant_id, $post_ids, $options);
+        $request = $this->getFeedPostsStatsRequest($tenant_id, $post_ids, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7276,11 +7260,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getFeedPostsStatsRequest($tenant_id, $post_ids, array $options = [])
+    public function getFeedPostsStatsRequest($tenant_id, $post_ids, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['getFeedPostsStats'][0];
+        $contentType = self::contentTypes['getFeedPostsStats'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -7401,9 +7383,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GifGetLargeResponse|\FastComments\Client\Model\APIError|\FastComments\Client\Model\APIError
      */
-    public function getGifLarge($tenant_id, $large_internal_url_sanitized, array $options = [])
+    public function getGifLarge($tenant_id, $large_internal_url_sanitized)
     {
-        list($response) = $this->getGifLargeWithHttpInfo($tenant_id, $large_internal_url_sanitized, $options);
+        list($response) = $this->getGifLargeWithHttpInfo($tenant_id, $large_internal_url_sanitized);
         return $response;
     }
 
@@ -7420,9 +7402,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GifGetLargeResponse|\FastComments\Client\Model\APIError|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getGifLargeWithHttpInfo($tenant_id, $large_internal_url_sanitized, array $options = [])
+    public function getGifLargeWithHttpInfo($tenant_id, $large_internal_url_sanitized)
     {
-        $request = $this->getGifLargeRequest($tenant_id, $large_internal_url_sanitized, $options);
+        $request = $this->getGifLargeRequest($tenant_id, $large_internal_url_sanitized);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7533,9 +7515,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGifLargeAsync($tenant_id, $large_internal_url_sanitized, array $options = [])
+    public function getGifLargeAsync($tenant_id, $large_internal_url_sanitized)
     {
-        return $this->getGifLargeAsyncWithHttpInfo($tenant_id, $large_internal_url_sanitized, $options)
+        return $this->getGifLargeAsyncWithHttpInfo($tenant_id, $large_internal_url_sanitized)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7555,10 +7537,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGifLargeAsyncWithHttpInfo($tenant_id, $large_internal_url_sanitized, array $options = [])
+    public function getGifLargeAsyncWithHttpInfo($tenant_id, $large_internal_url_sanitized)
     {
         $returnType = '\FastComments\Client\Model\GifGetLargeResponse';
-        $request = $this->getGifLargeRequest($tenant_id, $large_internal_url_sanitized, $options);
+        $request = $this->getGifLargeRequest($tenant_id, $large_internal_url_sanitized);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7606,10 +7588,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getGifLargeRequest($tenant_id, $large_internal_url_sanitized, array $options = [])
+    public function getGifLargeRequest($tenant_id, $large_internal_url_sanitized)
     {
-        // unbox the optional parameters and request options from the $options array
-        $contentType = $options['contentType'] ?? self::contentTypes['getGifLarge'][0];
+        $contentType = self::contentTypes['getGifLarge'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -8430,9 +8411,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetEventLogResponse|\FastComments\Client\Model\APIError
      */
-    public function getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, array $options = [])
+    public function getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time = null)
     {
-        list($response) = $this->getGlobalEventLogWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, $options);
+        list($response) = $this->getGlobalEventLogWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, $end_time);
         return $response;
     }
 
@@ -8454,9 +8435,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetEventLogResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getGlobalEventLogWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, array $options = [])
+    public function getGlobalEventLogWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, $end_time = null)
     {
-        $request = $this->getGlobalEventLogRequest($tenant_id, $url_id, $user_id_ws, $start_time, $options);
+        $request = $this->getGlobalEventLogRequest($tenant_id, $url_id, $user_id_ws, $start_time, $end_time);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8558,9 +8539,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGlobalEventLogAsync($tenant_id, $url_id, $user_id_ws, $start_time, array $options = [])
+    public function getGlobalEventLogAsync($tenant_id, $url_id, $user_id_ws, $start_time, $end_time = null)
     {
-        return $this->getGlobalEventLogAsyncWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, $options)
+        return $this->getGlobalEventLogAsyncWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, $end_time)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8585,10 +8566,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGlobalEventLogAsyncWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, array $options = [])
+    public function getGlobalEventLogAsyncWithHttpInfo($tenant_id, $url_id, $user_id_ws, $start_time, $end_time = null)
     {
         $returnType = '\FastComments\Client\Model\GetEventLogResponse';
-        $request = $this->getGlobalEventLogRequest($tenant_id, $url_id, $user_id_ws, $start_time, $options);
+        $request = $this->getGlobalEventLogRequest($tenant_id, $url_id, $user_id_ws, $start_time, $end_time);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8641,11 +8622,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getGlobalEventLogRequest($tenant_id, $url_id, $user_id_ws, $start_time, array $options = [])
+    public function getGlobalEventLogRequest($tenant_id, $url_id, $user_id_ws, $start_time, $end_time = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $end_time = array_key_exists('end_time', $options) ? $options['end_time'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['getGlobalEventLog'][0];
+        $contentType = self::contentTypes['getGlobalEventLog'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -10298,9 +10277,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetUserNotificationCountResponse|\FastComments\Client\Model\APIError
      */
-    public function getUserNotificationCount($tenant_id, array $options = [])
+    public function getUserNotificationCount($tenant_id, $sso = null)
     {
-        list($response) = $this->getUserNotificationCountWithHttpInfo($tenant_id, $options);
+        list($response) = $this->getUserNotificationCountWithHttpInfo($tenant_id, $sso);
         return $response;
     }
 
@@ -10319,9 +10298,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetUserNotificationCountResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserNotificationCountWithHttpInfo($tenant_id, array $options = [])
+    public function getUserNotificationCountWithHttpInfo($tenant_id, $sso = null)
     {
-        $request = $this->getUserNotificationCountRequest($tenant_id, $options);
+        $request = $this->getUserNotificationCountRequest($tenant_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10420,9 +10399,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserNotificationCountAsync($tenant_id, array $options = [])
+    public function getUserNotificationCountAsync($tenant_id, $sso = null)
     {
-        return $this->getUserNotificationCountAsyncWithHttpInfo($tenant_id, $options)
+        return $this->getUserNotificationCountAsyncWithHttpInfo($tenant_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10444,10 +10423,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserNotificationCountAsyncWithHttpInfo($tenant_id, array $options = [])
+    public function getUserNotificationCountAsyncWithHttpInfo($tenant_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\GetUserNotificationCountResponse';
-        $request = $this->getUserNotificationCountRequest($tenant_id, $options);
+        $request = $this->getUserNotificationCountRequest($tenant_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10497,11 +10476,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserNotificationCountRequest($tenant_id, array $options = [])
+    public function getUserNotificationCountRequest($tenant_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['getUserNotificationCount'][0];
+        $contentType = self::contentTypes['getUserNotificationCount'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -11079,9 +11056,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetUserPresenceStatusesResponse|\FastComments\Client\Model\APIError|\FastComments\Client\Model\APIError
      */
-    public function getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids, array $options = [])
+    public function getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids)
     {
-        list($response) = $this->getUserPresenceStatusesWithHttpInfo($tenant_id, $url_id_ws, $user_ids, $options);
+        list($response) = $this->getUserPresenceStatusesWithHttpInfo($tenant_id, $url_id_ws, $user_ids);
         return $response;
     }
 
@@ -11099,9 +11076,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetUserPresenceStatusesResponse|\FastComments\Client\Model\APIError|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserPresenceStatusesWithHttpInfo($tenant_id, $url_id_ws, $user_ids, array $options = [])
+    public function getUserPresenceStatusesWithHttpInfo($tenant_id, $url_id_ws, $user_ids)
     {
-        $request = $this->getUserPresenceStatusesRequest($tenant_id, $url_id_ws, $user_ids, $options);
+        $request = $this->getUserPresenceStatusesRequest($tenant_id, $url_id_ws, $user_ids);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11213,9 +11190,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserPresenceStatusesAsync($tenant_id, $url_id_ws, $user_ids, array $options = [])
+    public function getUserPresenceStatusesAsync($tenant_id, $url_id_ws, $user_ids)
     {
-        return $this->getUserPresenceStatusesAsyncWithHttpInfo($tenant_id, $url_id_ws, $user_ids, $options)
+        return $this->getUserPresenceStatusesAsyncWithHttpInfo($tenant_id, $url_id_ws, $user_ids)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11236,10 +11213,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserPresenceStatusesAsyncWithHttpInfo($tenant_id, $url_id_ws, $user_ids, array $options = [])
+    public function getUserPresenceStatusesAsyncWithHttpInfo($tenant_id, $url_id_ws, $user_ids)
     {
         $returnType = '\FastComments\Client\Model\GetUserPresenceStatusesResponse';
-        $request = $this->getUserPresenceStatusesRequest($tenant_id, $url_id_ws, $user_ids, $options);
+        $request = $this->getUserPresenceStatusesRequest($tenant_id, $url_id_ws, $user_ids);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11288,10 +11265,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserPresenceStatusesRequest($tenant_id, $url_id_ws, $user_ids, array $options = [])
+    public function getUserPresenceStatusesRequest($tenant_id, $url_id_ws, $user_ids)
     {
-        // unbox the optional parameters and request options from the $options array
-        $contentType = $options['contentType'] ?? self::contentTypes['getUserPresenceStatuses'][0];
+        $contentType = self::contentTypes['getUserPresenceStatuses'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -11745,9 +11721,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\PageUsersInfoResponse|\FastComments\Client\Model\APIError|\FastComments\Client\Model\APIError
      */
-    public function getUsersInfo($tenant_id, $ids, array $options = [])
+    public function getUsersInfo($tenant_id, $ids)
     {
-        list($response) = $this->getUsersInfoWithHttpInfo($tenant_id, $ids, $options);
+        list($response) = $this->getUsersInfoWithHttpInfo($tenant_id, $ids);
         return $response;
     }
 
@@ -11764,9 +11740,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\PageUsersInfoResponse|\FastComments\Client\Model\APIError|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUsersInfoWithHttpInfo($tenant_id, $ids, array $options = [])
+    public function getUsersInfoWithHttpInfo($tenant_id, $ids)
     {
-        $request = $this->getUsersInfoRequest($tenant_id, $ids, $options);
+        $request = $this->getUsersInfoRequest($tenant_id, $ids);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11877,9 +11853,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUsersInfoAsync($tenant_id, $ids, array $options = [])
+    public function getUsersInfoAsync($tenant_id, $ids)
     {
-        return $this->getUsersInfoAsyncWithHttpInfo($tenant_id, $ids, $options)
+        return $this->getUsersInfoAsyncWithHttpInfo($tenant_id, $ids)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11899,10 +11875,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUsersInfoAsyncWithHttpInfo($tenant_id, $ids, array $options = [])
+    public function getUsersInfoAsyncWithHttpInfo($tenant_id, $ids)
     {
         $returnType = '\FastComments\Client\Model\PageUsersInfoResponse';
-        $request = $this->getUsersInfoRequest($tenant_id, $ids, $options);
+        $request = $this->getUsersInfoRequest($tenant_id, $ids);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11950,10 +11926,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUsersInfoRequest($tenant_id, $ids, array $options = [])
+    public function getUsersInfoRequest($tenant_id, $ids)
     {
-        // unbox the optional parameters and request options from the $options array
-        $contentType = $options['contentType'] ?? self::contentTypes['getUsersInfo'][0];
+        $contentType = self::contentTypes['getUsersInfo'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -12064,9 +12039,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetV1PageLikes|\FastComments\Client\Model\APIError
      */
-    public function getV1PageLikes($tenant_id, $url_id, array $options = [])
+    public function getV1PageLikes($tenant_id, $url_id)
     {
-        list($response) = $this->getV1PageLikesWithHttpInfo($tenant_id, $url_id, $options);
+        list($response) = $this->getV1PageLikesWithHttpInfo($tenant_id, $url_id);
         return $response;
     }
 
@@ -12083,9 +12058,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetV1PageLikes|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getV1PageLikesWithHttpInfo($tenant_id, $url_id, array $options = [])
+    public function getV1PageLikesWithHttpInfo($tenant_id, $url_id)
     {
-        $request = $this->getV1PageLikesRequest($tenant_id, $url_id, $options);
+        $request = $this->getV1PageLikesRequest($tenant_id, $url_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12182,9 +12157,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getV1PageLikesAsync($tenant_id, $url_id, array $options = [])
+    public function getV1PageLikesAsync($tenant_id, $url_id)
     {
-        return $this->getV1PageLikesAsyncWithHttpInfo($tenant_id, $url_id, $options)
+        return $this->getV1PageLikesAsyncWithHttpInfo($tenant_id, $url_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12204,10 +12179,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getV1PageLikesAsyncWithHttpInfo($tenant_id, $url_id, array $options = [])
+    public function getV1PageLikesAsyncWithHttpInfo($tenant_id, $url_id)
     {
         $returnType = '\FastComments\Client\Model\GetV1PageLikes';
-        $request = $this->getV1PageLikesRequest($tenant_id, $url_id, $options);
+        $request = $this->getV1PageLikesRequest($tenant_id, $url_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12255,10 +12230,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getV1PageLikesRequest($tenant_id, $url_id, array $options = [])
+    public function getV1PageLikesRequest($tenant_id, $url_id)
     {
-        // unbox the optional parameters and request options from the $options array
-        $contentType = $options['contentType'] ?? self::contentTypes['getV1PageLikes'][0];
+        $contentType = self::contentTypes['getV1PageLikes'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -12370,9 +12344,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetV2PageReactUsersResponse|\FastComments\Client\Model\APIError
      */
-    public function getV2PageReactUsers($tenant_id, $url_id, $id, array $options = [])
+    public function getV2PageReactUsers($tenant_id, $url_id, $id)
     {
-        list($response) = $this->getV2PageReactUsersWithHttpInfo($tenant_id, $url_id, $id, $options);
+        list($response) = $this->getV2PageReactUsersWithHttpInfo($tenant_id, $url_id, $id);
         return $response;
     }
 
@@ -12390,9 +12364,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetV2PageReactUsersResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getV2PageReactUsersWithHttpInfo($tenant_id, $url_id, $id, array $options = [])
+    public function getV2PageReactUsersWithHttpInfo($tenant_id, $url_id, $id)
     {
-        $request = $this->getV2PageReactUsersRequest($tenant_id, $url_id, $id, $options);
+        $request = $this->getV2PageReactUsersRequest($tenant_id, $url_id, $id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12490,9 +12464,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getV2PageReactUsersAsync($tenant_id, $url_id, $id, array $options = [])
+    public function getV2PageReactUsersAsync($tenant_id, $url_id, $id)
     {
-        return $this->getV2PageReactUsersAsyncWithHttpInfo($tenant_id, $url_id, $id, $options)
+        return $this->getV2PageReactUsersAsyncWithHttpInfo($tenant_id, $url_id, $id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12513,10 +12487,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getV2PageReactUsersAsyncWithHttpInfo($tenant_id, $url_id, $id, array $options = [])
+    public function getV2PageReactUsersAsyncWithHttpInfo($tenant_id, $url_id, $id)
     {
         $returnType = '\FastComments\Client\Model\GetV2PageReactUsersResponse';
-        $request = $this->getV2PageReactUsersRequest($tenant_id, $url_id, $id, $options);
+        $request = $this->getV2PageReactUsersRequest($tenant_id, $url_id, $id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12565,10 +12539,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getV2PageReactUsersRequest($tenant_id, $url_id, $id, array $options = [])
+    public function getV2PageReactUsersRequest($tenant_id, $url_id, $id)
     {
-        // unbox the optional parameters and request options from the $options array
-        $contentType = $options['contentType'] ?? self::contentTypes['getV2PageReactUsers'][0];
+        $contentType = self::contentTypes['getV2PageReactUsers'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -12695,9 +12668,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetV2PageReacts|\FastComments\Client\Model\APIError
      */
-    public function getV2PageReacts($tenant_id, $url_id, array $options = [])
+    public function getV2PageReacts($tenant_id, $url_id)
     {
-        list($response) = $this->getV2PageReactsWithHttpInfo($tenant_id, $url_id, $options);
+        list($response) = $this->getV2PageReactsWithHttpInfo($tenant_id, $url_id);
         return $response;
     }
 
@@ -12714,9 +12687,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetV2PageReacts|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getV2PageReactsWithHttpInfo($tenant_id, $url_id, array $options = [])
+    public function getV2PageReactsWithHttpInfo($tenant_id, $url_id)
     {
-        $request = $this->getV2PageReactsRequest($tenant_id, $url_id, $options);
+        $request = $this->getV2PageReactsRequest($tenant_id, $url_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12813,9 +12786,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getV2PageReactsAsync($tenant_id, $url_id, array $options = [])
+    public function getV2PageReactsAsync($tenant_id, $url_id)
     {
-        return $this->getV2PageReactsAsyncWithHttpInfo($tenant_id, $url_id, $options)
+        return $this->getV2PageReactsAsyncWithHttpInfo($tenant_id, $url_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12835,10 +12808,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getV2PageReactsAsyncWithHttpInfo($tenant_id, $url_id, array $options = [])
+    public function getV2PageReactsAsyncWithHttpInfo($tenant_id, $url_id)
     {
         $returnType = '\FastComments\Client\Model\GetV2PageReacts';
-        $request = $this->getV2PageReactsRequest($tenant_id, $url_id, $options);
+        $request = $this->getV2PageReactsRequest($tenant_id, $url_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12886,10 +12859,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getV2PageReactsRequest($tenant_id, $url_id, array $options = [])
+    public function getV2PageReactsRequest($tenant_id, $url_id)
     {
-        // unbox the optional parameters and request options from the $options array
-        $contentType = $options['contentType'] ?? self::contentTypes['getV2PageReacts'][0];
+        $contentType = self::contentTypes['getV2PageReacts'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -13004,9 +12976,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function lockComment($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function lockComment($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        list($response) = $this->lockCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $options);
+        list($response) = $this->lockCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso);
         return $response;
     }
 
@@ -13027,9 +12999,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function lockCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function lockCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        $request = $this->lockCommentRequest($tenant_id, $comment_id, $broadcast_id, $options);
+        $request = $this->lockCommentRequest($tenant_id, $comment_id, $broadcast_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13130,9 +13102,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function lockCommentAsync($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function lockCommentAsync($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        return $this->lockCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $options)
+        return $this->lockCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13156,10 +13128,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function lockCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function lockCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->lockCommentRequest($tenant_id, $comment_id, $broadcast_id, $options);
+        $request = $this->lockCommentRequest($tenant_id, $comment_id, $broadcast_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13211,11 +13183,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function lockCommentRequest($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function lockCommentRequest($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['lockComment'][0];
+        $contentType = self::contentTypes['lockComment'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -13349,9 +13319,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse
      */
-    public function logoutPublic(array $options = [])
+    public function logoutPublic()
     {
-        list($response) = $this->logoutPublicWithHttpInfo($options);
+        list($response) = $this->logoutPublicWithHttpInfo();
         return $response;
     }
 
@@ -13366,9 +13336,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function logoutPublicWithHttpInfo(array $options = [])
+    public function logoutPublicWithHttpInfo()
     {
-        $request = $this->logoutPublicRequest($options);
+        $request = $this->logoutPublicRequest();
 
         try {
             $options = $this->createHttpClientOption();
@@ -13449,9 +13419,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function logoutPublicAsync(array $options = [])
+    public function logoutPublicAsync()
     {
-        return $this->logoutPublicAsyncWithHttpInfo($options)
+        return $this->logoutPublicAsyncWithHttpInfo()
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13469,10 +13439,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function logoutPublicAsyncWithHttpInfo(array $options = [])
+    public function logoutPublicAsyncWithHttpInfo()
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->logoutPublicRequest($options);
+        $request = $this->logoutPublicRequest();
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13518,10 +13488,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function logoutPublicRequest(array $options = [])
+    public function logoutPublicRequest()
     {
-        // unbox the optional parameters and request options from the $options array
-        $contentType = $options['contentType'] ?? self::contentTypes['logoutPublic'][0];
+        $contentType = self::contentTypes['logoutPublic'][0];
         
 
         $resourcePath = '/auth/logout';
@@ -13605,9 +13574,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ChangeCommentPinStatusResponse|\FastComments\Client\Model\APIError
      */
-    public function pinComment($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function pinComment($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        list($response) = $this->pinCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $options);
+        list($response) = $this->pinCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso);
         return $response;
     }
 
@@ -13628,9 +13597,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ChangeCommentPinStatusResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function pinCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function pinCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        $request = $this->pinCommentRequest($tenant_id, $comment_id, $broadcast_id, $options);
+        $request = $this->pinCommentRequest($tenant_id, $comment_id, $broadcast_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13731,9 +13700,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pinCommentAsync($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function pinCommentAsync($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        return $this->pinCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $options)
+        return $this->pinCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13757,10 +13726,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pinCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function pinCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\ChangeCommentPinStatusResponse';
-        $request = $this->pinCommentRequest($tenant_id, $comment_id, $broadcast_id, $options);
+        $request = $this->pinCommentRequest($tenant_id, $comment_id, $broadcast_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13812,11 +13781,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function pinCommentRequest($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function pinCommentRequest($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['pinComment'][0];
+        $contentType = self::contentTypes['pinComment'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -14335,9 +14302,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ResetUserNotificationsResponse|\FastComments\Client\Model\APIError
      */
-    public function resetUserNotificationCount($tenant_id, array $options = [])
+    public function resetUserNotificationCount($tenant_id, $sso = null)
     {
-        list($response) = $this->resetUserNotificationCountWithHttpInfo($tenant_id, $options);
+        list($response) = $this->resetUserNotificationCountWithHttpInfo($tenant_id, $sso);
         return $response;
     }
 
@@ -14356,9 +14323,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ResetUserNotificationsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function resetUserNotificationCountWithHttpInfo($tenant_id, array $options = [])
+    public function resetUserNotificationCountWithHttpInfo($tenant_id, $sso = null)
     {
-        $request = $this->resetUserNotificationCountRequest($tenant_id, $options);
+        $request = $this->resetUserNotificationCountRequest($tenant_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14457,9 +14424,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function resetUserNotificationCountAsync($tenant_id, array $options = [])
+    public function resetUserNotificationCountAsync($tenant_id, $sso = null)
     {
-        return $this->resetUserNotificationCountAsyncWithHttpInfo($tenant_id, $options)
+        return $this->resetUserNotificationCountAsyncWithHttpInfo($tenant_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -14481,10 +14448,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function resetUserNotificationCountAsyncWithHttpInfo($tenant_id, array $options = [])
+    public function resetUserNotificationCountAsyncWithHttpInfo($tenant_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\ResetUserNotificationsResponse';
-        $request = $this->resetUserNotificationCountRequest($tenant_id, $options);
+        $request = $this->resetUserNotificationCountRequest($tenant_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14534,11 +14501,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function resetUserNotificationCountRequest($tenant_id, array $options = [])
+    public function resetUserNotificationCountRequest($tenant_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['resetUserNotificationCount'][0];
+        $contentType = self::contentTypes['resetUserNotificationCount'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -15804,9 +15769,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\UnblockSuccess|\FastComments\Client\Model\APIError
      */
-    public function unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, array $options = [])
+    public function unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null)
     {
-        list($response) = $this->unBlockCommentPublicWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $options);
+        list($response) = $this->unBlockCommentPublicWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
         return $response;
     }
 
@@ -15827,9 +15792,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\UnblockSuccess|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function unBlockCommentPublicWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, array $options = [])
+    public function unBlockCommentPublicWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null)
     {
-        $request = $this->unBlockCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $options);
+        $request = $this->unBlockCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -15930,9 +15895,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unBlockCommentPublicAsync($tenant_id, $comment_id, $public_block_from_comment_params, array $options = [])
+    public function unBlockCommentPublicAsync($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null)
     {
-        return $this->unBlockCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $options)
+        return $this->unBlockCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -15956,10 +15921,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unBlockCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, array $options = [])
+    public function unBlockCommentPublicAsyncWithHttpInfo($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\UnblockSuccess';
-        $request = $this->unBlockCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $options);
+        $request = $this->unBlockCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -16011,11 +15976,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function unBlockCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, array $options = [])
+    public function unBlockCommentPublicRequest($tenant_id, $comment_id, $public_block_from_comment_params, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['unBlockCommentPublic'][0];
+        $contentType = self::contentTypes['unBlockCommentPublic'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -16154,9 +16117,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function unLockComment($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function unLockComment($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        list($response) = $this->unLockCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $options);
+        list($response) = $this->unLockCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso);
         return $response;
     }
 
@@ -16177,9 +16140,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function unLockCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function unLockCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        $request = $this->unLockCommentRequest($tenant_id, $comment_id, $broadcast_id, $options);
+        $request = $this->unLockCommentRequest($tenant_id, $comment_id, $broadcast_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -16280,9 +16243,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unLockCommentAsync($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function unLockCommentAsync($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        return $this->unLockCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $options)
+        return $this->unLockCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -16306,10 +16269,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unLockCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function unLockCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->unLockCommentRequest($tenant_id, $comment_id, $broadcast_id, $options);
+        $request = $this->unLockCommentRequest($tenant_id, $comment_id, $broadcast_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -16361,11 +16324,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function unLockCommentRequest($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function unLockCommentRequest($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['unLockComment'][0];
+        $contentType = self::contentTypes['unLockComment'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -16505,9 +16466,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ChangeCommentPinStatusResponse|\FastComments\Client\Model\APIError
      */
-    public function unPinComment($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function unPinComment($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        list($response) = $this->unPinCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $options);
+        list($response) = $this->unPinCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso);
         return $response;
     }
 
@@ -16528,9 +16489,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ChangeCommentPinStatusResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function unPinCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function unPinCommentWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        $request = $this->unPinCommentRequest($tenant_id, $comment_id, $broadcast_id, $options);
+        $request = $this->unPinCommentRequest($tenant_id, $comment_id, $broadcast_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -16631,9 +16592,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unPinCommentAsync($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function unPinCommentAsync($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        return $this->unPinCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $options)
+        return $this->unPinCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -16657,10 +16618,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unPinCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function unPinCommentAsyncWithHttpInfo($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\ChangeCommentPinStatusResponse';
-        $request = $this->unPinCommentRequest($tenant_id, $comment_id, $broadcast_id, $options);
+        $request = $this->unPinCommentRequest($tenant_id, $comment_id, $broadcast_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -16712,11 +16673,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function unPinCommentRequest($tenant_id, $comment_id, $broadcast_id, array $options = [])
+    public function unPinCommentRequest($tenant_id, $comment_id, $broadcast_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['unPinComment'][0];
+        $contentType = self::contentTypes['unPinComment'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -17222,9 +17181,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\UpdateUserNotificationCommentSubscriptionStatusResponse|\FastComments\Client\Model\APIError
      */
-    public function updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, array $options = [])
+    public function updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso = null)
     {
-        list($response) = $this->updateUserNotificationCommentSubscriptionStatusWithHttpInfo($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $options);
+        list($response) = $this->updateUserNotificationCommentSubscriptionStatusWithHttpInfo($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso);
         return $response;
     }
 
@@ -17246,9 +17205,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\UpdateUserNotificationCommentSubscriptionStatusResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateUserNotificationCommentSubscriptionStatusWithHttpInfo($tenant_id, $notification_id, $opted_in_or_out, $comment_id, array $options = [])
+    public function updateUserNotificationCommentSubscriptionStatusWithHttpInfo($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso = null)
     {
-        $request = $this->updateUserNotificationCommentSubscriptionStatusRequest($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $options);
+        $request = $this->updateUserNotificationCommentSubscriptionStatusRequest($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -17350,9 +17309,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateUserNotificationCommentSubscriptionStatusAsync($tenant_id, $notification_id, $opted_in_or_out, $comment_id, array $options = [])
+    public function updateUserNotificationCommentSubscriptionStatusAsync($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso = null)
     {
-        return $this->updateUserNotificationCommentSubscriptionStatusAsyncWithHttpInfo($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $options)
+        return $this->updateUserNotificationCommentSubscriptionStatusAsyncWithHttpInfo($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -17377,10 +17336,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateUserNotificationCommentSubscriptionStatusAsyncWithHttpInfo($tenant_id, $notification_id, $opted_in_or_out, $comment_id, array $options = [])
+    public function updateUserNotificationCommentSubscriptionStatusAsyncWithHttpInfo($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\UpdateUserNotificationCommentSubscriptionStatusResponse';
-        $request = $this->updateUserNotificationCommentSubscriptionStatusRequest($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $options);
+        $request = $this->updateUserNotificationCommentSubscriptionStatusRequest($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -17433,11 +17392,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateUserNotificationCommentSubscriptionStatusRequest($tenant_id, $notification_id, $opted_in_or_out, $comment_id, array $options = [])
+    public function updateUserNotificationCommentSubscriptionStatusRequest($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['updateUserNotificationCommentSubscriptionStatus'][0];
+        $contentType = self::contentTypes['updateUserNotificationCommentSubscriptionStatus'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -17595,9 +17552,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\UpdateUserNotificationPageSubscriptionStatusResponse|\FastComments\Client\Model\APIError
      */
-    public function updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, array $options = [])
+    public function updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso = null)
     {
-        list($response) = $this->updateUserNotificationPageSubscriptionStatusWithHttpInfo($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $options);
+        list($response) = $this->updateUserNotificationPageSubscriptionStatusWithHttpInfo($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso);
         return $response;
     }
 
@@ -17620,9 +17577,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\UpdateUserNotificationPageSubscriptionStatusResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateUserNotificationPageSubscriptionStatusWithHttpInfo($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, array $options = [])
+    public function updateUserNotificationPageSubscriptionStatusWithHttpInfo($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso = null)
     {
-        $request = $this->updateUserNotificationPageSubscriptionStatusRequest($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $options);
+        $request = $this->updateUserNotificationPageSubscriptionStatusRequest($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -17725,9 +17682,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateUserNotificationPageSubscriptionStatusAsync($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, array $options = [])
+    public function updateUserNotificationPageSubscriptionStatusAsync($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso = null)
     {
-        return $this->updateUserNotificationPageSubscriptionStatusAsyncWithHttpInfo($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $options)
+        return $this->updateUserNotificationPageSubscriptionStatusAsyncWithHttpInfo($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -17753,10 +17710,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateUserNotificationPageSubscriptionStatusAsyncWithHttpInfo($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, array $options = [])
+    public function updateUserNotificationPageSubscriptionStatusAsyncWithHttpInfo($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\UpdateUserNotificationPageSubscriptionStatusResponse';
-        $request = $this->updateUserNotificationPageSubscriptionStatusRequest($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $options);
+        $request = $this->updateUserNotificationPageSubscriptionStatusRequest($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -17810,11 +17767,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateUserNotificationPageSubscriptionStatusRequest($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, array $options = [])
+    public function updateUserNotificationPageSubscriptionStatusRequest($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['updateUserNotificationPageSubscriptionStatus'][0];
+        $contentType = self::contentTypes['updateUserNotificationPageSubscriptionStatus'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -17987,9 +17942,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\UpdateUserNotificationStatusResponse|\FastComments\Client\Model\APIError
      */
-    public function updateUserNotificationStatus($tenant_id, $notification_id, $new_status, array $options = [])
+    public function updateUserNotificationStatus($tenant_id, $notification_id, $new_status, $sso = null)
     {
-        list($response) = $this->updateUserNotificationStatusWithHttpInfo($tenant_id, $notification_id, $new_status, $options);
+        list($response) = $this->updateUserNotificationStatusWithHttpInfo($tenant_id, $notification_id, $new_status, $sso);
         return $response;
     }
 
@@ -18010,9 +17965,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\UpdateUserNotificationStatusResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateUserNotificationStatusWithHttpInfo($tenant_id, $notification_id, $new_status, array $options = [])
+    public function updateUserNotificationStatusWithHttpInfo($tenant_id, $notification_id, $new_status, $sso = null)
     {
-        $request = $this->updateUserNotificationStatusRequest($tenant_id, $notification_id, $new_status, $options);
+        $request = $this->updateUserNotificationStatusRequest($tenant_id, $notification_id, $new_status, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -18113,9 +18068,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateUserNotificationStatusAsync($tenant_id, $notification_id, $new_status, array $options = [])
+    public function updateUserNotificationStatusAsync($tenant_id, $notification_id, $new_status, $sso = null)
     {
-        return $this->updateUserNotificationStatusAsyncWithHttpInfo($tenant_id, $notification_id, $new_status, $options)
+        return $this->updateUserNotificationStatusAsyncWithHttpInfo($tenant_id, $notification_id, $new_status, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -18139,10 +18094,10 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateUserNotificationStatusAsyncWithHttpInfo($tenant_id, $notification_id, $new_status, array $options = [])
+    public function updateUserNotificationStatusAsyncWithHttpInfo($tenant_id, $notification_id, $new_status, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\UpdateUserNotificationStatusResponse';
-        $request = $this->updateUserNotificationStatusRequest($tenant_id, $notification_id, $new_status, $options);
+        $request = $this->updateUserNotificationStatusRequest($tenant_id, $notification_id, $new_status, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -18194,11 +18149,9 @@ class PublicApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateUserNotificationStatusRequest($tenant_id, $notification_id, $new_status, array $options = [])
+    public function updateUserNotificationStatusRequest($tenant_id, $notification_id, $new_status, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['updateUserNotificationStatus'][0];
+        $contentType = self::contentTypes['updateUserNotificationStatus'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {

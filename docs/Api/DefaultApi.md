@@ -125,7 +125,7 @@ All URIs are relative to https://fastcomments.com, except if the operation defin
 ## `addDomainConfig()`
 
 ```php
-addDomainConfig($tenant_id, $add_domain_config_params, $options): \FastComments\Client\Model\AddDomainConfigResponse
+addDomainConfig($tenant_id, $add_domain_config_params): \FastComments\Client\Model\AddDomainConfigResponse
 ```
 
 
@@ -152,11 +152,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $add_domain_config_params = new \FastComments\Client\Model\AddDomainConfigParams(); // \FastComments\Client\Model\AddDomainConfigParams
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->addDomainConfig($tenant_id, $add_domain_config_params, $options);
+    $result = $apiInstance->addDomainConfig($tenant_id, $add_domain_config_params);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->addDomainConfig: ', $e->getMessage(), PHP_EOL;
@@ -164,8 +163,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -192,7 +189,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `addHashTag()`
 
 ```php
-addHashTag($create_hash_tag_body, $options): \FastComments\Client\Model\CreateHashTagResponse
+addHashTag($create_hash_tag_body, $tenant_id): \FastComments\Client\Model\CreateHashTagResponse
 ```
 
 
@@ -218,12 +215,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 );
 
 $create_hash_tag_body = new \FastComments\Client\Model\CreateHashTagBody(); // \FastComments\Client\Model\CreateHashTagBody
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-];
+$tenant_id = 'tenant_id_example'; // string
+
 
 try {
-    $result = $apiInstance->addHashTag($create_hash_tag_body, $options);
+    $result = $apiInstance->addHashTag($create_hash_tag_body, $tenant_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->addHashTag: ', $e->getMessage(), PHP_EOL;
@@ -231,8 +227,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -259,7 +253,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `addHashTagsBulk()`
 
 ```php
-addHashTagsBulk($bulk_create_hash_tags_body, $options): \FastComments\Client\Model\BulkCreateHashTagsResponse
+addHashTagsBulk($bulk_create_hash_tags_body, $tenant_id): \FastComments\Client\Model\BulkCreateHashTagsResponse
 ```
 
 
@@ -285,12 +279,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 );
 
 $bulk_create_hash_tags_body = new \FastComments\Client\Model\BulkCreateHashTagsBody(); // \FastComments\Client\Model\BulkCreateHashTagsBody
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-];
+$tenant_id = 'tenant_id_example'; // string
+
 
 try {
-    $result = $apiInstance->addHashTagsBulk($bulk_create_hash_tags_body, $options);
+    $result = $apiInstance->addHashTagsBulk($bulk_create_hash_tags_body, $tenant_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->addHashTagsBulk: ', $e->getMessage(), PHP_EOL;
@@ -298,8 +291,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -326,7 +317,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `addPage()`
 
 ```php
-addPage($tenant_id, $create_api_page_data, $options): \FastComments\Client\Model\AddPageAPIResponse
+addPage($tenant_id, $create_api_page_data): \FastComments\Client\Model\AddPageAPIResponse
 ```
 
 
@@ -353,11 +344,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $create_api_page_data = new \FastComments\Client\Model\CreateAPIPageData(); // \FastComments\Client\Model\CreateAPIPageData
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->addPage($tenant_id, $create_api_page_data, $options);
+    $result = $apiInstance->addPage($tenant_id, $create_api_page_data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->addPage: ', $e->getMessage(), PHP_EOL;
@@ -365,8 +355,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -393,7 +381,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `addSSOUser()`
 
 ```php
-addSSOUser($tenant_id, $create_apisso_user_data, $options): \FastComments\Client\Model\AddSSOUserAPIResponse
+addSSOUser($tenant_id, $create_apisso_user_data): \FastComments\Client\Model\AddSSOUserAPIResponse
 ```
 
 
@@ -420,11 +408,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $create_apisso_user_data = new \FastComments\Client\Model\CreateAPISSOUserData(); // \FastComments\Client\Model\CreateAPISSOUserData
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->addSSOUser($tenant_id, $create_apisso_user_data, $options);
+    $result = $apiInstance->addSSOUser($tenant_id, $create_apisso_user_data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->addSSOUser: ', $e->getMessage(), PHP_EOL;
@@ -432,8 +419,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -494,6 +479,7 @@ $options = [
     'include_stats' => True, // bool
 ];
 
+
 try {
     $result = $apiInstance->aggregate($tenant_id, $aggregation_request, $options);
     print_r($result);
@@ -504,7 +490,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -568,6 +554,7 @@ $options = [
     'force_recalculate' => True, // bool
 ];
 
+
 try {
     $result = $apiInstance->aggregateQuestionResults($tenant_id, $options);
     print_r($result);
@@ -578,7 +565,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -643,6 +630,7 @@ $options = [
     'anon_user_id' => 'anon_user_id_example', // string
 ];
 
+
 try {
     $result = $apiInstance->blockUserFromComment($tenant_id, $id, $block_from_comment_params, $options);
     print_r($result);
@@ -653,7 +641,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -683,7 +671,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `bulkAggregateQuestionResults()`
 
 ```php
-bulkAggregateQuestionResults($tenant_id, $bulk_aggregate_question_results_request, $options): \FastComments\Client\Model\BulkAggregateQuestionResultsResponse
+bulkAggregateQuestionResults($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate): \FastComments\Client\Model\BulkAggregateQuestionResultsResponse
 ```
 
 
@@ -710,12 +698,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $bulk_aggregate_question_results_request = new \FastComments\Client\Model\BulkAggregateQuestionResultsRequest(); // \FastComments\Client\Model\BulkAggregateQuestionResultsRequest
-$options = [
-    'force_recalculate' => True, // bool
-];
+$force_recalculate = True; // bool
+
 
 try {
-    $result = $apiInstance->bulkAggregateQuestionResults($tenant_id, $bulk_aggregate_question_results_request, $options);
+    $result = $apiInstance->bulkAggregateQuestionResults($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->bulkAggregateQuestionResults: ', $e->getMessage(), PHP_EOL;
@@ -723,8 +710,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -752,7 +737,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `changeTicketState()`
 
 ```php
-changeTicketState($tenant_id, $user_id, $id, $change_ticket_state_body, $options): \FastComments\Client\Model\ChangeTicketStateResponse
+changeTicketState($tenant_id, $user_id, $id, $change_ticket_state_body): \FastComments\Client\Model\ChangeTicketStateResponse
 ```
 
 
@@ -781,11 +766,10 @@ $tenant_id = 'tenant_id_example'; // string
 $user_id = 'user_id_example'; // string
 $id = 'id_example'; // string
 $change_ticket_state_body = new \FastComments\Client\Model\ChangeTicketStateBody(); // \FastComments\Client\Model\ChangeTicketStateBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->changeTicketState($tenant_id, $user_id, $id, $change_ticket_state_body, $options);
+    $result = $apiInstance->changeTicketState($tenant_id, $user_id, $id, $change_ticket_state_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->changeTicketState: ', $e->getMessage(), PHP_EOL;
@@ -793,8 +777,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -860,6 +842,7 @@ $options = [
     'limit' => 3.4, // float
 ];
 
+
 try {
     $result = $apiInstance->combineCommentsWithQuestionResults($tenant_id, $options);
     print_r($result);
@@ -870,7 +853,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -904,7 +887,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `createEmailTemplate()`
 
 ```php
-createEmailTemplate($tenant_id, $create_email_template_body, $options): \FastComments\Client\Model\CreateEmailTemplateResponse
+createEmailTemplate($tenant_id, $create_email_template_body): \FastComments\Client\Model\CreateEmailTemplateResponse
 ```
 
 
@@ -931,11 +914,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $create_email_template_body = new \FastComments\Client\Model\CreateEmailTemplateBody(); // \FastComments\Client\Model\CreateEmailTemplateBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->createEmailTemplate($tenant_id, $create_email_template_body, $options);
+    $result = $apiInstance->createEmailTemplate($tenant_id, $create_email_template_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createEmailTemplate: ', $e->getMessage(), PHP_EOL;
@@ -943,8 +925,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1005,6 +985,7 @@ $options = [
     'skip_dup_check' => True, // bool
 ];
 
+
 try {
     $result = $apiInstance->createFeedPost($tenant_id, $create_feed_post_params, $options);
     print_r($result);
@@ -1015,7 +996,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1046,7 +1027,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `createModerator()`
 
 ```php
-createModerator($tenant_id, $create_moderator_body, $options): \FastComments\Client\Model\CreateModeratorResponse
+createModerator($tenant_id, $create_moderator_body): \FastComments\Client\Model\CreateModeratorResponse
 ```
 
 
@@ -1073,11 +1054,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $create_moderator_body = new \FastComments\Client\Model\CreateModeratorBody(); // \FastComments\Client\Model\CreateModeratorBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->createModerator($tenant_id, $create_moderator_body, $options);
+    $result = $apiInstance->createModerator($tenant_id, $create_moderator_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createModerator: ', $e->getMessage(), PHP_EOL;
@@ -1085,8 +1065,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1113,7 +1091,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `createQuestionConfig()`
 
 ```php
-createQuestionConfig($tenant_id, $create_question_config_body, $options): \FastComments\Client\Model\CreateQuestionConfigResponse
+createQuestionConfig($tenant_id, $create_question_config_body): \FastComments\Client\Model\CreateQuestionConfigResponse
 ```
 
 
@@ -1140,11 +1118,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $create_question_config_body = new \FastComments\Client\Model\CreateQuestionConfigBody(); // \FastComments\Client\Model\CreateQuestionConfigBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->createQuestionConfig($tenant_id, $create_question_config_body, $options);
+    $result = $apiInstance->createQuestionConfig($tenant_id, $create_question_config_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createQuestionConfig: ', $e->getMessage(), PHP_EOL;
@@ -1152,8 +1129,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1180,7 +1155,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `createQuestionResult()`
 
 ```php
-createQuestionResult($tenant_id, $create_question_result_body, $options): \FastComments\Client\Model\CreateQuestionResultResponse
+createQuestionResult($tenant_id, $create_question_result_body): \FastComments\Client\Model\CreateQuestionResultResponse
 ```
 
 
@@ -1207,11 +1182,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $create_question_result_body = new \FastComments\Client\Model\CreateQuestionResultBody(); // \FastComments\Client\Model\CreateQuestionResultBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->createQuestionResult($tenant_id, $create_question_result_body, $options);
+    $result = $apiInstance->createQuestionResult($tenant_id, $create_question_result_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createQuestionResult: ', $e->getMessage(), PHP_EOL;
@@ -1219,8 +1193,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1247,7 +1219,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `createSubscription()`
 
 ```php
-createSubscription($tenant_id, $create_api_user_subscription_data, $options): \FastComments\Client\Model\CreateSubscriptionAPIResponse
+createSubscription($tenant_id, $create_api_user_subscription_data): \FastComments\Client\Model\CreateSubscriptionAPIResponse
 ```
 
 
@@ -1274,11 +1246,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $create_api_user_subscription_data = new \FastComments\Client\Model\CreateAPIUserSubscriptionData(); // \FastComments\Client\Model\CreateAPIUserSubscriptionData
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->createSubscription($tenant_id, $create_api_user_subscription_data, $options);
+    $result = $apiInstance->createSubscription($tenant_id, $create_api_user_subscription_data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createSubscription: ', $e->getMessage(), PHP_EOL;
@@ -1286,8 +1257,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1314,7 +1283,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `createTenant()`
 
 ```php
-createTenant($tenant_id, $create_tenant_body, $options): \FastComments\Client\Model\CreateTenantResponse
+createTenant($tenant_id, $create_tenant_body): \FastComments\Client\Model\CreateTenantResponse
 ```
 
 
@@ -1341,11 +1310,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $create_tenant_body = new \FastComments\Client\Model\CreateTenantBody(); // \FastComments\Client\Model\CreateTenantBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->createTenant($tenant_id, $create_tenant_body, $options);
+    $result = $apiInstance->createTenant($tenant_id, $create_tenant_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createTenant: ', $e->getMessage(), PHP_EOL;
@@ -1353,8 +1321,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1381,7 +1347,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `createTenantPackage()`
 
 ```php
-createTenantPackage($tenant_id, $create_tenant_package_body, $options): \FastComments\Client\Model\CreateTenantPackageResponse
+createTenantPackage($tenant_id, $create_tenant_package_body): \FastComments\Client\Model\CreateTenantPackageResponse
 ```
 
 
@@ -1408,11 +1374,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $create_tenant_package_body = new \FastComments\Client\Model\CreateTenantPackageBody(); // \FastComments\Client\Model\CreateTenantPackageBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->createTenantPackage($tenant_id, $create_tenant_package_body, $options);
+    $result = $apiInstance->createTenantPackage($tenant_id, $create_tenant_package_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createTenantPackage: ', $e->getMessage(), PHP_EOL;
@@ -1420,8 +1385,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1448,7 +1411,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `createTenantUser()`
 
 ```php
-createTenantUser($tenant_id, $create_tenant_user_body, $options): \FastComments\Client\Model\CreateTenantUserResponse
+createTenantUser($tenant_id, $create_tenant_user_body): \FastComments\Client\Model\CreateTenantUserResponse
 ```
 
 
@@ -1475,11 +1438,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $create_tenant_user_body = new \FastComments\Client\Model\CreateTenantUserBody(); // \FastComments\Client\Model\CreateTenantUserBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->createTenantUser($tenant_id, $create_tenant_user_body, $options);
+    $result = $apiInstance->createTenantUser($tenant_id, $create_tenant_user_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createTenantUser: ', $e->getMessage(), PHP_EOL;
@@ -1487,8 +1449,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1515,7 +1475,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `createTicket()`
 
 ```php
-createTicket($tenant_id, $user_id, $create_ticket_body, $options): \FastComments\Client\Model\CreateTicketResponse
+createTicket($tenant_id, $user_id, $create_ticket_body): \FastComments\Client\Model\CreateTicketResponse
 ```
 
 
@@ -1543,11 +1503,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $user_id = 'user_id_example'; // string
 $create_ticket_body = new \FastComments\Client\Model\CreateTicketBody(); // \FastComments\Client\Model\CreateTicketBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->createTicket($tenant_id, $user_id, $create_ticket_body, $options);
+    $result = $apiInstance->createTicket($tenant_id, $user_id, $create_ticket_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createTicket: ', $e->getMessage(), PHP_EOL;
@@ -1555,8 +1514,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1584,7 +1541,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `createUserBadge()`
 
 ```php
-createUserBadge($tenant_id, $create_user_badge_params, $options): \FastComments\Client\Model\APICreateUserBadgeResponse
+createUserBadge($tenant_id, $create_user_badge_params): \FastComments\Client\Model\APICreateUserBadgeResponse
 ```
 
 
@@ -1611,11 +1568,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $create_user_badge_params = new \FastComments\Client\Model\CreateUserBadgeParams(); // \FastComments\Client\Model\CreateUserBadgeParams
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->createUserBadge($tenant_id, $create_user_badge_params, $options);
+    $result = $apiInstance->createUserBadge($tenant_id, $create_user_badge_params);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createUserBadge: ', $e->getMessage(), PHP_EOL;
@@ -1623,8 +1579,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1684,6 +1638,7 @@ $options = [
     'anon_user_id' => 'anon_user_id_example', // string
 ];
 
+
 try {
     $result = $apiInstance->createVote($tenant_id, $comment_id, $direction, $options);
     print_r($result);
@@ -1694,7 +1649,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1756,6 +1711,7 @@ $options = [
     'is_live' => True, // bool
 ];
 
+
 try {
     $result = $apiInstance->deleteComment($tenant_id, $id, $options);
     print_r($result);
@@ -1766,7 +1722,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1795,7 +1751,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `deleteDomainConfig()`
 
 ```php
-deleteDomainConfig($tenant_id, $domain, $options): \FastComments\Client\Model\DeleteDomainConfigResponse
+deleteDomainConfig($tenant_id, $domain): \FastComments\Client\Model\DeleteDomainConfigResponse
 ```
 
 
@@ -1822,11 +1778,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $domain = 'domain_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->deleteDomainConfig($tenant_id, $domain, $options);
+    $result = $apiInstance->deleteDomainConfig($tenant_id, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteDomainConfig: ', $e->getMessage(), PHP_EOL;
@@ -1834,8 +1789,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1862,7 +1815,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `deleteEmailTemplate()`
 
 ```php
-deleteEmailTemplate($tenant_id, $id, $options): \FastComments\Client\Model\APIEmptyResponse
+deleteEmailTemplate($tenant_id, $id): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -1889,11 +1842,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->deleteEmailTemplate($tenant_id, $id, $options);
+    $result = $apiInstance->deleteEmailTemplate($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteEmailTemplate: ', $e->getMessage(), PHP_EOL;
@@ -1901,8 +1853,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1929,7 +1879,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `deleteEmailTemplateRenderError()`
 
 ```php
-deleteEmailTemplateRenderError($tenant_id, $id, $error_id, $options): \FastComments\Client\Model\APIEmptyResponse
+deleteEmailTemplateRenderError($tenant_id, $id, $error_id): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -1957,11 +1907,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $error_id = 'error_id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->deleteEmailTemplateRenderError($tenant_id, $id, $error_id, $options);
+    $result = $apiInstance->deleteEmailTemplateRenderError($tenant_id, $id, $error_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteEmailTemplateRenderError: ', $e->getMessage(), PHP_EOL;
@@ -1969,8 +1918,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1998,7 +1945,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `deleteHashTag()`
 
 ```php
-deleteHashTag($tag, $delete_hash_tag_request_body, $options): \FastComments\Client\Model\APIEmptyResponse
+deleteHashTag($tag, $delete_hash_tag_request_body, $tenant_id): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2025,12 +1972,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tag = 'tag_example'; // string
 $delete_hash_tag_request_body = new \FastComments\Client\Model\DeleteHashTagRequestBody(); // \FastComments\Client\Model\DeleteHashTagRequestBody
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-];
+$tenant_id = 'tenant_id_example'; // string
+
 
 try {
-    $result = $apiInstance->deleteHashTag($tag, $delete_hash_tag_request_body, $options);
+    $result = $apiInstance->deleteHashTag($tag, $delete_hash_tag_request_body, $tenant_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteHashTag: ', $e->getMessage(), PHP_EOL;
@@ -2038,8 +1984,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2067,7 +2011,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `deleteModerator()`
 
 ```php
-deleteModerator($tenant_id, $id, $options): \FastComments\Client\Model\APIEmptyResponse
+deleteModerator($tenant_id, $id, $send_email): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2094,12 +2038,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-    'send_email' => 'send_email_example', // string
-];
+$send_email = 'send_email_example'; // string
+
 
 try {
-    $result = $apiInstance->deleteModerator($tenant_id, $id, $options);
+    $result = $apiInstance->deleteModerator($tenant_id, $id, $send_email);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteModerator: ', $e->getMessage(), PHP_EOL;
@@ -2107,8 +2050,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2136,7 +2077,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `deleteNotificationCount()`
 
 ```php
-deleteNotificationCount($tenant_id, $id, $options): \FastComments\Client\Model\APIEmptyResponse
+deleteNotificationCount($tenant_id, $id): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2163,11 +2104,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->deleteNotificationCount($tenant_id, $id, $options);
+    $result = $apiInstance->deleteNotificationCount($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteNotificationCount: ', $e->getMessage(), PHP_EOL;
@@ -2175,8 +2115,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2203,7 +2141,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `deletePage()`
 
 ```php
-deletePage($tenant_id, $id, $options): \FastComments\Client\Model\DeletePageAPIResponse
+deletePage($tenant_id, $id): \FastComments\Client\Model\DeletePageAPIResponse
 ```
 
 
@@ -2230,11 +2168,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->deletePage($tenant_id, $id, $options);
+    $result = $apiInstance->deletePage($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deletePage: ', $e->getMessage(), PHP_EOL;
@@ -2242,8 +2179,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2270,7 +2205,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `deletePendingWebhookEvent()`
 
 ```php
-deletePendingWebhookEvent($tenant_id, $id, $options): \FastComments\Client\Model\APIEmptyResponse
+deletePendingWebhookEvent($tenant_id, $id): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2297,11 +2232,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->deletePendingWebhookEvent($tenant_id, $id, $options);
+    $result = $apiInstance->deletePendingWebhookEvent($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deletePendingWebhookEvent: ', $e->getMessage(), PHP_EOL;
@@ -2309,8 +2243,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2337,7 +2269,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `deleteQuestionConfig()`
 
 ```php
-deleteQuestionConfig($tenant_id, $id, $options): \FastComments\Client\Model\APIEmptyResponse
+deleteQuestionConfig($tenant_id, $id): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2364,11 +2296,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->deleteQuestionConfig($tenant_id, $id, $options);
+    $result = $apiInstance->deleteQuestionConfig($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteQuestionConfig: ', $e->getMessage(), PHP_EOL;
@@ -2376,8 +2307,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2404,7 +2333,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `deleteQuestionResult()`
 
 ```php
-deleteQuestionResult($tenant_id, $id, $options): \FastComments\Client\Model\APIEmptyResponse
+deleteQuestionResult($tenant_id, $id): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2431,11 +2360,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->deleteQuestionResult($tenant_id, $id, $options);
+    $result = $apiInstance->deleteQuestionResult($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteQuestionResult: ', $e->getMessage(), PHP_EOL;
@@ -2443,8 +2371,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2503,6 +2429,7 @@ $options = [
     'comment_delete_mode' => 'comment_delete_mode_example', // string
 ];
 
+
 try {
     $result = $apiInstance->deleteSSOUser($tenant_id, $id, $options);
     print_r($result);
@@ -2513,7 +2440,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2542,7 +2469,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `deleteSubscription()`
 
 ```php
-deleteSubscription($tenant_id, $id, $options): \FastComments\Client\Model\DeleteSubscriptionAPIResponse
+deleteSubscription($tenant_id, $id, $user_id): \FastComments\Client\Model\DeleteSubscriptionAPIResponse
 ```
 
 
@@ -2569,12 +2496,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-    'user_id' => 'user_id_example', // string
-];
+$user_id = 'user_id_example'; // string
+
 
 try {
-    $result = $apiInstance->deleteSubscription($tenant_id, $id, $options);
+    $result = $apiInstance->deleteSubscription($tenant_id, $id, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteSubscription: ', $e->getMessage(), PHP_EOL;
@@ -2582,8 +2508,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2611,7 +2535,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `deleteTenant()`
 
 ```php
-deleteTenant($tenant_id, $id, $options): \FastComments\Client\Model\APIEmptyResponse
+deleteTenant($tenant_id, $id, $sure): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2638,12 +2562,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-    'sure' => 'sure_example', // string
-];
+$sure = 'sure_example'; // string
+
 
 try {
-    $result = $apiInstance->deleteTenant($tenant_id, $id, $options);
+    $result = $apiInstance->deleteTenant($tenant_id, $id, $sure);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteTenant: ', $e->getMessage(), PHP_EOL;
@@ -2651,8 +2574,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2680,7 +2601,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `deleteTenantPackage()`
 
 ```php
-deleteTenantPackage($tenant_id, $id, $options): \FastComments\Client\Model\APIEmptyResponse
+deleteTenantPackage($tenant_id, $id): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2707,11 +2628,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->deleteTenantPackage($tenant_id, $id, $options);
+    $result = $apiInstance->deleteTenantPackage($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteTenantPackage: ', $e->getMessage(), PHP_EOL;
@@ -2719,8 +2639,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2779,6 +2697,7 @@ $options = [
     'comment_delete_mode' => 'comment_delete_mode_example', // string
 ];
 
+
 try {
     $result = $apiInstance->deleteTenantUser($tenant_id, $id, $options);
     print_r($result);
@@ -2789,7 +2708,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2818,7 +2737,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `deleteUserBadge()`
 
 ```php
-deleteUserBadge($tenant_id, $id, $options): \FastComments\Client\Model\APIEmptySuccessResponse
+deleteUserBadge($tenant_id, $id): \FastComments\Client\Model\APIEmptySuccessResponse
 ```
 
 
@@ -2845,11 +2764,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->deleteUserBadge($tenant_id, $id, $options);
+    $result = $apiInstance->deleteUserBadge($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteUserBadge: ', $e->getMessage(), PHP_EOL;
@@ -2857,8 +2775,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2885,7 +2801,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `deleteVote()`
 
 ```php
-deleteVote($tenant_id, $id, $options): \FastComments\Client\Model\VoteDeleteResponse
+deleteVote($tenant_id, $id, $edit_key): \FastComments\Client\Model\VoteDeleteResponse
 ```
 
 
@@ -2912,12 +2828,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-    'edit_key' => 'edit_key_example', // string
-];
+$edit_key = 'edit_key_example'; // string
+
 
 try {
-    $result = $apiInstance->deleteVote($tenant_id, $id, $options);
+    $result = $apiInstance->deleteVote($tenant_id, $id, $edit_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteVote: ', $e->getMessage(), PHP_EOL;
@@ -2925,8 +2840,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2986,6 +2899,7 @@ $options = [
     'anon_user_id' => 'anon_user_id_example', // string
 ];
 
+
 try {
     $result = $apiInstance->flagComment($tenant_id, $id, $options);
     print_r($result);
@@ -2996,7 +2910,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3059,6 +2973,7 @@ $options = [
     'before' => 3.4, // float
 ];
 
+
 try {
     $result = $apiInstance->getAuditLogs($tenant_id, $options);
     print_r($result);
@@ -3069,7 +2984,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3100,7 +3015,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getCachedNotificationCount()`
 
 ```php
-getCachedNotificationCount($tenant_id, $id, $options): \FastComments\Client\Model\GetCachedNotificationCountResponse
+getCachedNotificationCount($tenant_id, $id): \FastComments\Client\Model\GetCachedNotificationCountResponse
 ```
 
 
@@ -3127,11 +3042,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getCachedNotificationCount($tenant_id, $id, $options);
+    $result = $apiInstance->getCachedNotificationCount($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getCachedNotificationCount: ', $e->getMessage(), PHP_EOL;
@@ -3139,8 +3053,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3167,7 +3079,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getComment()`
 
 ```php
-getComment($tenant_id, $id, $options): \FastComments\Client\Model\APIGetCommentResponse
+getComment($tenant_id, $id): \FastComments\Client\Model\APIGetCommentResponse
 ```
 
 
@@ -3194,11 +3106,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getComment($tenant_id, $id, $options);
+    $result = $apiInstance->getComment($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getComment: ', $e->getMessage(), PHP_EOL;
@@ -3206,8 +3117,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3279,6 +3188,7 @@ $options = [
     'to_date' => 56, // int
 ];
 
+
 try {
     $result = $apiInstance->getComments($tenant_id, $options);
     print_r($result);
@@ -3289,7 +3199,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3331,7 +3241,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getDomainConfig()`
 
 ```php
-getDomainConfig($tenant_id, $domain, $options): \FastComments\Client\Model\GetDomainConfigResponse
+getDomainConfig($tenant_id, $domain): \FastComments\Client\Model\GetDomainConfigResponse
 ```
 
 
@@ -3358,11 +3268,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $domain = 'domain_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getDomainConfig($tenant_id, $domain, $options);
+    $result = $apiInstance->getDomainConfig($tenant_id, $domain);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getDomainConfig: ', $e->getMessage(), PHP_EOL;
@@ -3370,8 +3279,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3398,7 +3305,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getDomainConfigs()`
 
 ```php
-getDomainConfigs($tenant_id, $options): \FastComments\Client\Model\GetDomainConfigsResponse
+getDomainConfigs($tenant_id): \FastComments\Client\Model\GetDomainConfigsResponse
 ```
 
 
@@ -3424,11 +3331,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 );
 
 $tenant_id = 'tenant_id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getDomainConfigs($tenant_id, $options);
+    $result = $apiInstance->getDomainConfigs($tenant_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getDomainConfigs: ', $e->getMessage(), PHP_EOL;
@@ -3436,8 +3342,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3463,7 +3367,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getEmailTemplate()`
 
 ```php
-getEmailTemplate($tenant_id, $id, $options): \FastComments\Client\Model\GetEmailTemplateResponse
+getEmailTemplate($tenant_id, $id): \FastComments\Client\Model\GetEmailTemplateResponse
 ```
 
 
@@ -3490,11 +3394,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getEmailTemplate($tenant_id, $id, $options);
+    $result = $apiInstance->getEmailTemplate($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getEmailTemplate: ', $e->getMessage(), PHP_EOL;
@@ -3502,8 +3405,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3530,7 +3431,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getEmailTemplateDefinitions()`
 
 ```php
-getEmailTemplateDefinitions($tenant_id, $options): \FastComments\Client\Model\GetEmailTemplateDefinitionsResponse
+getEmailTemplateDefinitions($tenant_id): \FastComments\Client\Model\GetEmailTemplateDefinitionsResponse
 ```
 
 
@@ -3556,11 +3457,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 );
 
 $tenant_id = 'tenant_id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getEmailTemplateDefinitions($tenant_id, $options);
+    $result = $apiInstance->getEmailTemplateDefinitions($tenant_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getEmailTemplateDefinitions: ', $e->getMessage(), PHP_EOL;
@@ -3568,8 +3468,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3595,7 +3493,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getEmailTemplateRenderErrors()`
 
 ```php
-getEmailTemplateRenderErrors($tenant_id, $id, $options): \FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse
+getEmailTemplateRenderErrors($tenant_id, $id, $skip): \FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse
 ```
 
 
@@ -3622,12 +3520,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-    'skip' => 3.4, // float
-];
+$skip = 3.4; // float
+
 
 try {
-    $result = $apiInstance->getEmailTemplateRenderErrors($tenant_id, $id, $options);
+    $result = $apiInstance->getEmailTemplateRenderErrors($tenant_id, $id, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getEmailTemplateRenderErrors: ', $e->getMessage(), PHP_EOL;
@@ -3635,8 +3532,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3664,7 +3559,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getEmailTemplates()`
 
 ```php
-getEmailTemplates($tenant_id, $options): \FastComments\Client\Model\GetEmailTemplatesResponse
+getEmailTemplates($tenant_id, $skip): \FastComments\Client\Model\GetEmailTemplatesResponse
 ```
 
 
@@ -3690,12 +3585,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 );
 
 $tenant_id = 'tenant_id_example'; // string
-$options = [
-    'skip' => 3.4, // float
-];
+$skip = 3.4; // float
+
 
 try {
-    $result = $apiInstance->getEmailTemplates($tenant_id, $options);
+    $result = $apiInstance->getEmailTemplates($tenant_id, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getEmailTemplates: ', $e->getMessage(), PHP_EOL;
@@ -3703,8 +3597,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3765,6 +3657,7 @@ $options = [
     'tags' => array('tags_example'), // string[]
 ];
 
+
 try {
     $result = $apiInstance->getFeedPosts($tenant_id, $options);
     print_r($result);
@@ -3775,7 +3668,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3804,7 +3697,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getHashTags()`
 
 ```php
-getHashTags($tenant_id, $options): \FastComments\Client\Model\GetHashTagsResponse
+getHashTags($tenant_id, $page): \FastComments\Client\Model\GetHashTagsResponse
 ```
 
 
@@ -3830,12 +3723,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 );
 
 $tenant_id = 'tenant_id_example'; // string
-$options = [
-    'page' => 3.4, // float
-];
+$page = 3.4; // float
+
 
 try {
-    $result = $apiInstance->getHashTags($tenant_id, $options);
+    $result = $apiInstance->getHashTags($tenant_id, $page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getHashTags: ', $e->getMessage(), PHP_EOL;
@@ -3843,8 +3735,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3871,7 +3761,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getModerator()`
 
 ```php
-getModerator($tenant_id, $id, $options): \FastComments\Client\Model\GetModeratorResponse
+getModerator($tenant_id, $id): \FastComments\Client\Model\GetModeratorResponse
 ```
 
 
@@ -3898,11 +3788,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getModerator($tenant_id, $id, $options);
+    $result = $apiInstance->getModerator($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getModerator: ', $e->getMessage(), PHP_EOL;
@@ -3910,8 +3799,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3938,7 +3825,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getModerators()`
 
 ```php
-getModerators($tenant_id, $options): \FastComments\Client\Model\GetModeratorsResponse
+getModerators($tenant_id, $skip): \FastComments\Client\Model\GetModeratorsResponse
 ```
 
 
@@ -3964,12 +3851,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 );
 
 $tenant_id = 'tenant_id_example'; // string
-$options = [
-    'skip' => 3.4, // float
-];
+$skip = 3.4; // float
+
 
 try {
-    $result = $apiInstance->getModerators($tenant_id, $options);
+    $result = $apiInstance->getModerators($tenant_id, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getModerators: ', $e->getMessage(), PHP_EOL;
@@ -3977,8 +3863,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4039,6 +3923,7 @@ $options = [
     'type' => 'type_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getNotificationCount($tenant_id, $options);
     print_r($result);
@@ -4049,7 +3934,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4115,6 +4000,7 @@ $options = [
     'skip' => 3.4, // float
 ];
 
+
 try {
     $result = $apiInstance->getNotifications($tenant_id, $options);
     print_r($result);
@@ -4125,7 +4011,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4157,7 +4043,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getPageByURLId()`
 
 ```php
-getPageByURLId($tenant_id, $url_id, $options): \FastComments\Client\Model\GetPageByURLIdAPIResponse
+getPageByURLId($tenant_id, $url_id): \FastComments\Client\Model\GetPageByURLIdAPIResponse
 ```
 
 
@@ -4184,11 +4070,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getPageByURLId($tenant_id, $url_id, $options);
+    $result = $apiInstance->getPageByURLId($tenant_id, $url_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getPageByURLId: ', $e->getMessage(), PHP_EOL;
@@ -4196,8 +4081,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4224,7 +4107,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getPages()`
 
 ```php
-getPages($tenant_id, $options): \FastComments\Client\Model\GetPagesAPIResponse
+getPages($tenant_id): \FastComments\Client\Model\GetPagesAPIResponse
 ```
 
 
@@ -4250,11 +4133,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 );
 
 $tenant_id = 'tenant_id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getPages($tenant_id, $options);
+    $result = $apiInstance->getPages($tenant_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getPages: ', $e->getMessage(), PHP_EOL;
@@ -4262,8 +4144,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4324,6 +4204,7 @@ $options = [
     'attempt_count_gt' => 3.4, // float
 ];
 
+
 try {
     $result = $apiInstance->getPendingWebhookEventCount($tenant_id, $options);
     print_r($result);
@@ -4334,7 +4215,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4402,6 +4283,7 @@ $options = [
     'skip' => 3.4, // float
 ];
 
+
 try {
     $result = $apiInstance->getPendingWebhookEvents($tenant_id, $options);
     print_r($result);
@@ -4412,7 +4294,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4445,7 +4327,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getQuestionConfig()`
 
 ```php
-getQuestionConfig($tenant_id, $id, $options): \FastComments\Client\Model\GetQuestionConfigResponse
+getQuestionConfig($tenant_id, $id): \FastComments\Client\Model\GetQuestionConfigResponse
 ```
 
 
@@ -4472,11 +4354,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getQuestionConfig($tenant_id, $id, $options);
+    $result = $apiInstance->getQuestionConfig($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getQuestionConfig: ', $e->getMessage(), PHP_EOL;
@@ -4484,8 +4365,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4512,7 +4391,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getQuestionConfigs()`
 
 ```php
-getQuestionConfigs($tenant_id, $options): \FastComments\Client\Model\GetQuestionConfigsResponse
+getQuestionConfigs($tenant_id, $skip): \FastComments\Client\Model\GetQuestionConfigsResponse
 ```
 
 
@@ -4538,12 +4417,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 );
 
 $tenant_id = 'tenant_id_example'; // string
-$options = [
-    'skip' => 3.4, // float
-];
+$skip = 3.4; // float
+
 
 try {
-    $result = $apiInstance->getQuestionConfigs($tenant_id, $options);
+    $result = $apiInstance->getQuestionConfigs($tenant_id, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getQuestionConfigs: ', $e->getMessage(), PHP_EOL;
@@ -4551,8 +4429,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4579,7 +4455,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getQuestionResult()`
 
 ```php
-getQuestionResult($tenant_id, $id, $options): \FastComments\Client\Model\GetQuestionResultResponse
+getQuestionResult($tenant_id, $id): \FastComments\Client\Model\GetQuestionResultResponse
 ```
 
 
@@ -4606,11 +4482,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getQuestionResult($tenant_id, $id, $options);
+    $result = $apiInstance->getQuestionResult($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getQuestionResult: ', $e->getMessage(), PHP_EOL;
@@ -4618,8 +4493,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4681,6 +4554,7 @@ $options = [
     'skip' => 3.4, // float
 ];
 
+
 try {
     $result = $apiInstance->getQuestionResults($tenant_id, $options);
     print_r($result);
@@ -4691,7 +4565,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4723,7 +4597,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getSSOUserByEmail()`
 
 ```php
-getSSOUserByEmail($tenant_id, $email, $options): \FastComments\Client\Model\GetSSOUserByEmailAPIResponse
+getSSOUserByEmail($tenant_id, $email): \FastComments\Client\Model\GetSSOUserByEmailAPIResponse
 ```
 
 
@@ -4750,11 +4624,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $email = 'email_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getSSOUserByEmail($tenant_id, $email, $options);
+    $result = $apiInstance->getSSOUserByEmail($tenant_id, $email);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getSSOUserByEmail: ', $e->getMessage(), PHP_EOL;
@@ -4762,8 +4635,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4790,7 +4661,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getSSOUserById()`
 
 ```php
-getSSOUserById($tenant_id, $id, $options): \FastComments\Client\Model\GetSSOUserByIdAPIResponse
+getSSOUserById($tenant_id, $id): \FastComments\Client\Model\GetSSOUserByIdAPIResponse
 ```
 
 
@@ -4817,11 +4688,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getSSOUserById($tenant_id, $id, $options);
+    $result = $apiInstance->getSSOUserById($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getSSOUserById: ', $e->getMessage(), PHP_EOL;
@@ -4829,8 +4699,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4857,7 +4725,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getSSOUsers()`
 
 ```php
-getSSOUsers($tenant_id, $options): \FastComments\Client\Model\GetSSOUsersResponse
+getSSOUsers($tenant_id, $skip): \FastComments\Client\Model\GetSSOUsersResponse
 ```
 
 
@@ -4883,12 +4751,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 );
 
 $tenant_id = 'tenant_id_example'; // string
-$options = [
-    'skip' => 56, // int
-];
+$skip = 56; // int
+
 
 try {
-    $result = $apiInstance->getSSOUsers($tenant_id, $options);
+    $result = $apiInstance->getSSOUsers($tenant_id, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getSSOUsers: ', $e->getMessage(), PHP_EOL;
@@ -4896,8 +4763,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4924,7 +4789,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getSubscriptions()`
 
 ```php
-getSubscriptions($tenant_id, $options): \FastComments\Client\Model\GetSubscriptionsAPIResponse
+getSubscriptions($tenant_id, $user_id): \FastComments\Client\Model\GetSubscriptionsAPIResponse
 ```
 
 
@@ -4950,12 +4815,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 );
 
 $tenant_id = 'tenant_id_example'; // string
-$options = [
-    'user_id' => 'user_id_example', // string
-];
+$user_id = 'user_id_example'; // string
+
 
 try {
-    $result = $apiInstance->getSubscriptions($tenant_id, $options);
+    $result = $apiInstance->getSubscriptions($tenant_id, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getSubscriptions: ', $e->getMessage(), PHP_EOL;
@@ -4963,8 +4827,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4991,7 +4853,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getTenant()`
 
 ```php
-getTenant($tenant_id, $id, $options): \FastComments\Client\Model\GetTenantResponse
+getTenant($tenant_id, $id): \FastComments\Client\Model\GetTenantResponse
 ```
 
 
@@ -5018,11 +4880,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getTenant($tenant_id, $id, $options);
+    $result = $apiInstance->getTenant($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTenant: ', $e->getMessage(), PHP_EOL;
@@ -5030,8 +4891,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5091,6 +4950,7 @@ $options = [
     'skip' => 3.4, // float
 ];
 
+
 try {
     $result = $apiInstance->getTenantDailyUsages($tenant_id, $options);
     print_r($result);
@@ -5101,7 +4961,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5131,7 +4991,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getTenantPackage()`
 
 ```php
-getTenantPackage($tenant_id, $id, $options): \FastComments\Client\Model\GetTenantPackageResponse
+getTenantPackage($tenant_id, $id): \FastComments\Client\Model\GetTenantPackageResponse
 ```
 
 
@@ -5158,11 +5018,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getTenantPackage($tenant_id, $id, $options);
+    $result = $apiInstance->getTenantPackage($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTenantPackage: ', $e->getMessage(), PHP_EOL;
@@ -5170,8 +5029,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5198,7 +5055,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getTenantPackages()`
 
 ```php
-getTenantPackages($tenant_id, $options): \FastComments\Client\Model\GetTenantPackagesResponse
+getTenantPackages($tenant_id, $skip): \FastComments\Client\Model\GetTenantPackagesResponse
 ```
 
 
@@ -5224,12 +5081,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 );
 
 $tenant_id = 'tenant_id_example'; // string
-$options = [
-    'skip' => 3.4, // float
-];
+$skip = 3.4; // float
+
 
 try {
-    $result = $apiInstance->getTenantPackages($tenant_id, $options);
+    $result = $apiInstance->getTenantPackages($tenant_id, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTenantPackages: ', $e->getMessage(), PHP_EOL;
@@ -5237,8 +5093,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5265,7 +5119,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getTenantUser()`
 
 ```php
-getTenantUser($tenant_id, $id, $options): \FastComments\Client\Model\GetTenantUserResponse
+getTenantUser($tenant_id, $id): \FastComments\Client\Model\GetTenantUserResponse
 ```
 
 
@@ -5292,11 +5146,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getTenantUser($tenant_id, $id, $options);
+    $result = $apiInstance->getTenantUser($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTenantUser: ', $e->getMessage(), PHP_EOL;
@@ -5304,8 +5157,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5332,7 +5183,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getTenantUsers()`
 
 ```php
-getTenantUsers($tenant_id, $options): \FastComments\Client\Model\GetTenantUsersResponse
+getTenantUsers($tenant_id, $skip): \FastComments\Client\Model\GetTenantUsersResponse
 ```
 
 
@@ -5358,12 +5209,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 );
 
 $tenant_id = 'tenant_id_example'; // string
-$options = [
-    'skip' => 3.4, // float
-];
+$skip = 3.4; // float
+
 
 try {
-    $result = $apiInstance->getTenantUsers($tenant_id, $options);
+    $result = $apiInstance->getTenantUsers($tenant_id, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTenantUsers: ', $e->getMessage(), PHP_EOL;
@@ -5371,8 +5221,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5430,6 +5278,7 @@ $options = [
     'skip' => 3.4, // float
 ];
 
+
 try {
     $result = $apiInstance->getTenants($tenant_id, $options);
     print_r($result);
@@ -5440,7 +5289,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5468,7 +5317,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getTicket()`
 
 ```php
-getTicket($tenant_id, $id, $options): \FastComments\Client\Model\GetTicketResponse
+getTicket($tenant_id, $id, $user_id): \FastComments\Client\Model\GetTicketResponse
 ```
 
 
@@ -5495,12 +5344,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-    'user_id' => 'user_id_example', // string
-];
+$user_id = 'user_id_example'; // string
+
 
 try {
-    $result = $apiInstance->getTicket($tenant_id, $id, $options);
+    $result = $apiInstance->getTicket($tenant_id, $id, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTicket: ', $e->getMessage(), PHP_EOL;
@@ -5508,8 +5356,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5570,6 +5416,7 @@ $options = [
     'limit' => 3.4, // float
 ];
 
+
 try {
     $result = $apiInstance->getTickets($tenant_id, $options);
     print_r($result);
@@ -5580,7 +5427,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5610,7 +5457,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getUser()`
 
 ```php
-getUser($tenant_id, $id, $options): \FastComments\Client\Model\GetUserResponse
+getUser($tenant_id, $id): \FastComments\Client\Model\GetUserResponse
 ```
 
 
@@ -5637,11 +5484,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getUser($tenant_id, $id, $options);
+    $result = $apiInstance->getUser($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getUser: ', $e->getMessage(), PHP_EOL;
@@ -5649,8 +5495,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5677,7 +5521,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getUserBadge()`
 
 ```php
-getUserBadge($tenant_id, $id, $options): \FastComments\Client\Model\APIGetUserBadgeResponse
+getUserBadge($tenant_id, $id): \FastComments\Client\Model\APIGetUserBadgeResponse
 ```
 
 
@@ -5704,11 +5548,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getUserBadge($tenant_id, $id, $options);
+    $result = $apiInstance->getUserBadge($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getUserBadge: ', $e->getMessage(), PHP_EOL;
@@ -5716,8 +5559,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5744,7 +5585,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getUserBadgeProgressById()`
 
 ```php
-getUserBadgeProgressById($tenant_id, $id, $options): \FastComments\Client\Model\APIGetUserBadgeProgressResponse
+getUserBadgeProgressById($tenant_id, $id): \FastComments\Client\Model\APIGetUserBadgeProgressResponse
 ```
 
 
@@ -5771,11 +5612,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getUserBadgeProgressById($tenant_id, $id, $options);
+    $result = $apiInstance->getUserBadgeProgressById($tenant_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getUserBadgeProgressById: ', $e->getMessage(), PHP_EOL;
@@ -5783,8 +5623,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5811,7 +5649,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getUserBadgeProgressByUserId()`
 
 ```php
-getUserBadgeProgressByUserId($tenant_id, $user_id, $options): \FastComments\Client\Model\APIGetUserBadgeProgressResponse
+getUserBadgeProgressByUserId($tenant_id, $user_id): \FastComments\Client\Model\APIGetUserBadgeProgressResponse
 ```
 
 
@@ -5838,11 +5676,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $user_id = 'user_id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getUserBadgeProgressByUserId($tenant_id, $user_id, $options);
+    $result = $apiInstance->getUserBadgeProgressByUserId($tenant_id, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getUserBadgeProgressByUserId: ', $e->getMessage(), PHP_EOL;
@@ -5850,8 +5687,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5910,6 +5745,7 @@ $options = [
     'skip' => 3.4, // float
 ];
 
+
 try {
     $result = $apiInstance->getUserBadgeProgressList($tenant_id, $options);
     print_r($result);
@@ -5920,7 +5756,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5984,6 +5820,7 @@ $options = [
     'skip' => 3.4, // float
 ];
 
+
 try {
     $result = $apiInstance->getUserBadges($tenant_id, $options);
     print_r($result);
@@ -5994,7 +5831,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6026,7 +5863,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `getVotes()`
 
 ```php
-getVotes($tenant_id, $url_id, $options): \FastComments\Client\Model\GetVotesResponse
+getVotes($tenant_id, $url_id): \FastComments\Client\Model\GetVotesResponse
 ```
 
 
@@ -6053,11 +5890,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getVotes($tenant_id, $url_id, $options);
+    $result = $apiInstance->getVotes($tenant_id, $url_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getVotes: ', $e->getMessage(), PHP_EOL;
@@ -6065,8 +5901,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6125,6 +5959,7 @@ $options = [
     'anon_user_id' => 'anon_user_id_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getVotesForUser($tenant_id, $url_id, $options);
     print_r($result);
@@ -6135,7 +5970,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6164,7 +5999,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `patchDomainConfig()`
 
 ```php
-patchDomainConfig($tenant_id, $domain_to_update, $patch_domain_config_params, $options): \FastComments\Client\Model\PatchDomainConfigResponse
+patchDomainConfig($tenant_id, $domain_to_update, $patch_domain_config_params): \FastComments\Client\Model\PatchDomainConfigResponse
 ```
 
 
@@ -6192,11 +6027,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $domain_to_update = 'domain_to_update_example'; // string
 $patch_domain_config_params = new \FastComments\Client\Model\PatchDomainConfigParams(); // \FastComments\Client\Model\PatchDomainConfigParams
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->patchDomainConfig($tenant_id, $domain_to_update, $patch_domain_config_params, $options);
+    $result = $apiInstance->patchDomainConfig($tenant_id, $domain_to_update, $patch_domain_config_params);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->patchDomainConfig: ', $e->getMessage(), PHP_EOL;
@@ -6204,8 +6038,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6233,7 +6065,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `patchHashTag()`
 
 ```php
-patchHashTag($tag, $update_hash_tag_body, $options): \FastComments\Client\Model\UpdateHashTagResponse
+patchHashTag($tag, $update_hash_tag_body, $tenant_id): \FastComments\Client\Model\UpdateHashTagResponse
 ```
 
 
@@ -6260,12 +6092,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tag = 'tag_example'; // string
 $update_hash_tag_body = new \FastComments\Client\Model\UpdateHashTagBody(); // \FastComments\Client\Model\UpdateHashTagBody
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-];
+$tenant_id = 'tenant_id_example'; // string
+
 
 try {
-    $result = $apiInstance->patchHashTag($tag, $update_hash_tag_body, $options);
+    $result = $apiInstance->patchHashTag($tag, $update_hash_tag_body, $tenant_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->patchHashTag: ', $e->getMessage(), PHP_EOL;
@@ -6273,8 +6104,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6302,7 +6131,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `patchPage()`
 
 ```php
-patchPage($tenant_id, $id, $update_api_page_data, $options): \FastComments\Client\Model\PatchPageAPIResponse
+patchPage($tenant_id, $id, $update_api_page_data): \FastComments\Client\Model\PatchPageAPIResponse
 ```
 
 
@@ -6330,11 +6159,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_api_page_data = new \FastComments\Client\Model\UpdateAPIPageData(); // \FastComments\Client\Model\UpdateAPIPageData
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->patchPage($tenant_id, $id, $update_api_page_data, $options);
+    $result = $apiInstance->patchPage($tenant_id, $id, $update_api_page_data);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->patchPage: ', $e->getMessage(), PHP_EOL;
@@ -6342,8 +6170,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6371,7 +6197,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `patchSSOUser()`
 
 ```php
-patchSSOUser($tenant_id, $id, $update_apisso_user_data, $options): \FastComments\Client\Model\PatchSSOUserAPIResponse
+patchSSOUser($tenant_id, $id, $update_apisso_user_data, $update_comments): \FastComments\Client\Model\PatchSSOUserAPIResponse
 ```
 
 
@@ -6399,12 +6225,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_apisso_user_data = new \FastComments\Client\Model\UpdateAPISSOUserData(); // \FastComments\Client\Model\UpdateAPISSOUserData
-$options = [
-    'update_comments' => True, // bool
-];
+$update_comments = True; // bool
+
 
 try {
-    $result = $apiInstance->patchSSOUser($tenant_id, $id, $update_apisso_user_data, $options);
+    $result = $apiInstance->patchSSOUser($tenant_id, $id, $update_apisso_user_data, $update_comments);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->patchSSOUser: ', $e->getMessage(), PHP_EOL;
@@ -6412,8 +6237,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6442,7 +6265,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `putDomainConfig()`
 
 ```php
-putDomainConfig($tenant_id, $domain_to_update, $update_domain_config_params, $options): \FastComments\Client\Model\PutDomainConfigResponse
+putDomainConfig($tenant_id, $domain_to_update, $update_domain_config_params): \FastComments\Client\Model\PutDomainConfigResponse
 ```
 
 
@@ -6470,11 +6293,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $domain_to_update = 'domain_to_update_example'; // string
 $update_domain_config_params = new \FastComments\Client\Model\UpdateDomainConfigParams(); // \FastComments\Client\Model\UpdateDomainConfigParams
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->putDomainConfig($tenant_id, $domain_to_update, $update_domain_config_params, $options);
+    $result = $apiInstance->putDomainConfig($tenant_id, $domain_to_update, $update_domain_config_params);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->putDomainConfig: ', $e->getMessage(), PHP_EOL;
@@ -6482,8 +6304,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6511,7 +6331,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `putSSOUser()`
 
 ```php
-putSSOUser($tenant_id, $id, $update_apisso_user_data, $options): \FastComments\Client\Model\PutSSOUserAPIResponse
+putSSOUser($tenant_id, $id, $update_apisso_user_data, $update_comments): \FastComments\Client\Model\PutSSOUserAPIResponse
 ```
 
 
@@ -6539,12 +6359,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_apisso_user_data = new \FastComments\Client\Model\UpdateAPISSOUserData(); // \FastComments\Client\Model\UpdateAPISSOUserData
-$options = [
-    'update_comments' => True, // bool
-];
+$update_comments = True; // bool
+
 
 try {
-    $result = $apiInstance->putSSOUser($tenant_id, $id, $update_apisso_user_data, $options);
+    $result = $apiInstance->putSSOUser($tenant_id, $id, $update_apisso_user_data, $update_comments);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->putSSOUser: ', $e->getMessage(), PHP_EOL;
@@ -6552,8 +6371,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6582,7 +6399,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `renderEmailTemplate()`
 
 ```php
-renderEmailTemplate($tenant_id, $render_email_template_body, $options): \FastComments\Client\Model\RenderEmailTemplateResponse
+renderEmailTemplate($tenant_id, $render_email_template_body, $locale): \FastComments\Client\Model\RenderEmailTemplateResponse
 ```
 
 
@@ -6609,12 +6426,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $render_email_template_body = new \FastComments\Client\Model\RenderEmailTemplateBody(); // \FastComments\Client\Model\RenderEmailTemplateBody
-$options = [
-    'locale' => 'locale_example', // string
-];
+$locale = 'locale_example'; // string
+
 
 try {
-    $result = $apiInstance->renderEmailTemplate($tenant_id, $render_email_template_body, $options);
+    $result = $apiInstance->renderEmailTemplate($tenant_id, $render_email_template_body, $locale);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->renderEmailTemplate: ', $e->getMessage(), PHP_EOL;
@@ -6622,8 +6438,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6651,7 +6465,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `replaceTenantPackage()`
 
 ```php
-replaceTenantPackage($tenant_id, $id, $replace_tenant_package_body, $options): \FastComments\Client\Model\APIEmptyResponse
+replaceTenantPackage($tenant_id, $id, $replace_tenant_package_body): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -6679,11 +6493,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $replace_tenant_package_body = new \FastComments\Client\Model\ReplaceTenantPackageBody(); // \FastComments\Client\Model\ReplaceTenantPackageBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->replaceTenantPackage($tenant_id, $id, $replace_tenant_package_body, $options);
+    $result = $apiInstance->replaceTenantPackage($tenant_id, $id, $replace_tenant_package_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->replaceTenantPackage: ', $e->getMessage(), PHP_EOL;
@@ -6691,8 +6504,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6720,7 +6531,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `replaceTenantUser()`
 
 ```php
-replaceTenantUser($tenant_id, $id, $replace_tenant_user_body, $options): \FastComments\Client\Model\APIEmptyResponse
+replaceTenantUser($tenant_id, $id, $replace_tenant_user_body, $update_comments): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -6748,12 +6559,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $replace_tenant_user_body = new \FastComments\Client\Model\ReplaceTenantUserBody(); // \FastComments\Client\Model\ReplaceTenantUserBody
-$options = [
-    'update_comments' => 'update_comments_example', // string
-];
+$update_comments = 'update_comments_example'; // string
+
 
 try {
-    $result = $apiInstance->replaceTenantUser($tenant_id, $id, $replace_tenant_user_body, $options);
+    $result = $apiInstance->replaceTenantUser($tenant_id, $id, $replace_tenant_user_body, $update_comments);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->replaceTenantUser: ', $e->getMessage(), PHP_EOL;
@@ -6761,8 +6571,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6825,6 +6633,7 @@ $options = [
     'populate_notifications' => True, // bool
 ];
 
+
 try {
     $result = $apiInstance->saveComment($tenant_id, $create_comment_params, $options);
     print_r($result);
@@ -6835,7 +6644,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6900,6 +6709,7 @@ $options = [
     'populate_notifications' => True, // bool
 ];
 
+
 try {
     $result = $apiInstance->saveCommentsBulk($tenant_id, $create_comment_params, $options);
     print_r($result);
@@ -6910,7 +6720,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6941,7 +6751,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `sendInvite()`
 
 ```php
-sendInvite($tenant_id, $id, $from_name, $options): \FastComments\Client\Model\APIEmptyResponse
+sendInvite($tenant_id, $id, $from_name): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -6969,11 +6779,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $from_name = 'from_name_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->sendInvite($tenant_id, $id, $from_name, $options);
+    $result = $apiInstance->sendInvite($tenant_id, $id, $from_name);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->sendInvite: ', $e->getMessage(), PHP_EOL;
@@ -6981,8 +6790,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7010,7 +6817,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `sendLoginLink()`
 
 ```php
-sendLoginLink($tenant_id, $id, $options): \FastComments\Client\Model\APIEmptyResponse
+sendLoginLink($tenant_id, $id, $redirect_url): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -7037,12 +6844,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-    'redirect_url' => 'redirect_url_example', // string
-];
+$redirect_url = 'redirect_url_example'; // string
+
 
 try {
-    $result = $apiInstance->sendLoginLink($tenant_id, $id, $options);
+    $result = $apiInstance->sendLoginLink($tenant_id, $id, $redirect_url);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->sendLoginLink: ', $e->getMessage(), PHP_EOL;
@@ -7050,8 +6856,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7112,6 +6916,7 @@ $options = [
     'anon_user_id' => 'anon_user_id_example', // string
 ];
 
+
 try {
     $result = $apiInstance->unBlockUserFromComment($tenant_id, $id, $un_block_from_comment_params, $options);
     print_r($result);
@@ -7122,7 +6927,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7184,6 +6989,7 @@ $options = [
     'anon_user_id' => 'anon_user_id_example', // string
 ];
 
+
 try {
     $result = $apiInstance->unFlagComment($tenant_id, $id, $options);
     print_r($result);
@@ -7194,7 +7000,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7257,6 +7063,7 @@ $options = [
     'is_live' => True, // bool
 ];
 
+
 try {
     $result = $apiInstance->updateComment($tenant_id, $id, $updatable_comment_params, $options);
     print_r($result);
@@ -7267,7 +7074,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7298,7 +7105,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `updateEmailTemplate()`
 
 ```php
-updateEmailTemplate($tenant_id, $id, $update_email_template_body, $options): \FastComments\Client\Model\APIEmptyResponse
+updateEmailTemplate($tenant_id, $id, $update_email_template_body): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -7326,11 +7133,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_email_template_body = new \FastComments\Client\Model\UpdateEmailTemplateBody(); // \FastComments\Client\Model\UpdateEmailTemplateBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->updateEmailTemplate($tenant_id, $id, $update_email_template_body, $options);
+    $result = $apiInstance->updateEmailTemplate($tenant_id, $id, $update_email_template_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateEmailTemplate: ', $e->getMessage(), PHP_EOL;
@@ -7338,8 +7144,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7367,7 +7171,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `updateFeedPost()`
 
 ```php
-updateFeedPost($tenant_id, $id, $feed_post, $options): \FastComments\Client\Model\APIEmptyResponse
+updateFeedPost($tenant_id, $id, $feed_post): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -7395,11 +7199,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $feed_post = new \FastComments\Client\Model\FeedPost(); // \FastComments\Client\Model\FeedPost
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->updateFeedPost($tenant_id, $id, $feed_post, $options);
+    $result = $apiInstance->updateFeedPost($tenant_id, $id, $feed_post);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateFeedPost: ', $e->getMessage(), PHP_EOL;
@@ -7407,8 +7210,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7436,7 +7237,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `updateModerator()`
 
 ```php
-updateModerator($tenant_id, $id, $update_moderator_body, $options): \FastComments\Client\Model\APIEmptyResponse
+updateModerator($tenant_id, $id, $update_moderator_body): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -7464,11 +7265,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_moderator_body = new \FastComments\Client\Model\UpdateModeratorBody(); // \FastComments\Client\Model\UpdateModeratorBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->updateModerator($tenant_id, $id, $update_moderator_body, $options);
+    $result = $apiInstance->updateModerator($tenant_id, $id, $update_moderator_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateModerator: ', $e->getMessage(), PHP_EOL;
@@ -7476,8 +7276,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7505,7 +7303,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `updateNotification()`
 
 ```php
-updateNotification($tenant_id, $id, $update_notification_body, $options): \FastComments\Client\Model\APIEmptyResponse
+updateNotification($tenant_id, $id, $update_notification_body, $user_id): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -7533,12 +7331,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_notification_body = new \FastComments\Client\Model\UpdateNotificationBody(); // \FastComments\Client\Model\UpdateNotificationBody
-$options = [
-    'user_id' => 'user_id_example', // string
-];
+$user_id = 'user_id_example'; // string
+
 
 try {
-    $result = $apiInstance->updateNotification($tenant_id, $id, $update_notification_body, $options);
+    $result = $apiInstance->updateNotification($tenant_id, $id, $update_notification_body, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateNotification: ', $e->getMessage(), PHP_EOL;
@@ -7546,8 +7343,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7576,7 +7371,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `updateQuestionConfig()`
 
 ```php
-updateQuestionConfig($tenant_id, $id, $update_question_config_body, $options): \FastComments\Client\Model\APIEmptyResponse
+updateQuestionConfig($tenant_id, $id, $update_question_config_body): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -7604,11 +7399,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_question_config_body = new \FastComments\Client\Model\UpdateQuestionConfigBody(); // \FastComments\Client\Model\UpdateQuestionConfigBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->updateQuestionConfig($tenant_id, $id, $update_question_config_body, $options);
+    $result = $apiInstance->updateQuestionConfig($tenant_id, $id, $update_question_config_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateQuestionConfig: ', $e->getMessage(), PHP_EOL;
@@ -7616,8 +7410,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7645,7 +7437,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `updateQuestionResult()`
 
 ```php
-updateQuestionResult($tenant_id, $id, $update_question_result_body, $options): \FastComments\Client\Model\APIEmptyResponse
+updateQuestionResult($tenant_id, $id, $update_question_result_body): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -7673,11 +7465,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_question_result_body = new \FastComments\Client\Model\UpdateQuestionResultBody(); // \FastComments\Client\Model\UpdateQuestionResultBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->updateQuestionResult($tenant_id, $id, $update_question_result_body, $options);
+    $result = $apiInstance->updateQuestionResult($tenant_id, $id, $update_question_result_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateQuestionResult: ', $e->getMessage(), PHP_EOL;
@@ -7685,8 +7476,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7714,7 +7503,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `updateSubscription()`
 
 ```php
-updateSubscription($tenant_id, $id, $update_api_user_subscription_data, $options): \FastComments\Client\Model\UpdateSubscriptionAPIResponse
+updateSubscription($tenant_id, $id, $update_api_user_subscription_data, $user_id): \FastComments\Client\Model\UpdateSubscriptionAPIResponse
 ```
 
 
@@ -7742,12 +7531,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_api_user_subscription_data = new \FastComments\Client\Model\UpdateAPIUserSubscriptionData(); // \FastComments\Client\Model\UpdateAPIUserSubscriptionData
-$options = [
-    'user_id' => 'user_id_example', // string
-];
+$user_id = 'user_id_example'; // string
+
 
 try {
-    $result = $apiInstance->updateSubscription($tenant_id, $id, $update_api_user_subscription_data, $options);
+    $result = $apiInstance->updateSubscription($tenant_id, $id, $update_api_user_subscription_data, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateSubscription: ', $e->getMessage(), PHP_EOL;
@@ -7755,8 +7543,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7785,7 +7571,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `updateTenant()`
 
 ```php
-updateTenant($tenant_id, $id, $update_tenant_body, $options): \FastComments\Client\Model\APIEmptyResponse
+updateTenant($tenant_id, $id, $update_tenant_body): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -7813,11 +7599,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_tenant_body = new \FastComments\Client\Model\UpdateTenantBody(); // \FastComments\Client\Model\UpdateTenantBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->updateTenant($tenant_id, $id, $update_tenant_body, $options);
+    $result = $apiInstance->updateTenant($tenant_id, $id, $update_tenant_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateTenant: ', $e->getMessage(), PHP_EOL;
@@ -7825,8 +7610,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7854,7 +7637,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `updateTenantPackage()`
 
 ```php
-updateTenantPackage($tenant_id, $id, $update_tenant_package_body, $options): \FastComments\Client\Model\APIEmptyResponse
+updateTenantPackage($tenant_id, $id, $update_tenant_package_body): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -7882,11 +7665,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_tenant_package_body = new \FastComments\Client\Model\UpdateTenantPackageBody(); // \FastComments\Client\Model\UpdateTenantPackageBody
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->updateTenantPackage($tenant_id, $id, $update_tenant_package_body, $options);
+    $result = $apiInstance->updateTenantPackage($tenant_id, $id, $update_tenant_package_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateTenantPackage: ', $e->getMessage(), PHP_EOL;
@@ -7894,8 +7676,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7923,7 +7703,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `updateTenantUser()`
 
 ```php
-updateTenantUser($tenant_id, $id, $update_tenant_user_body, $options): \FastComments\Client\Model\APIEmptyResponse
+updateTenantUser($tenant_id, $id, $update_tenant_user_body, $update_comments): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -7951,12 +7731,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_tenant_user_body = new \FastComments\Client\Model\UpdateTenantUserBody(); // \FastComments\Client\Model\UpdateTenantUserBody
-$options = [
-    'update_comments' => 'update_comments_example', // string
-];
+$update_comments = 'update_comments_example'; // string
+
 
 try {
-    $result = $apiInstance->updateTenantUser($tenant_id, $id, $update_tenant_user_body, $options);
+    $result = $apiInstance->updateTenantUser($tenant_id, $id, $update_tenant_user_body, $update_comments);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateTenantUser: ', $e->getMessage(), PHP_EOL;
@@ -7964,8 +7743,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7994,7 +7771,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 ## `updateUserBadge()`
 
 ```php
-updateUserBadge($tenant_id, $id, $update_user_badge_params, $options): \FastComments\Client\Model\APIEmptySuccessResponse
+updateUserBadge($tenant_id, $id, $update_user_badge_params): \FastComments\Client\Model\APIEmptySuccessResponse
 ```
 
 
@@ -8022,11 +7799,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_user_badge_params = new \FastComments\Client\Model\UpdateUserBadgeParams(); // \FastComments\Client\Model\UpdateUserBadgeParams
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->updateUserBadge($tenant_id, $id, $update_user_badge_params, $options);
+    $result = $apiInstance->updateUserBadge($tenant_id, $id, $update_user_badge_params);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateUserBadge: ', $e->getMessage(), PHP_EOL;
@@ -8034,8 +7810,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |

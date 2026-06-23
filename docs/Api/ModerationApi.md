@@ -81,6 +81,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->deleteModerationVote($comment_id, $vote_id, $options);
     print_r($result);
@@ -91,7 +92,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -153,6 +154,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getApiComments($options);
     print_r($result);
@@ -163,7 +165,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -223,6 +225,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getApiExportStatus($options);
     print_r($result);
@@ -233,7 +236,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -291,6 +294,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getApiIds($options);
     print_r($result);
@@ -301,7 +305,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -359,6 +363,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getBanUsersFromComment($comment_id, $options);
     print_r($result);
@@ -369,7 +374,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -422,6 +427,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getCommentBanStatus($comment_id, $options);
     print_r($result);
@@ -432,7 +438,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -485,6 +491,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getCommentChildren($comment_id, $options);
     print_r($result);
@@ -495,7 +502,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -552,6 +559,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getCount($options);
     print_r($result);
@@ -562,7 +570,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -618,6 +626,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getCounts($options);
     print_r($result);
@@ -628,7 +637,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -680,6 +689,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getLogs($comment_id, $options);
     print_r($result);
@@ -690,7 +700,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -742,6 +752,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getManualBadges($options);
     print_r($result);
@@ -752,7 +763,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -805,6 +816,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getManualBadgesForUser($options);
     print_r($result);
@@ -815,7 +827,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -871,6 +883,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getModerationComment($comment_id, $options);
     print_r($result);
@@ -881,7 +894,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -936,6 +949,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getModerationCommentText($comment_id, $options);
     print_r($result);
@@ -946,7 +960,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1002,6 +1016,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getPreBanSummary($comment_id, $options);
     print_r($result);
@@ -1012,7 +1027,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1070,6 +1085,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getSearchCommentsSummary($options);
     print_r($result);
@@ -1080,7 +1096,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1135,6 +1151,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getSearchPages($options);
     print_r($result);
@@ -1145,7 +1162,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1198,6 +1215,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getSearchSites($options);
     print_r($result);
@@ -1208,7 +1226,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1261,6 +1279,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getSearchSuggest($options);
     print_r($result);
@@ -1271,7 +1290,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1324,6 +1343,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getSearchUsers($options);
     print_r($result);
@@ -1334,7 +1354,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1387,6 +1407,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getTrustFactor($options);
     print_r($result);
@@ -1397,7 +1418,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1449,6 +1470,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getUserBanPreference($options);
     print_r($result);
@@ -1459,7 +1481,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1511,6 +1533,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getUserInternalProfile($options);
     print_r($result);
@@ -1521,7 +1544,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1576,6 +1599,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->postAdjustCommentVotes($comment_id, $adjust_comment_votes_params, $options);
     print_r($result);
@@ -1586,7 +1610,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1645,6 +1669,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->postApiExport($options);
     print_r($result);
@@ -1655,7 +1680,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1720,6 +1745,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->postBanUserFromComment($comment_id, $options);
     print_r($result);
@@ -1730,7 +1756,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1791,6 +1817,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->postBanUserUndo($ban_user_undo_params, $options);
     print_r($result);
@@ -1801,7 +1828,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1857,6 +1884,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->postBulkPreBanSummary($bulk_pre_ban_params, $options);
     print_r($result);
@@ -1867,7 +1895,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1923,6 +1951,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->postCommentsByIds($comments_by_ids_params, $options);
     print_r($result);
@@ -1933,7 +1962,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1987,6 +2016,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->postFlagComment($comment_id, $options);
     print_r($result);
@@ -1997,7 +2027,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2052,6 +2082,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->postRemoveComment($comment_id, $options);
     print_r($result);
@@ -2062,7 +2093,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2117,6 +2148,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->postRestoreDeletedComment($comment_id, $options);
     print_r($result);
@@ -2127,7 +2159,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2183,6 +2215,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->postSetCommentApprovalStatus($comment_id, $options);
     print_r($result);
@@ -2193,7 +2226,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2250,6 +2283,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->postSetCommentReviewStatus($comment_id, $options);
     print_r($result);
@@ -2260,7 +2294,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2318,6 +2352,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->postSetCommentSpamStatus($comment_id, $options);
     print_r($result);
@@ -2328,7 +2363,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2386,6 +2421,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->postSetCommentText($comment_id, $set_comment_text_params, $options);
     print_r($result);
@@ -2396,7 +2432,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2452,6 +2488,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->postUnFlagComment($comment_id, $options);
     print_r($result);
@@ -2462,7 +2499,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2518,6 +2555,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->postVote($comment_id, $options);
     print_r($result);
@@ -2528,7 +2566,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2586,6 +2624,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->putAwardBadge($badge_id, $options);
     print_r($result);
@@ -2596,7 +2635,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2652,6 +2691,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->putCloseThread($url_id, $options);
     print_r($result);
@@ -2662,7 +2702,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2718,6 +2758,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->putRemoveBadge($badge_id, $options);
     print_r($result);
@@ -2728,7 +2769,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2784,6 +2825,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->putReopenThread($url_id, $options);
     print_r($result);
@@ -2794,7 +2836,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2848,6 +2890,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->setTrustFactor($options);
     print_r($result);
@@ -2858,7 +2901,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |

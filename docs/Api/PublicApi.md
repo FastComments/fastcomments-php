@@ -63,7 +63,7 @@ All URIs are relative to https://fastcomments.com, except if the operation defin
 ## `blockFromCommentPublic()`
 
 ```php
-blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $options): \FastComments\Client\Model\BlockSuccess
+blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \FastComments\Client\Model\BlockSuccess
 ```
 
 
@@ -85,12 +85,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $public_block_from_comment_params = new \FastComments\Client\Model\PublicBlockFromCommentParams(); // \FastComments\Client\Model\PublicBlockFromCommentParams
-$options = [
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
+
 
 try {
-    $result = $apiInstance->blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $options);
+    $result = $apiInstance->blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->blockFromCommentPublic: ', $e->getMessage(), PHP_EOL;
@@ -98,8 +97,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -128,7 +125,7 @@ No authorization required
 ## `checkedCommentsForBlocked()`
 
 ```php
-checkedCommentsForBlocked($tenant_id, $comment_ids, $options): \FastComments\Client\Model\CheckBlockedCommentsResponse
+checkedCommentsForBlocked($tenant_id, $comment_ids, $sso): \FastComments\Client\Model\CheckBlockedCommentsResponse
 ```
 
 
@@ -149,12 +146,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $comment_ids = 'comment_ids_example'; // string | A comma separated list of comment ids.
-$options = [
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
+
 
 try {
-    $result = $apiInstance->checkedCommentsForBlocked($tenant_id, $comment_ids, $options);
+    $result = $apiInstance->checkedCommentsForBlocked($tenant_id, $comment_ids, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->checkedCommentsForBlocked: ', $e->getMessage(), PHP_EOL;
@@ -162,8 +158,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -219,6 +213,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $options);
     print_r($result);
@@ -229,7 +224,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -286,6 +281,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->createFeedPostPublic($tenant_id, $create_feed_post_params, $options);
     print_r($result);
@@ -296,7 +292,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -325,7 +321,7 @@ No authorization required
 ## `createV1PageReact()`
 
 ```php
-createV1PageReact($tenant_id, $url_id, $options): \FastComments\Client\Model\CreateV1PageReact
+createV1PageReact($tenant_id, $url_id, $title): \FastComments\Client\Model\CreateV1PageReact
 ```
 
 
@@ -346,12 +342,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
-$options = [
-    'title' => 'title_example', // string
-];
+$title = 'title_example'; // string
+
 
 try {
-    $result = $apiInstance->createV1PageReact($tenant_id, $url_id, $options);
+    $result = $apiInstance->createV1PageReact($tenant_id, $url_id, $title);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->createV1PageReact: ', $e->getMessage(), PHP_EOL;
@@ -359,8 +354,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -388,7 +381,7 @@ No authorization required
 ## `createV2PageReact()`
 
 ```php
-createV2PageReact($tenant_id, $url_id, $id, $options): \FastComments\Client\Model\CreateV1PageReact
+createV2PageReact($tenant_id, $url_id, $id, $title): \FastComments\Client\Model\CreateV1PageReact
 ```
 
 
@@ -410,12 +403,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-    'title' => 'title_example', // string
-];
+$title = 'title_example'; // string
+
 
 try {
-    $result = $apiInstance->createV2PageReact($tenant_id, $url_id, $id, $options);
+    $result = $apiInstance->createV2PageReact($tenant_id, $url_id, $id, $title);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->createV2PageReact: ', $e->getMessage(), PHP_EOL;
@@ -423,8 +415,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -480,6 +470,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $options);
     print_r($result);
@@ -490,7 +481,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -549,6 +540,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $options);
     print_r($result);
@@ -559,7 +551,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -617,6 +609,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->deleteFeedPostPublic($tenant_id, $post_id, $options);
     print_r($result);
@@ -627,7 +620,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -656,7 +649,7 @@ No authorization required
 ## `deleteV1PageReact()`
 
 ```php
-deleteV1PageReact($tenant_id, $url_id, $options): \FastComments\Client\Model\CreateV1PageReact
+deleteV1PageReact($tenant_id, $url_id): \FastComments\Client\Model\CreateV1PageReact
 ```
 
 
@@ -677,11 +670,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->deleteV1PageReact($tenant_id, $url_id, $options);
+    $result = $apiInstance->deleteV1PageReact($tenant_id, $url_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->deleteV1PageReact: ', $e->getMessage(), PHP_EOL;
@@ -689,8 +681,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -717,7 +707,7 @@ No authorization required
 ## `deleteV2PageReact()`
 
 ```php
-deleteV2PageReact($tenant_id, $url_id, $id, $options): \FastComments\Client\Model\CreateV1PageReact
+deleteV2PageReact($tenant_id, $url_id, $id): \FastComments\Client\Model\CreateV1PageReact
 ```
 
 
@@ -739,11 +729,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->deleteV2PageReact($tenant_id, $url_id, $id, $options);
+    $result = $apiInstance->deleteV2PageReact($tenant_id, $url_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->deleteV2PageReact: ', $e->getMessage(), PHP_EOL;
@@ -751,8 +740,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -780,7 +767,7 @@ No authorization required
 ## `flagCommentPublic()`
 
 ```php
-flagCommentPublic($tenant_id, $comment_id, $is_flagged, $options): \FastComments\Client\Model\APIEmptyResponse
+flagCommentPublic($tenant_id, $comment_id, $is_flagged, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -802,12 +789,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $is_flagged = True; // bool
-$options = [
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
+
 
 try {
-    $result = $apiInstance->flagCommentPublic($tenant_id, $comment_id, $is_flagged, $options);
+    $result = $apiInstance->flagCommentPublic($tenant_id, $comment_id, $is_flagged, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->flagCommentPublic: ', $e->getMessage(), PHP_EOL;
@@ -815,8 +801,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -871,6 +855,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getCommentText($tenant_id, $comment_id, $options);
     print_r($result);
@@ -881,7 +866,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -910,7 +895,7 @@ No authorization required
 ## `getCommentVoteUserNames()`
 
 ```php
-getCommentVoteUserNames($tenant_id, $comment_id, $dir, $options): \FastComments\Client\Model\GetCommentVoteUserNamesSuccessResponse
+getCommentVoteUserNames($tenant_id, $comment_id, $dir, $sso): \FastComments\Client\Model\GetCommentVoteUserNamesSuccessResponse
 ```
 
 
@@ -932,12 +917,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $dir = 56; // int
-$options = [
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
+
 
 try {
-    $result = $apiInstance->getCommentVoteUserNames($tenant_id, $comment_id, $dir, $options);
+    $result = $apiInstance->getCommentVoteUserNames($tenant_id, $comment_id, $dir, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getCommentVoteUserNames: ', $e->getMessage(), PHP_EOL;
@@ -945,8 +929,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1004,6 +986,7 @@ $options = [
     'is_crawler' => True, // bool
 ];
 
+
 try {
     $result = $apiInstance->getCommentsForUser($options);
     print_r($result);
@@ -1014,7 +997,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1098,6 +1081,7 @@ $options = [
     'before_comment_id' => 'before_comment_id_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getCommentsPublic($tenant_id, $url_id, $options);
     print_r($result);
@@ -1108,7 +1092,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1161,7 +1145,7 @@ No authorization required
 ## `getEventLog()`
 
 ```php
-getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $options): \FastComments\Client\Model\GetEventLogResponse
+getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \FastComments\Client\Model\GetEventLogResponse
 ```
 
 
@@ -1186,12 +1170,11 @@ $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 $user_id_ws = 'user_id_ws_example'; // string
 $start_time = 56; // int
-$options = [
-    'end_time' => 56, // int
-];
+$end_time = 56; // int
+
 
 try {
-    $result = $apiInstance->getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $options);
+    $result = $apiInstance->getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getEventLog: ', $e->getMessage(), PHP_EOL;
@@ -1199,8 +1182,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1261,6 +1242,7 @@ $options = [
     'include_user_info' => True, // bool
 ];
 
+
 try {
     $result = $apiInstance->getFeedPostsPublic($tenant_id, $options);
     print_r($result);
@@ -1271,7 +1253,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1303,7 +1285,7 @@ No authorization required
 ## `getFeedPostsStats()`
 
 ```php
-getFeedPostsStats($tenant_id, $post_ids, $options): \FastComments\Client\Model\FeedPostsStatsResponse
+getFeedPostsStats($tenant_id, $post_ids, $sso): \FastComments\Client\Model\FeedPostsStatsResponse
 ```
 
 
@@ -1324,12 +1306,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $post_ids = array('post_ids_example'); // string[]
-$options = [
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
+
 
 try {
-    $result = $apiInstance->getFeedPostsStats($tenant_id, $post_ids, $options);
+    $result = $apiInstance->getFeedPostsStats($tenant_id, $post_ids, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getFeedPostsStats: ', $e->getMessage(), PHP_EOL;
@@ -1337,8 +1318,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1366,7 +1345,7 @@ No authorization required
 ## `getGifLarge()`
 
 ```php
-getGifLarge($tenant_id, $large_internal_url_sanitized, $options): \FastComments\Client\Model\GifGetLargeResponse
+getGifLarge($tenant_id, $large_internal_url_sanitized): \FastComments\Client\Model\GifGetLargeResponse
 ```
 
 
@@ -1387,11 +1366,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $large_internal_url_sanitized = 'large_internal_url_sanitized_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getGifLarge($tenant_id, $large_internal_url_sanitized, $options);
+    $result = $apiInstance->getGifLarge($tenant_id, $large_internal_url_sanitized);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getGifLarge: ', $e->getMessage(), PHP_EOL;
@@ -1399,8 +1377,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1454,6 +1430,7 @@ $options = [
     'page' => 3.4, // float
 ];
 
+
 try {
     $result = $apiInstance->getGifsSearch($tenant_id, $search, $options);
     print_r($result);
@@ -1464,7 +1441,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1520,6 +1497,7 @@ $options = [
     'page' => 3.4, // float
 ];
 
+
 try {
     $result = $apiInstance->getGifsTrending($tenant_id, $options);
     print_r($result);
@@ -1530,7 +1508,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1559,7 +1537,7 @@ No authorization required
 ## `getGlobalEventLog()`
 
 ```php
-getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $options): \FastComments\Client\Model\GetEventLogResponse
+getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \FastComments\Client\Model\GetEventLogResponse
 ```
 
 
@@ -1584,12 +1562,11 @@ $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 $user_id_ws = 'user_id_ws_example'; // string
 $start_time = 56; // int
-$options = [
-    'end_time' => 56, // int
-];
+$end_time = 56; // int
+
 
 try {
-    $result = $apiInstance->getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $options);
+    $result = $apiInstance->getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getGlobalEventLog: ', $e->getMessage(), PHP_EOL;
@@ -1597,8 +1574,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1656,6 +1631,7 @@ $options = [
     'after_user_id' => 'after_user_id_example', // string | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries.
 ];
 
+
 try {
     $result = $apiInstance->getOfflineUsers($tenant_id, $url_id, $options);
     print_r($result);
@@ -1666,7 +1642,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1723,6 +1699,7 @@ $options = [
     'after_user_id' => 'after_user_id_example', // string | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries.
 ];
 
+
 try {
     $result = $apiInstance->getOnlineUsers($tenant_id, $url_id, $options);
     print_r($result);
@@ -1733,7 +1710,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1792,6 +1769,7 @@ $options = [
     'has_comments' => True, // bool | If true, only return pages with at least one comment.
 ];
 
+
 try {
     $result = $apiInstance->getPagesPublic($tenant_id, $options);
     print_r($result);
@@ -1802,7 +1780,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1859,6 +1837,7 @@ $options = [
     'use_full_translation_ids' => True, // bool
 ];
 
+
 try {
     $result = $apiInstance->getTranslations($namespace, $component, $options);
     print_r($result);
@@ -1869,7 +1848,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1898,7 +1877,7 @@ No authorization required
 ## `getUserNotificationCount()`
 
 ```php
-getUserNotificationCount($tenant_id, $options): \FastComments\Client\Model\GetUserNotificationCountResponse
+getUserNotificationCount($tenant_id, $sso): \FastComments\Client\Model\GetUserNotificationCountResponse
 ```
 
 
@@ -1918,12 +1897,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 );
 
 $tenant_id = 'tenant_id_example'; // string
-$options = [
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
+
 
 try {
-    $result = $apiInstance->getUserNotificationCount($tenant_id, $options);
+    $result = $apiInstance->getUserNotificationCount($tenant_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getUserNotificationCount: ', $e->getMessage(), PHP_EOL;
@@ -1931,8 +1909,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1993,6 +1969,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getUserNotifications($tenant_id, $options);
     print_r($result);
@@ -2003,7 +1980,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2040,7 +2017,7 @@ No authorization required
 ## `getUserPresenceStatuses()`
 
 ```php
-getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids, $options): \FastComments\Client\Model\GetUserPresenceStatusesResponse
+getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids): \FastComments\Client\Model\GetUserPresenceStatusesResponse
 ```
 
 
@@ -2062,11 +2039,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $url_id_ws = 'url_id_ws_example'; // string
 $user_ids = 'user_ids_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids, $options);
+    $result = $apiInstance->getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getUserPresenceStatuses: ', $e->getMessage(), PHP_EOL;
@@ -2074,8 +2050,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2128,6 +2102,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->getUserReactsPublic($tenant_id, $options);
     print_r($result);
@@ -2138,7 +2113,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2166,7 +2141,7 @@ No authorization required
 ## `getUsersInfo()`
 
 ```php
-getUsersInfo($tenant_id, $ids, $options): \FastComments\Client\Model\PageUsersInfoResponse
+getUsersInfo($tenant_id, $ids): \FastComments\Client\Model\PageUsersInfoResponse
 ```
 
 
@@ -2189,11 +2164,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $ids = 'ids_example'; // string | Comma-delimited userIds.
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getUsersInfo($tenant_id, $ids, $options);
+    $result = $apiInstance->getUsersInfo($tenant_id, $ids);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getUsersInfo: ', $e->getMessage(), PHP_EOL;
@@ -2201,8 +2175,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2229,7 +2201,7 @@ No authorization required
 ## `getV1PageLikes()`
 
 ```php
-getV1PageLikes($tenant_id, $url_id, $options): \FastComments\Client\Model\GetV1PageLikes
+getV1PageLikes($tenant_id, $url_id): \FastComments\Client\Model\GetV1PageLikes
 ```
 
 
@@ -2250,11 +2222,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getV1PageLikes($tenant_id, $url_id, $options);
+    $result = $apiInstance->getV1PageLikes($tenant_id, $url_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getV1PageLikes: ', $e->getMessage(), PHP_EOL;
@@ -2262,8 +2233,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2290,7 +2259,7 @@ No authorization required
 ## `getV2PageReactUsers()`
 
 ```php
-getV2PageReactUsers($tenant_id, $url_id, $id, $options): \FastComments\Client\Model\GetV2PageReactUsersResponse
+getV2PageReactUsers($tenant_id, $url_id, $id): \FastComments\Client\Model\GetV2PageReactUsersResponse
 ```
 
 
@@ -2312,11 +2281,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 $id = 'id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getV2PageReactUsers($tenant_id, $url_id, $id, $options);
+    $result = $apiInstance->getV2PageReactUsers($tenant_id, $url_id, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getV2PageReactUsers: ', $e->getMessage(), PHP_EOL;
@@ -2324,8 +2292,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2353,7 +2319,7 @@ No authorization required
 ## `getV2PageReacts()`
 
 ```php
-getV2PageReacts($tenant_id, $url_id, $options): \FastComments\Client\Model\GetV2PageReacts
+getV2PageReacts($tenant_id, $url_id): \FastComments\Client\Model\GetV2PageReacts
 ```
 
 
@@ -2374,11 +2340,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->getV2PageReacts($tenant_id, $url_id, $options);
+    $result = $apiInstance->getV2PageReacts($tenant_id, $url_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getV2PageReacts: ', $e->getMessage(), PHP_EOL;
@@ -2386,8 +2351,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2414,7 +2377,7 @@ No authorization required
 ## `lockComment()`
 
 ```php
-lockComment($tenant_id, $comment_id, $broadcast_id, $options): \FastComments\Client\Model\APIEmptyResponse
+lockComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2436,12 +2399,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
-$options = [
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
+
 
 try {
-    $result = $apiInstance->lockComment($tenant_id, $comment_id, $broadcast_id, $options);
+    $result = $apiInstance->lockComment($tenant_id, $comment_id, $broadcast_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->lockComment: ', $e->getMessage(), PHP_EOL;
@@ -2449,8 +2411,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2479,7 +2439,7 @@ No authorization required
 ## `logoutPublic()`
 
 ```php
-logoutPublic($options): \FastComments\Client\Model\APIEmptyResponse
+logoutPublic(): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2498,11 +2458,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$options = [
-];
+
 
 try {
-    $result = $apiInstance->logoutPublic($options);
+    $result = $apiInstance->logoutPublic();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->logoutPublic: ', $e->getMessage(), PHP_EOL;
@@ -2510,8 +2469,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 This endpoint does not need any parameter.
 
@@ -2535,7 +2492,7 @@ No authorization required
 ## `pinComment()`
 
 ```php
-pinComment($tenant_id, $comment_id, $broadcast_id, $options): \FastComments\Client\Model\ChangeCommentPinStatusResponse
+pinComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\ChangeCommentPinStatusResponse
 ```
 
 
@@ -2557,12 +2514,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
-$options = [
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
+
 
 try {
-    $result = $apiInstance->pinComment($tenant_id, $comment_id, $broadcast_id, $options);
+    $result = $apiInstance->pinComment($tenant_id, $comment_id, $broadcast_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->pinComment: ', $e->getMessage(), PHP_EOL;
@@ -2570,8 +2526,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2628,6 +2582,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->reactFeedPostPublic($tenant_id, $post_id, $react_body_params, $options);
     print_r($result);
@@ -2638,7 +2593,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2669,7 +2624,7 @@ No authorization required
 ## `resetUserNotificationCount()`
 
 ```php
-resetUserNotificationCount($tenant_id, $options): \FastComments\Client\Model\ResetUserNotificationsResponse
+resetUserNotificationCount($tenant_id, $sso): \FastComments\Client\Model\ResetUserNotificationsResponse
 ```
 
 
@@ -2689,12 +2644,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 );
 
 $tenant_id = 'tenant_id_example'; // string
-$options = [
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
+
 
 try {
-    $result = $apiInstance->resetUserNotificationCount($tenant_id, $options);
+    $result = $apiInstance->resetUserNotificationCount($tenant_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->resetUserNotificationCount: ', $e->getMessage(), PHP_EOL;
@@ -2702,8 +2656,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2759,6 +2711,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->resetUserNotifications($tenant_id, $options);
     print_r($result);
@@ -2769,7 +2722,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2829,6 +2782,7 @@ $options = [
     'search_section' => 'search_section_example', // string
 ];
 
+
 try {
     $result = $apiInstance->searchUsers($tenant_id, $url_id, $options);
     print_r($result);
@@ -2839,7 +2793,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2898,6 +2852,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $options);
     print_r($result);
@@ -2908,7 +2863,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2939,7 +2894,7 @@ No authorization required
 ## `unBlockCommentPublic()`
 
 ```php
-unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $options): \FastComments\Client\Model\UnblockSuccess
+unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \FastComments\Client\Model\UnblockSuccess
 ```
 
 
@@ -2961,12 +2916,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $public_block_from_comment_params = new \FastComments\Client\Model\PublicBlockFromCommentParams(); // \FastComments\Client\Model\PublicBlockFromCommentParams
-$options = [
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
+
 
 try {
-    $result = $apiInstance->unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $options);
+    $result = $apiInstance->unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->unBlockCommentPublic: ', $e->getMessage(), PHP_EOL;
@@ -2974,8 +2928,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3004,7 +2956,7 @@ No authorization required
 ## `unLockComment()`
 
 ```php
-unLockComment($tenant_id, $comment_id, $broadcast_id, $options): \FastComments\Client\Model\APIEmptyResponse
+unLockComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -3026,12 +2978,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
-$options = [
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
+
 
 try {
-    $result = $apiInstance->unLockComment($tenant_id, $comment_id, $broadcast_id, $options);
+    $result = $apiInstance->unLockComment($tenant_id, $comment_id, $broadcast_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->unLockComment: ', $e->getMessage(), PHP_EOL;
@@ -3039,8 +2990,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3069,7 +3018,7 @@ No authorization required
 ## `unPinComment()`
 
 ```php
-unPinComment($tenant_id, $comment_id, $broadcast_id, $options): \FastComments\Client\Model\ChangeCommentPinStatusResponse
+unPinComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\ChangeCommentPinStatusResponse
 ```
 
 
@@ -3091,12 +3040,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
-$options = [
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
+
 
 try {
-    $result = $apiInstance->unPinComment($tenant_id, $comment_id, $broadcast_id, $options);
+    $result = $apiInstance->unPinComment($tenant_id, $comment_id, $broadcast_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->unPinComment: ', $e->getMessage(), PHP_EOL;
@@ -3104,8 +3052,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3161,6 +3107,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->updateFeedPostPublic($tenant_id, $post_id, $update_feed_post_params, $options);
     print_r($result);
@@ -3171,7 +3118,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3201,7 +3148,7 @@ No authorization required
 ## `updateUserNotificationCommentSubscriptionStatus()`
 
 ```php
-updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $options): \FastComments\Client\Model\UpdateUserNotificationCommentSubscriptionStatusResponse
+updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso): \FastComments\Client\Model\UpdateUserNotificationCommentSubscriptionStatusResponse
 ```
 
 
@@ -3226,12 +3173,11 @@ $tenant_id = 'tenant_id_example'; // string
 $notification_id = 'notification_id_example'; // string
 $opted_in_or_out = 'opted_in_or_out_example'; // string
 $comment_id = 'comment_id_example'; // string
-$options = [
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
+
 
 try {
-    $result = $apiInstance->updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $options);
+    $result = $apiInstance->updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->updateUserNotificationCommentSubscriptionStatus: ', $e->getMessage(), PHP_EOL;
@@ -3239,8 +3185,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3270,7 +3214,7 @@ No authorization required
 ## `updateUserNotificationPageSubscriptionStatus()`
 
 ```php
-updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $options): \FastComments\Client\Model\UpdateUserNotificationPageSubscriptionStatusResponse
+updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso): \FastComments\Client\Model\UpdateUserNotificationPageSubscriptionStatusResponse
 ```
 
 
@@ -3296,12 +3240,11 @@ $url_id = 'url_id_example'; // string
 $url = 'url_example'; // string
 $page_title = 'page_title_example'; // string
 $subscribed_or_unsubscribed = 'subscribed_or_unsubscribed_example'; // string
-$options = [
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
+
 
 try {
-    $result = $apiInstance->updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $options);
+    $result = $apiInstance->updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->updateUserNotificationPageSubscriptionStatus: ', $e->getMessage(), PHP_EOL;
@@ -3309,8 +3252,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3341,7 +3282,7 @@ No authorization required
 ## `updateUserNotificationStatus()`
 
 ```php
-updateUserNotificationStatus($tenant_id, $notification_id, $new_status, $options): \FastComments\Client\Model\UpdateUserNotificationStatusResponse
+updateUserNotificationStatus($tenant_id, $notification_id, $new_status, $sso): \FastComments\Client\Model\UpdateUserNotificationStatusResponse
 ```
 
 
@@ -3363,12 +3304,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
 $tenant_id = 'tenant_id_example'; // string
 $notification_id = 'notification_id_example'; // string
 $new_status = 'new_status_example'; // string
-$options = [
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
+
 
 try {
-    $result = $apiInstance->updateUserNotificationStatus($tenant_id, $notification_id, $new_status, $options);
+    $result = $apiInstance->updateUserNotificationStatus($tenant_id, $notification_id, $new_status, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->updateUserNotificationStatus: ', $e->getMessage(), PHP_EOL;
@@ -3376,8 +3316,6 @@ try {
 ```
 
 ### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3434,6 +3372,7 @@ $options = [
     'url_id' => 'url_id_example', // string | Page id that upload is happening from, to configure
 ];
 
+
 try {
     $result = $apiInstance->uploadImage($tenant_id, $file, $options);
     print_r($result);
@@ -3444,7 +3383,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3502,6 +3441,7 @@ $options = [
     'sso' => 'sso_example', // string
 ];
 
+
 try {
     $result = $apiInstance->voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $options);
     print_r($result);
@@ -3512,7 +3452,7 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter names below.
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
