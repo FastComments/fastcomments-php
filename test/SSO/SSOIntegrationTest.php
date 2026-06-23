@@ -53,10 +53,7 @@ class SSOIntegrationTest extends TestCase
         // $config->setHost('https://eu.fastcomments.com'); // Uncomment to use EU endpoint
         $apiInstance = new PublicApi(new Client(), $config);
 
-        $response = $apiInstance->getCommentsPublic([
-            'tenant_id' => $this->tenantId,
-            'url_id' => 'sdk-test-page',
-        ]);
+        $response = $apiInstance->getCommentsPublic($this->tenantId, 'sdk-test-page');
 
         $this->assertNotNull($response);
     }
@@ -90,23 +87,18 @@ class SSOIntegrationTest extends TestCase
         $commentData->setCommenterName($user->username);
         $commentData->setDate($timestamp);
 
-        $createResponse = $publicApi->createCommentPublic([
-            'tenant_id' => $this->tenantId,
-            'url_id' => 'sdk-test-php',
-            'broadcast_id' => 'test-' . $timestamp,
-            'comment_data' => $commentData,
-            'session_id' => null,
-            'sso' => $token,
-        ]);
+        $createResponse = $publicApi->createCommentPublic(
+            $this->tenantId,
+            'sdk-test-php',
+            'test-' . $timestamp,
+            $commentData,
+            ['sso' => $token]
+        );
 
         $this->assertNotNull($createResponse);
 
         // Get comments with SSO
-        $getResponse = $publicApi->getCommentsPublic([
-            'tenant_id' => $this->tenantId,
-            'url_id' => 'sdk-test-php',
-            'sso' => $token,
-        ]);
+        $getResponse = $publicApi->getCommentsPublic($this->tenantId, 'sdk-test-php', ['sso' => $token]);
 
         $this->assertNotNull($getResponse);
     }
@@ -143,14 +135,13 @@ class SSOIntegrationTest extends TestCase
         $commentData->setCommenterName($user->username);
         $commentData->setDate($timestamp);
 
-        $createResponse = $publicApi->createCommentPublic([
-            'tenant_id' => $this->tenantId,
-            'url_id' => $testUrlId,
-            'broadcast_id' => 'test-' . $timestamp,
-            'comment_data' => $commentData,
-            'session_id' => null,
-            'sso' => $token,
-        ]);
+        $createResponse = $publicApi->createCommentPublic(
+            $this->tenantId,
+            $testUrlId,
+            'test-' . $timestamp,
+            $commentData,
+            ['sso' => $token]
+        );
 
         $this->assertNotNull($createResponse);
         echo "✓ Comment created successfully\n";
@@ -163,10 +154,7 @@ class SSOIntegrationTest extends TestCase
         $defaultConfig->setApiKey('x-api-key', $this->apiKey);
         $defaultApi = new DefaultApi(new Client(), $defaultConfig);
 
-        $getResponse = $defaultApi->getComments([
-            'tenant_id' => $this->tenantId,
-            'url_id' => $testUrlId,
-        ]);
+        $getResponse = $defaultApi->getComments($this->tenantId, ['url_id' => $testUrlId]);
 
         $this->assertNotNull($getResponse);
 
@@ -218,14 +206,13 @@ class SSOIntegrationTest extends TestCase
         $commentData->setCommenterName($user->username);
         $commentData->setDate($timestamp);
 
-        $createResponse = $publicApi->createCommentPublic([
-            'tenant_id' => $this->tenantId,
-            'url_id' => $testUrlId,
-            'broadcast_id' => 'test-' . $timestamp,
-            'comment_data' => $commentData,
-            'session_id' => null,
-            'sso' => $token,
-        ]);
+        $createResponse = $publicApi->createCommentPublic(
+            $this->tenantId,
+            $testUrlId,
+            'test-' . $timestamp,
+            $commentData,
+            ['sso' => $token]
+        );
 
         $this->assertNotNull($createResponse);
         echo "✓ Comment created successfully\n";
@@ -233,11 +220,7 @@ class SSOIntegrationTest extends TestCase
         // Step 2: Fetch the comment back using PUBLIC API with SSO
         echo "Step 2: Fetching comments for page '" . $testUrlId . "' with SSO...\n";
 
-        $getResponse = $publicApi->getCommentsPublic([
-            'tenant_id' => $this->tenantId,
-            'url_id' => $testUrlId,
-            'sso' => $token,
-        ]);
+        $getResponse = $publicApi->getCommentsPublic($this->tenantId, $testUrlId, ['sso' => $token]);
 
         $this->assertNotNull($getResponse);
 

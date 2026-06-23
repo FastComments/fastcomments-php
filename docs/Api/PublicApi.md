@@ -63,7 +63,7 @@ All URIs are relative to https://fastcomments.com, except if the operation defin
 ## `blockFromCommentPublic()`
 
 ```php
-blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \FastComments\Client\Model\BlockSuccess
+blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $options): \FastComments\Client\Model\BlockSuccess
 ```
 
 
@@ -82,15 +82,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'comment_id' => 'comment_id_example', // string
-    'public_block_from_comment_params' => new \FastComments\Client\Model\PublicBlockFromCommentParams(), // \FastComments\Client\Model\PublicBlockFromCommentParams
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$public_block_from_comment_params = new \FastComments\Client\Model\PublicBlockFromCommentParams(); // \FastComments\Client\Model\PublicBlockFromCommentParams
+$options = [
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->blockFromCommentPublic($associate_array);
+    $result = $apiInstance->blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->blockFromCommentPublic: ', $e->getMessage(), PHP_EOL;
@@ -128,7 +128,7 @@ No authorization required
 ## `checkedCommentsForBlocked()`
 
 ```php
-checkedCommentsForBlocked($tenant_id, $comment_ids, $sso): \FastComments\Client\Model\CheckBlockedCommentsResponse
+checkedCommentsForBlocked($tenant_id, $comment_ids, $options): \FastComments\Client\Model\CheckBlockedCommentsResponse
 ```
 
 
@@ -147,14 +147,14 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'comment_ids' => 'comment_ids_example', // string | A comma separated list of comment ids.
+$tenant_id = 'tenant_id_example'; // string
+$comment_ids = 'comment_ids_example'; // string | A comma separated list of comment ids.
+$options = [
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->checkedCommentsForBlocked($associate_array);
+    $result = $apiInstance->checkedCommentsForBlocked($tenant_id, $comment_ids, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->checkedCommentsForBlocked: ', $e->getMessage(), PHP_EOL;
@@ -191,7 +191,7 @@ No authorization required
 ## `createCommentPublic()`
 
 ```php
-createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $session_id, $sso): \FastComments\Client\Model\SaveCommentsResponseWithPresence
+createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $options): \FastComments\Client\Model\SaveCommentsResponseWithPresence
 ```
 
 
@@ -210,17 +210,17 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id' => 'url_id_example', // string
-    'broadcast_id' => 'broadcast_id_example', // string
-    'comment_data' => new \FastComments\Client\Model\CommentData(), // \FastComments\Client\Model\CommentData
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$comment_data = new \FastComments\Client\Model\CommentData(); // \FastComments\Client\Model\CommentData
+$options = [
     'session_id' => 'session_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->createCommentPublic($associate_array);
+    $result = $apiInstance->createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->createCommentPublic: ', $e->getMessage(), PHP_EOL;
@@ -260,7 +260,7 @@ No authorization required
 ## `createFeedPostPublic()`
 
 ```php
-createFeedPostPublic($tenant_id, $create_feed_post_params, $broadcast_id, $sso): \FastComments\Client\Model\CreateFeedPostResponse
+createFeedPostPublic($tenant_id, $create_feed_post_params, $options): \FastComments\Client\Model\CreateFeedPostResponse
 ```
 
 
@@ -279,15 +279,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'create_feed_post_params' => new \FastComments\Client\Model\CreateFeedPostParams(), // \FastComments\Client\Model\CreateFeedPostParams
+$tenant_id = 'tenant_id_example'; // string
+$create_feed_post_params = new \FastComments\Client\Model\CreateFeedPostParams(); // \FastComments\Client\Model\CreateFeedPostParams
+$options = [
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->createFeedPostPublic($associate_array);
+    $result = $apiInstance->createFeedPostPublic($tenant_id, $create_feed_post_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->createFeedPostPublic: ', $e->getMessage(), PHP_EOL;
@@ -325,7 +325,7 @@ No authorization required
 ## `createV1PageReact()`
 
 ```php
-createV1PageReact($tenant_id, $url_id, $title): \FastComments\Client\Model\CreateV1PageReact
+createV1PageReact($tenant_id, $url_id, $options): \FastComments\Client\Model\CreateV1PageReact
 ```
 
 
@@ -344,14 +344,14 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id' => 'url_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$options = [
     'title' => 'title_example', // string
 ];
 
 try {
-    $result = $apiInstance->createV1PageReact($associate_array);
+    $result = $apiInstance->createV1PageReact($tenant_id, $url_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->createV1PageReact: ', $e->getMessage(), PHP_EOL;
@@ -388,7 +388,7 @@ No authorization required
 ## `createV2PageReact()`
 
 ```php
-createV2PageReact($tenant_id, $url_id, $id, $title): \FastComments\Client\Model\CreateV1PageReact
+createV2PageReact($tenant_id, $url_id, $id, $options): \FastComments\Client\Model\CreateV1PageReact
 ```
 
 
@@ -407,15 +407,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id' => 'url_id_example', // string
-    'id' => 'id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$id = 'id_example'; // string
+$options = [
     'title' => 'title_example', // string
 ];
 
 try {
-    $result = $apiInstance->createV2PageReact($associate_array);
+    $result = $apiInstance->createV2PageReact($tenant_id, $url_id, $id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->createV2PageReact: ', $e->getMessage(), PHP_EOL;
@@ -453,7 +453,7 @@ No authorization required
 ## `deleteCommentPublic()`
 
 ```php
-deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $edit_key, $sso): \FastComments\Client\Model\PublicAPIDeleteCommentResponse
+deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $options): \FastComments\Client\Model\PublicAPIDeleteCommentResponse
 ```
 
 
@@ -472,16 +472,16 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'comment_id' => 'comment_id_example', // string
-    'broadcast_id' => 'broadcast_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$options = [
     'edit_key' => 'edit_key_example', // string
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->deleteCommentPublic($associate_array);
+    $result = $apiInstance->deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->deleteCommentPublic: ', $e->getMessage(), PHP_EOL;
@@ -520,7 +520,7 @@ No authorization required
 ## `deleteCommentVote()`
 
 ```php
-deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $edit_key, $sso): \FastComments\Client\Model\VoteDeleteResponse
+deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $options): \FastComments\Client\Model\VoteDeleteResponse
 ```
 
 
@@ -539,18 +539,18 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'comment_id' => 'comment_id_example', // string
-    'vote_id' => 'vote_id_example', // string
-    'url_id' => 'url_id_example', // string
-    'broadcast_id' => 'broadcast_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$vote_id = 'vote_id_example'; // string
+$url_id = 'url_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$options = [
     'edit_key' => 'edit_key_example', // string
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->deleteCommentVote($associate_array);
+    $result = $apiInstance->deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->deleteCommentVote: ', $e->getMessage(), PHP_EOL;
@@ -591,7 +591,7 @@ No authorization required
 ## `deleteFeedPostPublic()`
 
 ```php
-deleteFeedPostPublic($tenant_id, $post_id, $broadcast_id, $sso): \FastComments\Client\Model\DeleteFeedPostPublicResponse
+deleteFeedPostPublic($tenant_id, $post_id, $options): \FastComments\Client\Model\DeleteFeedPostPublicResponse
 ```
 
 
@@ -610,15 +610,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'post_id' => 'post_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$post_id = 'post_id_example'; // string
+$options = [
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->deleteFeedPostPublic($associate_array);
+    $result = $apiInstance->deleteFeedPostPublic($tenant_id, $post_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->deleteFeedPostPublic: ', $e->getMessage(), PHP_EOL;
@@ -656,7 +656,7 @@ No authorization required
 ## `deleteV1PageReact()`
 
 ```php
-deleteV1PageReact($tenant_id, $url_id): \FastComments\Client\Model\CreateV1PageReact
+deleteV1PageReact($tenant_id, $url_id, $options): \FastComments\Client\Model\CreateV1PageReact
 ```
 
 
@@ -675,13 +675,13 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id' => 'url_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$options = [
 ];
 
 try {
-    $result = $apiInstance->deleteV1PageReact($associate_array);
+    $result = $apiInstance->deleteV1PageReact($tenant_id, $url_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->deleteV1PageReact: ', $e->getMessage(), PHP_EOL;
@@ -717,7 +717,7 @@ No authorization required
 ## `deleteV2PageReact()`
 
 ```php
-deleteV2PageReact($tenant_id, $url_id, $id): \FastComments\Client\Model\CreateV1PageReact
+deleteV2PageReact($tenant_id, $url_id, $id, $options): \FastComments\Client\Model\CreateV1PageReact
 ```
 
 
@@ -736,14 +736,14 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id' => 'url_id_example', // string
-    'id' => 'id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$id = 'id_example'; // string
+$options = [
 ];
 
 try {
-    $result = $apiInstance->deleteV2PageReact($associate_array);
+    $result = $apiInstance->deleteV2PageReact($tenant_id, $url_id, $id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->deleteV2PageReact: ', $e->getMessage(), PHP_EOL;
@@ -780,7 +780,7 @@ No authorization required
 ## `flagCommentPublic()`
 
 ```php
-flagCommentPublic($tenant_id, $comment_id, $is_flagged, $sso): \FastComments\Client\Model\APIEmptyResponse
+flagCommentPublic($tenant_id, $comment_id, $is_flagged, $options): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -799,15 +799,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'comment_id' => 'comment_id_example', // string
-    'is_flagged' => True, // bool
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$is_flagged = True; // bool
+$options = [
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->flagCommentPublic($associate_array);
+    $result = $apiInstance->flagCommentPublic($tenant_id, $comment_id, $is_flagged, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->flagCommentPublic: ', $e->getMessage(), PHP_EOL;
@@ -845,7 +845,7 @@ No authorization required
 ## `getCommentText()`
 
 ```php
-getCommentText($tenant_id, $comment_id, $edit_key, $sso): \FastComments\Client\Model\PublicAPIGetCommentTextResponse
+getCommentText($tenant_id, $comment_id, $options): \FastComments\Client\Model\PublicAPIGetCommentTextResponse
 ```
 
 
@@ -864,15 +864,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'comment_id' => 'comment_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$options = [
     'edit_key' => 'edit_key_example', // string
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->getCommentText($associate_array);
+    $result = $apiInstance->getCommentText($tenant_id, $comment_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getCommentText: ', $e->getMessage(), PHP_EOL;
@@ -910,7 +910,7 @@ No authorization required
 ## `getCommentVoteUserNames()`
 
 ```php
-getCommentVoteUserNames($tenant_id, $comment_id, $dir, $sso): \FastComments\Client\Model\GetCommentVoteUserNamesSuccessResponse
+getCommentVoteUserNames($tenant_id, $comment_id, $dir, $options): \FastComments\Client\Model\GetCommentVoteUserNamesSuccessResponse
 ```
 
 
@@ -929,15 +929,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'comment_id' => 'comment_id_example', // string
-    'dir' => 56, // int
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$dir = 56; // int
+$options = [
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->getCommentVoteUserNames($associate_array);
+    $result = $apiInstance->getCommentVoteUserNames($tenant_id, $comment_id, $dir, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getCommentVoteUserNames: ', $e->getMessage(), PHP_EOL;
@@ -975,7 +975,7 @@ No authorization required
 ## `getCommentsForUser()`
 
 ```php
-getCommentsForUser($user_id, $direction, $replies_to_user_id, $page, $includei10n, $locale, $is_crawler): \FastComments\Client\Model\GetCommentsForUserResponse
+getCommentsForUser($options): \FastComments\Client\Model\GetCommentsForUserResponse
 ```
 
 
@@ -994,7 +994,7 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
+$options = [
     'user_id' => 'user_id_example', // string
     'direction' => new \FastComments\Client\Model\\FastComments\Client\Model\SortDirections(), // \FastComments\Client\Model\SortDirections
     'replies_to_user_id' => 'replies_to_user_id_example', // string
@@ -1005,7 +1005,7 @@ $associative_array = [
 ];
 
 try {
-    $result = $apiInstance->getCommentsForUser($associate_array);
+    $result = $apiInstance->getCommentsForUser($options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getCommentsForUser: ', $e->getMessage(), PHP_EOL;
@@ -1046,7 +1046,7 @@ No authorization required
 ## `getCommentsPublic()`
 
 ```php
-getCommentsPublic($tenant_id, $url_id, $page, $direction, $sso, $skip, $skip_children, $limit, $limit_children, $count_children, $fetch_page_for_comment_id, $include_config, $count_all, $includei10n, $locale, $modules, $is_crawler, $include_notification_count, $as_tree, $max_tree_depth, $use_full_translation_ids, $parent_id, $search_text, $hash_tags, $user_id, $custom_config_str, $after_comment_id, $before_comment_id): \FastComments\Client\Model\GetCommentsResponseWithPresencePublicComment
+getCommentsPublic($tenant_id, $url_id, $options): \FastComments\Client\Model\GetCommentsResponseWithPresencePublicComment
 ```
 
 
@@ -1067,9 +1067,9 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id' => 'url_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$options = [
     'page' => 56, // int
     'direction' => new \FastComments\Client\Model\\FastComments\Client\Model\SortDirections(), // \FastComments\Client\Model\SortDirections
     'sso' => 'sso_example', // string
@@ -1099,7 +1099,7 @@ $associative_array = [
 ];
 
 try {
-    $result = $apiInstance->getCommentsPublic($associate_array);
+    $result = $apiInstance->getCommentsPublic($tenant_id, $url_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getCommentsPublic: ', $e->getMessage(), PHP_EOL;
@@ -1161,7 +1161,7 @@ No authorization required
 ## `getEventLog()`
 
 ```php
-getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \FastComments\Client\Model\GetEventLogResponse
+getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $options): \FastComments\Client\Model\GetEventLogResponse
 ```
 
 
@@ -1182,16 +1182,16 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id' => 'url_id_example', // string
-    'user_id_ws' => 'user_id_ws_example', // string
-    'start_time' => 56, // int
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$user_id_ws = 'user_id_ws_example'; // string
+$start_time = 56; // int
+$options = [
     'end_time' => 56, // int
 ];
 
 try {
-    $result = $apiInstance->getEventLog($associate_array);
+    $result = $apiInstance->getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getEventLog: ', $e->getMessage(), PHP_EOL;
@@ -1230,7 +1230,7 @@ No authorization required
 ## `getFeedPostsPublic()`
 
 ```php
-getFeedPostsPublic($tenant_id, $after_id, $limit, $tags, $sso, $is_crawler, $include_user_info): \FastComments\Client\Model\PublicFeedPostsResponse
+getFeedPostsPublic($tenant_id, $options): \FastComments\Client\Model\PublicFeedPostsResponse
 ```
 
 
@@ -1251,8 +1251,8 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$options = [
     'after_id' => 'after_id_example', // string
     'limit' => 56, // int
     'tags' => array('tags_example'), // string[]
@@ -1262,7 +1262,7 @@ $associative_array = [
 ];
 
 try {
-    $result = $apiInstance->getFeedPostsPublic($associate_array);
+    $result = $apiInstance->getFeedPostsPublic($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getFeedPostsPublic: ', $e->getMessage(), PHP_EOL;
@@ -1303,7 +1303,7 @@ No authorization required
 ## `getFeedPostsStats()`
 
 ```php
-getFeedPostsStats($tenant_id, $post_ids, $sso): \FastComments\Client\Model\FeedPostsStatsResponse
+getFeedPostsStats($tenant_id, $post_ids, $options): \FastComments\Client\Model\FeedPostsStatsResponse
 ```
 
 
@@ -1322,14 +1322,14 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'post_ids' => array('post_ids_example'), // string[]
+$tenant_id = 'tenant_id_example'; // string
+$post_ids = array('post_ids_example'); // string[]
+$options = [
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->getFeedPostsStats($associate_array);
+    $result = $apiInstance->getFeedPostsStats($tenant_id, $post_ids, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getFeedPostsStats: ', $e->getMessage(), PHP_EOL;
@@ -1366,7 +1366,7 @@ No authorization required
 ## `getGifLarge()`
 
 ```php
-getGifLarge($tenant_id, $large_internal_url_sanitized): \FastComments\Client\Model\GifGetLargeResponse
+getGifLarge($tenant_id, $large_internal_url_sanitized, $options): \FastComments\Client\Model\GifGetLargeResponse
 ```
 
 
@@ -1385,13 +1385,13 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'large_internal_url_sanitized' => 'large_internal_url_sanitized_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$large_internal_url_sanitized = 'large_internal_url_sanitized_example'; // string
+$options = [
 ];
 
 try {
-    $result = $apiInstance->getGifLarge($associate_array);
+    $result = $apiInstance->getGifLarge($tenant_id, $large_internal_url_sanitized, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getGifLarge: ', $e->getMessage(), PHP_EOL;
@@ -1427,7 +1427,7 @@ No authorization required
 ## `getGifsSearch()`
 
 ```php
-getGifsSearch($tenant_id, $search, $locale, $rating, $page): \FastComments\Client\Model\GetGifsSearchResponse
+getGifsSearch($tenant_id, $search, $options): \FastComments\Client\Model\GetGifsSearchResponse
 ```
 
 
@@ -1446,16 +1446,16 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'search' => 'search_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$search = 'search_example'; // string
+$options = [
     'locale' => 'locale_example', // string
     'rating' => 'rating_example', // string
     'page' => 3.4, // float
 ];
 
 try {
-    $result = $apiInstance->getGifsSearch($associate_array);
+    $result = $apiInstance->getGifsSearch($tenant_id, $search, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getGifsSearch: ', $e->getMessage(), PHP_EOL;
@@ -1494,7 +1494,7 @@ No authorization required
 ## `getGifsTrending()`
 
 ```php
-getGifsTrending($tenant_id, $locale, $rating, $page): \FastComments\Client\Model\GetGifsTrendingResponse
+getGifsTrending($tenant_id, $options): \FastComments\Client\Model\GetGifsTrendingResponse
 ```
 
 
@@ -1513,15 +1513,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$options = [
     'locale' => 'locale_example', // string
     'rating' => 'rating_example', // string
     'page' => 3.4, // float
 ];
 
 try {
-    $result = $apiInstance->getGifsTrending($associate_array);
+    $result = $apiInstance->getGifsTrending($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getGifsTrending: ', $e->getMessage(), PHP_EOL;
@@ -1559,7 +1559,7 @@ No authorization required
 ## `getGlobalEventLog()`
 
 ```php
-getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time): \FastComments\Client\Model\GetEventLogResponse
+getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $options): \FastComments\Client\Model\GetEventLogResponse
 ```
 
 
@@ -1580,16 +1580,16 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id' => 'url_id_example', // string
-    'user_id_ws' => 'user_id_ws_example', // string
-    'start_time' => 56, // int
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$user_id_ws = 'user_id_ws_example'; // string
+$start_time = 56; // int
+$options = [
     'end_time' => 56, // int
 ];
 
 try {
-    $result = $apiInstance->getGlobalEventLog($associate_array);
+    $result = $apiInstance->getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getGlobalEventLog: ', $e->getMessage(), PHP_EOL;
@@ -1628,7 +1628,7 @@ No authorization required
 ## `getOfflineUsers()`
 
 ```php
-getOfflineUsers($tenant_id, $url_id, $after_name, $after_user_id): \FastComments\Client\Model\PageUsersOfflineResponse
+getOfflineUsers($tenant_id, $url_id, $options): \FastComments\Client\Model\PageUsersOfflineResponse
 ```
 
 
@@ -1649,15 +1649,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id' => 'url_id_example', // string | Page URL identifier (cleaned server-side).
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string | Page URL identifier (cleaned server-side).
+$options = [
     'after_name' => 'after_name_example', // string | Cursor: pass nextAfterName from the previous response.
     'after_user_id' => 'after_user_id_example', // string | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries.
 ];
 
 try {
-    $result = $apiInstance->getOfflineUsers($associate_array);
+    $result = $apiInstance->getOfflineUsers($tenant_id, $url_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getOfflineUsers: ', $e->getMessage(), PHP_EOL;
@@ -1695,7 +1695,7 @@ No authorization required
 ## `getOnlineUsers()`
 
 ```php
-getOnlineUsers($tenant_id, $url_id, $after_name, $after_user_id): \FastComments\Client\Model\PageUsersOnlineResponse
+getOnlineUsers($tenant_id, $url_id, $options): \FastComments\Client\Model\PageUsersOnlineResponse
 ```
 
 
@@ -1716,15 +1716,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id' => 'url_id_example', // string | Page URL identifier (cleaned server-side).
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string | Page URL identifier (cleaned server-side).
+$options = [
     'after_name' => 'after_name_example', // string | Cursor: pass nextAfterName from the previous response.
     'after_user_id' => 'after_user_id_example', // string | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries.
 ];
 
 try {
-    $result = $apiInstance->getOnlineUsers($associate_array);
+    $result = $apiInstance->getOnlineUsers($tenant_id, $url_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getOnlineUsers: ', $e->getMessage(), PHP_EOL;
@@ -1762,7 +1762,7 @@ No authorization required
 ## `getPagesPublic()`
 
 ```php
-getPagesPublic($tenant_id, $cursor, $limit, $q, $sort_by, $has_comments): \FastComments\Client\Model\GetPublicPagesResponse
+getPagesPublic($tenant_id, $options): \FastComments\Client\Model\GetPublicPagesResponse
 ```
 
 
@@ -1783,8 +1783,8 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$options = [
     'cursor' => 'cursor_example', // string | Opaque pagination cursor returned as `nextCursor` from a prior request. Tied to the same `sortBy`.
     'limit' => 56, // int | 1..200, default 50
     'q' => 'q_example', // string | Optional case-insensitive title prefix filter.
@@ -1793,7 +1793,7 @@ $associative_array = [
 ];
 
 try {
-    $result = $apiInstance->getPagesPublic($associate_array);
+    $result = $apiInstance->getPagesPublic($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getPagesPublic: ', $e->getMessage(), PHP_EOL;
@@ -1833,7 +1833,7 @@ No authorization required
 ## `getTranslations()`
 
 ```php
-getTranslations($namespace, $component, $locale, $use_full_translation_ids): \FastComments\Client\Model\GetTranslationsResponse
+getTranslations($namespace, $component, $options): \FastComments\Client\Model\GetTranslationsResponse
 ```
 
 
@@ -1852,15 +1852,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'namespace' => 'namespace_example', // string
-    'component' => 'component_example', // string
+$namespace = 'namespace_example'; // string
+$component = 'component_example'; // string
+$options = [
     'locale' => 'locale_example', // string
     'use_full_translation_ids' => True, // bool
 ];
 
 try {
-    $result = $apiInstance->getTranslations($associate_array);
+    $result = $apiInstance->getTranslations($namespace, $component, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getTranslations: ', $e->getMessage(), PHP_EOL;
@@ -1898,7 +1898,7 @@ No authorization required
 ## `getUserNotificationCount()`
 
 ```php
-getUserNotificationCount($tenant_id, $sso): \FastComments\Client\Model\GetUserNotificationCountResponse
+getUserNotificationCount($tenant_id, $options): \FastComments\Client\Model\GetUserNotificationCountResponse
 ```
 
 
@@ -1917,13 +1917,13 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$options = [
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->getUserNotificationCount($associate_array);
+    $result = $apiInstance->getUserNotificationCount($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getUserNotificationCount: ', $e->getMessage(), PHP_EOL;
@@ -1959,7 +1959,7 @@ No authorization required
 ## `getUserNotifications()`
 
 ```php
-getUserNotifications($tenant_id, $url_id, $page_size, $after_id, $include_context, $after_created_at, $unread_only, $dm_only, $no_dm, $include_translations, $include_tenant_notifications, $sso): \FastComments\Client\Model\GetMyNotificationsResponse
+getUserNotifications($tenant_id, $options): \FastComments\Client\Model\GetMyNotificationsResponse
 ```
 
 
@@ -1978,8 +1978,8 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$options = [
     'url_id' => 'url_id_example', // string | Used to determine whether the current page is subscribed.
     'page_size' => 56, // int
     'after_id' => 'after_id_example', // string
@@ -1994,7 +1994,7 @@ $associative_array = [
 ];
 
 try {
-    $result = $apiInstance->getUserNotifications($associate_array);
+    $result = $apiInstance->getUserNotifications($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getUserNotifications: ', $e->getMessage(), PHP_EOL;
@@ -2040,7 +2040,7 @@ No authorization required
 ## `getUserPresenceStatuses()`
 
 ```php
-getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids): \FastComments\Client\Model\GetUserPresenceStatusesResponse
+getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids, $options): \FastComments\Client\Model\GetUserPresenceStatusesResponse
 ```
 
 
@@ -2059,14 +2059,14 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id_ws' => 'url_id_ws_example', // string
-    'user_ids' => 'user_ids_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$url_id_ws = 'url_id_ws_example'; // string
+$user_ids = 'user_ids_example'; // string
+$options = [
 ];
 
 try {
-    $result = $apiInstance->getUserPresenceStatuses($associate_array);
+    $result = $apiInstance->getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getUserPresenceStatuses: ', $e->getMessage(), PHP_EOL;
@@ -2103,7 +2103,7 @@ No authorization required
 ## `getUserReactsPublic()`
 
 ```php
-getUserReactsPublic($tenant_id, $post_ids, $sso): \FastComments\Client\Model\UserReactsResponse
+getUserReactsPublic($tenant_id, $options): \FastComments\Client\Model\UserReactsResponse
 ```
 
 
@@ -2122,14 +2122,14 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$options = [
     'post_ids' => array('post_ids_example'), // string[]
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->getUserReactsPublic($associate_array);
+    $result = $apiInstance->getUserReactsPublic($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getUserReactsPublic: ', $e->getMessage(), PHP_EOL;
@@ -2166,7 +2166,7 @@ No authorization required
 ## `getUsersInfo()`
 
 ```php
-getUsersInfo($tenant_id, $ids): \FastComments\Client\Model\PageUsersInfoResponse
+getUsersInfo($tenant_id, $ids, $options): \FastComments\Client\Model\PageUsersInfoResponse
 ```
 
 
@@ -2187,13 +2187,13 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'ids' => 'ids_example', // string | Comma-delimited userIds.
+$tenant_id = 'tenant_id_example'; // string
+$ids = 'ids_example'; // string | Comma-delimited userIds.
+$options = [
 ];
 
 try {
-    $result = $apiInstance->getUsersInfo($associate_array);
+    $result = $apiInstance->getUsersInfo($tenant_id, $ids, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getUsersInfo: ', $e->getMessage(), PHP_EOL;
@@ -2229,7 +2229,7 @@ No authorization required
 ## `getV1PageLikes()`
 
 ```php
-getV1PageLikes($tenant_id, $url_id): \FastComments\Client\Model\GetV1PageLikes
+getV1PageLikes($tenant_id, $url_id, $options): \FastComments\Client\Model\GetV1PageLikes
 ```
 
 
@@ -2248,13 +2248,13 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id' => 'url_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$options = [
 ];
 
 try {
-    $result = $apiInstance->getV1PageLikes($associate_array);
+    $result = $apiInstance->getV1PageLikes($tenant_id, $url_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getV1PageLikes: ', $e->getMessage(), PHP_EOL;
@@ -2290,7 +2290,7 @@ No authorization required
 ## `getV2PageReactUsers()`
 
 ```php
-getV2PageReactUsers($tenant_id, $url_id, $id): \FastComments\Client\Model\GetV2PageReactUsersResponse
+getV2PageReactUsers($tenant_id, $url_id, $id, $options): \FastComments\Client\Model\GetV2PageReactUsersResponse
 ```
 
 
@@ -2309,14 +2309,14 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id' => 'url_id_example', // string
-    'id' => 'id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$id = 'id_example'; // string
+$options = [
 ];
 
 try {
-    $result = $apiInstance->getV2PageReactUsers($associate_array);
+    $result = $apiInstance->getV2PageReactUsers($tenant_id, $url_id, $id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getV2PageReactUsers: ', $e->getMessage(), PHP_EOL;
@@ -2353,7 +2353,7 @@ No authorization required
 ## `getV2PageReacts()`
 
 ```php
-getV2PageReacts($tenant_id, $url_id): \FastComments\Client\Model\GetV2PageReacts
+getV2PageReacts($tenant_id, $url_id, $options): \FastComments\Client\Model\GetV2PageReacts
 ```
 
 
@@ -2372,13 +2372,13 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id' => 'url_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$options = [
 ];
 
 try {
-    $result = $apiInstance->getV2PageReacts($associate_array);
+    $result = $apiInstance->getV2PageReacts($tenant_id, $url_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getV2PageReacts: ', $e->getMessage(), PHP_EOL;
@@ -2414,7 +2414,7 @@ No authorization required
 ## `lockComment()`
 
 ```php
-lockComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\APIEmptyResponse
+lockComment($tenant_id, $comment_id, $broadcast_id, $options): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2433,15 +2433,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'comment_id' => 'comment_id_example', // string
-    'broadcast_id' => 'broadcast_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$options = [
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->lockComment($associate_array);
+    $result = $apiInstance->lockComment($tenant_id, $comment_id, $broadcast_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->lockComment: ', $e->getMessage(), PHP_EOL;
@@ -2479,7 +2479,7 @@ No authorization required
 ## `logoutPublic()`
 
 ```php
-logoutPublic(): \FastComments\Client\Model\APIEmptyResponse
+logoutPublic($options): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2498,11 +2498,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
+$options = [
 ];
 
 try {
-    $result = $apiInstance->logoutPublic($associate_array);
+    $result = $apiInstance->logoutPublic($options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->logoutPublic: ', $e->getMessage(), PHP_EOL;
@@ -2535,7 +2535,7 @@ No authorization required
 ## `pinComment()`
 
 ```php
-pinComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\ChangeCommentPinStatusResponse
+pinComment($tenant_id, $comment_id, $broadcast_id, $options): \FastComments\Client\Model\ChangeCommentPinStatusResponse
 ```
 
 
@@ -2554,15 +2554,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'comment_id' => 'comment_id_example', // string
-    'broadcast_id' => 'broadcast_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$options = [
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->pinComment($associate_array);
+    $result = $apiInstance->pinComment($tenant_id, $comment_id, $broadcast_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->pinComment: ', $e->getMessage(), PHP_EOL;
@@ -2600,7 +2600,7 @@ No authorization required
 ## `reactFeedPostPublic()`
 
 ```php
-reactFeedPostPublic($tenant_id, $post_id, $react_body_params, $is_undo, $broadcast_id, $sso): \FastComments\Client\Model\ReactFeedPostResponse
+reactFeedPostPublic($tenant_id, $post_id, $react_body_params, $options): \FastComments\Client\Model\ReactFeedPostResponse
 ```
 
 
@@ -2619,17 +2619,17 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'post_id' => 'post_id_example', // string
-    'react_body_params' => new \FastComments\Client\Model\ReactBodyParams(), // \FastComments\Client\Model\ReactBodyParams
+$tenant_id = 'tenant_id_example'; // string
+$post_id = 'post_id_example'; // string
+$react_body_params = new \FastComments\Client\Model\ReactBodyParams(); // \FastComments\Client\Model\ReactBodyParams
+$options = [
     'is_undo' => True, // bool
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->reactFeedPostPublic($associate_array);
+    $result = $apiInstance->reactFeedPostPublic($tenant_id, $post_id, $react_body_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->reactFeedPostPublic: ', $e->getMessage(), PHP_EOL;
@@ -2669,7 +2669,7 @@ No authorization required
 ## `resetUserNotificationCount()`
 
 ```php
-resetUserNotificationCount($tenant_id, $sso): \FastComments\Client\Model\ResetUserNotificationsResponse
+resetUserNotificationCount($tenant_id, $options): \FastComments\Client\Model\ResetUserNotificationsResponse
 ```
 
 
@@ -2688,13 +2688,13 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$options = [
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->resetUserNotificationCount($associate_array);
+    $result = $apiInstance->resetUserNotificationCount($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->resetUserNotificationCount: ', $e->getMessage(), PHP_EOL;
@@ -2730,7 +2730,7 @@ No authorization required
 ## `resetUserNotifications()`
 
 ```php
-resetUserNotifications($tenant_id, $after_id, $after_created_at, $unread_only, $dm_only, $no_dm, $sso): \FastComments\Client\Model\ResetUserNotificationsResponse
+resetUserNotifications($tenant_id, $options): \FastComments\Client\Model\ResetUserNotificationsResponse
 ```
 
 
@@ -2749,8 +2749,8 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$options = [
     'after_id' => 'after_id_example', // string
     'after_created_at' => 56, // int
     'unread_only' => True, // bool
@@ -2760,7 +2760,7 @@ $associative_array = [
 ];
 
 try {
-    $result = $apiInstance->resetUserNotifications($associate_array);
+    $result = $apiInstance->resetUserNotifications($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->resetUserNotifications: ', $e->getMessage(), PHP_EOL;
@@ -2801,7 +2801,7 @@ No authorization required
 ## `searchUsers()`
 
 ```php
-searchUsers($tenant_id, $url_id, $username_starts_with, $mention_group_ids, $sso, $search_section): \FastComments\Client\Model\SearchUsersResult
+searchUsers($tenant_id, $url_id, $options): \FastComments\Client\Model\SearchUsersResult
 ```
 
 
@@ -2820,9 +2820,9 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id' => 'url_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$options = [
     'username_starts_with' => 'username_starts_with_example', // string
     'mention_group_ids' => array('mention_group_ids_example'), // string[]
     'sso' => 'sso_example', // string
@@ -2830,7 +2830,7 @@ $associative_array = [
 ];
 
 try {
-    $result = $apiInstance->searchUsers($associate_array);
+    $result = $apiInstance->searchUsers($tenant_id, $url_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->searchUsers: ', $e->getMessage(), PHP_EOL;
@@ -2870,7 +2870,7 @@ No authorization required
 ## `setCommentText()`
 
 ```php
-setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key, $sso): \FastComments\Client\Model\PublicAPISetCommentTextResponse
+setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $options): \FastComments\Client\Model\PublicAPISetCommentTextResponse
 ```
 
 
@@ -2889,17 +2889,17 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'comment_id' => 'comment_id_example', // string
-    'broadcast_id' => 'broadcast_id_example', // string
-    'comment_text_update_request' => new \FastComments\Client\Model\CommentTextUpdateRequest(), // \FastComments\Client\Model\CommentTextUpdateRequest
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$comment_text_update_request = new \FastComments\Client\Model\CommentTextUpdateRequest(); // \FastComments\Client\Model\CommentTextUpdateRequest
+$options = [
     'edit_key' => 'edit_key_example', // string
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->setCommentText($associate_array);
+    $result = $apiInstance->setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->setCommentText: ', $e->getMessage(), PHP_EOL;
@@ -2939,7 +2939,7 @@ No authorization required
 ## `unBlockCommentPublic()`
 
 ```php
-unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso): \FastComments\Client\Model\UnblockSuccess
+unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $options): \FastComments\Client\Model\UnblockSuccess
 ```
 
 
@@ -2958,15 +2958,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'comment_id' => 'comment_id_example', // string
-    'public_block_from_comment_params' => new \FastComments\Client\Model\PublicBlockFromCommentParams(), // \FastComments\Client\Model\PublicBlockFromCommentParams
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$public_block_from_comment_params = new \FastComments\Client\Model\PublicBlockFromCommentParams(); // \FastComments\Client\Model\PublicBlockFromCommentParams
+$options = [
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->unBlockCommentPublic($associate_array);
+    $result = $apiInstance->unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->unBlockCommentPublic: ', $e->getMessage(), PHP_EOL;
@@ -3004,7 +3004,7 @@ No authorization required
 ## `unLockComment()`
 
 ```php
-unLockComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\APIEmptyResponse
+unLockComment($tenant_id, $comment_id, $broadcast_id, $options): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -3023,15 +3023,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'comment_id' => 'comment_id_example', // string
-    'broadcast_id' => 'broadcast_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$options = [
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->unLockComment($associate_array);
+    $result = $apiInstance->unLockComment($tenant_id, $comment_id, $broadcast_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->unLockComment: ', $e->getMessage(), PHP_EOL;
@@ -3069,7 +3069,7 @@ No authorization required
 ## `unPinComment()`
 
 ```php
-unPinComment($tenant_id, $comment_id, $broadcast_id, $sso): \FastComments\Client\Model\ChangeCommentPinStatusResponse
+unPinComment($tenant_id, $comment_id, $broadcast_id, $options): \FastComments\Client\Model\ChangeCommentPinStatusResponse
 ```
 
 
@@ -3088,15 +3088,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'comment_id' => 'comment_id_example', // string
-    'broadcast_id' => 'broadcast_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$options = [
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->unPinComment($associate_array);
+    $result = $apiInstance->unPinComment($tenant_id, $comment_id, $broadcast_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->unPinComment: ', $e->getMessage(), PHP_EOL;
@@ -3134,7 +3134,7 @@ No authorization required
 ## `updateFeedPostPublic()`
 
 ```php
-updateFeedPostPublic($tenant_id, $post_id, $update_feed_post_params, $broadcast_id, $sso): \FastComments\Client\Model\CreateFeedPostResponse
+updateFeedPostPublic($tenant_id, $post_id, $update_feed_post_params, $options): \FastComments\Client\Model\CreateFeedPostResponse
 ```
 
 
@@ -3153,16 +3153,16 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'post_id' => 'post_id_example', // string
-    'update_feed_post_params' => new \FastComments\Client\Model\UpdateFeedPostParams(), // \FastComments\Client\Model\UpdateFeedPostParams
+$tenant_id = 'tenant_id_example'; // string
+$post_id = 'post_id_example'; // string
+$update_feed_post_params = new \FastComments\Client\Model\UpdateFeedPostParams(); // \FastComments\Client\Model\UpdateFeedPostParams
+$options = [
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->updateFeedPostPublic($associate_array);
+    $result = $apiInstance->updateFeedPostPublic($tenant_id, $post_id, $update_feed_post_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->updateFeedPostPublic: ', $e->getMessage(), PHP_EOL;
@@ -3201,7 +3201,7 @@ No authorization required
 ## `updateUserNotificationCommentSubscriptionStatus()`
 
 ```php
-updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso): \FastComments\Client\Model\UpdateUserNotificationCommentSubscriptionStatusResponse
+updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $options): \FastComments\Client\Model\UpdateUserNotificationCommentSubscriptionStatusResponse
 ```
 
 
@@ -3222,16 +3222,16 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'notification_id' => 'notification_id_example', // string
-    'opted_in_or_out' => 'opted_in_or_out_example', // string
-    'comment_id' => 'comment_id_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$notification_id = 'notification_id_example'; // string
+$opted_in_or_out = 'opted_in_or_out_example'; // string
+$comment_id = 'comment_id_example'; // string
+$options = [
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->updateUserNotificationCommentSubscriptionStatus($associate_array);
+    $result = $apiInstance->updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->updateUserNotificationCommentSubscriptionStatus: ', $e->getMessage(), PHP_EOL;
@@ -3270,7 +3270,7 @@ No authorization required
 ## `updateUserNotificationPageSubscriptionStatus()`
 
 ```php
-updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso): \FastComments\Client\Model\UpdateUserNotificationPageSubscriptionStatusResponse
+updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $options): \FastComments\Client\Model\UpdateUserNotificationPageSubscriptionStatusResponse
 ```
 
 
@@ -3291,17 +3291,17 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'url_id' => 'url_id_example', // string
-    'url' => 'url_example', // string
-    'page_title' => 'page_title_example', // string
-    'subscribed_or_unsubscribed' => 'subscribed_or_unsubscribed_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$url_id = 'url_id_example'; // string
+$url = 'url_example'; // string
+$page_title = 'page_title_example'; // string
+$subscribed_or_unsubscribed = 'subscribed_or_unsubscribed_example'; // string
+$options = [
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->updateUserNotificationPageSubscriptionStatus($associate_array);
+    $result = $apiInstance->updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->updateUserNotificationPageSubscriptionStatus: ', $e->getMessage(), PHP_EOL;
@@ -3341,7 +3341,7 @@ No authorization required
 ## `updateUserNotificationStatus()`
 
 ```php
-updateUserNotificationStatus($tenant_id, $notification_id, $new_status, $sso): \FastComments\Client\Model\UpdateUserNotificationStatusResponse
+updateUserNotificationStatus($tenant_id, $notification_id, $new_status, $options): \FastComments\Client\Model\UpdateUserNotificationStatusResponse
 ```
 
 
@@ -3360,15 +3360,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'notification_id' => 'notification_id_example', // string
-    'new_status' => 'new_status_example', // string
+$tenant_id = 'tenant_id_example'; // string
+$notification_id = 'notification_id_example'; // string
+$new_status = 'new_status_example'; // string
+$options = [
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->updateUserNotificationStatus($associate_array);
+    $result = $apiInstance->updateUserNotificationStatus($tenant_id, $notification_id, $new_status, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->updateUserNotificationStatus: ', $e->getMessage(), PHP_EOL;
@@ -3406,7 +3406,7 @@ No authorization required
 ## `uploadImage()`
 
 ```php
-uploadImage($tenant_id, $file, $size_preset, $url_id): \FastComments\Client\Model\UploadImageResponse
+uploadImage($tenant_id, $file, $options): \FastComments\Client\Model\UploadImageResponse
 ```
 
 
@@ -3427,15 +3427,15 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'file' => '/path/to/file.txt', // \SplFileObject
+$tenant_id = 'tenant_id_example'; // string
+$file = '/path/to/file.txt'; // \SplFileObject
+$options = [
     'size_preset' => new \FastComments\Client\Model\\FastComments\Client\Model\SizePreset(), // \FastComments\Client\Model\SizePreset | Size preset: \"Default\" (1000x1000px) or \"CrossPlatform\" (creates sizes for popular devices)
     'url_id' => 'url_id_example', // string | Page id that upload is happening from, to configure
 ];
 
 try {
-    $result = $apiInstance->uploadImage($associate_array);
+    $result = $apiInstance->uploadImage($tenant_id, $file, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->uploadImage: ', $e->getMessage(), PHP_EOL;
@@ -3473,7 +3473,7 @@ No authorization required
 ## `voteComment()`
 
 ```php
-voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $session_id, $sso): \FastComments\Client\Model\VoteResponse
+voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $options): \FastComments\Client\Model\VoteResponse
 ```
 
 
@@ -3492,18 +3492,18 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
-$associative_array = [
-    'tenant_id' => 'tenant_id_example', // string
-    'comment_id' => 'comment_id_example', // string
-    'url_id' => 'url_id_example', // string
-    'broadcast_id' => 'broadcast_id_example', // string
-    'vote_body_params' => new \FastComments\Client\Model\VoteBodyParams(), // \FastComments\Client\Model\VoteBodyParams
+$tenant_id = 'tenant_id_example'; // string
+$comment_id = 'comment_id_example'; // string
+$url_id = 'url_id_example'; // string
+$broadcast_id = 'broadcast_id_example'; // string
+$vote_body_params = new \FastComments\Client\Model\VoteBodyParams(); // \FastComments\Client\Model\VoteBodyParams
+$options = [
     'session_id' => 'session_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 try {
-    $result = $apiInstance->voteComment($associate_array);
+    $result = $apiInstance->voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->voteComment: ', $e->getMessage(), PHP_EOL;

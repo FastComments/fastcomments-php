@@ -257,7 +257,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  string $vote_id vote_id (required)
@@ -270,9 +270,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\VoteDeleteResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteModerationVote($associative_array)
+    public function deleteModerationVote($comment_id, $vote_id, array $options = [])
     {
-        list($response) = $this->deleteModerationVoteWithHttpInfo($associative_array);
+        list($response) = $this->deleteModerationVoteWithHttpInfo($comment_id, $vote_id, $options);
         return $response;
     }
 
@@ -281,7 +281,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string $vote_id (required)
@@ -294,9 +294,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\VoteDeleteResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteModerationVoteWithHttpInfo($associative_array)
+    public function deleteModerationVoteWithHttpInfo($comment_id, $vote_id, array $options = [])
     {
-        $request = $this->deleteModerationVoteRequest($associative_array);
+        $request = $this->deleteModerationVoteRequest($comment_id, $vote_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -386,7 +386,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string $vote_id (required)
@@ -398,9 +398,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteModerationVoteAsync($associative_array)
+    public function deleteModerationVoteAsync($comment_id, $vote_id, array $options = [])
     {
-        return $this->deleteModerationVoteAsyncWithHttpInfo($associative_array)
+        return $this->deleteModerationVoteAsyncWithHttpInfo($comment_id, $vote_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -413,7 +413,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string $vote_id (required)
@@ -425,10 +425,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteModerationVoteAsyncWithHttpInfo($associative_array)
+    public function deleteModerationVoteAsyncWithHttpInfo($comment_id, $vote_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\VoteDeleteResponse';
-        $request = $this->deleteModerationVoteRequest($associative_array);
+        $request = $this->deleteModerationVoteRequest($comment_id, $vote_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -469,7 +469,7 @@ class ModerationApi
     /**
      * Create request for operation 'deleteModerationVote'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string $vote_id (required)
@@ -481,15 +481,13 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteModerationVoteRequest($associative_array)
+    public function deleteModerationVoteRequest($comment_id, $vote_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $vote_id = array_key_exists('vote_id', $associative_array) ? $associative_array['vote_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $broadcast_id = array_key_exists('broadcast_id', $associative_array) ? $associative_array['broadcast_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteModerationVote'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteModerationVote'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -621,7 +619,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  float|null $page page (optional)
      * @param  float|null $count count (optional)
@@ -639,9 +637,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationAPIGetCommentsResponse|\FastComments\Client\Model\APIError
      */
-    public function getApiComments($associative_array)
+    public function getApiComments(array $options = [])
     {
-        list($response) = $this->getApiCommentsWithHttpInfo($associative_array);
+        list($response) = $this->getApiCommentsWithHttpInfo($options);
         return $response;
     }
 
@@ -650,7 +648,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  float|null $page (optional)
      * @param  float|null $count (optional)
@@ -668,9 +666,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationAPIGetCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiCommentsWithHttpInfo($associative_array)
+    public function getApiCommentsWithHttpInfo(array $options = [])
     {
-        $request = $this->getApiCommentsRequest($associative_array);
+        $request = $this->getApiCommentsRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -760,7 +758,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  float|null $page (optional)
      * @param  float|null $count (optional)
@@ -777,9 +775,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiCommentsAsync($associative_array)
+    public function getApiCommentsAsync(array $options = [])
     {
-        return $this->getApiCommentsAsyncWithHttpInfo($associative_array)
+        return $this->getApiCommentsAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -792,7 +790,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  float|null $page (optional)
      * @param  float|null $count (optional)
@@ -809,10 +807,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiCommentsAsyncWithHttpInfo($associative_array)
+    public function getApiCommentsAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationAPIGetCommentsResponse';
-        $request = $this->getApiCommentsRequest($associative_array);
+        $request = $this->getApiCommentsRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -853,7 +851,7 @@ class ModerationApi
     /**
      * Create request for operation 'getApiComments'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  float|null $page (optional)
      * @param  float|null $count (optional)
@@ -870,20 +868,20 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiCommentsRequest($associative_array)
+    public function getApiCommentsRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : null;
-        $count = array_key_exists('count', $associative_array) ? $associative_array['count'] : null;
-        $text_search = array_key_exists('text_search', $associative_array) ? $associative_array['text_search'] : null;
-        $by_ip_from_comment = array_key_exists('by_ip_from_comment', $associative_array) ? $associative_array['by_ip_from_comment'] : null;
-        $filters = array_key_exists('filters', $associative_array) ? $associative_array['filters'] : null;
-        $search_filters = array_key_exists('search_filters', $associative_array) ? $associative_array['search_filters'] : null;
-        $sorts = array_key_exists('sorts', $associative_array) ? $associative_array['sorts'] : null;
-        $demo = array_key_exists('demo', $associative_array) ? $associative_array['demo'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getApiComments'][0];
+        // unbox the optional parameters and request options from the $options array
+        $page = array_key_exists('page', $options) ? $options['page'] : null;
+        $count = array_key_exists('count', $options) ? $options['count'] : null;
+        $text_search = array_key_exists('text_search', $options) ? $options['text_search'] : null;
+        $by_ip_from_comment = array_key_exists('by_ip_from_comment', $options) ? $options['by_ip_from_comment'] : null;
+        $filters = array_key_exists('filters', $options) ? $options['filters'] : null;
+        $search_filters = array_key_exists('search_filters', $options) ? $options['search_filters'] : null;
+        $sorts = array_key_exists('sorts', $options) ? $options['sorts'] : null;
+        $demo = array_key_exists('demo', $options) ? $options['demo'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getApiComments'][0];
         
 
 
@@ -1055,7 +1053,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $batch_job_id batch_job_id (optional)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -1066,9 +1064,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationExportStatusResponse|\FastComments\Client\Model\APIError
      */
-    public function getApiExportStatus($associative_array)
+    public function getApiExportStatus(array $options = [])
     {
-        list($response) = $this->getApiExportStatusWithHttpInfo($associative_array);
+        list($response) = $this->getApiExportStatusWithHttpInfo($options);
         return $response;
     }
 
@@ -1077,7 +1075,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $batch_job_id (optional)
      * @param  string|null $tenant_id (optional)
@@ -1088,9 +1086,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationExportStatusResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiExportStatusWithHttpInfo($associative_array)
+    public function getApiExportStatusWithHttpInfo(array $options = [])
     {
-        $request = $this->getApiExportStatusRequest($associative_array);
+        $request = $this->getApiExportStatusRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1180,7 +1178,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $batch_job_id (optional)
      * @param  string|null $tenant_id (optional)
@@ -1190,9 +1188,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiExportStatusAsync($associative_array)
+    public function getApiExportStatusAsync(array $options = [])
     {
-        return $this->getApiExportStatusAsyncWithHttpInfo($associative_array)
+        return $this->getApiExportStatusAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1205,7 +1203,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $batch_job_id (optional)
      * @param  string|null $tenant_id (optional)
@@ -1215,10 +1213,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiExportStatusAsyncWithHttpInfo($associative_array)
+    public function getApiExportStatusAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationExportStatusResponse';
-        $request = $this->getApiExportStatusRequest($associative_array);
+        $request = $this->getApiExportStatusRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1259,7 +1257,7 @@ class ModerationApi
     /**
      * Create request for operation 'getApiExportStatus'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $batch_job_id (optional)
      * @param  string|null $tenant_id (optional)
@@ -1269,13 +1267,13 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiExportStatusRequest($associative_array)
+    public function getApiExportStatusRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $batch_job_id = array_key_exists('batch_job_id', $associative_array) ? $associative_array['batch_job_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getApiExportStatus'][0];
+        // unbox the optional parameters and request options from the $options array
+        $batch_job_id = array_key_exists('batch_job_id', $options) ? $options['batch_job_id'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getApiExportStatus'][0];
         
 
 
@@ -1377,7 +1375,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search text_search (optional)
      * @param  string|null $by_ip_from_comment by_ip_from_comment (optional)
@@ -1393,9 +1391,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationAPIGetCommentIdsResponse|\FastComments\Client\Model\APIError
      */
-    public function getApiIds($associative_array)
+    public function getApiIds(array $options = [])
     {
-        list($response) = $this->getApiIdsWithHttpInfo($associative_array);
+        list($response) = $this->getApiIdsWithHttpInfo($options);
         return $response;
     }
 
@@ -1404,7 +1402,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
@@ -1420,9 +1418,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationAPIGetCommentIdsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiIdsWithHttpInfo($associative_array)
+    public function getApiIdsWithHttpInfo(array $options = [])
     {
-        $request = $this->getApiIdsRequest($associative_array);
+        $request = $this->getApiIdsRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1512,7 +1510,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
@@ -1527,9 +1525,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiIdsAsync($associative_array)
+    public function getApiIdsAsync(array $options = [])
     {
-        return $this->getApiIdsAsyncWithHttpInfo($associative_array)
+        return $this->getApiIdsAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1542,7 +1540,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
@@ -1557,10 +1555,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiIdsAsyncWithHttpInfo($associative_array)
+    public function getApiIdsAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationAPIGetCommentIdsResponse';
-        $request = $this->getApiIdsRequest($associative_array);
+        $request = $this->getApiIdsRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1601,7 +1599,7 @@ class ModerationApi
     /**
      * Create request for operation 'getApiIds'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
@@ -1616,18 +1614,18 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiIdsRequest($associative_array)
+    public function getApiIdsRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $text_search = array_key_exists('text_search', $associative_array) ? $associative_array['text_search'] : null;
-        $by_ip_from_comment = array_key_exists('by_ip_from_comment', $associative_array) ? $associative_array['by_ip_from_comment'] : null;
-        $filters = array_key_exists('filters', $associative_array) ? $associative_array['filters'] : null;
-        $search_filters = array_key_exists('search_filters', $associative_array) ? $associative_array['search_filters'] : null;
-        $after_id = array_key_exists('after_id', $associative_array) ? $associative_array['after_id'] : null;
-        $demo = array_key_exists('demo', $associative_array) ? $associative_array['demo'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getApiIds'][0];
+        // unbox the optional parameters and request options from the $options array
+        $text_search = array_key_exists('text_search', $options) ? $options['text_search'] : null;
+        $by_ip_from_comment = array_key_exists('by_ip_from_comment', $options) ? $options['by_ip_from_comment'] : null;
+        $filters = array_key_exists('filters', $options) ? $options['filters'] : null;
+        $search_filters = array_key_exists('search_filters', $options) ? $options['search_filters'] : null;
+        $after_id = array_key_exists('after_id', $options) ? $options['after_id'] : null;
+        $demo = array_key_exists('demo', $options) ? $options['demo'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getApiIds'][0];
         
 
 
@@ -1779,7 +1777,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -1790,9 +1788,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetBannedUsersFromCommentResponse|\FastComments\Client\Model\APIError
      */
-    public function getBanUsersFromComment($associative_array)
+    public function getBanUsersFromComment($comment_id, array $options = [])
     {
-        list($response) = $this->getBanUsersFromCommentWithHttpInfo($associative_array);
+        list($response) = $this->getBanUsersFromCommentWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -1801,7 +1799,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -1812,9 +1810,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetBannedUsersFromCommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getBanUsersFromCommentWithHttpInfo($associative_array)
+    public function getBanUsersFromCommentWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->getBanUsersFromCommentRequest($associative_array);
+        $request = $this->getBanUsersFromCommentRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1904,7 +1902,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -1914,9 +1912,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBanUsersFromCommentAsync($associative_array)
+    public function getBanUsersFromCommentAsync($comment_id, array $options = [])
     {
-        return $this->getBanUsersFromCommentAsyncWithHttpInfo($associative_array)
+        return $this->getBanUsersFromCommentAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1929,7 +1927,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -1939,10 +1937,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBanUsersFromCommentAsyncWithHttpInfo($associative_array)
+    public function getBanUsersFromCommentAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetBannedUsersFromCommentResponse';
-        $request = $this->getBanUsersFromCommentRequest($associative_array);
+        $request = $this->getBanUsersFromCommentRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1983,7 +1981,7 @@ class ModerationApi
     /**
      * Create request for operation 'getBanUsersFromComment'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -1993,13 +1991,12 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getBanUsersFromCommentRequest($associative_array)
+    public function getBanUsersFromCommentRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getBanUsersFromComment'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getBanUsersFromComment'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -2106,7 +2103,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -2117,9 +2114,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetCommentBanStatusResponse|\FastComments\Client\Model\APIError
      */
-    public function getCommentBanStatus($associative_array)
+    public function getCommentBanStatus($comment_id, array $options = [])
     {
-        list($response) = $this->getCommentBanStatusWithHttpInfo($associative_array);
+        list($response) = $this->getCommentBanStatusWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -2128,7 +2125,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -2139,9 +2136,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetCommentBanStatusResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCommentBanStatusWithHttpInfo($associative_array)
+    public function getCommentBanStatusWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->getCommentBanStatusRequest($associative_array);
+        $request = $this->getCommentBanStatusRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2231,7 +2228,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -2241,9 +2238,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentBanStatusAsync($associative_array)
+    public function getCommentBanStatusAsync($comment_id, array $options = [])
     {
-        return $this->getCommentBanStatusAsyncWithHttpInfo($associative_array)
+        return $this->getCommentBanStatusAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2256,7 +2253,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -2266,10 +2263,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentBanStatusAsyncWithHttpInfo($associative_array)
+    public function getCommentBanStatusAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetCommentBanStatusResponse';
-        $request = $this->getCommentBanStatusRequest($associative_array);
+        $request = $this->getCommentBanStatusRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2310,7 +2307,7 @@ class ModerationApi
     /**
      * Create request for operation 'getCommentBanStatus'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -2320,13 +2317,12 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCommentBanStatusRequest($associative_array)
+    public function getCommentBanStatusRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getCommentBanStatus'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getCommentBanStatus'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -2433,7 +2429,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -2444,9 +2440,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationAPIChildCommentsResponse|\FastComments\Client\Model\APIError
      */
-    public function getCommentChildren($associative_array)
+    public function getCommentChildren($comment_id, array $options = [])
     {
-        list($response) = $this->getCommentChildrenWithHttpInfo($associative_array);
+        list($response) = $this->getCommentChildrenWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -2455,7 +2451,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -2466,9 +2462,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationAPIChildCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCommentChildrenWithHttpInfo($associative_array)
+    public function getCommentChildrenWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->getCommentChildrenRequest($associative_array);
+        $request = $this->getCommentChildrenRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2558,7 +2554,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -2568,9 +2564,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentChildrenAsync($associative_array)
+    public function getCommentChildrenAsync($comment_id, array $options = [])
     {
-        return $this->getCommentChildrenAsyncWithHttpInfo($associative_array)
+        return $this->getCommentChildrenAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2583,7 +2579,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -2593,10 +2589,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentChildrenAsyncWithHttpInfo($associative_array)
+    public function getCommentChildrenAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationAPIChildCommentsResponse';
-        $request = $this->getCommentChildrenRequest($associative_array);
+        $request = $this->getCommentChildrenRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2637,7 +2633,7 @@ class ModerationApi
     /**
      * Create request for operation 'getCommentChildren'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -2647,13 +2643,12 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCommentChildrenRequest($associative_array)
+    public function getCommentChildrenRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getCommentChildren'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getCommentChildren'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -2760,7 +2755,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search text_search (optional)
      * @param  string|null $by_ip_from_comment by_ip_from_comment (optional)
@@ -2775,9 +2770,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationAPICountCommentsResponse|\FastComments\Client\Model\APIError
      */
-    public function getCount($associative_array)
+    public function getCount(array $options = [])
     {
-        list($response) = $this->getCountWithHttpInfo($associative_array);
+        list($response) = $this->getCountWithHttpInfo($options);
         return $response;
     }
 
@@ -2786,7 +2781,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
@@ -2801,9 +2796,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationAPICountCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCountWithHttpInfo($associative_array)
+    public function getCountWithHttpInfo(array $options = [])
     {
-        $request = $this->getCountRequest($associative_array);
+        $request = $this->getCountRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2893,7 +2888,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
@@ -2907,9 +2902,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCountAsync($associative_array)
+    public function getCountAsync(array $options = [])
     {
-        return $this->getCountAsyncWithHttpInfo($associative_array)
+        return $this->getCountAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2922,7 +2917,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
@@ -2936,10 +2931,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCountAsyncWithHttpInfo($associative_array)
+    public function getCountAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationAPICountCommentsResponse';
-        $request = $this->getCountRequest($associative_array);
+        $request = $this->getCountRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2980,7 +2975,7 @@ class ModerationApi
     /**
      * Create request for operation 'getCount'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
@@ -2994,17 +2989,17 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCountRequest($associative_array)
+    public function getCountRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $text_search = array_key_exists('text_search', $associative_array) ? $associative_array['text_search'] : null;
-        $by_ip_from_comment = array_key_exists('by_ip_from_comment', $associative_array) ? $associative_array['by_ip_from_comment'] : null;
-        $filter = array_key_exists('filter', $associative_array) ? $associative_array['filter'] : null;
-        $search_filters = array_key_exists('search_filters', $associative_array) ? $associative_array['search_filters'] : null;
-        $demo = array_key_exists('demo', $associative_array) ? $associative_array['demo'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getCount'][0];
+        // unbox the optional parameters and request options from the $options array
+        $text_search = array_key_exists('text_search', $options) ? $options['text_search'] : null;
+        $by_ip_from_comment = array_key_exists('by_ip_from_comment', $options) ? $options['by_ip_from_comment'] : null;
+        $filter = array_key_exists('filter', $options) ? $options['filter'] : null;
+        $search_filters = array_key_exists('search_filters', $options) ? $options['search_filters'] : null;
+        $demo = array_key_exists('demo', $options) ? $options['demo'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getCount'][0];
         
 
 
@@ -3146,7 +3141,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
@@ -3156,9 +3151,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetBannedUsersCountResponse|\FastComments\Client\Model\APIError
      */
-    public function getCounts($associative_array)
+    public function getCounts(array $options = [])
     {
-        list($response) = $this->getCountsWithHttpInfo($associative_array);
+        list($response) = $this->getCountsWithHttpInfo($options);
         return $response;
     }
 
@@ -3167,7 +3162,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
@@ -3177,9 +3172,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetBannedUsersCountResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCountsWithHttpInfo($associative_array)
+    public function getCountsWithHttpInfo(array $options = [])
     {
-        $request = $this->getCountsRequest($associative_array);
+        $request = $this->getCountsRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3269,7 +3264,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
@@ -3278,9 +3273,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCountsAsync($associative_array)
+    public function getCountsAsync(array $options = [])
     {
-        return $this->getCountsAsyncWithHttpInfo($associative_array)
+        return $this->getCountsAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3293,7 +3288,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
@@ -3302,10 +3297,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCountsAsyncWithHttpInfo($associative_array)
+    public function getCountsAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetBannedUsersCountResponse';
-        $request = $this->getCountsRequest($associative_array);
+        $request = $this->getCountsRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3346,7 +3341,7 @@ class ModerationApi
     /**
      * Create request for operation 'getCounts'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
@@ -3355,12 +3350,12 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCountsRequest($associative_array)
+    public function getCountsRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getCounts'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getCounts'][0];
         
 
 
@@ -3452,7 +3447,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -3463,9 +3458,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationAPIGetLogsResponse|\FastComments\Client\Model\APIError
      */
-    public function getLogs($associative_array)
+    public function getLogs($comment_id, array $options = [])
     {
-        list($response) = $this->getLogsWithHttpInfo($associative_array);
+        list($response) = $this->getLogsWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -3474,7 +3469,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -3485,9 +3480,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationAPIGetLogsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLogsWithHttpInfo($associative_array)
+    public function getLogsWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->getLogsRequest($associative_array);
+        $request = $this->getLogsRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3577,7 +3572,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -3587,9 +3582,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLogsAsync($associative_array)
+    public function getLogsAsync($comment_id, array $options = [])
     {
-        return $this->getLogsAsyncWithHttpInfo($associative_array)
+        return $this->getLogsAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3602,7 +3597,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -3612,10 +3607,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLogsAsyncWithHttpInfo($associative_array)
+    public function getLogsAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationAPIGetLogsResponse';
-        $request = $this->getLogsRequest($associative_array);
+        $request = $this->getLogsRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3656,7 +3651,7 @@ class ModerationApi
     /**
      * Create request for operation 'getLogs'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -3666,13 +3661,12 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getLogsRequest($associative_array)
+    public function getLogsRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getLogs'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getLogs'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -3779,7 +3773,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
@@ -3789,9 +3783,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetTenantManualBadgesResponse|\FastComments\Client\Model\APIError
      */
-    public function getManualBadges($associative_array)
+    public function getManualBadges(array $options = [])
     {
-        list($response) = $this->getManualBadgesWithHttpInfo($associative_array);
+        list($response) = $this->getManualBadgesWithHttpInfo($options);
         return $response;
     }
 
@@ -3800,7 +3794,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
@@ -3810,9 +3804,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetTenantManualBadgesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getManualBadgesWithHttpInfo($associative_array)
+    public function getManualBadgesWithHttpInfo(array $options = [])
     {
-        $request = $this->getManualBadgesRequest($associative_array);
+        $request = $this->getManualBadgesRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3902,7 +3896,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
@@ -3911,9 +3905,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getManualBadgesAsync($associative_array)
+    public function getManualBadgesAsync(array $options = [])
     {
-        return $this->getManualBadgesAsyncWithHttpInfo($associative_array)
+        return $this->getManualBadgesAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3926,7 +3920,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
@@ -3935,10 +3929,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getManualBadgesAsyncWithHttpInfo($associative_array)
+    public function getManualBadgesAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetTenantManualBadgesResponse';
-        $request = $this->getManualBadgesRequest($associative_array);
+        $request = $this->getManualBadgesRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3979,7 +3973,7 @@ class ModerationApi
     /**
      * Create request for operation 'getManualBadges'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
@@ -3988,12 +3982,12 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getManualBadgesRequest($associative_array)
+    public function getManualBadgesRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getManualBadges'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getManualBadges'][0];
         
 
 
@@ -4085,7 +4079,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $badges_user_id badges_user_id (optional)
      * @param  string|null $comment_id comment_id (optional)
@@ -4097,9 +4091,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetUserManualBadgesResponse|\FastComments\Client\Model\APIError
      */
-    public function getManualBadgesForUser($associative_array)
+    public function getManualBadgesForUser(array $options = [])
     {
-        list($response) = $this->getManualBadgesForUserWithHttpInfo($associative_array);
+        list($response) = $this->getManualBadgesForUserWithHttpInfo($options);
         return $response;
     }
 
@@ -4108,7 +4102,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $badges_user_id (optional)
      * @param  string|null $comment_id (optional)
@@ -4120,9 +4114,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetUserManualBadgesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getManualBadgesForUserWithHttpInfo($associative_array)
+    public function getManualBadgesForUserWithHttpInfo(array $options = [])
     {
-        $request = $this->getManualBadgesForUserRequest($associative_array);
+        $request = $this->getManualBadgesForUserRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4212,7 +4206,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $badges_user_id (optional)
      * @param  string|null $comment_id (optional)
@@ -4223,9 +4217,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getManualBadgesForUserAsync($associative_array)
+    public function getManualBadgesForUserAsync(array $options = [])
     {
-        return $this->getManualBadgesForUserAsyncWithHttpInfo($associative_array)
+        return $this->getManualBadgesForUserAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4238,7 +4232,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $badges_user_id (optional)
      * @param  string|null $comment_id (optional)
@@ -4249,10 +4243,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getManualBadgesForUserAsyncWithHttpInfo($associative_array)
+    public function getManualBadgesForUserAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetUserManualBadgesResponse';
-        $request = $this->getManualBadgesForUserRequest($associative_array);
+        $request = $this->getManualBadgesForUserRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4293,7 +4287,7 @@ class ModerationApi
     /**
      * Create request for operation 'getManualBadgesForUser'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $badges_user_id (optional)
      * @param  string|null $comment_id (optional)
@@ -4304,14 +4298,14 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getManualBadgesForUserRequest($associative_array)
+    public function getManualBadgesForUserRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $badges_user_id = array_key_exists('badges_user_id', $associative_array) ? $associative_array['badges_user_id'] : null;
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getManualBadgesForUser'][0];
+        // unbox the optional parameters and request options from the $options array
+        $badges_user_id = array_key_exists('badges_user_id', $options) ? $options['badges_user_id'] : null;
+        $comment_id = array_key_exists('comment_id', $options) ? $options['comment_id'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getManualBadgesForUser'][0];
         
 
 
@@ -4423,7 +4417,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $include_email include_email (optional)
@@ -4436,9 +4430,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationAPICommentResponse|\FastComments\Client\Model\APIError
      */
-    public function getModerationComment($associative_array)
+    public function getModerationComment($comment_id, array $options = [])
     {
-        list($response) = $this->getModerationCommentWithHttpInfo($associative_array);
+        list($response) = $this->getModerationCommentWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -4447,7 +4441,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $include_email (optional)
@@ -4460,9 +4454,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationAPICommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getModerationCommentWithHttpInfo($associative_array)
+    public function getModerationCommentWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->getModerationCommentRequest($associative_array);
+        $request = $this->getModerationCommentRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4552,7 +4546,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $include_email (optional)
@@ -4564,9 +4558,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModerationCommentAsync($associative_array)
+    public function getModerationCommentAsync($comment_id, array $options = [])
     {
-        return $this->getModerationCommentAsyncWithHttpInfo($associative_array)
+        return $this->getModerationCommentAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4579,7 +4573,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $include_email (optional)
@@ -4591,10 +4585,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModerationCommentAsyncWithHttpInfo($associative_array)
+    public function getModerationCommentAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationAPICommentResponse';
-        $request = $this->getModerationCommentRequest($associative_array);
+        $request = $this->getModerationCommentRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4635,7 +4629,7 @@ class ModerationApi
     /**
      * Create request for operation 'getModerationComment'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $include_email (optional)
@@ -4647,15 +4641,14 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getModerationCommentRequest($associative_array)
+    public function getModerationCommentRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $include_email = array_key_exists('include_email', $associative_array) ? $associative_array['include_email'] : null;
-        $include_ip = array_key_exists('include_ip', $associative_array) ? $associative_array['include_ip'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getModerationComment'][0];
+        // unbox the optional parameters and request options from the $options array
+        $include_email = array_key_exists('include_email', $options) ? $options['include_email'] : null;
+        $include_ip = array_key_exists('include_ip', $options) ? $options['include_ip'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getModerationComment'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -4782,7 +4775,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -4793,9 +4786,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetCommentTextResponse|\FastComments\Client\Model\APIError
      */
-    public function getModerationCommentText($associative_array)
+    public function getModerationCommentText($comment_id, array $options = [])
     {
-        list($response) = $this->getModerationCommentTextWithHttpInfo($associative_array);
+        list($response) = $this->getModerationCommentTextWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -4804,7 +4797,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -4815,9 +4808,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetCommentTextResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getModerationCommentTextWithHttpInfo($associative_array)
+    public function getModerationCommentTextWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->getModerationCommentTextRequest($associative_array);
+        $request = $this->getModerationCommentTextRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4907,7 +4900,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -4917,9 +4910,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModerationCommentTextAsync($associative_array)
+    public function getModerationCommentTextAsync($comment_id, array $options = [])
     {
-        return $this->getModerationCommentTextAsyncWithHttpInfo($associative_array)
+        return $this->getModerationCommentTextAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4932,7 +4925,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -4942,10 +4935,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModerationCommentTextAsyncWithHttpInfo($associative_array)
+    public function getModerationCommentTextAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetCommentTextResponse';
-        $request = $this->getModerationCommentTextRequest($associative_array);
+        $request = $this->getModerationCommentTextRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4986,7 +4979,7 @@ class ModerationApi
     /**
      * Create request for operation 'getModerationCommentText'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -4996,13 +4989,12 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getModerationCommentTextRequest($associative_array)
+    public function getModerationCommentTextRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getModerationCommentText'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getModerationCommentText'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -5109,7 +5101,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $include_by_user_id_and_email include_by_user_id_and_email (optional)
@@ -5123,9 +5115,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\PreBanSummary|\FastComments\Client\Model\APIError
      */
-    public function getPreBanSummary($associative_array)
+    public function getPreBanSummary($comment_id, array $options = [])
     {
-        list($response) = $this->getPreBanSummaryWithHttpInfo($associative_array);
+        list($response) = $this->getPreBanSummaryWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -5134,7 +5126,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
@@ -5148,9 +5140,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\PreBanSummary|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPreBanSummaryWithHttpInfo($associative_array)
+    public function getPreBanSummaryWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->getPreBanSummaryRequest($associative_array);
+        $request = $this->getPreBanSummaryRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5240,7 +5232,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
@@ -5253,9 +5245,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPreBanSummaryAsync($associative_array)
+    public function getPreBanSummaryAsync($comment_id, array $options = [])
     {
-        return $this->getPreBanSummaryAsyncWithHttpInfo($associative_array)
+        return $this->getPreBanSummaryAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5268,7 +5260,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
@@ -5281,10 +5273,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPreBanSummaryAsyncWithHttpInfo($associative_array)
+    public function getPreBanSummaryAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\PreBanSummary';
-        $request = $this->getPreBanSummaryRequest($associative_array);
+        $request = $this->getPreBanSummaryRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5325,7 +5317,7 @@ class ModerationApi
     /**
      * Create request for operation 'getPreBanSummary'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
@@ -5338,16 +5330,15 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPreBanSummaryRequest($associative_array)
+    public function getPreBanSummaryRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $include_by_user_id_and_email = array_key_exists('include_by_user_id_and_email', $associative_array) ? $associative_array['include_by_user_id_and_email'] : null;
-        $include_by_ip = array_key_exists('include_by_ip', $associative_array) ? $associative_array['include_by_ip'] : null;
-        $include_by_email_domain = array_key_exists('include_by_email_domain', $associative_array) ? $associative_array['include_by_email_domain'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getPreBanSummary'][0];
+        // unbox the optional parameters and request options from the $options array
+        $include_by_user_id_and_email = array_key_exists('include_by_user_id_and_email', $options) ? $options['include_by_user_id_and_email'] : null;
+        $include_by_ip = array_key_exists('include_by_ip', $options) ? $options['include_by_ip'] : null;
+        $include_by_email_domain = array_key_exists('include_by_email_domain', $options) ? $options['include_by_email_domain'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getPreBanSummary'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -5484,7 +5475,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value value (optional)
      * @param  string|null $filters filters (optional)
@@ -5497,9 +5488,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationCommentSearchResponse|\FastComments\Client\Model\APIError
      */
-    public function getSearchCommentsSummary($associative_array)
+    public function getSearchCommentsSummary(array $options = [])
     {
-        list($response) = $this->getSearchCommentsSummaryWithHttpInfo($associative_array);
+        list($response) = $this->getSearchCommentsSummaryWithHttpInfo($options);
         return $response;
     }
 
@@ -5508,7 +5499,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $filters (optional)
@@ -5521,9 +5512,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationCommentSearchResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchCommentsSummaryWithHttpInfo($associative_array)
+    public function getSearchCommentsSummaryWithHttpInfo(array $options = [])
     {
-        $request = $this->getSearchCommentsSummaryRequest($associative_array);
+        $request = $this->getSearchCommentsSummaryRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5613,7 +5604,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $filters (optional)
@@ -5625,9 +5616,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchCommentsSummaryAsync($associative_array)
+    public function getSearchCommentsSummaryAsync(array $options = [])
     {
-        return $this->getSearchCommentsSummaryAsyncWithHttpInfo($associative_array)
+        return $this->getSearchCommentsSummaryAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5640,7 +5631,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $filters (optional)
@@ -5652,10 +5643,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchCommentsSummaryAsyncWithHttpInfo($associative_array)
+    public function getSearchCommentsSummaryAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationCommentSearchResponse';
-        $request = $this->getSearchCommentsSummaryRequest($associative_array);
+        $request = $this->getSearchCommentsSummaryRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5696,7 +5687,7 @@ class ModerationApi
     /**
      * Create request for operation 'getSearchCommentsSummary'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $filters (optional)
@@ -5708,15 +5699,15 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchCommentsSummaryRequest($associative_array)
+    public function getSearchCommentsSummaryRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $value = array_key_exists('value', $associative_array) ? $associative_array['value'] : null;
-        $filters = array_key_exists('filters', $associative_array) ? $associative_array['filters'] : null;
-        $search_filters = array_key_exists('search_filters', $associative_array) ? $associative_array['search_filters'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getSearchCommentsSummary'][0];
+        // unbox the optional parameters and request options from the $options array
+        $value = array_key_exists('value', $options) ? $options['value'] : null;
+        $filters = array_key_exists('filters', $options) ? $options['filters'] : null;
+        $search_filters = array_key_exists('search_filters', $options) ? $options['search_filters'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getSearchCommentsSummary'][0];
         
 
 
@@ -5838,7 +5829,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value value (optional)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -5849,9 +5840,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationPageSearchResponse|\FastComments\Client\Model\APIError
      */
-    public function getSearchPages($associative_array)
+    public function getSearchPages(array $options = [])
     {
-        list($response) = $this->getSearchPagesWithHttpInfo($associative_array);
+        list($response) = $this->getSearchPagesWithHttpInfo($options);
         return $response;
     }
 
@@ -5860,7 +5851,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $tenant_id (optional)
@@ -5871,9 +5862,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationPageSearchResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchPagesWithHttpInfo($associative_array)
+    public function getSearchPagesWithHttpInfo(array $options = [])
     {
-        $request = $this->getSearchPagesRequest($associative_array);
+        $request = $this->getSearchPagesRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5963,7 +5954,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $tenant_id (optional)
@@ -5973,9 +5964,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchPagesAsync($associative_array)
+    public function getSearchPagesAsync(array $options = [])
     {
-        return $this->getSearchPagesAsyncWithHttpInfo($associative_array)
+        return $this->getSearchPagesAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5988,7 +5979,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $tenant_id (optional)
@@ -5998,10 +5989,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchPagesAsyncWithHttpInfo($associative_array)
+    public function getSearchPagesAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationPageSearchResponse';
-        $request = $this->getSearchPagesRequest($associative_array);
+        $request = $this->getSearchPagesRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6042,7 +6033,7 @@ class ModerationApi
     /**
      * Create request for operation 'getSearchPages'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $tenant_id (optional)
@@ -6052,13 +6043,13 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchPagesRequest($associative_array)
+    public function getSearchPagesRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $value = array_key_exists('value', $associative_array) ? $associative_array['value'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getSearchPages'][0];
+        // unbox the optional parameters and request options from the $options array
+        $value = array_key_exists('value', $options) ? $options['value'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getSearchPages'][0];
         
 
 
@@ -6160,7 +6151,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value value (optional)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -6171,9 +6162,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationSiteSearchResponse|\FastComments\Client\Model\APIError
      */
-    public function getSearchSites($associative_array)
+    public function getSearchSites(array $options = [])
     {
-        list($response) = $this->getSearchSitesWithHttpInfo($associative_array);
+        list($response) = $this->getSearchSitesWithHttpInfo($options);
         return $response;
     }
 
@@ -6182,7 +6173,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $tenant_id (optional)
@@ -6193,9 +6184,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationSiteSearchResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchSitesWithHttpInfo($associative_array)
+    public function getSearchSitesWithHttpInfo(array $options = [])
     {
-        $request = $this->getSearchSitesRequest($associative_array);
+        $request = $this->getSearchSitesRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6285,7 +6276,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $tenant_id (optional)
@@ -6295,9 +6286,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchSitesAsync($associative_array)
+    public function getSearchSitesAsync(array $options = [])
     {
-        return $this->getSearchSitesAsyncWithHttpInfo($associative_array)
+        return $this->getSearchSitesAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6310,7 +6301,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $tenant_id (optional)
@@ -6320,10 +6311,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchSitesAsyncWithHttpInfo($associative_array)
+    public function getSearchSitesAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationSiteSearchResponse';
-        $request = $this->getSearchSitesRequest($associative_array);
+        $request = $this->getSearchSitesRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6364,7 +6355,7 @@ class ModerationApi
     /**
      * Create request for operation 'getSearchSites'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $tenant_id (optional)
@@ -6374,13 +6365,13 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchSitesRequest($associative_array)
+    public function getSearchSitesRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $value = array_key_exists('value', $associative_array) ? $associative_array['value'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getSearchSites'][0];
+        // unbox the optional parameters and request options from the $options array
+        $value = array_key_exists('value', $options) ? $options['value'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getSearchSites'][0];
         
 
 
@@ -6482,7 +6473,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search text_search (optional)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -6493,9 +6484,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationSuggestResponse|\FastComments\Client\Model\APIError
      */
-    public function getSearchSuggest($associative_array)
+    public function getSearchSuggest(array $options = [])
     {
-        list($response) = $this->getSearchSuggestWithHttpInfo($associative_array);
+        list($response) = $this->getSearchSuggestWithHttpInfo($options);
         return $response;
     }
 
@@ -6504,7 +6495,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $tenant_id (optional)
@@ -6515,9 +6506,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationSuggestResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchSuggestWithHttpInfo($associative_array)
+    public function getSearchSuggestWithHttpInfo(array $options = [])
     {
-        $request = $this->getSearchSuggestRequest($associative_array);
+        $request = $this->getSearchSuggestRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6607,7 +6598,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $tenant_id (optional)
@@ -6617,9 +6608,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchSuggestAsync($associative_array)
+    public function getSearchSuggestAsync(array $options = [])
     {
-        return $this->getSearchSuggestAsyncWithHttpInfo($associative_array)
+        return $this->getSearchSuggestAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6632,7 +6623,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $tenant_id (optional)
@@ -6642,10 +6633,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchSuggestAsyncWithHttpInfo($associative_array)
+    public function getSearchSuggestAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationSuggestResponse';
-        $request = $this->getSearchSuggestRequest($associative_array);
+        $request = $this->getSearchSuggestRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6686,7 +6677,7 @@ class ModerationApi
     /**
      * Create request for operation 'getSearchSuggest'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $tenant_id (optional)
@@ -6696,13 +6687,13 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchSuggestRequest($associative_array)
+    public function getSearchSuggestRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $text_search = array_key_exists('text_search', $associative_array) ? $associative_array['text_search'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getSearchSuggest'][0];
+        // unbox the optional parameters and request options from the $options array
+        $text_search = array_key_exists('text_search', $options) ? $options['text_search'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getSearchSuggest'][0];
         
 
 
@@ -6804,7 +6795,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value value (optional)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -6815,9 +6806,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationUserSearchResponse|\FastComments\Client\Model\APIError
      */
-    public function getSearchUsers($associative_array)
+    public function getSearchUsers(array $options = [])
     {
-        list($response) = $this->getSearchUsersWithHttpInfo($associative_array);
+        list($response) = $this->getSearchUsersWithHttpInfo($options);
         return $response;
     }
 
@@ -6826,7 +6817,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $tenant_id (optional)
@@ -6837,9 +6828,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationUserSearchResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchUsersWithHttpInfo($associative_array)
+    public function getSearchUsersWithHttpInfo(array $options = [])
     {
-        $request = $this->getSearchUsersRequest($associative_array);
+        $request = $this->getSearchUsersRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6929,7 +6920,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $tenant_id (optional)
@@ -6939,9 +6930,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchUsersAsync($associative_array)
+    public function getSearchUsersAsync(array $options = [])
     {
-        return $this->getSearchUsersAsyncWithHttpInfo($associative_array)
+        return $this->getSearchUsersAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6954,7 +6945,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $tenant_id (optional)
@@ -6964,10 +6955,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchUsersAsyncWithHttpInfo($associative_array)
+    public function getSearchUsersAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationUserSearchResponse';
-        $request = $this->getSearchUsersRequest($associative_array);
+        $request = $this->getSearchUsersRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7008,7 +6999,7 @@ class ModerationApi
     /**
      * Create request for operation 'getSearchUsers'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $value (optional)
      * @param  string|null $tenant_id (optional)
@@ -7018,13 +7009,13 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchUsersRequest($associative_array)
+    public function getSearchUsersRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $value = array_key_exists('value', $associative_array) ? $associative_array['value'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getSearchUsers'][0];
+        // unbox the optional parameters and request options from the $options array
+        $value = array_key_exists('value', $options) ? $options['value'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getSearchUsers'][0];
         
 
 
@@ -7126,7 +7117,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $user_id user_id (optional)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -7137,9 +7128,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetUserTrustFactorResponse|\FastComments\Client\Model\APIError
      */
-    public function getTrustFactor($associative_array)
+    public function getTrustFactor(array $options = [])
     {
-        list($response) = $this->getTrustFactorWithHttpInfo($associative_array);
+        list($response) = $this->getTrustFactorWithHttpInfo($options);
         return $response;
     }
 
@@ -7148,7 +7139,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $user_id (optional)
      * @param  string|null $tenant_id (optional)
@@ -7159,9 +7150,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetUserTrustFactorResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTrustFactorWithHttpInfo($associative_array)
+    public function getTrustFactorWithHttpInfo(array $options = [])
     {
-        $request = $this->getTrustFactorRequest($associative_array);
+        $request = $this->getTrustFactorRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7251,7 +7242,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $user_id (optional)
      * @param  string|null $tenant_id (optional)
@@ -7261,9 +7252,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTrustFactorAsync($associative_array)
+    public function getTrustFactorAsync(array $options = [])
     {
-        return $this->getTrustFactorAsyncWithHttpInfo($associative_array)
+        return $this->getTrustFactorAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7276,7 +7267,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $user_id (optional)
      * @param  string|null $tenant_id (optional)
@@ -7286,10 +7277,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTrustFactorAsyncWithHttpInfo($associative_array)
+    public function getTrustFactorAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetUserTrustFactorResponse';
-        $request = $this->getTrustFactorRequest($associative_array);
+        $request = $this->getTrustFactorRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7330,7 +7321,7 @@ class ModerationApi
     /**
      * Create request for operation 'getTrustFactor'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $user_id (optional)
      * @param  string|null $tenant_id (optional)
@@ -7340,13 +7331,13 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTrustFactorRequest($associative_array)
+    public function getTrustFactorRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getTrustFactor'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getTrustFactor'][0];
         
 
 
@@ -7448,7 +7439,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
@@ -7458,9 +7449,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse|\FastComments\Client\Model\APIError
      */
-    public function getUserBanPreference($associative_array)
+    public function getUserBanPreference(array $options = [])
     {
-        list($response) = $this->getUserBanPreferenceWithHttpInfo($associative_array);
+        list($response) = $this->getUserBanPreferenceWithHttpInfo($options);
         return $response;
     }
 
@@ -7469,7 +7460,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
@@ -7479,9 +7470,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserBanPreferenceWithHttpInfo($associative_array)
+    public function getUserBanPreferenceWithHttpInfo(array $options = [])
     {
-        $request = $this->getUserBanPreferenceRequest($associative_array);
+        $request = $this->getUserBanPreferenceRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7571,7 +7562,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
@@ -7580,9 +7571,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBanPreferenceAsync($associative_array)
+    public function getUserBanPreferenceAsync(array $options = [])
     {
-        return $this->getUserBanPreferenceAsyncWithHttpInfo($associative_array)
+        return $this->getUserBanPreferenceAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7595,7 +7586,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
@@ -7604,10 +7595,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBanPreferenceAsyncWithHttpInfo($associative_array)
+    public function getUserBanPreferenceAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse';
-        $request = $this->getUserBanPreferenceRequest($associative_array);
+        $request = $this->getUserBanPreferenceRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7648,7 +7639,7 @@ class ModerationApi
     /**
      * Create request for operation 'getUserBanPreference'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
@@ -7657,12 +7648,12 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserBanPreferenceRequest($associative_array)
+    public function getUserBanPreferenceRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getUserBanPreference'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getUserBanPreference'][0];
         
 
 
@@ -7754,7 +7745,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $comment_id comment_id (optional)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -7765,9 +7756,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetUserInternalProfileResponse|\FastComments\Client\Model\APIError
      */
-    public function getUserInternalProfile($associative_array)
+    public function getUserInternalProfile(array $options = [])
     {
-        list($response) = $this->getUserInternalProfileWithHttpInfo($associative_array);
+        list($response) = $this->getUserInternalProfileWithHttpInfo($options);
         return $response;
     }
 
@@ -7776,7 +7767,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $comment_id (optional)
      * @param  string|null $tenant_id (optional)
@@ -7787,9 +7778,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetUserInternalProfileResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserInternalProfileWithHttpInfo($associative_array)
+    public function getUserInternalProfileWithHttpInfo(array $options = [])
     {
-        $request = $this->getUserInternalProfileRequest($associative_array);
+        $request = $this->getUserInternalProfileRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7879,7 +7870,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $comment_id (optional)
      * @param  string|null $tenant_id (optional)
@@ -7889,9 +7880,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserInternalProfileAsync($associative_array)
+    public function getUserInternalProfileAsync(array $options = [])
     {
-        return $this->getUserInternalProfileAsyncWithHttpInfo($associative_array)
+        return $this->getUserInternalProfileAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7904,7 +7895,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $comment_id (optional)
      * @param  string|null $tenant_id (optional)
@@ -7914,10 +7905,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserInternalProfileAsyncWithHttpInfo($associative_array)
+    public function getUserInternalProfileAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetUserInternalProfileResponse';
-        $request = $this->getUserInternalProfileRequest($associative_array);
+        $request = $this->getUserInternalProfileRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7958,7 +7949,7 @@ class ModerationApi
     /**
      * Create request for operation 'getUserInternalProfile'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $comment_id (optional)
      * @param  string|null $tenant_id (optional)
@@ -7968,13 +7959,13 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserInternalProfileRequest($associative_array)
+    public function getUserInternalProfileRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getUserInternalProfile'][0];
+        // unbox the optional parameters and request options from the $options array
+        $comment_id = array_key_exists('comment_id', $options) ? $options['comment_id'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getUserInternalProfile'][0];
         
 
 
@@ -8076,7 +8067,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  \FastComments\Client\Model\AdjustCommentVotesParams $adjust_comment_votes_params adjust_comment_votes_params (required)
@@ -8089,9 +8080,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\AdjustVotesResponse|\FastComments\Client\Model\APIError
      */
-    public function postAdjustCommentVotes($associative_array)
+    public function postAdjustCommentVotes($comment_id, $adjust_comment_votes_params, array $options = [])
     {
-        list($response) = $this->postAdjustCommentVotesWithHttpInfo($associative_array);
+        list($response) = $this->postAdjustCommentVotesWithHttpInfo($comment_id, $adjust_comment_votes_params, $options);
         return $response;
     }
 
@@ -8100,7 +8091,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\AdjustCommentVotesParams $adjust_comment_votes_params (required)
@@ -8113,9 +8104,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\AdjustVotesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postAdjustCommentVotesWithHttpInfo($associative_array)
+    public function postAdjustCommentVotesWithHttpInfo($comment_id, $adjust_comment_votes_params, array $options = [])
     {
-        $request = $this->postAdjustCommentVotesRequest($associative_array);
+        $request = $this->postAdjustCommentVotesRequest($comment_id, $adjust_comment_votes_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8205,7 +8196,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\AdjustCommentVotesParams $adjust_comment_votes_params (required)
@@ -8217,9 +8208,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postAdjustCommentVotesAsync($associative_array)
+    public function postAdjustCommentVotesAsync($comment_id, $adjust_comment_votes_params, array $options = [])
     {
-        return $this->postAdjustCommentVotesAsyncWithHttpInfo($associative_array)
+        return $this->postAdjustCommentVotesAsyncWithHttpInfo($comment_id, $adjust_comment_votes_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8232,7 +8223,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\AdjustCommentVotesParams $adjust_comment_votes_params (required)
@@ -8244,10 +8235,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postAdjustCommentVotesAsyncWithHttpInfo($associative_array)
+    public function postAdjustCommentVotesAsyncWithHttpInfo($comment_id, $adjust_comment_votes_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\AdjustVotesResponse';
-        $request = $this->postAdjustCommentVotesRequest($associative_array);
+        $request = $this->postAdjustCommentVotesRequest($comment_id, $adjust_comment_votes_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8288,7 +8279,7 @@ class ModerationApi
     /**
      * Create request for operation 'postAdjustCommentVotes'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\AdjustCommentVotesParams $adjust_comment_votes_params (required)
@@ -8300,15 +8291,13 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postAdjustCommentVotesRequest($associative_array)
+    public function postAdjustCommentVotesRequest($comment_id, $adjust_comment_votes_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $adjust_comment_votes_params = array_key_exists('adjust_comment_votes_params', $associative_array) ? $associative_array['adjust_comment_votes_params'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $broadcast_id = array_key_exists('broadcast_id', $associative_array) ? $associative_array['broadcast_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['postAdjustCommentVotes'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['postAdjustCommentVotes'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -8439,7 +8428,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search text_search (optional)
      * @param  string|null $by_ip_from_comment by_ip_from_comment (optional)
@@ -8454,9 +8443,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationExportResponse|\FastComments\Client\Model\APIError
      */
-    public function postApiExport($associative_array)
+    public function postApiExport(array $options = [])
     {
-        list($response) = $this->postApiExportWithHttpInfo($associative_array);
+        list($response) = $this->postApiExportWithHttpInfo($options);
         return $response;
     }
 
@@ -8465,7 +8454,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
@@ -8480,9 +8469,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationExportResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postApiExportWithHttpInfo($associative_array)
+    public function postApiExportWithHttpInfo(array $options = [])
     {
-        $request = $this->postApiExportRequest($associative_array);
+        $request = $this->postApiExportRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8572,7 +8561,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
@@ -8586,9 +8575,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postApiExportAsync($associative_array)
+    public function postApiExportAsync(array $options = [])
     {
-        return $this->postApiExportAsyncWithHttpInfo($associative_array)
+        return $this->postApiExportAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8601,7 +8590,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
@@ -8615,10 +8604,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postApiExportAsyncWithHttpInfo($associative_array)
+    public function postApiExportAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationExportResponse';
-        $request = $this->postApiExportRequest($associative_array);
+        $request = $this->postApiExportRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8659,7 +8648,7 @@ class ModerationApi
     /**
      * Create request for operation 'postApiExport'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
@@ -8673,17 +8662,17 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postApiExportRequest($associative_array)
+    public function postApiExportRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $text_search = array_key_exists('text_search', $associative_array) ? $associative_array['text_search'] : null;
-        $by_ip_from_comment = array_key_exists('by_ip_from_comment', $associative_array) ? $associative_array['by_ip_from_comment'] : null;
-        $filters = array_key_exists('filters', $associative_array) ? $associative_array['filters'] : null;
-        $search_filters = array_key_exists('search_filters', $associative_array) ? $associative_array['search_filters'] : null;
-        $sorts = array_key_exists('sorts', $associative_array) ? $associative_array['sorts'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['postApiExport'][0];
+        // unbox the optional parameters and request options from the $options array
+        $text_search = array_key_exists('text_search', $options) ? $options['text_search'] : null;
+        $by_ip_from_comment = array_key_exists('by_ip_from_comment', $options) ? $options['by_ip_from_comment'] : null;
+        $filters = array_key_exists('filters', $options) ? $options['filters'] : null;
+        $search_filters = array_key_exists('search_filters', $options) ? $options['search_filters'] : null;
+        $sorts = array_key_exists('sorts', $options) ? $options['sorts'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['postApiExport'][0];
         
 
 
@@ -8825,7 +8814,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $ban_email ban_email (optional)
@@ -8844,9 +8833,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\BanUserFromCommentResult|\FastComments\Client\Model\APIError
      */
-    public function postBanUserFromComment($associative_array)
+    public function postBanUserFromComment($comment_id, array $options = [])
     {
-        list($response) = $this->postBanUserFromCommentWithHttpInfo($associative_array);
+        list($response) = $this->postBanUserFromCommentWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -8855,7 +8844,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $ban_email (optional)
@@ -8874,9 +8863,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\BanUserFromCommentResult|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postBanUserFromCommentWithHttpInfo($associative_array)
+    public function postBanUserFromCommentWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->postBanUserFromCommentRequest($associative_array);
+        $request = $this->postBanUserFromCommentRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8966,7 +8955,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $ban_email (optional)
@@ -8984,9 +8973,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBanUserFromCommentAsync($associative_array)
+    public function postBanUserFromCommentAsync($comment_id, array $options = [])
     {
-        return $this->postBanUserFromCommentAsyncWithHttpInfo($associative_array)
+        return $this->postBanUserFromCommentAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8999,7 +8988,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $ban_email (optional)
@@ -9017,10 +9006,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBanUserFromCommentAsyncWithHttpInfo($associative_array)
+    public function postBanUserFromCommentAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\BanUserFromCommentResult';
-        $request = $this->postBanUserFromCommentRequest($associative_array);
+        $request = $this->postBanUserFromCommentRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9061,7 +9050,7 @@ class ModerationApi
     /**
      * Create request for operation 'postBanUserFromComment'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $ban_email (optional)
@@ -9079,21 +9068,20 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postBanUserFromCommentRequest($associative_array)
+    public function postBanUserFromCommentRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $ban_email = array_key_exists('ban_email', $associative_array) ? $associative_array['ban_email'] : null;
-        $ban_email_domain = array_key_exists('ban_email_domain', $associative_array) ? $associative_array['ban_email_domain'] : null;
-        $ban_ip = array_key_exists('ban_ip', $associative_array) ? $associative_array['ban_ip'] : null;
-        $delete_all_users_comments = array_key_exists('delete_all_users_comments', $associative_array) ? $associative_array['delete_all_users_comments'] : null;
-        $banned_until = array_key_exists('banned_until', $associative_array) ? $associative_array['banned_until'] : null;
-        $is_shadow_ban = array_key_exists('is_shadow_ban', $associative_array) ? $associative_array['is_shadow_ban'] : null;
-        $update_id = array_key_exists('update_id', $associative_array) ? $associative_array['update_id'] : null;
-        $ban_reason = array_key_exists('ban_reason', $associative_array) ? $associative_array['ban_reason'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['postBanUserFromComment'][0];
+        // unbox the optional parameters and request options from the $options array
+        $ban_email = array_key_exists('ban_email', $options) ? $options['ban_email'] : null;
+        $ban_email_domain = array_key_exists('ban_email_domain', $options) ? $options['ban_email_domain'] : null;
+        $ban_ip = array_key_exists('ban_ip', $options) ? $options['ban_ip'] : null;
+        $delete_all_users_comments = array_key_exists('delete_all_users_comments', $options) ? $options['delete_all_users_comments'] : null;
+        $banned_until = array_key_exists('banned_until', $options) ? $options['banned_until'] : null;
+        $is_shadow_ban = array_key_exists('is_shadow_ban', $options) ? $options['is_shadow_ban'] : null;
+        $update_id = array_key_exists('update_id', $options) ? $options['update_id'] : null;
+        $ban_reason = array_key_exists('ban_reason', $options) ? $options['ban_reason'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['postBanUserFromComment'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -9280,7 +9268,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  \FastComments\Client\Model\BanUserUndoParams $ban_user_undo_params ban_user_undo_params (required)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -9291,9 +9279,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function postBanUserUndo($associative_array)
+    public function postBanUserUndo($ban_user_undo_params, array $options = [])
     {
-        list($response) = $this->postBanUserUndoWithHttpInfo($associative_array);
+        list($response) = $this->postBanUserUndoWithHttpInfo($ban_user_undo_params, $options);
         return $response;
     }
 
@@ -9302,7 +9290,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  \FastComments\Client\Model\BanUserUndoParams $ban_user_undo_params (required)
      * @param  string|null $tenant_id (optional)
@@ -9313,9 +9301,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postBanUserUndoWithHttpInfo($associative_array)
+    public function postBanUserUndoWithHttpInfo($ban_user_undo_params, array $options = [])
     {
-        $request = $this->postBanUserUndoRequest($associative_array);
+        $request = $this->postBanUserUndoRequest($ban_user_undo_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9405,7 +9393,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  \FastComments\Client\Model\BanUserUndoParams $ban_user_undo_params (required)
      * @param  string|null $tenant_id (optional)
@@ -9415,9 +9403,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBanUserUndoAsync($associative_array)
+    public function postBanUserUndoAsync($ban_user_undo_params, array $options = [])
     {
-        return $this->postBanUserUndoAsyncWithHttpInfo($associative_array)
+        return $this->postBanUserUndoAsyncWithHttpInfo($ban_user_undo_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9430,7 +9418,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  \FastComments\Client\Model\BanUserUndoParams $ban_user_undo_params (required)
      * @param  string|null $tenant_id (optional)
@@ -9440,10 +9428,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBanUserUndoAsyncWithHttpInfo($associative_array)
+    public function postBanUserUndoAsyncWithHttpInfo($ban_user_undo_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postBanUserUndoRequest($associative_array);
+        $request = $this->postBanUserUndoRequest($ban_user_undo_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9484,7 +9472,7 @@ class ModerationApi
     /**
      * Create request for operation 'postBanUserUndo'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  \FastComments\Client\Model\BanUserUndoParams $ban_user_undo_params (required)
      * @param  string|null $tenant_id (optional)
@@ -9494,13 +9482,12 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postBanUserUndoRequest($associative_array)
+    public function postBanUserUndoRequest($ban_user_undo_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $ban_user_undo_params = array_key_exists('ban_user_undo_params', $associative_array) ? $associative_array['ban_user_undo_params'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['postBanUserUndo'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['postBanUserUndo'][0];
         
         // verify the required parameter 'ban_user_undo_params' is set
         if ($ban_user_undo_params === null || (is_array($ban_user_undo_params) && count($ban_user_undo_params) === 0)) {
@@ -9606,7 +9593,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  \FastComments\Client\Model\BulkPreBanParams $bulk_pre_ban_params bulk_pre_ban_params (required)
      * @param  bool|null $include_by_user_id_and_email include_by_user_id_and_email (optional)
@@ -9620,9 +9607,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\BulkPreBanSummary|\FastComments\Client\Model\APIError
      */
-    public function postBulkPreBanSummary($associative_array)
+    public function postBulkPreBanSummary($bulk_pre_ban_params, array $options = [])
     {
-        list($response) = $this->postBulkPreBanSummaryWithHttpInfo($associative_array);
+        list($response) = $this->postBulkPreBanSummaryWithHttpInfo($bulk_pre_ban_params, $options);
         return $response;
     }
 
@@ -9631,7 +9618,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  \FastComments\Client\Model\BulkPreBanParams $bulk_pre_ban_params (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
@@ -9645,9 +9632,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\BulkPreBanSummary|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postBulkPreBanSummaryWithHttpInfo($associative_array)
+    public function postBulkPreBanSummaryWithHttpInfo($bulk_pre_ban_params, array $options = [])
     {
-        $request = $this->postBulkPreBanSummaryRequest($associative_array);
+        $request = $this->postBulkPreBanSummaryRequest($bulk_pre_ban_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9737,7 +9724,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  \FastComments\Client\Model\BulkPreBanParams $bulk_pre_ban_params (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
@@ -9750,9 +9737,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBulkPreBanSummaryAsync($associative_array)
+    public function postBulkPreBanSummaryAsync($bulk_pre_ban_params, array $options = [])
     {
-        return $this->postBulkPreBanSummaryAsyncWithHttpInfo($associative_array)
+        return $this->postBulkPreBanSummaryAsyncWithHttpInfo($bulk_pre_ban_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9765,7 +9752,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  \FastComments\Client\Model\BulkPreBanParams $bulk_pre_ban_params (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
@@ -9778,10 +9765,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBulkPreBanSummaryAsyncWithHttpInfo($associative_array)
+    public function postBulkPreBanSummaryAsyncWithHttpInfo($bulk_pre_ban_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\BulkPreBanSummary';
-        $request = $this->postBulkPreBanSummaryRequest($associative_array);
+        $request = $this->postBulkPreBanSummaryRequest($bulk_pre_ban_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9822,7 +9809,7 @@ class ModerationApi
     /**
      * Create request for operation 'postBulkPreBanSummary'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  \FastComments\Client\Model\BulkPreBanParams $bulk_pre_ban_params (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
@@ -9835,16 +9822,15 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postBulkPreBanSummaryRequest($associative_array)
+    public function postBulkPreBanSummaryRequest($bulk_pre_ban_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $bulk_pre_ban_params = array_key_exists('bulk_pre_ban_params', $associative_array) ? $associative_array['bulk_pre_ban_params'] : null;
-        $include_by_user_id_and_email = array_key_exists('include_by_user_id_and_email', $associative_array) ? $associative_array['include_by_user_id_and_email'] : null;
-        $include_by_ip = array_key_exists('include_by_ip', $associative_array) ? $associative_array['include_by_ip'] : null;
-        $include_by_email_domain = array_key_exists('include_by_email_domain', $associative_array) ? $associative_array['include_by_email_domain'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['postBulkPreBanSummary'][0];
+        // unbox the optional parameters and request options from the $options array
+        $include_by_user_id_and_email = array_key_exists('include_by_user_id_and_email', $options) ? $options['include_by_user_id_and_email'] : null;
+        $include_by_ip = array_key_exists('include_by_ip', $options) ? $options['include_by_ip'] : null;
+        $include_by_email_domain = array_key_exists('include_by_email_domain', $options) ? $options['include_by_email_domain'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['postBulkPreBanSummary'][0];
         
         // verify the required parameter 'bulk_pre_ban_params' is set
         if ($bulk_pre_ban_params === null || (is_array($bulk_pre_ban_params) && count($bulk_pre_ban_params) === 0)) {
@@ -9980,7 +9966,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  \FastComments\Client\Model\CommentsByIdsParams $comments_by_ids_params comments_by_ids_params (required)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -9991,9 +9977,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationAPIChildCommentsResponse|\FastComments\Client\Model\APIError
      */
-    public function postCommentsByIds($associative_array)
+    public function postCommentsByIds($comments_by_ids_params, array $options = [])
     {
-        list($response) = $this->postCommentsByIdsWithHttpInfo($associative_array);
+        list($response) = $this->postCommentsByIdsWithHttpInfo($comments_by_ids_params, $options);
         return $response;
     }
 
@@ -10002,7 +9988,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  \FastComments\Client\Model\CommentsByIdsParams $comments_by_ids_params (required)
      * @param  string|null $tenant_id (optional)
@@ -10013,9 +9999,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationAPIChildCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postCommentsByIdsWithHttpInfo($associative_array)
+    public function postCommentsByIdsWithHttpInfo($comments_by_ids_params, array $options = [])
     {
-        $request = $this->postCommentsByIdsRequest($associative_array);
+        $request = $this->postCommentsByIdsRequest($comments_by_ids_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10105,7 +10091,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  \FastComments\Client\Model\CommentsByIdsParams $comments_by_ids_params (required)
      * @param  string|null $tenant_id (optional)
@@ -10115,9 +10101,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCommentsByIdsAsync($associative_array)
+    public function postCommentsByIdsAsync($comments_by_ids_params, array $options = [])
     {
-        return $this->postCommentsByIdsAsyncWithHttpInfo($associative_array)
+        return $this->postCommentsByIdsAsyncWithHttpInfo($comments_by_ids_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10130,7 +10116,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  \FastComments\Client\Model\CommentsByIdsParams $comments_by_ids_params (required)
      * @param  string|null $tenant_id (optional)
@@ -10140,10 +10126,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCommentsByIdsAsyncWithHttpInfo($associative_array)
+    public function postCommentsByIdsAsyncWithHttpInfo($comments_by_ids_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationAPIChildCommentsResponse';
-        $request = $this->postCommentsByIdsRequest($associative_array);
+        $request = $this->postCommentsByIdsRequest($comments_by_ids_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10184,7 +10170,7 @@ class ModerationApi
     /**
      * Create request for operation 'postCommentsByIds'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  \FastComments\Client\Model\CommentsByIdsParams $comments_by_ids_params (required)
      * @param  string|null $tenant_id (optional)
@@ -10194,13 +10180,12 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postCommentsByIdsRequest($associative_array)
+    public function postCommentsByIdsRequest($comments_by_ids_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comments_by_ids_params = array_key_exists('comments_by_ids_params', $associative_array) ? $associative_array['comments_by_ids_params'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['postCommentsByIds'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['postCommentsByIds'][0];
         
         // verify the required parameter 'comments_by_ids_params' is set
         if ($comments_by_ids_params === null || (is_array($comments_by_ids_params) && count($comments_by_ids_params) === 0)) {
@@ -10306,7 +10291,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -10318,9 +10303,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function postFlagComment($associative_array)
+    public function postFlagComment($comment_id, array $options = [])
     {
-        list($response) = $this->postFlagCommentWithHttpInfo($associative_array);
+        list($response) = $this->postFlagCommentWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -10329,7 +10314,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -10341,9 +10326,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postFlagCommentWithHttpInfo($associative_array)
+    public function postFlagCommentWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->postFlagCommentRequest($associative_array);
+        $request = $this->postFlagCommentRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10433,7 +10418,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -10444,9 +10429,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postFlagCommentAsync($associative_array)
+    public function postFlagCommentAsync($comment_id, array $options = [])
     {
-        return $this->postFlagCommentAsyncWithHttpInfo($associative_array)
+        return $this->postFlagCommentAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10459,7 +10444,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -10470,10 +10455,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postFlagCommentAsyncWithHttpInfo($associative_array)
+    public function postFlagCommentAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postFlagCommentRequest($associative_array);
+        $request = $this->postFlagCommentRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10514,7 +10499,7 @@ class ModerationApi
     /**
      * Create request for operation 'postFlagComment'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -10525,14 +10510,13 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postFlagCommentRequest($associative_array)
+    public function postFlagCommentRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $broadcast_id = array_key_exists('broadcast_id', $associative_array) ? $associative_array['broadcast_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['postFlagComment'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['postFlagComment'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -10649,7 +10633,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -10661,9 +10645,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\PostRemoveCommentResponse|\FastComments\Client\Model\APIError
      */
-    public function postRemoveComment($associative_array)
+    public function postRemoveComment($comment_id, array $options = [])
     {
-        list($response) = $this->postRemoveCommentWithHttpInfo($associative_array);
+        list($response) = $this->postRemoveCommentWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -10672,7 +10656,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -10684,9 +10668,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\PostRemoveCommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postRemoveCommentWithHttpInfo($associative_array)
+    public function postRemoveCommentWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->postRemoveCommentRequest($associative_array);
+        $request = $this->postRemoveCommentRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10776,7 +10760,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -10787,9 +10771,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRemoveCommentAsync($associative_array)
+    public function postRemoveCommentAsync($comment_id, array $options = [])
     {
-        return $this->postRemoveCommentAsyncWithHttpInfo($associative_array)
+        return $this->postRemoveCommentAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10802,7 +10786,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -10813,10 +10797,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRemoveCommentAsyncWithHttpInfo($associative_array)
+    public function postRemoveCommentAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\PostRemoveCommentResponse';
-        $request = $this->postRemoveCommentRequest($associative_array);
+        $request = $this->postRemoveCommentRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10857,7 +10841,7 @@ class ModerationApi
     /**
      * Create request for operation 'postRemoveComment'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -10868,14 +10852,13 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postRemoveCommentRequest($associative_array)
+    public function postRemoveCommentRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $broadcast_id = array_key_exists('broadcast_id', $associative_array) ? $associative_array['broadcast_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['postRemoveComment'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['postRemoveComment'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -10992,7 +10975,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -11004,9 +10987,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function postRestoreDeletedComment($associative_array)
+    public function postRestoreDeletedComment($comment_id, array $options = [])
     {
-        list($response) = $this->postRestoreDeletedCommentWithHttpInfo($associative_array);
+        list($response) = $this->postRestoreDeletedCommentWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -11015,7 +10998,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -11027,9 +11010,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postRestoreDeletedCommentWithHttpInfo($associative_array)
+    public function postRestoreDeletedCommentWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->postRestoreDeletedCommentRequest($associative_array);
+        $request = $this->postRestoreDeletedCommentRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11119,7 +11102,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -11130,9 +11113,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRestoreDeletedCommentAsync($associative_array)
+    public function postRestoreDeletedCommentAsync($comment_id, array $options = [])
     {
-        return $this->postRestoreDeletedCommentAsyncWithHttpInfo($associative_array)
+        return $this->postRestoreDeletedCommentAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11145,7 +11128,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -11156,10 +11139,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRestoreDeletedCommentAsyncWithHttpInfo($associative_array)
+    public function postRestoreDeletedCommentAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postRestoreDeletedCommentRequest($associative_array);
+        $request = $this->postRestoreDeletedCommentRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11200,7 +11183,7 @@ class ModerationApi
     /**
      * Create request for operation 'postRestoreDeletedComment'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -11211,14 +11194,13 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postRestoreDeletedCommentRequest($associative_array)
+    public function postRestoreDeletedCommentRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $broadcast_id = array_key_exists('broadcast_id', $associative_array) ? $associative_array['broadcast_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['postRestoreDeletedComment'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['postRestoreDeletedComment'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -11335,7 +11317,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $approved approved (optional)
@@ -11348,9 +11330,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\SetCommentApprovedResponse|\FastComments\Client\Model\APIError
      */
-    public function postSetCommentApprovalStatus($associative_array)
+    public function postSetCommentApprovalStatus($comment_id, array $options = [])
     {
-        list($response) = $this->postSetCommentApprovalStatusWithHttpInfo($associative_array);
+        list($response) = $this->postSetCommentApprovalStatusWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -11359,7 +11341,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $approved (optional)
@@ -11372,9 +11354,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\SetCommentApprovedResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postSetCommentApprovalStatusWithHttpInfo($associative_array)
+    public function postSetCommentApprovalStatusWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->postSetCommentApprovalStatusRequest($associative_array);
+        $request = $this->postSetCommentApprovalStatusRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11464,7 +11446,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $approved (optional)
@@ -11476,9 +11458,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentApprovalStatusAsync($associative_array)
+    public function postSetCommentApprovalStatusAsync($comment_id, array $options = [])
     {
-        return $this->postSetCommentApprovalStatusAsyncWithHttpInfo($associative_array)
+        return $this->postSetCommentApprovalStatusAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11491,7 +11473,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $approved (optional)
@@ -11503,10 +11485,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentApprovalStatusAsyncWithHttpInfo($associative_array)
+    public function postSetCommentApprovalStatusAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\SetCommentApprovedResponse';
-        $request = $this->postSetCommentApprovalStatusRequest($associative_array);
+        $request = $this->postSetCommentApprovalStatusRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11547,7 +11529,7 @@ class ModerationApi
     /**
      * Create request for operation 'postSetCommentApprovalStatus'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $approved (optional)
@@ -11559,15 +11541,14 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postSetCommentApprovalStatusRequest($associative_array)
+    public function postSetCommentApprovalStatusRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $approved = array_key_exists('approved', $associative_array) ? $associative_array['approved'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $broadcast_id = array_key_exists('broadcast_id', $associative_array) ? $associative_array['broadcast_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['postSetCommentApprovalStatus'][0];
+        // unbox the optional parameters and request options from the $options array
+        $approved = array_key_exists('approved', $options) ? $options['approved'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['postSetCommentApprovalStatus'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -11694,7 +11675,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $reviewed reviewed (optional)
@@ -11707,9 +11688,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function postSetCommentReviewStatus($associative_array)
+    public function postSetCommentReviewStatus($comment_id, array $options = [])
     {
-        list($response) = $this->postSetCommentReviewStatusWithHttpInfo($associative_array);
+        list($response) = $this->postSetCommentReviewStatusWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -11718,7 +11699,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $reviewed (optional)
@@ -11731,9 +11712,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postSetCommentReviewStatusWithHttpInfo($associative_array)
+    public function postSetCommentReviewStatusWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->postSetCommentReviewStatusRequest($associative_array);
+        $request = $this->postSetCommentReviewStatusRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11823,7 +11804,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $reviewed (optional)
@@ -11835,9 +11816,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentReviewStatusAsync($associative_array)
+    public function postSetCommentReviewStatusAsync($comment_id, array $options = [])
     {
-        return $this->postSetCommentReviewStatusAsyncWithHttpInfo($associative_array)
+        return $this->postSetCommentReviewStatusAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11850,7 +11831,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $reviewed (optional)
@@ -11862,10 +11843,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentReviewStatusAsyncWithHttpInfo($associative_array)
+    public function postSetCommentReviewStatusAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postSetCommentReviewStatusRequest($associative_array);
+        $request = $this->postSetCommentReviewStatusRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11906,7 +11887,7 @@ class ModerationApi
     /**
      * Create request for operation 'postSetCommentReviewStatus'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $reviewed (optional)
@@ -11918,15 +11899,14 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postSetCommentReviewStatusRequest($associative_array)
+    public function postSetCommentReviewStatusRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $reviewed = array_key_exists('reviewed', $associative_array) ? $associative_array['reviewed'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $broadcast_id = array_key_exists('broadcast_id', $associative_array) ? $associative_array['broadcast_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['postSetCommentReviewStatus'][0];
+        // unbox the optional parameters and request options from the $options array
+        $reviewed = array_key_exists('reviewed', $options) ? $options['reviewed'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['postSetCommentReviewStatus'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -12053,7 +12033,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $spam spam (optional)
@@ -12067,9 +12047,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function postSetCommentSpamStatus($associative_array)
+    public function postSetCommentSpamStatus($comment_id, array $options = [])
     {
-        list($response) = $this->postSetCommentSpamStatusWithHttpInfo($associative_array);
+        list($response) = $this->postSetCommentSpamStatusWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -12078,7 +12058,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $spam (optional)
@@ -12092,9 +12072,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postSetCommentSpamStatusWithHttpInfo($associative_array)
+    public function postSetCommentSpamStatusWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->postSetCommentSpamStatusRequest($associative_array);
+        $request = $this->postSetCommentSpamStatusRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12184,7 +12164,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $spam (optional)
@@ -12197,9 +12177,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentSpamStatusAsync($associative_array)
+    public function postSetCommentSpamStatusAsync($comment_id, array $options = [])
     {
-        return $this->postSetCommentSpamStatusAsyncWithHttpInfo($associative_array)
+        return $this->postSetCommentSpamStatusAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12212,7 +12192,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $spam (optional)
@@ -12225,10 +12205,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentSpamStatusAsyncWithHttpInfo($associative_array)
+    public function postSetCommentSpamStatusAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postSetCommentSpamStatusRequest($associative_array);
+        $request = $this->postSetCommentSpamStatusRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12269,7 +12249,7 @@ class ModerationApi
     /**
      * Create request for operation 'postSetCommentSpamStatus'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  bool|null $spam (optional)
@@ -12282,16 +12262,15 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postSetCommentSpamStatusRequest($associative_array)
+    public function postSetCommentSpamStatusRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $spam = array_key_exists('spam', $associative_array) ? $associative_array['spam'] : null;
-        $perm_not_spam = array_key_exists('perm_not_spam', $associative_array) ? $associative_array['perm_not_spam'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $broadcast_id = array_key_exists('broadcast_id', $associative_array) ? $associative_array['broadcast_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['postSetCommentSpamStatus'][0];
+        // unbox the optional parameters and request options from the $options array
+        $spam = array_key_exists('spam', $options) ? $options['spam'] : null;
+        $perm_not_spam = array_key_exists('perm_not_spam', $options) ? $options['perm_not_spam'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['postSetCommentSpamStatus'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -12428,7 +12407,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  \FastComments\Client\Model\SetCommentTextParams $set_comment_text_params set_comment_text_params (required)
@@ -12441,9 +12420,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\SetCommentTextResponse|\FastComments\Client\Model\APIError
      */
-    public function postSetCommentText($associative_array)
+    public function postSetCommentText($comment_id, $set_comment_text_params, array $options = [])
     {
-        list($response) = $this->postSetCommentTextWithHttpInfo($associative_array);
+        list($response) = $this->postSetCommentTextWithHttpInfo($comment_id, $set_comment_text_params, $options);
         return $response;
     }
 
@@ -12452,7 +12431,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\SetCommentTextParams $set_comment_text_params (required)
@@ -12465,9 +12444,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\SetCommentTextResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postSetCommentTextWithHttpInfo($associative_array)
+    public function postSetCommentTextWithHttpInfo($comment_id, $set_comment_text_params, array $options = [])
     {
-        $request = $this->postSetCommentTextRequest($associative_array);
+        $request = $this->postSetCommentTextRequest($comment_id, $set_comment_text_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12557,7 +12536,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\SetCommentTextParams $set_comment_text_params (required)
@@ -12569,9 +12548,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentTextAsync($associative_array)
+    public function postSetCommentTextAsync($comment_id, $set_comment_text_params, array $options = [])
     {
-        return $this->postSetCommentTextAsyncWithHttpInfo($associative_array)
+        return $this->postSetCommentTextAsyncWithHttpInfo($comment_id, $set_comment_text_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12584,7 +12563,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\SetCommentTextParams $set_comment_text_params (required)
@@ -12596,10 +12575,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentTextAsyncWithHttpInfo($associative_array)
+    public function postSetCommentTextAsyncWithHttpInfo($comment_id, $set_comment_text_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\SetCommentTextResponse';
-        $request = $this->postSetCommentTextRequest($associative_array);
+        $request = $this->postSetCommentTextRequest($comment_id, $set_comment_text_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12640,7 +12619,7 @@ class ModerationApi
     /**
      * Create request for operation 'postSetCommentText'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\SetCommentTextParams $set_comment_text_params (required)
@@ -12652,15 +12631,13 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postSetCommentTextRequest($associative_array)
+    public function postSetCommentTextRequest($comment_id, $set_comment_text_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $set_comment_text_params = array_key_exists('set_comment_text_params', $associative_array) ? $associative_array['set_comment_text_params'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $broadcast_id = array_key_exists('broadcast_id', $associative_array) ? $associative_array['broadcast_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['postSetCommentText'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['postSetCommentText'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -12791,7 +12768,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -12803,9 +12780,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function postUnFlagComment($associative_array)
+    public function postUnFlagComment($comment_id, array $options = [])
     {
-        list($response) = $this->postUnFlagCommentWithHttpInfo($associative_array);
+        list($response) = $this->postUnFlagCommentWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -12814,7 +12791,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -12826,9 +12803,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postUnFlagCommentWithHttpInfo($associative_array)
+    public function postUnFlagCommentWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->postUnFlagCommentRequest($associative_array);
+        $request = $this->postUnFlagCommentRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12918,7 +12895,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -12929,9 +12906,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postUnFlagCommentAsync($associative_array)
+    public function postUnFlagCommentAsync($comment_id, array $options = [])
     {
-        return $this->postUnFlagCommentAsyncWithHttpInfo($associative_array)
+        return $this->postUnFlagCommentAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12944,7 +12921,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -12955,10 +12932,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postUnFlagCommentAsyncWithHttpInfo($associative_array)
+    public function postUnFlagCommentAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postUnFlagCommentRequest($associative_array);
+        $request = $this->postUnFlagCommentRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12999,7 +12976,7 @@ class ModerationApi
     /**
      * Create request for operation 'postUnFlagComment'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $tenant_id (optional)
@@ -13010,14 +12987,13 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postUnFlagCommentRequest($associative_array)
+    public function postUnFlagCommentRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $broadcast_id = array_key_exists('broadcast_id', $associative_array) ? $associative_array['broadcast_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['postUnFlagComment'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['postUnFlagComment'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -13134,7 +13110,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id comment_id (required)
      * @param  string|null $direction direction (optional)
@@ -13147,9 +13123,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\VoteResponse|\FastComments\Client\Model\APIError
      */
-    public function postVote($associative_array)
+    public function postVote($comment_id, array $options = [])
     {
-        list($response) = $this->postVoteWithHttpInfo($associative_array);
+        list($response) = $this->postVoteWithHttpInfo($comment_id, $options);
         return $response;
     }
 
@@ -13158,7 +13134,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $direction (optional)
@@ -13171,9 +13147,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\VoteResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postVoteWithHttpInfo($associative_array)
+    public function postVoteWithHttpInfo($comment_id, array $options = [])
     {
-        $request = $this->postVoteRequest($associative_array);
+        $request = $this->postVoteRequest($comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13263,7 +13239,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $direction (optional)
@@ -13275,9 +13251,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postVoteAsync($associative_array)
+    public function postVoteAsync($comment_id, array $options = [])
     {
-        return $this->postVoteAsyncWithHttpInfo($associative_array)
+        return $this->postVoteAsyncWithHttpInfo($comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13290,7 +13266,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $direction (optional)
@@ -13302,10 +13278,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postVoteAsyncWithHttpInfo($associative_array)
+    public function postVoteAsyncWithHttpInfo($comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\VoteResponse';
-        $request = $this->postVoteRequest($associative_array);
+        $request = $this->postVoteRequest($comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13346,7 +13322,7 @@ class ModerationApi
     /**
      * Create request for operation 'postVote'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $comment_id (required)
      * @param  string|null $direction (optional)
@@ -13358,15 +13334,14 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postVoteRequest($associative_array)
+    public function postVoteRequest($comment_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $direction = array_key_exists('direction', $associative_array) ? $associative_array['direction'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $broadcast_id = array_key_exists('broadcast_id', $associative_array) ? $associative_array['broadcast_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['postVote'][0];
+        // unbox the optional parameters and request options from the $options array
+        $direction = array_key_exists('direction', $options) ? $options['direction'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['postVote'][0];
         
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
@@ -13493,7 +13468,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $badge_id badge_id (required)
      * @param  string|null $user_id user_id (optional)
@@ -13507,9 +13482,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\AwardUserBadgeResponse|\FastComments\Client\Model\APIError
      */
-    public function putAwardBadge($associative_array)
+    public function putAwardBadge($badge_id, array $options = [])
     {
-        list($response) = $this->putAwardBadgeWithHttpInfo($associative_array);
+        list($response) = $this->putAwardBadgeWithHttpInfo($badge_id, $options);
         return $response;
     }
 
@@ -13518,7 +13493,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
@@ -13532,9 +13507,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\AwardUserBadgeResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putAwardBadgeWithHttpInfo($associative_array)
+    public function putAwardBadgeWithHttpInfo($badge_id, array $options = [])
     {
-        $request = $this->putAwardBadgeRequest($associative_array);
+        $request = $this->putAwardBadgeRequest($badge_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13624,7 +13599,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
@@ -13637,9 +13612,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAwardBadgeAsync($associative_array)
+    public function putAwardBadgeAsync($badge_id, array $options = [])
     {
-        return $this->putAwardBadgeAsyncWithHttpInfo($associative_array)
+        return $this->putAwardBadgeAsyncWithHttpInfo($badge_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13652,7 +13627,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
@@ -13665,10 +13640,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAwardBadgeAsyncWithHttpInfo($associative_array)
+    public function putAwardBadgeAsyncWithHttpInfo($badge_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\AwardUserBadgeResponse';
-        $request = $this->putAwardBadgeRequest($associative_array);
+        $request = $this->putAwardBadgeRequest($badge_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13709,7 +13684,7 @@ class ModerationApi
     /**
      * Create request for operation 'putAwardBadge'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
@@ -13722,16 +13697,15 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putAwardBadgeRequest($associative_array)
+    public function putAwardBadgeRequest($badge_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $badge_id = array_key_exists('badge_id', $associative_array) ? $associative_array['badge_id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $broadcast_id = array_key_exists('broadcast_id', $associative_array) ? $associative_array['broadcast_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['putAwardBadge'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $comment_id = array_key_exists('comment_id', $options) ? $options['comment_id'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['putAwardBadge'][0];
         
         // verify the required parameter 'badge_id' is set
         if ($badge_id === null || (is_array($badge_id) && count($badge_id) === 0)) {
@@ -13869,7 +13843,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $url_id url_id (required)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -13880,9 +13854,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function putCloseThread($associative_array)
+    public function putCloseThread($url_id, array $options = [])
     {
-        list($response) = $this->putCloseThreadWithHttpInfo($associative_array);
+        list($response) = $this->putCloseThreadWithHttpInfo($url_id, $options);
         return $response;
     }
 
@@ -13891,7 +13865,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $url_id (required)
      * @param  string|null $tenant_id (optional)
@@ -13902,9 +13876,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putCloseThreadWithHttpInfo($associative_array)
+    public function putCloseThreadWithHttpInfo($url_id, array $options = [])
     {
-        $request = $this->putCloseThreadRequest($associative_array);
+        $request = $this->putCloseThreadRequest($url_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13994,7 +13968,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $url_id (required)
      * @param  string|null $tenant_id (optional)
@@ -14004,9 +13978,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putCloseThreadAsync($associative_array)
+    public function putCloseThreadAsync($url_id, array $options = [])
     {
-        return $this->putCloseThreadAsyncWithHttpInfo($associative_array)
+        return $this->putCloseThreadAsyncWithHttpInfo($url_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -14019,7 +13993,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $url_id (required)
      * @param  string|null $tenant_id (optional)
@@ -14029,10 +14003,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putCloseThreadAsyncWithHttpInfo($associative_array)
+    public function putCloseThreadAsyncWithHttpInfo($url_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->putCloseThreadRequest($associative_array);
+        $request = $this->putCloseThreadRequest($url_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14073,7 +14047,7 @@ class ModerationApi
     /**
      * Create request for operation 'putCloseThread'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $url_id (required)
      * @param  string|null $tenant_id (optional)
@@ -14083,13 +14057,12 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putCloseThreadRequest($associative_array)
+    public function putCloseThreadRequest($url_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $url_id = array_key_exists('url_id', $associative_array) ? $associative_array['url_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['putCloseThread'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['putCloseThread'][0];
         
         // verify the required parameter 'url_id' is set
         if ($url_id === null || (is_array($url_id) && count($url_id) === 0)) {
@@ -14197,7 +14170,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $badge_id badge_id (required)
      * @param  string|null $user_id user_id (optional)
@@ -14211,9 +14184,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\RemoveUserBadgeResponse|\FastComments\Client\Model\APIError
      */
-    public function putRemoveBadge($associative_array)
+    public function putRemoveBadge($badge_id, array $options = [])
     {
-        list($response) = $this->putRemoveBadgeWithHttpInfo($associative_array);
+        list($response) = $this->putRemoveBadgeWithHttpInfo($badge_id, $options);
         return $response;
     }
 
@@ -14222,7 +14195,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
@@ -14236,9 +14209,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\RemoveUserBadgeResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putRemoveBadgeWithHttpInfo($associative_array)
+    public function putRemoveBadgeWithHttpInfo($badge_id, array $options = [])
     {
-        $request = $this->putRemoveBadgeRequest($associative_array);
+        $request = $this->putRemoveBadgeRequest($badge_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14328,7 +14301,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
@@ -14341,9 +14314,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putRemoveBadgeAsync($associative_array)
+    public function putRemoveBadgeAsync($badge_id, array $options = [])
     {
-        return $this->putRemoveBadgeAsyncWithHttpInfo($associative_array)
+        return $this->putRemoveBadgeAsyncWithHttpInfo($badge_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -14356,7 +14329,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
@@ -14369,10 +14342,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putRemoveBadgeAsyncWithHttpInfo($associative_array)
+    public function putRemoveBadgeAsyncWithHttpInfo($badge_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\RemoveUserBadgeResponse';
-        $request = $this->putRemoveBadgeRequest($associative_array);
+        $request = $this->putRemoveBadgeRequest($badge_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14413,7 +14386,7 @@ class ModerationApi
     /**
      * Create request for operation 'putRemoveBadge'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
@@ -14426,16 +14399,15 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putRemoveBadgeRequest($associative_array)
+    public function putRemoveBadgeRequest($badge_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $badge_id = array_key_exists('badge_id', $associative_array) ? $associative_array['badge_id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $broadcast_id = array_key_exists('broadcast_id', $associative_array) ? $associative_array['broadcast_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['putRemoveBadge'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $comment_id = array_key_exists('comment_id', $options) ? $options['comment_id'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['putRemoveBadge'][0];
         
         // verify the required parameter 'badge_id' is set
         if ($badge_id === null || (is_array($badge_id) && count($badge_id) === 0)) {
@@ -14573,7 +14545,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $url_id url_id (required)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -14584,9 +14556,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function putReopenThread($associative_array)
+    public function putReopenThread($url_id, array $options = [])
     {
-        list($response) = $this->putReopenThreadWithHttpInfo($associative_array);
+        list($response) = $this->putReopenThreadWithHttpInfo($url_id, $options);
         return $response;
     }
 
@@ -14595,7 +14567,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $url_id (required)
      * @param  string|null $tenant_id (optional)
@@ -14606,9 +14578,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putReopenThreadWithHttpInfo($associative_array)
+    public function putReopenThreadWithHttpInfo($url_id, array $options = [])
     {
-        $request = $this->putReopenThreadRequest($associative_array);
+        $request = $this->putReopenThreadRequest($url_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14698,7 +14670,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $url_id (required)
      * @param  string|null $tenant_id (optional)
@@ -14708,9 +14680,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putReopenThreadAsync($associative_array)
+    public function putReopenThreadAsync($url_id, array $options = [])
     {
-        return $this->putReopenThreadAsyncWithHttpInfo($associative_array)
+        return $this->putReopenThreadAsyncWithHttpInfo($url_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -14723,7 +14695,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $url_id (required)
      * @param  string|null $tenant_id (optional)
@@ -14733,10 +14705,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putReopenThreadAsyncWithHttpInfo($associative_array)
+    public function putReopenThreadAsyncWithHttpInfo($url_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->putReopenThreadRequest($associative_array);
+        $request = $this->putReopenThreadRequest($url_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14777,7 +14749,7 @@ class ModerationApi
     /**
      * Create request for operation 'putReopenThread'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $url_id (required)
      * @param  string|null $tenant_id (optional)
@@ -14787,13 +14759,12 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putReopenThreadRequest($associative_array)
+    public function putReopenThreadRequest($url_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $url_id = array_key_exists('url_id', $associative_array) ? $associative_array['url_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['putReopenThread'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['putReopenThread'][0];
         
         // verify the required parameter 'url_id' is set
         if ($url_id === null || (is_array($url_id) && count($url_id) === 0)) {
@@ -14901,7 +14872,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $user_id user_id (optional)
      * @param  string|null $trust_factor trust_factor (optional)
@@ -14913,9 +14884,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\SetUserTrustFactorResponse|\FastComments\Client\Model\APIError
      */
-    public function setTrustFactor($associative_array)
+    public function setTrustFactor(array $options = [])
     {
-        list($response) = $this->setTrustFactorWithHttpInfo($associative_array);
+        list($response) = $this->setTrustFactorWithHttpInfo($options);
         return $response;
     }
 
@@ -14924,7 +14895,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $user_id (optional)
      * @param  string|null $trust_factor (optional)
@@ -14936,9 +14907,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\SetUserTrustFactorResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setTrustFactorWithHttpInfo($associative_array)
+    public function setTrustFactorWithHttpInfo(array $options = [])
     {
-        $request = $this->setTrustFactorRequest($associative_array);
+        $request = $this->setTrustFactorRequest($options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -15028,7 +14999,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $user_id (optional)
      * @param  string|null $trust_factor (optional)
@@ -15039,9 +15010,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTrustFactorAsync($associative_array)
+    public function setTrustFactorAsync(array $options = [])
     {
-        return $this->setTrustFactorAsyncWithHttpInfo($associative_array)
+        return $this->setTrustFactorAsyncWithHttpInfo($options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -15054,7 +15025,7 @@ class ModerationApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $user_id (optional)
      * @param  string|null $trust_factor (optional)
@@ -15065,10 +15036,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTrustFactorAsyncWithHttpInfo($associative_array)
+    public function setTrustFactorAsyncWithHttpInfo(array $options = [])
     {
         $returnType = '\FastComments\Client\Model\SetUserTrustFactorResponse';
-        $request = $this->setTrustFactorRequest($associative_array);
+        $request = $this->setTrustFactorRequest($options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -15109,7 +15080,7 @@ class ModerationApi
     /**
      * Create request for operation 'setTrustFactor'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $user_id (optional)
      * @param  string|null $trust_factor (optional)
@@ -15120,14 +15091,14 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setTrustFactorRequest($associative_array)
+    public function setTrustFactorRequest(array $options = [])
     {
-        // unbox the parameters from the associative array
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $trust_factor = array_key_exists('trust_factor', $associative_array) ? $associative_array['trust_factor'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $sso = array_key_exists('sso', $associative_array) ? $associative_array['sso'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['setTrustFactor'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $trust_factor = array_key_exists('trust_factor', $options) ? $options['trust_factor'] : null;
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['setTrustFactor'][0];
         
 
 

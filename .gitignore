@@ -13,6 +13,3 @@ composer.phar
 
 # PHPUnit cache
 .phpunit.result.cache
-
-# Local fork generator jar (downloaded on demand by update.sh)
-openapi-generator-cli.jar

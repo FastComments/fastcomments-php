@@ -470,8 +470,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\AddDomainConfigParams $add_domain_config_params add_domain_config_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addDomainConfig'] to see the possible values for this operation
@@ -480,9 +478,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\AddDomainConfigResponse
      */
-    public function addDomainConfig($associative_array)
+    public function addDomainConfig($tenant_id, $add_domain_config_params, array $options = [])
     {
-        list($response) = $this->addDomainConfigWithHttpInfo($associative_array);
+        list($response) = $this->addDomainConfigWithHttpInfo($tenant_id, $add_domain_config_params, $options);
         return $response;
     }
 
@@ -490,8 +488,6 @@ class DefaultApi
      * Operation addDomainConfigWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\AddDomainConfigParams $add_domain_config_params (required)
@@ -501,9 +497,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\AddDomainConfigResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function addDomainConfigWithHttpInfo($associative_array)
+    public function addDomainConfigWithHttpInfo($tenant_id, $add_domain_config_params, array $options = [])
     {
-        $request = $this->addDomainConfigRequest($associative_array);
+        $request = $this->addDomainConfigRequest($tenant_id, $add_domain_config_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -579,8 +575,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\AddDomainConfigParams $add_domain_config_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addDomainConfig'] to see the possible values for this operation
@@ -588,9 +582,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addDomainConfigAsync($associative_array)
+    public function addDomainConfigAsync($tenant_id, $add_domain_config_params, array $options = [])
     {
-        return $this->addDomainConfigAsyncWithHttpInfo($associative_array)
+        return $this->addDomainConfigAsyncWithHttpInfo($tenant_id, $add_domain_config_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -603,8 +597,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\AddDomainConfigParams $add_domain_config_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addDomainConfig'] to see the possible values for this operation
@@ -612,10 +604,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addDomainConfigAsyncWithHttpInfo($associative_array)
+    public function addDomainConfigAsyncWithHttpInfo($tenant_id, $add_domain_config_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\AddDomainConfigResponse';
-        $request = $this->addDomainConfigRequest($associative_array);
+        $request = $this->addDomainConfigRequest($tenant_id, $add_domain_config_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -656,8 +648,6 @@ class DefaultApi
     /**
      * Create request for operation 'addDomainConfig'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\AddDomainConfigParams $add_domain_config_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addDomainConfig'] to see the possible values for this operation
@@ -665,12 +655,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function addDomainConfigRequest($associative_array)
+    public function addDomainConfigRequest($tenant_id, $add_domain_config_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $add_domain_config_params = array_key_exists('add_domain_config_params', $associative_array) ? $associative_array['add_domain_config_params'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['addDomainConfig'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['addDomainConfig'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -777,7 +765,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id tenant_id (optional)
      * @param  \FastComments\Client\Model\CreateHashTagBody|null $create_hash_tag_body create_hash_tag_body (optional)
@@ -787,9 +775,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateHashTagResponse|\FastComments\Client\Model\APIError
      */
-    public function addHashTag($associative_array)
+    public function addHashTag($create_hash_tag_body = null, array $options = [])
     {
-        list($response) = $this->addHashTagWithHttpInfo($associative_array);
+        list($response) = $this->addHashTagWithHttpInfo($create_hash_tag_body, $options);
         return $response;
     }
 
@@ -798,7 +786,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\CreateHashTagBody|null $create_hash_tag_body (optional)
@@ -808,9 +796,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateHashTagResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function addHashTagWithHttpInfo($associative_array)
+    public function addHashTagWithHttpInfo($create_hash_tag_body = null, array $options = [])
     {
-        $request = $this->addHashTagRequest($associative_array);
+        $request = $this->addHashTagRequest($create_hash_tag_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -900,7 +888,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\CreateHashTagBody|null $create_hash_tag_body (optional)
@@ -909,9 +897,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addHashTagAsync($associative_array)
+    public function addHashTagAsync($create_hash_tag_body = null, array $options = [])
     {
-        return $this->addHashTagAsyncWithHttpInfo($associative_array)
+        return $this->addHashTagAsyncWithHttpInfo($create_hash_tag_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -924,7 +912,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\CreateHashTagBody|null $create_hash_tag_body (optional)
@@ -933,10 +921,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addHashTagAsyncWithHttpInfo($associative_array)
+    public function addHashTagAsyncWithHttpInfo($create_hash_tag_body = null, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\CreateHashTagResponse';
-        $request = $this->addHashTagRequest($associative_array);
+        $request = $this->addHashTagRequest($create_hash_tag_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -977,7 +965,7 @@ class DefaultApi
     /**
      * Create request for operation 'addHashTag'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\CreateHashTagBody|null $create_hash_tag_body (optional)
@@ -986,12 +974,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function addHashTagRequest($associative_array)
+    public function addHashTagRequest($create_hash_tag_body = null, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $create_hash_tag_body = array_key_exists('create_hash_tag_body', $associative_array) ? $associative_array['create_hash_tag_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['addHashTag'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['addHashTag'][0];
         
 
 
@@ -1086,7 +1073,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id tenant_id (optional)
      * @param  \FastComments\Client\Model\BulkCreateHashTagsBody|null $bulk_create_hash_tags_body bulk_create_hash_tags_body (optional)
@@ -1096,9 +1083,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\BulkCreateHashTagsResponse|\FastComments\Client\Model\APIError
      */
-    public function addHashTagsBulk($associative_array)
+    public function addHashTagsBulk($bulk_create_hash_tags_body = null, array $options = [])
     {
-        list($response) = $this->addHashTagsBulkWithHttpInfo($associative_array);
+        list($response) = $this->addHashTagsBulkWithHttpInfo($bulk_create_hash_tags_body, $options);
         return $response;
     }
 
@@ -1107,7 +1094,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\BulkCreateHashTagsBody|null $bulk_create_hash_tags_body (optional)
@@ -1117,9 +1104,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\BulkCreateHashTagsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function addHashTagsBulkWithHttpInfo($associative_array)
+    public function addHashTagsBulkWithHttpInfo($bulk_create_hash_tags_body = null, array $options = [])
     {
-        $request = $this->addHashTagsBulkRequest($associative_array);
+        $request = $this->addHashTagsBulkRequest($bulk_create_hash_tags_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1209,7 +1196,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\BulkCreateHashTagsBody|null $bulk_create_hash_tags_body (optional)
@@ -1218,9 +1205,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addHashTagsBulkAsync($associative_array)
+    public function addHashTagsBulkAsync($bulk_create_hash_tags_body = null, array $options = [])
     {
-        return $this->addHashTagsBulkAsyncWithHttpInfo($associative_array)
+        return $this->addHashTagsBulkAsyncWithHttpInfo($bulk_create_hash_tags_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1233,7 +1220,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\BulkCreateHashTagsBody|null $bulk_create_hash_tags_body (optional)
@@ -1242,10 +1229,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addHashTagsBulkAsyncWithHttpInfo($associative_array)
+    public function addHashTagsBulkAsyncWithHttpInfo($bulk_create_hash_tags_body = null, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\BulkCreateHashTagsResponse';
-        $request = $this->addHashTagsBulkRequest($associative_array);
+        $request = $this->addHashTagsBulkRequest($bulk_create_hash_tags_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1286,7 +1273,7 @@ class DefaultApi
     /**
      * Create request for operation 'addHashTagsBulk'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\BulkCreateHashTagsBody|null $bulk_create_hash_tags_body (optional)
@@ -1295,12 +1282,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function addHashTagsBulkRequest($associative_array)
+    public function addHashTagsBulkRequest($bulk_create_hash_tags_body = null, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $bulk_create_hash_tags_body = array_key_exists('bulk_create_hash_tags_body', $associative_array) ? $associative_array['bulk_create_hash_tags_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['addHashTagsBulk'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['addHashTagsBulk'][0];
         
 
 
@@ -1395,8 +1381,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateAPIPageData $create_api_page_data create_api_page_data (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addPage'] to see the possible values for this operation
@@ -1405,9 +1389,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\AddPageAPIResponse
      */
-    public function addPage($associative_array)
+    public function addPage($tenant_id, $create_api_page_data, array $options = [])
     {
-        list($response) = $this->addPageWithHttpInfo($associative_array);
+        list($response) = $this->addPageWithHttpInfo($tenant_id, $create_api_page_data, $options);
         return $response;
     }
 
@@ -1415,8 +1399,6 @@ class DefaultApi
      * Operation addPageWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateAPIPageData $create_api_page_data (required)
@@ -1426,9 +1408,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\AddPageAPIResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function addPageWithHttpInfo($associative_array)
+    public function addPageWithHttpInfo($tenant_id, $create_api_page_data, array $options = [])
     {
-        $request = $this->addPageRequest($associative_array);
+        $request = $this->addPageRequest($tenant_id, $create_api_page_data, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1504,8 +1486,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateAPIPageData $create_api_page_data (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addPage'] to see the possible values for this operation
@@ -1513,9 +1493,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addPageAsync($associative_array)
+    public function addPageAsync($tenant_id, $create_api_page_data, array $options = [])
     {
-        return $this->addPageAsyncWithHttpInfo($associative_array)
+        return $this->addPageAsyncWithHttpInfo($tenant_id, $create_api_page_data, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1528,8 +1508,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateAPIPageData $create_api_page_data (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addPage'] to see the possible values for this operation
@@ -1537,10 +1515,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addPageAsyncWithHttpInfo($associative_array)
+    public function addPageAsyncWithHttpInfo($tenant_id, $create_api_page_data, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\AddPageAPIResponse';
-        $request = $this->addPageRequest($associative_array);
+        $request = $this->addPageRequest($tenant_id, $create_api_page_data, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1581,8 +1559,6 @@ class DefaultApi
     /**
      * Create request for operation 'addPage'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateAPIPageData $create_api_page_data (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addPage'] to see the possible values for this operation
@@ -1590,12 +1566,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function addPageRequest($associative_array)
+    public function addPageRequest($tenant_id, $create_api_page_data, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $create_api_page_data = array_key_exists('create_api_page_data', $associative_array) ? $associative_array['create_api_page_data'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['addPage'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['addPage'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -1702,8 +1676,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateAPISSOUserData $create_apisso_user_data create_apisso_user_data (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addSSOUser'] to see the possible values for this operation
@@ -1712,9 +1684,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\AddSSOUserAPIResponse
      */
-    public function addSSOUser($associative_array)
+    public function addSSOUser($tenant_id, $create_apisso_user_data, array $options = [])
     {
-        list($response) = $this->addSSOUserWithHttpInfo($associative_array);
+        list($response) = $this->addSSOUserWithHttpInfo($tenant_id, $create_apisso_user_data, $options);
         return $response;
     }
 
@@ -1722,8 +1694,6 @@ class DefaultApi
      * Operation addSSOUserWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateAPISSOUserData $create_apisso_user_data (required)
@@ -1733,9 +1703,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\AddSSOUserAPIResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function addSSOUserWithHttpInfo($associative_array)
+    public function addSSOUserWithHttpInfo($tenant_id, $create_apisso_user_data, array $options = [])
     {
-        $request = $this->addSSOUserRequest($associative_array);
+        $request = $this->addSSOUserRequest($tenant_id, $create_apisso_user_data, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1811,8 +1781,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateAPISSOUserData $create_apisso_user_data (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addSSOUser'] to see the possible values for this operation
@@ -1820,9 +1788,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addSSOUserAsync($associative_array)
+    public function addSSOUserAsync($tenant_id, $create_apisso_user_data, array $options = [])
     {
-        return $this->addSSOUserAsyncWithHttpInfo($associative_array)
+        return $this->addSSOUserAsyncWithHttpInfo($tenant_id, $create_apisso_user_data, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1835,8 +1803,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateAPISSOUserData $create_apisso_user_data (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addSSOUser'] to see the possible values for this operation
@@ -1844,10 +1810,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addSSOUserAsyncWithHttpInfo($associative_array)
+    public function addSSOUserAsyncWithHttpInfo($tenant_id, $create_apisso_user_data, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\AddSSOUserAPIResponse';
-        $request = $this->addSSOUserRequest($associative_array);
+        $request = $this->addSSOUserRequest($tenant_id, $create_apisso_user_data, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1888,8 +1854,6 @@ class DefaultApi
     /**
      * Create request for operation 'addSSOUser'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateAPISSOUserData $create_apisso_user_data (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addSSOUser'] to see the possible values for this operation
@@ -1897,12 +1861,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function addSSOUserRequest($associative_array)
+    public function addSSOUserRequest($tenant_id, $create_apisso_user_data, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $create_apisso_user_data = array_key_exists('create_apisso_user_data', $associative_array) ? $associative_array['create_apisso_user_data'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['addSSOUser'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['addSSOUser'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -2009,7 +1971,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\AggregationRequest $aggregation_request aggregation_request (required)
@@ -2021,9 +1983,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\AggregateResponse
      */
-    public function aggregate($associative_array)
+    public function aggregate($tenant_id, $aggregation_request, array $options = [])
     {
-        list($response) = $this->aggregateWithHttpInfo($associative_array);
+        list($response) = $this->aggregateWithHttpInfo($tenant_id, $aggregation_request, $options);
         return $response;
     }
 
@@ -2032,7 +1994,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\AggregationRequest $aggregation_request (required)
@@ -2044,9 +2006,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\AggregateResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aggregateWithHttpInfo($associative_array)
+    public function aggregateWithHttpInfo($tenant_id, $aggregation_request, array $options = [])
     {
-        $request = $this->aggregateRequest($associative_array);
+        $request = $this->aggregateRequest($tenant_id, $aggregation_request, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2122,7 +2084,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\AggregationRequest $aggregation_request (required)
@@ -2133,9 +2095,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aggregateAsync($associative_array)
+    public function aggregateAsync($tenant_id, $aggregation_request, array $options = [])
     {
-        return $this->aggregateAsyncWithHttpInfo($associative_array)
+        return $this->aggregateAsyncWithHttpInfo($tenant_id, $aggregation_request, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2148,7 +2110,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\AggregationRequest $aggregation_request (required)
@@ -2159,10 +2121,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aggregateAsyncWithHttpInfo($associative_array)
+    public function aggregateAsyncWithHttpInfo($tenant_id, $aggregation_request, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\AggregateResponse';
-        $request = $this->aggregateRequest($associative_array);
+        $request = $this->aggregateRequest($tenant_id, $aggregation_request, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2203,7 +2165,7 @@ class DefaultApi
     /**
      * Create request for operation 'aggregate'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\AggregationRequest $aggregation_request (required)
@@ -2214,14 +2176,12 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aggregateRequest($associative_array)
+    public function aggregateRequest($tenant_id, $aggregation_request, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $aggregation_request = array_key_exists('aggregation_request', $associative_array) ? $associative_array['aggregation_request'] : null;
-        $parent_tenant_id = array_key_exists('parent_tenant_id', $associative_array) ? $associative_array['parent_tenant_id'] : null;
-        $include_stats = array_key_exists('include_stats', $associative_array) ? $associative_array['include_stats'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['aggregate'][0];
+        // unbox the optional parameters and request options from the $options array
+        $parent_tenant_id = array_key_exists('parent_tenant_id', $options) ? $options['parent_tenant_id'] : null;
+        $include_stats = array_key_exists('include_stats', $options) ? $options['include_stats'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['aggregate'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -2348,7 +2308,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $question_id question_id (optional)
@@ -2363,9 +2323,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\AggregateQuestionResultsResponse|\FastComments\Client\Model\APIError
      */
-    public function aggregateQuestionResults($associative_array)
+    public function aggregateQuestionResults($tenant_id, array $options = [])
     {
-        list($response) = $this->aggregateQuestionResultsWithHttpInfo($associative_array);
+        list($response) = $this->aggregateQuestionResultsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -2374,7 +2334,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $question_id (optional)
@@ -2389,9 +2349,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\AggregateQuestionResultsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aggregateQuestionResultsWithHttpInfo($associative_array)
+    public function aggregateQuestionResultsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->aggregateQuestionResultsRequest($associative_array);
+        $request = $this->aggregateQuestionResultsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2481,7 +2441,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $question_id (optional)
@@ -2495,9 +2455,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aggregateQuestionResultsAsync($associative_array)
+    public function aggregateQuestionResultsAsync($tenant_id, array $options = [])
     {
-        return $this->aggregateQuestionResultsAsyncWithHttpInfo($associative_array)
+        return $this->aggregateQuestionResultsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2510,7 +2470,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $question_id (optional)
@@ -2524,10 +2484,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aggregateQuestionResultsAsyncWithHttpInfo($associative_array)
+    public function aggregateQuestionResultsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\AggregateQuestionResultsResponse';
-        $request = $this->aggregateQuestionResultsRequest($associative_array);
+        $request = $this->aggregateQuestionResultsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2568,7 +2528,7 @@ class DefaultApi
     /**
      * Create request for operation 'aggregateQuestionResults'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $question_id (optional)
@@ -2582,17 +2542,16 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aggregateQuestionResultsRequest($associative_array)
+    public function aggregateQuestionResultsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $question_id = array_key_exists('question_id', $associative_array) ? $associative_array['question_id'] : null;
-        $question_ids = array_key_exists('question_ids', $associative_array) ? $associative_array['question_ids'] : null;
-        $url_id = array_key_exists('url_id', $associative_array) ? $associative_array['url_id'] : null;
-        $time_bucket = array_key_exists('time_bucket', $associative_array) ? $associative_array['time_bucket'] : null;
-        $start_date = array_key_exists('start_date', $associative_array) ? $associative_array['start_date'] : null;
-        $force_recalculate = array_key_exists('force_recalculate', $associative_array) ? $associative_array['force_recalculate'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['aggregateQuestionResults'][0];
+        // unbox the optional parameters and request options from the $options array
+        $question_id = array_key_exists('question_id', $options) ? $options['question_id'] : null;
+        $question_ids = array_key_exists('question_ids', $options) ? $options['question_ids'] : null;
+        $url_id = array_key_exists('url_id', $options) ? $options['url_id'] : null;
+        $time_bucket = array_key_exists('time_bucket', $options) ? $options['time_bucket'] : null;
+        $start_date = array_key_exists('start_date', $options) ? $options['start_date'] : null;
+        $force_recalculate = array_key_exists('force_recalculate', $options) ? $options['force_recalculate'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['aggregateQuestionResults'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -2745,7 +2704,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -2758,9 +2717,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\BlockSuccess|\FastComments\Client\Model\APIError
      */
-    public function blockUserFromComment($associative_array)
+    public function blockUserFromComment($tenant_id, $id, $block_from_comment_params, array $options = [])
     {
-        list($response) = $this->blockUserFromCommentWithHttpInfo($associative_array);
+        list($response) = $this->blockUserFromCommentWithHttpInfo($tenant_id, $id, $block_from_comment_params, $options);
         return $response;
     }
 
@@ -2769,7 +2728,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -2782,9 +2741,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\BlockSuccess|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function blockUserFromCommentWithHttpInfo($associative_array)
+    public function blockUserFromCommentWithHttpInfo($tenant_id, $id, $block_from_comment_params, array $options = [])
     {
-        $request = $this->blockUserFromCommentRequest($associative_array);
+        $request = $this->blockUserFromCommentRequest($tenant_id, $id, $block_from_comment_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2874,7 +2833,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -2886,9 +2845,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function blockUserFromCommentAsync($associative_array)
+    public function blockUserFromCommentAsync($tenant_id, $id, $block_from_comment_params, array $options = [])
     {
-        return $this->blockUserFromCommentAsyncWithHttpInfo($associative_array)
+        return $this->blockUserFromCommentAsyncWithHttpInfo($tenant_id, $id, $block_from_comment_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2901,7 +2860,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -2913,10 +2872,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function blockUserFromCommentAsyncWithHttpInfo($associative_array)
+    public function blockUserFromCommentAsyncWithHttpInfo($tenant_id, $id, $block_from_comment_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\BlockSuccess';
-        $request = $this->blockUserFromCommentRequest($associative_array);
+        $request = $this->blockUserFromCommentRequest($tenant_id, $id, $block_from_comment_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2957,7 +2916,7 @@ class DefaultApi
     /**
      * Create request for operation 'blockUserFromComment'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -2969,15 +2928,12 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function blockUserFromCommentRequest($associative_array)
+    public function blockUserFromCommentRequest($tenant_id, $id, $block_from_comment_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $block_from_comment_params = array_key_exists('block_from_comment_params', $associative_array) ? $associative_array['block_from_comment_params'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $anon_user_id = array_key_exists('anon_user_id', $associative_array) ? $associative_array['anon_user_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['blockUserFromComment'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $anon_user_id = array_key_exists('anon_user_id', $options) ? $options['anon_user_id'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['blockUserFromComment'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -3119,7 +3075,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\BulkAggregateQuestionResultsRequest $bulk_aggregate_question_results_request bulk_aggregate_question_results_request (required)
@@ -3130,9 +3086,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\BulkAggregateQuestionResultsResponse|\FastComments\Client\Model\APIError
      */
-    public function bulkAggregateQuestionResults($associative_array)
+    public function bulkAggregateQuestionResults($tenant_id, $bulk_aggregate_question_results_request, array $options = [])
     {
-        list($response) = $this->bulkAggregateQuestionResultsWithHttpInfo($associative_array);
+        list($response) = $this->bulkAggregateQuestionResultsWithHttpInfo($tenant_id, $bulk_aggregate_question_results_request, $options);
         return $response;
     }
 
@@ -3141,7 +3097,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BulkAggregateQuestionResultsRequest $bulk_aggregate_question_results_request (required)
@@ -3152,9 +3108,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\BulkAggregateQuestionResultsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function bulkAggregateQuestionResultsWithHttpInfo($associative_array)
+    public function bulkAggregateQuestionResultsWithHttpInfo($tenant_id, $bulk_aggregate_question_results_request, array $options = [])
     {
-        $request = $this->bulkAggregateQuestionResultsRequest($associative_array);
+        $request = $this->bulkAggregateQuestionResultsRequest($tenant_id, $bulk_aggregate_question_results_request, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3244,7 +3200,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BulkAggregateQuestionResultsRequest $bulk_aggregate_question_results_request (required)
@@ -3254,9 +3210,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bulkAggregateQuestionResultsAsync($associative_array)
+    public function bulkAggregateQuestionResultsAsync($tenant_id, $bulk_aggregate_question_results_request, array $options = [])
     {
-        return $this->bulkAggregateQuestionResultsAsyncWithHttpInfo($associative_array)
+        return $this->bulkAggregateQuestionResultsAsyncWithHttpInfo($tenant_id, $bulk_aggregate_question_results_request, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3269,7 +3225,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BulkAggregateQuestionResultsRequest $bulk_aggregate_question_results_request (required)
@@ -3279,10 +3235,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function bulkAggregateQuestionResultsAsyncWithHttpInfo($associative_array)
+    public function bulkAggregateQuestionResultsAsyncWithHttpInfo($tenant_id, $bulk_aggregate_question_results_request, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\BulkAggregateQuestionResultsResponse';
-        $request = $this->bulkAggregateQuestionResultsRequest($associative_array);
+        $request = $this->bulkAggregateQuestionResultsRequest($tenant_id, $bulk_aggregate_question_results_request, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3323,7 +3279,7 @@ class DefaultApi
     /**
      * Create request for operation 'bulkAggregateQuestionResults'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BulkAggregateQuestionResultsRequest $bulk_aggregate_question_results_request (required)
@@ -3333,13 +3289,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function bulkAggregateQuestionResultsRequest($associative_array)
+    public function bulkAggregateQuestionResultsRequest($tenant_id, $bulk_aggregate_question_results_request, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $bulk_aggregate_question_results_request = array_key_exists('bulk_aggregate_question_results_request', $associative_array) ? $associative_array['bulk_aggregate_question_results_request'] : null;
-        $force_recalculate = array_key_exists('force_recalculate', $associative_array) ? $associative_array['force_recalculate'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['bulkAggregateQuestionResults'][0];
+        // unbox the optional parameters and request options from the $options array
+        $force_recalculate = array_key_exists('force_recalculate', $options) ? $options['force_recalculate'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['bulkAggregateQuestionResults'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -3456,8 +3410,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $user_id user_id (required)
      * @param  string $id id (required)
@@ -3468,9 +3420,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ChangeTicketStateResponse|\FastComments\Client\Model\APIError
      */
-    public function changeTicketState($associative_array)
+    public function changeTicketState($tenant_id, $user_id, $id, $change_ticket_state_body, array $options = [])
     {
-        list($response) = $this->changeTicketStateWithHttpInfo($associative_array);
+        list($response) = $this->changeTicketStateWithHttpInfo($tenant_id, $user_id, $id, $change_ticket_state_body, $options);
         return $response;
     }
 
@@ -3478,8 +3430,6 @@ class DefaultApi
      * Operation changeTicketStateWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $user_id (required)
@@ -3491,9 +3441,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ChangeTicketStateResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function changeTicketStateWithHttpInfo($associative_array)
+    public function changeTicketStateWithHttpInfo($tenant_id, $user_id, $id, $change_ticket_state_body, array $options = [])
     {
-        $request = $this->changeTicketStateRequest($associative_array);
+        $request = $this->changeTicketStateRequest($tenant_id, $user_id, $id, $change_ticket_state_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3583,8 +3533,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $user_id (required)
      * @param  string $id (required)
@@ -3594,9 +3542,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function changeTicketStateAsync($associative_array)
+    public function changeTicketStateAsync($tenant_id, $user_id, $id, $change_ticket_state_body, array $options = [])
     {
-        return $this->changeTicketStateAsyncWithHttpInfo($associative_array)
+        return $this->changeTicketStateAsyncWithHttpInfo($tenant_id, $user_id, $id, $change_ticket_state_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3609,8 +3557,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $user_id (required)
      * @param  string $id (required)
@@ -3620,10 +3566,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function changeTicketStateAsyncWithHttpInfo($associative_array)
+    public function changeTicketStateAsyncWithHttpInfo($tenant_id, $user_id, $id, $change_ticket_state_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ChangeTicketStateResponse';
-        $request = $this->changeTicketStateRequest($associative_array);
+        $request = $this->changeTicketStateRequest($tenant_id, $user_id, $id, $change_ticket_state_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3664,8 +3610,6 @@ class DefaultApi
     /**
      * Create request for operation 'changeTicketState'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $user_id (required)
      * @param  string $id (required)
@@ -3675,14 +3619,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function changeTicketStateRequest($associative_array)
+    public function changeTicketStateRequest($tenant_id, $user_id, $id, $change_ticket_state_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $change_ticket_state_body = array_key_exists('change_ticket_state_body', $associative_array) ? $associative_array['change_ticket_state_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['changeTicketState'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['changeTicketState'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -3820,7 +3760,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $question_id question_id (optional)
@@ -3837,9 +3777,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CombineQuestionResultsWithCommentsResponse|\FastComments\Client\Model\APIError
      */
-    public function combineCommentsWithQuestionResults($associative_array)
+    public function combineCommentsWithQuestionResults($tenant_id, array $options = [])
     {
-        list($response) = $this->combineCommentsWithQuestionResultsWithHttpInfo($associative_array);
+        list($response) = $this->combineCommentsWithQuestionResultsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -3848,7 +3788,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $question_id (optional)
@@ -3865,9 +3805,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CombineQuestionResultsWithCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function combineCommentsWithQuestionResultsWithHttpInfo($associative_array)
+    public function combineCommentsWithQuestionResultsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->combineCommentsWithQuestionResultsRequest($associative_array);
+        $request = $this->combineCommentsWithQuestionResultsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3957,7 +3897,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $question_id (optional)
@@ -3973,9 +3913,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function combineCommentsWithQuestionResultsAsync($associative_array)
+    public function combineCommentsWithQuestionResultsAsync($tenant_id, array $options = [])
     {
-        return $this->combineCommentsWithQuestionResultsAsyncWithHttpInfo($associative_array)
+        return $this->combineCommentsWithQuestionResultsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3988,7 +3928,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $question_id (optional)
@@ -4004,10 +3944,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function combineCommentsWithQuestionResultsAsyncWithHttpInfo($associative_array)
+    public function combineCommentsWithQuestionResultsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\CombineQuestionResultsWithCommentsResponse';
-        $request = $this->combineCommentsWithQuestionResultsRequest($associative_array);
+        $request = $this->combineCommentsWithQuestionResultsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4048,7 +3988,7 @@ class DefaultApi
     /**
      * Create request for operation 'combineCommentsWithQuestionResults'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $question_id (optional)
@@ -4064,19 +4004,18 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function combineCommentsWithQuestionResultsRequest($associative_array)
+    public function combineCommentsWithQuestionResultsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $question_id = array_key_exists('question_id', $associative_array) ? $associative_array['question_id'] : null;
-        $question_ids = array_key_exists('question_ids', $associative_array) ? $associative_array['question_ids'] : null;
-        $url_id = array_key_exists('url_id', $associative_array) ? $associative_array['url_id'] : null;
-        $start_date = array_key_exists('start_date', $associative_array) ? $associative_array['start_date'] : null;
-        $force_recalculate = array_key_exists('force_recalculate', $associative_array) ? $associative_array['force_recalculate'] : null;
-        $min_value = array_key_exists('min_value', $associative_array) ? $associative_array['min_value'] : null;
-        $max_value = array_key_exists('max_value', $associative_array) ? $associative_array['max_value'] : null;
-        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['combineCommentsWithQuestionResults'][0];
+        // unbox the optional parameters and request options from the $options array
+        $question_id = array_key_exists('question_id', $options) ? $options['question_id'] : null;
+        $question_ids = array_key_exists('question_ids', $options) ? $options['question_ids'] : null;
+        $url_id = array_key_exists('url_id', $options) ? $options['url_id'] : null;
+        $start_date = array_key_exists('start_date', $options) ? $options['start_date'] : null;
+        $force_recalculate = array_key_exists('force_recalculate', $options) ? $options['force_recalculate'] : null;
+        $min_value = array_key_exists('min_value', $options) ? $options['min_value'] : null;
+        $max_value = array_key_exists('max_value', $options) ? $options['max_value'] : null;
+        $limit = array_key_exists('limit', $options) ? $options['limit'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['combineCommentsWithQuestionResults'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -4249,8 +4188,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateEmailTemplateBody $create_email_template_body create_email_template_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmailTemplate'] to see the possible values for this operation
@@ -4259,9 +4196,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateEmailTemplateResponse|\FastComments\Client\Model\APIError
      */
-    public function createEmailTemplate($associative_array)
+    public function createEmailTemplate($tenant_id, $create_email_template_body, array $options = [])
     {
-        list($response) = $this->createEmailTemplateWithHttpInfo($associative_array);
+        list($response) = $this->createEmailTemplateWithHttpInfo($tenant_id, $create_email_template_body, $options);
         return $response;
     }
 
@@ -4269,8 +4206,6 @@ class DefaultApi
      * Operation createEmailTemplateWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateEmailTemplateBody $create_email_template_body (required)
@@ -4280,9 +4215,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateEmailTemplateResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createEmailTemplateWithHttpInfo($associative_array)
+    public function createEmailTemplateWithHttpInfo($tenant_id, $create_email_template_body, array $options = [])
     {
-        $request = $this->createEmailTemplateRequest($associative_array);
+        $request = $this->createEmailTemplateRequest($tenant_id, $create_email_template_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4372,8 +4307,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateEmailTemplateBody $create_email_template_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmailTemplate'] to see the possible values for this operation
@@ -4381,9 +4314,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createEmailTemplateAsync($associative_array)
+    public function createEmailTemplateAsync($tenant_id, $create_email_template_body, array $options = [])
     {
-        return $this->createEmailTemplateAsyncWithHttpInfo($associative_array)
+        return $this->createEmailTemplateAsyncWithHttpInfo($tenant_id, $create_email_template_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4396,8 +4329,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateEmailTemplateBody $create_email_template_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmailTemplate'] to see the possible values for this operation
@@ -4405,10 +4336,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createEmailTemplateAsyncWithHttpInfo($associative_array)
+    public function createEmailTemplateAsyncWithHttpInfo($tenant_id, $create_email_template_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\CreateEmailTemplateResponse';
-        $request = $this->createEmailTemplateRequest($associative_array);
+        $request = $this->createEmailTemplateRequest($tenant_id, $create_email_template_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4449,8 +4380,6 @@ class DefaultApi
     /**
      * Create request for operation 'createEmailTemplate'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateEmailTemplateBody $create_email_template_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEmailTemplate'] to see the possible values for this operation
@@ -4458,12 +4387,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createEmailTemplateRequest($associative_array)
+    public function createEmailTemplateRequest($tenant_id, $create_email_template_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $create_email_template_body = array_key_exists('create_email_template_body', $associative_array) ? $associative_array['create_email_template_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['createEmailTemplate'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['createEmailTemplate'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -4570,7 +4497,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateFeedPostParams $create_feed_post_params create_feed_post_params (required)
@@ -4584,9 +4511,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateFeedPostsResponse|\FastComments\Client\Model\APIError
      */
-    public function createFeedPost($associative_array)
+    public function createFeedPost($tenant_id, $create_feed_post_params, array $options = [])
     {
-        list($response) = $this->createFeedPostWithHttpInfo($associative_array);
+        list($response) = $this->createFeedPostWithHttpInfo($tenant_id, $create_feed_post_params, $options);
         return $response;
     }
 
@@ -4595,7 +4522,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateFeedPostParams $create_feed_post_params (required)
@@ -4609,9 +4536,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateFeedPostsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createFeedPostWithHttpInfo($associative_array)
+    public function createFeedPostWithHttpInfo($tenant_id, $create_feed_post_params, array $options = [])
     {
-        $request = $this->createFeedPostRequest($associative_array);
+        $request = $this->createFeedPostRequest($tenant_id, $create_feed_post_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4701,7 +4628,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateFeedPostParams $create_feed_post_params (required)
@@ -4714,9 +4641,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createFeedPostAsync($associative_array)
+    public function createFeedPostAsync($tenant_id, $create_feed_post_params, array $options = [])
     {
-        return $this->createFeedPostAsyncWithHttpInfo($associative_array)
+        return $this->createFeedPostAsyncWithHttpInfo($tenant_id, $create_feed_post_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4729,7 +4656,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateFeedPostParams $create_feed_post_params (required)
@@ -4742,10 +4669,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createFeedPostAsyncWithHttpInfo($associative_array)
+    public function createFeedPostAsyncWithHttpInfo($tenant_id, $create_feed_post_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\CreateFeedPostsResponse';
-        $request = $this->createFeedPostRequest($associative_array);
+        $request = $this->createFeedPostRequest($tenant_id, $create_feed_post_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4786,7 +4713,7 @@ class DefaultApi
     /**
      * Create request for operation 'createFeedPost'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateFeedPostParams $create_feed_post_params (required)
@@ -4799,16 +4726,14 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createFeedPostRequest($associative_array)
+    public function createFeedPostRequest($tenant_id, $create_feed_post_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $create_feed_post_params = array_key_exists('create_feed_post_params', $associative_array) ? $associative_array['create_feed_post_params'] : null;
-        $broadcast_id = array_key_exists('broadcast_id', $associative_array) ? $associative_array['broadcast_id'] : null;
-        $is_live = array_key_exists('is_live', $associative_array) ? $associative_array['is_live'] : null;
-        $do_spam_check = array_key_exists('do_spam_check', $associative_array) ? $associative_array['do_spam_check'] : null;
-        $skip_dup_check = array_key_exists('skip_dup_check', $associative_array) ? $associative_array['skip_dup_check'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['createFeedPost'][0];
+        // unbox the optional parameters and request options from the $options array
+        $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
+        $is_live = array_key_exists('is_live', $options) ? $options['is_live'] : null;
+        $do_spam_check = array_key_exists('do_spam_check', $options) ? $options['do_spam_check'] : null;
+        $skip_dup_check = array_key_exists('skip_dup_check', $options) ? $options['skip_dup_check'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['createFeedPost'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -4955,8 +4880,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateModeratorBody $create_moderator_body create_moderator_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createModerator'] to see the possible values for this operation
@@ -4965,9 +4888,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateModeratorResponse|\FastComments\Client\Model\APIError
      */
-    public function createModerator($associative_array)
+    public function createModerator($tenant_id, $create_moderator_body, array $options = [])
     {
-        list($response) = $this->createModeratorWithHttpInfo($associative_array);
+        list($response) = $this->createModeratorWithHttpInfo($tenant_id, $create_moderator_body, $options);
         return $response;
     }
 
@@ -4975,8 +4898,6 @@ class DefaultApi
      * Operation createModeratorWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateModeratorBody $create_moderator_body (required)
@@ -4986,9 +4907,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateModeratorResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createModeratorWithHttpInfo($associative_array)
+    public function createModeratorWithHttpInfo($tenant_id, $create_moderator_body, array $options = [])
     {
-        $request = $this->createModeratorRequest($associative_array);
+        $request = $this->createModeratorRequest($tenant_id, $create_moderator_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5078,8 +4999,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateModeratorBody $create_moderator_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createModerator'] to see the possible values for this operation
@@ -5087,9 +5006,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createModeratorAsync($associative_array)
+    public function createModeratorAsync($tenant_id, $create_moderator_body, array $options = [])
     {
-        return $this->createModeratorAsyncWithHttpInfo($associative_array)
+        return $this->createModeratorAsyncWithHttpInfo($tenant_id, $create_moderator_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5102,8 +5021,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateModeratorBody $create_moderator_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createModerator'] to see the possible values for this operation
@@ -5111,10 +5028,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createModeratorAsyncWithHttpInfo($associative_array)
+    public function createModeratorAsyncWithHttpInfo($tenant_id, $create_moderator_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\CreateModeratorResponse';
-        $request = $this->createModeratorRequest($associative_array);
+        $request = $this->createModeratorRequest($tenant_id, $create_moderator_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5155,8 +5072,6 @@ class DefaultApi
     /**
      * Create request for operation 'createModerator'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateModeratorBody $create_moderator_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createModerator'] to see the possible values for this operation
@@ -5164,12 +5079,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createModeratorRequest($associative_array)
+    public function createModeratorRequest($tenant_id, $create_moderator_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $create_moderator_body = array_key_exists('create_moderator_body', $associative_array) ? $associative_array['create_moderator_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['createModerator'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['createModerator'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -5276,8 +5189,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateQuestionConfigBody $create_question_config_body create_question_config_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQuestionConfig'] to see the possible values for this operation
@@ -5286,9 +5197,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateQuestionConfigResponse|\FastComments\Client\Model\APIError
      */
-    public function createQuestionConfig($associative_array)
+    public function createQuestionConfig($tenant_id, $create_question_config_body, array $options = [])
     {
-        list($response) = $this->createQuestionConfigWithHttpInfo($associative_array);
+        list($response) = $this->createQuestionConfigWithHttpInfo($tenant_id, $create_question_config_body, $options);
         return $response;
     }
 
@@ -5296,8 +5207,6 @@ class DefaultApi
      * Operation createQuestionConfigWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateQuestionConfigBody $create_question_config_body (required)
@@ -5307,9 +5216,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateQuestionConfigResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createQuestionConfigWithHttpInfo($associative_array)
+    public function createQuestionConfigWithHttpInfo($tenant_id, $create_question_config_body, array $options = [])
     {
-        $request = $this->createQuestionConfigRequest($associative_array);
+        $request = $this->createQuestionConfigRequest($tenant_id, $create_question_config_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5399,8 +5308,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateQuestionConfigBody $create_question_config_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQuestionConfig'] to see the possible values for this operation
@@ -5408,9 +5315,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createQuestionConfigAsync($associative_array)
+    public function createQuestionConfigAsync($tenant_id, $create_question_config_body, array $options = [])
     {
-        return $this->createQuestionConfigAsyncWithHttpInfo($associative_array)
+        return $this->createQuestionConfigAsyncWithHttpInfo($tenant_id, $create_question_config_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5423,8 +5330,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateQuestionConfigBody $create_question_config_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQuestionConfig'] to see the possible values for this operation
@@ -5432,10 +5337,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createQuestionConfigAsyncWithHttpInfo($associative_array)
+    public function createQuestionConfigAsyncWithHttpInfo($tenant_id, $create_question_config_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\CreateQuestionConfigResponse';
-        $request = $this->createQuestionConfigRequest($associative_array);
+        $request = $this->createQuestionConfigRequest($tenant_id, $create_question_config_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5476,8 +5381,6 @@ class DefaultApi
     /**
      * Create request for operation 'createQuestionConfig'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateQuestionConfigBody $create_question_config_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQuestionConfig'] to see the possible values for this operation
@@ -5485,12 +5388,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createQuestionConfigRequest($associative_array)
+    public function createQuestionConfigRequest($tenant_id, $create_question_config_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $create_question_config_body = array_key_exists('create_question_config_body', $associative_array) ? $associative_array['create_question_config_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['createQuestionConfig'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['createQuestionConfig'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -5597,8 +5498,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateQuestionResultBody $create_question_result_body create_question_result_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQuestionResult'] to see the possible values for this operation
@@ -5607,9 +5506,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateQuestionResultResponse|\FastComments\Client\Model\APIError
      */
-    public function createQuestionResult($associative_array)
+    public function createQuestionResult($tenant_id, $create_question_result_body, array $options = [])
     {
-        list($response) = $this->createQuestionResultWithHttpInfo($associative_array);
+        list($response) = $this->createQuestionResultWithHttpInfo($tenant_id, $create_question_result_body, $options);
         return $response;
     }
 
@@ -5617,8 +5516,6 @@ class DefaultApi
      * Operation createQuestionResultWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateQuestionResultBody $create_question_result_body (required)
@@ -5628,9 +5525,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateQuestionResultResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createQuestionResultWithHttpInfo($associative_array)
+    public function createQuestionResultWithHttpInfo($tenant_id, $create_question_result_body, array $options = [])
     {
-        $request = $this->createQuestionResultRequest($associative_array);
+        $request = $this->createQuestionResultRequest($tenant_id, $create_question_result_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5720,8 +5617,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateQuestionResultBody $create_question_result_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQuestionResult'] to see the possible values for this operation
@@ -5729,9 +5624,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createQuestionResultAsync($associative_array)
+    public function createQuestionResultAsync($tenant_id, $create_question_result_body, array $options = [])
     {
-        return $this->createQuestionResultAsyncWithHttpInfo($associative_array)
+        return $this->createQuestionResultAsyncWithHttpInfo($tenant_id, $create_question_result_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5744,8 +5639,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateQuestionResultBody $create_question_result_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQuestionResult'] to see the possible values for this operation
@@ -5753,10 +5646,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createQuestionResultAsyncWithHttpInfo($associative_array)
+    public function createQuestionResultAsyncWithHttpInfo($tenant_id, $create_question_result_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\CreateQuestionResultResponse';
-        $request = $this->createQuestionResultRequest($associative_array);
+        $request = $this->createQuestionResultRequest($tenant_id, $create_question_result_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5797,8 +5690,6 @@ class DefaultApi
     /**
      * Create request for operation 'createQuestionResult'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateQuestionResultBody $create_question_result_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQuestionResult'] to see the possible values for this operation
@@ -5806,12 +5697,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createQuestionResultRequest($associative_array)
+    public function createQuestionResultRequest($tenant_id, $create_question_result_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $create_question_result_body = array_key_exists('create_question_result_body', $associative_array) ? $associative_array['create_question_result_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['createQuestionResult'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['createQuestionResult'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -5918,8 +5807,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateAPIUserSubscriptionData $create_api_user_subscription_data create_api_user_subscription_data (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSubscription'] to see the possible values for this operation
@@ -5928,9 +5815,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateSubscriptionAPIResponse
      */
-    public function createSubscription($associative_array)
+    public function createSubscription($tenant_id, $create_api_user_subscription_data, array $options = [])
     {
-        list($response) = $this->createSubscriptionWithHttpInfo($associative_array);
+        list($response) = $this->createSubscriptionWithHttpInfo($tenant_id, $create_api_user_subscription_data, $options);
         return $response;
     }
 
@@ -5938,8 +5825,6 @@ class DefaultApi
      * Operation createSubscriptionWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateAPIUserSubscriptionData $create_api_user_subscription_data (required)
@@ -5949,9 +5834,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateSubscriptionAPIResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createSubscriptionWithHttpInfo($associative_array)
+    public function createSubscriptionWithHttpInfo($tenant_id, $create_api_user_subscription_data, array $options = [])
     {
-        $request = $this->createSubscriptionRequest($associative_array);
+        $request = $this->createSubscriptionRequest($tenant_id, $create_api_user_subscription_data, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6027,8 +5912,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateAPIUserSubscriptionData $create_api_user_subscription_data (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSubscription'] to see the possible values for this operation
@@ -6036,9 +5919,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createSubscriptionAsync($associative_array)
+    public function createSubscriptionAsync($tenant_id, $create_api_user_subscription_data, array $options = [])
     {
-        return $this->createSubscriptionAsyncWithHttpInfo($associative_array)
+        return $this->createSubscriptionAsyncWithHttpInfo($tenant_id, $create_api_user_subscription_data, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6051,8 +5934,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateAPIUserSubscriptionData $create_api_user_subscription_data (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSubscription'] to see the possible values for this operation
@@ -6060,10 +5941,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createSubscriptionAsyncWithHttpInfo($associative_array)
+    public function createSubscriptionAsyncWithHttpInfo($tenant_id, $create_api_user_subscription_data, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\CreateSubscriptionAPIResponse';
-        $request = $this->createSubscriptionRequest($associative_array);
+        $request = $this->createSubscriptionRequest($tenant_id, $create_api_user_subscription_data, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6104,8 +5985,6 @@ class DefaultApi
     /**
      * Create request for operation 'createSubscription'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateAPIUserSubscriptionData $create_api_user_subscription_data (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSubscription'] to see the possible values for this operation
@@ -6113,12 +5992,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createSubscriptionRequest($associative_array)
+    public function createSubscriptionRequest($tenant_id, $create_api_user_subscription_data, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $create_api_user_subscription_data = array_key_exists('create_api_user_subscription_data', $associative_array) ? $associative_array['create_api_user_subscription_data'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['createSubscription'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['createSubscription'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -6225,8 +6102,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateTenantBody $create_tenant_body create_tenant_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTenant'] to see the possible values for this operation
@@ -6235,9 +6110,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateTenantResponse|\FastComments\Client\Model\APIError
      */
-    public function createTenant($associative_array)
+    public function createTenant($tenant_id, $create_tenant_body, array $options = [])
     {
-        list($response) = $this->createTenantWithHttpInfo($associative_array);
+        list($response) = $this->createTenantWithHttpInfo($tenant_id, $create_tenant_body, $options);
         return $response;
     }
 
@@ -6245,8 +6120,6 @@ class DefaultApi
      * Operation createTenantWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateTenantBody $create_tenant_body (required)
@@ -6256,9 +6129,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateTenantResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createTenantWithHttpInfo($associative_array)
+    public function createTenantWithHttpInfo($tenant_id, $create_tenant_body, array $options = [])
     {
-        $request = $this->createTenantRequest($associative_array);
+        $request = $this->createTenantRequest($tenant_id, $create_tenant_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6348,8 +6221,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateTenantBody $create_tenant_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTenant'] to see the possible values for this operation
@@ -6357,9 +6228,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTenantAsync($associative_array)
+    public function createTenantAsync($tenant_id, $create_tenant_body, array $options = [])
     {
-        return $this->createTenantAsyncWithHttpInfo($associative_array)
+        return $this->createTenantAsyncWithHttpInfo($tenant_id, $create_tenant_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6372,8 +6243,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateTenantBody $create_tenant_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTenant'] to see the possible values for this operation
@@ -6381,10 +6250,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTenantAsyncWithHttpInfo($associative_array)
+    public function createTenantAsyncWithHttpInfo($tenant_id, $create_tenant_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\CreateTenantResponse';
-        $request = $this->createTenantRequest($associative_array);
+        $request = $this->createTenantRequest($tenant_id, $create_tenant_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6425,8 +6294,6 @@ class DefaultApi
     /**
      * Create request for operation 'createTenant'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateTenantBody $create_tenant_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTenant'] to see the possible values for this operation
@@ -6434,12 +6301,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createTenantRequest($associative_array)
+    public function createTenantRequest($tenant_id, $create_tenant_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $create_tenant_body = array_key_exists('create_tenant_body', $associative_array) ? $associative_array['create_tenant_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['createTenant'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['createTenant'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -6546,8 +6411,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateTenantPackageBody $create_tenant_package_body create_tenant_package_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTenantPackage'] to see the possible values for this operation
@@ -6556,9 +6419,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateTenantPackageResponse|\FastComments\Client\Model\APIError
      */
-    public function createTenantPackage($associative_array)
+    public function createTenantPackage($tenant_id, $create_tenant_package_body, array $options = [])
     {
-        list($response) = $this->createTenantPackageWithHttpInfo($associative_array);
+        list($response) = $this->createTenantPackageWithHttpInfo($tenant_id, $create_tenant_package_body, $options);
         return $response;
     }
 
@@ -6566,8 +6429,6 @@ class DefaultApi
      * Operation createTenantPackageWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateTenantPackageBody $create_tenant_package_body (required)
@@ -6577,9 +6438,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateTenantPackageResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createTenantPackageWithHttpInfo($associative_array)
+    public function createTenantPackageWithHttpInfo($tenant_id, $create_tenant_package_body, array $options = [])
     {
-        $request = $this->createTenantPackageRequest($associative_array);
+        $request = $this->createTenantPackageRequest($tenant_id, $create_tenant_package_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6669,8 +6530,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateTenantPackageBody $create_tenant_package_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTenantPackage'] to see the possible values for this operation
@@ -6678,9 +6537,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTenantPackageAsync($associative_array)
+    public function createTenantPackageAsync($tenant_id, $create_tenant_package_body, array $options = [])
     {
-        return $this->createTenantPackageAsyncWithHttpInfo($associative_array)
+        return $this->createTenantPackageAsyncWithHttpInfo($tenant_id, $create_tenant_package_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6693,8 +6552,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateTenantPackageBody $create_tenant_package_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTenantPackage'] to see the possible values for this operation
@@ -6702,10 +6559,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTenantPackageAsyncWithHttpInfo($associative_array)
+    public function createTenantPackageAsyncWithHttpInfo($tenant_id, $create_tenant_package_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\CreateTenantPackageResponse';
-        $request = $this->createTenantPackageRequest($associative_array);
+        $request = $this->createTenantPackageRequest($tenant_id, $create_tenant_package_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6746,8 +6603,6 @@ class DefaultApi
     /**
      * Create request for operation 'createTenantPackage'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateTenantPackageBody $create_tenant_package_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTenantPackage'] to see the possible values for this operation
@@ -6755,12 +6610,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createTenantPackageRequest($associative_array)
+    public function createTenantPackageRequest($tenant_id, $create_tenant_package_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $create_tenant_package_body = array_key_exists('create_tenant_package_body', $associative_array) ? $associative_array['create_tenant_package_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['createTenantPackage'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['createTenantPackage'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -6867,8 +6720,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateTenantUserBody $create_tenant_user_body create_tenant_user_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTenantUser'] to see the possible values for this operation
@@ -6877,9 +6728,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateTenantUserResponse|\FastComments\Client\Model\APIError
      */
-    public function createTenantUser($associative_array)
+    public function createTenantUser($tenant_id, $create_tenant_user_body, array $options = [])
     {
-        list($response) = $this->createTenantUserWithHttpInfo($associative_array);
+        list($response) = $this->createTenantUserWithHttpInfo($tenant_id, $create_tenant_user_body, $options);
         return $response;
     }
 
@@ -6887,8 +6738,6 @@ class DefaultApi
      * Operation createTenantUserWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateTenantUserBody $create_tenant_user_body (required)
@@ -6898,9 +6747,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateTenantUserResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createTenantUserWithHttpInfo($associative_array)
+    public function createTenantUserWithHttpInfo($tenant_id, $create_tenant_user_body, array $options = [])
     {
-        $request = $this->createTenantUserRequest($associative_array);
+        $request = $this->createTenantUserRequest($tenant_id, $create_tenant_user_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6990,8 +6839,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateTenantUserBody $create_tenant_user_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTenantUser'] to see the possible values for this operation
@@ -6999,9 +6846,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTenantUserAsync($associative_array)
+    public function createTenantUserAsync($tenant_id, $create_tenant_user_body, array $options = [])
     {
-        return $this->createTenantUserAsyncWithHttpInfo($associative_array)
+        return $this->createTenantUserAsyncWithHttpInfo($tenant_id, $create_tenant_user_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7014,8 +6861,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateTenantUserBody $create_tenant_user_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTenantUser'] to see the possible values for this operation
@@ -7023,10 +6868,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTenantUserAsyncWithHttpInfo($associative_array)
+    public function createTenantUserAsyncWithHttpInfo($tenant_id, $create_tenant_user_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\CreateTenantUserResponse';
-        $request = $this->createTenantUserRequest($associative_array);
+        $request = $this->createTenantUserRequest($tenant_id, $create_tenant_user_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7067,8 +6912,6 @@ class DefaultApi
     /**
      * Create request for operation 'createTenantUser'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateTenantUserBody $create_tenant_user_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTenantUser'] to see the possible values for this operation
@@ -7076,12 +6919,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createTenantUserRequest($associative_array)
+    public function createTenantUserRequest($tenant_id, $create_tenant_user_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $create_tenant_user_body = array_key_exists('create_tenant_user_body', $associative_array) ? $associative_array['create_tenant_user_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['createTenantUser'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['createTenantUser'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -7188,8 +7029,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $user_id user_id (required)
      * @param  \FastComments\Client\Model\CreateTicketBody $create_ticket_body create_ticket_body (required)
@@ -7199,9 +7038,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateTicketResponse|\FastComments\Client\Model\APIError
      */
-    public function createTicket($associative_array)
+    public function createTicket($tenant_id, $user_id, $create_ticket_body, array $options = [])
     {
-        list($response) = $this->createTicketWithHttpInfo($associative_array);
+        list($response) = $this->createTicketWithHttpInfo($tenant_id, $user_id, $create_ticket_body, $options);
         return $response;
     }
 
@@ -7209,8 +7048,6 @@ class DefaultApi
      * Operation createTicketWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $user_id (required)
@@ -7221,9 +7058,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateTicketResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createTicketWithHttpInfo($associative_array)
+    public function createTicketWithHttpInfo($tenant_id, $user_id, $create_ticket_body, array $options = [])
     {
-        $request = $this->createTicketRequest($associative_array);
+        $request = $this->createTicketRequest($tenant_id, $user_id, $create_ticket_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7313,8 +7150,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $user_id (required)
      * @param  \FastComments\Client\Model\CreateTicketBody $create_ticket_body (required)
@@ -7323,9 +7158,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTicketAsync($associative_array)
+    public function createTicketAsync($tenant_id, $user_id, $create_ticket_body, array $options = [])
     {
-        return $this->createTicketAsyncWithHttpInfo($associative_array)
+        return $this->createTicketAsyncWithHttpInfo($tenant_id, $user_id, $create_ticket_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7338,8 +7173,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $user_id (required)
      * @param  \FastComments\Client\Model\CreateTicketBody $create_ticket_body (required)
@@ -7348,10 +7181,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTicketAsyncWithHttpInfo($associative_array)
+    public function createTicketAsyncWithHttpInfo($tenant_id, $user_id, $create_ticket_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\CreateTicketResponse';
-        $request = $this->createTicketRequest($associative_array);
+        $request = $this->createTicketRequest($tenant_id, $user_id, $create_ticket_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7392,8 +7225,6 @@ class DefaultApi
     /**
      * Create request for operation 'createTicket'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $user_id (required)
      * @param  \FastComments\Client\Model\CreateTicketBody $create_ticket_body (required)
@@ -7402,13 +7233,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createTicketRequest($associative_array)
+    public function createTicketRequest($tenant_id, $user_id, $create_ticket_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $create_ticket_body = array_key_exists('create_ticket_body', $associative_array) ? $associative_array['create_ticket_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['createTicket'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['createTicket'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -7531,8 +7359,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateUserBadgeParams $create_user_badge_params create_user_badge_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createUserBadge'] to see the possible values for this operation
@@ -7541,9 +7367,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APICreateUserBadgeResponse|\FastComments\Client\Model\APIError
      */
-    public function createUserBadge($associative_array)
+    public function createUserBadge($tenant_id, $create_user_badge_params, array $options = [])
     {
-        list($response) = $this->createUserBadgeWithHttpInfo($associative_array);
+        list($response) = $this->createUserBadgeWithHttpInfo($tenant_id, $create_user_badge_params, $options);
         return $response;
     }
 
@@ -7551,8 +7377,6 @@ class DefaultApi
      * Operation createUserBadgeWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateUserBadgeParams $create_user_badge_params (required)
@@ -7562,9 +7386,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APICreateUserBadgeResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createUserBadgeWithHttpInfo($associative_array)
+    public function createUserBadgeWithHttpInfo($tenant_id, $create_user_badge_params, array $options = [])
     {
-        $request = $this->createUserBadgeRequest($associative_array);
+        $request = $this->createUserBadgeRequest($tenant_id, $create_user_badge_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7654,8 +7478,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateUserBadgeParams $create_user_badge_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createUserBadge'] to see the possible values for this operation
@@ -7663,9 +7485,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createUserBadgeAsync($associative_array)
+    public function createUserBadgeAsync($tenant_id, $create_user_badge_params, array $options = [])
     {
-        return $this->createUserBadgeAsyncWithHttpInfo($associative_array)
+        return $this->createUserBadgeAsyncWithHttpInfo($tenant_id, $create_user_badge_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7678,8 +7500,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateUserBadgeParams $create_user_badge_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createUserBadge'] to see the possible values for this operation
@@ -7687,10 +7507,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createUserBadgeAsyncWithHttpInfo($associative_array)
+    public function createUserBadgeAsyncWithHttpInfo($tenant_id, $create_user_badge_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APICreateUserBadgeResponse';
-        $request = $this->createUserBadgeRequest($associative_array);
+        $request = $this->createUserBadgeRequest($tenant_id, $create_user_badge_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7731,8 +7551,6 @@ class DefaultApi
     /**
      * Create request for operation 'createUserBadge'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateUserBadgeParams $create_user_badge_params (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createUserBadge'] to see the possible values for this operation
@@ -7740,12 +7558,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createUserBadgeRequest($associative_array)
+    public function createUserBadgeRequest($tenant_id, $create_user_badge_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $create_user_badge_params = array_key_exists('create_user_badge_params', $associative_array) ? $associative_array['create_user_badge_params'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['createUserBadge'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['createUserBadge'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -7852,7 +7668,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
@@ -7865,9 +7681,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\VoteResponse|\FastComments\Client\Model\APIError
      */
-    public function createVote($associative_array)
+    public function createVote($tenant_id, $comment_id, $direction, array $options = [])
     {
-        list($response) = $this->createVoteWithHttpInfo($associative_array);
+        list($response) = $this->createVoteWithHttpInfo($tenant_id, $comment_id, $direction, $options);
         return $response;
     }
 
@@ -7876,7 +7692,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -7889,9 +7705,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\VoteResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createVoteWithHttpInfo($associative_array)
+    public function createVoteWithHttpInfo($tenant_id, $comment_id, $direction, array $options = [])
     {
-        $request = $this->createVoteRequest($associative_array);
+        $request = $this->createVoteRequest($tenant_id, $comment_id, $direction, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7981,7 +7797,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -7993,9 +7809,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createVoteAsync($associative_array)
+    public function createVoteAsync($tenant_id, $comment_id, $direction, array $options = [])
     {
-        return $this->createVoteAsyncWithHttpInfo($associative_array)
+        return $this->createVoteAsyncWithHttpInfo($tenant_id, $comment_id, $direction, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8008,7 +7824,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -8020,10 +7836,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createVoteAsyncWithHttpInfo($associative_array)
+    public function createVoteAsyncWithHttpInfo($tenant_id, $comment_id, $direction, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\VoteResponse';
-        $request = $this->createVoteRequest($associative_array);
+        $request = $this->createVoteRequest($tenant_id, $comment_id, $direction, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8064,7 +7880,7 @@ class DefaultApi
     /**
      * Create request for operation 'createVote'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
@@ -8076,15 +7892,12 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createVoteRequest($associative_array)
+    public function createVoteRequest($tenant_id, $comment_id, $direction, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $direction = array_key_exists('direction', $associative_array) ? $associative_array['direction'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $anon_user_id = array_key_exists('anon_user_id', $associative_array) ? $associative_array['anon_user_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['createVote'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $anon_user_id = array_key_exists('anon_user_id', $options) ? $options['anon_user_id'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['createVote'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -8229,7 +8042,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -8241,9 +8054,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\DeleteCommentResult|\FastComments\Client\Model\APIError
      */
-    public function deleteComment($associative_array)
+    public function deleteComment($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->deleteCommentWithHttpInfo($associative_array);
+        list($response) = $this->deleteCommentWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -8252,7 +8065,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -8264,9 +8077,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\DeleteCommentResult|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteCommentWithHttpInfo($associative_array)
+    public function deleteCommentWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->deleteCommentRequest($associative_array);
+        $request = $this->deleteCommentRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8356,7 +8169,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -8367,9 +8180,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCommentAsync($associative_array)
+    public function deleteCommentAsync($tenant_id, $id, array $options = [])
     {
-        return $this->deleteCommentAsyncWithHttpInfo($associative_array)
+        return $this->deleteCommentAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8382,7 +8195,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -8393,10 +8206,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteCommentAsyncWithHttpInfo($associative_array)
+    public function deleteCommentAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\DeleteCommentResult';
-        $request = $this->deleteCommentRequest($associative_array);
+        $request = $this->deleteCommentRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8437,7 +8250,7 @@ class DefaultApi
     /**
      * Create request for operation 'deleteComment'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -8448,14 +8261,12 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteCommentRequest($associative_array)
+    public function deleteCommentRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $context_user_id = array_key_exists('context_user_id', $associative_array) ? $associative_array['context_user_id'] : null;
-        $is_live = array_key_exists('is_live', $associative_array) ? $associative_array['is_live'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteComment'][0];
+        // unbox the optional parameters and request options from the $options array
+        $context_user_id = array_key_exists('context_user_id', $options) ? $options['context_user_id'] : null;
+        $is_live = array_key_exists('is_live', $options) ? $options['is_live'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteComment'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -8583,8 +8394,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $domain domain (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDomainConfig'] to see the possible values for this operation
@@ -8593,9 +8402,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\DeleteDomainConfigResponse
      */
-    public function deleteDomainConfig($associative_array)
+    public function deleteDomainConfig($tenant_id, $domain, array $options = [])
     {
-        list($response) = $this->deleteDomainConfigWithHttpInfo($associative_array);
+        list($response) = $this->deleteDomainConfigWithHttpInfo($tenant_id, $domain, $options);
         return $response;
     }
 
@@ -8603,8 +8412,6 @@ class DefaultApi
      * Operation deleteDomainConfigWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $domain (required)
@@ -8614,9 +8421,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\DeleteDomainConfigResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteDomainConfigWithHttpInfo($associative_array)
+    public function deleteDomainConfigWithHttpInfo($tenant_id, $domain, array $options = [])
     {
-        $request = $this->deleteDomainConfigRequest($associative_array);
+        $request = $this->deleteDomainConfigRequest($tenant_id, $domain, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8692,8 +8499,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $domain (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDomainConfig'] to see the possible values for this operation
@@ -8701,9 +8506,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteDomainConfigAsync($associative_array)
+    public function deleteDomainConfigAsync($tenant_id, $domain, array $options = [])
     {
-        return $this->deleteDomainConfigAsyncWithHttpInfo($associative_array)
+        return $this->deleteDomainConfigAsyncWithHttpInfo($tenant_id, $domain, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8716,8 +8521,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $domain (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDomainConfig'] to see the possible values for this operation
@@ -8725,10 +8528,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteDomainConfigAsyncWithHttpInfo($associative_array)
+    public function deleteDomainConfigAsyncWithHttpInfo($tenant_id, $domain, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\DeleteDomainConfigResponse';
-        $request = $this->deleteDomainConfigRequest($associative_array);
+        $request = $this->deleteDomainConfigRequest($tenant_id, $domain, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8769,8 +8572,6 @@ class DefaultApi
     /**
      * Create request for operation 'deleteDomainConfig'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $domain (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDomainConfig'] to see the possible values for this operation
@@ -8778,12 +8579,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteDomainConfigRequest($associative_array)
+    public function deleteDomainConfigRequest($tenant_id, $domain, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $domain = array_key_exists('domain', $associative_array) ? $associative_array['domain'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteDomainConfig'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteDomainConfig'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -8891,8 +8690,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEmailTemplate'] to see the possible values for this operation
@@ -8901,9 +8698,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteEmailTemplate($associative_array)
+    public function deleteEmailTemplate($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->deleteEmailTemplateWithHttpInfo($associative_array);
+        list($response) = $this->deleteEmailTemplateWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -8911,8 +8708,6 @@ class DefaultApi
      * Operation deleteEmailTemplateWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -8922,9 +8717,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteEmailTemplateWithHttpInfo($associative_array)
+    public function deleteEmailTemplateWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->deleteEmailTemplateRequest($associative_array);
+        $request = $this->deleteEmailTemplateRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9014,8 +8809,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEmailTemplate'] to see the possible values for this operation
@@ -9023,9 +8816,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteEmailTemplateAsync($associative_array)
+    public function deleteEmailTemplateAsync($tenant_id, $id, array $options = [])
     {
-        return $this->deleteEmailTemplateAsyncWithHttpInfo($associative_array)
+        return $this->deleteEmailTemplateAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9038,8 +8831,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEmailTemplate'] to see the possible values for this operation
@@ -9047,10 +8838,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteEmailTemplateAsyncWithHttpInfo($associative_array)
+    public function deleteEmailTemplateAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->deleteEmailTemplateRequest($associative_array);
+        $request = $this->deleteEmailTemplateRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9091,8 +8882,6 @@ class DefaultApi
     /**
      * Create request for operation 'deleteEmailTemplate'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteEmailTemplate'] to see the possible values for this operation
@@ -9100,12 +8889,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteEmailTemplateRequest($associative_array)
+    public function deleteEmailTemplateRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteEmailTemplate'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteEmailTemplate'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -9213,8 +9000,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $error_id error_id (required)
@@ -9224,9 +9009,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteEmailTemplateRenderError($associative_array)
+    public function deleteEmailTemplateRenderError($tenant_id, $id, $error_id, array $options = [])
     {
-        list($response) = $this->deleteEmailTemplateRenderErrorWithHttpInfo($associative_array);
+        list($response) = $this->deleteEmailTemplateRenderErrorWithHttpInfo($tenant_id, $id, $error_id, $options);
         return $response;
     }
 
@@ -9234,8 +9019,6 @@ class DefaultApi
      * Operation deleteEmailTemplateRenderErrorWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -9246,9 +9029,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteEmailTemplateRenderErrorWithHttpInfo($associative_array)
+    public function deleteEmailTemplateRenderErrorWithHttpInfo($tenant_id, $id, $error_id, array $options = [])
     {
-        $request = $this->deleteEmailTemplateRenderErrorRequest($associative_array);
+        $request = $this->deleteEmailTemplateRenderErrorRequest($tenant_id, $id, $error_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9338,8 +9121,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $error_id (required)
@@ -9348,9 +9129,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteEmailTemplateRenderErrorAsync($associative_array)
+    public function deleteEmailTemplateRenderErrorAsync($tenant_id, $id, $error_id, array $options = [])
     {
-        return $this->deleteEmailTemplateRenderErrorAsyncWithHttpInfo($associative_array)
+        return $this->deleteEmailTemplateRenderErrorAsyncWithHttpInfo($tenant_id, $id, $error_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9363,8 +9144,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $error_id (required)
@@ -9373,10 +9152,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteEmailTemplateRenderErrorAsyncWithHttpInfo($associative_array)
+    public function deleteEmailTemplateRenderErrorAsyncWithHttpInfo($tenant_id, $id, $error_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->deleteEmailTemplateRenderErrorRequest($associative_array);
+        $request = $this->deleteEmailTemplateRenderErrorRequest($tenant_id, $id, $error_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9417,8 +9196,6 @@ class DefaultApi
     /**
      * Create request for operation 'deleteEmailTemplateRenderError'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $error_id (required)
@@ -9427,13 +9204,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteEmailTemplateRenderErrorRequest($associative_array)
+    public function deleteEmailTemplateRenderErrorRequest($tenant_id, $id, $error_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $error_id = array_key_exists('error_id', $associative_array) ? $associative_array['error_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteEmailTemplateRenderError'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteEmailTemplateRenderError'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -9556,7 +9330,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tag tag (required)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -9567,9 +9341,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteHashTag($associative_array)
+    public function deleteHashTag($tag, $delete_hash_tag_request_body = null, array $options = [])
     {
-        list($response) = $this->deleteHashTagWithHttpInfo($associative_array);
+        list($response) = $this->deleteHashTagWithHttpInfo($tag, $delete_hash_tag_request_body, $options);
         return $response;
     }
 
@@ -9578,7 +9352,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tag (required)
      * @param  string|null $tenant_id (optional)
@@ -9589,9 +9363,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteHashTagWithHttpInfo($associative_array)
+    public function deleteHashTagWithHttpInfo($tag, $delete_hash_tag_request_body = null, array $options = [])
     {
-        $request = $this->deleteHashTagRequest($associative_array);
+        $request = $this->deleteHashTagRequest($tag, $delete_hash_tag_request_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9681,7 +9455,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tag (required)
      * @param  string|null $tenant_id (optional)
@@ -9691,9 +9465,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteHashTagAsync($associative_array)
+    public function deleteHashTagAsync($tag, $delete_hash_tag_request_body = null, array $options = [])
     {
-        return $this->deleteHashTagAsyncWithHttpInfo($associative_array)
+        return $this->deleteHashTagAsyncWithHttpInfo($tag, $delete_hash_tag_request_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9706,7 +9480,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tag (required)
      * @param  string|null $tenant_id (optional)
@@ -9716,10 +9490,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteHashTagAsyncWithHttpInfo($associative_array)
+    public function deleteHashTagAsyncWithHttpInfo($tag, $delete_hash_tag_request_body = null, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->deleteHashTagRequest($associative_array);
+        $request = $this->deleteHashTagRequest($tag, $delete_hash_tag_request_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9760,7 +9534,7 @@ class DefaultApi
     /**
      * Create request for operation 'deleteHashTag'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tag (required)
      * @param  string|null $tenant_id (optional)
@@ -9770,13 +9544,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteHashTagRequest($associative_array)
+    public function deleteHashTagRequest($tag, $delete_hash_tag_request_body = null, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tag = array_key_exists('tag', $associative_array) ? $associative_array['tag'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $delete_hash_tag_request_body = array_key_exists('delete_hash_tag_request_body', $associative_array) ? $associative_array['delete_hash_tag_request_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteHashTag'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteHashTag'][0];
         
         // verify the required parameter 'tag' is set
         if ($tag === null || (is_array($tag) && count($tag) === 0)) {
@@ -9886,7 +9658,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -9897,9 +9669,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteModerator($associative_array)
+    public function deleteModerator($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->deleteModeratorWithHttpInfo($associative_array);
+        list($response) = $this->deleteModeratorWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -9908,7 +9680,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -9919,9 +9691,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteModeratorWithHttpInfo($associative_array)
+    public function deleteModeratorWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->deleteModeratorRequest($associative_array);
+        $request = $this->deleteModeratorRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10011,7 +9783,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -10021,9 +9793,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteModeratorAsync($associative_array)
+    public function deleteModeratorAsync($tenant_id, $id, array $options = [])
     {
-        return $this->deleteModeratorAsyncWithHttpInfo($associative_array)
+        return $this->deleteModeratorAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10036,7 +9808,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -10046,10 +9818,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteModeratorAsyncWithHttpInfo($associative_array)
+    public function deleteModeratorAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->deleteModeratorRequest($associative_array);
+        $request = $this->deleteModeratorRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10090,7 +9862,7 @@ class DefaultApi
     /**
      * Create request for operation 'deleteModerator'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -10100,13 +9872,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteModeratorRequest($associative_array)
+    public function deleteModeratorRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $send_email = array_key_exists('send_email', $associative_array) ? $associative_array['send_email'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteModerator'][0];
+        // unbox the optional parameters and request options from the $options array
+        $send_email = array_key_exists('send_email', $options) ? $options['send_email'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteModerator'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -10224,8 +9994,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteNotificationCount'] to see the possible values for this operation
@@ -10234,9 +10002,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteNotificationCount($associative_array)
+    public function deleteNotificationCount($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->deleteNotificationCountWithHttpInfo($associative_array);
+        list($response) = $this->deleteNotificationCountWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -10244,8 +10012,6 @@ class DefaultApi
      * Operation deleteNotificationCountWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -10255,9 +10021,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteNotificationCountWithHttpInfo($associative_array)
+    public function deleteNotificationCountWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->deleteNotificationCountRequest($associative_array);
+        $request = $this->deleteNotificationCountRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10347,8 +10113,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteNotificationCount'] to see the possible values for this operation
@@ -10356,9 +10120,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteNotificationCountAsync($associative_array)
+    public function deleteNotificationCountAsync($tenant_id, $id, array $options = [])
     {
-        return $this->deleteNotificationCountAsyncWithHttpInfo($associative_array)
+        return $this->deleteNotificationCountAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10371,8 +10135,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteNotificationCount'] to see the possible values for this operation
@@ -10380,10 +10142,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteNotificationCountAsyncWithHttpInfo($associative_array)
+    public function deleteNotificationCountAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->deleteNotificationCountRequest($associative_array);
+        $request = $this->deleteNotificationCountRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10424,8 +10186,6 @@ class DefaultApi
     /**
      * Create request for operation 'deleteNotificationCount'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteNotificationCount'] to see the possible values for this operation
@@ -10433,12 +10193,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteNotificationCountRequest($associative_array)
+    public function deleteNotificationCountRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteNotificationCount'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteNotificationCount'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -10546,8 +10304,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePage'] to see the possible values for this operation
@@ -10556,9 +10312,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\DeletePageAPIResponse
      */
-    public function deletePage($associative_array)
+    public function deletePage($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->deletePageWithHttpInfo($associative_array);
+        list($response) = $this->deletePageWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -10566,8 +10322,6 @@ class DefaultApi
      * Operation deletePageWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -10577,9 +10331,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\DeletePageAPIResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deletePageWithHttpInfo($associative_array)
+    public function deletePageWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->deletePageRequest($associative_array);
+        $request = $this->deletePageRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10655,8 +10409,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePage'] to see the possible values for this operation
@@ -10664,9 +10416,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deletePageAsync($associative_array)
+    public function deletePageAsync($tenant_id, $id, array $options = [])
     {
-        return $this->deletePageAsyncWithHttpInfo($associative_array)
+        return $this->deletePageAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10679,8 +10431,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePage'] to see the possible values for this operation
@@ -10688,10 +10438,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deletePageAsyncWithHttpInfo($associative_array)
+    public function deletePageAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\DeletePageAPIResponse';
-        $request = $this->deletePageRequest($associative_array);
+        $request = $this->deletePageRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10732,8 +10482,6 @@ class DefaultApi
     /**
      * Create request for operation 'deletePage'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePage'] to see the possible values for this operation
@@ -10741,12 +10489,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deletePageRequest($associative_array)
+    public function deletePageRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deletePage'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['deletePage'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -10854,8 +10600,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePendingWebhookEvent'] to see the possible values for this operation
@@ -10864,9 +10608,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function deletePendingWebhookEvent($associative_array)
+    public function deletePendingWebhookEvent($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->deletePendingWebhookEventWithHttpInfo($associative_array);
+        list($response) = $this->deletePendingWebhookEventWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -10874,8 +10618,6 @@ class DefaultApi
      * Operation deletePendingWebhookEventWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -10885,9 +10627,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deletePendingWebhookEventWithHttpInfo($associative_array)
+    public function deletePendingWebhookEventWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->deletePendingWebhookEventRequest($associative_array);
+        $request = $this->deletePendingWebhookEventRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10977,8 +10719,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePendingWebhookEvent'] to see the possible values for this operation
@@ -10986,9 +10726,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deletePendingWebhookEventAsync($associative_array)
+    public function deletePendingWebhookEventAsync($tenant_id, $id, array $options = [])
     {
-        return $this->deletePendingWebhookEventAsyncWithHttpInfo($associative_array)
+        return $this->deletePendingWebhookEventAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11001,8 +10741,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePendingWebhookEvent'] to see the possible values for this operation
@@ -11010,10 +10748,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deletePendingWebhookEventAsyncWithHttpInfo($associative_array)
+    public function deletePendingWebhookEventAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->deletePendingWebhookEventRequest($associative_array);
+        $request = $this->deletePendingWebhookEventRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11054,8 +10792,6 @@ class DefaultApi
     /**
      * Create request for operation 'deletePendingWebhookEvent'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePendingWebhookEvent'] to see the possible values for this operation
@@ -11063,12 +10799,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deletePendingWebhookEventRequest($associative_array)
+    public function deletePendingWebhookEventRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deletePendingWebhookEvent'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['deletePendingWebhookEvent'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -11176,8 +10910,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteQuestionConfig'] to see the possible values for this operation
@@ -11186,9 +10918,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteQuestionConfig($associative_array)
+    public function deleteQuestionConfig($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->deleteQuestionConfigWithHttpInfo($associative_array);
+        list($response) = $this->deleteQuestionConfigWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -11196,8 +10928,6 @@ class DefaultApi
      * Operation deleteQuestionConfigWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -11207,9 +10937,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteQuestionConfigWithHttpInfo($associative_array)
+    public function deleteQuestionConfigWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->deleteQuestionConfigRequest($associative_array);
+        $request = $this->deleteQuestionConfigRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11299,8 +11029,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteQuestionConfig'] to see the possible values for this operation
@@ -11308,9 +11036,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteQuestionConfigAsync($associative_array)
+    public function deleteQuestionConfigAsync($tenant_id, $id, array $options = [])
     {
-        return $this->deleteQuestionConfigAsyncWithHttpInfo($associative_array)
+        return $this->deleteQuestionConfigAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11323,8 +11051,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteQuestionConfig'] to see the possible values for this operation
@@ -11332,10 +11058,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteQuestionConfigAsyncWithHttpInfo($associative_array)
+    public function deleteQuestionConfigAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->deleteQuestionConfigRequest($associative_array);
+        $request = $this->deleteQuestionConfigRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11376,8 +11102,6 @@ class DefaultApi
     /**
      * Create request for operation 'deleteQuestionConfig'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteQuestionConfig'] to see the possible values for this operation
@@ -11385,12 +11109,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteQuestionConfigRequest($associative_array)
+    public function deleteQuestionConfigRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteQuestionConfig'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteQuestionConfig'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -11498,8 +11220,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteQuestionResult'] to see the possible values for this operation
@@ -11508,9 +11228,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteQuestionResult($associative_array)
+    public function deleteQuestionResult($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->deleteQuestionResultWithHttpInfo($associative_array);
+        list($response) = $this->deleteQuestionResultWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -11518,8 +11238,6 @@ class DefaultApi
      * Operation deleteQuestionResultWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -11529,9 +11247,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteQuestionResultWithHttpInfo($associative_array)
+    public function deleteQuestionResultWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->deleteQuestionResultRequest($associative_array);
+        $request = $this->deleteQuestionResultRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11621,8 +11339,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteQuestionResult'] to see the possible values for this operation
@@ -11630,9 +11346,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteQuestionResultAsync($associative_array)
+    public function deleteQuestionResultAsync($tenant_id, $id, array $options = [])
     {
-        return $this->deleteQuestionResultAsyncWithHttpInfo($associative_array)
+        return $this->deleteQuestionResultAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11645,8 +11361,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteQuestionResult'] to see the possible values for this operation
@@ -11654,10 +11368,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteQuestionResultAsyncWithHttpInfo($associative_array)
+    public function deleteQuestionResultAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->deleteQuestionResultRequest($associative_array);
+        $request = $this->deleteQuestionResultRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11698,8 +11412,6 @@ class DefaultApi
     /**
      * Create request for operation 'deleteQuestionResult'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteQuestionResult'] to see the possible values for this operation
@@ -11707,12 +11419,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteQuestionResultRequest($associative_array)
+    public function deleteQuestionResultRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteQuestionResult'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteQuestionResult'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -11820,7 +11530,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -11832,9 +11542,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\DeleteSSOUserAPIResponse
      */
-    public function deleteSSOUser($associative_array)
+    public function deleteSSOUser($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->deleteSSOUserWithHttpInfo($associative_array);
+        list($response) = $this->deleteSSOUserWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -11843,7 +11553,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -11855,9 +11565,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\DeleteSSOUserAPIResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteSSOUserWithHttpInfo($associative_array)
+    public function deleteSSOUserWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->deleteSSOUserRequest($associative_array);
+        $request = $this->deleteSSOUserRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11933,7 +11643,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -11944,9 +11654,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteSSOUserAsync($associative_array)
+    public function deleteSSOUserAsync($tenant_id, $id, array $options = [])
     {
-        return $this->deleteSSOUserAsyncWithHttpInfo($associative_array)
+        return $this->deleteSSOUserAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11959,7 +11669,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -11970,10 +11680,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteSSOUserAsyncWithHttpInfo($associative_array)
+    public function deleteSSOUserAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\DeleteSSOUserAPIResponse';
-        $request = $this->deleteSSOUserRequest($associative_array);
+        $request = $this->deleteSSOUserRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12014,7 +11724,7 @@ class DefaultApi
     /**
      * Create request for operation 'deleteSSOUser'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -12025,14 +11735,12 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteSSOUserRequest($associative_array)
+    public function deleteSSOUserRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $delete_comments = array_key_exists('delete_comments', $associative_array) ? $associative_array['delete_comments'] : null;
-        $comment_delete_mode = array_key_exists('comment_delete_mode', $associative_array) ? $associative_array['comment_delete_mode'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteSSOUser'][0];
+        // unbox the optional parameters and request options from the $options array
+        $delete_comments = array_key_exists('delete_comments', $options) ? $options['delete_comments'] : null;
+        $comment_delete_mode = array_key_exists('comment_delete_mode', $options) ? $options['comment_delete_mode'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteSSOUser'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -12160,7 +11868,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -12171,9 +11879,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\DeleteSubscriptionAPIResponse
      */
-    public function deleteSubscription($associative_array)
+    public function deleteSubscription($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->deleteSubscriptionWithHttpInfo($associative_array);
+        list($response) = $this->deleteSubscriptionWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -12182,7 +11890,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -12193,9 +11901,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\DeleteSubscriptionAPIResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteSubscriptionWithHttpInfo($associative_array)
+    public function deleteSubscriptionWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->deleteSubscriptionRequest($associative_array);
+        $request = $this->deleteSubscriptionRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12271,7 +11979,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -12281,9 +11989,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteSubscriptionAsync($associative_array)
+    public function deleteSubscriptionAsync($tenant_id, $id, array $options = [])
     {
-        return $this->deleteSubscriptionAsyncWithHttpInfo($associative_array)
+        return $this->deleteSubscriptionAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12296,7 +12004,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -12306,10 +12014,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteSubscriptionAsyncWithHttpInfo($associative_array)
+    public function deleteSubscriptionAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\DeleteSubscriptionAPIResponse';
-        $request = $this->deleteSubscriptionRequest($associative_array);
+        $request = $this->deleteSubscriptionRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12350,7 +12058,7 @@ class DefaultApi
     /**
      * Create request for operation 'deleteSubscription'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -12360,13 +12068,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteSubscriptionRequest($associative_array)
+    public function deleteSubscriptionRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteSubscription'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteSubscription'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -12484,7 +12190,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -12495,9 +12201,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteTenant($associative_array)
+    public function deleteTenant($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->deleteTenantWithHttpInfo($associative_array);
+        list($response) = $this->deleteTenantWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -12506,7 +12212,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -12517,9 +12223,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteTenantWithHttpInfo($associative_array)
+    public function deleteTenantWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->deleteTenantRequest($associative_array);
+        $request = $this->deleteTenantRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12609,7 +12315,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -12619,9 +12325,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteTenantAsync($associative_array)
+    public function deleteTenantAsync($tenant_id, $id, array $options = [])
     {
-        return $this->deleteTenantAsyncWithHttpInfo($associative_array)
+        return $this->deleteTenantAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12634,7 +12340,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -12644,10 +12350,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteTenantAsyncWithHttpInfo($associative_array)
+    public function deleteTenantAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->deleteTenantRequest($associative_array);
+        $request = $this->deleteTenantRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12688,7 +12394,7 @@ class DefaultApi
     /**
      * Create request for operation 'deleteTenant'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -12698,13 +12404,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteTenantRequest($associative_array)
+    public function deleteTenantRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $sure = array_key_exists('sure', $associative_array) ? $associative_array['sure'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteTenant'][0];
+        // unbox the optional parameters and request options from the $options array
+        $sure = array_key_exists('sure', $options) ? $options['sure'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteTenant'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -12822,8 +12526,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTenantPackage'] to see the possible values for this operation
@@ -12832,9 +12534,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteTenantPackage($associative_array)
+    public function deleteTenantPackage($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->deleteTenantPackageWithHttpInfo($associative_array);
+        list($response) = $this->deleteTenantPackageWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -12842,8 +12544,6 @@ class DefaultApi
      * Operation deleteTenantPackageWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -12853,9 +12553,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteTenantPackageWithHttpInfo($associative_array)
+    public function deleteTenantPackageWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->deleteTenantPackageRequest($associative_array);
+        $request = $this->deleteTenantPackageRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12945,8 +12645,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTenantPackage'] to see the possible values for this operation
@@ -12954,9 +12652,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteTenantPackageAsync($associative_array)
+    public function deleteTenantPackageAsync($tenant_id, $id, array $options = [])
     {
-        return $this->deleteTenantPackageAsyncWithHttpInfo($associative_array)
+        return $this->deleteTenantPackageAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12969,8 +12667,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTenantPackage'] to see the possible values for this operation
@@ -12978,10 +12674,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteTenantPackageAsyncWithHttpInfo($associative_array)
+    public function deleteTenantPackageAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->deleteTenantPackageRequest($associative_array);
+        $request = $this->deleteTenantPackageRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13022,8 +12718,6 @@ class DefaultApi
     /**
      * Create request for operation 'deleteTenantPackage'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTenantPackage'] to see the possible values for this operation
@@ -13031,12 +12725,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteTenantPackageRequest($associative_array)
+    public function deleteTenantPackageRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteTenantPackage'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteTenantPackage'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -13144,7 +12836,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -13156,9 +12848,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteTenantUser($associative_array)
+    public function deleteTenantUser($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->deleteTenantUserWithHttpInfo($associative_array);
+        list($response) = $this->deleteTenantUserWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -13167,7 +12859,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -13179,9 +12871,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteTenantUserWithHttpInfo($associative_array)
+    public function deleteTenantUserWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->deleteTenantUserRequest($associative_array);
+        $request = $this->deleteTenantUserRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13271,7 +12963,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -13282,9 +12974,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteTenantUserAsync($associative_array)
+    public function deleteTenantUserAsync($tenant_id, $id, array $options = [])
     {
-        return $this->deleteTenantUserAsyncWithHttpInfo($associative_array)
+        return $this->deleteTenantUserAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13297,7 +12989,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -13308,10 +13000,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteTenantUserAsyncWithHttpInfo($associative_array)
+    public function deleteTenantUserAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->deleteTenantUserRequest($associative_array);
+        $request = $this->deleteTenantUserRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13352,7 +13044,7 @@ class DefaultApi
     /**
      * Create request for operation 'deleteTenantUser'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -13363,14 +13055,12 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteTenantUserRequest($associative_array)
+    public function deleteTenantUserRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $delete_comments = array_key_exists('delete_comments', $associative_array) ? $associative_array['delete_comments'] : null;
-        $comment_delete_mode = array_key_exists('comment_delete_mode', $associative_array) ? $associative_array['comment_delete_mode'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteTenantUser'][0];
+        // unbox the optional parameters and request options from the $options array
+        $delete_comments = array_key_exists('delete_comments', $options) ? $options['delete_comments'] : null;
+        $comment_delete_mode = array_key_exists('comment_delete_mode', $options) ? $options['comment_delete_mode'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteTenantUser'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -13498,8 +13188,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteUserBadge'] to see the possible values for this operation
@@ -13508,9 +13196,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptySuccessResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteUserBadge($associative_array)
+    public function deleteUserBadge($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->deleteUserBadgeWithHttpInfo($associative_array);
+        list($response) = $this->deleteUserBadgeWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -13518,8 +13206,6 @@ class DefaultApi
      * Operation deleteUserBadgeWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -13529,9 +13215,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptySuccessResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteUserBadgeWithHttpInfo($associative_array)
+    public function deleteUserBadgeWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->deleteUserBadgeRequest($associative_array);
+        $request = $this->deleteUserBadgeRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13621,8 +13307,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteUserBadge'] to see the possible values for this operation
@@ -13630,9 +13314,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteUserBadgeAsync($associative_array)
+    public function deleteUserBadgeAsync($tenant_id, $id, array $options = [])
     {
-        return $this->deleteUserBadgeAsyncWithHttpInfo($associative_array)
+        return $this->deleteUserBadgeAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13645,8 +13329,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteUserBadge'] to see the possible values for this operation
@@ -13654,10 +13336,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteUserBadgeAsyncWithHttpInfo($associative_array)
+    public function deleteUserBadgeAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptySuccessResponse';
-        $request = $this->deleteUserBadgeRequest($associative_array);
+        $request = $this->deleteUserBadgeRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13698,8 +13380,6 @@ class DefaultApi
     /**
      * Create request for operation 'deleteUserBadge'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteUserBadge'] to see the possible values for this operation
@@ -13707,12 +13387,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteUserBadgeRequest($associative_array)
+    public function deleteUserBadgeRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteUserBadge'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteUserBadge'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -13820,7 +13498,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -13831,9 +13509,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\VoteDeleteResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteVote($associative_array)
+    public function deleteVote($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->deleteVoteWithHttpInfo($associative_array);
+        list($response) = $this->deleteVoteWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -13842,7 +13520,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -13853,9 +13531,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\VoteDeleteResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteVoteWithHttpInfo($associative_array)
+    public function deleteVoteWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->deleteVoteRequest($associative_array);
+        $request = $this->deleteVoteRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13945,7 +13623,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -13955,9 +13633,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteVoteAsync($associative_array)
+    public function deleteVoteAsync($tenant_id, $id, array $options = [])
     {
-        return $this->deleteVoteAsyncWithHttpInfo($associative_array)
+        return $this->deleteVoteAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13970,7 +13648,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -13980,10 +13658,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteVoteAsyncWithHttpInfo($associative_array)
+    public function deleteVoteAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\VoteDeleteResponse';
-        $request = $this->deleteVoteRequest($associative_array);
+        $request = $this->deleteVoteRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14024,7 +13702,7 @@ class DefaultApi
     /**
      * Create request for operation 'deleteVote'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -14034,13 +13712,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteVoteRequest($associative_array)
+    public function deleteVoteRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $edit_key = array_key_exists('edit_key', $associative_array) ? $associative_array['edit_key'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['deleteVote'][0];
+        // unbox the optional parameters and request options from the $options array
+        $edit_key = array_key_exists('edit_key', $options) ? $options['edit_key'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['deleteVote'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -14158,7 +13834,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -14170,9 +13846,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\FlagCommentResponse|\FastComments\Client\Model\APIError
      */
-    public function flagComment($associative_array)
+    public function flagComment($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->flagCommentWithHttpInfo($associative_array);
+        list($response) = $this->flagCommentWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -14181,7 +13857,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -14193,9 +13869,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\FlagCommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function flagCommentWithHttpInfo($associative_array)
+    public function flagCommentWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->flagCommentRequest($associative_array);
+        $request = $this->flagCommentRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14285,7 +13961,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -14296,9 +13972,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function flagCommentAsync($associative_array)
+    public function flagCommentAsync($tenant_id, $id, array $options = [])
     {
-        return $this->flagCommentAsyncWithHttpInfo($associative_array)
+        return $this->flagCommentAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -14311,7 +13987,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -14322,10 +13998,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function flagCommentAsyncWithHttpInfo($associative_array)
+    public function flagCommentAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\FlagCommentResponse';
-        $request = $this->flagCommentRequest($associative_array);
+        $request = $this->flagCommentRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14366,7 +14042,7 @@ class DefaultApi
     /**
      * Create request for operation 'flagComment'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -14377,14 +14053,12 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function flagCommentRequest($associative_array)
+    public function flagCommentRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $anon_user_id = array_key_exists('anon_user_id', $associative_array) ? $associative_array['anon_user_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['flagComment'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $anon_user_id = array_key_exists('anon_user_id', $options) ? $options['anon_user_id'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['flagComment'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -14512,7 +14186,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  float|null $limit limit (optional)
@@ -14526,9 +14200,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetAuditLogsResponse|\FastComments\Client\Model\APIError
      */
-    public function getAuditLogs($associative_array)
+    public function getAuditLogs($tenant_id, array $options = [])
     {
-        list($response) = $this->getAuditLogsWithHttpInfo($associative_array);
+        list($response) = $this->getAuditLogsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -14537,7 +14211,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $limit (optional)
@@ -14551,9 +14225,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetAuditLogsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAuditLogsWithHttpInfo($associative_array)
+    public function getAuditLogsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getAuditLogsRequest($associative_array);
+        $request = $this->getAuditLogsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14643,7 +14317,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $limit (optional)
@@ -14656,9 +14330,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAuditLogsAsync($associative_array)
+    public function getAuditLogsAsync($tenant_id, array $options = [])
     {
-        return $this->getAuditLogsAsyncWithHttpInfo($associative_array)
+        return $this->getAuditLogsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -14671,7 +14345,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $limit (optional)
@@ -14684,10 +14358,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAuditLogsAsyncWithHttpInfo($associative_array)
+    public function getAuditLogsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetAuditLogsResponse';
-        $request = $this->getAuditLogsRequest($associative_array);
+        $request = $this->getAuditLogsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14728,7 +14402,7 @@ class DefaultApi
     /**
      * Create request for operation 'getAuditLogs'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $limit (optional)
@@ -14741,16 +14415,15 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAuditLogsRequest($associative_array)
+    public function getAuditLogsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $order = array_key_exists('order', $associative_array) ? $associative_array['order'] : null;
-        $after = array_key_exists('after', $associative_array) ? $associative_array['after'] : null;
-        $before = array_key_exists('before', $associative_array) ? $associative_array['before'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getAuditLogs'][0];
+        // unbox the optional parameters and request options from the $options array
+        $limit = array_key_exists('limit', $options) ? $options['limit'] : null;
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $order = array_key_exists('order', $options) ? $options['order'] : null;
+        $after = array_key_exists('after', $options) ? $options['after'] : null;
+        $before = array_key_exists('before', $options) ? $options['before'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getAuditLogs'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -14893,8 +14566,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCachedNotificationCount'] to see the possible values for this operation
@@ -14903,9 +14574,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetCachedNotificationCountResponse|\FastComments\Client\Model\APIError
      */
-    public function getCachedNotificationCount($associative_array)
+    public function getCachedNotificationCount($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->getCachedNotificationCountWithHttpInfo($associative_array);
+        list($response) = $this->getCachedNotificationCountWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -14913,8 +14584,6 @@ class DefaultApi
      * Operation getCachedNotificationCountWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -14924,9 +14593,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetCachedNotificationCountResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCachedNotificationCountWithHttpInfo($associative_array)
+    public function getCachedNotificationCountWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->getCachedNotificationCountRequest($associative_array);
+        $request = $this->getCachedNotificationCountRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -15016,8 +14685,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCachedNotificationCount'] to see the possible values for this operation
@@ -15025,9 +14692,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCachedNotificationCountAsync($associative_array)
+    public function getCachedNotificationCountAsync($tenant_id, $id, array $options = [])
     {
-        return $this->getCachedNotificationCountAsyncWithHttpInfo($associative_array)
+        return $this->getCachedNotificationCountAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -15040,8 +14707,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCachedNotificationCount'] to see the possible values for this operation
@@ -15049,10 +14714,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCachedNotificationCountAsyncWithHttpInfo($associative_array)
+    public function getCachedNotificationCountAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetCachedNotificationCountResponse';
-        $request = $this->getCachedNotificationCountRequest($associative_array);
+        $request = $this->getCachedNotificationCountRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -15093,8 +14758,6 @@ class DefaultApi
     /**
      * Create request for operation 'getCachedNotificationCount'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCachedNotificationCount'] to see the possible values for this operation
@@ -15102,12 +14765,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCachedNotificationCountRequest($associative_array)
+    public function getCachedNotificationCountRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getCachedNotificationCount'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getCachedNotificationCount'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -15215,8 +14876,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComment'] to see the possible values for this operation
@@ -15225,9 +14884,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIGetCommentResponse|\FastComments\Client\Model\APIError
      */
-    public function getComment($associative_array)
+    public function getComment($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->getCommentWithHttpInfo($associative_array);
+        list($response) = $this->getCommentWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -15235,8 +14894,6 @@ class DefaultApi
      * Operation getCommentWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -15246,9 +14903,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIGetCommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCommentWithHttpInfo($associative_array)
+    public function getCommentWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->getCommentRequest($associative_array);
+        $request = $this->getCommentRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -15338,8 +14995,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComment'] to see the possible values for this operation
@@ -15347,9 +15002,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentAsync($associative_array)
+    public function getCommentAsync($tenant_id, $id, array $options = [])
     {
-        return $this->getCommentAsyncWithHttpInfo($associative_array)
+        return $this->getCommentAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -15362,8 +15017,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComment'] to see the possible values for this operation
@@ -15371,10 +15024,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentAsyncWithHttpInfo($associative_array)
+    public function getCommentAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIGetCommentResponse';
-        $request = $this->getCommentRequest($associative_array);
+        $request = $this->getCommentRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -15415,8 +15068,6 @@ class DefaultApi
     /**
      * Create request for operation 'getComment'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getComment'] to see the possible values for this operation
@@ -15424,12 +15075,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCommentRequest($associative_array)
+    public function getCommentRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getComment'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getComment'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -15537,7 +15186,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  int|null $page page (optional)
@@ -15562,9 +15211,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIGetCommentsResponse|\FastComments\Client\Model\APIError
      */
-    public function getComments($associative_array)
+    public function getComments($tenant_id, array $options = [])
     {
-        list($response) = $this->getCommentsWithHttpInfo($associative_array);
+        list($response) = $this->getCommentsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -15573,7 +15222,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  int|null $page (optional)
@@ -15598,9 +15247,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIGetCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCommentsWithHttpInfo($associative_array)
+    public function getCommentsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getCommentsRequest($associative_array);
+        $request = $this->getCommentsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -15690,7 +15339,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  int|null $page (optional)
@@ -15714,9 +15363,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentsAsync($associative_array)
+    public function getCommentsAsync($tenant_id, array $options = [])
     {
-        return $this->getCommentsAsyncWithHttpInfo($associative_array)
+        return $this->getCommentsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -15729,7 +15378,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  int|null $page (optional)
@@ -15753,10 +15402,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentsAsyncWithHttpInfo($associative_array)
+    public function getCommentsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIGetCommentsResponse';
-        $request = $this->getCommentsRequest($associative_array);
+        $request = $this->getCommentsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -15797,7 +15446,7 @@ class DefaultApi
     /**
      * Create request for operation 'getComments'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  int|null $page (optional)
@@ -15821,27 +15470,26 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCommentsRequest($associative_array)
+    public function getCommentsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : null;
-        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $as_tree = array_key_exists('as_tree', $associative_array) ? $associative_array['as_tree'] : null;
-        $skip_children = array_key_exists('skip_children', $associative_array) ? $associative_array['skip_children'] : null;
-        $limit_children = array_key_exists('limit_children', $associative_array) ? $associative_array['limit_children'] : null;
-        $max_tree_depth = array_key_exists('max_tree_depth', $associative_array) ? $associative_array['max_tree_depth'] : null;
-        $url_id = array_key_exists('url_id', $associative_array) ? $associative_array['url_id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $anon_user_id = array_key_exists('anon_user_id', $associative_array) ? $associative_array['anon_user_id'] : null;
-        $context_user_id = array_key_exists('context_user_id', $associative_array) ? $associative_array['context_user_id'] : null;
-        $hash_tag = array_key_exists('hash_tag', $associative_array) ? $associative_array['hash_tag'] : null;
-        $parent_id = array_key_exists('parent_id', $associative_array) ? $associative_array['parent_id'] : null;
-        $direction = array_key_exists('direction', $associative_array) ? $associative_array['direction'] : null;
-        $from_date = array_key_exists('from_date', $associative_array) ? $associative_array['from_date'] : null;
-        $to_date = array_key_exists('to_date', $associative_array) ? $associative_array['to_date'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getComments'][0];
+        // unbox the optional parameters and request options from the $options array
+        $page = array_key_exists('page', $options) ? $options['page'] : null;
+        $limit = array_key_exists('limit', $options) ? $options['limit'] : null;
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $as_tree = array_key_exists('as_tree', $options) ? $options['as_tree'] : null;
+        $skip_children = array_key_exists('skip_children', $options) ? $options['skip_children'] : null;
+        $limit_children = array_key_exists('limit_children', $options) ? $options['limit_children'] : null;
+        $max_tree_depth = array_key_exists('max_tree_depth', $options) ? $options['max_tree_depth'] : null;
+        $url_id = array_key_exists('url_id', $options) ? $options['url_id'] : null;
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $anon_user_id = array_key_exists('anon_user_id', $options) ? $options['anon_user_id'] : null;
+        $context_user_id = array_key_exists('context_user_id', $options) ? $options['context_user_id'] : null;
+        $hash_tag = array_key_exists('hash_tag', $options) ? $options['hash_tag'] : null;
+        $parent_id = array_key_exists('parent_id', $options) ? $options['parent_id'] : null;
+        $direction = array_key_exists('direction', $options) ? $options['direction'] : null;
+        $from_date = array_key_exists('from_date', $options) ? $options['from_date'] : null;
+        $to_date = array_key_exists('to_date', $options) ? $options['to_date'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getComments'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -16094,8 +15742,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $domain domain (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomainConfig'] to see the possible values for this operation
@@ -16104,9 +15750,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetDomainConfigResponse
      */
-    public function getDomainConfig($associative_array)
+    public function getDomainConfig($tenant_id, $domain, array $options = [])
     {
-        list($response) = $this->getDomainConfigWithHttpInfo($associative_array);
+        list($response) = $this->getDomainConfigWithHttpInfo($tenant_id, $domain, $options);
         return $response;
     }
 
@@ -16114,8 +15760,6 @@ class DefaultApi
      * Operation getDomainConfigWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $domain (required)
@@ -16125,9 +15769,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetDomainConfigResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDomainConfigWithHttpInfo($associative_array)
+    public function getDomainConfigWithHttpInfo($tenant_id, $domain, array $options = [])
     {
-        $request = $this->getDomainConfigRequest($associative_array);
+        $request = $this->getDomainConfigRequest($tenant_id, $domain, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -16203,8 +15847,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $domain (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomainConfig'] to see the possible values for this operation
@@ -16212,9 +15854,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDomainConfigAsync($associative_array)
+    public function getDomainConfigAsync($tenant_id, $domain, array $options = [])
     {
-        return $this->getDomainConfigAsyncWithHttpInfo($associative_array)
+        return $this->getDomainConfigAsyncWithHttpInfo($tenant_id, $domain, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -16227,8 +15869,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $domain (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomainConfig'] to see the possible values for this operation
@@ -16236,10 +15876,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDomainConfigAsyncWithHttpInfo($associative_array)
+    public function getDomainConfigAsyncWithHttpInfo($tenant_id, $domain, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetDomainConfigResponse';
-        $request = $this->getDomainConfigRequest($associative_array);
+        $request = $this->getDomainConfigRequest($tenant_id, $domain, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -16280,8 +15920,6 @@ class DefaultApi
     /**
      * Create request for operation 'getDomainConfig'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $domain (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomainConfig'] to see the possible values for this operation
@@ -16289,12 +15927,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getDomainConfigRequest($associative_array)
+    public function getDomainConfigRequest($tenant_id, $domain, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $domain = array_key_exists('domain', $associative_array) ? $associative_array['domain'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getDomainConfig'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getDomainConfig'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -16402,8 +16038,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomainConfigs'] to see the possible values for this operation
      *
@@ -16411,9 +16045,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetDomainConfigsResponse
      */
-    public function getDomainConfigs($associative_array)
+    public function getDomainConfigs($tenant_id, array $options = [])
     {
-        list($response) = $this->getDomainConfigsWithHttpInfo($associative_array);
+        list($response) = $this->getDomainConfigsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -16422,8 +16056,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomainConfigs'] to see the possible values for this operation
      *
@@ -16431,9 +16063,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetDomainConfigsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDomainConfigsWithHttpInfo($associative_array)
+    public function getDomainConfigsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getDomainConfigsRequest($associative_array);
+        $request = $this->getDomainConfigsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -16509,17 +16141,15 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomainConfigs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDomainConfigsAsync($associative_array)
+    public function getDomainConfigsAsync($tenant_id, array $options = [])
     {
-        return $this->getDomainConfigsAsyncWithHttpInfo($associative_array)
+        return $this->getDomainConfigsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -16532,18 +16162,16 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomainConfigs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDomainConfigsAsyncWithHttpInfo($associative_array)
+    public function getDomainConfigsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetDomainConfigsResponse';
-        $request = $this->getDomainConfigsRequest($associative_array);
+        $request = $this->getDomainConfigsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -16584,19 +16212,16 @@ class DefaultApi
     /**
      * Create request for operation 'getDomainConfigs'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomainConfigs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getDomainConfigsRequest($associative_array)
+    public function getDomainConfigsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getDomainConfigs'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getDomainConfigs'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -16689,8 +16314,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmailTemplate'] to see the possible values for this operation
@@ -16699,9 +16322,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetEmailTemplateResponse|\FastComments\Client\Model\APIError
      */
-    public function getEmailTemplate($associative_array)
+    public function getEmailTemplate($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->getEmailTemplateWithHttpInfo($associative_array);
+        list($response) = $this->getEmailTemplateWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -16709,8 +16332,6 @@ class DefaultApi
      * Operation getEmailTemplateWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -16720,9 +16341,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetEmailTemplateResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getEmailTemplateWithHttpInfo($associative_array)
+    public function getEmailTemplateWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->getEmailTemplateRequest($associative_array);
+        $request = $this->getEmailTemplateRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -16812,8 +16433,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmailTemplate'] to see the possible values for this operation
@@ -16821,9 +16440,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEmailTemplateAsync($associative_array)
+    public function getEmailTemplateAsync($tenant_id, $id, array $options = [])
     {
-        return $this->getEmailTemplateAsyncWithHttpInfo($associative_array)
+        return $this->getEmailTemplateAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -16836,8 +16455,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmailTemplate'] to see the possible values for this operation
@@ -16845,10 +16462,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEmailTemplateAsyncWithHttpInfo($associative_array)
+    public function getEmailTemplateAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetEmailTemplateResponse';
-        $request = $this->getEmailTemplateRequest($associative_array);
+        $request = $this->getEmailTemplateRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -16889,8 +16506,6 @@ class DefaultApi
     /**
      * Create request for operation 'getEmailTemplate'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmailTemplate'] to see the possible values for this operation
@@ -16898,12 +16513,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getEmailTemplateRequest($associative_array)
+    public function getEmailTemplateRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getEmailTemplate'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getEmailTemplate'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -17011,8 +16624,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmailTemplateDefinitions'] to see the possible values for this operation
      *
@@ -17020,9 +16631,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetEmailTemplateDefinitionsResponse|\FastComments\Client\Model\APIError
      */
-    public function getEmailTemplateDefinitions($associative_array)
+    public function getEmailTemplateDefinitions($tenant_id, array $options = [])
     {
-        list($response) = $this->getEmailTemplateDefinitionsWithHttpInfo($associative_array);
+        list($response) = $this->getEmailTemplateDefinitionsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -17031,8 +16642,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmailTemplateDefinitions'] to see the possible values for this operation
      *
@@ -17040,9 +16649,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetEmailTemplateDefinitionsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getEmailTemplateDefinitionsWithHttpInfo($associative_array)
+    public function getEmailTemplateDefinitionsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getEmailTemplateDefinitionsRequest($associative_array);
+        $request = $this->getEmailTemplateDefinitionsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -17132,17 +16741,15 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmailTemplateDefinitions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEmailTemplateDefinitionsAsync($associative_array)
+    public function getEmailTemplateDefinitionsAsync($tenant_id, array $options = [])
     {
-        return $this->getEmailTemplateDefinitionsAsyncWithHttpInfo($associative_array)
+        return $this->getEmailTemplateDefinitionsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -17155,18 +16762,16 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmailTemplateDefinitions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEmailTemplateDefinitionsAsyncWithHttpInfo($associative_array)
+    public function getEmailTemplateDefinitionsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetEmailTemplateDefinitionsResponse';
-        $request = $this->getEmailTemplateDefinitionsRequest($associative_array);
+        $request = $this->getEmailTemplateDefinitionsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -17207,19 +16812,16 @@ class DefaultApi
     /**
      * Create request for operation 'getEmailTemplateDefinitions'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEmailTemplateDefinitions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getEmailTemplateDefinitionsRequest($associative_array)
+    public function getEmailTemplateDefinitionsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getEmailTemplateDefinitions'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getEmailTemplateDefinitions'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -17312,7 +16914,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -17323,9 +16925,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse|\FastComments\Client\Model\APIError
      */
-    public function getEmailTemplateRenderErrors($associative_array)
+    public function getEmailTemplateRenderErrors($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->getEmailTemplateRenderErrorsWithHttpInfo($associative_array);
+        list($response) = $this->getEmailTemplateRenderErrorsWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -17334,7 +16936,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -17345,9 +16947,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getEmailTemplateRenderErrorsWithHttpInfo($associative_array)
+    public function getEmailTemplateRenderErrorsWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->getEmailTemplateRenderErrorsRequest($associative_array);
+        $request = $this->getEmailTemplateRenderErrorsRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -17437,7 +17039,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -17447,9 +17049,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEmailTemplateRenderErrorsAsync($associative_array)
+    public function getEmailTemplateRenderErrorsAsync($tenant_id, $id, array $options = [])
     {
-        return $this->getEmailTemplateRenderErrorsAsyncWithHttpInfo($associative_array)
+        return $this->getEmailTemplateRenderErrorsAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -17462,7 +17064,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -17472,10 +17074,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEmailTemplateRenderErrorsAsyncWithHttpInfo($associative_array)
+    public function getEmailTemplateRenderErrorsAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetEmailTemplateRenderErrorsResponse';
-        $request = $this->getEmailTemplateRenderErrorsRequest($associative_array);
+        $request = $this->getEmailTemplateRenderErrorsRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -17516,7 +17118,7 @@ class DefaultApi
     /**
      * Create request for operation 'getEmailTemplateRenderErrors'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -17526,13 +17128,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getEmailTemplateRenderErrorsRequest($associative_array)
+    public function getEmailTemplateRenderErrorsRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getEmailTemplateRenderErrors'][0];
+        // unbox the optional parameters and request options from the $options array
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getEmailTemplateRenderErrors'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -17650,7 +17250,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  float|null $skip skip (optional)
@@ -17660,9 +17260,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetEmailTemplatesResponse|\FastComments\Client\Model\APIError
      */
-    public function getEmailTemplates($associative_array)
+    public function getEmailTemplates($tenant_id, array $options = [])
     {
-        list($response) = $this->getEmailTemplatesWithHttpInfo($associative_array);
+        list($response) = $this->getEmailTemplatesWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -17671,7 +17271,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -17681,9 +17281,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetEmailTemplatesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getEmailTemplatesWithHttpInfo($associative_array)
+    public function getEmailTemplatesWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getEmailTemplatesRequest($associative_array);
+        $request = $this->getEmailTemplatesRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -17773,7 +17373,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -17782,9 +17382,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEmailTemplatesAsync($associative_array)
+    public function getEmailTemplatesAsync($tenant_id, array $options = [])
     {
-        return $this->getEmailTemplatesAsyncWithHttpInfo($associative_array)
+        return $this->getEmailTemplatesAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -17797,7 +17397,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -17806,10 +17406,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getEmailTemplatesAsyncWithHttpInfo($associative_array)
+    public function getEmailTemplatesAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetEmailTemplatesResponse';
-        $request = $this->getEmailTemplatesRequest($associative_array);
+        $request = $this->getEmailTemplatesRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -17850,7 +17450,7 @@ class DefaultApi
     /**
      * Create request for operation 'getEmailTemplates'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -17859,12 +17459,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getEmailTemplatesRequest($associative_array)
+    public function getEmailTemplatesRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getEmailTemplates'][0];
+        // unbox the optional parameters and request options from the $options array
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getEmailTemplates'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -17967,7 +17566,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $after_id after_id (optional)
@@ -17979,9 +17578,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetFeedPostsResponse|\FastComments\Client\Model\APIError
      */
-    public function getFeedPosts($associative_array)
+    public function getFeedPosts($tenant_id, array $options = [])
     {
-        list($response) = $this->getFeedPostsWithHttpInfo($associative_array);
+        list($response) = $this->getFeedPostsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -17990,7 +17589,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $after_id (optional)
@@ -18002,9 +17601,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetFeedPostsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFeedPostsWithHttpInfo($associative_array)
+    public function getFeedPostsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getFeedPostsRequest($associative_array);
+        $request = $this->getFeedPostsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -18094,7 +17693,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $after_id (optional)
@@ -18105,9 +17704,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFeedPostsAsync($associative_array)
+    public function getFeedPostsAsync($tenant_id, array $options = [])
     {
-        return $this->getFeedPostsAsyncWithHttpInfo($associative_array)
+        return $this->getFeedPostsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -18120,7 +17719,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $after_id (optional)
@@ -18131,10 +17730,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFeedPostsAsyncWithHttpInfo($associative_array)
+    public function getFeedPostsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetFeedPostsResponse';
-        $request = $this->getFeedPostsRequest($associative_array);
+        $request = $this->getFeedPostsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -18175,7 +17774,7 @@ class DefaultApi
     /**
      * Create request for operation 'getFeedPosts'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $after_id (optional)
@@ -18186,14 +17785,13 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getFeedPostsRequest($associative_array)
+    public function getFeedPostsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $after_id = array_key_exists('after_id', $associative_array) ? $associative_array['after_id'] : null;
-        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : null;
-        $tags = array_key_exists('tags', $associative_array) ? $associative_array['tags'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getFeedPosts'][0];
+        // unbox the optional parameters and request options from the $options array
+        $after_id = array_key_exists('after_id', $options) ? $options['after_id'] : null;
+        $limit = array_key_exists('limit', $options) ? $options['limit'] : null;
+        $tags = array_key_exists('tags', $options) ? $options['tags'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getFeedPosts'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -18316,7 +17914,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  float|null $page page (optional)
@@ -18326,9 +17924,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetHashTagsResponse|\FastComments\Client\Model\APIError
      */
-    public function getHashTags($associative_array)
+    public function getHashTags($tenant_id, array $options = [])
     {
-        list($response) = $this->getHashTagsWithHttpInfo($associative_array);
+        list($response) = $this->getHashTagsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -18337,7 +17935,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $page (optional)
@@ -18347,9 +17945,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetHashTagsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getHashTagsWithHttpInfo($associative_array)
+    public function getHashTagsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getHashTagsRequest($associative_array);
+        $request = $this->getHashTagsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -18439,7 +18037,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $page (optional)
@@ -18448,9 +18046,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getHashTagsAsync($associative_array)
+    public function getHashTagsAsync($tenant_id, array $options = [])
     {
-        return $this->getHashTagsAsyncWithHttpInfo($associative_array)
+        return $this->getHashTagsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -18463,7 +18061,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $page (optional)
@@ -18472,10 +18070,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getHashTagsAsyncWithHttpInfo($associative_array)
+    public function getHashTagsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetHashTagsResponse';
-        $request = $this->getHashTagsRequest($associative_array);
+        $request = $this->getHashTagsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -18516,7 +18114,7 @@ class DefaultApi
     /**
      * Create request for operation 'getHashTags'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $page (optional)
@@ -18525,12 +18123,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getHashTagsRequest($associative_array)
+    public function getHashTagsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getHashTags'][0];
+        // unbox the optional parameters and request options from the $options array
+        $page = array_key_exists('page', $options) ? $options['page'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getHashTags'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -18633,8 +18230,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerator'] to see the possible values for this operation
@@ -18643,9 +18238,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetModeratorResponse|\FastComments\Client\Model\APIError
      */
-    public function getModerator($associative_array)
+    public function getModerator($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->getModeratorWithHttpInfo($associative_array);
+        list($response) = $this->getModeratorWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -18653,8 +18248,6 @@ class DefaultApi
      * Operation getModeratorWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -18664,9 +18257,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetModeratorResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getModeratorWithHttpInfo($associative_array)
+    public function getModeratorWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->getModeratorRequest($associative_array);
+        $request = $this->getModeratorRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -18756,8 +18349,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerator'] to see the possible values for this operation
@@ -18765,9 +18356,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModeratorAsync($associative_array)
+    public function getModeratorAsync($tenant_id, $id, array $options = [])
     {
-        return $this->getModeratorAsyncWithHttpInfo($associative_array)
+        return $this->getModeratorAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -18780,8 +18371,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerator'] to see the possible values for this operation
@@ -18789,10 +18378,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModeratorAsyncWithHttpInfo($associative_array)
+    public function getModeratorAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetModeratorResponse';
-        $request = $this->getModeratorRequest($associative_array);
+        $request = $this->getModeratorRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -18833,8 +18422,6 @@ class DefaultApi
     /**
      * Create request for operation 'getModerator'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerator'] to see the possible values for this operation
@@ -18842,12 +18429,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getModeratorRequest($associative_array)
+    public function getModeratorRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getModerator'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getModerator'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -18955,7 +18540,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  float|null $skip skip (optional)
@@ -18965,9 +18550,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetModeratorsResponse|\FastComments\Client\Model\APIError
      */
-    public function getModerators($associative_array)
+    public function getModerators($tenant_id, array $options = [])
     {
-        list($response) = $this->getModeratorsWithHttpInfo($associative_array);
+        list($response) = $this->getModeratorsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -18976,7 +18561,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -18986,9 +18571,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetModeratorsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getModeratorsWithHttpInfo($associative_array)
+    public function getModeratorsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getModeratorsRequest($associative_array);
+        $request = $this->getModeratorsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -19078,7 +18663,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -19087,9 +18672,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModeratorsAsync($associative_array)
+    public function getModeratorsAsync($tenant_id, array $options = [])
     {
-        return $this->getModeratorsAsyncWithHttpInfo($associative_array)
+        return $this->getModeratorsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -19102,7 +18687,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -19111,10 +18696,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModeratorsAsyncWithHttpInfo($associative_array)
+    public function getModeratorsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetModeratorsResponse';
-        $request = $this->getModeratorsRequest($associative_array);
+        $request = $this->getModeratorsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -19155,7 +18740,7 @@ class DefaultApi
     /**
      * Create request for operation 'getModerators'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -19164,12 +18749,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getModeratorsRequest($associative_array)
+    public function getModeratorsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getModerators'][0];
+        // unbox the optional parameters and request options from the $options array
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getModerators'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -19272,7 +18856,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $user_id user_id (optional)
@@ -19286,9 +18870,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetNotificationCountResponse|\FastComments\Client\Model\APIError
      */
-    public function getNotificationCount($associative_array)
+    public function getNotificationCount($tenant_id, array $options = [])
     {
-        list($response) = $this->getNotificationCountWithHttpInfo($associative_array);
+        list($response) = $this->getNotificationCountWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -19297,7 +18881,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -19311,9 +18895,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetNotificationCountResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getNotificationCountWithHttpInfo($associative_array)
+    public function getNotificationCountWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getNotificationCountRequest($associative_array);
+        $request = $this->getNotificationCountRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -19403,7 +18987,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -19416,9 +19000,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getNotificationCountAsync($associative_array)
+    public function getNotificationCountAsync($tenant_id, array $options = [])
     {
-        return $this->getNotificationCountAsyncWithHttpInfo($associative_array)
+        return $this->getNotificationCountAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -19431,7 +19015,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -19444,10 +19028,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getNotificationCountAsyncWithHttpInfo($associative_array)
+    public function getNotificationCountAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetNotificationCountResponse';
-        $request = $this->getNotificationCountRequest($associative_array);
+        $request = $this->getNotificationCountRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -19488,7 +19072,7 @@ class DefaultApi
     /**
      * Create request for operation 'getNotificationCount'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -19501,16 +19085,15 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getNotificationCountRequest($associative_array)
+    public function getNotificationCountRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $url_id = array_key_exists('url_id', $associative_array) ? $associative_array['url_id'] : null;
-        $from_comment_id = array_key_exists('from_comment_id', $associative_array) ? $associative_array['from_comment_id'] : null;
-        $viewed = array_key_exists('viewed', $associative_array) ? $associative_array['viewed'] : null;
-        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getNotificationCount'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $url_id = array_key_exists('url_id', $options) ? $options['url_id'] : null;
+        $from_comment_id = array_key_exists('from_comment_id', $options) ? $options['from_comment_id'] : null;
+        $viewed = array_key_exists('viewed', $options) ? $options['viewed'] : null;
+        $type = array_key_exists('type', $options) ? $options['type'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getNotificationCount'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -19653,7 +19236,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $user_id user_id (optional)
@@ -19668,9 +19251,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetNotificationsResponse|\FastComments\Client\Model\APIError
      */
-    public function getNotifications($associative_array)
+    public function getNotifications($tenant_id, array $options = [])
     {
-        list($response) = $this->getNotificationsWithHttpInfo($associative_array);
+        list($response) = $this->getNotificationsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -19679,7 +19262,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -19694,9 +19277,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetNotificationsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getNotificationsWithHttpInfo($associative_array)
+    public function getNotificationsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getNotificationsRequest($associative_array);
+        $request = $this->getNotificationsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -19786,7 +19369,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -19800,9 +19383,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getNotificationsAsync($associative_array)
+    public function getNotificationsAsync($tenant_id, array $options = [])
     {
-        return $this->getNotificationsAsyncWithHttpInfo($associative_array)
+        return $this->getNotificationsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -19815,7 +19398,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -19829,10 +19412,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getNotificationsAsyncWithHttpInfo($associative_array)
+    public function getNotificationsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetNotificationsResponse';
-        $request = $this->getNotificationsRequest($associative_array);
+        $request = $this->getNotificationsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -19873,7 +19456,7 @@ class DefaultApi
     /**
      * Create request for operation 'getNotifications'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -19887,17 +19470,16 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getNotificationsRequest($associative_array)
+    public function getNotificationsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $url_id = array_key_exists('url_id', $associative_array) ? $associative_array['url_id'] : null;
-        $from_comment_id = array_key_exists('from_comment_id', $associative_array) ? $associative_array['from_comment_id'] : null;
-        $viewed = array_key_exists('viewed', $associative_array) ? $associative_array['viewed'] : null;
-        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getNotifications'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $url_id = array_key_exists('url_id', $options) ? $options['url_id'] : null;
+        $from_comment_id = array_key_exists('from_comment_id', $options) ? $options['from_comment_id'] : null;
+        $viewed = array_key_exists('viewed', $options) ? $options['viewed'] : null;
+        $type = array_key_exists('type', $options) ? $options['type'] : null;
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getNotifications'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -20050,8 +19632,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $url_id url_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPageByURLId'] to see the possible values for this operation
@@ -20060,9 +19640,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetPageByURLIdAPIResponse
      */
-    public function getPageByURLId($associative_array)
+    public function getPageByURLId($tenant_id, $url_id, array $options = [])
     {
-        list($response) = $this->getPageByURLIdWithHttpInfo($associative_array);
+        list($response) = $this->getPageByURLIdWithHttpInfo($tenant_id, $url_id, $options);
         return $response;
     }
 
@@ -20070,8 +19650,6 @@ class DefaultApi
      * Operation getPageByURLIdWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -20081,9 +19659,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetPageByURLIdAPIResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageByURLIdWithHttpInfo($associative_array)
+    public function getPageByURLIdWithHttpInfo($tenant_id, $url_id, array $options = [])
     {
-        $request = $this->getPageByURLIdRequest($associative_array);
+        $request = $this->getPageByURLIdRequest($tenant_id, $url_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -20159,8 +19737,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPageByURLId'] to see the possible values for this operation
@@ -20168,9 +19744,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageByURLIdAsync($associative_array)
+    public function getPageByURLIdAsync($tenant_id, $url_id, array $options = [])
     {
-        return $this->getPageByURLIdAsyncWithHttpInfo($associative_array)
+        return $this->getPageByURLIdAsyncWithHttpInfo($tenant_id, $url_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -20183,8 +19759,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPageByURLId'] to see the possible values for this operation
@@ -20192,10 +19766,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageByURLIdAsyncWithHttpInfo($associative_array)
+    public function getPageByURLIdAsyncWithHttpInfo($tenant_id, $url_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetPageByURLIdAPIResponse';
-        $request = $this->getPageByURLIdRequest($associative_array);
+        $request = $this->getPageByURLIdRequest($tenant_id, $url_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -20236,8 +19810,6 @@ class DefaultApi
     /**
      * Create request for operation 'getPageByURLId'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPageByURLId'] to see the possible values for this operation
@@ -20245,12 +19817,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageByURLIdRequest($associative_array)
+    public function getPageByURLIdRequest($tenant_id, $url_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $url_id = array_key_exists('url_id', $associative_array) ? $associative_array['url_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getPageByURLId'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getPageByURLId'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -20359,8 +19929,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPages'] to see the possible values for this operation
      *
@@ -20368,9 +19936,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetPagesAPIResponse
      */
-    public function getPages($associative_array)
+    public function getPages($tenant_id, array $options = [])
     {
-        list($response) = $this->getPagesWithHttpInfo($associative_array);
+        list($response) = $this->getPagesWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -20379,8 +19947,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPages'] to see the possible values for this operation
      *
@@ -20388,9 +19954,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetPagesAPIResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPagesWithHttpInfo($associative_array)
+    public function getPagesWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getPagesRequest($associative_array);
+        $request = $this->getPagesRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -20466,17 +20032,15 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPagesAsync($associative_array)
+    public function getPagesAsync($tenant_id, array $options = [])
     {
-        return $this->getPagesAsyncWithHttpInfo($associative_array)
+        return $this->getPagesAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -20489,18 +20053,16 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPagesAsyncWithHttpInfo($associative_array)
+    public function getPagesAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetPagesAPIResponse';
-        $request = $this->getPagesRequest($associative_array);
+        $request = $this->getPagesRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -20541,19 +20103,16 @@ class DefaultApi
     /**
      * Create request for operation 'getPages'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPagesRequest($associative_array)
+    public function getPagesRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getPages'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getPages'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -20646,7 +20205,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $comment_id comment_id (optional)
@@ -20661,9 +20220,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetPendingWebhookEventCountResponse|\FastComments\Client\Model\APIError
      */
-    public function getPendingWebhookEventCount($associative_array)
+    public function getPendingWebhookEventCount($tenant_id, array $options = [])
     {
-        list($response) = $this->getPendingWebhookEventCountWithHttpInfo($associative_array);
+        list($response) = $this->getPendingWebhookEventCountWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -20672,7 +20231,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $comment_id (optional)
@@ -20687,9 +20246,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetPendingWebhookEventCountResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPendingWebhookEventCountWithHttpInfo($associative_array)
+    public function getPendingWebhookEventCountWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getPendingWebhookEventCountRequest($associative_array);
+        $request = $this->getPendingWebhookEventCountRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -20779,7 +20338,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $comment_id (optional)
@@ -20793,9 +20352,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPendingWebhookEventCountAsync($associative_array)
+    public function getPendingWebhookEventCountAsync($tenant_id, array $options = [])
     {
-        return $this->getPendingWebhookEventCountAsyncWithHttpInfo($associative_array)
+        return $this->getPendingWebhookEventCountAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -20808,7 +20367,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $comment_id (optional)
@@ -20822,10 +20381,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPendingWebhookEventCountAsyncWithHttpInfo($associative_array)
+    public function getPendingWebhookEventCountAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetPendingWebhookEventCountResponse';
-        $request = $this->getPendingWebhookEventCountRequest($associative_array);
+        $request = $this->getPendingWebhookEventCountRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -20866,7 +20425,7 @@ class DefaultApi
     /**
      * Create request for operation 'getPendingWebhookEventCount'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $comment_id (optional)
@@ -20880,17 +20439,16 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPendingWebhookEventCountRequest($associative_array)
+    public function getPendingWebhookEventCountRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $external_id = array_key_exists('external_id', $associative_array) ? $associative_array['external_id'] : null;
-        $event_type = array_key_exists('event_type', $associative_array) ? $associative_array['event_type'] : null;
-        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
-        $domain = array_key_exists('domain', $associative_array) ? $associative_array['domain'] : null;
-        $attempt_count_gt = array_key_exists('attempt_count_gt', $associative_array) ? $associative_array['attempt_count_gt'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getPendingWebhookEventCount'][0];
+        // unbox the optional parameters and request options from the $options array
+        $comment_id = array_key_exists('comment_id', $options) ? $options['comment_id'] : null;
+        $external_id = array_key_exists('external_id', $options) ? $options['external_id'] : null;
+        $event_type = array_key_exists('event_type', $options) ? $options['event_type'] : null;
+        $type = array_key_exists('type', $options) ? $options['type'] : null;
+        $domain = array_key_exists('domain', $options) ? $options['domain'] : null;
+        $attempt_count_gt = array_key_exists('attempt_count_gt', $options) ? $options['attempt_count_gt'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getPendingWebhookEventCount'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -21043,7 +20601,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $comment_id comment_id (optional)
@@ -21059,9 +20617,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetPendingWebhookEventsResponse|\FastComments\Client\Model\APIError
      */
-    public function getPendingWebhookEvents($associative_array)
+    public function getPendingWebhookEvents($tenant_id, array $options = [])
     {
-        list($response) = $this->getPendingWebhookEventsWithHttpInfo($associative_array);
+        list($response) = $this->getPendingWebhookEventsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -21070,7 +20628,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $comment_id (optional)
@@ -21086,9 +20644,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetPendingWebhookEventsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPendingWebhookEventsWithHttpInfo($associative_array)
+    public function getPendingWebhookEventsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getPendingWebhookEventsRequest($associative_array);
+        $request = $this->getPendingWebhookEventsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -21178,7 +20736,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $comment_id (optional)
@@ -21193,9 +20751,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPendingWebhookEventsAsync($associative_array)
+    public function getPendingWebhookEventsAsync($tenant_id, array $options = [])
     {
-        return $this->getPendingWebhookEventsAsyncWithHttpInfo($associative_array)
+        return $this->getPendingWebhookEventsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -21208,7 +20766,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $comment_id (optional)
@@ -21223,10 +20781,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPendingWebhookEventsAsyncWithHttpInfo($associative_array)
+    public function getPendingWebhookEventsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetPendingWebhookEventsResponse';
-        $request = $this->getPendingWebhookEventsRequest($associative_array);
+        $request = $this->getPendingWebhookEventsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -21267,7 +20825,7 @@ class DefaultApi
     /**
      * Create request for operation 'getPendingWebhookEvents'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $comment_id (optional)
@@ -21282,18 +20840,17 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPendingWebhookEventsRequest($associative_array)
+    public function getPendingWebhookEventsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $comment_id = array_key_exists('comment_id', $associative_array) ? $associative_array['comment_id'] : null;
-        $external_id = array_key_exists('external_id', $associative_array) ? $associative_array['external_id'] : null;
-        $event_type = array_key_exists('event_type', $associative_array) ? $associative_array['event_type'] : null;
-        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
-        $domain = array_key_exists('domain', $associative_array) ? $associative_array['domain'] : null;
-        $attempt_count_gt = array_key_exists('attempt_count_gt', $associative_array) ? $associative_array['attempt_count_gt'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getPendingWebhookEvents'][0];
+        // unbox the optional parameters and request options from the $options array
+        $comment_id = array_key_exists('comment_id', $options) ? $options['comment_id'] : null;
+        $external_id = array_key_exists('external_id', $options) ? $options['external_id'] : null;
+        $event_type = array_key_exists('event_type', $options) ? $options['event_type'] : null;
+        $type = array_key_exists('type', $options) ? $options['type'] : null;
+        $domain = array_key_exists('domain', $options) ? $options['domain'] : null;
+        $attempt_count_gt = array_key_exists('attempt_count_gt', $options) ? $options['attempt_count_gt'] : null;
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getPendingWebhookEvents'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -21456,8 +21013,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getQuestionConfig'] to see the possible values for this operation
@@ -21466,9 +21021,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetQuestionConfigResponse|\FastComments\Client\Model\APIError
      */
-    public function getQuestionConfig($associative_array)
+    public function getQuestionConfig($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->getQuestionConfigWithHttpInfo($associative_array);
+        list($response) = $this->getQuestionConfigWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -21476,8 +21031,6 @@ class DefaultApi
      * Operation getQuestionConfigWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -21487,9 +21040,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetQuestionConfigResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getQuestionConfigWithHttpInfo($associative_array)
+    public function getQuestionConfigWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->getQuestionConfigRequest($associative_array);
+        $request = $this->getQuestionConfigRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -21579,8 +21132,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getQuestionConfig'] to see the possible values for this operation
@@ -21588,9 +21139,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getQuestionConfigAsync($associative_array)
+    public function getQuestionConfigAsync($tenant_id, $id, array $options = [])
     {
-        return $this->getQuestionConfigAsyncWithHttpInfo($associative_array)
+        return $this->getQuestionConfigAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -21603,8 +21154,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getQuestionConfig'] to see the possible values for this operation
@@ -21612,10 +21161,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getQuestionConfigAsyncWithHttpInfo($associative_array)
+    public function getQuestionConfigAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetQuestionConfigResponse';
-        $request = $this->getQuestionConfigRequest($associative_array);
+        $request = $this->getQuestionConfigRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -21656,8 +21205,6 @@ class DefaultApi
     /**
      * Create request for operation 'getQuestionConfig'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getQuestionConfig'] to see the possible values for this operation
@@ -21665,12 +21212,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getQuestionConfigRequest($associative_array)
+    public function getQuestionConfigRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getQuestionConfig'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getQuestionConfig'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -21778,7 +21323,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  float|null $skip skip (optional)
@@ -21788,9 +21333,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetQuestionConfigsResponse|\FastComments\Client\Model\APIError
      */
-    public function getQuestionConfigs($associative_array)
+    public function getQuestionConfigs($tenant_id, array $options = [])
     {
-        list($response) = $this->getQuestionConfigsWithHttpInfo($associative_array);
+        list($response) = $this->getQuestionConfigsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -21799,7 +21344,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -21809,9 +21354,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetQuestionConfigsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getQuestionConfigsWithHttpInfo($associative_array)
+    public function getQuestionConfigsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getQuestionConfigsRequest($associative_array);
+        $request = $this->getQuestionConfigsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -21901,7 +21446,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -21910,9 +21455,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getQuestionConfigsAsync($associative_array)
+    public function getQuestionConfigsAsync($tenant_id, array $options = [])
     {
-        return $this->getQuestionConfigsAsyncWithHttpInfo($associative_array)
+        return $this->getQuestionConfigsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -21925,7 +21470,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -21934,10 +21479,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getQuestionConfigsAsyncWithHttpInfo($associative_array)
+    public function getQuestionConfigsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetQuestionConfigsResponse';
-        $request = $this->getQuestionConfigsRequest($associative_array);
+        $request = $this->getQuestionConfigsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -21978,7 +21523,7 @@ class DefaultApi
     /**
      * Create request for operation 'getQuestionConfigs'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -21987,12 +21532,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getQuestionConfigsRequest($associative_array)
+    public function getQuestionConfigsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getQuestionConfigs'][0];
+        // unbox the optional parameters and request options from the $options array
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getQuestionConfigs'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -22095,8 +21639,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getQuestionResult'] to see the possible values for this operation
@@ -22105,9 +21647,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetQuestionResultResponse|\FastComments\Client\Model\APIError
      */
-    public function getQuestionResult($associative_array)
+    public function getQuestionResult($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->getQuestionResultWithHttpInfo($associative_array);
+        list($response) = $this->getQuestionResultWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -22115,8 +21657,6 @@ class DefaultApi
      * Operation getQuestionResultWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -22126,9 +21666,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetQuestionResultResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getQuestionResultWithHttpInfo($associative_array)
+    public function getQuestionResultWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->getQuestionResultRequest($associative_array);
+        $request = $this->getQuestionResultRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -22218,8 +21758,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getQuestionResult'] to see the possible values for this operation
@@ -22227,9 +21765,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getQuestionResultAsync($associative_array)
+    public function getQuestionResultAsync($tenant_id, $id, array $options = [])
     {
-        return $this->getQuestionResultAsyncWithHttpInfo($associative_array)
+        return $this->getQuestionResultAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -22242,8 +21780,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getQuestionResult'] to see the possible values for this operation
@@ -22251,10 +21787,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getQuestionResultAsyncWithHttpInfo($associative_array)
+    public function getQuestionResultAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetQuestionResultResponse';
-        $request = $this->getQuestionResultRequest($associative_array);
+        $request = $this->getQuestionResultRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -22295,8 +21831,6 @@ class DefaultApi
     /**
      * Create request for operation 'getQuestionResult'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getQuestionResult'] to see the possible values for this operation
@@ -22304,12 +21838,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getQuestionResultRequest($associative_array)
+    public function getQuestionResultRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getQuestionResult'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getQuestionResult'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -22417,7 +21949,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $url_id url_id (optional)
@@ -22432,9 +21964,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetQuestionResultsResponse|\FastComments\Client\Model\APIError
      */
-    public function getQuestionResults($associative_array)
+    public function getQuestionResults($tenant_id, array $options = [])
     {
-        list($response) = $this->getQuestionResultsWithHttpInfo($associative_array);
+        list($response) = $this->getQuestionResultsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -22443,7 +21975,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $url_id (optional)
@@ -22458,9 +21990,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetQuestionResultsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getQuestionResultsWithHttpInfo($associative_array)
+    public function getQuestionResultsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getQuestionResultsRequest($associative_array);
+        $request = $this->getQuestionResultsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -22550,7 +22082,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $url_id (optional)
@@ -22564,9 +22096,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getQuestionResultsAsync($associative_array)
+    public function getQuestionResultsAsync($tenant_id, array $options = [])
     {
-        return $this->getQuestionResultsAsyncWithHttpInfo($associative_array)
+        return $this->getQuestionResultsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -22579,7 +22111,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $url_id (optional)
@@ -22593,10 +22125,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getQuestionResultsAsyncWithHttpInfo($associative_array)
+    public function getQuestionResultsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetQuestionResultsResponse';
-        $request = $this->getQuestionResultsRequest($associative_array);
+        $request = $this->getQuestionResultsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -22637,7 +22169,7 @@ class DefaultApi
     /**
      * Create request for operation 'getQuestionResults'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $url_id (optional)
@@ -22651,17 +22183,16 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getQuestionResultsRequest($associative_array)
+    public function getQuestionResultsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $url_id = array_key_exists('url_id', $associative_array) ? $associative_array['url_id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $start_date = array_key_exists('start_date', $associative_array) ? $associative_array['start_date'] : null;
-        $question_id = array_key_exists('question_id', $associative_array) ? $associative_array['question_id'] : null;
-        $question_ids = array_key_exists('question_ids', $associative_array) ? $associative_array['question_ids'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getQuestionResults'][0];
+        // unbox the optional parameters and request options from the $options array
+        $url_id = array_key_exists('url_id', $options) ? $options['url_id'] : null;
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $start_date = array_key_exists('start_date', $options) ? $options['start_date'] : null;
+        $question_id = array_key_exists('question_id', $options) ? $options['question_id'] : null;
+        $question_ids = array_key_exists('question_ids', $options) ? $options['question_ids'] : null;
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getQuestionResults'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -22814,8 +22345,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $email email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSSOUserByEmail'] to see the possible values for this operation
@@ -22824,9 +22353,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetSSOUserByEmailAPIResponse
      */
-    public function getSSOUserByEmail($associative_array)
+    public function getSSOUserByEmail($tenant_id, $email, array $options = [])
     {
-        list($response) = $this->getSSOUserByEmailWithHttpInfo($associative_array);
+        list($response) = $this->getSSOUserByEmailWithHttpInfo($tenant_id, $email, $options);
         return $response;
     }
 
@@ -22834,8 +22363,6 @@ class DefaultApi
      * Operation getSSOUserByEmailWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $email (required)
@@ -22845,9 +22372,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetSSOUserByEmailAPIResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSSOUserByEmailWithHttpInfo($associative_array)
+    public function getSSOUserByEmailWithHttpInfo($tenant_id, $email, array $options = [])
     {
-        $request = $this->getSSOUserByEmailRequest($associative_array);
+        $request = $this->getSSOUserByEmailRequest($tenant_id, $email, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -22923,8 +22450,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSSOUserByEmail'] to see the possible values for this operation
@@ -22932,9 +22457,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSSOUserByEmailAsync($associative_array)
+    public function getSSOUserByEmailAsync($tenant_id, $email, array $options = [])
     {
-        return $this->getSSOUserByEmailAsyncWithHttpInfo($associative_array)
+        return $this->getSSOUserByEmailAsyncWithHttpInfo($tenant_id, $email, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -22947,8 +22472,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSSOUserByEmail'] to see the possible values for this operation
@@ -22956,10 +22479,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSSOUserByEmailAsyncWithHttpInfo($associative_array)
+    public function getSSOUserByEmailAsyncWithHttpInfo($tenant_id, $email, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetSSOUserByEmailAPIResponse';
-        $request = $this->getSSOUserByEmailRequest($associative_array);
+        $request = $this->getSSOUserByEmailRequest($tenant_id, $email, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -23000,8 +22523,6 @@ class DefaultApi
     /**
      * Create request for operation 'getSSOUserByEmail'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $email (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSSOUserByEmail'] to see the possible values for this operation
@@ -23009,12 +22530,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSSOUserByEmailRequest($associative_array)
+    public function getSSOUserByEmailRequest($tenant_id, $email, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $email = array_key_exists('email', $associative_array) ? $associative_array['email'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getSSOUserByEmail'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getSSOUserByEmail'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -23122,8 +22641,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSSOUserById'] to see the possible values for this operation
@@ -23132,9 +22649,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetSSOUserByIdAPIResponse
      */
-    public function getSSOUserById($associative_array)
+    public function getSSOUserById($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->getSSOUserByIdWithHttpInfo($associative_array);
+        list($response) = $this->getSSOUserByIdWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -23142,8 +22659,6 @@ class DefaultApi
      * Operation getSSOUserByIdWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -23153,9 +22668,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetSSOUserByIdAPIResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSSOUserByIdWithHttpInfo($associative_array)
+    public function getSSOUserByIdWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->getSSOUserByIdRequest($associative_array);
+        $request = $this->getSSOUserByIdRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -23231,8 +22746,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSSOUserById'] to see the possible values for this operation
@@ -23240,9 +22753,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSSOUserByIdAsync($associative_array)
+    public function getSSOUserByIdAsync($tenant_id, $id, array $options = [])
     {
-        return $this->getSSOUserByIdAsyncWithHttpInfo($associative_array)
+        return $this->getSSOUserByIdAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -23255,8 +22768,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSSOUserById'] to see the possible values for this operation
@@ -23264,10 +22775,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSSOUserByIdAsyncWithHttpInfo($associative_array)
+    public function getSSOUserByIdAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetSSOUserByIdAPIResponse';
-        $request = $this->getSSOUserByIdRequest($associative_array);
+        $request = $this->getSSOUserByIdRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -23308,8 +22819,6 @@ class DefaultApi
     /**
      * Create request for operation 'getSSOUserById'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSSOUserById'] to see the possible values for this operation
@@ -23317,12 +22826,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSSOUserByIdRequest($associative_array)
+    public function getSSOUserByIdRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getSSOUserById'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getSSOUserById'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -23430,7 +22937,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  int|null $skip skip (optional)
@@ -23440,9 +22947,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetSSOUsersResponse
      */
-    public function getSSOUsers($associative_array)
+    public function getSSOUsers($tenant_id, array $options = [])
     {
-        list($response) = $this->getSSOUsersWithHttpInfo($associative_array);
+        list($response) = $this->getSSOUsersWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -23451,7 +22958,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  int|null $skip (optional)
@@ -23461,9 +22968,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetSSOUsersResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSSOUsersWithHttpInfo($associative_array)
+    public function getSSOUsersWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getSSOUsersRequest($associative_array);
+        $request = $this->getSSOUsersRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -23539,7 +23046,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  int|null $skip (optional)
@@ -23548,9 +23055,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSSOUsersAsync($associative_array)
+    public function getSSOUsersAsync($tenant_id, array $options = [])
     {
-        return $this->getSSOUsersAsyncWithHttpInfo($associative_array)
+        return $this->getSSOUsersAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -23563,7 +23070,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  int|null $skip (optional)
@@ -23572,10 +23079,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSSOUsersAsyncWithHttpInfo($associative_array)
+    public function getSSOUsersAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetSSOUsersResponse';
-        $request = $this->getSSOUsersRequest($associative_array);
+        $request = $this->getSSOUsersRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -23616,7 +23123,7 @@ class DefaultApi
     /**
      * Create request for operation 'getSSOUsers'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  int|null $skip (optional)
@@ -23625,12 +23132,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSSOUsersRequest($associative_array)
+    public function getSSOUsersRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getSSOUsers'][0];
+        // unbox the optional parameters and request options from the $options array
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getSSOUsers'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -23733,7 +23239,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $user_id user_id (optional)
@@ -23743,9 +23249,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetSubscriptionsAPIResponse
      */
-    public function getSubscriptions($associative_array)
+    public function getSubscriptions($tenant_id, array $options = [])
     {
-        list($response) = $this->getSubscriptionsWithHttpInfo($associative_array);
+        list($response) = $this->getSubscriptionsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -23754,7 +23260,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -23764,9 +23270,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetSubscriptionsAPIResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSubscriptionsWithHttpInfo($associative_array)
+    public function getSubscriptionsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getSubscriptionsRequest($associative_array);
+        $request = $this->getSubscriptionsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -23842,7 +23348,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -23851,9 +23357,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSubscriptionsAsync($associative_array)
+    public function getSubscriptionsAsync($tenant_id, array $options = [])
     {
-        return $this->getSubscriptionsAsyncWithHttpInfo($associative_array)
+        return $this->getSubscriptionsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -23866,7 +23372,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -23875,10 +23381,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSubscriptionsAsyncWithHttpInfo($associative_array)
+    public function getSubscriptionsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetSubscriptionsAPIResponse';
-        $request = $this->getSubscriptionsRequest($associative_array);
+        $request = $this->getSubscriptionsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -23919,7 +23425,7 @@ class DefaultApi
     /**
      * Create request for operation 'getSubscriptions'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -23928,12 +23434,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSubscriptionsRequest($associative_array)
+    public function getSubscriptionsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getSubscriptions'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getSubscriptions'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -24036,8 +23541,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenant'] to see the possible values for this operation
@@ -24046,9 +23549,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetTenantResponse|\FastComments\Client\Model\APIError
      */
-    public function getTenant($associative_array)
+    public function getTenant($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->getTenantWithHttpInfo($associative_array);
+        list($response) = $this->getTenantWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -24056,8 +23559,6 @@ class DefaultApi
      * Operation getTenantWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -24067,9 +23568,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetTenantResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTenantWithHttpInfo($associative_array)
+    public function getTenantWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->getTenantRequest($associative_array);
+        $request = $this->getTenantRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -24159,8 +23660,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenant'] to see the possible values for this operation
@@ -24168,9 +23667,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTenantAsync($associative_array)
+    public function getTenantAsync($tenant_id, $id, array $options = [])
     {
-        return $this->getTenantAsyncWithHttpInfo($associative_array)
+        return $this->getTenantAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -24183,8 +23682,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenant'] to see the possible values for this operation
@@ -24192,10 +23689,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTenantAsyncWithHttpInfo($associative_array)
+    public function getTenantAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetTenantResponse';
-        $request = $this->getTenantRequest($associative_array);
+        $request = $this->getTenantRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -24236,8 +23733,6 @@ class DefaultApi
     /**
      * Create request for operation 'getTenant'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenant'] to see the possible values for this operation
@@ -24245,12 +23740,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTenantRequest($associative_array)
+    public function getTenantRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getTenant'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getTenant'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -24358,7 +23851,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  float|null $year_number year_number (optional)
@@ -24371,9 +23864,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetTenantDailyUsagesResponse|\FastComments\Client\Model\APIError
      */
-    public function getTenantDailyUsages($associative_array)
+    public function getTenantDailyUsages($tenant_id, array $options = [])
     {
-        list($response) = $this->getTenantDailyUsagesWithHttpInfo($associative_array);
+        list($response) = $this->getTenantDailyUsagesWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -24382,7 +23875,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $year_number (optional)
@@ -24395,9 +23888,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetTenantDailyUsagesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTenantDailyUsagesWithHttpInfo($associative_array)
+    public function getTenantDailyUsagesWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getTenantDailyUsagesRequest($associative_array);
+        $request = $this->getTenantDailyUsagesRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -24487,7 +23980,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $year_number (optional)
@@ -24499,9 +23992,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTenantDailyUsagesAsync($associative_array)
+    public function getTenantDailyUsagesAsync($tenant_id, array $options = [])
     {
-        return $this->getTenantDailyUsagesAsyncWithHttpInfo($associative_array)
+        return $this->getTenantDailyUsagesAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -24514,7 +24007,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $year_number (optional)
@@ -24526,10 +24019,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTenantDailyUsagesAsyncWithHttpInfo($associative_array)
+    public function getTenantDailyUsagesAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetTenantDailyUsagesResponse';
-        $request = $this->getTenantDailyUsagesRequest($associative_array);
+        $request = $this->getTenantDailyUsagesRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -24570,7 +24063,7 @@ class DefaultApi
     /**
      * Create request for operation 'getTenantDailyUsages'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $year_number (optional)
@@ -24582,15 +24075,14 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTenantDailyUsagesRequest($associative_array)
+    public function getTenantDailyUsagesRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $year_number = array_key_exists('year_number', $associative_array) ? $associative_array['year_number'] : null;
-        $month_number = array_key_exists('month_number', $associative_array) ? $associative_array['month_number'] : null;
-        $day_number = array_key_exists('day_number', $associative_array) ? $associative_array['day_number'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getTenantDailyUsages'][0];
+        // unbox the optional parameters and request options from the $options array
+        $year_number = array_key_exists('year_number', $options) ? $options['year_number'] : null;
+        $month_number = array_key_exists('month_number', $options) ? $options['month_number'] : null;
+        $day_number = array_key_exists('day_number', $options) ? $options['day_number'] : null;
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getTenantDailyUsages'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -24723,8 +24215,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantPackage'] to see the possible values for this operation
@@ -24733,9 +24223,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetTenantPackageResponse|\FastComments\Client\Model\APIError
      */
-    public function getTenantPackage($associative_array)
+    public function getTenantPackage($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->getTenantPackageWithHttpInfo($associative_array);
+        list($response) = $this->getTenantPackageWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -24743,8 +24233,6 @@ class DefaultApi
      * Operation getTenantPackageWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -24754,9 +24242,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetTenantPackageResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTenantPackageWithHttpInfo($associative_array)
+    public function getTenantPackageWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->getTenantPackageRequest($associative_array);
+        $request = $this->getTenantPackageRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -24846,8 +24334,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantPackage'] to see the possible values for this operation
@@ -24855,9 +24341,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTenantPackageAsync($associative_array)
+    public function getTenantPackageAsync($tenant_id, $id, array $options = [])
     {
-        return $this->getTenantPackageAsyncWithHttpInfo($associative_array)
+        return $this->getTenantPackageAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -24870,8 +24356,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantPackage'] to see the possible values for this operation
@@ -24879,10 +24363,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTenantPackageAsyncWithHttpInfo($associative_array)
+    public function getTenantPackageAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetTenantPackageResponse';
-        $request = $this->getTenantPackageRequest($associative_array);
+        $request = $this->getTenantPackageRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -24923,8 +24407,6 @@ class DefaultApi
     /**
      * Create request for operation 'getTenantPackage'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantPackage'] to see the possible values for this operation
@@ -24932,12 +24414,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTenantPackageRequest($associative_array)
+    public function getTenantPackageRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getTenantPackage'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getTenantPackage'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -25045,7 +24525,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  float|null $skip skip (optional)
@@ -25055,9 +24535,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetTenantPackagesResponse|\FastComments\Client\Model\APIError
      */
-    public function getTenantPackages($associative_array)
+    public function getTenantPackages($tenant_id, array $options = [])
     {
-        list($response) = $this->getTenantPackagesWithHttpInfo($associative_array);
+        list($response) = $this->getTenantPackagesWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -25066,7 +24546,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -25076,9 +24556,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetTenantPackagesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTenantPackagesWithHttpInfo($associative_array)
+    public function getTenantPackagesWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getTenantPackagesRequest($associative_array);
+        $request = $this->getTenantPackagesRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -25168,7 +24648,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -25177,9 +24657,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTenantPackagesAsync($associative_array)
+    public function getTenantPackagesAsync($tenant_id, array $options = [])
     {
-        return $this->getTenantPackagesAsyncWithHttpInfo($associative_array)
+        return $this->getTenantPackagesAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -25192,7 +24672,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -25201,10 +24681,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTenantPackagesAsyncWithHttpInfo($associative_array)
+    public function getTenantPackagesAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetTenantPackagesResponse';
-        $request = $this->getTenantPackagesRequest($associative_array);
+        $request = $this->getTenantPackagesRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -25245,7 +24725,7 @@ class DefaultApi
     /**
      * Create request for operation 'getTenantPackages'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -25254,12 +24734,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTenantPackagesRequest($associative_array)
+    public function getTenantPackagesRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getTenantPackages'][0];
+        // unbox the optional parameters and request options from the $options array
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getTenantPackages'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -25362,8 +24841,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantUser'] to see the possible values for this operation
@@ -25372,9 +24849,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetTenantUserResponse|\FastComments\Client\Model\APIError
      */
-    public function getTenantUser($associative_array)
+    public function getTenantUser($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->getTenantUserWithHttpInfo($associative_array);
+        list($response) = $this->getTenantUserWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -25382,8 +24859,6 @@ class DefaultApi
      * Operation getTenantUserWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -25393,9 +24868,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetTenantUserResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTenantUserWithHttpInfo($associative_array)
+    public function getTenantUserWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->getTenantUserRequest($associative_array);
+        $request = $this->getTenantUserRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -25485,8 +24960,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantUser'] to see the possible values for this operation
@@ -25494,9 +24967,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTenantUserAsync($associative_array)
+    public function getTenantUserAsync($tenant_id, $id, array $options = [])
     {
-        return $this->getTenantUserAsyncWithHttpInfo($associative_array)
+        return $this->getTenantUserAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -25509,8 +24982,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantUser'] to see the possible values for this operation
@@ -25518,10 +24989,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTenantUserAsyncWithHttpInfo($associative_array)
+    public function getTenantUserAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetTenantUserResponse';
-        $request = $this->getTenantUserRequest($associative_array);
+        $request = $this->getTenantUserRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -25562,8 +25033,6 @@ class DefaultApi
     /**
      * Create request for operation 'getTenantUser'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantUser'] to see the possible values for this operation
@@ -25571,12 +25040,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTenantUserRequest($associative_array)
+    public function getTenantUserRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getTenantUser'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getTenantUser'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -25684,7 +25151,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  float|null $skip skip (optional)
@@ -25694,9 +25161,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetTenantUsersResponse|\FastComments\Client\Model\APIError
      */
-    public function getTenantUsers($associative_array)
+    public function getTenantUsers($tenant_id, array $options = [])
     {
-        list($response) = $this->getTenantUsersWithHttpInfo($associative_array);
+        list($response) = $this->getTenantUsersWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -25705,7 +25172,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -25715,9 +25182,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetTenantUsersResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTenantUsersWithHttpInfo($associative_array)
+    public function getTenantUsersWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getTenantUsersRequest($associative_array);
+        $request = $this->getTenantUsersRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -25807,7 +25274,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -25816,9 +25283,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTenantUsersAsync($associative_array)
+    public function getTenantUsersAsync($tenant_id, array $options = [])
     {
-        return $this->getTenantUsersAsyncWithHttpInfo($associative_array)
+        return $this->getTenantUsersAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -25831,7 +25298,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -25840,10 +25307,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTenantUsersAsyncWithHttpInfo($associative_array)
+    public function getTenantUsersAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetTenantUsersResponse';
-        $request = $this->getTenantUsersRequest($associative_array);
+        $request = $this->getTenantUsersRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -25884,7 +25351,7 @@ class DefaultApi
     /**
      * Create request for operation 'getTenantUsers'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  float|null $skip (optional)
@@ -25893,12 +25360,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTenantUsersRequest($associative_array)
+    public function getTenantUsersRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getTenantUsers'][0];
+        // unbox the optional parameters and request options from the $options array
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getTenantUsers'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -26001,7 +25467,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $meta meta (optional)
@@ -26012,9 +25478,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetTenantsResponse|\FastComments\Client\Model\APIError
      */
-    public function getTenants($associative_array)
+    public function getTenants($tenant_id, array $options = [])
     {
-        list($response) = $this->getTenantsWithHttpInfo($associative_array);
+        list($response) = $this->getTenantsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -26023,7 +25489,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $meta (optional)
@@ -26034,9 +25500,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetTenantsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTenantsWithHttpInfo($associative_array)
+    public function getTenantsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getTenantsRequest($associative_array);
+        $request = $this->getTenantsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -26126,7 +25592,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $meta (optional)
@@ -26136,9 +25602,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTenantsAsync($associative_array)
+    public function getTenantsAsync($tenant_id, array $options = [])
     {
-        return $this->getTenantsAsyncWithHttpInfo($associative_array)
+        return $this->getTenantsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -26151,7 +25617,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $meta (optional)
@@ -26161,10 +25627,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTenantsAsyncWithHttpInfo($associative_array)
+    public function getTenantsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetTenantsResponse';
-        $request = $this->getTenantsRequest($associative_array);
+        $request = $this->getTenantsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -26205,7 +25671,7 @@ class DefaultApi
     /**
      * Create request for operation 'getTenants'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $meta (optional)
@@ -26215,13 +25681,12 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTenantsRequest($associative_array)
+    public function getTenantsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $meta = array_key_exists('meta', $associative_array) ? $associative_array['meta'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getTenants'][0];
+        // unbox the optional parameters and request options from the $options array
+        $meta = array_key_exists('meta', $options) ? $options['meta'] : null;
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getTenants'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -26334,7 +25799,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -26345,9 +25810,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetTicketResponse|\FastComments\Client\Model\APIError
      */
-    public function getTicket($associative_array)
+    public function getTicket($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->getTicketWithHttpInfo($associative_array);
+        list($response) = $this->getTicketWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -26356,7 +25821,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -26367,9 +25832,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetTicketResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTicketWithHttpInfo($associative_array)
+    public function getTicketWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->getTicketRequest($associative_array);
+        $request = $this->getTicketRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -26459,7 +25924,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -26469,9 +25934,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTicketAsync($associative_array)
+    public function getTicketAsync($tenant_id, $id, array $options = [])
     {
-        return $this->getTicketAsyncWithHttpInfo($associative_array)
+        return $this->getTicketAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -26484,7 +25949,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -26494,10 +25959,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTicketAsyncWithHttpInfo($associative_array)
+    public function getTicketAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetTicketResponse';
-        $request = $this->getTicketRequest($associative_array);
+        $request = $this->getTicketRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -26538,7 +26003,7 @@ class DefaultApi
     /**
      * Create request for operation 'getTicket'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -26548,13 +26013,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTicketRequest($associative_array)
+    public function getTicketRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getTicket'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getTicket'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -26672,7 +26135,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $user_id user_id (optional)
@@ -26685,9 +26148,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetTicketsResponse|\FastComments\Client\Model\APIError
      */
-    public function getTickets($associative_array)
+    public function getTickets($tenant_id, array $options = [])
     {
-        list($response) = $this->getTicketsWithHttpInfo($associative_array);
+        list($response) = $this->getTicketsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -26696,7 +26159,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -26709,9 +26172,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetTicketsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTicketsWithHttpInfo($associative_array)
+    public function getTicketsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getTicketsRequest($associative_array);
+        $request = $this->getTicketsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -26801,7 +26264,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -26813,9 +26276,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTicketsAsync($associative_array)
+    public function getTicketsAsync($tenant_id, array $options = [])
     {
-        return $this->getTicketsAsyncWithHttpInfo($associative_array)
+        return $this->getTicketsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -26828,7 +26291,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -26840,10 +26303,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTicketsAsyncWithHttpInfo($associative_array)
+    public function getTicketsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetTicketsResponse';
-        $request = $this->getTicketsRequest($associative_array);
+        $request = $this->getTicketsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -26884,7 +26347,7 @@ class DefaultApi
     /**
      * Create request for operation 'getTickets'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -26896,15 +26359,14 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTicketsRequest($associative_array)
+    public function getTicketsRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $state = array_key_exists('state', $associative_array) ? $associative_array['state'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getTickets'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $state = array_key_exists('state', $options) ? $options['state'] : null;
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $limit = array_key_exists('limit', $options) ? $options['limit'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getTickets'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -27037,8 +26499,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
@@ -27047,9 +26507,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetUserResponse|\FastComments\Client\Model\APIError
      */
-    public function getUser($associative_array)
+    public function getUser($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->getUserWithHttpInfo($associative_array);
+        list($response) = $this->getUserWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -27057,8 +26517,6 @@ class DefaultApi
      * Operation getUserWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -27068,9 +26526,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetUserResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserWithHttpInfo($associative_array)
+    public function getUserWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->getUserRequest($associative_array);
+        $request = $this->getUserRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -27160,8 +26618,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
@@ -27169,9 +26625,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserAsync($associative_array)
+    public function getUserAsync($tenant_id, $id, array $options = [])
     {
-        return $this->getUserAsyncWithHttpInfo($associative_array)
+        return $this->getUserAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -27184,8 +26640,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
@@ -27193,10 +26647,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserAsyncWithHttpInfo($associative_array)
+    public function getUserAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetUserResponse';
-        $request = $this->getUserRequest($associative_array);
+        $request = $this->getUserRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -27237,8 +26691,6 @@ class DefaultApi
     /**
      * Create request for operation 'getUser'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
@@ -27246,12 +26698,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserRequest($associative_array)
+    public function getUserRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getUser'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getUser'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -27359,8 +26809,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBadge'] to see the possible values for this operation
@@ -27369,9 +26817,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIGetUserBadgeResponse|\FastComments\Client\Model\APIError
      */
-    public function getUserBadge($associative_array)
+    public function getUserBadge($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->getUserBadgeWithHttpInfo($associative_array);
+        list($response) = $this->getUserBadgeWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -27379,8 +26827,6 @@ class DefaultApi
      * Operation getUserBadgeWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -27390,9 +26836,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIGetUserBadgeResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserBadgeWithHttpInfo($associative_array)
+    public function getUserBadgeWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->getUserBadgeRequest($associative_array);
+        $request = $this->getUserBadgeRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -27482,8 +26928,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBadge'] to see the possible values for this operation
@@ -27491,9 +26935,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBadgeAsync($associative_array)
+    public function getUserBadgeAsync($tenant_id, $id, array $options = [])
     {
-        return $this->getUserBadgeAsyncWithHttpInfo($associative_array)
+        return $this->getUserBadgeAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -27506,8 +26950,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBadge'] to see the possible values for this operation
@@ -27515,10 +26957,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBadgeAsyncWithHttpInfo($associative_array)
+    public function getUserBadgeAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIGetUserBadgeResponse';
-        $request = $this->getUserBadgeRequest($associative_array);
+        $request = $this->getUserBadgeRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -27559,8 +27001,6 @@ class DefaultApi
     /**
      * Create request for operation 'getUserBadge'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBadge'] to see the possible values for this operation
@@ -27568,12 +27008,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserBadgeRequest($associative_array)
+    public function getUserBadgeRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getUserBadge'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getUserBadge'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -27681,8 +27119,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBadgeProgressById'] to see the possible values for this operation
@@ -27691,9 +27127,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIGetUserBadgeProgressResponse|\FastComments\Client\Model\APIError
      */
-    public function getUserBadgeProgressById($associative_array)
+    public function getUserBadgeProgressById($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->getUserBadgeProgressByIdWithHttpInfo($associative_array);
+        list($response) = $this->getUserBadgeProgressByIdWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -27701,8 +27137,6 @@ class DefaultApi
      * Operation getUserBadgeProgressByIdWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -27712,9 +27146,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIGetUserBadgeProgressResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserBadgeProgressByIdWithHttpInfo($associative_array)
+    public function getUserBadgeProgressByIdWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->getUserBadgeProgressByIdRequest($associative_array);
+        $request = $this->getUserBadgeProgressByIdRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -27804,8 +27238,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBadgeProgressById'] to see the possible values for this operation
@@ -27813,9 +27245,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBadgeProgressByIdAsync($associative_array)
+    public function getUserBadgeProgressByIdAsync($tenant_id, $id, array $options = [])
     {
-        return $this->getUserBadgeProgressByIdAsyncWithHttpInfo($associative_array)
+        return $this->getUserBadgeProgressByIdAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -27828,8 +27260,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBadgeProgressById'] to see the possible values for this operation
@@ -27837,10 +27267,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBadgeProgressByIdAsyncWithHttpInfo($associative_array)
+    public function getUserBadgeProgressByIdAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIGetUserBadgeProgressResponse';
-        $request = $this->getUserBadgeProgressByIdRequest($associative_array);
+        $request = $this->getUserBadgeProgressByIdRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -27881,8 +27311,6 @@ class DefaultApi
     /**
      * Create request for operation 'getUserBadgeProgressById'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBadgeProgressById'] to see the possible values for this operation
@@ -27890,12 +27318,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserBadgeProgressByIdRequest($associative_array)
+    public function getUserBadgeProgressByIdRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getUserBadgeProgressById'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getUserBadgeProgressById'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -28003,8 +27429,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $user_id user_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBadgeProgressByUserId'] to see the possible values for this operation
@@ -28013,9 +27437,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIGetUserBadgeProgressResponse|\FastComments\Client\Model\APIError
      */
-    public function getUserBadgeProgressByUserId($associative_array)
+    public function getUserBadgeProgressByUserId($tenant_id, $user_id, array $options = [])
     {
-        list($response) = $this->getUserBadgeProgressByUserIdWithHttpInfo($associative_array);
+        list($response) = $this->getUserBadgeProgressByUserIdWithHttpInfo($tenant_id, $user_id, $options);
         return $response;
     }
 
@@ -28023,8 +27447,6 @@ class DefaultApi
      * Operation getUserBadgeProgressByUserIdWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $user_id (required)
@@ -28034,9 +27456,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIGetUserBadgeProgressResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserBadgeProgressByUserIdWithHttpInfo($associative_array)
+    public function getUserBadgeProgressByUserIdWithHttpInfo($tenant_id, $user_id, array $options = [])
     {
-        $request = $this->getUserBadgeProgressByUserIdRequest($associative_array);
+        $request = $this->getUserBadgeProgressByUserIdRequest($tenant_id, $user_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -28126,8 +27548,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $user_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBadgeProgressByUserId'] to see the possible values for this operation
@@ -28135,9 +27555,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBadgeProgressByUserIdAsync($associative_array)
+    public function getUserBadgeProgressByUserIdAsync($tenant_id, $user_id, array $options = [])
     {
-        return $this->getUserBadgeProgressByUserIdAsyncWithHttpInfo($associative_array)
+        return $this->getUserBadgeProgressByUserIdAsyncWithHttpInfo($tenant_id, $user_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -28150,8 +27570,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $user_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBadgeProgressByUserId'] to see the possible values for this operation
@@ -28159,10 +27577,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBadgeProgressByUserIdAsyncWithHttpInfo($associative_array)
+    public function getUserBadgeProgressByUserIdAsyncWithHttpInfo($tenant_id, $user_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIGetUserBadgeProgressResponse';
-        $request = $this->getUserBadgeProgressByUserIdRequest($associative_array);
+        $request = $this->getUserBadgeProgressByUserIdRequest($tenant_id, $user_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -28203,8 +27621,6 @@ class DefaultApi
     /**
      * Create request for operation 'getUserBadgeProgressByUserId'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $user_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBadgeProgressByUserId'] to see the possible values for this operation
@@ -28212,12 +27628,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserBadgeProgressByUserIdRequest($associative_array)
+    public function getUserBadgeProgressByUserIdRequest($tenant_id, $user_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getUserBadgeProgressByUserId'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getUserBadgeProgressByUserId'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -28325,7 +27739,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $user_id user_id (optional)
@@ -28337,9 +27751,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIGetUserBadgeProgressListResponse|\FastComments\Client\Model\APIError
      */
-    public function getUserBadgeProgressList($associative_array)
+    public function getUserBadgeProgressList($tenant_id, array $options = [])
     {
-        list($response) = $this->getUserBadgeProgressListWithHttpInfo($associative_array);
+        list($response) = $this->getUserBadgeProgressListWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -28348,7 +27762,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -28360,9 +27774,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIGetUserBadgeProgressListResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserBadgeProgressListWithHttpInfo($associative_array)
+    public function getUserBadgeProgressListWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getUserBadgeProgressListRequest($associative_array);
+        $request = $this->getUserBadgeProgressListRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -28452,7 +27866,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -28463,9 +27877,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBadgeProgressListAsync($associative_array)
+    public function getUserBadgeProgressListAsync($tenant_id, array $options = [])
     {
-        return $this->getUserBadgeProgressListAsyncWithHttpInfo($associative_array)
+        return $this->getUserBadgeProgressListAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -28478,7 +27892,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -28489,10 +27903,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBadgeProgressListAsyncWithHttpInfo($associative_array)
+    public function getUserBadgeProgressListAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIGetUserBadgeProgressListResponse';
-        $request = $this->getUserBadgeProgressListRequest($associative_array);
+        $request = $this->getUserBadgeProgressListRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -28533,7 +27947,7 @@ class DefaultApi
     /**
      * Create request for operation 'getUserBadgeProgressList'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -28544,14 +27958,13 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserBadgeProgressListRequest($associative_array)
+    public function getUserBadgeProgressListRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getUserBadgeProgressList'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $limit = array_key_exists('limit', $options) ? $options['limit'] : null;
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getUserBadgeProgressList'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -28674,7 +28087,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string|null $user_id user_id (optional)
@@ -28689,9 +28102,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIGetUserBadgesResponse|\FastComments\Client\Model\APIError
      */
-    public function getUserBadges($associative_array)
+    public function getUserBadges($tenant_id, array $options = [])
     {
-        list($response) = $this->getUserBadgesWithHttpInfo($associative_array);
+        list($response) = $this->getUserBadgesWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -28700,7 +28113,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -28715,9 +28128,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIGetUserBadgesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserBadgesWithHttpInfo($associative_array)
+    public function getUserBadgesWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getUserBadgesRequest($associative_array);
+        $request = $this->getUserBadgesRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -28807,7 +28220,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -28821,9 +28234,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBadgesAsync($associative_array)
+    public function getUserBadgesAsync($tenant_id, array $options = [])
     {
-        return $this->getUserBadgesAsyncWithHttpInfo($associative_array)
+        return $this->getUserBadgesAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -28836,7 +28249,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -28850,10 +28263,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBadgesAsyncWithHttpInfo($associative_array)
+    public function getUserBadgesAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIGetUserBadgesResponse';
-        $request = $this->getUserBadgesRequest($associative_array);
+        $request = $this->getUserBadgesRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -28894,7 +28307,7 @@ class DefaultApi
     /**
      * Create request for operation 'getUserBadges'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
@@ -28908,17 +28321,16 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserBadgesRequest($associative_array)
+    public function getUserBadgesRequest($tenant_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $badge_id = array_key_exists('badge_id', $associative_array) ? $associative_array['badge_id'] : null;
-        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
-        $displayed_on_comments = array_key_exists('displayed_on_comments', $associative_array) ? $associative_array['displayed_on_comments'] : null;
-        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : null;
-        $skip = array_key_exists('skip', $associative_array) ? $associative_array['skip'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getUserBadges'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $badge_id = array_key_exists('badge_id', $options) ? $options['badge_id'] : null;
+        $type = array_key_exists('type', $options) ? $options['type'] : null;
+        $displayed_on_comments = array_key_exists('displayed_on_comments', $options) ? $options['displayed_on_comments'] : null;
+        $limit = array_key_exists('limit', $options) ? $options['limit'] : null;
+        $skip = array_key_exists('skip', $options) ? $options['skip'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getUserBadges'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -29071,8 +28483,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $url_id url_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVotes'] to see the possible values for this operation
@@ -29081,9 +28491,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetVotesResponse|\FastComments\Client\Model\APIError
      */
-    public function getVotes($associative_array)
+    public function getVotes($tenant_id, $url_id, array $options = [])
     {
-        list($response) = $this->getVotesWithHttpInfo($associative_array);
+        list($response) = $this->getVotesWithHttpInfo($tenant_id, $url_id, $options);
         return $response;
     }
 
@@ -29091,8 +28501,6 @@ class DefaultApi
      * Operation getVotesWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -29102,9 +28510,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetVotesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getVotesWithHttpInfo($associative_array)
+    public function getVotesWithHttpInfo($tenant_id, $url_id, array $options = [])
     {
-        $request = $this->getVotesRequest($associative_array);
+        $request = $this->getVotesRequest($tenant_id, $url_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -29194,8 +28602,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVotes'] to see the possible values for this operation
@@ -29203,9 +28609,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getVotesAsync($associative_array)
+    public function getVotesAsync($tenant_id, $url_id, array $options = [])
     {
-        return $this->getVotesAsyncWithHttpInfo($associative_array)
+        return $this->getVotesAsyncWithHttpInfo($tenant_id, $url_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -29218,8 +28624,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVotes'] to see the possible values for this operation
@@ -29227,10 +28631,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getVotesAsyncWithHttpInfo($associative_array)
+    public function getVotesAsyncWithHttpInfo($tenant_id, $url_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetVotesResponse';
-        $request = $this->getVotesRequest($associative_array);
+        $request = $this->getVotesRequest($tenant_id, $url_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -29271,8 +28675,6 @@ class DefaultApi
     /**
      * Create request for operation 'getVotes'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getVotes'] to see the possible values for this operation
@@ -29280,12 +28682,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getVotesRequest($associative_array)
+    public function getVotesRequest($tenant_id, $url_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $url_id = array_key_exists('url_id', $associative_array) ? $associative_array['url_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getVotes'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['getVotes'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -29394,7 +28794,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $url_id url_id (required)
@@ -29406,9 +28806,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetVotesForUserResponse|\FastComments\Client\Model\APIError
      */
-    public function getVotesForUser($associative_array)
+    public function getVotesForUser($tenant_id, $url_id, array $options = [])
     {
-        list($response) = $this->getVotesForUserWithHttpInfo($associative_array);
+        list($response) = $this->getVotesForUserWithHttpInfo($tenant_id, $url_id, $options);
         return $response;
     }
 
@@ -29417,7 +28817,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -29429,9 +28829,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetVotesForUserResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getVotesForUserWithHttpInfo($associative_array)
+    public function getVotesForUserWithHttpInfo($tenant_id, $url_id, array $options = [])
     {
-        $request = $this->getVotesForUserRequest($associative_array);
+        $request = $this->getVotesForUserRequest($tenant_id, $url_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -29521,7 +28921,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -29532,9 +28932,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getVotesForUserAsync($associative_array)
+    public function getVotesForUserAsync($tenant_id, $url_id, array $options = [])
     {
-        return $this->getVotesForUserAsyncWithHttpInfo($associative_array)
+        return $this->getVotesForUserAsyncWithHttpInfo($tenant_id, $url_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -29547,7 +28947,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -29558,10 +28958,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getVotesForUserAsyncWithHttpInfo($associative_array)
+    public function getVotesForUserAsyncWithHttpInfo($tenant_id, $url_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetVotesForUserResponse';
-        $request = $this->getVotesForUserRequest($associative_array);
+        $request = $this->getVotesForUserRequest($tenant_id, $url_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -29602,7 +29002,7 @@ class DefaultApi
     /**
      * Create request for operation 'getVotesForUser'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $url_id (required)
@@ -29613,14 +29013,12 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getVotesForUserRequest($associative_array)
+    public function getVotesForUserRequest($tenant_id, $url_id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $url_id = array_key_exists('url_id', $associative_array) ? $associative_array['url_id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $anon_user_id = array_key_exists('anon_user_id', $associative_array) ? $associative_array['anon_user_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['getVotesForUser'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $anon_user_id = array_key_exists('anon_user_id', $options) ? $options['anon_user_id'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['getVotesForUser'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -29749,8 +29147,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $domain_to_update domain_to_update (required)
      * @param  \FastComments\Client\Model\PatchDomainConfigParams $patch_domain_config_params patch_domain_config_params (required)
@@ -29760,9 +29156,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\PatchDomainConfigResponse
      */
-    public function patchDomainConfig($associative_array)
+    public function patchDomainConfig($tenant_id, $domain_to_update, $patch_domain_config_params, array $options = [])
     {
-        list($response) = $this->patchDomainConfigWithHttpInfo($associative_array);
+        list($response) = $this->patchDomainConfigWithHttpInfo($tenant_id, $domain_to_update, $patch_domain_config_params, $options);
         return $response;
     }
 
@@ -29770,8 +29166,6 @@ class DefaultApi
      * Operation patchDomainConfigWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $domain_to_update (required)
@@ -29782,9 +29176,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\PatchDomainConfigResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function patchDomainConfigWithHttpInfo($associative_array)
+    public function patchDomainConfigWithHttpInfo($tenant_id, $domain_to_update, $patch_domain_config_params, array $options = [])
     {
-        $request = $this->patchDomainConfigRequest($associative_array);
+        $request = $this->patchDomainConfigRequest($tenant_id, $domain_to_update, $patch_domain_config_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -29860,8 +29254,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $domain_to_update (required)
      * @param  \FastComments\Client\Model\PatchDomainConfigParams $patch_domain_config_params (required)
@@ -29870,9 +29262,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchDomainConfigAsync($associative_array)
+    public function patchDomainConfigAsync($tenant_id, $domain_to_update, $patch_domain_config_params, array $options = [])
     {
-        return $this->patchDomainConfigAsyncWithHttpInfo($associative_array)
+        return $this->patchDomainConfigAsyncWithHttpInfo($tenant_id, $domain_to_update, $patch_domain_config_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -29885,8 +29277,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $domain_to_update (required)
      * @param  \FastComments\Client\Model\PatchDomainConfigParams $patch_domain_config_params (required)
@@ -29895,10 +29285,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchDomainConfigAsyncWithHttpInfo($associative_array)
+    public function patchDomainConfigAsyncWithHttpInfo($tenant_id, $domain_to_update, $patch_domain_config_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\PatchDomainConfigResponse';
-        $request = $this->patchDomainConfigRequest($associative_array);
+        $request = $this->patchDomainConfigRequest($tenant_id, $domain_to_update, $patch_domain_config_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -29939,8 +29329,6 @@ class DefaultApi
     /**
      * Create request for operation 'patchDomainConfig'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $domain_to_update (required)
      * @param  \FastComments\Client\Model\PatchDomainConfigParams $patch_domain_config_params (required)
@@ -29949,13 +29337,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function patchDomainConfigRequest($associative_array)
+    public function patchDomainConfigRequest($tenant_id, $domain_to_update, $patch_domain_config_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $domain_to_update = array_key_exists('domain_to_update', $associative_array) ? $associative_array['domain_to_update'] : null;
-        $patch_domain_config_params = array_key_exists('patch_domain_config_params', $associative_array) ? $associative_array['patch_domain_config_params'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['patchDomainConfig'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['patchDomainConfig'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -30077,7 +29462,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tag tag (required)
      * @param  string|null $tenant_id tenant_id (optional)
@@ -30088,9 +29473,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\UpdateHashTagResponse|\FastComments\Client\Model\APIError
      */
-    public function patchHashTag($associative_array)
+    public function patchHashTag($tag, $update_hash_tag_body = null, array $options = [])
     {
-        list($response) = $this->patchHashTagWithHttpInfo($associative_array);
+        list($response) = $this->patchHashTagWithHttpInfo($tag, $update_hash_tag_body, $options);
         return $response;
     }
 
@@ -30099,7 +29484,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tag (required)
      * @param  string|null $tenant_id (optional)
@@ -30110,9 +29495,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\UpdateHashTagResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function patchHashTagWithHttpInfo($associative_array)
+    public function patchHashTagWithHttpInfo($tag, $update_hash_tag_body = null, array $options = [])
     {
-        $request = $this->patchHashTagRequest($associative_array);
+        $request = $this->patchHashTagRequest($tag, $update_hash_tag_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -30202,7 +29587,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tag (required)
      * @param  string|null $tenant_id (optional)
@@ -30212,9 +29597,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchHashTagAsync($associative_array)
+    public function patchHashTagAsync($tag, $update_hash_tag_body = null, array $options = [])
     {
-        return $this->patchHashTagAsyncWithHttpInfo($associative_array)
+        return $this->patchHashTagAsyncWithHttpInfo($tag, $update_hash_tag_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -30227,7 +29612,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tag (required)
      * @param  string|null $tenant_id (optional)
@@ -30237,10 +29622,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchHashTagAsyncWithHttpInfo($associative_array)
+    public function patchHashTagAsyncWithHttpInfo($tag, $update_hash_tag_body = null, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\UpdateHashTagResponse';
-        $request = $this->patchHashTagRequest($associative_array);
+        $request = $this->patchHashTagRequest($tag, $update_hash_tag_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -30281,7 +29666,7 @@ class DefaultApi
     /**
      * Create request for operation 'patchHashTag'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tag (required)
      * @param  string|null $tenant_id (optional)
@@ -30291,13 +29676,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function patchHashTagRequest($associative_array)
+    public function patchHashTagRequest($tag, $update_hash_tag_body = null, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tag = array_key_exists('tag', $associative_array) ? $associative_array['tag'] : null;
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $update_hash_tag_body = array_key_exists('update_hash_tag_body', $associative_array) ? $associative_array['update_hash_tag_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['patchHashTag'][0];
+        // unbox the optional parameters and request options from the $options array
+        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['patchHashTag'][0];
         
         // verify the required parameter 'tag' is set
         if ($tag === null || (is_array($tag) && count($tag) === 0)) {
@@ -30407,8 +29790,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  \FastComments\Client\Model\UpdateAPIPageData $update_api_page_data update_api_page_data (required)
@@ -30418,9 +29799,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\PatchPageAPIResponse
      */
-    public function patchPage($associative_array)
+    public function patchPage($tenant_id, $id, $update_api_page_data, array $options = [])
     {
-        list($response) = $this->patchPageWithHttpInfo($associative_array);
+        list($response) = $this->patchPageWithHttpInfo($tenant_id, $id, $update_api_page_data, $options);
         return $response;
     }
 
@@ -30428,8 +29809,6 @@ class DefaultApi
      * Operation patchPageWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -30440,9 +29819,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\PatchPageAPIResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function patchPageWithHttpInfo($associative_array)
+    public function patchPageWithHttpInfo($tenant_id, $id, $update_api_page_data, array $options = [])
     {
-        $request = $this->patchPageRequest($associative_array);
+        $request = $this->patchPageRequest($tenant_id, $id, $update_api_page_data, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -30518,8 +29897,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateAPIPageData $update_api_page_data (required)
@@ -30528,9 +29905,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchPageAsync($associative_array)
+    public function patchPageAsync($tenant_id, $id, $update_api_page_data, array $options = [])
     {
-        return $this->patchPageAsyncWithHttpInfo($associative_array)
+        return $this->patchPageAsyncWithHttpInfo($tenant_id, $id, $update_api_page_data, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -30543,8 +29920,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateAPIPageData $update_api_page_data (required)
@@ -30553,10 +29928,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchPageAsyncWithHttpInfo($associative_array)
+    public function patchPageAsyncWithHttpInfo($tenant_id, $id, $update_api_page_data, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\PatchPageAPIResponse';
-        $request = $this->patchPageRequest($associative_array);
+        $request = $this->patchPageRequest($tenant_id, $id, $update_api_page_data, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -30597,8 +29972,6 @@ class DefaultApi
     /**
      * Create request for operation 'patchPage'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateAPIPageData $update_api_page_data (required)
@@ -30607,13 +29980,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function patchPageRequest($associative_array)
+    public function patchPageRequest($tenant_id, $id, $update_api_page_data, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $update_api_page_data = array_key_exists('update_api_page_data', $associative_array) ? $associative_array['update_api_page_data'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['patchPage'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['patchPage'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -30735,7 +30105,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -30747,9 +30117,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\PatchSSOUserAPIResponse
      */
-    public function patchSSOUser($associative_array)
+    public function patchSSOUser($tenant_id, $id, $update_apisso_user_data, array $options = [])
     {
-        list($response) = $this->patchSSOUserWithHttpInfo($associative_array);
+        list($response) = $this->patchSSOUserWithHttpInfo($tenant_id, $id, $update_apisso_user_data, $options);
         return $response;
     }
 
@@ -30758,7 +30128,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -30770,9 +30140,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\PatchSSOUserAPIResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function patchSSOUserWithHttpInfo($associative_array)
+    public function patchSSOUserWithHttpInfo($tenant_id, $id, $update_apisso_user_data, array $options = [])
     {
-        $request = $this->patchSSOUserRequest($associative_array);
+        $request = $this->patchSSOUserRequest($tenant_id, $id, $update_apisso_user_data, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -30848,7 +30218,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -30859,9 +30229,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchSSOUserAsync($associative_array)
+    public function patchSSOUserAsync($tenant_id, $id, $update_apisso_user_data, array $options = [])
     {
-        return $this->patchSSOUserAsyncWithHttpInfo($associative_array)
+        return $this->patchSSOUserAsyncWithHttpInfo($tenant_id, $id, $update_apisso_user_data, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -30874,7 +30244,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -30885,10 +30255,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchSSOUserAsyncWithHttpInfo($associative_array)
+    public function patchSSOUserAsyncWithHttpInfo($tenant_id, $id, $update_apisso_user_data, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\PatchSSOUserAPIResponse';
-        $request = $this->patchSSOUserRequest($associative_array);
+        $request = $this->patchSSOUserRequest($tenant_id, $id, $update_apisso_user_data, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -30929,7 +30299,7 @@ class DefaultApi
     /**
      * Create request for operation 'patchSSOUser'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -30940,14 +30310,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function patchSSOUserRequest($associative_array)
+    public function patchSSOUserRequest($tenant_id, $id, $update_apisso_user_data, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $update_apisso_user_data = array_key_exists('update_apisso_user_data', $associative_array) ? $associative_array['update_apisso_user_data'] : null;
-        $update_comments = array_key_exists('update_comments', $associative_array) ? $associative_array['update_comments'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['patchSSOUser'][0];
+        // unbox the optional parameters and request options from the $options array
+        $update_comments = array_key_exists('update_comments', $options) ? $options['update_comments'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['patchSSOUser'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -31079,8 +30446,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $domain_to_update domain_to_update (required)
      * @param  \FastComments\Client\Model\UpdateDomainConfigParams $update_domain_config_params update_domain_config_params (required)
@@ -31090,9 +30455,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\PutDomainConfigResponse
      */
-    public function putDomainConfig($associative_array)
+    public function putDomainConfig($tenant_id, $domain_to_update, $update_domain_config_params, array $options = [])
     {
-        list($response) = $this->putDomainConfigWithHttpInfo($associative_array);
+        list($response) = $this->putDomainConfigWithHttpInfo($tenant_id, $domain_to_update, $update_domain_config_params, $options);
         return $response;
     }
 
@@ -31100,8 +30465,6 @@ class DefaultApi
      * Operation putDomainConfigWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $domain_to_update (required)
@@ -31112,9 +30475,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\PutDomainConfigResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putDomainConfigWithHttpInfo($associative_array)
+    public function putDomainConfigWithHttpInfo($tenant_id, $domain_to_update, $update_domain_config_params, array $options = [])
     {
-        $request = $this->putDomainConfigRequest($associative_array);
+        $request = $this->putDomainConfigRequest($tenant_id, $domain_to_update, $update_domain_config_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -31190,8 +30553,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $domain_to_update (required)
      * @param  \FastComments\Client\Model\UpdateDomainConfigParams $update_domain_config_params (required)
@@ -31200,9 +30561,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putDomainConfigAsync($associative_array)
+    public function putDomainConfigAsync($tenant_id, $domain_to_update, $update_domain_config_params, array $options = [])
     {
-        return $this->putDomainConfigAsyncWithHttpInfo($associative_array)
+        return $this->putDomainConfigAsyncWithHttpInfo($tenant_id, $domain_to_update, $update_domain_config_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -31215,8 +30576,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $domain_to_update (required)
      * @param  \FastComments\Client\Model\UpdateDomainConfigParams $update_domain_config_params (required)
@@ -31225,10 +30584,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putDomainConfigAsyncWithHttpInfo($associative_array)
+    public function putDomainConfigAsyncWithHttpInfo($tenant_id, $domain_to_update, $update_domain_config_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\PutDomainConfigResponse';
-        $request = $this->putDomainConfigRequest($associative_array);
+        $request = $this->putDomainConfigRequest($tenant_id, $domain_to_update, $update_domain_config_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -31269,8 +30628,6 @@ class DefaultApi
     /**
      * Create request for operation 'putDomainConfig'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $domain_to_update (required)
      * @param  \FastComments\Client\Model\UpdateDomainConfigParams $update_domain_config_params (required)
@@ -31279,13 +30636,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putDomainConfigRequest($associative_array)
+    public function putDomainConfigRequest($tenant_id, $domain_to_update, $update_domain_config_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $domain_to_update = array_key_exists('domain_to_update', $associative_array) ? $associative_array['domain_to_update'] : null;
-        $update_domain_config_params = array_key_exists('update_domain_config_params', $associative_array) ? $associative_array['update_domain_config_params'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['putDomainConfig'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['putDomainConfig'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -31407,7 +30761,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -31419,9 +30773,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\PutSSOUserAPIResponse
      */
-    public function putSSOUser($associative_array)
+    public function putSSOUser($tenant_id, $id, $update_apisso_user_data, array $options = [])
     {
-        list($response) = $this->putSSOUserWithHttpInfo($associative_array);
+        list($response) = $this->putSSOUserWithHttpInfo($tenant_id, $id, $update_apisso_user_data, $options);
         return $response;
     }
 
@@ -31430,7 +30784,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -31442,9 +30796,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\PutSSOUserAPIResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putSSOUserWithHttpInfo($associative_array)
+    public function putSSOUserWithHttpInfo($tenant_id, $id, $update_apisso_user_data, array $options = [])
     {
-        $request = $this->putSSOUserRequest($associative_array);
+        $request = $this->putSSOUserRequest($tenant_id, $id, $update_apisso_user_data, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -31520,7 +30874,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -31531,9 +30885,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putSSOUserAsync($associative_array)
+    public function putSSOUserAsync($tenant_id, $id, $update_apisso_user_data, array $options = [])
     {
-        return $this->putSSOUserAsyncWithHttpInfo($associative_array)
+        return $this->putSSOUserAsyncWithHttpInfo($tenant_id, $id, $update_apisso_user_data, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -31546,7 +30900,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -31557,10 +30911,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putSSOUserAsyncWithHttpInfo($associative_array)
+    public function putSSOUserAsyncWithHttpInfo($tenant_id, $id, $update_apisso_user_data, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\PutSSOUserAPIResponse';
-        $request = $this->putSSOUserRequest($associative_array);
+        $request = $this->putSSOUserRequest($tenant_id, $id, $update_apisso_user_data, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -31601,7 +30955,7 @@ class DefaultApi
     /**
      * Create request for operation 'putSSOUser'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -31612,14 +30966,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putSSOUserRequest($associative_array)
+    public function putSSOUserRequest($tenant_id, $id, $update_apisso_user_data, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $update_apisso_user_data = array_key_exists('update_apisso_user_data', $associative_array) ? $associative_array['update_apisso_user_data'] : null;
-        $update_comments = array_key_exists('update_comments', $associative_array) ? $associative_array['update_comments'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['putSSOUser'][0];
+        // unbox the optional parameters and request options from the $options array
+        $update_comments = array_key_exists('update_comments', $options) ? $options['update_comments'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['putSSOUser'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -31751,7 +31102,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\RenderEmailTemplateBody $render_email_template_body render_email_template_body (required)
@@ -31762,9 +31113,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\RenderEmailTemplateResponse|\FastComments\Client\Model\APIError
      */
-    public function renderEmailTemplate($associative_array)
+    public function renderEmailTemplate($tenant_id, $render_email_template_body, array $options = [])
     {
-        list($response) = $this->renderEmailTemplateWithHttpInfo($associative_array);
+        list($response) = $this->renderEmailTemplateWithHttpInfo($tenant_id, $render_email_template_body, $options);
         return $response;
     }
 
@@ -31773,7 +31124,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\RenderEmailTemplateBody $render_email_template_body (required)
@@ -31784,9 +31135,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\RenderEmailTemplateResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function renderEmailTemplateWithHttpInfo($associative_array)
+    public function renderEmailTemplateWithHttpInfo($tenant_id, $render_email_template_body, array $options = [])
     {
-        $request = $this->renderEmailTemplateRequest($associative_array);
+        $request = $this->renderEmailTemplateRequest($tenant_id, $render_email_template_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -31876,7 +31227,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\RenderEmailTemplateBody $render_email_template_body (required)
@@ -31886,9 +31237,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function renderEmailTemplateAsync($associative_array)
+    public function renderEmailTemplateAsync($tenant_id, $render_email_template_body, array $options = [])
     {
-        return $this->renderEmailTemplateAsyncWithHttpInfo($associative_array)
+        return $this->renderEmailTemplateAsyncWithHttpInfo($tenant_id, $render_email_template_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -31901,7 +31252,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\RenderEmailTemplateBody $render_email_template_body (required)
@@ -31911,10 +31262,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function renderEmailTemplateAsyncWithHttpInfo($associative_array)
+    public function renderEmailTemplateAsyncWithHttpInfo($tenant_id, $render_email_template_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\RenderEmailTemplateResponse';
-        $request = $this->renderEmailTemplateRequest($associative_array);
+        $request = $this->renderEmailTemplateRequest($tenant_id, $render_email_template_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -31955,7 +31306,7 @@ class DefaultApi
     /**
      * Create request for operation 'renderEmailTemplate'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\RenderEmailTemplateBody $render_email_template_body (required)
@@ -31965,13 +31316,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function renderEmailTemplateRequest($associative_array)
+    public function renderEmailTemplateRequest($tenant_id, $render_email_template_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $render_email_template_body = array_key_exists('render_email_template_body', $associative_array) ? $associative_array['render_email_template_body'] : null;
-        $locale = array_key_exists('locale', $associative_array) ? $associative_array['locale'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['renderEmailTemplate'][0];
+        // unbox the optional parameters and request options from the $options array
+        $locale = array_key_exists('locale', $options) ? $options['locale'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['renderEmailTemplate'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -32088,8 +31437,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  \FastComments\Client\Model\ReplaceTenantPackageBody $replace_tenant_package_body replace_tenant_package_body (required)
@@ -32099,9 +31446,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function replaceTenantPackage($associative_array)
+    public function replaceTenantPackage($tenant_id, $id, $replace_tenant_package_body, array $options = [])
     {
-        list($response) = $this->replaceTenantPackageWithHttpInfo($associative_array);
+        list($response) = $this->replaceTenantPackageWithHttpInfo($tenant_id, $id, $replace_tenant_package_body, $options);
         return $response;
     }
 
@@ -32109,8 +31456,6 @@ class DefaultApi
      * Operation replaceTenantPackageWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -32121,9 +31466,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function replaceTenantPackageWithHttpInfo($associative_array)
+    public function replaceTenantPackageWithHttpInfo($tenant_id, $id, $replace_tenant_package_body, array $options = [])
     {
-        $request = $this->replaceTenantPackageRequest($associative_array);
+        $request = $this->replaceTenantPackageRequest($tenant_id, $id, $replace_tenant_package_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -32213,8 +31558,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\ReplaceTenantPackageBody $replace_tenant_package_body (required)
@@ -32223,9 +31566,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceTenantPackageAsync($associative_array)
+    public function replaceTenantPackageAsync($tenant_id, $id, $replace_tenant_package_body, array $options = [])
     {
-        return $this->replaceTenantPackageAsyncWithHttpInfo($associative_array)
+        return $this->replaceTenantPackageAsyncWithHttpInfo($tenant_id, $id, $replace_tenant_package_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -32238,8 +31581,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\ReplaceTenantPackageBody $replace_tenant_package_body (required)
@@ -32248,10 +31589,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceTenantPackageAsyncWithHttpInfo($associative_array)
+    public function replaceTenantPackageAsyncWithHttpInfo($tenant_id, $id, $replace_tenant_package_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->replaceTenantPackageRequest($associative_array);
+        $request = $this->replaceTenantPackageRequest($tenant_id, $id, $replace_tenant_package_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -32292,8 +31633,6 @@ class DefaultApi
     /**
      * Create request for operation 'replaceTenantPackage'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\ReplaceTenantPackageBody $replace_tenant_package_body (required)
@@ -32302,13 +31641,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function replaceTenantPackageRequest($associative_array)
+    public function replaceTenantPackageRequest($tenant_id, $id, $replace_tenant_package_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $replace_tenant_package_body = array_key_exists('replace_tenant_package_body', $associative_array) ? $associative_array['replace_tenant_package_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['replaceTenantPackage'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['replaceTenantPackage'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -32430,7 +31766,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -32442,9 +31778,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function replaceTenantUser($associative_array)
+    public function replaceTenantUser($tenant_id, $id, $replace_tenant_user_body, array $options = [])
     {
-        list($response) = $this->replaceTenantUserWithHttpInfo($associative_array);
+        list($response) = $this->replaceTenantUserWithHttpInfo($tenant_id, $id, $replace_tenant_user_body, $options);
         return $response;
     }
 
@@ -32453,7 +31789,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -32465,9 +31801,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function replaceTenantUserWithHttpInfo($associative_array)
+    public function replaceTenantUserWithHttpInfo($tenant_id, $id, $replace_tenant_user_body, array $options = [])
     {
-        $request = $this->replaceTenantUserRequest($associative_array);
+        $request = $this->replaceTenantUserRequest($tenant_id, $id, $replace_tenant_user_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -32557,7 +31893,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -32568,9 +31904,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceTenantUserAsync($associative_array)
+    public function replaceTenantUserAsync($tenant_id, $id, $replace_tenant_user_body, array $options = [])
     {
-        return $this->replaceTenantUserAsyncWithHttpInfo($associative_array)
+        return $this->replaceTenantUserAsyncWithHttpInfo($tenant_id, $id, $replace_tenant_user_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -32583,7 +31919,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -32594,10 +31930,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceTenantUserAsyncWithHttpInfo($associative_array)
+    public function replaceTenantUserAsyncWithHttpInfo($tenant_id, $id, $replace_tenant_user_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->replaceTenantUserRequest($associative_array);
+        $request = $this->replaceTenantUserRequest($tenant_id, $id, $replace_tenant_user_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -32638,7 +31974,7 @@ class DefaultApi
     /**
      * Create request for operation 'replaceTenantUser'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -32649,14 +31985,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function replaceTenantUserRequest($associative_array)
+    public function replaceTenantUserRequest($tenant_id, $id, $replace_tenant_user_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $replace_tenant_user_body = array_key_exists('replace_tenant_user_body', $associative_array) ? $associative_array['replace_tenant_user_body'] : null;
-        $update_comments = array_key_exists('update_comments', $associative_array) ? $associative_array['update_comments'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['replaceTenantUser'][0];
+        // unbox the optional parameters and request options from the $options array
+        $update_comments = array_key_exists('update_comments', $options) ? $options['update_comments'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['replaceTenantUser'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -32788,7 +32121,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateCommentParams $create_comment_params create_comment_params (required)
@@ -32802,9 +32135,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APISaveCommentResponse|\FastComments\Client\Model\APIError
      */
-    public function saveComment($associative_array)
+    public function saveComment($tenant_id, $create_comment_params, array $options = [])
     {
-        list($response) = $this->saveCommentWithHttpInfo($associative_array);
+        list($response) = $this->saveCommentWithHttpInfo($tenant_id, $create_comment_params, $options);
         return $response;
     }
 
@@ -32813,7 +32146,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateCommentParams $create_comment_params (required)
@@ -32827,9 +32160,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APISaveCommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveCommentWithHttpInfo($associative_array)
+    public function saveCommentWithHttpInfo($tenant_id, $create_comment_params, array $options = [])
     {
-        $request = $this->saveCommentRequest($associative_array);
+        $request = $this->saveCommentRequest($tenant_id, $create_comment_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -32919,7 +32252,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateCommentParams $create_comment_params (required)
@@ -32932,9 +32265,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveCommentAsync($associative_array)
+    public function saveCommentAsync($tenant_id, $create_comment_params, array $options = [])
     {
-        return $this->saveCommentAsyncWithHttpInfo($associative_array)
+        return $this->saveCommentAsyncWithHttpInfo($tenant_id, $create_comment_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -32947,7 +32280,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateCommentParams $create_comment_params (required)
@@ -32960,10 +32293,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveCommentAsyncWithHttpInfo($associative_array)
+    public function saveCommentAsyncWithHttpInfo($tenant_id, $create_comment_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APISaveCommentResponse';
-        $request = $this->saveCommentRequest($associative_array);
+        $request = $this->saveCommentRequest($tenant_id, $create_comment_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -33004,7 +32337,7 @@ class DefaultApi
     /**
      * Create request for operation 'saveComment'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateCommentParams $create_comment_params (required)
@@ -33017,16 +32350,14 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveCommentRequest($associative_array)
+    public function saveCommentRequest($tenant_id, $create_comment_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $create_comment_params = array_key_exists('create_comment_params', $associative_array) ? $associative_array['create_comment_params'] : null;
-        $is_live = array_key_exists('is_live', $associative_array) ? $associative_array['is_live'] : null;
-        $do_spam_check = array_key_exists('do_spam_check', $associative_array) ? $associative_array['do_spam_check'] : null;
-        $send_emails = array_key_exists('send_emails', $associative_array) ? $associative_array['send_emails'] : null;
-        $populate_notifications = array_key_exists('populate_notifications', $associative_array) ? $associative_array['populate_notifications'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['saveComment'][0];
+        // unbox the optional parameters and request options from the $options array
+        $is_live = array_key_exists('is_live', $options) ? $options['is_live'] : null;
+        $do_spam_check = array_key_exists('do_spam_check', $options) ? $options['do_spam_check'] : null;
+        $send_emails = array_key_exists('send_emails', $options) ? $options['send_emails'] : null;
+        $populate_notifications = array_key_exists('populate_notifications', $options) ? $options['populate_notifications'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['saveComment'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -33173,7 +32504,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateCommentParams[] $create_comment_params create_comment_params (required)
@@ -33187,9 +32518,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\SaveCommentsBulkResponse[]
      */
-    public function saveCommentsBulk($associative_array)
+    public function saveCommentsBulk($tenant_id, $create_comment_params, array $options = [])
     {
-        list($response) = $this->saveCommentsBulkWithHttpInfo($associative_array);
+        list($response) = $this->saveCommentsBulkWithHttpInfo($tenant_id, $create_comment_params, $options);
         return $response;
     }
 
@@ -33198,7 +32529,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateCommentParams[] $create_comment_params (required)
@@ -33212,9 +32543,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\SaveCommentsBulkResponse[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveCommentsBulkWithHttpInfo($associative_array)
+    public function saveCommentsBulkWithHttpInfo($tenant_id, $create_comment_params, array $options = [])
     {
-        $request = $this->saveCommentsBulkRequest($associative_array);
+        $request = $this->saveCommentsBulkRequest($tenant_id, $create_comment_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -33290,7 +32621,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateCommentParams[] $create_comment_params (required)
@@ -33303,9 +32634,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveCommentsBulkAsync($associative_array)
+    public function saveCommentsBulkAsync($tenant_id, $create_comment_params, array $options = [])
     {
-        return $this->saveCommentsBulkAsyncWithHttpInfo($associative_array)
+        return $this->saveCommentsBulkAsyncWithHttpInfo($tenant_id, $create_comment_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -33318,7 +32649,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateCommentParams[] $create_comment_params (required)
@@ -33331,10 +32662,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveCommentsBulkAsyncWithHttpInfo($associative_array)
+    public function saveCommentsBulkAsyncWithHttpInfo($tenant_id, $create_comment_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\SaveCommentsBulkResponse[]';
-        $request = $this->saveCommentsBulkRequest($associative_array);
+        $request = $this->saveCommentsBulkRequest($tenant_id, $create_comment_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -33375,7 +32706,7 @@ class DefaultApi
     /**
      * Create request for operation 'saveCommentsBulk'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateCommentParams[] $create_comment_params (required)
@@ -33388,16 +32719,14 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveCommentsBulkRequest($associative_array)
+    public function saveCommentsBulkRequest($tenant_id, $create_comment_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $create_comment_params = array_key_exists('create_comment_params', $associative_array) ? $associative_array['create_comment_params'] : null;
-        $is_live = array_key_exists('is_live', $associative_array) ? $associative_array['is_live'] : null;
-        $do_spam_check = array_key_exists('do_spam_check', $associative_array) ? $associative_array['do_spam_check'] : null;
-        $send_emails = array_key_exists('send_emails', $associative_array) ? $associative_array['send_emails'] : null;
-        $populate_notifications = array_key_exists('populate_notifications', $associative_array) ? $associative_array['populate_notifications'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['saveCommentsBulk'][0];
+        // unbox the optional parameters and request options from the $options array
+        $is_live = array_key_exists('is_live', $options) ? $options['is_live'] : null;
+        $do_spam_check = array_key_exists('do_spam_check', $options) ? $options['do_spam_check'] : null;
+        $send_emails = array_key_exists('send_emails', $options) ? $options['send_emails'] : null;
+        $populate_notifications = array_key_exists('populate_notifications', $options) ? $options['populate_notifications'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['saveCommentsBulk'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -33544,8 +32873,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  string $from_name from_name (required)
@@ -33555,9 +32882,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function sendInvite($associative_array)
+    public function sendInvite($tenant_id, $id, $from_name, array $options = [])
     {
-        list($response) = $this->sendInviteWithHttpInfo($associative_array);
+        list($response) = $this->sendInviteWithHttpInfo($tenant_id, $id, $from_name, $options);
         return $response;
     }
 
@@ -33565,8 +32892,6 @@ class DefaultApi
      * Operation sendInviteWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -33577,9 +32902,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendInviteWithHttpInfo($associative_array)
+    public function sendInviteWithHttpInfo($tenant_id, $id, $from_name, array $options = [])
     {
-        $request = $this->sendInviteRequest($associative_array);
+        $request = $this->sendInviteRequest($tenant_id, $id, $from_name, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -33669,8 +32994,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $from_name (required)
@@ -33679,9 +33002,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendInviteAsync($associative_array)
+    public function sendInviteAsync($tenant_id, $id, $from_name, array $options = [])
     {
-        return $this->sendInviteAsyncWithHttpInfo($associative_array)
+        return $this->sendInviteAsyncWithHttpInfo($tenant_id, $id, $from_name, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -33694,8 +33017,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $from_name (required)
@@ -33704,10 +33025,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendInviteAsyncWithHttpInfo($associative_array)
+    public function sendInviteAsyncWithHttpInfo($tenant_id, $id, $from_name, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->sendInviteRequest($associative_array);
+        $request = $this->sendInviteRequest($tenant_id, $id, $from_name, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -33748,8 +33069,6 @@ class DefaultApi
     /**
      * Create request for operation 'sendInvite'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  string $from_name (required)
@@ -33758,13 +33077,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function sendInviteRequest($associative_array)
+    public function sendInviteRequest($tenant_id, $id, $from_name, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $from_name = array_key_exists('from_name', $associative_array) ? $associative_array['from_name'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['sendInvite'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['sendInvite'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -33888,7 +33204,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -33899,9 +33215,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function sendLoginLink($associative_array)
+    public function sendLoginLink($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->sendLoginLinkWithHttpInfo($associative_array);
+        list($response) = $this->sendLoginLinkWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -33910,7 +33226,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -33921,9 +33237,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendLoginLinkWithHttpInfo($associative_array)
+    public function sendLoginLinkWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->sendLoginLinkRequest($associative_array);
+        $request = $this->sendLoginLinkRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -34013,7 +33329,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -34023,9 +33339,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendLoginLinkAsync($associative_array)
+    public function sendLoginLinkAsync($tenant_id, $id, array $options = [])
     {
-        return $this->sendLoginLinkAsyncWithHttpInfo($associative_array)
+        return $this->sendLoginLinkAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -34038,7 +33354,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -34048,10 +33364,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendLoginLinkAsyncWithHttpInfo($associative_array)
+    public function sendLoginLinkAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->sendLoginLinkRequest($associative_array);
+        $request = $this->sendLoginLinkRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -34092,7 +33408,7 @@ class DefaultApi
     /**
      * Create request for operation 'sendLoginLink'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -34102,13 +33418,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function sendLoginLinkRequest($associative_array)
+    public function sendLoginLinkRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $redirect_url = array_key_exists('redirect_url', $associative_array) ? $associative_array['redirect_url'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['sendLoginLink'][0];
+        // unbox the optional parameters and request options from the $options array
+        $redirect_url = array_key_exists('redirect_url', $options) ? $options['redirect_url'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['sendLoginLink'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -34226,7 +33540,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -34239,9 +33553,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\UnblockSuccess|\FastComments\Client\Model\APIError
      */
-    public function unBlockUserFromComment($associative_array)
+    public function unBlockUserFromComment($tenant_id, $id, $un_block_from_comment_params, array $options = [])
     {
-        list($response) = $this->unBlockUserFromCommentWithHttpInfo($associative_array);
+        list($response) = $this->unBlockUserFromCommentWithHttpInfo($tenant_id, $id, $un_block_from_comment_params, $options);
         return $response;
     }
 
@@ -34250,7 +33564,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -34263,9 +33577,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\UnblockSuccess|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function unBlockUserFromCommentWithHttpInfo($associative_array)
+    public function unBlockUserFromCommentWithHttpInfo($tenant_id, $id, $un_block_from_comment_params, array $options = [])
     {
-        $request = $this->unBlockUserFromCommentRequest($associative_array);
+        $request = $this->unBlockUserFromCommentRequest($tenant_id, $id, $un_block_from_comment_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -34355,7 +33669,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -34367,9 +33681,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unBlockUserFromCommentAsync($associative_array)
+    public function unBlockUserFromCommentAsync($tenant_id, $id, $un_block_from_comment_params, array $options = [])
     {
-        return $this->unBlockUserFromCommentAsyncWithHttpInfo($associative_array)
+        return $this->unBlockUserFromCommentAsyncWithHttpInfo($tenant_id, $id, $un_block_from_comment_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -34382,7 +33696,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -34394,10 +33708,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unBlockUserFromCommentAsyncWithHttpInfo($associative_array)
+    public function unBlockUserFromCommentAsyncWithHttpInfo($tenant_id, $id, $un_block_from_comment_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\UnblockSuccess';
-        $request = $this->unBlockUserFromCommentRequest($associative_array);
+        $request = $this->unBlockUserFromCommentRequest($tenant_id, $id, $un_block_from_comment_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -34438,7 +33752,7 @@ class DefaultApi
     /**
      * Create request for operation 'unBlockUserFromComment'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -34450,15 +33764,12 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function unBlockUserFromCommentRequest($associative_array)
+    public function unBlockUserFromCommentRequest($tenant_id, $id, $un_block_from_comment_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $un_block_from_comment_params = array_key_exists('un_block_from_comment_params', $associative_array) ? $associative_array['un_block_from_comment_params'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $anon_user_id = array_key_exists('anon_user_id', $associative_array) ? $associative_array['anon_user_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['unBlockUserFromComment'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $anon_user_id = array_key_exists('anon_user_id', $options) ? $options['anon_user_id'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['unBlockUserFromComment'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -34600,7 +33911,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -34612,9 +33923,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\FlagCommentResponse|\FastComments\Client\Model\APIError
      */
-    public function unFlagComment($associative_array)
+    public function unFlagComment($tenant_id, $id, array $options = [])
     {
-        list($response) = $this->unFlagCommentWithHttpInfo($associative_array);
+        list($response) = $this->unFlagCommentWithHttpInfo($tenant_id, $id, $options);
         return $response;
     }
 
@@ -34623,7 +33934,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -34635,9 +33946,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\FlagCommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function unFlagCommentWithHttpInfo($associative_array)
+    public function unFlagCommentWithHttpInfo($tenant_id, $id, array $options = [])
     {
-        $request = $this->unFlagCommentRequest($associative_array);
+        $request = $this->unFlagCommentRequest($tenant_id, $id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -34727,7 +34038,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -34738,9 +34049,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unFlagCommentAsync($associative_array)
+    public function unFlagCommentAsync($tenant_id, $id, array $options = [])
     {
-        return $this->unFlagCommentAsyncWithHttpInfo($associative_array)
+        return $this->unFlagCommentAsyncWithHttpInfo($tenant_id, $id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -34753,7 +34064,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -34764,10 +34075,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unFlagCommentAsyncWithHttpInfo($associative_array)
+    public function unFlagCommentAsyncWithHttpInfo($tenant_id, $id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\FlagCommentResponse';
-        $request = $this->unFlagCommentRequest($associative_array);
+        $request = $this->unFlagCommentRequest($tenant_id, $id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -34808,7 +34119,7 @@ class DefaultApi
     /**
      * Create request for operation 'unFlagComment'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -34819,14 +34130,12 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function unFlagCommentRequest($associative_array)
+    public function unFlagCommentRequest($tenant_id, $id, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $anon_user_id = array_key_exists('anon_user_id', $associative_array) ? $associative_array['anon_user_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['unFlagComment'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $anon_user_id = array_key_exists('anon_user_id', $options) ? $options['anon_user_id'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['unFlagComment'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -34954,7 +34263,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -34968,9 +34277,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function updateComment($associative_array)
+    public function updateComment($tenant_id, $id, $updatable_comment_params, array $options = [])
     {
-        list($response) = $this->updateCommentWithHttpInfo($associative_array);
+        list($response) = $this->updateCommentWithHttpInfo($tenant_id, $id, $updatable_comment_params, $options);
         return $response;
     }
 
@@ -34979,7 +34288,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -34993,9 +34302,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCommentWithHttpInfo($associative_array)
+    public function updateCommentWithHttpInfo($tenant_id, $id, $updatable_comment_params, array $options = [])
     {
-        $request = $this->updateCommentRequest($associative_array);
+        $request = $this->updateCommentRequest($tenant_id, $id, $updatable_comment_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -35085,7 +34394,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -35098,9 +34407,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCommentAsync($associative_array)
+    public function updateCommentAsync($tenant_id, $id, $updatable_comment_params, array $options = [])
     {
-        return $this->updateCommentAsyncWithHttpInfo($associative_array)
+        return $this->updateCommentAsyncWithHttpInfo($tenant_id, $id, $updatable_comment_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -35113,7 +34422,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -35126,10 +34435,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCommentAsyncWithHttpInfo($associative_array)
+    public function updateCommentAsyncWithHttpInfo($tenant_id, $id, $updatable_comment_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->updateCommentRequest($associative_array);
+        $request = $this->updateCommentRequest($tenant_id, $id, $updatable_comment_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -35170,7 +34479,7 @@ class DefaultApi
     /**
      * Create request for operation 'updateComment'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -35183,16 +34492,13 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCommentRequest($associative_array)
+    public function updateCommentRequest($tenant_id, $id, $updatable_comment_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $updatable_comment_params = array_key_exists('updatable_comment_params', $associative_array) ? $associative_array['updatable_comment_params'] : null;
-        $context_user_id = array_key_exists('context_user_id', $associative_array) ? $associative_array['context_user_id'] : null;
-        $do_spam_check = array_key_exists('do_spam_check', $associative_array) ? $associative_array['do_spam_check'] : null;
-        $is_live = array_key_exists('is_live', $associative_array) ? $associative_array['is_live'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['updateComment'][0];
+        // unbox the optional parameters and request options from the $options array
+        $context_user_id = array_key_exists('context_user_id', $options) ? $options['context_user_id'] : null;
+        $do_spam_check = array_key_exists('do_spam_check', $options) ? $options['do_spam_check'] : null;
+        $is_live = array_key_exists('is_live', $options) ? $options['is_live'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['updateComment'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -35344,8 +34650,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  \FastComments\Client\Model\UpdateEmailTemplateBody $update_email_template_body update_email_template_body (required)
@@ -35355,9 +34659,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function updateEmailTemplate($associative_array)
+    public function updateEmailTemplate($tenant_id, $id, $update_email_template_body, array $options = [])
     {
-        list($response) = $this->updateEmailTemplateWithHttpInfo($associative_array);
+        list($response) = $this->updateEmailTemplateWithHttpInfo($tenant_id, $id, $update_email_template_body, $options);
         return $response;
     }
 
@@ -35365,8 +34669,6 @@ class DefaultApi
      * Operation updateEmailTemplateWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -35377,9 +34679,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateEmailTemplateWithHttpInfo($associative_array)
+    public function updateEmailTemplateWithHttpInfo($tenant_id, $id, $update_email_template_body, array $options = [])
     {
-        $request = $this->updateEmailTemplateRequest($associative_array);
+        $request = $this->updateEmailTemplateRequest($tenant_id, $id, $update_email_template_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -35469,8 +34771,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateEmailTemplateBody $update_email_template_body (required)
@@ -35479,9 +34779,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateEmailTemplateAsync($associative_array)
+    public function updateEmailTemplateAsync($tenant_id, $id, $update_email_template_body, array $options = [])
     {
-        return $this->updateEmailTemplateAsyncWithHttpInfo($associative_array)
+        return $this->updateEmailTemplateAsyncWithHttpInfo($tenant_id, $id, $update_email_template_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -35494,8 +34794,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateEmailTemplateBody $update_email_template_body (required)
@@ -35504,10 +34802,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateEmailTemplateAsyncWithHttpInfo($associative_array)
+    public function updateEmailTemplateAsyncWithHttpInfo($tenant_id, $id, $update_email_template_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->updateEmailTemplateRequest($associative_array);
+        $request = $this->updateEmailTemplateRequest($tenant_id, $id, $update_email_template_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -35548,8 +34846,6 @@ class DefaultApi
     /**
      * Create request for operation 'updateEmailTemplate'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateEmailTemplateBody $update_email_template_body (required)
@@ -35558,13 +34854,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateEmailTemplateRequest($associative_array)
+    public function updateEmailTemplateRequest($tenant_id, $id, $update_email_template_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $update_email_template_body = array_key_exists('update_email_template_body', $associative_array) ? $associative_array['update_email_template_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['updateEmailTemplate'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['updateEmailTemplate'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -35686,8 +34979,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  \FastComments\Client\Model\FeedPost $feed_post feed_post (required)
@@ -35697,9 +34988,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function updateFeedPost($associative_array)
+    public function updateFeedPost($tenant_id, $id, $feed_post, array $options = [])
     {
-        list($response) = $this->updateFeedPostWithHttpInfo($associative_array);
+        list($response) = $this->updateFeedPostWithHttpInfo($tenant_id, $id, $feed_post, $options);
         return $response;
     }
 
@@ -35707,8 +34998,6 @@ class DefaultApi
      * Operation updateFeedPostWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -35719,9 +35008,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateFeedPostWithHttpInfo($associative_array)
+    public function updateFeedPostWithHttpInfo($tenant_id, $id, $feed_post, array $options = [])
     {
-        $request = $this->updateFeedPostRequest($associative_array);
+        $request = $this->updateFeedPostRequest($tenant_id, $id, $feed_post, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -35811,8 +35100,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\FeedPost $feed_post (required)
@@ -35821,9 +35108,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateFeedPostAsync($associative_array)
+    public function updateFeedPostAsync($tenant_id, $id, $feed_post, array $options = [])
     {
-        return $this->updateFeedPostAsyncWithHttpInfo($associative_array)
+        return $this->updateFeedPostAsyncWithHttpInfo($tenant_id, $id, $feed_post, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -35836,8 +35123,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\FeedPost $feed_post (required)
@@ -35846,10 +35131,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateFeedPostAsyncWithHttpInfo($associative_array)
+    public function updateFeedPostAsyncWithHttpInfo($tenant_id, $id, $feed_post, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->updateFeedPostRequest($associative_array);
+        $request = $this->updateFeedPostRequest($tenant_id, $id, $feed_post, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -35890,8 +35175,6 @@ class DefaultApi
     /**
      * Create request for operation 'updateFeedPost'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\FeedPost $feed_post (required)
@@ -35900,13 +35183,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateFeedPostRequest($associative_array)
+    public function updateFeedPostRequest($tenant_id, $id, $feed_post, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $feed_post = array_key_exists('feed_post', $associative_array) ? $associative_array['feed_post'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['updateFeedPost'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['updateFeedPost'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -36028,8 +35308,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  \FastComments\Client\Model\UpdateModeratorBody $update_moderator_body update_moderator_body (required)
@@ -36039,9 +35317,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function updateModerator($associative_array)
+    public function updateModerator($tenant_id, $id, $update_moderator_body, array $options = [])
     {
-        list($response) = $this->updateModeratorWithHttpInfo($associative_array);
+        list($response) = $this->updateModeratorWithHttpInfo($tenant_id, $id, $update_moderator_body, $options);
         return $response;
     }
 
@@ -36049,8 +35327,6 @@ class DefaultApi
      * Operation updateModeratorWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -36061,9 +35337,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateModeratorWithHttpInfo($associative_array)
+    public function updateModeratorWithHttpInfo($tenant_id, $id, $update_moderator_body, array $options = [])
     {
-        $request = $this->updateModeratorRequest($associative_array);
+        $request = $this->updateModeratorRequest($tenant_id, $id, $update_moderator_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -36153,8 +35429,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateModeratorBody $update_moderator_body (required)
@@ -36163,9 +35437,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateModeratorAsync($associative_array)
+    public function updateModeratorAsync($tenant_id, $id, $update_moderator_body, array $options = [])
     {
-        return $this->updateModeratorAsyncWithHttpInfo($associative_array)
+        return $this->updateModeratorAsyncWithHttpInfo($tenant_id, $id, $update_moderator_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -36178,8 +35452,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateModeratorBody $update_moderator_body (required)
@@ -36188,10 +35460,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateModeratorAsyncWithHttpInfo($associative_array)
+    public function updateModeratorAsyncWithHttpInfo($tenant_id, $id, $update_moderator_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->updateModeratorRequest($associative_array);
+        $request = $this->updateModeratorRequest($tenant_id, $id, $update_moderator_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -36232,8 +35504,6 @@ class DefaultApi
     /**
      * Create request for operation 'updateModerator'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateModeratorBody $update_moderator_body (required)
@@ -36242,13 +35512,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateModeratorRequest($associative_array)
+    public function updateModeratorRequest($tenant_id, $id, $update_moderator_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $update_moderator_body = array_key_exists('update_moderator_body', $associative_array) ? $associative_array['update_moderator_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['updateModerator'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['updateModerator'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -36370,7 +35637,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -36382,9 +35649,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function updateNotification($associative_array)
+    public function updateNotification($tenant_id, $id, $update_notification_body, array $options = [])
     {
-        list($response) = $this->updateNotificationWithHttpInfo($associative_array);
+        list($response) = $this->updateNotificationWithHttpInfo($tenant_id, $id, $update_notification_body, $options);
         return $response;
     }
 
@@ -36393,7 +35660,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -36405,9 +35672,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateNotificationWithHttpInfo($associative_array)
+    public function updateNotificationWithHttpInfo($tenant_id, $id, $update_notification_body, array $options = [])
     {
-        $request = $this->updateNotificationRequest($associative_array);
+        $request = $this->updateNotificationRequest($tenant_id, $id, $update_notification_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -36497,7 +35764,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -36508,9 +35775,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateNotificationAsync($associative_array)
+    public function updateNotificationAsync($tenant_id, $id, $update_notification_body, array $options = [])
     {
-        return $this->updateNotificationAsyncWithHttpInfo($associative_array)
+        return $this->updateNotificationAsyncWithHttpInfo($tenant_id, $id, $update_notification_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -36523,7 +35790,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -36534,10 +35801,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateNotificationAsyncWithHttpInfo($associative_array)
+    public function updateNotificationAsyncWithHttpInfo($tenant_id, $id, $update_notification_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->updateNotificationRequest($associative_array);
+        $request = $this->updateNotificationRequest($tenant_id, $id, $update_notification_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -36578,7 +35845,7 @@ class DefaultApi
     /**
      * Create request for operation 'updateNotification'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -36589,14 +35856,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateNotificationRequest($associative_array)
+    public function updateNotificationRequest($tenant_id, $id, $update_notification_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $update_notification_body = array_key_exists('update_notification_body', $associative_array) ? $associative_array['update_notification_body'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['updateNotification'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['updateNotification'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -36728,8 +35992,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  \FastComments\Client\Model\UpdateQuestionConfigBody $update_question_config_body update_question_config_body (required)
@@ -36739,9 +36001,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function updateQuestionConfig($associative_array)
+    public function updateQuestionConfig($tenant_id, $id, $update_question_config_body, array $options = [])
     {
-        list($response) = $this->updateQuestionConfigWithHttpInfo($associative_array);
+        list($response) = $this->updateQuestionConfigWithHttpInfo($tenant_id, $id, $update_question_config_body, $options);
         return $response;
     }
 
@@ -36749,8 +36011,6 @@ class DefaultApi
      * Operation updateQuestionConfigWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -36761,9 +36021,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateQuestionConfigWithHttpInfo($associative_array)
+    public function updateQuestionConfigWithHttpInfo($tenant_id, $id, $update_question_config_body, array $options = [])
     {
-        $request = $this->updateQuestionConfigRequest($associative_array);
+        $request = $this->updateQuestionConfigRequest($tenant_id, $id, $update_question_config_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -36853,8 +36113,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateQuestionConfigBody $update_question_config_body (required)
@@ -36863,9 +36121,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateQuestionConfigAsync($associative_array)
+    public function updateQuestionConfigAsync($tenant_id, $id, $update_question_config_body, array $options = [])
     {
-        return $this->updateQuestionConfigAsyncWithHttpInfo($associative_array)
+        return $this->updateQuestionConfigAsyncWithHttpInfo($tenant_id, $id, $update_question_config_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -36878,8 +36136,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateQuestionConfigBody $update_question_config_body (required)
@@ -36888,10 +36144,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateQuestionConfigAsyncWithHttpInfo($associative_array)
+    public function updateQuestionConfigAsyncWithHttpInfo($tenant_id, $id, $update_question_config_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->updateQuestionConfigRequest($associative_array);
+        $request = $this->updateQuestionConfigRequest($tenant_id, $id, $update_question_config_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -36932,8 +36188,6 @@ class DefaultApi
     /**
      * Create request for operation 'updateQuestionConfig'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateQuestionConfigBody $update_question_config_body (required)
@@ -36942,13 +36196,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateQuestionConfigRequest($associative_array)
+    public function updateQuestionConfigRequest($tenant_id, $id, $update_question_config_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $update_question_config_body = array_key_exists('update_question_config_body', $associative_array) ? $associative_array['update_question_config_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['updateQuestionConfig'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['updateQuestionConfig'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -37070,8 +36321,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  \FastComments\Client\Model\UpdateQuestionResultBody $update_question_result_body update_question_result_body (required)
@@ -37081,9 +36330,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function updateQuestionResult($associative_array)
+    public function updateQuestionResult($tenant_id, $id, $update_question_result_body, array $options = [])
     {
-        list($response) = $this->updateQuestionResultWithHttpInfo($associative_array);
+        list($response) = $this->updateQuestionResultWithHttpInfo($tenant_id, $id, $update_question_result_body, $options);
         return $response;
     }
 
@@ -37091,8 +36340,6 @@ class DefaultApi
      * Operation updateQuestionResultWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -37103,9 +36350,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateQuestionResultWithHttpInfo($associative_array)
+    public function updateQuestionResultWithHttpInfo($tenant_id, $id, $update_question_result_body, array $options = [])
     {
-        $request = $this->updateQuestionResultRequest($associative_array);
+        $request = $this->updateQuestionResultRequest($tenant_id, $id, $update_question_result_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -37195,8 +36442,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateQuestionResultBody $update_question_result_body (required)
@@ -37205,9 +36450,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateQuestionResultAsync($associative_array)
+    public function updateQuestionResultAsync($tenant_id, $id, $update_question_result_body, array $options = [])
     {
-        return $this->updateQuestionResultAsyncWithHttpInfo($associative_array)
+        return $this->updateQuestionResultAsyncWithHttpInfo($tenant_id, $id, $update_question_result_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -37220,8 +36465,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateQuestionResultBody $update_question_result_body (required)
@@ -37230,10 +36473,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateQuestionResultAsyncWithHttpInfo($associative_array)
+    public function updateQuestionResultAsyncWithHttpInfo($tenant_id, $id, $update_question_result_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->updateQuestionResultRequest($associative_array);
+        $request = $this->updateQuestionResultRequest($tenant_id, $id, $update_question_result_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -37274,8 +36517,6 @@ class DefaultApi
     /**
      * Create request for operation 'updateQuestionResult'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateQuestionResultBody $update_question_result_body (required)
@@ -37284,13 +36525,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateQuestionResultRequest($associative_array)
+    public function updateQuestionResultRequest($tenant_id, $id, $update_question_result_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $update_question_result_body = array_key_exists('update_question_result_body', $associative_array) ? $associative_array['update_question_result_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['updateQuestionResult'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['updateQuestionResult'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -37412,7 +36650,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -37424,9 +36662,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\UpdateSubscriptionAPIResponse
      */
-    public function updateSubscription($associative_array)
+    public function updateSubscription($tenant_id, $id, $update_api_user_subscription_data, array $options = [])
     {
-        list($response) = $this->updateSubscriptionWithHttpInfo($associative_array);
+        list($response) = $this->updateSubscriptionWithHttpInfo($tenant_id, $id, $update_api_user_subscription_data, $options);
         return $response;
     }
 
@@ -37435,7 +36673,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -37447,9 +36685,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\UpdateSubscriptionAPIResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateSubscriptionWithHttpInfo($associative_array)
+    public function updateSubscriptionWithHttpInfo($tenant_id, $id, $update_api_user_subscription_data, array $options = [])
     {
-        $request = $this->updateSubscriptionRequest($associative_array);
+        $request = $this->updateSubscriptionRequest($tenant_id, $id, $update_api_user_subscription_data, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -37525,7 +36763,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -37536,9 +36774,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateSubscriptionAsync($associative_array)
+    public function updateSubscriptionAsync($tenant_id, $id, $update_api_user_subscription_data, array $options = [])
     {
-        return $this->updateSubscriptionAsyncWithHttpInfo($associative_array)
+        return $this->updateSubscriptionAsyncWithHttpInfo($tenant_id, $id, $update_api_user_subscription_data, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -37551,7 +36789,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -37562,10 +36800,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateSubscriptionAsyncWithHttpInfo($associative_array)
+    public function updateSubscriptionAsyncWithHttpInfo($tenant_id, $id, $update_api_user_subscription_data, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\UpdateSubscriptionAPIResponse';
-        $request = $this->updateSubscriptionRequest($associative_array);
+        $request = $this->updateSubscriptionRequest($tenant_id, $id, $update_api_user_subscription_data, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -37606,7 +36844,7 @@ class DefaultApi
     /**
      * Create request for operation 'updateSubscription'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -37617,14 +36855,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateSubscriptionRequest($associative_array)
+    public function updateSubscriptionRequest($tenant_id, $id, $update_api_user_subscription_data, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $update_api_user_subscription_data = array_key_exists('update_api_user_subscription_data', $associative_array) ? $associative_array['update_api_user_subscription_data'] : null;
-        $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['updateSubscription'][0];
+        // unbox the optional parameters and request options from the $options array
+        $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['updateSubscription'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -37756,8 +36991,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  \FastComments\Client\Model\UpdateTenantBody $update_tenant_body update_tenant_body (required)
@@ -37767,9 +37000,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function updateTenant($associative_array)
+    public function updateTenant($tenant_id, $id, $update_tenant_body, array $options = [])
     {
-        list($response) = $this->updateTenantWithHttpInfo($associative_array);
+        list($response) = $this->updateTenantWithHttpInfo($tenant_id, $id, $update_tenant_body, $options);
         return $response;
     }
 
@@ -37777,8 +37010,6 @@ class DefaultApi
      * Operation updateTenantWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -37789,9 +37020,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateTenantWithHttpInfo($associative_array)
+    public function updateTenantWithHttpInfo($tenant_id, $id, $update_tenant_body, array $options = [])
     {
-        $request = $this->updateTenantRequest($associative_array);
+        $request = $this->updateTenantRequest($tenant_id, $id, $update_tenant_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -37881,8 +37112,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateTenantBody $update_tenant_body (required)
@@ -37891,9 +37120,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateTenantAsync($associative_array)
+    public function updateTenantAsync($tenant_id, $id, $update_tenant_body, array $options = [])
     {
-        return $this->updateTenantAsyncWithHttpInfo($associative_array)
+        return $this->updateTenantAsyncWithHttpInfo($tenant_id, $id, $update_tenant_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -37906,8 +37135,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateTenantBody $update_tenant_body (required)
@@ -37916,10 +37143,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateTenantAsyncWithHttpInfo($associative_array)
+    public function updateTenantAsyncWithHttpInfo($tenant_id, $id, $update_tenant_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->updateTenantRequest($associative_array);
+        $request = $this->updateTenantRequest($tenant_id, $id, $update_tenant_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -37960,8 +37187,6 @@ class DefaultApi
     /**
      * Create request for operation 'updateTenant'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateTenantBody $update_tenant_body (required)
@@ -37970,13 +37195,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateTenantRequest($associative_array)
+    public function updateTenantRequest($tenant_id, $id, $update_tenant_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $update_tenant_body = array_key_exists('update_tenant_body', $associative_array) ? $associative_array['update_tenant_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['updateTenant'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['updateTenant'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -38098,8 +37320,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  \FastComments\Client\Model\UpdateTenantPackageBody $update_tenant_package_body update_tenant_package_body (required)
@@ -38109,9 +37329,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function updateTenantPackage($associative_array)
+    public function updateTenantPackage($tenant_id, $id, $update_tenant_package_body, array $options = [])
     {
-        list($response) = $this->updateTenantPackageWithHttpInfo($associative_array);
+        list($response) = $this->updateTenantPackageWithHttpInfo($tenant_id, $id, $update_tenant_package_body, $options);
         return $response;
     }
 
@@ -38119,8 +37339,6 @@ class DefaultApi
      * Operation updateTenantPackageWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -38131,9 +37349,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateTenantPackageWithHttpInfo($associative_array)
+    public function updateTenantPackageWithHttpInfo($tenant_id, $id, $update_tenant_package_body, array $options = [])
     {
-        $request = $this->updateTenantPackageRequest($associative_array);
+        $request = $this->updateTenantPackageRequest($tenant_id, $id, $update_tenant_package_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -38223,8 +37441,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateTenantPackageBody $update_tenant_package_body (required)
@@ -38233,9 +37449,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateTenantPackageAsync($associative_array)
+    public function updateTenantPackageAsync($tenant_id, $id, $update_tenant_package_body, array $options = [])
     {
-        return $this->updateTenantPackageAsyncWithHttpInfo($associative_array)
+        return $this->updateTenantPackageAsyncWithHttpInfo($tenant_id, $id, $update_tenant_package_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -38248,8 +37464,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateTenantPackageBody $update_tenant_package_body (required)
@@ -38258,10 +37472,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateTenantPackageAsyncWithHttpInfo($associative_array)
+    public function updateTenantPackageAsyncWithHttpInfo($tenant_id, $id, $update_tenant_package_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->updateTenantPackageRequest($associative_array);
+        $request = $this->updateTenantPackageRequest($tenant_id, $id, $update_tenant_package_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -38302,8 +37516,6 @@ class DefaultApi
     /**
      * Create request for operation 'updateTenantPackage'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateTenantPackageBody $update_tenant_package_body (required)
@@ -38312,13 +37524,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateTenantPackageRequest($associative_array)
+    public function updateTenantPackageRequest($tenant_id, $id, $update_tenant_package_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $update_tenant_package_body = array_key_exists('update_tenant_package_body', $associative_array) ? $associative_array['update_tenant_package_body'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['updateTenantPackage'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['updateTenantPackage'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -38440,7 +37649,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
@@ -38452,9 +37661,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function updateTenantUser($associative_array)
+    public function updateTenantUser($tenant_id, $id, $update_tenant_user_body, array $options = [])
     {
-        list($response) = $this->updateTenantUserWithHttpInfo($associative_array);
+        list($response) = $this->updateTenantUserWithHttpInfo($tenant_id, $id, $update_tenant_user_body, $options);
         return $response;
     }
 
@@ -38463,7 +37672,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -38475,9 +37684,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateTenantUserWithHttpInfo($associative_array)
+    public function updateTenantUserWithHttpInfo($tenant_id, $id, $update_tenant_user_body, array $options = [])
     {
-        $request = $this->updateTenantUserRequest($associative_array);
+        $request = $this->updateTenantUserRequest($tenant_id, $id, $update_tenant_user_body, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -38567,7 +37776,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -38578,9 +37787,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateTenantUserAsync($associative_array)
+    public function updateTenantUserAsync($tenant_id, $id, $update_tenant_user_body, array $options = [])
     {
-        return $this->updateTenantUserAsyncWithHttpInfo($associative_array)
+        return $this->updateTenantUserAsyncWithHttpInfo($tenant_id, $id, $update_tenant_user_body, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -38593,7 +37802,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -38604,10 +37813,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateTenantUserAsyncWithHttpInfo($associative_array)
+    public function updateTenantUserAsyncWithHttpInfo($tenant_id, $id, $update_tenant_user_body, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->updateTenantUserRequest($associative_array);
+        $request = $this->updateTenantUserRequest($tenant_id, $id, $update_tenant_user_body, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -38648,7 +37857,7 @@ class DefaultApi
     /**
      * Create request for operation 'updateTenantUser'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -38659,14 +37868,11 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateTenantUserRequest($associative_array)
+    public function updateTenantUserRequest($tenant_id, $id, $update_tenant_user_body, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $update_tenant_user_body = array_key_exists('update_tenant_user_body', $associative_array) ? $associative_array['update_tenant_user_body'] : null;
-        $update_comments = array_key_exists('update_comments', $associative_array) ? $associative_array['update_comments'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['updateTenantUser'][0];
+        // unbox the optional parameters and request options from the $options array
+        $update_comments = array_key_exists('update_comments', $options) ? $options['update_comments'] : null;
+        $contentType = $options['contentType'] ?? self::contentTypes['updateTenantUser'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
@@ -38798,8 +38004,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id tenant_id (required)
      * @param  string $id id (required)
      * @param  \FastComments\Client\Model\UpdateUserBadgeParams $update_user_badge_params update_user_badge_params (required)
@@ -38809,9 +38013,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptySuccessResponse|\FastComments\Client\Model\APIError
      */
-    public function updateUserBadge($associative_array)
+    public function updateUserBadge($tenant_id, $id, $update_user_badge_params, array $options = [])
     {
-        list($response) = $this->updateUserBadgeWithHttpInfo($associative_array);
+        list($response) = $this->updateUserBadgeWithHttpInfo($tenant_id, $id, $update_user_badge_params, $options);
         return $response;
     }
 
@@ -38819,8 +38023,6 @@ class DefaultApi
      * Operation updateUserBadgeWithHttpInfo
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
@@ -38831,9 +38033,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptySuccessResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateUserBadgeWithHttpInfo($associative_array)
+    public function updateUserBadgeWithHttpInfo($tenant_id, $id, $update_user_badge_params, array $options = [])
     {
-        $request = $this->updateUserBadgeRequest($associative_array);
+        $request = $this->updateUserBadgeRequest($tenant_id, $id, $update_user_badge_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -38923,8 +38125,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateUserBadgeParams $update_user_badge_params (required)
@@ -38933,9 +38133,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateUserBadgeAsync($associative_array)
+    public function updateUserBadgeAsync($tenant_id, $id, $update_user_badge_params, array $options = [])
     {
-        return $this->updateUserBadgeAsyncWithHttpInfo($associative_array)
+        return $this->updateUserBadgeAsyncWithHttpInfo($tenant_id, $id, $update_user_badge_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -38948,8 +38148,6 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateUserBadgeParams $update_user_badge_params (required)
@@ -38958,10 +38156,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateUserBadgeAsyncWithHttpInfo($associative_array)
+    public function updateUserBadgeAsyncWithHttpInfo($tenant_id, $id, $update_user_badge_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptySuccessResponse';
-        $request = $this->updateUserBadgeRequest($associative_array);
+        $request = $this->updateUserBadgeRequest($tenant_id, $id, $update_user_badge_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -39002,8 +38200,6 @@ class DefaultApi
     /**
      * Create request for operation 'updateUserBadge'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $tenant_id (required)
      * @param  string $id (required)
      * @param  \FastComments\Client\Model\UpdateUserBadgeParams $update_user_badge_params (required)
@@ -39012,13 +38208,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateUserBadgeRequest($associative_array)
+    public function updateUserBadgeRequest($tenant_id, $id, $update_user_badge_params, array $options = [])
     {
-        // unbox the parameters from the associative array
-        $tenant_id = array_key_exists('tenant_id', $associative_array) ? $associative_array['tenant_id'] : null;
-        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
-        $update_user_badge_params = array_key_exists('update_user_badge_params', $associative_array) ? $associative_array['update_user_badge_params'] : null;
-        $contentType = $associative_array['contentType'] ?? self::contentTypes['updateUserBadge'][0];
+        // unbox the optional parameters and request options from the $options array
+        $contentType = $options['contentType'] ?? self::contentTypes['updateUserBadge'][0];
         
         // verify the required parameter 'tenant_id' is set
         if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
