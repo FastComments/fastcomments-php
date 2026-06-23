@@ -102,13 +102,11 @@ class SSOIntegrationTest extends TestCase
         $this->assertNotNull($createResponse);
 
         // Get comments with SSO
-        $getResponse = $publicApi->getCommentsPublic(
-            $this->tenantId,
-            'sdk-test-php',
-            null,
-            null,
-            $token
-        );
+        $getResponse = $publicApi->getCommentsPublic([
+            'tenant_id' => $this->tenantId,
+            'url_id' => 'sdk-test-php',
+            'sso' => $token,
+        ]);
 
         $this->assertNotNull($getResponse);
     }
