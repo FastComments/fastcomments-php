@@ -1,4 +1,4 @@
-# # CreateTenantBody
+# CreateTenantBody
 
 ## Properties
 

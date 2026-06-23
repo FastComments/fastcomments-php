@@ -1,4 +1,4 @@
-# # LiveEventType
+# LiveEventType
 
 ## Properties
 

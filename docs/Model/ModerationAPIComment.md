@@ -1,4 +1,4 @@
-# # ModerationAPIComment
+# ModerationAPIComment
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CommentThreadDeletionMode
+# CommentThreadDeletionMode
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GifGetLargeResponse
+# GifGetLargeResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CreateFeedPostResponse
+# CreateFeedPostResponse
 
 ## Properties
 

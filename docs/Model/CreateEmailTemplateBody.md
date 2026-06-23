@@ -1,4 +1,4 @@
-# # CreateEmailTemplateBody
+# CreateEmailTemplateBody
 
 ## Properties
 

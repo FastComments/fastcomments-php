@@ -1,4 +1,4 @@
-# # BulkAggregateQuestionResultsResponse
+# BulkAggregateQuestionResultsResponse
 
 ## Properties
 

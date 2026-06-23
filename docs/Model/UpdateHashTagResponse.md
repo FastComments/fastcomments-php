@@ -1,4 +1,4 @@
-# # UpdateHashTagResponse
+# UpdateHashTagResponse
 
 ## Properties
 

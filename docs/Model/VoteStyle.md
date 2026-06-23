@@ -1,4 +1,4 @@
-# # VoteStyle
+# VoteStyle
 
 ## Properties
 

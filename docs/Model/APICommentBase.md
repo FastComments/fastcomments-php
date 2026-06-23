@@ -1,4 +1,4 @@
-# # APICommentBase
+# APICommentBase
 
 ## Properties
 

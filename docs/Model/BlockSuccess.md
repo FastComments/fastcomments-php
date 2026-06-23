@@ -1,4 +1,4 @@
-# # BlockSuccess
+# BlockSuccess
 
 ## Properties
 

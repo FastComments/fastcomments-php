@@ -1,4 +1,4 @@
-# # UpdateQuestionResultBody
+# UpdateQuestionResultBody
 
 ## Properties
 

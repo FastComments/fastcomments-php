@@ -1,4 +1,4 @@
-# # APIPage
+# APIPage
 
 ## Properties
 

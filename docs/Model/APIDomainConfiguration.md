@@ -1,4 +1,4 @@
-# # APIDomainConfiguration
+# APIDomainConfiguration
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CreateCommentParams
+# CreateCommentParams
 
 ## Properties
 

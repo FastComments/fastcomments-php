@@ -1,4 +1,4 @@
-# # IgnoredResponse
+# IgnoredResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetPageByURLIdAPIResponse
+# GetPageByURLIdAPIResponse
 
 ## Properties
 

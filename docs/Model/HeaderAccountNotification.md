@@ -1,4 +1,4 @@
-# # HeaderAccountNotification
+# HeaderAccountNotification
 
 ## Properties
 

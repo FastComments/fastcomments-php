@@ -1,4 +1,4 @@
-# # UserSessionInfo
+# UserSessionInfo
 
 ## Properties
 

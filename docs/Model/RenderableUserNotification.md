@@ -1,4 +1,4 @@
-# # RenderableUserNotification
+# RenderableUserNotification
 
 ## Properties
 

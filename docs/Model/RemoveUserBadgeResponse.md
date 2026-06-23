@@ -1,4 +1,4 @@
-# # RemoveUserBadgeResponse
+# RemoveUserBadgeResponse
 
 ## Properties
 

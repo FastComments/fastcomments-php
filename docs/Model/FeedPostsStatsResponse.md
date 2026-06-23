@@ -1,4 +1,4 @@
-# # FeedPostsStatsResponse
+# FeedPostsStatsResponse
 
 ## Properties
 

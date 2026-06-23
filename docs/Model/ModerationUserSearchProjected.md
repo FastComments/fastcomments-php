@@ -1,4 +1,4 @@
-# # ModerationUserSearchProjected
+# ModerationUserSearchProjected
 
 ## Properties
 

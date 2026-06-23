@@ -1,4 +1,4 @@
-# # APIModerateUserBanPreferences
+# APIModerateUserBanPreferences
 
 ## Properties
 

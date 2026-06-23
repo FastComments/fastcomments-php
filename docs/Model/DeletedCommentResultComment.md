@@ -1,4 +1,4 @@
-# # DeletedCommentResultComment
+# DeletedCommentResultComment
 
 ## Properties
 

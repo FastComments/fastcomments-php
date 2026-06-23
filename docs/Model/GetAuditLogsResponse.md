@@ -1,4 +1,4 @@
-# # GetAuditLogsResponse
+# GetAuditLogsResponse
 
 ## Properties
 

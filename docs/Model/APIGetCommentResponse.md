@@ -1,4 +1,4 @@
-# # APIGetCommentResponse
+# APIGetCommentResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CommentsByIdsParams
+# CommentsByIdsParams
 
 ## Properties
 

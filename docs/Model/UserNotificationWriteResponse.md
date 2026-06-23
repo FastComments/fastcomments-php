@@ -1,4 +1,4 @@
-# # UserNotificationWriteResponse
+# UserNotificationWriteResponse
 
 ## Properties
 

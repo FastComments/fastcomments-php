@@ -1,4 +1,4 @@
-# # PageUsersInfoResponse
+# PageUsersInfoResponse
 
 ## Properties
 

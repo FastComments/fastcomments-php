@@ -1,4 +1,4 @@
-# # SaveCommentResponseOptimized
+# SaveCommentResponseOptimized
 
 ## Properties
 

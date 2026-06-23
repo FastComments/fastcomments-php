@@ -1,4 +1,4 @@
-# # APIGetUserBadgesResponse
+# APIGetUserBadgesResponse
 
 ## Properties
 

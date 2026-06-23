@@ -1,6 +1,6 @@
 # FastComments\Client\ModerationApi
 
-FastComments PHP API Client - A SDK for interacting with the FastComments API
+
 
 All URIs are relative to https://fastcomments.com, except if the operation defines another base path.
 
@@ -54,7 +54,7 @@ All URIs are relative to https://fastcomments.com, except if the operation defin
 ## `deleteModerationVote()`
 
 ```php
-deleteModerationVote($comment_id, $vote_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\VoteDeleteResponse
+deleteModerationVote($comment_id, $vote_id, $tenant_id, $broadcast_id, $sso): \FastComments\Client\Model\VoteDeleteResponse
 ```
 
 
@@ -72,14 +72,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$vote_id = 'vote_id_example'; // string
-$broadcast_id = 'broadcast_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'vote_id' => 'vote_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->deleteModerationVote($comment_id, $vote_id, $broadcast_id, $tenant_id, $sso);
+    $result = $apiInstance->deleteModerationVote($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->deleteModerationVote: ', $e->getMessage(), PHP_EOL;
@@ -88,12 +91,14 @@ try {
 
 ### Parameters
 
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
+
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **comment_id** | **string**|  | |
 | **vote_id** | **string**|  | |
-| **broadcast_id** | **string**|  | [optional] |
 | **tenant_id** | **string**|  | [optional] |
+| **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -134,19 +139,22 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$page = 3.4; // float
-$count = 3.4; // float
-$text_search = 'text_search_example'; // string
-$by_ip_from_comment = 'by_ip_from_comment_example'; // string
-$filters = 'filters_example'; // string
-$search_filters = 'search_filters_example'; // string
-$sorts = 'sorts_example'; // string
-$demo = True; // bool
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'page' => 3.4, // float
+    'count' => 3.4, // float
+    'text_search' => 'text_search_example', // string
+    'by_ip_from_comment' => 'by_ip_from_comment_example', // string
+    'filters' => 'filters_example', // string
+    'search_filters' => 'search_filters_example', // string
+    'sorts' => 'sorts_example', // string
+    'demo' => True, // bool
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getApiComments($page, $count, $text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $demo, $tenant_id, $sso);
+    $result = $apiInstance->getApiComments($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getApiComments: ', $e->getMessage(), PHP_EOL;
@@ -154,6 +162,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -206,12 +216,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$batch_job_id = 'batch_job_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'batch_job_id' => 'batch_job_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getApiExportStatus($batch_job_id, $tenant_id, $sso);
+    $result = $apiInstance->getApiExportStatus($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getApiExportStatus: ', $e->getMessage(), PHP_EOL;
@@ -219,6 +232,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -264,17 +279,20 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$text_search = 'text_search_example'; // string
-$by_ip_from_comment = 'by_ip_from_comment_example'; // string
-$filters = 'filters_example'; // string
-$search_filters = 'search_filters_example'; // string
-$after_id = 'after_id_example'; // string
-$demo = True; // bool
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'text_search' => 'text_search_example', // string
+    'by_ip_from_comment' => 'by_ip_from_comment_example', // string
+    'filters' => 'filters_example', // string
+    'search_filters' => 'search_filters_example', // string
+    'after_id' => 'after_id_example', // string
+    'demo' => True, // bool
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getApiIds($text_search, $by_ip_from_comment, $filters, $search_filters, $after_id, $demo, $tenant_id, $sso);
+    $result = $apiInstance->getApiIds($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getApiIds: ', $e->getMessage(), PHP_EOL;
@@ -282,6 +300,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -332,12 +352,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getBanUsersFromComment($comment_id, $tenant_id, $sso);
+    $result = $apiInstance->getBanUsersFromComment($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getBanUsersFromComment: ', $e->getMessage(), PHP_EOL;
@@ -345,6 +368,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -390,12 +415,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getCommentBanStatus($comment_id, $tenant_id, $sso);
+    $result = $apiInstance->getCommentBanStatus($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getCommentBanStatus: ', $e->getMessage(), PHP_EOL;
@@ -403,6 +431,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -448,12 +478,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getCommentChildren($comment_id, $tenant_id, $sso);
+    $result = $apiInstance->getCommentChildren($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getCommentChildren: ', $e->getMessage(), PHP_EOL;
@@ -461,6 +494,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -506,16 +541,19 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$text_search = 'text_search_example'; // string
-$by_ip_from_comment = 'by_ip_from_comment_example'; // string
-$filter = 'filter_example'; // string
-$search_filters = 'search_filters_example'; // string
-$demo = True; // bool
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'text_search' => 'text_search_example', // string
+    'by_ip_from_comment' => 'by_ip_from_comment_example', // string
+    'filter' => 'filter_example', // string
+    'search_filters' => 'search_filters_example', // string
+    'demo' => True, // bool
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getCount($text_search, $by_ip_from_comment, $filter, $search_filters, $demo, $tenant_id, $sso);
+    $result = $apiInstance->getCount($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getCount: ', $e->getMessage(), PHP_EOL;
@@ -523,6 +561,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -572,11 +612,14 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getCounts($tenant_id, $sso);
+    $result = $apiInstance->getCounts($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getCounts: ', $e->getMessage(), PHP_EOL;
@@ -584,6 +627,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -628,12 +673,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getLogs($comment_id, $tenant_id, $sso);
+    $result = $apiInstance->getLogs($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getLogs: ', $e->getMessage(), PHP_EOL;
@@ -641,6 +689,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -686,11 +736,14 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getManualBadges($tenant_id, $sso);
+    $result = $apiInstance->getManualBadges($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getManualBadges: ', $e->getMessage(), PHP_EOL;
@@ -698,6 +751,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -742,13 +797,16 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$badges_user_id = 'badges_user_id_example'; // string
-$comment_id = 'comment_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'badges_user_id' => 'badges_user_id_example', // string
+    'comment_id' => 'comment_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getManualBadgesForUser($badges_user_id, $comment_id, $tenant_id, $sso);
+    $result = $apiInstance->getManualBadgesForUser($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getManualBadgesForUser: ', $e->getMessage(), PHP_EOL;
@@ -756,6 +814,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -802,14 +862,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$include_email = True; // bool
-$include_ip = True; // bool
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'include_email' => True, // bool
+    'include_ip' => True, // bool
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getModerationComment($comment_id, $include_email, $include_ip, $tenant_id, $sso);
+    $result = $apiInstance->getModerationComment($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getModerationComment: ', $e->getMessage(), PHP_EOL;
@@ -817,6 +880,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -864,12 +929,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getModerationCommentText($comment_id, $tenant_id, $sso);
+    $result = $apiInstance->getModerationCommentText($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getModerationCommentText: ', $e->getMessage(), PHP_EOL;
@@ -877,6 +945,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -922,15 +992,18 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$include_by_user_id_and_email = True; // bool
-$include_by_ip = True; // bool
-$include_by_email_domain = True; // bool
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'include_by_user_id_and_email' => True, // bool
+    'include_by_ip' => True, // bool
+    'include_by_email_domain' => True, // bool
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getPreBanSummary($comment_id, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $tenant_id, $sso);
+    $result = $apiInstance->getPreBanSummary($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getPreBanSummary: ', $e->getMessage(), PHP_EOL;
@@ -938,6 +1011,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -986,14 +1061,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$value = 'value_example'; // string
-$filters = 'filters_example'; // string
-$search_filters = 'search_filters_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'value' => 'value_example', // string
+    'filters' => 'filters_example', // string
+    'search_filters' => 'search_filters_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getSearchCommentsSummary($value, $filters, $search_filters, $tenant_id, $sso);
+    $result = $apiInstance->getSearchCommentsSummary($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getSearchCommentsSummary: ', $e->getMessage(), PHP_EOL;
@@ -1001,6 +1079,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1048,12 +1128,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$value = 'value_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'value' => 'value_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getSearchPages($value, $tenant_id, $sso);
+    $result = $apiInstance->getSearchPages($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getSearchPages: ', $e->getMessage(), PHP_EOL;
@@ -1061,6 +1144,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1106,12 +1191,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$value = 'value_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'value' => 'value_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getSearchSites($value, $tenant_id, $sso);
+    $result = $apiInstance->getSearchSites($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getSearchSites: ', $e->getMessage(), PHP_EOL;
@@ -1119,6 +1207,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1164,12 +1254,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$text_search = 'text_search_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'text_search' => 'text_search_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getSearchSuggest($text_search, $tenant_id, $sso);
+    $result = $apiInstance->getSearchSuggest($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getSearchSuggest: ', $e->getMessage(), PHP_EOL;
@@ -1177,6 +1270,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1222,12 +1317,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$value = 'value_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'value' => 'value_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getSearchUsers($value, $tenant_id, $sso);
+    $result = $apiInstance->getSearchUsers($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getSearchUsers: ', $e->getMessage(), PHP_EOL;
@@ -1235,6 +1333,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1280,12 +1380,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 'user_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'user_id' => 'user_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getTrustFactor($user_id, $tenant_id, $sso);
+    $result = $apiInstance->getTrustFactor($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getTrustFactor: ', $e->getMessage(), PHP_EOL;
@@ -1293,6 +1396,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1338,11 +1443,14 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getUserBanPreference($tenant_id, $sso);
+    $result = $apiInstance->getUserBanPreference($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getUserBanPreference: ', $e->getMessage(), PHP_EOL;
@@ -1350,6 +1458,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1394,12 +1504,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->getUserInternalProfile($comment_id, $tenant_id, $sso);
+    $result = $apiInstance->getUserInternalProfile($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getUserInternalProfile: ', $e->getMessage(), PHP_EOL;
@@ -1407,6 +1520,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1434,7 +1549,7 @@ No authorization required
 ## `postAdjustCommentVotes()`
 
 ```php
-postAdjustCommentVotes($comment_id, $adjust_comment_votes_params, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\AdjustVotesResponse
+postAdjustCommentVotes($comment_id, $adjust_comment_votes_params, $tenant_id, $broadcast_id, $sso): \FastComments\Client\Model\AdjustVotesResponse
 ```
 
 
@@ -1452,14 +1567,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$adjust_comment_votes_params = new \FastComments\Client\Model\AdjustCommentVotesParams(); // \FastComments\Client\Model\AdjustCommentVotesParams
-$broadcast_id = 'broadcast_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'adjust_comment_votes_params' => new \FastComments\Client\Model\AdjustCommentVotesParams(), // \FastComments\Client\Model\AdjustCommentVotesParams
+    'tenant_id' => 'tenant_id_example', // string
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->postAdjustCommentVotes($comment_id, $adjust_comment_votes_params, $broadcast_id, $tenant_id, $sso);
+    $result = $apiInstance->postAdjustCommentVotes($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postAdjustCommentVotes: ', $e->getMessage(), PHP_EOL;
@@ -1468,12 +1586,14 @@ try {
 
 ### Parameters
 
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
+
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **comment_id** | **string**|  | |
 | **adjust_comment_votes_params** | [**\FastComments\Client\Model\AdjustCommentVotesParams**](../Model/AdjustCommentVotesParams.md)|  | |
-| **broadcast_id** | **string**|  | [optional] |
 | **tenant_id** | **string**|  | [optional] |
+| **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1514,16 +1634,19 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$text_search = 'text_search_example'; // string
-$by_ip_from_comment = 'by_ip_from_comment_example'; // string
-$filters = 'filters_example'; // string
-$search_filters = 'search_filters_example'; // string
-$sorts = 'sorts_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'text_search' => 'text_search_example', // string
+    'by_ip_from_comment' => 'by_ip_from_comment_example', // string
+    'filters' => 'filters_example', // string
+    'search_filters' => 'search_filters_example', // string
+    'sorts' => 'sorts_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->postApiExport($text_search, $by_ip_from_comment, $filters, $search_filters, $sorts, $tenant_id, $sso);
+    $result = $apiInstance->postApiExport($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postApiExport: ', $e->getMessage(), PHP_EOL;
@@ -1531,6 +1654,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1580,20 +1705,23 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$ban_email = True; // bool
-$ban_email_domain = True; // bool
-$ban_ip = True; // bool
-$delete_all_users_comments = True; // bool
-$banned_until = 'banned_until_example'; // string
-$is_shadow_ban = True; // bool
-$update_id = 'update_id_example'; // string
-$ban_reason = 'ban_reason_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'ban_email' => True, // bool
+    'ban_email_domain' => True, // bool
+    'ban_ip' => True, // bool
+    'delete_all_users_comments' => True, // bool
+    'banned_until' => 'banned_until_example', // string
+    'is_shadow_ban' => True, // bool
+    'update_id' => 'update_id_example', // string
+    'ban_reason' => 'ban_reason_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->postBanUserFromComment($comment_id, $ban_email, $ban_email_domain, $ban_ip, $delete_all_users_comments, $banned_until, $is_shadow_ban, $update_id, $ban_reason, $tenant_id, $sso);
+    $result = $apiInstance->postBanUserFromComment($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postBanUserFromComment: ', $e->getMessage(), PHP_EOL;
@@ -1601,6 +1729,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1654,12 +1784,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$ban_user_undo_params = new \FastComments\Client\Model\BanUserUndoParams(); // \FastComments\Client\Model\BanUserUndoParams
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'ban_user_undo_params' => new \FastComments\Client\Model\BanUserUndoParams(), // \FastComments\Client\Model\BanUserUndoParams
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->postBanUserUndo($ban_user_undo_params, $tenant_id, $sso);
+    $result = $apiInstance->postBanUserUndo($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postBanUserUndo: ', $e->getMessage(), PHP_EOL;
@@ -1667,6 +1800,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1712,15 +1847,18 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$bulk_pre_ban_params = new \FastComments\Client\Model\BulkPreBanParams(); // \FastComments\Client\Model\BulkPreBanParams
-$include_by_user_id_and_email = True; // bool
-$include_by_ip = True; // bool
-$include_by_email_domain = True; // bool
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'bulk_pre_ban_params' => new \FastComments\Client\Model\BulkPreBanParams(), // \FastComments\Client\Model\BulkPreBanParams
+    'include_by_user_id_and_email' => True, // bool
+    'include_by_ip' => True, // bool
+    'include_by_email_domain' => True, // bool
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->postBulkPreBanSummary($bulk_pre_ban_params, $include_by_user_id_and_email, $include_by_ip, $include_by_email_domain, $tenant_id, $sso);
+    $result = $apiInstance->postBulkPreBanSummary($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postBulkPreBanSummary: ', $e->getMessage(), PHP_EOL;
@@ -1728,6 +1866,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1776,12 +1916,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comments_by_ids_params = new \FastComments\Client\Model\CommentsByIdsParams(); // \FastComments\Client\Model\CommentsByIdsParams
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comments_by_ids_params' => new \FastComments\Client\Model\CommentsByIdsParams(), // \FastComments\Client\Model\CommentsByIdsParams
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->postCommentsByIds($comments_by_ids_params, $tenant_id, $sso);
+    $result = $apiInstance->postCommentsByIds($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postCommentsByIds: ', $e->getMessage(), PHP_EOL;
@@ -1789,6 +1932,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1816,7 +1961,7 @@ No authorization required
 ## `postFlagComment()`
 
 ```php
-postFlagComment($comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\APIEmptyResponse
+postFlagComment($comment_id, $tenant_id, $broadcast_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -1834,13 +1979,16 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$broadcast_id = 'broadcast_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->postFlagComment($comment_id, $broadcast_id, $tenant_id, $sso);
+    $result = $apiInstance->postFlagComment($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postFlagComment: ', $e->getMessage(), PHP_EOL;
@@ -1849,11 +1997,13 @@ try {
 
 ### Parameters
 
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
+
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **comment_id** | **string**|  | |
-| **broadcast_id** | **string**|  | [optional] |
 | **tenant_id** | **string**|  | [optional] |
+| **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1876,7 +2026,7 @@ No authorization required
 ## `postRemoveComment()`
 
 ```php
-postRemoveComment($comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\PostRemoveCommentResponse
+postRemoveComment($comment_id, $tenant_id, $broadcast_id, $sso): \FastComments\Client\Model\PostRemoveCommentResponse
 ```
 
 
@@ -1894,13 +2044,16 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$broadcast_id = 'broadcast_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->postRemoveComment($comment_id, $broadcast_id, $tenant_id, $sso);
+    $result = $apiInstance->postRemoveComment($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postRemoveComment: ', $e->getMessage(), PHP_EOL;
@@ -1909,11 +2062,13 @@ try {
 
 ### Parameters
 
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
+
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **comment_id** | **string**|  | |
-| **broadcast_id** | **string**|  | [optional] |
 | **tenant_id** | **string**|  | [optional] |
+| **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1936,7 +2091,7 @@ No authorization required
 ## `postRestoreDeletedComment()`
 
 ```php
-postRestoreDeletedComment($comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\APIEmptyResponse
+postRestoreDeletedComment($comment_id, $tenant_id, $broadcast_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -1954,13 +2109,16 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$broadcast_id = 'broadcast_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->postRestoreDeletedComment($comment_id, $broadcast_id, $tenant_id, $sso);
+    $result = $apiInstance->postRestoreDeletedComment($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postRestoreDeletedComment: ', $e->getMessage(), PHP_EOL;
@@ -1969,11 +2127,13 @@ try {
 
 ### Parameters
 
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
+
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **comment_id** | **string**|  | |
-| **broadcast_id** | **string**|  | [optional] |
 | **tenant_id** | **string**|  | [optional] |
+| **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1996,7 +2156,7 @@ No authorization required
 ## `postSetCommentApprovalStatus()`
 
 ```php
-postSetCommentApprovalStatus($comment_id, $approved, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\SetCommentApprovedResponse
+postSetCommentApprovalStatus($comment_id, $approved, $tenant_id, $broadcast_id, $sso): \FastComments\Client\Model\SetCommentApprovedResponse
 ```
 
 
@@ -2014,14 +2174,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$approved = True; // bool
-$broadcast_id = 'broadcast_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'approved' => True, // bool
+    'tenant_id' => 'tenant_id_example', // string
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->postSetCommentApprovalStatus($comment_id, $approved, $broadcast_id, $tenant_id, $sso);
+    $result = $apiInstance->postSetCommentApprovalStatus($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postSetCommentApprovalStatus: ', $e->getMessage(), PHP_EOL;
@@ -2030,12 +2193,14 @@ try {
 
 ### Parameters
 
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
+
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **comment_id** | **string**|  | |
 | **approved** | **bool**|  | [optional] |
-| **broadcast_id** | **string**|  | [optional] |
 | **tenant_id** | **string**|  | [optional] |
+| **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -2058,7 +2223,7 @@ No authorization required
 ## `postSetCommentReviewStatus()`
 
 ```php
-postSetCommentReviewStatus($comment_id, $reviewed, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\APIEmptyResponse
+postSetCommentReviewStatus($comment_id, $reviewed, $tenant_id, $broadcast_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2076,14 +2241,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$reviewed = True; // bool
-$broadcast_id = 'broadcast_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'reviewed' => True, // bool
+    'tenant_id' => 'tenant_id_example', // string
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->postSetCommentReviewStatus($comment_id, $reviewed, $broadcast_id, $tenant_id, $sso);
+    $result = $apiInstance->postSetCommentReviewStatus($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postSetCommentReviewStatus: ', $e->getMessage(), PHP_EOL;
@@ -2092,12 +2260,14 @@ try {
 
 ### Parameters
 
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
+
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **comment_id** | **string**|  | |
 | **reviewed** | **bool**|  | [optional] |
-| **broadcast_id** | **string**|  | [optional] |
 | **tenant_id** | **string**|  | [optional] |
+| **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -2120,7 +2290,7 @@ No authorization required
 ## `postSetCommentSpamStatus()`
 
 ```php
-postSetCommentSpamStatus($comment_id, $spam, $perm_not_spam, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\APIEmptyResponse
+postSetCommentSpamStatus($comment_id, $spam, $perm_not_spam, $tenant_id, $broadcast_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2138,15 +2308,18 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$spam = True; // bool
-$perm_not_spam = True; // bool
-$broadcast_id = 'broadcast_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'spam' => True, // bool
+    'perm_not_spam' => True, // bool
+    'tenant_id' => 'tenant_id_example', // string
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->postSetCommentSpamStatus($comment_id, $spam, $perm_not_spam, $broadcast_id, $tenant_id, $sso);
+    $result = $apiInstance->postSetCommentSpamStatus($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postSetCommentSpamStatus: ', $e->getMessage(), PHP_EOL;
@@ -2155,13 +2328,15 @@ try {
 
 ### Parameters
 
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
+
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **comment_id** | **string**|  | |
 | **spam** | **bool**|  | [optional] |
 | **perm_not_spam** | **bool**|  | [optional] |
-| **broadcast_id** | **string**|  | [optional] |
 | **tenant_id** | **string**|  | [optional] |
+| **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -2184,7 +2359,7 @@ No authorization required
 ## `postSetCommentText()`
 
 ```php
-postSetCommentText($comment_id, $set_comment_text_params, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\SetCommentTextResponse
+postSetCommentText($comment_id, $set_comment_text_params, $tenant_id, $broadcast_id, $sso): \FastComments\Client\Model\SetCommentTextResponse
 ```
 
 
@@ -2202,14 +2377,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$set_comment_text_params = new \FastComments\Client\Model\SetCommentTextParams(); // \FastComments\Client\Model\SetCommentTextParams
-$broadcast_id = 'broadcast_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'set_comment_text_params' => new \FastComments\Client\Model\SetCommentTextParams(), // \FastComments\Client\Model\SetCommentTextParams
+    'tenant_id' => 'tenant_id_example', // string
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->postSetCommentText($comment_id, $set_comment_text_params, $broadcast_id, $tenant_id, $sso);
+    $result = $apiInstance->postSetCommentText($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postSetCommentText: ', $e->getMessage(), PHP_EOL;
@@ -2218,12 +2396,14 @@ try {
 
 ### Parameters
 
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
+
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **comment_id** | **string**|  | |
 | **set_comment_text_params** | [**\FastComments\Client\Model\SetCommentTextParams**](../Model/SetCommentTextParams.md)|  | |
-| **broadcast_id** | **string**|  | [optional] |
 | **tenant_id** | **string**|  | [optional] |
+| **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -2246,7 +2426,7 @@ No authorization required
 ## `postUnFlagComment()`
 
 ```php
-postUnFlagComment($comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\APIEmptyResponse
+postUnFlagComment($comment_id, $tenant_id, $broadcast_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2264,13 +2444,16 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$broadcast_id = 'broadcast_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->postUnFlagComment($comment_id, $broadcast_id, $tenant_id, $sso);
+    $result = $apiInstance->postUnFlagComment($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postUnFlagComment: ', $e->getMessage(), PHP_EOL;
@@ -2279,11 +2462,13 @@ try {
 
 ### Parameters
 
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
+
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **comment_id** | **string**|  | |
-| **broadcast_id** | **string**|  | [optional] |
 | **tenant_id** | **string**|  | [optional] |
+| **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -2306,7 +2491,7 @@ No authorization required
 ## `postVote()`
 
 ```php
-postVote($comment_id, $direction, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\VoteResponse
+postVote($comment_id, $direction, $tenant_id, $broadcast_id, $sso): \FastComments\Client\Model\VoteResponse
 ```
 
 
@@ -2324,14 +2509,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$comment_id = 'comment_id_example'; // string
-$direction = 'direction_example'; // string
-$broadcast_id = 'broadcast_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'comment_id' => 'comment_id_example', // string
+    'direction' => 'direction_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->postVote($comment_id, $direction, $broadcast_id, $tenant_id, $sso);
+    $result = $apiInstance->postVote($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postVote: ', $e->getMessage(), PHP_EOL;
@@ -2340,12 +2528,14 @@ try {
 
 ### Parameters
 
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
+
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **comment_id** | **string**|  | |
 | **direction** | **string**|  | [optional] |
-| **broadcast_id** | **string**|  | [optional] |
 | **tenant_id** | **string**|  | [optional] |
+| **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -2368,7 +2558,7 @@ No authorization required
 ## `putAwardBadge()`
 
 ```php
-putAwardBadge($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\AwardUserBadgeResponse
+putAwardBadge($badge_id, $user_id, $comment_id, $tenant_id, $broadcast_id, $sso): \FastComments\Client\Model\AwardUserBadgeResponse
 ```
 
 
@@ -2386,15 +2576,18 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$badge_id = 'badge_id_example'; // string
-$user_id = 'user_id_example'; // string
-$comment_id = 'comment_id_example'; // string
-$broadcast_id = 'broadcast_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'badge_id' => 'badge_id_example', // string
+    'user_id' => 'user_id_example', // string
+    'comment_id' => 'comment_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->putAwardBadge($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso);
+    $result = $apiInstance->putAwardBadge($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->putAwardBadge: ', $e->getMessage(), PHP_EOL;
@@ -2403,13 +2596,15 @@ try {
 
 ### Parameters
 
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
+
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **badge_id** | **string**|  | |
 | **user_id** | **string**|  | [optional] |
 | **comment_id** | **string**|  | [optional] |
-| **broadcast_id** | **string**|  | [optional] |
 | **tenant_id** | **string**|  | [optional] |
+| **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -2450,12 +2645,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$url_id = 'url_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'url_id' => 'url_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->putCloseThread($url_id, $tenant_id, $sso);
+    $result = $apiInstance->putCloseThread($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->putCloseThread: ', $e->getMessage(), PHP_EOL;
@@ -2463,6 +2661,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2490,7 +2690,7 @@ No authorization required
 ## `putRemoveBadge()`
 
 ```php
-putRemoveBadge($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso): \FastComments\Client\Model\RemoveUserBadgeResponse
+putRemoveBadge($badge_id, $user_id, $comment_id, $tenant_id, $broadcast_id, $sso): \FastComments\Client\Model\RemoveUserBadgeResponse
 ```
 
 
@@ -2508,15 +2708,18 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$badge_id = 'badge_id_example'; // string
-$user_id = 'user_id_example'; // string
-$comment_id = 'comment_id_example'; // string
-$broadcast_id = 'broadcast_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'badge_id' => 'badge_id_example', // string
+    'user_id' => 'user_id_example', // string
+    'comment_id' => 'comment_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->putRemoveBadge($badge_id, $user_id, $comment_id, $broadcast_id, $tenant_id, $sso);
+    $result = $apiInstance->putRemoveBadge($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->putRemoveBadge: ', $e->getMessage(), PHP_EOL;
@@ -2525,13 +2728,15 @@ try {
 
 ### Parameters
 
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
+
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **badge_id** | **string**|  | |
 | **user_id** | **string**|  | [optional] |
 | **comment_id** | **string**|  | [optional] |
-| **broadcast_id** | **string**|  | [optional] |
 | **tenant_id** | **string**|  | [optional] |
+| **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -2572,12 +2777,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$url_id = 'url_id_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'url_id' => 'url_id_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->putReopenThread($url_id, $tenant_id, $sso);
+    $result = $apiInstance->putReopenThread($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->putReopenThread: ', $e->getMessage(), PHP_EOL;
@@ -2585,6 +2793,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2630,13 +2840,16 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 'user_id_example'; // string
-$trust_factor = 'trust_factor_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$sso = 'sso_example'; // string
+
+$associative_array = [
+    'user_id' => 'user_id_example', // string
+    'trust_factor' => 'trust_factor_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'sso' => 'sso_example', // string
+];
 
 try {
-    $result = $apiInstance->setTrustFactor($user_id, $trust_factor, $tenant_id, $sso);
+    $result = $apiInstance->setTrustFactor($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->setTrustFactor: ', $e->getMessage(), PHP_EOL;
@@ -2644,6 +2857,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |

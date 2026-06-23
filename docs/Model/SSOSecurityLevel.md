@@ -1,4 +1,4 @@
-# # SSOSecurityLevel
+# SSOSecurityLevel
 
 ## Properties
 

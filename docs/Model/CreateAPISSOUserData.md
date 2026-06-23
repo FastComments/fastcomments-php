@@ -1,4 +1,4 @@
-# # CreateAPISSOUserData
+# CreateAPISSOUserData
 
 ## Properties
 

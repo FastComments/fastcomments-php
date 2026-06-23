@@ -1,4 +1,4 @@
-# # PutSSOUserAPIResponse
+# PutSSOUserAPIResponse
 
 ## Properties
 

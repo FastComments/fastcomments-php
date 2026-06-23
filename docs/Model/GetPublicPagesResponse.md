@@ -1,4 +1,4 @@
-# # GetPublicPagesResponse
+# GetPublicPagesResponse
 
 ## Properties
 

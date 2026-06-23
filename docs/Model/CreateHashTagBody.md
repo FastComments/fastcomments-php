@@ -1,4 +1,4 @@
-# # CreateHashTagBody
+# CreateHashTagBody
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # SizePreset
+# SizePreset
 
 ## Properties
 

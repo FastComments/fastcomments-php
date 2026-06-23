@@ -1,4 +1,4 @@
-# # ModerationUserSearchResponse
+# ModerationUserSearchResponse
 
 ## Properties
 

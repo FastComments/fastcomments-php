@@ -1,4 +1,4 @@
-# # FeedPost
+# FeedPost
 
 ## Properties
 

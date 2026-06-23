@@ -1,4 +1,4 @@
-# # PublicFeedPostsResponse
+# PublicFeedPostsResponse
 
 ## Properties
 

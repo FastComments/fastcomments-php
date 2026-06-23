@@ -1,4 +1,4 @@
-# # GetCommentsResponsePublicComment
+# GetCommentsResponsePublicComment
 
 ## Properties
 

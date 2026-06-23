@@ -1,4 +1,4 @@
-# # APIGetUserBadgeProgressListResponse
+# APIGetUserBadgeProgressListResponse
 
 ## Properties
 

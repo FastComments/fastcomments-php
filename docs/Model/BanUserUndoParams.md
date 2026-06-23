@@ -1,4 +1,4 @@
-# # BanUserUndoParams
+# BanUserUndoParams
 
 ## Properties
 

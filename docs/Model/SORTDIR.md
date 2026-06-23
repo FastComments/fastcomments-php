@@ -1,4 +1,4 @@
-# # SORTDIR
+# SORTDIR
 
 ## Properties
 

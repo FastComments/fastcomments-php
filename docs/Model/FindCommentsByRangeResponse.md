@@ -1,4 +1,4 @@
-# # FindCommentsByRangeResponse
+# FindCommentsByRangeResponse
 
 ## Properties
 

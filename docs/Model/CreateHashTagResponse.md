@@ -1,4 +1,4 @@
-# # CreateHashTagResponse
+# CreateHashTagResponse
 
 ## Properties
 

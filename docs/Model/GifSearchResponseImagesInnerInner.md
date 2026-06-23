@@ -1,4 +1,4 @@
-# # GifSearchResponseImagesInnerInner
+# GifSearchResponseImagesInnerInner
 
 ## Properties
 

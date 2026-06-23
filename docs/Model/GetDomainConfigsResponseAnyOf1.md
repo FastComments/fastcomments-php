@@ -1,4 +1,4 @@
-# # GetDomainConfigsResponseAnyOf1
+# GetDomainConfigsResponseAnyOf1
 
 ## Properties
 

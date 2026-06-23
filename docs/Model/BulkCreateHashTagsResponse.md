@@ -1,4 +1,4 @@
-# # BulkCreateHashTagsResponse
+# BulkCreateHashTagsResponse
 
 ## Properties
 

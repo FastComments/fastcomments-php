@@ -1,4 +1,4 @@
-# # AggregationRequestSort
+# AggregationRequestSort
 
 ## Properties
 

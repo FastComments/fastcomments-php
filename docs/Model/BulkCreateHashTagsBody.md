@@ -1,4 +1,4 @@
-# # BulkCreateHashTagsBody
+# BulkCreateHashTagsBody
 
 ## Properties
 

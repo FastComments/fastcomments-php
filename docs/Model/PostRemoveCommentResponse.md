@@ -1,4 +1,4 @@
-# # PostRemoveCommentResponse
+# PostRemoveCommentResponse
 
 ## Properties
 

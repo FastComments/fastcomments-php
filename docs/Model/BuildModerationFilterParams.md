@@ -1,4 +1,4 @@
-# # BuildModerationFilterParams
+# BuildModerationFilterParams
 
 ## Properties
 

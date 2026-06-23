@@ -1,4 +1,4 @@
-# # CreateTicketResponse
+# CreateTicketResponse
 
 ## Properties
 

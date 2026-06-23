@@ -1,4 +1,4 @@
-# # ChangeTicketStateResponse
+# ChangeTicketStateResponse
 
 ## Properties
 

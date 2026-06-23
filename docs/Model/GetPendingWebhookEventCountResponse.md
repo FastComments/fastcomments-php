@@ -1,4 +1,4 @@
-# # GetPendingWebhookEventCountResponse
+# GetPendingWebhookEventCountResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # QuestionResult
+# QuestionResult
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetCommentsResponseWithPresencePublicComment
+# GetCommentsResponseWithPresencePublicComment
 
 ## Properties
 

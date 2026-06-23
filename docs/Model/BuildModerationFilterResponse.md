@@ -1,4 +1,4 @@
-# # BuildModerationFilterResponse
+# BuildModerationFilterResponse
 
 ## Properties
 

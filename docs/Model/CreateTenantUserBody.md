@@ -1,4 +1,4 @@
-# # CreateTenantUserBody
+# CreateTenantUserBody
 
 ## Properties
 

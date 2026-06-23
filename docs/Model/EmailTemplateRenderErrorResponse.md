@@ -1,4 +1,4 @@
-# # EmailTemplateRenderErrorResponse
+# EmailTemplateRenderErrorResponse
 
 ## Properties
 

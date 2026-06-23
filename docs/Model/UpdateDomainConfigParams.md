@@ -1,4 +1,4 @@
-# # UpdateDomainConfigParams
+# UpdateDomainConfigParams
 
 ## Properties
 

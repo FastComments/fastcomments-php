@@ -1,4 +1,4 @@
-# # DigestEmailFrequency
+# DigestEmailFrequency
 
 ## Properties
 

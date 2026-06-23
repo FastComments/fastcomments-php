@@ -1,4 +1,4 @@
-# # GetBannedUsersCountResponse
+# GetBannedUsersCountResponse
 
 ## Properties
 

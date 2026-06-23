@@ -1,15 +1,15 @@
-# # SaveCommentsBulkResponse
+# SaveCommentsBulkResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**\FastComments\Client\Model\APIStatus**](APIStatus.md) |  |
-**comment** | [**\FastComments\Client\Model\APIComment**](APIComment.md) |  |
-**user** | [**\FastComments\Client\Model\UserSessionInfo**](UserSessionInfo.md) |  |
+**comment** | [**\FastComments\Client\Model\APIComment**](APIComment.md) |  | [optional]
+**user** | [**\FastComments\Client\Model\UserSessionInfo**](UserSessionInfo.md) |  | [optional]
 **module_data** | **array<string,object>** | Construct a type with a set of properties K of type T | [optional]
-**reason** | **string** |  |
-**code** | **string** |  |
+**reason** | **string** |  | [optional]
+**code** | **string** |  | [optional]
 **secondary_code** | **string** |  | [optional]
 **banned_until** | **int** |  | [optional]
 **max_character_length** | **int** |  | [optional]

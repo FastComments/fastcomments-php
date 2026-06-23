@@ -1,10 +1,10 @@
-# # VoteResponse
+# VoteResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\FastComments\Client\Model\VoteResponseStatus**](VoteResponseStatus.md) |  |
+**status** | **string** |  |
 **vote_id** | **string** |  | [optional]
 **is_verified** | **bool** |  | [optional]
 **user** | [**\FastComments\Client\Model\VoteResponseUser**](VoteResponseUser.md) |  | [optional]

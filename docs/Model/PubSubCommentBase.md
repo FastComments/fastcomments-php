@@ -1,4 +1,4 @@
-# # PubSubCommentBase
+# PubSubCommentBase
 
 ## Properties
 

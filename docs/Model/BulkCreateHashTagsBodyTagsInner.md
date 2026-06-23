@@ -1,4 +1,4 @@
-# # BulkCreateHashTagsBodyTagsInner
+# BulkCreateHashTagsBodyTagsInner
 
 ## Properties
 

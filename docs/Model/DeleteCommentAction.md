@@ -1,4 +1,4 @@
-# # DeleteCommentAction
+# DeleteCommentAction
 
 ## Properties
 

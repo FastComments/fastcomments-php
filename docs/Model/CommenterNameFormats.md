@@ -1,4 +1,4 @@
-# # CommenterNameFormats
+# CommenterNameFormats
 
 ## Properties
 

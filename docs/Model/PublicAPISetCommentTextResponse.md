@@ -1,4 +1,4 @@
-# # PublicAPISetCommentTextResponse
+# PublicAPISetCommentTextResponse
 
 ## Properties
 

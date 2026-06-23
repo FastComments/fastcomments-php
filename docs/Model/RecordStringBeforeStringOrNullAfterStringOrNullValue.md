@@ -1,4 +1,4 @@
-# # RecordStringBeforeStringOrNullAfterStringOrNullValue
+# RecordStringBeforeStringOrNullAfterStringOrNullValue
 
 ## Properties
 

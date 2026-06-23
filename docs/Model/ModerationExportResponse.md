@@ -1,4 +1,4 @@
-# # ModerationExportResponse
+# ModerationExportResponse
 
 ## Properties
 

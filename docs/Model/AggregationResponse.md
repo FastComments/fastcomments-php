@@ -1,4 +1,4 @@
-# # AggregationResponse
+# AggregationResponse
 
 ## Properties
 

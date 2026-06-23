@@ -1,4 +1,4 @@
-# # CreateQuestionConfigResponse
+# CreateQuestionConfigResponse
 
 ## Properties
 

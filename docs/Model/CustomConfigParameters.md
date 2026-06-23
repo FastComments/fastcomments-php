@@ -1,4 +1,4 @@
-# # CustomConfigParameters
+# CustomConfigParameters
 
 ## Properties
 

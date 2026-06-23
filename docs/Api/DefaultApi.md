@@ -1,6 +1,6 @@
 # FastComments\Client\DefaultApi
 
-FastComments PHP API Client - A SDK for interacting with the FastComments API
+
 
 All URIs are relative to https://fastcomments.com, except if the operation defines another base path.
 
@@ -149,11 +149,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$add_domain_config_params = new \FastComments\Client\Model\AddDomainConfigParams(); // \FastComments\Client\Model\AddDomainConfigParams
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'add_domain_config_params' => new \FastComments\Client\Model\AddDomainConfigParams(), // \FastComments\Client\Model\AddDomainConfigParams
+];
 
 try {
-    $result = $apiInstance->addDomainConfig($tenant_id, $add_domain_config_params);
+    $result = $apiInstance->addDomainConfig($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->addDomainConfig: ', $e->getMessage(), PHP_EOL;
@@ -161,6 +164,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -211,11 +216,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$create_hash_tag_body = new \FastComments\Client\Model\CreateHashTagBody(); // \FastComments\Client\Model\CreateHashTagBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'create_hash_tag_body' => new \FastComments\Client\Model\CreateHashTagBody(), // \FastComments\Client\Model\CreateHashTagBody
+];
 
 try {
-    $result = $apiInstance->addHashTag($tenant_id, $create_hash_tag_body);
+    $result = $apiInstance->addHashTag($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->addHashTag: ', $e->getMessage(), PHP_EOL;
@@ -223,6 +231,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -273,11 +283,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$bulk_create_hash_tags_body = new \FastComments\Client\Model\BulkCreateHashTagsBody(); // \FastComments\Client\Model\BulkCreateHashTagsBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'bulk_create_hash_tags_body' => new \FastComments\Client\Model\BulkCreateHashTagsBody(), // \FastComments\Client\Model\BulkCreateHashTagsBody
+];
 
 try {
-    $result = $apiInstance->addHashTagsBulk($tenant_id, $bulk_create_hash_tags_body);
+    $result = $apiInstance->addHashTagsBulk($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->addHashTagsBulk: ', $e->getMessage(), PHP_EOL;
@@ -285,6 +298,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -335,11 +350,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$create_api_page_data = new \FastComments\Client\Model\CreateAPIPageData(); // \FastComments\Client\Model\CreateAPIPageData
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'create_api_page_data' => new \FastComments\Client\Model\CreateAPIPageData(), // \FastComments\Client\Model\CreateAPIPageData
+];
 
 try {
-    $result = $apiInstance->addPage($tenant_id, $create_api_page_data);
+    $result = $apiInstance->addPage($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->addPage: ', $e->getMessage(), PHP_EOL;
@@ -347,6 +365,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -397,11 +417,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$create_apisso_user_data = new \FastComments\Client\Model\CreateAPISSOUserData(); // \FastComments\Client\Model\CreateAPISSOUserData
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'create_apisso_user_data' => new \FastComments\Client\Model\CreateAPISSOUserData(), // \FastComments\Client\Model\CreateAPISSOUserData
+];
 
 try {
-    $result = $apiInstance->addSSOUser($tenant_id, $create_apisso_user_data);
+    $result = $apiInstance->addSSOUser($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->addSSOUser: ', $e->getMessage(), PHP_EOL;
@@ -409,6 +432,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -461,13 +486,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$aggregation_request = new \FastComments\Client\Model\AggregationRequest(); // \FastComments\Client\Model\AggregationRequest
-$parent_tenant_id = 'parent_tenant_id_example'; // string
-$include_stats = True; // bool
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'aggregation_request' => new \FastComments\Client\Model\AggregationRequest(), // \FastComments\Client\Model\AggregationRequest
+    'parent_tenant_id' => 'parent_tenant_id_example', // string
+    'include_stats' => True, // bool
+];
 
 try {
-    $result = $apiInstance->aggregate($tenant_id, $aggregation_request, $parent_tenant_id, $include_stats);
+    $result = $apiInstance->aggregate($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->aggregate: ', $e->getMessage(), PHP_EOL;
@@ -475,6 +503,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -527,16 +557,19 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$question_id = 'question_id_example'; // string
-$question_ids = array('question_ids_example'); // string[]
-$url_id = 'url_id_example'; // string
-$time_bucket = new \FastComments\Client\Model\\FastComments\Client\Model\AggregateTimeBucket(); // \FastComments\Client\Model\AggregateTimeBucket
-$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$force_recalculate = True; // bool
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'question_id' => 'question_id_example', // string
+    'question_ids' => array('question_ids_example'), // string[]
+    'url_id' => 'url_id_example', // string
+    'time_bucket' => new \FastComments\Client\Model\\FastComments\Client\Model\AggregateTimeBucket(), // \FastComments\Client\Model\AggregateTimeBucket
+    'start_date' => new \DateTime('2013-10-20T19:20:30+01:00'), // \DateTime
+    'force_recalculate' => True, // bool
+];
 
 try {
-    $result = $apiInstance->aggregateQuestionResults($tenant_id, $question_id, $question_ids, $url_id, $time_bucket, $start_date, $force_recalculate);
+    $result = $apiInstance->aggregateQuestionResults($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->aggregateQuestionResults: ', $e->getMessage(), PHP_EOL;
@@ -544,6 +577,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -599,14 +634,17 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$block_from_comment_params = new \FastComments\Client\Model\BlockFromCommentParams(); // \FastComments\Client\Model\BlockFromCommentParams
-$user_id = 'user_id_example'; // string
-$anon_user_id = 'anon_user_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'block_from_comment_params' => new \FastComments\Client\Model\BlockFromCommentParams(), // \FastComments\Client\Model\BlockFromCommentParams
+    'user_id' => 'user_id_example', // string
+    'anon_user_id' => 'anon_user_id_example', // string
+];
 
 try {
-    $result = $apiInstance->blockUserFromComment($tenant_id, $id, $block_from_comment_params, $user_id, $anon_user_id);
+    $result = $apiInstance->blockUserFromComment($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->blockUserFromComment: ', $e->getMessage(), PHP_EOL;
@@ -614,6 +652,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -667,12 +707,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$bulk_aggregate_question_results_request = new \FastComments\Client\Model\BulkAggregateQuestionResultsRequest(); // \FastComments\Client\Model\BulkAggregateQuestionResultsRequest
-$force_recalculate = True; // bool
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'bulk_aggregate_question_results_request' => new \FastComments\Client\Model\BulkAggregateQuestionResultsRequest(), // \FastComments\Client\Model\BulkAggregateQuestionResultsRequest
+    'force_recalculate' => True, // bool
+];
 
 try {
-    $result = $apiInstance->bulkAggregateQuestionResults($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate);
+    $result = $apiInstance->bulkAggregateQuestionResults($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->bulkAggregateQuestionResults: ', $e->getMessage(), PHP_EOL;
@@ -680,6 +723,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -731,13 +776,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$user_id = 'user_id_example'; // string
-$id = 'id_example'; // string
-$change_ticket_state_body = new \FastComments\Client\Model\ChangeTicketStateBody(); // \FastComments\Client\Model\ChangeTicketStateBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'user_id' => 'user_id_example', // string
+    'id' => 'id_example', // string
+    'change_ticket_state_body' => new \FastComments\Client\Model\ChangeTicketStateBody(), // \FastComments\Client\Model\ChangeTicketStateBody
+];
 
 try {
-    $result = $apiInstance->changeTicketState($tenant_id, $user_id, $id, $change_ticket_state_body);
+    $result = $apiInstance->changeTicketState($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->changeTicketState: ', $e->getMessage(), PHP_EOL;
@@ -745,6 +793,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -797,18 +847,21 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$question_id = 'question_id_example'; // string
-$question_ids = array('question_ids_example'); // string[]
-$url_id = 'url_id_example'; // string
-$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$force_recalculate = True; // bool
-$min_value = 3.4; // float
-$max_value = 3.4; // float
-$limit = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'question_id' => 'question_id_example', // string
+    'question_ids' => array('question_ids_example'), // string[]
+    'url_id' => 'url_id_example', // string
+    'start_date' => new \DateTime('2013-10-20T19:20:30+01:00'), // \DateTime
+    'force_recalculate' => True, // bool
+    'min_value' => 3.4, // float
+    'max_value' => 3.4, // float
+    'limit' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->combineCommentsWithQuestionResults($tenant_id, $question_id, $question_ids, $url_id, $start_date, $force_recalculate, $min_value, $max_value, $limit);
+    $result = $apiInstance->combineCommentsWithQuestionResults($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->combineCommentsWithQuestionResults: ', $e->getMessage(), PHP_EOL;
@@ -816,6 +869,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -873,11 +928,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$create_email_template_body = new \FastComments\Client\Model\CreateEmailTemplateBody(); // \FastComments\Client\Model\CreateEmailTemplateBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'create_email_template_body' => new \FastComments\Client\Model\CreateEmailTemplateBody(), // \FastComments\Client\Model\CreateEmailTemplateBody
+];
 
 try {
-    $result = $apiInstance->createEmailTemplate($tenant_id, $create_email_template_body);
+    $result = $apiInstance->createEmailTemplate($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createEmailTemplate: ', $e->getMessage(), PHP_EOL;
@@ -885,6 +943,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -935,15 +995,18 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$create_feed_post_params = new \FastComments\Client\Model\CreateFeedPostParams(); // \FastComments\Client\Model\CreateFeedPostParams
-$broadcast_id = 'broadcast_id_example'; // string
-$is_live = True; // bool
-$do_spam_check = True; // bool
-$skip_dup_check = True; // bool
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'create_feed_post_params' => new \FastComments\Client\Model\CreateFeedPostParams(), // \FastComments\Client\Model\CreateFeedPostParams
+    'broadcast_id' => 'broadcast_id_example', // string
+    'is_live' => True, // bool
+    'do_spam_check' => True, // bool
+    'skip_dup_check' => True, // bool
+];
 
 try {
-    $result = $apiInstance->createFeedPost($tenant_id, $create_feed_post_params, $broadcast_id, $is_live, $do_spam_check, $skip_dup_check);
+    $result = $apiInstance->createFeedPost($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createFeedPost: ', $e->getMessage(), PHP_EOL;
@@ -951,6 +1014,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1005,11 +1070,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$create_moderator_body = new \FastComments\Client\Model\CreateModeratorBody(); // \FastComments\Client\Model\CreateModeratorBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'create_moderator_body' => new \FastComments\Client\Model\CreateModeratorBody(), // \FastComments\Client\Model\CreateModeratorBody
+];
 
 try {
-    $result = $apiInstance->createModerator($tenant_id, $create_moderator_body);
+    $result = $apiInstance->createModerator($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createModerator: ', $e->getMessage(), PHP_EOL;
@@ -1017,6 +1085,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1067,11 +1137,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$create_question_config_body = new \FastComments\Client\Model\CreateQuestionConfigBody(); // \FastComments\Client\Model\CreateQuestionConfigBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'create_question_config_body' => new \FastComments\Client\Model\CreateQuestionConfigBody(), // \FastComments\Client\Model\CreateQuestionConfigBody
+];
 
 try {
-    $result = $apiInstance->createQuestionConfig($tenant_id, $create_question_config_body);
+    $result = $apiInstance->createQuestionConfig($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createQuestionConfig: ', $e->getMessage(), PHP_EOL;
@@ -1079,6 +1152,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1129,11 +1204,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$create_question_result_body = new \FastComments\Client\Model\CreateQuestionResultBody(); // \FastComments\Client\Model\CreateQuestionResultBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'create_question_result_body' => new \FastComments\Client\Model\CreateQuestionResultBody(), // \FastComments\Client\Model\CreateQuestionResultBody
+];
 
 try {
-    $result = $apiInstance->createQuestionResult($tenant_id, $create_question_result_body);
+    $result = $apiInstance->createQuestionResult($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createQuestionResult: ', $e->getMessage(), PHP_EOL;
@@ -1141,6 +1219,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1191,11 +1271,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$create_api_user_subscription_data = new \FastComments\Client\Model\CreateAPIUserSubscriptionData(); // \FastComments\Client\Model\CreateAPIUserSubscriptionData
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'create_api_user_subscription_data' => new \FastComments\Client\Model\CreateAPIUserSubscriptionData(), // \FastComments\Client\Model\CreateAPIUserSubscriptionData
+];
 
 try {
-    $result = $apiInstance->createSubscription($tenant_id, $create_api_user_subscription_data);
+    $result = $apiInstance->createSubscription($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createSubscription: ', $e->getMessage(), PHP_EOL;
@@ -1203,6 +1286,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1253,11 +1338,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$create_tenant_body = new \FastComments\Client\Model\CreateTenantBody(); // \FastComments\Client\Model\CreateTenantBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'create_tenant_body' => new \FastComments\Client\Model\CreateTenantBody(), // \FastComments\Client\Model\CreateTenantBody
+];
 
 try {
-    $result = $apiInstance->createTenant($tenant_id, $create_tenant_body);
+    $result = $apiInstance->createTenant($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createTenant: ', $e->getMessage(), PHP_EOL;
@@ -1265,6 +1353,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1315,11 +1405,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$create_tenant_package_body = new \FastComments\Client\Model\CreateTenantPackageBody(); // \FastComments\Client\Model\CreateTenantPackageBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'create_tenant_package_body' => new \FastComments\Client\Model\CreateTenantPackageBody(), // \FastComments\Client\Model\CreateTenantPackageBody
+];
 
 try {
-    $result = $apiInstance->createTenantPackage($tenant_id, $create_tenant_package_body);
+    $result = $apiInstance->createTenantPackage($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createTenantPackage: ', $e->getMessage(), PHP_EOL;
@@ -1327,6 +1420,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1377,11 +1472,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$create_tenant_user_body = new \FastComments\Client\Model\CreateTenantUserBody(); // \FastComments\Client\Model\CreateTenantUserBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'create_tenant_user_body' => new \FastComments\Client\Model\CreateTenantUserBody(), // \FastComments\Client\Model\CreateTenantUserBody
+];
 
 try {
-    $result = $apiInstance->createTenantUser($tenant_id, $create_tenant_user_body);
+    $result = $apiInstance->createTenantUser($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createTenantUser: ', $e->getMessage(), PHP_EOL;
@@ -1389,6 +1487,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1439,12 +1539,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$user_id = 'user_id_example'; // string
-$create_ticket_body = new \FastComments\Client\Model\CreateTicketBody(); // \FastComments\Client\Model\CreateTicketBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'user_id' => 'user_id_example', // string
+    'create_ticket_body' => new \FastComments\Client\Model\CreateTicketBody(), // \FastComments\Client\Model\CreateTicketBody
+];
 
 try {
-    $result = $apiInstance->createTicket($tenant_id, $user_id, $create_ticket_body);
+    $result = $apiInstance->createTicket($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createTicket: ', $e->getMessage(), PHP_EOL;
@@ -1452,6 +1555,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1503,11 +1608,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$create_user_badge_params = new \FastComments\Client\Model\CreateUserBadgeParams(); // \FastComments\Client\Model\CreateUserBadgeParams
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'create_user_badge_params' => new \FastComments\Client\Model\CreateUserBadgeParams(), // \FastComments\Client\Model\CreateUserBadgeParams
+];
 
 try {
-    $result = $apiInstance->createUserBadge($tenant_id, $create_user_badge_params);
+    $result = $apiInstance->createUserBadge($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createUserBadge: ', $e->getMessage(), PHP_EOL;
@@ -1515,6 +1623,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1565,14 +1675,17 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$comment_id = 'comment_id_example'; // string
-$direction = 'direction_example'; // string
-$user_id = 'user_id_example'; // string
-$anon_user_id = 'anon_user_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'comment_id' => 'comment_id_example', // string
+    'direction' => 'direction_example', // string
+    'user_id' => 'user_id_example', // string
+    'anon_user_id' => 'anon_user_id_example', // string
+];
 
 try {
-    $result = $apiInstance->createVote($tenant_id, $comment_id, $direction, $user_id, $anon_user_id);
+    $result = $apiInstance->createVote($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createVote: ', $e->getMessage(), PHP_EOL;
@@ -1580,6 +1693,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1633,13 +1748,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$context_user_id = 'context_user_id_example'; // string
-$is_live = True; // bool
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'context_user_id' => 'context_user_id_example', // string
+    'is_live' => True, // bool
+];
 
 try {
-    $result = $apiInstance->deleteComment($tenant_id, $id, $context_user_id, $is_live);
+    $result = $apiInstance->deleteComment($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteComment: ', $e->getMessage(), PHP_EOL;
@@ -1647,6 +1765,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1699,11 +1819,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$domain = 'domain_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'domain' => 'domain_example', // string
+];
 
 try {
-    $result = $apiInstance->deleteDomainConfig($tenant_id, $domain);
+    $result = $apiInstance->deleteDomainConfig($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteDomainConfig: ', $e->getMessage(), PHP_EOL;
@@ -1711,6 +1834,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1761,11 +1886,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->deleteEmailTemplate($tenant_id, $id);
+    $result = $apiInstance->deleteEmailTemplate($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteEmailTemplate: ', $e->getMessage(), PHP_EOL;
@@ -1773,6 +1901,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1823,12 +1953,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$error_id = 'error_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'error_id' => 'error_id_example', // string
+];
 
 try {
-    $result = $apiInstance->deleteEmailTemplateRenderError($tenant_id, $id, $error_id);
+    $result = $apiInstance->deleteEmailTemplateRenderError($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteEmailTemplateRenderError: ', $e->getMessage(), PHP_EOL;
@@ -1836,6 +1969,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1887,12 +2022,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tag = 'tag_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$delete_hash_tag_request_body = new \FastComments\Client\Model\DeleteHashTagRequestBody(); // \FastComments\Client\Model\DeleteHashTagRequestBody
+
+$associative_array = [
+    'tag' => 'tag_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'delete_hash_tag_request_body' => new \FastComments\Client\Model\DeleteHashTagRequestBody(), // \FastComments\Client\Model\DeleteHashTagRequestBody
+];
 
 try {
-    $result = $apiInstance->deleteHashTag($tag, $tenant_id, $delete_hash_tag_request_body);
+    $result = $apiInstance->deleteHashTag($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteHashTag: ', $e->getMessage(), PHP_EOL;
@@ -1900,6 +2038,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1951,12 +2091,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$send_email = 'send_email_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'send_email' => 'send_email_example', // string
+];
 
 try {
-    $result = $apiInstance->deleteModerator($tenant_id, $id, $send_email);
+    $result = $apiInstance->deleteModerator($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteModerator: ', $e->getMessage(), PHP_EOL;
@@ -1964,6 +2107,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2015,11 +2160,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->deleteNotificationCount($tenant_id, $id);
+    $result = $apiInstance->deleteNotificationCount($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteNotificationCount: ', $e->getMessage(), PHP_EOL;
@@ -2027,6 +2175,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2077,11 +2227,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->deletePage($tenant_id, $id);
+    $result = $apiInstance->deletePage($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deletePage: ', $e->getMessage(), PHP_EOL;
@@ -2089,6 +2242,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2139,11 +2294,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->deletePendingWebhookEvent($tenant_id, $id);
+    $result = $apiInstance->deletePendingWebhookEvent($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deletePendingWebhookEvent: ', $e->getMessage(), PHP_EOL;
@@ -2151,6 +2309,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2201,11 +2361,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->deleteQuestionConfig($tenant_id, $id);
+    $result = $apiInstance->deleteQuestionConfig($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteQuestionConfig: ', $e->getMessage(), PHP_EOL;
@@ -2213,6 +2376,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2263,11 +2428,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->deleteQuestionResult($tenant_id, $id);
+    $result = $apiInstance->deleteQuestionResult($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteQuestionResult: ', $e->getMessage(), PHP_EOL;
@@ -2275,6 +2443,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2325,13 +2495,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$delete_comments = True; // bool
-$comment_delete_mode = 'comment_delete_mode_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'delete_comments' => True, // bool
+    'comment_delete_mode' => 'comment_delete_mode_example', // string
+];
 
 try {
-    $result = $apiInstance->deleteSSOUser($tenant_id, $id, $delete_comments, $comment_delete_mode);
+    $result = $apiInstance->deleteSSOUser($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteSSOUser: ', $e->getMessage(), PHP_EOL;
@@ -2339,6 +2512,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2391,12 +2566,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$user_id = 'user_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'user_id' => 'user_id_example', // string
+];
 
 try {
-    $result = $apiInstance->deleteSubscription($tenant_id, $id, $user_id);
+    $result = $apiInstance->deleteSubscription($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteSubscription: ', $e->getMessage(), PHP_EOL;
@@ -2404,6 +2582,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2455,12 +2635,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$sure = 'sure_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'sure' => 'sure_example', // string
+];
 
 try {
-    $result = $apiInstance->deleteTenant($tenant_id, $id, $sure);
+    $result = $apiInstance->deleteTenant($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteTenant: ', $e->getMessage(), PHP_EOL;
@@ -2468,6 +2651,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2519,11 +2704,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->deleteTenantPackage($tenant_id, $id);
+    $result = $apiInstance->deleteTenantPackage($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteTenantPackage: ', $e->getMessage(), PHP_EOL;
@@ -2531,6 +2719,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2581,13 +2771,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$delete_comments = 'delete_comments_example'; // string
-$comment_delete_mode = 'comment_delete_mode_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'delete_comments' => 'delete_comments_example', // string
+    'comment_delete_mode' => 'comment_delete_mode_example', // string
+];
 
 try {
-    $result = $apiInstance->deleteTenantUser($tenant_id, $id, $delete_comments, $comment_delete_mode);
+    $result = $apiInstance->deleteTenantUser($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteTenantUser: ', $e->getMessage(), PHP_EOL;
@@ -2595,6 +2788,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2647,11 +2842,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->deleteUserBadge($tenant_id, $id);
+    $result = $apiInstance->deleteUserBadge($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteUserBadge: ', $e->getMessage(), PHP_EOL;
@@ -2659,6 +2857,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2709,12 +2909,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$edit_key = 'edit_key_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'edit_key' => 'edit_key_example', // string
+];
 
 try {
-    $result = $apiInstance->deleteVote($tenant_id, $id, $edit_key);
+    $result = $apiInstance->deleteVote($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteVote: ', $e->getMessage(), PHP_EOL;
@@ -2722,6 +2925,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2773,13 +2978,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$user_id = 'user_id_example'; // string
-$anon_user_id = 'anon_user_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'user_id' => 'user_id_example', // string
+    'anon_user_id' => 'anon_user_id_example', // string
+];
 
 try {
-    $result = $apiInstance->flagComment($tenant_id, $id, $user_id, $anon_user_id);
+    $result = $apiInstance->flagComment($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->flagComment: ', $e->getMessage(), PHP_EOL;
@@ -2787,6 +2995,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2839,15 +3049,18 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$limit = 3.4; // float
-$skip = 3.4; // float
-$order = new \FastComments\Client\Model\\FastComments\Client\Model\SORTDIR(); // \FastComments\Client\Model\SORTDIR
-$after = 3.4; // float
-$before = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'limit' => 3.4, // float
+    'skip' => 3.4, // float
+    'order' => new \FastComments\Client\Model\\FastComments\Client\Model\SORTDIR(), // \FastComments\Client\Model\SORTDIR
+    'after' => 3.4, // float
+    'before' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getAuditLogs($tenant_id, $limit, $skip, $order, $after, $before);
+    $result = $apiInstance->getAuditLogs($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getAuditLogs: ', $e->getMessage(), PHP_EOL;
@@ -2855,6 +3068,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2909,11 +3124,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->getCachedNotificationCount($tenant_id, $id);
+    $result = $apiInstance->getCachedNotificationCount($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getCachedNotificationCount: ', $e->getMessage(), PHP_EOL;
@@ -2921,6 +3139,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2971,11 +3191,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->getComment($tenant_id, $id);
+    $result = $apiInstance->getComment($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getComment: ', $e->getMessage(), PHP_EOL;
@@ -2983,6 +3206,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3033,26 +3258,29 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$page = 56; // int
-$limit = 56; // int
-$skip = 56; // int
-$as_tree = True; // bool
-$skip_children = 56; // int
-$limit_children = 56; // int
-$max_tree_depth = 56; // int
-$url_id = 'url_id_example'; // string
-$user_id = 'user_id_example'; // string
-$anon_user_id = 'anon_user_id_example'; // string
-$context_user_id = 'context_user_id_example'; // string
-$hash_tag = 'hash_tag_example'; // string
-$parent_id = 'parent_id_example'; // string
-$direction = new \FastComments\Client\Model\\FastComments\Client\Model\SortDirections(); // \FastComments\Client\Model\SortDirections
-$from_date = 56; // int
-$to_date = 56; // int
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'page' => 56, // int
+    'limit' => 56, // int
+    'skip' => 56, // int
+    'as_tree' => True, // bool
+    'skip_children' => 56, // int
+    'limit_children' => 56, // int
+    'max_tree_depth' => 56, // int
+    'url_id' => 'url_id_example', // string
+    'user_id' => 'user_id_example', // string
+    'anon_user_id' => 'anon_user_id_example', // string
+    'context_user_id' => 'context_user_id_example', // string
+    'hash_tag' => 'hash_tag_example', // string
+    'parent_id' => 'parent_id_example', // string
+    'direction' => new \FastComments\Client\Model\\FastComments\Client\Model\SortDirections(), // \FastComments\Client\Model\SortDirections
+    'from_date' => 56, // int
+    'to_date' => 56, // int
+];
 
 try {
-    $result = $apiInstance->getComments($tenant_id, $page, $limit, $skip, $as_tree, $skip_children, $limit_children, $max_tree_depth, $url_id, $user_id, $anon_user_id, $context_user_id, $hash_tag, $parent_id, $direction, $from_date, $to_date);
+    $result = $apiInstance->getComments($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getComments: ', $e->getMessage(), PHP_EOL;
@@ -3060,6 +3288,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3125,11 +3355,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$domain = 'domain_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'domain' => 'domain_example', // string
+];
 
 try {
-    $result = $apiInstance->getDomainConfig($tenant_id, $domain);
+    $result = $apiInstance->getDomainConfig($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getDomainConfig: ', $e->getMessage(), PHP_EOL;
@@ -3137,6 +3370,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3187,10 +3422,13 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+];
 
 try {
-    $result = $apiInstance->getDomainConfigs($tenant_id);
+    $result = $apiInstance->getDomainConfigs($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getDomainConfigs: ', $e->getMessage(), PHP_EOL;
@@ -3198,6 +3436,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3247,11 +3487,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->getEmailTemplate($tenant_id, $id);
+    $result = $apiInstance->getEmailTemplate($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getEmailTemplate: ', $e->getMessage(), PHP_EOL;
@@ -3259,6 +3502,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3309,10 +3554,13 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+];
 
 try {
-    $result = $apiInstance->getEmailTemplateDefinitions($tenant_id);
+    $result = $apiInstance->getEmailTemplateDefinitions($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getEmailTemplateDefinitions: ', $e->getMessage(), PHP_EOL;
@@ -3320,6 +3568,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3369,12 +3619,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$skip = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'skip' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getEmailTemplateRenderErrors($tenant_id, $id, $skip);
+    $result = $apiInstance->getEmailTemplateRenderErrors($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getEmailTemplateRenderErrors: ', $e->getMessage(), PHP_EOL;
@@ -3382,6 +3635,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3433,11 +3688,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$skip = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'skip' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getEmailTemplates($tenant_id, $skip);
+    $result = $apiInstance->getEmailTemplates($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getEmailTemplates: ', $e->getMessage(), PHP_EOL;
@@ -3445,6 +3703,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3497,13 +3757,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$after_id = 'after_id_example'; // string
-$limit = 56; // int
-$tags = array('tags_example'); // string[]
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'after_id' => 'after_id_example', // string
+    'limit' => 56, // int
+    'tags' => array('tags_example'), // string[]
+];
 
 try {
-    $result = $apiInstance->getFeedPosts($tenant_id, $after_id, $limit, $tags);
+    $result = $apiInstance->getFeedPosts($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getFeedPosts: ', $e->getMessage(), PHP_EOL;
@@ -3511,6 +3774,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3563,11 +3828,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$page = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'page' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getHashTags($tenant_id, $page);
+    $result = $apiInstance->getHashTags($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getHashTags: ', $e->getMessage(), PHP_EOL;
@@ -3575,6 +3843,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3625,11 +3895,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->getModerator($tenant_id, $id);
+    $result = $apiInstance->getModerator($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getModerator: ', $e->getMessage(), PHP_EOL;
@@ -3637,6 +3910,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3687,11 +3962,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$skip = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'skip' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getModerators($tenant_id, $skip);
+    $result = $apiInstance->getModerators($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getModerators: ', $e->getMessage(), PHP_EOL;
@@ -3699,6 +3977,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3749,15 +4029,18 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$user_id = 'user_id_example'; // string
-$url_id = 'url_id_example'; // string
-$from_comment_id = 'from_comment_id_example'; // string
-$viewed = True; // bool
-$type = 'type_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'user_id' => 'user_id_example', // string
+    'url_id' => 'url_id_example', // string
+    'from_comment_id' => 'from_comment_id_example', // string
+    'viewed' => True, // bool
+    'type' => 'type_example', // string
+];
 
 try {
-    $result = $apiInstance->getNotificationCount($tenant_id, $user_id, $url_id, $from_comment_id, $viewed, $type);
+    $result = $apiInstance->getNotificationCount($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getNotificationCount: ', $e->getMessage(), PHP_EOL;
@@ -3765,6 +4048,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3819,16 +4104,19 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$user_id = 'user_id_example'; // string
-$url_id = 'url_id_example'; // string
-$from_comment_id = 'from_comment_id_example'; // string
-$viewed = True; // bool
-$type = 'type_example'; // string
-$skip = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'user_id' => 'user_id_example', // string
+    'url_id' => 'url_id_example', // string
+    'from_comment_id' => 'from_comment_id_example', // string
+    'viewed' => True, // bool
+    'type' => 'type_example', // string
+    'skip' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getNotifications($tenant_id, $user_id, $url_id, $from_comment_id, $viewed, $type, $skip);
+    $result = $apiInstance->getNotifications($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getNotifications: ', $e->getMessage(), PHP_EOL;
@@ -3836,6 +4124,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3891,11 +4181,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$url_id = 'url_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'url_id' => 'url_id_example', // string
+];
 
 try {
-    $result = $apiInstance->getPageByURLId($tenant_id, $url_id);
+    $result = $apiInstance->getPageByURLId($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getPageByURLId: ', $e->getMessage(), PHP_EOL;
@@ -3903,6 +4196,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3953,10 +4248,13 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+];
 
 try {
-    $result = $apiInstance->getPages($tenant_id);
+    $result = $apiInstance->getPages($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getPages: ', $e->getMessage(), PHP_EOL;
@@ -3964,6 +4262,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4013,16 +4313,19 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$comment_id = 'comment_id_example'; // string
-$external_id = 'external_id_example'; // string
-$event_type = 'event_type_example'; // string
-$type = 'type_example'; // string
-$domain = 'domain_example'; // string
-$attempt_count_gt = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'comment_id' => 'comment_id_example', // string
+    'external_id' => 'external_id_example', // string
+    'event_type' => 'event_type_example', // string
+    'type' => 'type_example', // string
+    'domain' => 'domain_example', // string
+    'attempt_count_gt' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getPendingWebhookEventCount($tenant_id, $comment_id, $external_id, $event_type, $type, $domain, $attempt_count_gt);
+    $result = $apiInstance->getPendingWebhookEventCount($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getPendingWebhookEventCount: ', $e->getMessage(), PHP_EOL;
@@ -4030,6 +4333,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4085,17 +4390,20 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$comment_id = 'comment_id_example'; // string
-$external_id = 'external_id_example'; // string
-$event_type = 'event_type_example'; // string
-$type = 'type_example'; // string
-$domain = 'domain_example'; // string
-$attempt_count_gt = 3.4; // float
-$skip = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'comment_id' => 'comment_id_example', // string
+    'external_id' => 'external_id_example', // string
+    'event_type' => 'event_type_example', // string
+    'type' => 'type_example', // string
+    'domain' => 'domain_example', // string
+    'attempt_count_gt' => 3.4, // float
+    'skip' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getPendingWebhookEvents($tenant_id, $comment_id, $external_id, $event_type, $type, $domain, $attempt_count_gt, $skip);
+    $result = $apiInstance->getPendingWebhookEvents($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getPendingWebhookEvents: ', $e->getMessage(), PHP_EOL;
@@ -4103,6 +4411,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4159,11 +4469,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->getQuestionConfig($tenant_id, $id);
+    $result = $apiInstance->getQuestionConfig($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getQuestionConfig: ', $e->getMessage(), PHP_EOL;
@@ -4171,6 +4484,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4221,11 +4536,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$skip = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'skip' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getQuestionConfigs($tenant_id, $skip);
+    $result = $apiInstance->getQuestionConfigs($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getQuestionConfigs: ', $e->getMessage(), PHP_EOL;
@@ -4233,6 +4551,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4283,11 +4603,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->getQuestionResult($tenant_id, $id);
+    $result = $apiInstance->getQuestionResult($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getQuestionResult: ', $e->getMessage(), PHP_EOL;
@@ -4295,6 +4618,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4345,16 +4670,19 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$url_id = 'url_id_example'; // string
-$user_id = 'user_id_example'; // string
-$start_date = 'start_date_example'; // string
-$question_id = 'question_id_example'; // string
-$question_ids = 'question_ids_example'; // string
-$skip = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'url_id' => 'url_id_example', // string
+    'user_id' => 'user_id_example', // string
+    'start_date' => 'start_date_example', // string
+    'question_id' => 'question_id_example', // string
+    'question_ids' => 'question_ids_example', // string
+    'skip' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getQuestionResults($tenant_id, $url_id, $user_id, $start_date, $question_id, $question_ids, $skip);
+    $result = $apiInstance->getQuestionResults($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getQuestionResults: ', $e->getMessage(), PHP_EOL;
@@ -4362,6 +4690,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4417,11 +4747,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$email = 'email_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'email' => 'email_example', // string
+];
 
 try {
-    $result = $apiInstance->getSSOUserByEmail($tenant_id, $email);
+    $result = $apiInstance->getSSOUserByEmail($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getSSOUserByEmail: ', $e->getMessage(), PHP_EOL;
@@ -4429,6 +4762,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4479,11 +4814,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->getSSOUserById($tenant_id, $id);
+    $result = $apiInstance->getSSOUserById($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getSSOUserById: ', $e->getMessage(), PHP_EOL;
@@ -4491,6 +4829,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4541,11 +4881,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$skip = 56; // int
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'skip' => 56, // int
+];
 
 try {
-    $result = $apiInstance->getSSOUsers($tenant_id, $skip);
+    $result = $apiInstance->getSSOUsers($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getSSOUsers: ', $e->getMessage(), PHP_EOL;
@@ -4553,6 +4896,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4603,11 +4948,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$user_id = 'user_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'user_id' => 'user_id_example', // string
+];
 
 try {
-    $result = $apiInstance->getSubscriptions($tenant_id, $user_id);
+    $result = $apiInstance->getSubscriptions($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getSubscriptions: ', $e->getMessage(), PHP_EOL;
@@ -4615,6 +4963,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4665,11 +5015,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->getTenant($tenant_id, $id);
+    $result = $apiInstance->getTenant($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTenant: ', $e->getMessage(), PHP_EOL;
@@ -4677,6 +5030,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4727,14 +5082,17 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$year_number = 3.4; // float
-$month_number = 3.4; // float
-$day_number = 3.4; // float
-$skip = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'year_number' => 3.4, // float
+    'month_number' => 3.4, // float
+    'day_number' => 3.4, // float
+    'skip' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getTenantDailyUsages($tenant_id, $year_number, $month_number, $day_number, $skip);
+    $result = $apiInstance->getTenantDailyUsages($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTenantDailyUsages: ', $e->getMessage(), PHP_EOL;
@@ -4742,6 +5100,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4795,11 +5155,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->getTenantPackage($tenant_id, $id);
+    $result = $apiInstance->getTenantPackage($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTenantPackage: ', $e->getMessage(), PHP_EOL;
@@ -4807,6 +5170,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4857,11 +5222,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$skip = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'skip' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getTenantPackages($tenant_id, $skip);
+    $result = $apiInstance->getTenantPackages($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTenantPackages: ', $e->getMessage(), PHP_EOL;
@@ -4869,6 +5237,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4919,11 +5289,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->getTenantUser($tenant_id, $id);
+    $result = $apiInstance->getTenantUser($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTenantUser: ', $e->getMessage(), PHP_EOL;
@@ -4931,6 +5304,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4981,11 +5356,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$skip = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'skip' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getTenantUsers($tenant_id, $skip);
+    $result = $apiInstance->getTenantUsers($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTenantUsers: ', $e->getMessage(), PHP_EOL;
@@ -4993,6 +5371,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5043,12 +5423,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$meta = 'meta_example'; // string
-$skip = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'meta' => 'meta_example', // string
+    'skip' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getTenants($tenant_id, $meta, $skip);
+    $result = $apiInstance->getTenants($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTenants: ', $e->getMessage(), PHP_EOL;
@@ -5056,6 +5439,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5107,12 +5492,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$user_id = 'user_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'user_id' => 'user_id_example', // string
+];
 
 try {
-    $result = $apiInstance->getTicket($tenant_id, $id, $user_id);
+    $result = $apiInstance->getTicket($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTicket: ', $e->getMessage(), PHP_EOL;
@@ -5120,6 +5508,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5171,14 +5561,17 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$user_id = 'user_id_example'; // string
-$state = 3.4; // float
-$skip = 3.4; // float
-$limit = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'user_id' => 'user_id_example', // string
+    'state' => 3.4, // float
+    'skip' => 3.4, // float
+    'limit' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getTickets($tenant_id, $user_id, $state, $skip, $limit);
+    $result = $apiInstance->getTickets($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTickets: ', $e->getMessage(), PHP_EOL;
@@ -5186,6 +5579,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5239,11 +5634,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->getUser($tenant_id, $id);
+    $result = $apiInstance->getUser($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getUser: ', $e->getMessage(), PHP_EOL;
@@ -5251,6 +5649,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5301,11 +5701,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->getUserBadge($tenant_id, $id);
+    $result = $apiInstance->getUserBadge($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getUserBadge: ', $e->getMessage(), PHP_EOL;
@@ -5313,6 +5716,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5363,11 +5768,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+];
 
 try {
-    $result = $apiInstance->getUserBadgeProgressById($tenant_id, $id);
+    $result = $apiInstance->getUserBadgeProgressById($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getUserBadgeProgressById: ', $e->getMessage(), PHP_EOL;
@@ -5375,6 +5783,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5425,11 +5835,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$user_id = 'user_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'user_id' => 'user_id_example', // string
+];
 
 try {
-    $result = $apiInstance->getUserBadgeProgressByUserId($tenant_id, $user_id);
+    $result = $apiInstance->getUserBadgeProgressByUserId($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getUserBadgeProgressByUserId: ', $e->getMessage(), PHP_EOL;
@@ -5437,6 +5850,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5487,13 +5902,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$user_id = 'user_id_example'; // string
-$limit = 3.4; // float
-$skip = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'user_id' => 'user_id_example', // string
+    'limit' => 3.4, // float
+    'skip' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getUserBadgeProgressList($tenant_id, $user_id, $limit, $skip);
+    $result = $apiInstance->getUserBadgeProgressList($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getUserBadgeProgressList: ', $e->getMessage(), PHP_EOL;
@@ -5501,6 +5919,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5553,16 +5973,19 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$user_id = 'user_id_example'; // string
-$badge_id = 'badge_id_example'; // string
-$type = 3.4; // float
-$displayed_on_comments = True; // bool
-$limit = 3.4; // float
-$skip = 3.4; // float
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'user_id' => 'user_id_example', // string
+    'badge_id' => 'badge_id_example', // string
+    'type' => 3.4, // float
+    'displayed_on_comments' => True, // bool
+    'limit' => 3.4, // float
+    'skip' => 3.4, // float
+];
 
 try {
-    $result = $apiInstance->getUserBadges($tenant_id, $user_id, $badge_id, $type, $displayed_on_comments, $limit, $skip);
+    $result = $apiInstance->getUserBadges($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getUserBadges: ', $e->getMessage(), PHP_EOL;
@@ -5570,6 +5993,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5625,11 +6050,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$url_id = 'url_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'url_id' => 'url_id_example', // string
+];
 
 try {
-    $result = $apiInstance->getVotes($tenant_id, $url_id);
+    $result = $apiInstance->getVotes($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getVotes: ', $e->getMessage(), PHP_EOL;
@@ -5637,6 +6065,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5687,13 +6117,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$url_id = 'url_id_example'; // string
-$user_id = 'user_id_example'; // string
-$anon_user_id = 'anon_user_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'url_id' => 'url_id_example', // string
+    'user_id' => 'user_id_example', // string
+    'anon_user_id' => 'anon_user_id_example', // string
+];
 
 try {
-    $result = $apiInstance->getVotesForUser($tenant_id, $url_id, $user_id, $anon_user_id);
+    $result = $apiInstance->getVotesForUser($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getVotesForUser: ', $e->getMessage(), PHP_EOL;
@@ -5701,6 +6134,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5753,12 +6188,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$domain_to_update = 'domain_to_update_example'; // string
-$patch_domain_config_params = new \FastComments\Client\Model\PatchDomainConfigParams(); // \FastComments\Client\Model\PatchDomainConfigParams
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'domain_to_update' => 'domain_to_update_example', // string
+    'patch_domain_config_params' => new \FastComments\Client\Model\PatchDomainConfigParams(), // \FastComments\Client\Model\PatchDomainConfigParams
+];
 
 try {
-    $result = $apiInstance->patchDomainConfig($tenant_id, $domain_to_update, $patch_domain_config_params);
+    $result = $apiInstance->patchDomainConfig($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->patchDomainConfig: ', $e->getMessage(), PHP_EOL;
@@ -5766,6 +6204,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5817,12 +6257,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tag = 'tag_example'; // string
-$tenant_id = 'tenant_id_example'; // string
-$update_hash_tag_body = new \FastComments\Client\Model\UpdateHashTagBody(); // \FastComments\Client\Model\UpdateHashTagBody
+
+$associative_array = [
+    'tag' => 'tag_example', // string
+    'tenant_id' => 'tenant_id_example', // string
+    'update_hash_tag_body' => new \FastComments\Client\Model\UpdateHashTagBody(), // \FastComments\Client\Model\UpdateHashTagBody
+];
 
 try {
-    $result = $apiInstance->patchHashTag($tag, $tenant_id, $update_hash_tag_body);
+    $result = $apiInstance->patchHashTag($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->patchHashTag: ', $e->getMessage(), PHP_EOL;
@@ -5830,6 +6273,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5881,12 +6326,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$update_api_page_data = new \FastComments\Client\Model\UpdateAPIPageData(); // \FastComments\Client\Model\UpdateAPIPageData
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'update_api_page_data' => new \FastComments\Client\Model\UpdateAPIPageData(), // \FastComments\Client\Model\UpdateAPIPageData
+];
 
 try {
-    $result = $apiInstance->patchPage($tenant_id, $id, $update_api_page_data);
+    $result = $apiInstance->patchPage($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->patchPage: ', $e->getMessage(), PHP_EOL;
@@ -5894,6 +6342,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5945,13 +6395,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$update_apisso_user_data = new \FastComments\Client\Model\UpdateAPISSOUserData(); // \FastComments\Client\Model\UpdateAPISSOUserData
-$update_comments = True; // bool
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'update_apisso_user_data' => new \FastComments\Client\Model\UpdateAPISSOUserData(), // \FastComments\Client\Model\UpdateAPISSOUserData
+    'update_comments' => True, // bool
+];
 
 try {
-    $result = $apiInstance->patchSSOUser($tenant_id, $id, $update_apisso_user_data, $update_comments);
+    $result = $apiInstance->patchSSOUser($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->patchSSOUser: ', $e->getMessage(), PHP_EOL;
@@ -5959,6 +6412,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6011,12 +6466,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$domain_to_update = 'domain_to_update_example'; // string
-$update_domain_config_params = new \FastComments\Client\Model\UpdateDomainConfigParams(); // \FastComments\Client\Model\UpdateDomainConfigParams
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'domain_to_update' => 'domain_to_update_example', // string
+    'update_domain_config_params' => new \FastComments\Client\Model\UpdateDomainConfigParams(), // \FastComments\Client\Model\UpdateDomainConfigParams
+];
 
 try {
-    $result = $apiInstance->putDomainConfig($tenant_id, $domain_to_update, $update_domain_config_params);
+    $result = $apiInstance->putDomainConfig($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->putDomainConfig: ', $e->getMessage(), PHP_EOL;
@@ -6024,6 +6482,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6075,13 +6535,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$update_apisso_user_data = new \FastComments\Client\Model\UpdateAPISSOUserData(); // \FastComments\Client\Model\UpdateAPISSOUserData
-$update_comments = True; // bool
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'update_apisso_user_data' => new \FastComments\Client\Model\UpdateAPISSOUserData(), // \FastComments\Client\Model\UpdateAPISSOUserData
+    'update_comments' => True, // bool
+];
 
 try {
-    $result = $apiInstance->putSSOUser($tenant_id, $id, $update_apisso_user_data, $update_comments);
+    $result = $apiInstance->putSSOUser($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->putSSOUser: ', $e->getMessage(), PHP_EOL;
@@ -6089,6 +6552,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6141,12 +6606,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$render_email_template_body = new \FastComments\Client\Model\RenderEmailTemplateBody(); // \FastComments\Client\Model\RenderEmailTemplateBody
-$locale = 'locale_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'render_email_template_body' => new \FastComments\Client\Model\RenderEmailTemplateBody(), // \FastComments\Client\Model\RenderEmailTemplateBody
+    'locale' => 'locale_example', // string
+];
 
 try {
-    $result = $apiInstance->renderEmailTemplate($tenant_id, $render_email_template_body, $locale);
+    $result = $apiInstance->renderEmailTemplate($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->renderEmailTemplate: ', $e->getMessage(), PHP_EOL;
@@ -6154,6 +6622,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6205,12 +6675,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$replace_tenant_package_body = new \FastComments\Client\Model\ReplaceTenantPackageBody(); // \FastComments\Client\Model\ReplaceTenantPackageBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'replace_tenant_package_body' => new \FastComments\Client\Model\ReplaceTenantPackageBody(), // \FastComments\Client\Model\ReplaceTenantPackageBody
+];
 
 try {
-    $result = $apiInstance->replaceTenantPackage($tenant_id, $id, $replace_tenant_package_body);
+    $result = $apiInstance->replaceTenantPackage($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->replaceTenantPackage: ', $e->getMessage(), PHP_EOL;
@@ -6218,6 +6691,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6269,13 +6744,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$replace_tenant_user_body = new \FastComments\Client\Model\ReplaceTenantUserBody(); // \FastComments\Client\Model\ReplaceTenantUserBody
-$update_comments = 'update_comments_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'replace_tenant_user_body' => new \FastComments\Client\Model\ReplaceTenantUserBody(), // \FastComments\Client\Model\ReplaceTenantUserBody
+    'update_comments' => 'update_comments_example', // string
+];
 
 try {
-    $result = $apiInstance->replaceTenantUser($tenant_id, $id, $replace_tenant_user_body, $update_comments);
+    $result = $apiInstance->replaceTenantUser($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->replaceTenantUser: ', $e->getMessage(), PHP_EOL;
@@ -6283,6 +6761,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6335,15 +6815,18 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$create_comment_params = new \FastComments\Client\Model\CreateCommentParams(); // \FastComments\Client\Model\CreateCommentParams
-$is_live = True; // bool
-$do_spam_check = True; // bool
-$send_emails = True; // bool
-$populate_notifications = True; // bool
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'create_comment_params' => new \FastComments\Client\Model\CreateCommentParams(), // \FastComments\Client\Model\CreateCommentParams
+    'is_live' => True, // bool
+    'do_spam_check' => True, // bool
+    'send_emails' => True, // bool
+    'populate_notifications' => True, // bool
+];
 
 try {
-    $result = $apiInstance->saveComment($tenant_id, $create_comment_params, $is_live, $do_spam_check, $send_emails, $populate_notifications);
+    $result = $apiInstance->saveComment($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->saveComment: ', $e->getMessage(), PHP_EOL;
@@ -6351,6 +6834,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6405,15 +6890,18 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$create_comment_params = array(new \FastComments\Client\Model\CreateCommentParams()); // \FastComments\Client\Model\CreateCommentParams[]
-$is_live = True; // bool
-$do_spam_check = True; // bool
-$send_emails = True; // bool
-$populate_notifications = True; // bool
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'create_comment_params' => array(new \FastComments\Client\Model\CreateCommentParams()), // \FastComments\Client\Model\CreateCommentParams[]
+    'is_live' => True, // bool
+    'do_spam_check' => True, // bool
+    'send_emails' => True, // bool
+    'populate_notifications' => True, // bool
+];
 
 try {
-    $result = $apiInstance->saveCommentsBulk($tenant_id, $create_comment_params, $is_live, $do_spam_check, $send_emails, $populate_notifications);
+    $result = $apiInstance->saveCommentsBulk($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->saveCommentsBulk: ', $e->getMessage(), PHP_EOL;
@@ -6421,6 +6909,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6475,12 +6965,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$from_name = 'from_name_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'from_name' => 'from_name_example', // string
+];
 
 try {
-    $result = $apiInstance->sendInvite($tenant_id, $id, $from_name);
+    $result = $apiInstance->sendInvite($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->sendInvite: ', $e->getMessage(), PHP_EOL;
@@ -6488,6 +6981,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6539,12 +7034,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$redirect_url = 'redirect_url_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'redirect_url' => 'redirect_url_example', // string
+];
 
 try {
-    $result = $apiInstance->sendLoginLink($tenant_id, $id, $redirect_url);
+    $result = $apiInstance->sendLoginLink($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->sendLoginLink: ', $e->getMessage(), PHP_EOL;
@@ -6552,6 +7050,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6603,14 +7103,17 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$un_block_from_comment_params = new \FastComments\Client\Model\UnBlockFromCommentParams(); // \FastComments\Client\Model\UnBlockFromCommentParams
-$user_id = 'user_id_example'; // string
-$anon_user_id = 'anon_user_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'un_block_from_comment_params' => new \FastComments\Client\Model\UnBlockFromCommentParams(), // \FastComments\Client\Model\UnBlockFromCommentParams
+    'user_id' => 'user_id_example', // string
+    'anon_user_id' => 'anon_user_id_example', // string
+];
 
 try {
-    $result = $apiInstance->unBlockUserFromComment($tenant_id, $id, $un_block_from_comment_params, $user_id, $anon_user_id);
+    $result = $apiInstance->unBlockUserFromComment($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->unBlockUserFromComment: ', $e->getMessage(), PHP_EOL;
@@ -6618,6 +7121,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6671,13 +7176,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$user_id = 'user_id_example'; // string
-$anon_user_id = 'anon_user_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'user_id' => 'user_id_example', // string
+    'anon_user_id' => 'anon_user_id_example', // string
+];
 
 try {
-    $result = $apiInstance->unFlagComment($tenant_id, $id, $user_id, $anon_user_id);
+    $result = $apiInstance->unFlagComment($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->unFlagComment: ', $e->getMessage(), PHP_EOL;
@@ -6685,6 +7193,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6737,15 +7247,18 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$updatable_comment_params = new \FastComments\Client\Model\UpdatableCommentParams(); // \FastComments\Client\Model\UpdatableCommentParams
-$context_user_id = 'context_user_id_example'; // string
-$do_spam_check = True; // bool
-$is_live = True; // bool
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'updatable_comment_params' => new \FastComments\Client\Model\UpdatableCommentParams(), // \FastComments\Client\Model\UpdatableCommentParams
+    'context_user_id' => 'context_user_id_example', // string
+    'do_spam_check' => True, // bool
+    'is_live' => True, // bool
+];
 
 try {
-    $result = $apiInstance->updateComment($tenant_id, $id, $updatable_comment_params, $context_user_id, $do_spam_check, $is_live);
+    $result = $apiInstance->updateComment($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateComment: ', $e->getMessage(), PHP_EOL;
@@ -6753,6 +7266,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6807,12 +7322,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$update_email_template_body = new \FastComments\Client\Model\UpdateEmailTemplateBody(); // \FastComments\Client\Model\UpdateEmailTemplateBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'update_email_template_body' => new \FastComments\Client\Model\UpdateEmailTemplateBody(), // \FastComments\Client\Model\UpdateEmailTemplateBody
+];
 
 try {
-    $result = $apiInstance->updateEmailTemplate($tenant_id, $id, $update_email_template_body);
+    $result = $apiInstance->updateEmailTemplate($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateEmailTemplate: ', $e->getMessage(), PHP_EOL;
@@ -6820,6 +7338,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6871,12 +7391,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$feed_post = new \FastComments\Client\Model\FeedPost(); // \FastComments\Client\Model\FeedPost
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'feed_post' => new \FastComments\Client\Model\FeedPost(), // \FastComments\Client\Model\FeedPost
+];
 
 try {
-    $result = $apiInstance->updateFeedPost($tenant_id, $id, $feed_post);
+    $result = $apiInstance->updateFeedPost($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateFeedPost: ', $e->getMessage(), PHP_EOL;
@@ -6884,6 +7407,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6935,12 +7460,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$update_moderator_body = new \FastComments\Client\Model\UpdateModeratorBody(); // \FastComments\Client\Model\UpdateModeratorBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'update_moderator_body' => new \FastComments\Client\Model\UpdateModeratorBody(), // \FastComments\Client\Model\UpdateModeratorBody
+];
 
 try {
-    $result = $apiInstance->updateModerator($tenant_id, $id, $update_moderator_body);
+    $result = $apiInstance->updateModerator($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateModerator: ', $e->getMessage(), PHP_EOL;
@@ -6948,6 +7476,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6999,13 +7529,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$update_notification_body = new \FastComments\Client\Model\UpdateNotificationBody(); // \FastComments\Client\Model\UpdateNotificationBody
-$user_id = 'user_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'update_notification_body' => new \FastComments\Client\Model\UpdateNotificationBody(), // \FastComments\Client\Model\UpdateNotificationBody
+    'user_id' => 'user_id_example', // string
+];
 
 try {
-    $result = $apiInstance->updateNotification($tenant_id, $id, $update_notification_body, $user_id);
+    $result = $apiInstance->updateNotification($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateNotification: ', $e->getMessage(), PHP_EOL;
@@ -7013,6 +7546,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7065,12 +7600,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$update_question_config_body = new \FastComments\Client\Model\UpdateQuestionConfigBody(); // \FastComments\Client\Model\UpdateQuestionConfigBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'update_question_config_body' => new \FastComments\Client\Model\UpdateQuestionConfigBody(), // \FastComments\Client\Model\UpdateQuestionConfigBody
+];
 
 try {
-    $result = $apiInstance->updateQuestionConfig($tenant_id, $id, $update_question_config_body);
+    $result = $apiInstance->updateQuestionConfig($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateQuestionConfig: ', $e->getMessage(), PHP_EOL;
@@ -7078,6 +7616,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7129,12 +7669,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$update_question_result_body = new \FastComments\Client\Model\UpdateQuestionResultBody(); // \FastComments\Client\Model\UpdateQuestionResultBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'update_question_result_body' => new \FastComments\Client\Model\UpdateQuestionResultBody(), // \FastComments\Client\Model\UpdateQuestionResultBody
+];
 
 try {
-    $result = $apiInstance->updateQuestionResult($tenant_id, $id, $update_question_result_body);
+    $result = $apiInstance->updateQuestionResult($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateQuestionResult: ', $e->getMessage(), PHP_EOL;
@@ -7142,6 +7685,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7193,13 +7738,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$update_api_user_subscription_data = new \FastComments\Client\Model\UpdateAPIUserSubscriptionData(); // \FastComments\Client\Model\UpdateAPIUserSubscriptionData
-$user_id = 'user_id_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'update_api_user_subscription_data' => new \FastComments\Client\Model\UpdateAPIUserSubscriptionData(), // \FastComments\Client\Model\UpdateAPIUserSubscriptionData
+    'user_id' => 'user_id_example', // string
+];
 
 try {
-    $result = $apiInstance->updateSubscription($tenant_id, $id, $update_api_user_subscription_data, $user_id);
+    $result = $apiInstance->updateSubscription($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateSubscription: ', $e->getMessage(), PHP_EOL;
@@ -7207,6 +7755,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7259,12 +7809,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$update_tenant_body = new \FastComments\Client\Model\UpdateTenantBody(); // \FastComments\Client\Model\UpdateTenantBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'update_tenant_body' => new \FastComments\Client\Model\UpdateTenantBody(), // \FastComments\Client\Model\UpdateTenantBody
+];
 
 try {
-    $result = $apiInstance->updateTenant($tenant_id, $id, $update_tenant_body);
+    $result = $apiInstance->updateTenant($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateTenant: ', $e->getMessage(), PHP_EOL;
@@ -7272,6 +7825,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7323,12 +7878,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$update_tenant_package_body = new \FastComments\Client\Model\UpdateTenantPackageBody(); // \FastComments\Client\Model\UpdateTenantPackageBody
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'update_tenant_package_body' => new \FastComments\Client\Model\UpdateTenantPackageBody(), // \FastComments\Client\Model\UpdateTenantPackageBody
+];
 
 try {
-    $result = $apiInstance->updateTenantPackage($tenant_id, $id, $update_tenant_package_body);
+    $result = $apiInstance->updateTenantPackage($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateTenantPackage: ', $e->getMessage(), PHP_EOL;
@@ -7336,6 +7894,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7387,13 +7947,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$update_tenant_user_body = new \FastComments\Client\Model\UpdateTenantUserBody(); // \FastComments\Client\Model\UpdateTenantUserBody
-$update_comments = 'update_comments_example'; // string
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'update_tenant_user_body' => new \FastComments\Client\Model\UpdateTenantUserBody(), // \FastComments\Client\Model\UpdateTenantUserBody
+    'update_comments' => 'update_comments_example', // string
+];
 
 try {
-    $result = $apiInstance->updateTenantUser($tenant_id, $id, $update_tenant_user_body, $update_comments);
+    $result = $apiInstance->updateTenantUser($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateTenantUser: ', $e->getMessage(), PHP_EOL;
@@ -7401,6 +7964,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -7453,12 +8018,15 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_id = 'tenant_id_example'; // string
-$id = 'id_example'; // string
-$update_user_badge_params = new \FastComments\Client\Model\UpdateUserBadgeParams(); // \FastComments\Client\Model\UpdateUserBadgeParams
+
+$associative_array = [
+    'tenant_id' => 'tenant_id_example', // string
+    'id' => 'id_example', // string
+    'update_user_badge_params' => new \FastComments\Client\Model\UpdateUserBadgeParams(), // \FastComments\Client\Model\UpdateUserBadgeParams
+];
 
 try {
-    $result = $apiInstance->updateUserBadge($tenant_id, $id, $update_user_badge_params);
+    $result = $apiInstance->updateUserBadge($associate_array);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateUserBadge: ', $e->getMessage(), PHP_EOL;
@@ -7466,6 +8034,8 @@ try {
 ```
 
 ### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter names below.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |

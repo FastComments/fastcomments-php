@@ -1,4 +1,4 @@
-# # UpdateAPIUserSubscriptionData
+# UpdateAPIUserSubscriptionData
 
 ## Properties
 

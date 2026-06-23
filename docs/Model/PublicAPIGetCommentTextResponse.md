@@ -1,4 +1,4 @@
-# # PublicAPIGetCommentTextResponse
+# PublicAPIGetCommentTextResponse
 
 ## Properties
 

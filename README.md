@@ -65,7 +65,10 @@ $tenant_id = 'tenant_id_example'; // string
 $add_domain_config_params = new \FastComments\Client\Model\AddDomainConfigParams(); // \FastComments\Client\Model\AddDomainConfigParams
 
 try {
-    $result = $apiInstance->addDomainConfig($tenant_id, $add_domain_config_params);
+    $result = $apiInstance->addDomainConfig([
+        'tenant_id' => $tenant_id,
+        'add_domain_config_params' => $add_domain_config_params,
+    ]);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->addDomainConfig: ', $e->getMessage(), PHP_EOL;
@@ -95,7 +98,10 @@ $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 
 try {
-    $result = $apiInstance->getCommentsPublic($tenant_id, $url_id);
+    $result = $apiInstance->getCommentsPublic([
+        'tenant_id' => $tenant_id,
+        'url_id' => $url_id,
+    ]);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getCommentsPublic: ', $e->getMessage(), PHP_EOL;
@@ -114,7 +120,9 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
 $sso = 'sso_example'; // string - SSO payload authenticating the moderator
 
 try {
-    $result = $apiInstance->getCount(null, null, null, null, null, $sso);
+    $result = $apiInstance->getCount([
+        'sso' => $sso,
+    ]);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getCount: ', $e->getMessage(), PHP_EOL;

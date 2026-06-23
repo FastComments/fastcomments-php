@@ -1,4 +1,4 @@
-# # GifSearchInternalError
+# GifSearchInternalError
 
 ## Properties
 

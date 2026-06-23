@@ -1,4 +1,4 @@
-# # ChangeCommentPinStatusResponse
+# ChangeCommentPinStatusResponse
 
 ## Properties
 

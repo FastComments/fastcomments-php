@@ -1,4 +1,4 @@
-# # UpdateTenantUserBody
+# UpdateTenantUserBody
 
 ## Properties
 

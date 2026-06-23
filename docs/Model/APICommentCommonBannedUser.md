@@ -1,4 +1,4 @@
-# # APICommentCommonBannedUser
+# APICommentCommonBannedUser
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # UserBadgeProgress
+# UserBadgeProgress
 
 ## Properties
 

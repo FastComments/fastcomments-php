@@ -1,4 +1,4 @@
-# # GetTenantPackageResponse
+# GetTenantPackageResponse
 
 ## Properties
 

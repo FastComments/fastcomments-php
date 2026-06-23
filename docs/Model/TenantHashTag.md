@@ -1,4 +1,4 @@
-# # TenantHashTag
+# TenantHashTag
 
 ## Properties
 

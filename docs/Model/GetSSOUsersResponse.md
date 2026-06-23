@@ -1,4 +1,4 @@
-# # GetSSOUsersResponse
+# GetSSOUsersResponse
 
 ## Properties
 

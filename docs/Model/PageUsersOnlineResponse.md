@@ -1,4 +1,4 @@
-# # PageUsersOnlineResponse
+# PageUsersOnlineResponse
 
 ## Properties
 

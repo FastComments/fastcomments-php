@@ -1,4 +1,4 @@
-# # GifSearchResponse
+# GifSearchResponse
 
 ## Properties
 

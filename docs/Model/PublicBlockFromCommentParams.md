@@ -1,4 +1,4 @@
-# # PublicBlockFromCommentParams
+# PublicBlockFromCommentParams
 
 ## Properties
 

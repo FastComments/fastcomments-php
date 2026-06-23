@@ -1,4 +1,4 @@
-# # SetUserTrustFactorResponse
+# SetUserTrustFactorResponse
 
 ## Properties
 

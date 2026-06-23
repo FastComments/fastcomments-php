@@ -1,4 +1,4 @@
-# # UpdateFeedPostParams
+# UpdateFeedPostParams
 
 ## Properties
 

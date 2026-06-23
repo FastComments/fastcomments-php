@@ -1,4 +1,4 @@
-# # GetCommentBanStatusResponse
+# GetCommentBanStatusResponse
 
 ## Properties
 

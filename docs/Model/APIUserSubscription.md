@@ -1,4 +1,4 @@
-# # APIUserSubscription
+# APIUserSubscription
 
 ## Properties
 

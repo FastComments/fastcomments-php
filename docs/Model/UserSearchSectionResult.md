@@ -1,4 +1,4 @@
-# # UserSearchSectionResult
+# UserSearchSectionResult
 
 ## Properties
 

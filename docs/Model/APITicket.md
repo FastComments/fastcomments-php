@@ -1,4 +1,4 @@
-# # APITicket
+# APITicket
 
 ## Properties
 

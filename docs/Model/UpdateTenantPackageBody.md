@@ -1,4 +1,4 @@
-# # UpdateTenantPackageBody
+# UpdateTenantPackageBody
 
 ## Properties
 

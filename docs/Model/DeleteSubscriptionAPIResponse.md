@@ -1,4 +1,4 @@
-# # DeleteSubscriptionAPIResponse
+# DeleteSubscriptionAPIResponse
 
 ## Properties
 

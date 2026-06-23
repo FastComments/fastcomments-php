@@ -1,4 +1,4 @@
-# # CombineQuestionResultsWithCommentsResponse
+# CombineQuestionResultsWithCommentsResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetV1PageLikes
+# GetV1PageLikes
 
 ## Properties
 

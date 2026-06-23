@@ -1,4 +1,4 @@
-# # ImageContentProfanityLevel
+# ImageContentProfanityLevel
 
 ## Properties
 

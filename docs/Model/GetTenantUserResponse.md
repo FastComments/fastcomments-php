@@ -1,4 +1,4 @@
-# # GetTenantUserResponse
+# GetTenantUserResponse
 
 ## Properties
 

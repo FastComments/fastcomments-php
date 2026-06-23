@@ -1,4 +1,4 @@
-# # QuestionConfig
+# QuestionConfig
 
 ## Properties
 

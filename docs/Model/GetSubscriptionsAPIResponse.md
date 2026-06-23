@@ -1,4 +1,4 @@
-# # GetSubscriptionsAPIResponse
+# GetSubscriptionsAPIResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # BanUserFromCommentResult
+# BanUserFromCommentResult
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetCachedNotificationCountResponse
+# GetCachedNotificationCountResponse
 
 ## Properties
 

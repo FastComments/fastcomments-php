@@ -1,4 +1,4 @@
-# # PagesSortBy
+# PagesSortBy
 
 ## Properties
 

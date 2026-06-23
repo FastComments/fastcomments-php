@@ -1,4 +1,4 @@
-# # UserNotificationCount
+# UserNotificationCount
 
 ## Properties
 

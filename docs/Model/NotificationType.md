@@ -1,4 +1,4 @@
-# # NotificationType
+# NotificationType
 
 ## Properties
 
