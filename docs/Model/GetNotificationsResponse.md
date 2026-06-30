@@ -1,4 +1,4 @@
-# # GetNotificationsResponse
+# GetNotificationsResponse
 
 ## Properties
 

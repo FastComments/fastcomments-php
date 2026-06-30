@@ -1,4 +1,4 @@
-# # RepeatCommentCheckIgnoredReason
+# RepeatCommentCheckIgnoredReason
 
 ## Properties
 

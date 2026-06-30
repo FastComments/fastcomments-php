@@ -1,4 +1,4 @@
-# # UserSearchSection
+# UserSearchSection
 
 ## Properties
 

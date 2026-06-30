@@ -1,4 +1,4 @@
-# # ModerationCommentSearchResponse
+# ModerationCommentSearchResponse
 
 ## Properties
 

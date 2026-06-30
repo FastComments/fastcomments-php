@@ -1,4 +1,4 @@
-# # TenantBadge
+# TenantBadge
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # BulkPreBanSummary
+# BulkPreBanSummary
 
 ## Properties
 

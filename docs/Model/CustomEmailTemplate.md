@@ -1,4 +1,4 @@
-# # CustomEmailTemplate
+# CustomEmailTemplate
 
 ## Properties
 

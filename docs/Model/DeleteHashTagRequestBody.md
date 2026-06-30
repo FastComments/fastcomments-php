@@ -1,4 +1,4 @@
-# # DeleteHashTagRequestBody
+# DeleteHashTagRequestBody
 
 ## Properties
 

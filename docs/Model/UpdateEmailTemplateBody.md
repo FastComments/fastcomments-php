@@ -1,4 +1,4 @@
-# # UpdateEmailTemplateBody
+# UpdateEmailTemplateBody
 
 ## Properties
 

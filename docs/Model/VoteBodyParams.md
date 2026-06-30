@@ -1,4 +1,4 @@
-# # VoteBodyParams
+# VoteBodyParams
 
 ## Properties
 

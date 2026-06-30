@@ -1,4 +1,4 @@
-# # CommentUserMentionInfo
+# CommentUserMentionInfo
 
 ## Properties
 

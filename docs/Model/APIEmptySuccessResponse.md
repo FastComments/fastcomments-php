@@ -1,4 +1,4 @@
-# # APIEmptySuccessResponse
+# APIEmptySuccessResponse
 
 ## Properties
 

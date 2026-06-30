@@ -1,4 +1,4 @@
-# # HeaderState
+# HeaderState
 
 ## Properties
 

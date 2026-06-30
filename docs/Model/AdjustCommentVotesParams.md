@@ -1,4 +1,4 @@
-# # AdjustCommentVotesParams
+# AdjustCommentVotesParams
 
 ## Properties
 

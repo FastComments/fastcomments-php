@@ -1,4 +1,4 @@
-# # UpdateQuestionConfigBody
+# UpdateQuestionConfigBody
 
 ## Properties
 

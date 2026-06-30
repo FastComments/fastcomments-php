@@ -1,4 +1,4 @@
-# # PublicVote
+# PublicVote
 
 ## Properties
 

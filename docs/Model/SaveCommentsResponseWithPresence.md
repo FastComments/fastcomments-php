@@ -1,4 +1,4 @@
-# # SaveCommentsResponseWithPresence
+# SaveCommentsResponseWithPresence
 
 ## Properties
 

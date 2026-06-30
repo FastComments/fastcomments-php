@@ -1,4 +1,4 @@
-# # UpdatableCommentParams
+# UpdatableCommentParams
 
 ## Properties
 

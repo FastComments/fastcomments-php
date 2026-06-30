@@ -1,4 +1,4 @@
-# # APICommentBaseMeta
+# APICommentBaseMeta
 
 ## Properties
 

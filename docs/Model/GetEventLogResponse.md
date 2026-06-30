@@ -1,4 +1,4 @@
-# # GetEventLogResponse
+# GetEventLogResponse
 
 ## Properties
 

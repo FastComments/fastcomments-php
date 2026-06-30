@@ -53,10 +53,7 @@ class SSOIntegrationTest extends TestCase
         // $config->setHost('https://eu.fastcomments.com'); // Uncomment to use EU endpoint
         $apiInstance = new PublicApi(new Client(), $config);
 
-        $response = $apiInstance->getCommentsPublic(
-            $this->tenantId,
-            'sdk-test-page'
-        );
+        $response = $apiInstance->getCommentsPublic($this->tenantId, 'sdk-test-page');
 
         $this->assertNotNull($response);
     }
@@ -95,20 +92,13 @@ class SSOIntegrationTest extends TestCase
             'sdk-test-php',
             'test-' . $timestamp,
             $commentData,
-            null,
-            $token
+            ['sso' => $token]
         );
 
         $this->assertNotNull($createResponse);
 
         // Get comments with SSO
-        $getResponse = $publicApi->getCommentsPublic(
-            $this->tenantId,
-            'sdk-test-php',
-            null,
-            null,
-            $token
-        );
+        $getResponse = $publicApi->getCommentsPublic($this->tenantId, 'sdk-test-php', ['sso' => $token]);
 
         $this->assertNotNull($getResponse);
     }
@@ -150,8 +140,7 @@ class SSOIntegrationTest extends TestCase
             $testUrlId,
             'test-' . $timestamp,
             $commentData,
-            null,
-            $token
+            ['sso' => $token]
         );
 
         $this->assertNotNull($createResponse);
@@ -165,17 +154,7 @@ class SSOIntegrationTest extends TestCase
         $defaultConfig->setApiKey('x-api-key', $this->apiKey);
         $defaultApi = new DefaultApi(new Client(), $defaultConfig);
 
-        $getResponse = $defaultApi->getComments(
-            $this->tenantId,
-            null,  // page
-            null,  // limit
-            null,  // skip
-            null,  // asTree
-            null,  // skipChildren
-            null,  // limitChildren
-            null,  // maxTreeDepth
-            $testUrlId  // urlId
-        );
+        $getResponse = $defaultApi->getComments($this->tenantId, ['url_id' => $testUrlId]);
 
         $this->assertNotNull($getResponse);
 
@@ -232,8 +211,7 @@ class SSOIntegrationTest extends TestCase
             $testUrlId,
             'test-' . $timestamp,
             $commentData,
-            null,
-            $token
+            ['sso' => $token]
         );
 
         $this->assertNotNull($createResponse);
@@ -242,13 +220,7 @@ class SSOIntegrationTest extends TestCase
         // Step 2: Fetch the comment back using PUBLIC API with SSO
         echo "Step 2: Fetching comments for page '" . $testUrlId . "' with SSO...\n";
 
-        $getResponse = $publicApi->getCommentsPublic(
-            $this->tenantId,
-            $testUrlId,
-            null,  // page
-            null,  // limit
-            $token  // ssoToken
-        );
+        $getResponse = $publicApi->getCommentsPublic($this->tenantId, $testUrlId, ['sso' => $token]);
 
         $this->assertNotNull($getResponse);
 

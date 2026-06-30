@@ -1,4 +1,4 @@
-# # APIModerateGetUserBanPreferencesResponse
+# APIModerateGetUserBanPreferencesResponse
 
 ## Properties
 

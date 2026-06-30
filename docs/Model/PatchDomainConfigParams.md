@@ -1,4 +1,4 @@
-# # PatchDomainConfigParams
+# PatchDomainConfigParams
 
 ## Properties
 

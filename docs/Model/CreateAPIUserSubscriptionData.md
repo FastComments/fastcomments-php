@@ -1,4 +1,4 @@
-# # CreateAPIUserSubscriptionData
+# CreateAPIUserSubscriptionData
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # APIStatus
+# APIStatus
 
 ## Properties
 

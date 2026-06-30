@@ -1,4 +1,4 @@
-# # GetCommentVoteUserNamesSuccessResponse
+# GetCommentVoteUserNamesSuccessResponse
 
 ## Properties
 

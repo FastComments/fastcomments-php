@@ -1,4 +1,4 @@
-# # UserReactsResponse
+# UserReactsResponse
 
 ## Properties
 

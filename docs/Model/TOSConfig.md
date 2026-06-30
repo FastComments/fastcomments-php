@@ -1,4 +1,4 @@
-# # TOSConfig
+# TOSConfig
 
 ## Properties
 

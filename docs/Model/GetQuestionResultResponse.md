@@ -1,4 +1,4 @@
-# # GetQuestionResultResponse
+# GetQuestionResultResponse
 
 ## Properties
 

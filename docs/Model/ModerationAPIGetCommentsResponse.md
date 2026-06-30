@@ -1,4 +1,4 @@
-# # ModerationAPIGetCommentsResponse
+# ModerationAPIGetCommentsResponse
 
 ## Properties
 

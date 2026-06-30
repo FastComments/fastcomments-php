@@ -1,4 +1,4 @@
-# # FlagCommentResponse
+# FlagCommentResponse
 
 ## Properties
 

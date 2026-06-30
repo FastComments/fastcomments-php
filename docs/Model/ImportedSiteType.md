@@ -1,4 +1,4 @@
-# # ImportedSiteType
+# ImportedSiteType
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # QuestionDatum
+# QuestionDatum
 
 ## Properties
 

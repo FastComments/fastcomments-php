@@ -1,4 +1,4 @@
-# # CreateTenantPackageBody
+# CreateTenantPackageBody
 
 ## Properties
 

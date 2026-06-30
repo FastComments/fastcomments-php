@@ -1,4 +1,4 @@
-# # APIAuditLog
+# APIAuditLog
 
 ## Properties
 

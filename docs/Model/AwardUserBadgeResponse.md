@@ -1,4 +1,4 @@
-# # AwardUserBadgeResponse
+# AwardUserBadgeResponse
 
 ## Properties
 

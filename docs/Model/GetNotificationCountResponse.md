@@ -1,4 +1,4 @@
-# # GetNotificationCountResponse
+# GetNotificationCountResponse
 
 ## Properties
 

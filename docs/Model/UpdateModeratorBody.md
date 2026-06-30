@@ -1,4 +1,4 @@
-# # UpdateModeratorBody
+# UpdateModeratorBody
 
 ## Properties
 

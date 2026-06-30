@@ -1,4 +1,4 @@
-# # QuestionSubQuestionVisibility
+# QuestionSubQuestionVisibility
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # APITenant
+# APITenant
 
 ## Properties
 

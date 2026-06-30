@@ -1,4 +1,4 @@
-# # QueryPredicate
+# QueryPredicate
 
 ## Properties
 

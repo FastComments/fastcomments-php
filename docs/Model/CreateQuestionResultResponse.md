@@ -1,4 +1,4 @@
-# # CreateQuestionResultResponse
+# CreateQuestionResultResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # ModerationSuggestResponse
+# ModerationSuggestResponse
 
 ## Properties
 

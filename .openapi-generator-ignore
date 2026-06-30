@@ -21,3 +21,8 @@
 #docs/*.md
 # Then explicitly reverse the ignore rule for a single file:
 #!docs/README.md
+
+# Preserve the hand-written "API Clients / Using PublicApi / Using ModerationApi" prose
+# in README.md. update.sh does not delete this ignore file or README.md, so the generator
+# honors this and leaves README.md untouched on regen.
+README.md

@@ -1,4 +1,4 @@
-# # BlockFromCommentParams
+# BlockFromCommentParams
 
 ## Properties
 

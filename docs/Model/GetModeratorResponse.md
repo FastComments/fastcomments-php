@@ -1,4 +1,4 @@
-# # GetModeratorResponse
+# GetModeratorResponse
 
 ## Properties
 

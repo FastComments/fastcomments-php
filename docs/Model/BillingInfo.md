@@ -1,4 +1,4 @@
-# # BillingInfo
+# BillingInfo
 
 ## Properties
 

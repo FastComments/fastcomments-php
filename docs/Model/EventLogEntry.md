@@ -1,4 +1,4 @@
-# # EventLogEntry
+# EventLogEntry
 
 ## Properties
 

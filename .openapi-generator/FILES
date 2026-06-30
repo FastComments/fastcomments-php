@@ -1,7 +1,6 @@
 .gitignore
 .php-cs-fixer.dist.php
 .travis.yml
-README.md
 composer.json
 docs/Api/DefaultApi.md
 docs/Api/ModerationApi.md
@@ -265,7 +264,7 @@ docs/Model/PatchDomainConfigResponse.md
 docs/Model/PatchPageAPIResponse.md
 docs/Model/PatchSSOUserAPIResponse.md
 docs/Model/PendingCommentToSyncOutbound.md
-docs/Model/PostRemoveCommentResponse.md
+docs/Model/PostRemoveCommentApiResponse.md
 docs/Model/PreBanSummary.md
 docs/Model/PubSubComment.md
 docs/Model/PubSubCommentBase.md
@@ -364,7 +363,6 @@ docs/Model/UsersListLocation.md
 docs/Model/VoteBodyParams.md
 docs/Model/VoteDeleteResponse.md
 docs/Model/VoteResponse.md
-docs/Model/VoteResponseStatus.md
 docs/Model/VoteResponseUser.md
 docs/Model/VoteStyle.md
 git_push.sh
@@ -373,6 +371,7 @@ lib/Api/ModerationApi.php
 lib/Api/PublicApi.php
 lib/ApiException.php
 lib/Configuration.php
+lib/FormDataProcessor.php
 lib/HeaderSelector.php
 lib/Model/APIAuditLog.php
 lib/Model/APIBanUserChangeLog.php
@@ -634,7 +633,7 @@ lib/Model/PatchDomainConfigResponse.php
 lib/Model/PatchPageAPIResponse.php
 lib/Model/PatchSSOUserAPIResponse.php
 lib/Model/PendingCommentToSyncOutbound.php
-lib/Model/PostRemoveCommentResponse.php
+lib/Model/PostRemoveCommentApiResponse.php
 lib/Model/PreBanSummary.php
 lib/Model/PubSubComment.php
 lib/Model/PubSubCommentBase.php
@@ -733,7 +732,6 @@ lib/Model/UsersListLocation.php
 lib/Model/VoteBodyParams.php
 lib/Model/VoteDeleteResponse.php
 lib/Model/VoteResponse.php
-lib/Model/VoteResponseStatus.php
 lib/Model/VoteResponseUser.php
 lib/Model/VoteStyle.php
 lib/ObjectSerializer.php
@@ -1000,7 +998,7 @@ test/Model/PatchDomainConfigResponseTest.php
 test/Model/PatchPageAPIResponseTest.php
 test/Model/PatchSSOUserAPIResponseTest.php
 test/Model/PendingCommentToSyncOutboundTest.php
-test/Model/PostRemoveCommentResponseTest.php
+test/Model/PostRemoveCommentApiResponseTest.php
 test/Model/PreBanSummaryTest.php
 test/Model/PubSubCommentBaseTest.php
 test/Model/PubSubCommentTest.php
@@ -1098,7 +1096,6 @@ test/Model/UserTest.php
 test/Model/UsersListLocationTest.php
 test/Model/VoteBodyParamsTest.php
 test/Model/VoteDeleteResponseTest.php
-test/Model/VoteResponseStatusTest.php
 test/Model/VoteResponseTest.php
 test/Model/VoteResponseUserTest.php
 test/Model/VoteStyleTest.php

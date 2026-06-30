@@ -1,4 +1,4 @@
-# # UpdateUserBadgeParams
+# UpdateUserBadgeParams
 
 ## Properties
 

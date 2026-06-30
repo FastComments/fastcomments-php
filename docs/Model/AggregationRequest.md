@@ -1,4 +1,4 @@
-# # AggregationRequest
+# AggregationRequest
 
 ## Properties
 

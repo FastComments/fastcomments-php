@@ -1,4 +1,4 @@
-# # CreateUserBadgeParams
+# CreateUserBadgeParams
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # QuestionConfigCustomOptionsInner
+# QuestionConfigCustomOptionsInner
 
 ## Properties
 

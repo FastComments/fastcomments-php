@@ -1,4 +1,4 @@
-# # PendingCommentToSyncOutbound
+# PendingCommentToSyncOutbound
 
 ## Properties
 

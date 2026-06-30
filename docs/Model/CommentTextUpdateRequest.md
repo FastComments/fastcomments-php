@@ -1,4 +1,4 @@
-# # CommentTextUpdateRequest
+# CommentTextUpdateRequest
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # UpdateTenantBody
+# UpdateTenantBody
 
 ## Properties
 

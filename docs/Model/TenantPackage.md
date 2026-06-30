@@ -1,4 +1,4 @@
-# # TenantPackage
+# TenantPackage
 
 ## Properties
 

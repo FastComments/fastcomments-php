@@ -1,6 +1,6 @@
 # FastComments\Client\PublicApi
 
-FastComments PHP API Client - A SDK for interacting with the FastComments API
+
 
 All URIs are relative to https://fastcomments.com, except if the operation defines another base path.
 
@@ -81,10 +81,12 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $public_block_from_comment_params = new \FastComments\Client\Model\PublicBlockFromCommentParams(); // \FastComments\Client\Model\PublicBlockFromCommentParams
 $sso = 'sso_example'; // string
+
 
 try {
     $result = $apiInstance->blockFromCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
@@ -141,9 +143,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $comment_ids = 'comment_ids_example'; // string | A comma separated list of comment ids.
 $sso = 'sso_example'; // string
+
 
 try {
     $result = $apiInstance->checkedCommentsForBlocked($tenant_id, $comment_ids, $sso);
@@ -181,7 +185,7 @@ No authorization required
 ## `createCommentPublic()`
 
 ```php
-createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $session_id, $sso): \FastComments\Client\Model\SaveCommentsResponseWithPresence
+createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $options): \FastComments\Client\Model\SaveCommentsResponseWithPresence
 ```
 
 
@@ -199,15 +203,19 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
 $comment_data = new \FastComments\Client\Model\CommentData(); // \FastComments\Client\Model\CommentData
-$session_id = 'session_id_example'; // string
-$sso = 'sso_example'; // string
+$options = [
+    'session_id' => 'session_id_example', // string
+    'sso' => 'sso_example', // string
+];
+
 
 try {
-    $result = $apiInstance->createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $session_id, $sso);
+    $result = $apiInstance->createCommentPublic($tenant_id, $url_id, $broadcast_id, $comment_data, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->createCommentPublic: ', $e->getMessage(), PHP_EOL;
@@ -215,6 +223,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -245,7 +255,7 @@ No authorization required
 ## `createFeedPostPublic()`
 
 ```php
-createFeedPostPublic($tenant_id, $create_feed_post_params, $broadcast_id, $sso): \FastComments\Client\Model\CreateFeedPostResponse
+createFeedPostPublic($tenant_id, $create_feed_post_params, $options): \FastComments\Client\Model\CreateFeedPostResponse
 ```
 
 
@@ -263,13 +273,17 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_feed_post_params = new \FastComments\Client\Model\CreateFeedPostParams(); // \FastComments\Client\Model\CreateFeedPostParams
-$broadcast_id = 'broadcast_id_example'; // string
-$sso = 'sso_example'; // string
+$options = [
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
+
 
 try {
-    $result = $apiInstance->createFeedPostPublic($tenant_id, $create_feed_post_params, $broadcast_id, $sso);
+    $result = $apiInstance->createFeedPostPublic($tenant_id, $create_feed_post_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->createFeedPostPublic: ', $e->getMessage(), PHP_EOL;
@@ -277,6 +291,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -323,9 +339,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 $title = 'title_example'; // string
+
 
 try {
     $result = $apiInstance->createV1PageReact($tenant_id, $url_id, $title);
@@ -381,10 +399,12 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 $id = 'id_example'; // string
 $title = 'title_example'; // string
+
 
 try {
     $result = $apiInstance->createV2PageReact($tenant_id, $url_id, $id, $title);
@@ -423,7 +443,7 @@ No authorization required
 ## `deleteCommentPublic()`
 
 ```php
-deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $edit_key, $sso): \FastComments\Client\Model\PublicAPIDeleteCommentResponse
+deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $options): \FastComments\Client\Model\PublicAPIDeleteCommentResponse
 ```
 
 
@@ -441,14 +461,18 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
-$edit_key = 'edit_key_example'; // string
-$sso = 'sso_example'; // string
+$options = [
+    'edit_key' => 'edit_key_example', // string
+    'sso' => 'sso_example', // string
+];
+
 
 try {
-    $result = $apiInstance->deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $edit_key, $sso);
+    $result = $apiInstance->deleteCommentPublic($tenant_id, $comment_id, $broadcast_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->deleteCommentPublic: ', $e->getMessage(), PHP_EOL;
@@ -456,6 +480,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -485,7 +511,7 @@ No authorization required
 ## `deleteCommentVote()`
 
 ```php
-deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $edit_key, $sso): \FastComments\Client\Model\VoteDeleteResponse
+deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $options): \FastComments\Client\Model\VoteDeleteResponse
 ```
 
 
@@ -503,16 +529,20 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $vote_id = 'vote_id_example'; // string
 $url_id = 'url_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
-$edit_key = 'edit_key_example'; // string
-$sso = 'sso_example'; // string
+$options = [
+    'edit_key' => 'edit_key_example', // string
+    'sso' => 'sso_example', // string
+];
+
 
 try {
-    $result = $apiInstance->deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $edit_key, $sso);
+    $result = $apiInstance->deleteCommentVote($tenant_id, $comment_id, $vote_id, $url_id, $broadcast_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->deleteCommentVote: ', $e->getMessage(), PHP_EOL;
@@ -520,6 +550,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -551,7 +583,7 @@ No authorization required
 ## `deleteFeedPostPublic()`
 
 ```php
-deleteFeedPostPublic($tenant_id, $post_id, $broadcast_id, $sso): \FastComments\Client\Model\DeleteFeedPostPublicResponse
+deleteFeedPostPublic($tenant_id, $post_id, $options): \FastComments\Client\Model\DeleteFeedPostPublicResponse
 ```
 
 
@@ -569,13 +601,17 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $post_id = 'post_id_example'; // string
-$broadcast_id = 'broadcast_id_example'; // string
-$sso = 'sso_example'; // string
+$options = [
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
+
 
 try {
-    $result = $apiInstance->deleteFeedPostPublic($tenant_id, $post_id, $broadcast_id, $sso);
+    $result = $apiInstance->deleteFeedPostPublic($tenant_id, $post_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->deleteFeedPostPublic: ', $e->getMessage(), PHP_EOL;
@@ -583,6 +619,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -629,8 +667,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
+
 
 try {
     $result = $apiInstance->deleteV1PageReact($tenant_id, $url_id);
@@ -685,9 +725,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->deleteV2PageReact($tenant_id, $url_id, $id);
@@ -743,10 +785,12 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $is_flagged = True; // bool
 $sso = 'sso_example'; // string
+
 
 try {
     $result = $apiInstance->flagCommentPublic($tenant_id, $comment_id, $is_flagged, $sso);
@@ -785,7 +829,7 @@ No authorization required
 ## `getCommentText()`
 
 ```php
-getCommentText($tenant_id, $comment_id, $edit_key, $sso): \FastComments\Client\Model\PublicAPIGetCommentTextResponse
+getCommentText($tenant_id, $comment_id, $options): \FastComments\Client\Model\PublicAPIGetCommentTextResponse
 ```
 
 
@@ -803,13 +847,17 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
-$edit_key = 'edit_key_example'; // string
-$sso = 'sso_example'; // string
+$options = [
+    'edit_key' => 'edit_key_example', // string
+    'sso' => 'sso_example', // string
+];
+
 
 try {
-    $result = $apiInstance->getCommentText($tenant_id, $comment_id, $edit_key, $sso);
+    $result = $apiInstance->getCommentText($tenant_id, $comment_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getCommentText: ', $e->getMessage(), PHP_EOL;
@@ -817,6 +865,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -863,10 +913,12 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $dir = 56; // int
 $sso = 'sso_example'; // string
+
 
 try {
     $result = $apiInstance->getCommentVoteUserNames($tenant_id, $comment_id, $dir, $sso);
@@ -905,7 +957,7 @@ No authorization required
 ## `getCommentsForUser()`
 
 ```php
-getCommentsForUser($user_id, $direction, $replies_to_user_id, $page, $includei10n, $locale, $is_crawler): \FastComments\Client\Model\GetCommentsForUserResponse
+getCommentsForUser($options): \FastComments\Client\Model\GetCommentsForUserResponse
 ```
 
 
@@ -923,16 +975,20 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 'user_id_example'; // string
-$direction = new \FastComments\Client\Model\\FastComments\Client\Model\SortDirections(); // \FastComments\Client\Model\SortDirections
-$replies_to_user_id = 'replies_to_user_id_example'; // string
-$page = 3.4; // float
-$includei10n = True; // bool
-$locale = 'locale_example'; // string
-$is_crawler = True; // bool
+
+$options = [
+    'user_id' => 'user_id_example', // string
+    'direction' => new \FastComments\Client\Model\\FastComments\Client\Model\SortDirections(), // \FastComments\Client\Model\SortDirections
+    'replies_to_user_id' => 'replies_to_user_id_example', // string
+    'page' => 3.4, // float
+    'includei10n' => True, // bool
+    'locale' => 'locale_example', // string
+    'is_crawler' => True, // bool
+];
+
 
 try {
-    $result = $apiInstance->getCommentsForUser($user_id, $direction, $replies_to_user_id, $page, $includei10n, $locale, $is_crawler);
+    $result = $apiInstance->getCommentsForUser($options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getCommentsForUser: ', $e->getMessage(), PHP_EOL;
@@ -940,6 +996,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -971,7 +1029,7 @@ No authorization required
 ## `getCommentsPublic()`
 
 ```php
-getCommentsPublic($tenant_id, $url_id, $page, $direction, $sso, $skip, $skip_children, $limit, $limit_children, $count_children, $fetch_page_for_comment_id, $include_config, $count_all, $includei10n, $locale, $modules, $is_crawler, $include_notification_count, $as_tree, $max_tree_depth, $use_full_translation_ids, $parent_id, $search_text, $hash_tags, $user_id, $custom_config_str, $after_comment_id, $before_comment_id): \FastComments\Client\Model\GetCommentsResponseWithPresencePublicComment
+getCommentsPublic($tenant_id, $url_id, $options): \FastComments\Client\Model\GetCommentsResponseWithPresencePublicComment
 ```
 
 
@@ -991,37 +1049,41 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
-$page = 56; // int
-$direction = new \FastComments\Client\Model\\FastComments\Client\Model\SortDirections(); // \FastComments\Client\Model\SortDirections
-$sso = 'sso_example'; // string
-$skip = 56; // int
-$skip_children = 56; // int
-$limit = 56; // int
-$limit_children = 56; // int
-$count_children = True; // bool
-$fetch_page_for_comment_id = 'fetch_page_for_comment_id_example'; // string
-$include_config = True; // bool
-$count_all = True; // bool
-$includei10n = True; // bool
-$locale = 'locale_example'; // string
-$modules = 'modules_example'; // string
-$is_crawler = True; // bool
-$include_notification_count = True; // bool
-$as_tree = True; // bool
-$max_tree_depth = 56; // int
-$use_full_translation_ids = True; // bool
-$parent_id = 'parent_id_example'; // string
-$search_text = 'search_text_example'; // string
-$hash_tags = array('hash_tags_example'); // string[]
-$user_id = 'user_id_example'; // string
-$custom_config_str = 'custom_config_str_example'; // string
-$after_comment_id = 'after_comment_id_example'; // string
-$before_comment_id = 'before_comment_id_example'; // string
+$options = [
+    'page' => 56, // int
+    'direction' => new \FastComments\Client\Model\\FastComments\Client\Model\SortDirections(), // \FastComments\Client\Model\SortDirections
+    'sso' => 'sso_example', // string
+    'skip' => 56, // int
+    'skip_children' => 56, // int
+    'limit' => 56, // int
+    'limit_children' => 56, // int
+    'count_children' => True, // bool
+    'fetch_page_for_comment_id' => 'fetch_page_for_comment_id_example', // string
+    'include_config' => True, // bool
+    'count_all' => True, // bool
+    'includei10n' => True, // bool
+    'locale' => 'locale_example', // string
+    'modules' => 'modules_example', // string
+    'is_crawler' => True, // bool
+    'include_notification_count' => True, // bool
+    'as_tree' => True, // bool
+    'max_tree_depth' => 56, // int
+    'use_full_translation_ids' => True, // bool
+    'parent_id' => 'parent_id_example', // string
+    'search_text' => 'search_text_example', // string
+    'hash_tags' => array('hash_tags_example'), // string[]
+    'user_id' => 'user_id_example', // string
+    'custom_config_str' => 'custom_config_str_example', // string
+    'after_comment_id' => 'after_comment_id_example', // string
+    'before_comment_id' => 'before_comment_id_example', // string
+];
+
 
 try {
-    $result = $apiInstance->getCommentsPublic($tenant_id, $url_id, $page, $direction, $sso, $skip, $skip_children, $limit, $limit_children, $count_children, $fetch_page_for_comment_id, $include_config, $count_all, $includei10n, $locale, $modules, $is_crawler, $include_notification_count, $as_tree, $max_tree_depth, $use_full_translation_ids, $parent_id, $search_text, $hash_tags, $user_id, $custom_config_str, $after_comment_id, $before_comment_id);
+    $result = $apiInstance->getCommentsPublic($tenant_id, $url_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getCommentsPublic: ', $e->getMessage(), PHP_EOL;
@@ -1029,6 +1091,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1101,11 +1165,13 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 $user_id_ws = 'user_id_ws_example'; // string
 $start_time = 56; // int
 $end_time = 56; // int
+
 
 try {
     $result = $apiInstance->getEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time);
@@ -1145,7 +1211,7 @@ No authorization required
 ## `getFeedPostsPublic()`
 
 ```php
-getFeedPostsPublic($tenant_id, $after_id, $limit, $tags, $sso, $is_crawler, $include_user_info): \FastComments\Client\Model\PublicFeedPostsResponse
+getFeedPostsPublic($tenant_id, $options): \FastComments\Client\Model\PublicFeedPostsResponse
 ```
 
 
@@ -1165,16 +1231,20 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$after_id = 'after_id_example'; // string
-$limit = 56; // int
-$tags = array('tags_example'); // string[]
-$sso = 'sso_example'; // string
-$is_crawler = True; // bool
-$include_user_info = True; // bool
+$options = [
+    'after_id' => 'after_id_example', // string
+    'limit' => 56, // int
+    'tags' => array('tags_example'), // string[]
+    'sso' => 'sso_example', // string
+    'is_crawler' => True, // bool
+    'include_user_info' => True, // bool
+];
+
 
 try {
-    $result = $apiInstance->getFeedPostsPublic($tenant_id, $after_id, $limit, $tags, $sso, $is_crawler, $include_user_info);
+    $result = $apiInstance->getFeedPostsPublic($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getFeedPostsPublic: ', $e->getMessage(), PHP_EOL;
@@ -1182,6 +1252,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1231,9 +1303,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $post_ids = array('post_ids_example'); // string[]
 $sso = 'sso_example'; // string
+
 
 try {
     $result = $apiInstance->getFeedPostsStats($tenant_id, $post_ids, $sso);
@@ -1289,8 +1363,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $large_internal_url_sanitized = 'large_internal_url_sanitized_example'; // string
+
 
 try {
     $result = $apiInstance->getGifLarge($tenant_id, $large_internal_url_sanitized);
@@ -1327,7 +1403,7 @@ No authorization required
 ## `getGifsSearch()`
 
 ```php
-getGifsSearch($tenant_id, $search, $locale, $rating, $page): \FastComments\Client\Model\GetGifsSearchResponse
+getGifsSearch($tenant_id, $search, $options): \FastComments\Client\Model\GetGifsSearchResponse
 ```
 
 
@@ -1345,14 +1421,18 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $search = 'search_example'; // string
-$locale = 'locale_example'; // string
-$rating = 'rating_example'; // string
-$page = 3.4; // float
+$options = [
+    'locale' => 'locale_example', // string
+    'rating' => 'rating_example', // string
+    'page' => 3.4, // float
+];
+
 
 try {
-    $result = $apiInstance->getGifsSearch($tenant_id, $search, $locale, $rating, $page);
+    $result = $apiInstance->getGifsSearch($tenant_id, $search, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getGifsSearch: ', $e->getMessage(), PHP_EOL;
@@ -1360,6 +1440,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1389,7 +1471,7 @@ No authorization required
 ## `getGifsTrending()`
 
 ```php
-getGifsTrending($tenant_id, $locale, $rating, $page): \FastComments\Client\Model\GetGifsTrendingResponse
+getGifsTrending($tenant_id, $options): \FastComments\Client\Model\GetGifsTrendingResponse
 ```
 
 
@@ -1407,13 +1489,17 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$locale = 'locale_example'; // string
-$rating = 'rating_example'; // string
-$page = 3.4; // float
+$options = [
+    'locale' => 'locale_example', // string
+    'rating' => 'rating_example', // string
+    'page' => 3.4, // float
+];
+
 
 try {
-    $result = $apiInstance->getGifsTrending($tenant_id, $locale, $rating, $page);
+    $result = $apiInstance->getGifsTrending($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getGifsTrending: ', $e->getMessage(), PHP_EOL;
@@ -1421,6 +1507,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1469,11 +1557,13 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 $user_id_ws = 'user_id_ws_example'; // string
 $start_time = 56; // int
 $end_time = 56; // int
+
 
 try {
     $result = $apiInstance->getGlobalEventLog($tenant_id, $url_id, $user_id_ws, $start_time, $end_time);
@@ -1513,7 +1603,7 @@ No authorization required
 ## `getOfflineUsers()`
 
 ```php
-getOfflineUsers($tenant_id, $url_id, $after_name, $after_user_id): \FastComments\Client\Model\PageUsersOfflineResponse
+getOfflineUsers($tenant_id, $url_id, $options): \FastComments\Client\Model\PageUsersOfflineResponse
 ```
 
 
@@ -1533,13 +1623,17 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string | Page URL identifier (cleaned server-side).
-$after_name = 'after_name_example'; // string | Cursor: pass nextAfterName from the previous response.
-$after_user_id = 'after_user_id_example'; // string | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries.
+$options = [
+    'after_name' => 'after_name_example', // string | Cursor: pass nextAfterName from the previous response.
+    'after_user_id' => 'after_user_id_example', // string | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries.
+];
+
 
 try {
-    $result = $apiInstance->getOfflineUsers($tenant_id, $url_id, $after_name, $after_user_id);
+    $result = $apiInstance->getOfflineUsers($tenant_id, $url_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getOfflineUsers: ', $e->getMessage(), PHP_EOL;
@@ -1547,6 +1641,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1575,7 +1671,7 @@ No authorization required
 ## `getOnlineUsers()`
 
 ```php
-getOnlineUsers($tenant_id, $url_id, $after_name, $after_user_id): \FastComments\Client\Model\PageUsersOnlineResponse
+getOnlineUsers($tenant_id, $url_id, $options): \FastComments\Client\Model\PageUsersOnlineResponse
 ```
 
 
@@ -1595,13 +1691,17 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string | Page URL identifier (cleaned server-side).
-$after_name = 'after_name_example'; // string | Cursor: pass nextAfterName from the previous response.
-$after_user_id = 'after_user_id_example'; // string | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries.
+$options = [
+    'after_name' => 'after_name_example', // string | Cursor: pass nextAfterName from the previous response.
+    'after_user_id' => 'after_user_id_example', // string | Cursor tiebreaker: pass nextAfterUserId from the previous response. Required when afterName is set so name-ties don't drop entries.
+];
+
 
 try {
-    $result = $apiInstance->getOnlineUsers($tenant_id, $url_id, $after_name, $after_user_id);
+    $result = $apiInstance->getOnlineUsers($tenant_id, $url_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getOnlineUsers: ', $e->getMessage(), PHP_EOL;
@@ -1609,6 +1709,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1637,7 +1739,7 @@ No authorization required
 ## `getPagesPublic()`
 
 ```php
-getPagesPublic($tenant_id, $cursor, $limit, $q, $sort_by, $has_comments): \FastComments\Client\Model\GetPublicPagesResponse
+getPagesPublic($tenant_id, $options): \FastComments\Client\Model\GetPublicPagesResponse
 ```
 
 
@@ -1657,15 +1759,19 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$cursor = 'cursor_example'; // string | Opaque pagination cursor returned as `nextCursor` from a prior request. Tied to the same `sortBy`.
-$limit = 56; // int | 1..200, default 50
-$q = 'q_example'; // string | Optional case-insensitive title prefix filter.
-$sort_by = new \FastComments\Client\Model\\FastComments\Client\Model\PagesSortBy(); // \FastComments\Client\Model\PagesSortBy | Sort order. `updatedAt` (default, newest first), `commentCount` (most comments first), or `title` (alphabetical).
-$has_comments = True; // bool | If true, only return pages with at least one comment.
+$options = [
+    'cursor' => 'cursor_example', // string | Opaque pagination cursor returned as `nextCursor` from a prior request. Tied to the same `sortBy`.
+    'limit' => 56, // int | 1..200, default 50
+    'q' => 'q_example', // string | Optional case-insensitive title prefix filter.
+    'sort_by' => new \FastComments\Client\Model\\FastComments\Client\Model\PagesSortBy(), // \FastComments\Client\Model\PagesSortBy | Sort order. `updatedAt` (default, newest first), `commentCount` (most comments first), or `title` (alphabetical).
+    'has_comments' => True, // bool | If true, only return pages with at least one comment.
+];
+
 
 try {
-    $result = $apiInstance->getPagesPublic($tenant_id, $cursor, $limit, $q, $sort_by, $has_comments);
+    $result = $apiInstance->getPagesPublic($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getPagesPublic: ', $e->getMessage(), PHP_EOL;
@@ -1673,6 +1779,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1703,7 +1811,7 @@ No authorization required
 ## `getTranslations()`
 
 ```php
-getTranslations($namespace, $component, $locale, $use_full_translation_ids): \FastComments\Client\Model\GetTranslationsResponse
+getTranslations($namespace, $component, $options): \FastComments\Client\Model\GetTranslationsResponse
 ```
 
 
@@ -1721,13 +1829,17 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $namespace = 'namespace_example'; // string
 $component = 'component_example'; // string
-$locale = 'locale_example'; // string
-$use_full_translation_ids = True; // bool
+$options = [
+    'locale' => 'locale_example', // string
+    'use_full_translation_ids' => True, // bool
+];
+
 
 try {
-    $result = $apiInstance->getTranslations($namespace, $component, $locale, $use_full_translation_ids);
+    $result = $apiInstance->getTranslations($namespace, $component, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getTranslations: ', $e->getMessage(), PHP_EOL;
@@ -1735,6 +1847,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1781,8 +1895,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $sso = 'sso_example'; // string
+
 
 try {
     $result = $apiInstance->getUserNotificationCount($tenant_id, $sso);
@@ -1819,7 +1935,7 @@ No authorization required
 ## `getUserNotifications()`
 
 ```php
-getUserNotifications($tenant_id, $url_id, $page_size, $after_id, $include_context, $after_created_at, $unread_only, $dm_only, $no_dm, $include_translations, $include_tenant_notifications, $sso): \FastComments\Client\Model\GetMyNotificationsResponse
+getUserNotifications($tenant_id, $options): \FastComments\Client\Model\GetMyNotificationsResponse
 ```
 
 
@@ -1837,21 +1953,25 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$url_id = 'url_id_example'; // string | Used to determine whether the current page is subscribed.
-$page_size = 56; // int
-$after_id = 'after_id_example'; // string
-$include_context = True; // bool
-$after_created_at = 56; // int
-$unread_only = True; // bool
-$dm_only = True; // bool
-$no_dm = True; // bool
-$include_translations = True; // bool
-$include_tenant_notifications = True; // bool
-$sso = 'sso_example'; // string
+$options = [
+    'url_id' => 'url_id_example', // string | Used to determine whether the current page is subscribed.
+    'page_size' => 56, // int
+    'after_id' => 'after_id_example', // string
+    'include_context' => True, // bool
+    'after_created_at' => 56, // int
+    'unread_only' => True, // bool
+    'dm_only' => True, // bool
+    'no_dm' => True, // bool
+    'include_translations' => True, // bool
+    'include_tenant_notifications' => True, // bool
+    'sso' => 'sso_example', // string
+];
+
 
 try {
-    $result = $apiInstance->getUserNotifications($tenant_id, $url_id, $page_size, $after_id, $include_context, $after_created_at, $unread_only, $dm_only, $no_dm, $include_translations, $include_tenant_notifications, $sso);
+    $result = $apiInstance->getUserNotifications($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getUserNotifications: ', $e->getMessage(), PHP_EOL;
@@ -1859,6 +1979,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1913,9 +2035,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id_ws = 'url_id_ws_example'; // string
 $user_ids = 'user_ids_example'; // string
+
 
 try {
     $result = $apiInstance->getUserPresenceStatuses($tenant_id, $url_id_ws, $user_ids);
@@ -1953,7 +2077,7 @@ No authorization required
 ## `getUserReactsPublic()`
 
 ```php
-getUserReactsPublic($tenant_id, $post_ids, $sso): \FastComments\Client\Model\UserReactsResponse
+getUserReactsPublic($tenant_id, $options): \FastComments\Client\Model\UserReactsResponse
 ```
 
 
@@ -1971,12 +2095,16 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$post_ids = array('post_ids_example'); // string[]
-$sso = 'sso_example'; // string
+$options = [
+    'post_ids' => array('post_ids_example'), // string[]
+    'sso' => 'sso_example', // string
+];
+
 
 try {
-    $result = $apiInstance->getUserReactsPublic($tenant_id, $post_ids, $sso);
+    $result = $apiInstance->getUserReactsPublic($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->getUserReactsPublic: ', $e->getMessage(), PHP_EOL;
@@ -1984,6 +2112,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2031,8 +2161,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $ids = 'ids_example'; // string | Comma-delimited userIds.
+
 
 try {
     $result = $apiInstance->getUsersInfo($tenant_id, $ids);
@@ -2087,8 +2219,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
+
 
 try {
     $result = $apiInstance->getV1PageLikes($tenant_id, $url_id);
@@ -2143,9 +2277,11 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->getV2PageReactUsers($tenant_id, $url_id, $id);
@@ -2201,8 +2337,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
+
 
 try {
     $result = $apiInstance->getV2PageReacts($tenant_id, $url_id);
@@ -2257,10 +2395,12 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
 $sso = 'sso_example'; // string
+
 
 try {
     $result = $apiInstance->lockComment($tenant_id, $comment_id, $broadcast_id, $sso);
@@ -2318,6 +2458,8 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     new GuzzleHttp\Client()
 );
 
+
+
 try {
     $result = $apiInstance->logoutPublic();
     print_r($result);
@@ -2368,10 +2510,12 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
 $sso = 'sso_example'; // string
+
 
 try {
     $result = $apiInstance->pinComment($tenant_id, $comment_id, $broadcast_id, $sso);
@@ -2410,7 +2554,7 @@ No authorization required
 ## `reactFeedPostPublic()`
 
 ```php
-reactFeedPostPublic($tenant_id, $post_id, $react_body_params, $is_undo, $broadcast_id, $sso): \FastComments\Client\Model\ReactFeedPostResponse
+reactFeedPostPublic($tenant_id, $post_id, $react_body_params, $options): \FastComments\Client\Model\ReactFeedPostResponse
 ```
 
 
@@ -2428,15 +2572,19 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $post_id = 'post_id_example'; // string
 $react_body_params = new \FastComments\Client\Model\ReactBodyParams(); // \FastComments\Client\Model\ReactBodyParams
-$is_undo = True; // bool
-$broadcast_id = 'broadcast_id_example'; // string
-$sso = 'sso_example'; // string
+$options = [
+    'is_undo' => True, // bool
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
+
 
 try {
-    $result = $apiInstance->reactFeedPostPublic($tenant_id, $post_id, $react_body_params, $is_undo, $broadcast_id, $sso);
+    $result = $apiInstance->reactFeedPostPublic($tenant_id, $post_id, $react_body_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->reactFeedPostPublic: ', $e->getMessage(), PHP_EOL;
@@ -2444,6 +2592,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2492,8 +2642,10 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $sso = 'sso_example'; // string
+
 
 try {
     $result = $apiInstance->resetUserNotificationCount($tenant_id, $sso);
@@ -2530,7 +2682,7 @@ No authorization required
 ## `resetUserNotifications()`
 
 ```php
-resetUserNotifications($tenant_id, $after_id, $after_created_at, $unread_only, $dm_only, $no_dm, $sso): \FastComments\Client\Model\ResetUserNotificationsResponse
+resetUserNotifications($tenant_id, $options): \FastComments\Client\Model\ResetUserNotificationsResponse
 ```
 
 
@@ -2548,16 +2700,20 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$after_id = 'after_id_example'; // string
-$after_created_at = 56; // int
-$unread_only = True; // bool
-$dm_only = True; // bool
-$no_dm = True; // bool
-$sso = 'sso_example'; // string
+$options = [
+    'after_id' => 'after_id_example', // string
+    'after_created_at' => 56, // int
+    'unread_only' => True, // bool
+    'dm_only' => True, // bool
+    'no_dm' => True, // bool
+    'sso' => 'sso_example', // string
+];
+
 
 try {
-    $result = $apiInstance->resetUserNotifications($tenant_id, $after_id, $after_created_at, $unread_only, $dm_only, $no_dm, $sso);
+    $result = $apiInstance->resetUserNotifications($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->resetUserNotifications: ', $e->getMessage(), PHP_EOL;
@@ -2565,6 +2721,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2596,7 +2754,7 @@ No authorization required
 ## `searchUsers()`
 
 ```php
-searchUsers($tenant_id, $url_id, $username_starts_with, $mention_group_ids, $sso, $search_section): \FastComments\Client\Model\SearchUsersResult
+searchUsers($tenant_id, $url_id, $options): \FastComments\Client\Model\SearchUsersResult
 ```
 
 
@@ -2614,15 +2772,19 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
-$username_starts_with = 'username_starts_with_example'; // string
-$mention_group_ids = array('mention_group_ids_example'); // string[]
-$sso = 'sso_example'; // string
-$search_section = 'search_section_example'; // string
+$options = [
+    'username_starts_with' => 'username_starts_with_example', // string
+    'mention_group_ids' => array('mention_group_ids_example'), // string[]
+    'sso' => 'sso_example', // string
+    'search_section' => 'search_section_example', // string
+];
+
 
 try {
-    $result = $apiInstance->searchUsers($tenant_id, $url_id, $username_starts_with, $mention_group_ids, $sso, $search_section);
+    $result = $apiInstance->searchUsers($tenant_id, $url_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->searchUsers: ', $e->getMessage(), PHP_EOL;
@@ -2630,6 +2792,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2660,7 +2824,7 @@ No authorization required
 ## `setCommentText()`
 
 ```php
-setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key, $sso): \FastComments\Client\Model\PublicAPISetCommentTextResponse
+setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $options): \FastComments\Client\Model\PublicAPISetCommentTextResponse
 ```
 
 
@@ -2678,15 +2842,19 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
 $comment_text_update_request = new \FastComments\Client\Model\CommentTextUpdateRequest(); // \FastComments\Client\Model\CommentTextUpdateRequest
-$edit_key = 'edit_key_example'; // string
-$sso = 'sso_example'; // string
+$options = [
+    'edit_key' => 'edit_key_example', // string
+    'sso' => 'sso_example', // string
+];
+
 
 try {
-    $result = $apiInstance->setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $edit_key, $sso);
+    $result = $apiInstance->setCommentText($tenant_id, $comment_id, $broadcast_id, $comment_text_update_request, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->setCommentText: ', $e->getMessage(), PHP_EOL;
@@ -2694,6 +2862,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2742,10 +2912,12 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $public_block_from_comment_params = new \FastComments\Client\Model\PublicBlockFromCommentParams(); // \FastComments\Client\Model\PublicBlockFromCommentParams
 $sso = 'sso_example'; // string
+
 
 try {
     $result = $apiInstance->unBlockCommentPublic($tenant_id, $comment_id, $public_block_from_comment_params, $sso);
@@ -2802,10 +2974,12 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
 $sso = 'sso_example'; // string
+
 
 try {
     $result = $apiInstance->unLockComment($tenant_id, $comment_id, $broadcast_id, $sso);
@@ -2862,10 +3036,12 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
 $sso = 'sso_example'; // string
+
 
 try {
     $result = $apiInstance->unPinComment($tenant_id, $comment_id, $broadcast_id, $sso);
@@ -2904,7 +3080,7 @@ No authorization required
 ## `updateFeedPostPublic()`
 
 ```php
-updateFeedPostPublic($tenant_id, $post_id, $update_feed_post_params, $broadcast_id, $sso): \FastComments\Client\Model\CreateFeedPostResponse
+updateFeedPostPublic($tenant_id, $post_id, $update_feed_post_params, $options): \FastComments\Client\Model\CreateFeedPostResponse
 ```
 
 
@@ -2922,14 +3098,18 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $post_id = 'post_id_example'; // string
 $update_feed_post_params = new \FastComments\Client\Model\UpdateFeedPostParams(); // \FastComments\Client\Model\UpdateFeedPostParams
-$broadcast_id = 'broadcast_id_example'; // string
-$sso = 'sso_example'; // string
+$options = [
+    'broadcast_id' => 'broadcast_id_example', // string
+    'sso' => 'sso_example', // string
+];
+
 
 try {
-    $result = $apiInstance->updateFeedPostPublic($tenant_id, $post_id, $update_feed_post_params, $broadcast_id, $sso);
+    $result = $apiInstance->updateFeedPostPublic($tenant_id, $post_id, $update_feed_post_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->updateFeedPostPublic: ', $e->getMessage(), PHP_EOL;
@@ -2937,6 +3117,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2986,11 +3168,13 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $notification_id = 'notification_id_example'; // string
 $opted_in_or_out = 'opted_in_or_out_example'; // string
 $comment_id = 'comment_id_example'; // string
 $sso = 'sso_example'; // string
+
 
 try {
     $result = $apiInstance->updateUserNotificationCommentSubscriptionStatus($tenant_id, $notification_id, $opted_in_or_out, $comment_id, $sso);
@@ -3050,12 +3234,14 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
 $url = 'url_example'; // string
 $page_title = 'page_title_example'; // string
 $subscribed_or_unsubscribed = 'subscribed_or_unsubscribed_example'; // string
 $sso = 'sso_example'; // string
+
 
 try {
     $result = $apiInstance->updateUserNotificationPageSubscriptionStatus($tenant_id, $url_id, $url, $page_title, $subscribed_or_unsubscribed, $sso);
@@ -3114,10 +3300,12 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $notification_id = 'notification_id_example'; // string
 $new_status = 'new_status_example'; // string
 $sso = 'sso_example'; // string
+
 
 try {
     $result = $apiInstance->updateUserNotificationStatus($tenant_id, $notification_id, $new_status, $sso);
@@ -3156,7 +3344,7 @@ No authorization required
 ## `uploadImage()`
 
 ```php
-uploadImage($tenant_id, $file, $size_preset, $url_id): \FastComments\Client\Model\UploadImageResponse
+uploadImage($tenant_id, $file, $options): \FastComments\Client\Model\UploadImageResponse
 ```
 
 
@@ -3176,13 +3364,17 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $file = '/path/to/file.txt'; // \SplFileObject
-$size_preset = new \FastComments\Client\Model\\FastComments\Client\Model\SizePreset(); // \FastComments\Client\Model\SizePreset | Size preset: \"Default\" (1000x1000px) or \"CrossPlatform\" (creates sizes for popular devices)
-$url_id = 'url_id_example'; // string | Page id that upload is happening from, to configure
+$options = [
+    'size_preset' => new \FastComments\Client\Model\\FastComments\Client\Model\SizePreset(), // \FastComments\Client\Model\SizePreset | Size preset: \"Default\" (1000x1000px) or \"CrossPlatform\" (creates sizes for popular devices)
+    'url_id' => 'url_id_example', // string | Page id that upload is happening from, to configure
+];
+
 
 try {
-    $result = $apiInstance->uploadImage($tenant_id, $file, $size_preset, $url_id);
+    $result = $apiInstance->uploadImage($tenant_id, $file, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->uploadImage: ', $e->getMessage(), PHP_EOL;
@@ -3190,6 +3382,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3218,7 +3412,7 @@ No authorization required
 ## `voteComment()`
 
 ```php
-voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $session_id, $sso): \FastComments\Client\Model\VoteResponse
+voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $options): \FastComments\Client\Model\VoteResponse
 ```
 
 
@@ -3236,16 +3430,20 @@ $apiInstance = new FastComments\Client\Api\PublicApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $url_id = 'url_id_example'; // string
 $broadcast_id = 'broadcast_id_example'; // string
 $vote_body_params = new \FastComments\Client\Model\VoteBodyParams(); // \FastComments\Client\Model\VoteBodyParams
-$session_id = 'session_id_example'; // string
-$sso = 'sso_example'; // string
+$options = [
+    'session_id' => 'session_id_example', // string
+    'sso' => 'sso_example', // string
+];
+
 
 try {
-    $result = $apiInstance->voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $session_id, $sso);
+    $result = $apiInstance->voteComment($tenant_id, $comment_id, $url_id, $broadcast_id, $vote_body_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->voteComment: ', $e->getMessage(), PHP_EOL;
@@ -3253,6 +3451,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |

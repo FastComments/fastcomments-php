@@ -1,4 +1,4 @@
-# # DeleteSSOUserAPIResponse
+# DeleteSSOUserAPIResponse
 
 ## Properties
 

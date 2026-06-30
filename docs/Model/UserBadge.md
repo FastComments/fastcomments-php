@@ -1,4 +1,4 @@
-# # UserBadge
+# UserBadge
 
 ## Properties
 

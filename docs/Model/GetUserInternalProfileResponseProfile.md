@@ -1,4 +1,4 @@
-# # GetUserInternalProfileResponseProfile
+# GetUserInternalProfileResponseProfile
 
 ## Properties
 

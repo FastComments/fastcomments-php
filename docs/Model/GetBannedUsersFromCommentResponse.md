@@ -1,4 +1,4 @@
-# # GetBannedUsersFromCommentResponse
+# GetBannedUsersFromCommentResponse
 
 ## Properties
 

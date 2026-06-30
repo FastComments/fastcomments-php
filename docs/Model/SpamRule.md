@@ -1,4 +1,4 @@
-# # SpamRule
+# SpamRule
 
 ## Properties
 

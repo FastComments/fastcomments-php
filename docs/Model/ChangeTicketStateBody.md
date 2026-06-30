@@ -1,4 +1,4 @@
-# # ChangeTicketStateBody
+# ChangeTicketStateBody
 
 ## Properties
 

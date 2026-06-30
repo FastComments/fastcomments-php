@@ -1,4 +1,4 @@
-# # SetCommentTextResult
+# SetCommentTextResult
 
 ## Properties
 

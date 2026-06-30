@@ -1,4 +1,4 @@
-# # UserSearchResult
+# UserSearchResult
 
 ## Properties
 

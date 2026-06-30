@@ -1,4 +1,4 @@
-# # PubSubComment
+# PubSubComment
 
 ## Properties
 

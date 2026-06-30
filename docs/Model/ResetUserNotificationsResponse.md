@@ -1,4 +1,4 @@
-# # ResetUserNotificationsResponse
+# ResetUserNotificationsResponse
 
 ## Properties
 

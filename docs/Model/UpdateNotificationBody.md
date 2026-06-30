@@ -1,4 +1,4 @@
-# # UpdateNotificationBody
+# UpdateNotificationBody
 
 ## Properties
 

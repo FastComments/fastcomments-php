@@ -1,4 +1,4 @@
-# # GetUserManualBadgesResponse
+# GetUserManualBadgesResponse
 
 ## Properties
 

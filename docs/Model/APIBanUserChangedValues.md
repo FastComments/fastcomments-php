@@ -1,4 +1,4 @@
-# # APIBanUserChangedValues
+# APIBanUserChangedValues
 
 ## Properties
 

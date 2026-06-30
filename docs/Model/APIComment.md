@@ -1,4 +1,4 @@
-# # APIComment
+# APIComment
 
 ## Properties
 

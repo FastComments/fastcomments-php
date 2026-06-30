@@ -1,4 +1,4 @@
-# # ModerationAPICountCommentsResponse
+# ModerationAPICountCommentsResponse
 
 ## Properties
 

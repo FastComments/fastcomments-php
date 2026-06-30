@@ -1,4 +1,4 @@
-# # UserPresenceData
+# UserPresenceData
 
 ## Properties
 

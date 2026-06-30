@@ -1,4 +1,4 @@
-# # EmailTemplateDefinition
+# EmailTemplateDefinition
 
 ## Properties
 

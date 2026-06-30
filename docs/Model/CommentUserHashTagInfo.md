@@ -1,4 +1,4 @@
-# # CommentUserHashTagInfo
+# CommentUserHashTagInfo
 
 ## Properties
 

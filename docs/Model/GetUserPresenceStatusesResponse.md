@@ -1,4 +1,4 @@
-# # GetUserPresenceStatusesResponse
+# GetUserPresenceStatusesResponse
 
 ## Properties
 

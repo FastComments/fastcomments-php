@@ -1,4 +1,4 @@
-# # QuestionResultAggregationOverall
+# QuestionResultAggregationOverall
 
 ## Properties
 

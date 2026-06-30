@@ -1,4 +1,4 @@
-# # MetaItem
+# MetaItem
 
 ## Properties
 

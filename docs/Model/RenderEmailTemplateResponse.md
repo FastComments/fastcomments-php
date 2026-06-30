@@ -1,4 +1,4 @@
-# # RenderEmailTemplateResponse
+# RenderEmailTemplateResponse
 
 ## Properties
 

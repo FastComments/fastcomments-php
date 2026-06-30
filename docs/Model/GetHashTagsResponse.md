@@ -1,4 +1,4 @@
-# # GetHashTagsResponse
+# GetHashTagsResponse
 
 ## Properties
 

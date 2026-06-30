@@ -1,4 +1,4 @@
-# # ReplaceTenantPackageBody
+# ReplaceTenantPackageBody
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CreateTicketBody
+# CreateTicketBody
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CreateModeratorBody
+# CreateModeratorBody
 
 ## Properties
 

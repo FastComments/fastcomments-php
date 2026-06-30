@@ -1,4 +1,4 @@
-# # SetCommentTextResponse
+# SetCommentTextResponse
 
 ## Properties
 

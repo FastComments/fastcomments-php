@@ -1,4 +1,4 @@
-# # APISaveCommentResponse
+# APISaveCommentResponse
 
 ## Properties
 

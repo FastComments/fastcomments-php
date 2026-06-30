@@ -1,4 +1,4 @@
-# # ModerationAPIGetLogsResponse
+# ModerationAPIGetLogsResponse
 
 ## Properties
 

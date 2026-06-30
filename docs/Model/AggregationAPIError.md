@@ -1,4 +1,4 @@
-# # AggregationAPIError
+# AggregationAPIError
 
 ## Properties
 

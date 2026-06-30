@@ -1,4 +1,4 @@
-# # ReplaceTenantUserBody
+# ReplaceTenantUserBody
 
 ## Properties
 

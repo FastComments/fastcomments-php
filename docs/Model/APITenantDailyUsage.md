@@ -1,4 +1,4 @@
-# # APITenantDailyUsage
+# APITenantDailyUsage
 
 ## Properties
 

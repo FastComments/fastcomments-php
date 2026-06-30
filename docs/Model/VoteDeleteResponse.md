@@ -1,4 +1,4 @@
-# # VoteDeleteResponse
+# VoteDeleteResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # AggregationItem
+# AggregationItem
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # AdjustVotesResponse
+# AdjustVotesResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetEmailTemplateDefinitionsResponse
+# GetEmailTemplateDefinitionsResponse
 
 ## Properties
 

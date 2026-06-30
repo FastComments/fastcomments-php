@@ -1,4 +1,4 @@
-# # PublicPage
+# PublicPage
 
 ## Properties
 

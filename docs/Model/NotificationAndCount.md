@@ -1,4 +1,4 @@
-# # NotificationAndCount
+# NotificationAndCount
 
 ## Properties
 

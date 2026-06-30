@@ -1,4 +1,4 @@
-# # RemoveCommentActionResponse
+# RemoveCommentActionResponse
 
 ## Properties
 

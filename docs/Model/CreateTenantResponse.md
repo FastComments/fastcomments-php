@@ -1,4 +1,4 @@
-# # CreateTenantResponse
+# CreateTenantResponse
 
 ## Properties
 

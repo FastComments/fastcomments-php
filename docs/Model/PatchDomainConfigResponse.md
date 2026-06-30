@@ -1,12 +1,12 @@
-# # PatchDomainConfigResponse
+# PatchDomainConfigResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**configuration** | **mixed** |  |
+**configuration** | **mixed** |  | [optional]
 **status** | **mixed** |  |
-**reason** | **string** |  |
-**code** | **string** |  |
+**reason** | **string** |  | [optional]
+**code** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

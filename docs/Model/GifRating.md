@@ -1,4 +1,4 @@
-# # GifRating
+# GifRating
 
 ## Properties
 

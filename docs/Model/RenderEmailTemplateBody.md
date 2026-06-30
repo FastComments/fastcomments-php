@@ -1,4 +1,4 @@
-# # RenderEmailTemplateBody
+# RenderEmailTemplateBody
 
 ## Properties
 

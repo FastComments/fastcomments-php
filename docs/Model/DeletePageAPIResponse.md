@@ -1,4 +1,4 @@
-# # DeletePageAPIResponse
+# DeletePageAPIResponse
 
 ## Properties
 

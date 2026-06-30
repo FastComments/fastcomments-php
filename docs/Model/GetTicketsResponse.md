@@ -1,4 +1,4 @@
-# # GetTicketsResponse
+# GetTicketsResponse
 
 ## Properties
 

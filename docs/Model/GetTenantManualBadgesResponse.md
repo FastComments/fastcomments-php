@@ -1,4 +1,4 @@
-# # GetTenantManualBadgesResponse
+# GetTenantManualBadgesResponse
 
 ## Properties
 

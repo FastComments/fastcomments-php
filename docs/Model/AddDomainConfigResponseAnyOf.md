@@ -1,4 +1,4 @@
-# # AddDomainConfigResponseAnyOf
+# AddDomainConfigResponseAnyOf
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # AggregationOperation
+# AggregationOperation
 
 ## Properties
 

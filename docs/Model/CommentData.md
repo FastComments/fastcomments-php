@@ -1,4 +1,4 @@
-# # CommentData
+# CommentData
 
 ## Properties
 

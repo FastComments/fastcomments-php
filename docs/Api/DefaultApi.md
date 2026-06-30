@@ -1,6 +1,6 @@
 # FastComments\Client\DefaultApi
 
-FastComments PHP API Client - A SDK for interacting with the FastComments API
+
 
 All URIs are relative to https://fastcomments.com, except if the operation defines another base path.
 
@@ -149,8 +149,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $add_domain_config_params = new \FastComments\Client\Model\AddDomainConfigParams(); // \FastComments\Client\Model\AddDomainConfigParams
+
 
 try {
     $result = $apiInstance->addDomainConfig($tenant_id, $add_domain_config_params);
@@ -211,8 +213,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_hash_tag_body = new \FastComments\Client\Model\CreateHashTagBody(); // \FastComments\Client\Model\CreateHashTagBody
+
 
 try {
     $result = $apiInstance->addHashTag($tenant_id, $create_hash_tag_body);
@@ -226,7 +230,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_id** | **string**|  | [optional] |
+| **tenant_id** | **string**|  | |
 | **create_hash_tag_body** | [**\FastComments\Client\Model\CreateHashTagBody**](../Model/CreateHashTagBody.md)|  | [optional] |
 
 ### Return type
@@ -273,8 +277,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $bulk_create_hash_tags_body = new \FastComments\Client\Model\BulkCreateHashTagsBody(); // \FastComments\Client\Model\BulkCreateHashTagsBody
+
 
 try {
     $result = $apiInstance->addHashTagsBulk($tenant_id, $bulk_create_hash_tags_body);
@@ -288,7 +294,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_id** | **string**|  | [optional] |
+| **tenant_id** | **string**|  | |
 | **bulk_create_hash_tags_body** | [**\FastComments\Client\Model\BulkCreateHashTagsBody**](../Model/BulkCreateHashTagsBody.md)|  | [optional] |
 
 ### Return type
@@ -335,8 +341,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_api_page_data = new \FastComments\Client\Model\CreateAPIPageData(); // \FastComments\Client\Model\CreateAPIPageData
+
 
 try {
     $result = $apiInstance->addPage($tenant_id, $create_api_page_data);
@@ -397,8 +405,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_apisso_user_data = new \FastComments\Client\Model\CreateAPISSOUserData(); // \FastComments\Client\Model\CreateAPISSOUserData
+
 
 try {
     $result = $apiInstance->addSSOUser($tenant_id, $create_apisso_user_data);
@@ -435,7 +445,7 @@ try {
 ## `aggregate()`
 
 ```php
-aggregate($tenant_id, $aggregation_request, $parent_tenant_id, $include_stats): \FastComments\Client\Model\AggregateResponse
+aggregate($tenant_id, $aggregation_request, $options): \FastComments\Client\Model\AggregateResponse
 ```
 
 
@@ -461,13 +471,17 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $aggregation_request = new \FastComments\Client\Model\AggregationRequest(); // \FastComments\Client\Model\AggregationRequest
-$parent_tenant_id = 'parent_tenant_id_example'; // string
-$include_stats = True; // bool
+$options = [
+    'parent_tenant_id' => 'parent_tenant_id_example', // string
+    'include_stats' => True, // bool
+];
+
 
 try {
-    $result = $apiInstance->aggregate($tenant_id, $aggregation_request, $parent_tenant_id, $include_stats);
+    $result = $apiInstance->aggregate($tenant_id, $aggregation_request, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->aggregate: ', $e->getMessage(), PHP_EOL;
@@ -475,6 +489,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -503,7 +519,7 @@ try {
 ## `aggregateQuestionResults()`
 
 ```php
-aggregateQuestionResults($tenant_id, $question_id, $question_ids, $url_id, $time_bucket, $start_date, $force_recalculate): \FastComments\Client\Model\AggregateQuestionResultsResponse
+aggregateQuestionResults($tenant_id, $options): \FastComments\Client\Model\AggregateQuestionResultsResponse
 ```
 
 
@@ -527,16 +543,20 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$question_id = 'question_id_example'; // string
-$question_ids = array('question_ids_example'); // string[]
-$url_id = 'url_id_example'; // string
-$time_bucket = new \FastComments\Client\Model\\FastComments\Client\Model\AggregateTimeBucket(); // \FastComments\Client\Model\AggregateTimeBucket
-$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$force_recalculate = True; // bool
+$options = [
+    'question_id' => 'question_id_example', // string
+    'question_ids' => array('question_ids_example'), // string[]
+    'url_id' => 'url_id_example', // string
+    'time_bucket' => new \FastComments\Client\Model\\FastComments\Client\Model\AggregateTimeBucket(), // \FastComments\Client\Model\AggregateTimeBucket
+    'start_date' => new \DateTime('2013-10-20T19:20:30+01:00'), // \DateTime
+    'force_recalculate' => True, // bool
+];
+
 
 try {
-    $result = $apiInstance->aggregateQuestionResults($tenant_id, $question_id, $question_ids, $url_id, $time_bucket, $start_date, $force_recalculate);
+    $result = $apiInstance->aggregateQuestionResults($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->aggregateQuestionResults: ', $e->getMessage(), PHP_EOL;
@@ -544,6 +564,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -575,7 +597,7 @@ try {
 ## `blockUserFromComment()`
 
 ```php
-blockUserFromComment($tenant_id, $id, $block_from_comment_params, $user_id, $anon_user_id): \FastComments\Client\Model\BlockSuccess
+blockUserFromComment($tenant_id, $id, $block_from_comment_params, $options): \FastComments\Client\Model\BlockSuccess
 ```
 
 
@@ -599,14 +621,18 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $block_from_comment_params = new \FastComments\Client\Model\BlockFromCommentParams(); // \FastComments\Client\Model\BlockFromCommentParams
-$user_id = 'user_id_example'; // string
-$anon_user_id = 'anon_user_id_example'; // string
+$options = [
+    'user_id' => 'user_id_example', // string
+    'anon_user_id' => 'anon_user_id_example', // string
+];
+
 
 try {
-    $result = $apiInstance->blockUserFromComment($tenant_id, $id, $block_from_comment_params, $user_id, $anon_user_id);
+    $result = $apiInstance->blockUserFromComment($tenant_id, $id, $block_from_comment_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->blockUserFromComment: ', $e->getMessage(), PHP_EOL;
@@ -614,6 +640,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -667,9 +695,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $bulk_aggregate_question_results_request = new \FastComments\Client\Model\BulkAggregateQuestionResultsRequest(); // \FastComments\Client\Model\BulkAggregateQuestionResultsRequest
 $force_recalculate = True; // bool
+
 
 try {
     $result = $apiInstance->bulkAggregateQuestionResults($tenant_id, $bulk_aggregate_question_results_request, $force_recalculate);
@@ -731,10 +761,12 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $user_id = 'user_id_example'; // string
 $id = 'id_example'; // string
 $change_ticket_state_body = new \FastComments\Client\Model\ChangeTicketStateBody(); // \FastComments\Client\Model\ChangeTicketStateBody
+
 
 try {
     $result = $apiInstance->changeTicketState($tenant_id, $user_id, $id, $change_ticket_state_body);
@@ -773,7 +805,7 @@ try {
 ## `combineCommentsWithQuestionResults()`
 
 ```php
-combineCommentsWithQuestionResults($tenant_id, $question_id, $question_ids, $url_id, $start_date, $force_recalculate, $min_value, $max_value, $limit): \FastComments\Client\Model\CombineQuestionResultsWithCommentsResponse
+combineCommentsWithQuestionResults($tenant_id, $options): \FastComments\Client\Model\CombineQuestionResultsWithCommentsResponse
 ```
 
 
@@ -797,18 +829,22 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$question_id = 'question_id_example'; // string
-$question_ids = array('question_ids_example'); // string[]
-$url_id = 'url_id_example'; // string
-$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$force_recalculate = True; // bool
-$min_value = 3.4; // float
-$max_value = 3.4; // float
-$limit = 3.4; // float
+$options = [
+    'question_id' => 'question_id_example', // string
+    'question_ids' => array('question_ids_example'), // string[]
+    'url_id' => 'url_id_example', // string
+    'start_date' => new \DateTime('2013-10-20T19:20:30+01:00'), // \DateTime
+    'force_recalculate' => True, // bool
+    'min_value' => 3.4, // float
+    'max_value' => 3.4, // float
+    'limit' => 3.4, // float
+];
+
 
 try {
-    $result = $apiInstance->combineCommentsWithQuestionResults($tenant_id, $question_id, $question_ids, $url_id, $start_date, $force_recalculate, $min_value, $max_value, $limit);
+    $result = $apiInstance->combineCommentsWithQuestionResults($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->combineCommentsWithQuestionResults: ', $e->getMessage(), PHP_EOL;
@@ -816,6 +852,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -873,8 +911,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_email_template_body = new \FastComments\Client\Model\CreateEmailTemplateBody(); // \FastComments\Client\Model\CreateEmailTemplateBody
+
 
 try {
     $result = $apiInstance->createEmailTemplate($tenant_id, $create_email_template_body);
@@ -911,7 +951,7 @@ try {
 ## `createFeedPost()`
 
 ```php
-createFeedPost($tenant_id, $create_feed_post_params, $broadcast_id, $is_live, $do_spam_check, $skip_dup_check): \FastComments\Client\Model\CreateFeedPostsResponse
+createFeedPost($tenant_id, $create_feed_post_params, $options): \FastComments\Client\Model\CreateFeedPostsResponse
 ```
 
 
@@ -935,15 +975,19 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_feed_post_params = new \FastComments\Client\Model\CreateFeedPostParams(); // \FastComments\Client\Model\CreateFeedPostParams
-$broadcast_id = 'broadcast_id_example'; // string
-$is_live = True; // bool
-$do_spam_check = True; // bool
-$skip_dup_check = True; // bool
+$options = [
+    'broadcast_id' => 'broadcast_id_example', // string
+    'is_live' => True, // bool
+    'do_spam_check' => True, // bool
+    'skip_dup_check' => True, // bool
+];
+
 
 try {
-    $result = $apiInstance->createFeedPost($tenant_id, $create_feed_post_params, $broadcast_id, $is_live, $do_spam_check, $skip_dup_check);
+    $result = $apiInstance->createFeedPost($tenant_id, $create_feed_post_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createFeedPost: ', $e->getMessage(), PHP_EOL;
@@ -951,6 +995,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1005,8 +1051,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_moderator_body = new \FastComments\Client\Model\CreateModeratorBody(); // \FastComments\Client\Model\CreateModeratorBody
+
 
 try {
     $result = $apiInstance->createModerator($tenant_id, $create_moderator_body);
@@ -1067,8 +1115,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_question_config_body = new \FastComments\Client\Model\CreateQuestionConfigBody(); // \FastComments\Client\Model\CreateQuestionConfigBody
+
 
 try {
     $result = $apiInstance->createQuestionConfig($tenant_id, $create_question_config_body);
@@ -1129,8 +1179,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_question_result_body = new \FastComments\Client\Model\CreateQuestionResultBody(); // \FastComments\Client\Model\CreateQuestionResultBody
+
 
 try {
     $result = $apiInstance->createQuestionResult($tenant_id, $create_question_result_body);
@@ -1191,8 +1243,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_api_user_subscription_data = new \FastComments\Client\Model\CreateAPIUserSubscriptionData(); // \FastComments\Client\Model\CreateAPIUserSubscriptionData
+
 
 try {
     $result = $apiInstance->createSubscription($tenant_id, $create_api_user_subscription_data);
@@ -1253,8 +1307,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_tenant_body = new \FastComments\Client\Model\CreateTenantBody(); // \FastComments\Client\Model\CreateTenantBody
+
 
 try {
     $result = $apiInstance->createTenant($tenant_id, $create_tenant_body);
@@ -1315,8 +1371,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_tenant_package_body = new \FastComments\Client\Model\CreateTenantPackageBody(); // \FastComments\Client\Model\CreateTenantPackageBody
+
 
 try {
     $result = $apiInstance->createTenantPackage($tenant_id, $create_tenant_package_body);
@@ -1377,8 +1435,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_tenant_user_body = new \FastComments\Client\Model\CreateTenantUserBody(); // \FastComments\Client\Model\CreateTenantUserBody
+
 
 try {
     $result = $apiInstance->createTenantUser($tenant_id, $create_tenant_user_body);
@@ -1439,9 +1499,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $user_id = 'user_id_example'; // string
 $create_ticket_body = new \FastComments\Client\Model\CreateTicketBody(); // \FastComments\Client\Model\CreateTicketBody
+
 
 try {
     $result = $apiInstance->createTicket($tenant_id, $user_id, $create_ticket_body);
@@ -1503,8 +1565,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_user_badge_params = new \FastComments\Client\Model\CreateUserBadgeParams(); // \FastComments\Client\Model\CreateUserBadgeParams
+
 
 try {
     $result = $apiInstance->createUserBadge($tenant_id, $create_user_badge_params);
@@ -1541,7 +1605,7 @@ try {
 ## `createVote()`
 
 ```php
-createVote($tenant_id, $comment_id, $direction, $user_id, $anon_user_id): \FastComments\Client\Model\VoteResponse
+createVote($tenant_id, $comment_id, $direction, $options): \FastComments\Client\Model\VoteResponse
 ```
 
 
@@ -1565,14 +1629,18 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $direction = 'direction_example'; // string
-$user_id = 'user_id_example'; // string
-$anon_user_id = 'anon_user_id_example'; // string
+$options = [
+    'user_id' => 'user_id_example', // string
+    'anon_user_id' => 'anon_user_id_example', // string
+];
+
 
 try {
-    $result = $apiInstance->createVote($tenant_id, $comment_id, $direction, $user_id, $anon_user_id);
+    $result = $apiInstance->createVote($tenant_id, $comment_id, $direction, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createVote: ', $e->getMessage(), PHP_EOL;
@@ -1580,6 +1648,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1609,7 +1679,7 @@ try {
 ## `deleteComment()`
 
 ```php
-deleteComment($tenant_id, $id, $context_user_id, $is_live): \FastComments\Client\Model\DeleteCommentResult
+deleteComment($tenant_id, $id, $options): \FastComments\Client\Model\DeleteCommentResult
 ```
 
 
@@ -1633,13 +1703,17 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$context_user_id = 'context_user_id_example'; // string
-$is_live = True; // bool
+$options = [
+    'context_user_id' => 'context_user_id_example', // string
+    'is_live' => True, // bool
+];
+
 
 try {
-    $result = $apiInstance->deleteComment($tenant_id, $id, $context_user_id, $is_live);
+    $result = $apiInstance->deleteComment($tenant_id, $id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteComment: ', $e->getMessage(), PHP_EOL;
@@ -1647,6 +1721,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -1699,8 +1775,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $domain = 'domain_example'; // string
+
 
 try {
     $result = $apiInstance->deleteDomainConfig($tenant_id, $domain);
@@ -1761,8 +1839,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->deleteEmailTemplate($tenant_id, $id);
@@ -1823,9 +1903,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $error_id = 'error_id_example'; // string
+
 
 try {
     $result = $apiInstance->deleteEmailTemplateRenderError($tenant_id, $id, $error_id);
@@ -1863,7 +1945,7 @@ try {
 ## `deleteHashTag()`
 
 ```php
-deleteHashTag($tag, $tenant_id, $delete_hash_tag_request_body): \FastComments\Client\Model\APIEmptyResponse
+deleteHashTag($tenant_id, $tag, $delete_hash_tag_request_body): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -1887,12 +1969,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tag = 'tag_example'; // string
+
 $tenant_id = 'tenant_id_example'; // string
+$tag = 'tag_example'; // string
 $delete_hash_tag_request_body = new \FastComments\Client\Model\DeleteHashTagRequestBody(); // \FastComments\Client\Model\DeleteHashTagRequestBody
 
+
 try {
-    $result = $apiInstance->deleteHashTag($tag, $tenant_id, $delete_hash_tag_request_body);
+    $result = $apiInstance->deleteHashTag($tenant_id, $tag, $delete_hash_tag_request_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteHashTag: ', $e->getMessage(), PHP_EOL;
@@ -1903,8 +1987,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **tag** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **delete_hash_tag_request_body** | [**\FastComments\Client\Model\DeleteHashTagRequestBody**](../Model/DeleteHashTagRequestBody.md)|  | [optional] |
 
 ### Return type
@@ -1951,9 +2035,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $send_email = 'send_email_example'; // string
+
 
 try {
     $result = $apiInstance->deleteModerator($tenant_id, $id, $send_email);
@@ -2015,8 +2101,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->deleteNotificationCount($tenant_id, $id);
@@ -2077,8 +2165,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->deletePage($tenant_id, $id);
@@ -2139,8 +2229,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->deletePendingWebhookEvent($tenant_id, $id);
@@ -2201,8 +2293,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->deleteQuestionConfig($tenant_id, $id);
@@ -2263,8 +2357,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->deleteQuestionResult($tenant_id, $id);
@@ -2301,7 +2397,7 @@ try {
 ## `deleteSSOUser()`
 
 ```php
-deleteSSOUser($tenant_id, $id, $delete_comments, $comment_delete_mode): \FastComments\Client\Model\DeleteSSOUserAPIResponse
+deleteSSOUser($tenant_id, $id, $options): \FastComments\Client\Model\DeleteSSOUserAPIResponse
 ```
 
 
@@ -2325,13 +2421,17 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$delete_comments = True; // bool
-$comment_delete_mode = 'comment_delete_mode_example'; // string
+$options = [
+    'delete_comments' => True, // bool
+    'comment_delete_mode' => 'comment_delete_mode_example', // string
+];
+
 
 try {
-    $result = $apiInstance->deleteSSOUser($tenant_id, $id, $delete_comments, $comment_delete_mode);
+    $result = $apiInstance->deleteSSOUser($tenant_id, $id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteSSOUser: ', $e->getMessage(), PHP_EOL;
@@ -2339,6 +2439,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2391,9 +2493,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $user_id = 'user_id_example'; // string
+
 
 try {
     $result = $apiInstance->deleteSubscription($tenant_id, $id, $user_id);
@@ -2455,9 +2559,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $sure = 'sure_example'; // string
+
 
 try {
     $result = $apiInstance->deleteTenant($tenant_id, $id, $sure);
@@ -2519,8 +2625,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->deleteTenantPackage($tenant_id, $id);
@@ -2557,7 +2665,7 @@ try {
 ## `deleteTenantUser()`
 
 ```php
-deleteTenantUser($tenant_id, $id, $delete_comments, $comment_delete_mode): \FastComments\Client\Model\APIEmptyResponse
+deleteTenantUser($tenant_id, $id, $options): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2581,13 +2689,17 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$delete_comments = 'delete_comments_example'; // string
-$comment_delete_mode = 'comment_delete_mode_example'; // string
+$options = [
+    'delete_comments' => 'delete_comments_example', // string
+    'comment_delete_mode' => 'comment_delete_mode_example', // string
+];
+
 
 try {
-    $result = $apiInstance->deleteTenantUser($tenant_id, $id, $delete_comments, $comment_delete_mode);
+    $result = $apiInstance->deleteTenantUser($tenant_id, $id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteTenantUser: ', $e->getMessage(), PHP_EOL;
@@ -2595,6 +2707,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2647,8 +2761,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->deleteUserBadge($tenant_id, $id);
@@ -2709,9 +2825,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $edit_key = 'edit_key_example'; // string
+
 
 try {
     $result = $apiInstance->deleteVote($tenant_id, $id, $edit_key);
@@ -2749,7 +2867,7 @@ try {
 ## `flagComment()`
 
 ```php
-flagComment($tenant_id, $id, $user_id, $anon_user_id): \FastComments\Client\Model\FlagCommentResponse
+flagComment($tenant_id, $id, $options): \FastComments\Client\Model\FlagCommentResponse
 ```
 
 
@@ -2773,13 +2891,17 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$user_id = 'user_id_example'; // string
-$anon_user_id = 'anon_user_id_example'; // string
+$options = [
+    'user_id' => 'user_id_example', // string
+    'anon_user_id' => 'anon_user_id_example', // string
+];
+
 
 try {
-    $result = $apiInstance->flagComment($tenant_id, $id, $user_id, $anon_user_id);
+    $result = $apiInstance->flagComment($tenant_id, $id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->flagComment: ', $e->getMessage(), PHP_EOL;
@@ -2787,6 +2909,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2815,7 +2939,7 @@ try {
 ## `getAuditLogs()`
 
 ```php
-getAuditLogs($tenant_id, $limit, $skip, $order, $after, $before): \FastComments\Client\Model\GetAuditLogsResponse
+getAuditLogs($tenant_id, $options): \FastComments\Client\Model\GetAuditLogsResponse
 ```
 
 
@@ -2839,15 +2963,19 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$limit = 3.4; // float
-$skip = 3.4; // float
-$order = new \FastComments\Client\Model\\FastComments\Client\Model\SORTDIR(); // \FastComments\Client\Model\SORTDIR
-$after = 3.4; // float
-$before = 3.4; // float
+$options = [
+    'limit' => 3.4, // float
+    'skip' => 3.4, // float
+    'order' => new \FastComments\Client\Model\\FastComments\Client\Model\SORTDIR(), // \FastComments\Client\Model\SORTDIR
+    'after' => 3.4, // float
+    'before' => 3.4, // float
+];
+
 
 try {
-    $result = $apiInstance->getAuditLogs($tenant_id, $limit, $skip, $order, $after, $before);
+    $result = $apiInstance->getAuditLogs($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getAuditLogs: ', $e->getMessage(), PHP_EOL;
@@ -2855,6 +2983,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -2909,8 +3039,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->getCachedNotificationCount($tenant_id, $id);
@@ -2971,8 +3103,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->getComment($tenant_id, $id);
@@ -3009,7 +3143,7 @@ try {
 ## `getComments()`
 
 ```php
-getComments($tenant_id, $page, $limit, $skip, $as_tree, $skip_children, $limit_children, $max_tree_depth, $url_id, $user_id, $anon_user_id, $context_user_id, $hash_tag, $parent_id, $direction, $from_date, $to_date): \FastComments\Client\Model\APIGetCommentsResponse
+getComments($tenant_id, $options): \FastComments\Client\Model\APIGetCommentsResponse
 ```
 
 
@@ -3033,26 +3167,30 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$page = 56; // int
-$limit = 56; // int
-$skip = 56; // int
-$as_tree = True; // bool
-$skip_children = 56; // int
-$limit_children = 56; // int
-$max_tree_depth = 56; // int
-$url_id = 'url_id_example'; // string
-$user_id = 'user_id_example'; // string
-$anon_user_id = 'anon_user_id_example'; // string
-$context_user_id = 'context_user_id_example'; // string
-$hash_tag = 'hash_tag_example'; // string
-$parent_id = 'parent_id_example'; // string
-$direction = new \FastComments\Client\Model\\FastComments\Client\Model\SortDirections(); // \FastComments\Client\Model\SortDirections
-$from_date = 56; // int
-$to_date = 56; // int
+$options = [
+    'page' => 56, // int
+    'limit' => 56, // int
+    'skip' => 56, // int
+    'as_tree' => True, // bool
+    'skip_children' => 56, // int
+    'limit_children' => 56, // int
+    'max_tree_depth' => 56, // int
+    'url_id' => 'url_id_example', // string
+    'user_id' => 'user_id_example', // string
+    'anon_user_id' => 'anon_user_id_example', // string
+    'context_user_id' => 'context_user_id_example', // string
+    'hash_tag' => 'hash_tag_example', // string
+    'parent_id' => 'parent_id_example', // string
+    'direction' => new \FastComments\Client\Model\\FastComments\Client\Model\SortDirections(), // \FastComments\Client\Model\SortDirections
+    'from_date' => 56, // int
+    'to_date' => 56, // int
+];
+
 
 try {
-    $result = $apiInstance->getComments($tenant_id, $page, $limit, $skip, $as_tree, $skip_children, $limit_children, $max_tree_depth, $url_id, $user_id, $anon_user_id, $context_user_id, $hash_tag, $parent_id, $direction, $from_date, $to_date);
+    $result = $apiInstance->getComments($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getComments: ', $e->getMessage(), PHP_EOL;
@@ -3060,6 +3198,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3125,8 +3265,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $domain = 'domain_example'; // string
+
 
 try {
     $result = $apiInstance->getDomainConfig($tenant_id, $domain);
@@ -3187,7 +3329,9 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
+
 
 try {
     $result = $apiInstance->getDomainConfigs($tenant_id);
@@ -3247,8 +3391,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->getEmailTemplate($tenant_id, $id);
@@ -3309,7 +3455,9 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
+
 
 try {
     $result = $apiInstance->getEmailTemplateDefinitions($tenant_id);
@@ -3369,9 +3517,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $skip = 3.4; // float
+
 
 try {
     $result = $apiInstance->getEmailTemplateRenderErrors($tenant_id, $id, $skip);
@@ -3433,8 +3583,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $skip = 3.4; // float
+
 
 try {
     $result = $apiInstance->getEmailTemplates($tenant_id, $skip);
@@ -3471,7 +3623,7 @@ try {
 ## `getFeedPosts()`
 
 ```php
-getFeedPosts($tenant_id, $after_id, $limit, $tags): \FastComments\Client\Model\GetFeedPostsResponse
+getFeedPosts($tenant_id, $options): \FastComments\Client\Model\GetFeedPostsResponse
 ```
 
 
@@ -3497,13 +3649,17 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$after_id = 'after_id_example'; // string
-$limit = 56; // int
-$tags = array('tags_example'); // string[]
+$options = [
+    'after_id' => 'after_id_example', // string
+    'limit' => 56, // int
+    'tags' => array('tags_example'), // string[]
+];
+
 
 try {
-    $result = $apiInstance->getFeedPosts($tenant_id, $after_id, $limit, $tags);
+    $result = $apiInstance->getFeedPosts($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getFeedPosts: ', $e->getMessage(), PHP_EOL;
@@ -3511,6 +3667,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3563,8 +3721,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $page = 3.4; // float
+
 
 try {
     $result = $apiInstance->getHashTags($tenant_id, $page);
@@ -3625,8 +3785,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->getModerator($tenant_id, $id);
@@ -3687,8 +3849,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $skip = 3.4; // float
+
 
 try {
     $result = $apiInstance->getModerators($tenant_id, $skip);
@@ -3725,7 +3889,7 @@ try {
 ## `getNotificationCount()`
 
 ```php
-getNotificationCount($tenant_id, $user_id, $url_id, $from_comment_id, $viewed, $type): \FastComments\Client\Model\GetNotificationCountResponse
+getNotificationCount($tenant_id, $options): \FastComments\Client\Model\GetNotificationCountResponse
 ```
 
 
@@ -3749,15 +3913,19 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$user_id = 'user_id_example'; // string
-$url_id = 'url_id_example'; // string
-$from_comment_id = 'from_comment_id_example'; // string
-$viewed = True; // bool
-$type = 'type_example'; // string
+$options = [
+    'user_id' => 'user_id_example', // string
+    'url_id' => 'url_id_example', // string
+    'from_comment_id' => 'from_comment_id_example', // string
+    'viewed' => True, // bool
+    'type' => 'type_example', // string
+];
+
 
 try {
-    $result = $apiInstance->getNotificationCount($tenant_id, $user_id, $url_id, $from_comment_id, $viewed, $type);
+    $result = $apiInstance->getNotificationCount($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getNotificationCount: ', $e->getMessage(), PHP_EOL;
@@ -3765,6 +3933,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3795,7 +3965,7 @@ try {
 ## `getNotifications()`
 
 ```php
-getNotifications($tenant_id, $user_id, $url_id, $from_comment_id, $viewed, $type, $skip): \FastComments\Client\Model\GetNotificationsResponse
+getNotifications($tenant_id, $options): \FastComments\Client\Model\GetNotificationsResponse
 ```
 
 
@@ -3819,16 +3989,20 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$user_id = 'user_id_example'; // string
-$url_id = 'url_id_example'; // string
-$from_comment_id = 'from_comment_id_example'; // string
-$viewed = True; // bool
-$type = 'type_example'; // string
-$skip = 3.4; // float
+$options = [
+    'user_id' => 'user_id_example', // string
+    'url_id' => 'url_id_example', // string
+    'from_comment_id' => 'from_comment_id_example', // string
+    'viewed' => True, // bool
+    'type' => 'type_example', // string
+    'skip' => 3.4, // float
+];
+
 
 try {
-    $result = $apiInstance->getNotifications($tenant_id, $user_id, $url_id, $from_comment_id, $viewed, $type, $skip);
+    $result = $apiInstance->getNotifications($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getNotifications: ', $e->getMessage(), PHP_EOL;
@@ -3836,6 +4010,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -3891,8 +4067,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
+
 
 try {
     $result = $apiInstance->getPageByURLId($tenant_id, $url_id);
@@ -3953,7 +4131,9 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
+
 
 try {
     $result = $apiInstance->getPages($tenant_id);
@@ -3989,7 +4169,7 @@ try {
 ## `getPendingWebhookEventCount()`
 
 ```php
-getPendingWebhookEventCount($tenant_id, $comment_id, $external_id, $event_type, $type, $domain, $attempt_count_gt): \FastComments\Client\Model\GetPendingWebhookEventCountResponse
+getPendingWebhookEventCount($tenant_id, $options): \FastComments\Client\Model\GetPendingWebhookEventCountResponse
 ```
 
 
@@ -4013,16 +4193,20 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$comment_id = 'comment_id_example'; // string
-$external_id = 'external_id_example'; // string
-$event_type = 'event_type_example'; // string
-$type = 'type_example'; // string
-$domain = 'domain_example'; // string
-$attempt_count_gt = 3.4; // float
+$options = [
+    'comment_id' => 'comment_id_example', // string
+    'external_id' => 'external_id_example', // string
+    'event_type' => 'event_type_example', // string
+    'type' => 'type_example', // string
+    'domain' => 'domain_example', // string
+    'attempt_count_gt' => 3.4, // float
+];
+
 
 try {
-    $result = $apiInstance->getPendingWebhookEventCount($tenant_id, $comment_id, $external_id, $event_type, $type, $domain, $attempt_count_gt);
+    $result = $apiInstance->getPendingWebhookEventCount($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getPendingWebhookEventCount: ', $e->getMessage(), PHP_EOL;
@@ -4030,6 +4214,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4061,7 +4247,7 @@ try {
 ## `getPendingWebhookEvents()`
 
 ```php
-getPendingWebhookEvents($tenant_id, $comment_id, $external_id, $event_type, $type, $domain, $attempt_count_gt, $skip): \FastComments\Client\Model\GetPendingWebhookEventsResponse
+getPendingWebhookEvents($tenant_id, $options): \FastComments\Client\Model\GetPendingWebhookEventsResponse
 ```
 
 
@@ -4085,17 +4271,21 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$comment_id = 'comment_id_example'; // string
-$external_id = 'external_id_example'; // string
-$event_type = 'event_type_example'; // string
-$type = 'type_example'; // string
-$domain = 'domain_example'; // string
-$attempt_count_gt = 3.4; // float
-$skip = 3.4; // float
+$options = [
+    'comment_id' => 'comment_id_example', // string
+    'external_id' => 'external_id_example', // string
+    'event_type' => 'event_type_example', // string
+    'type' => 'type_example', // string
+    'domain' => 'domain_example', // string
+    'attempt_count_gt' => 3.4, // float
+    'skip' => 3.4, // float
+];
+
 
 try {
-    $result = $apiInstance->getPendingWebhookEvents($tenant_id, $comment_id, $external_id, $event_type, $type, $domain, $attempt_count_gt, $skip);
+    $result = $apiInstance->getPendingWebhookEvents($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getPendingWebhookEvents: ', $e->getMessage(), PHP_EOL;
@@ -4103,6 +4293,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4159,8 +4351,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->getQuestionConfig($tenant_id, $id);
@@ -4221,8 +4415,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $skip = 3.4; // float
+
 
 try {
     $result = $apiInstance->getQuestionConfigs($tenant_id, $skip);
@@ -4283,8 +4479,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->getQuestionResult($tenant_id, $id);
@@ -4321,7 +4519,7 @@ try {
 ## `getQuestionResults()`
 
 ```php
-getQuestionResults($tenant_id, $url_id, $user_id, $start_date, $question_id, $question_ids, $skip): \FastComments\Client\Model\GetQuestionResultsResponse
+getQuestionResults($tenant_id, $options): \FastComments\Client\Model\GetQuestionResultsResponse
 ```
 
 
@@ -4345,16 +4543,20 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$url_id = 'url_id_example'; // string
-$user_id = 'user_id_example'; // string
-$start_date = 'start_date_example'; // string
-$question_id = 'question_id_example'; // string
-$question_ids = 'question_ids_example'; // string
-$skip = 3.4; // float
+$options = [
+    'url_id' => 'url_id_example', // string
+    'user_id' => 'user_id_example', // string
+    'start_date' => 'start_date_example', // string
+    'question_id' => 'question_id_example', // string
+    'question_ids' => 'question_ids_example', // string
+    'skip' => 3.4, // float
+];
+
 
 try {
-    $result = $apiInstance->getQuestionResults($tenant_id, $url_id, $user_id, $start_date, $question_id, $question_ids, $skip);
+    $result = $apiInstance->getQuestionResults($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getQuestionResults: ', $e->getMessage(), PHP_EOL;
@@ -4362,6 +4564,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4417,8 +4621,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $email = 'email_example'; // string
+
 
 try {
     $result = $apiInstance->getSSOUserByEmail($tenant_id, $email);
@@ -4479,8 +4685,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->getSSOUserById($tenant_id, $id);
@@ -4541,8 +4749,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $skip = 56; // int
+
 
 try {
     $result = $apiInstance->getSSOUsers($tenant_id, $skip);
@@ -4603,8 +4813,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $user_id = 'user_id_example'; // string
+
 
 try {
     $result = $apiInstance->getSubscriptions($tenant_id, $user_id);
@@ -4665,8 +4877,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->getTenant($tenant_id, $id);
@@ -4703,7 +4917,7 @@ try {
 ## `getTenantDailyUsages()`
 
 ```php
-getTenantDailyUsages($tenant_id, $year_number, $month_number, $day_number, $skip): \FastComments\Client\Model\GetTenantDailyUsagesResponse
+getTenantDailyUsages($tenant_id, $options): \FastComments\Client\Model\GetTenantDailyUsagesResponse
 ```
 
 
@@ -4727,14 +4941,18 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$year_number = 3.4; // float
-$month_number = 3.4; // float
-$day_number = 3.4; // float
-$skip = 3.4; // float
+$options = [
+    'year_number' => 3.4, // float
+    'month_number' => 3.4, // float
+    'day_number' => 3.4, // float
+    'skip' => 3.4, // float
+];
+
 
 try {
-    $result = $apiInstance->getTenantDailyUsages($tenant_id, $year_number, $month_number, $day_number, $skip);
+    $result = $apiInstance->getTenantDailyUsages($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTenantDailyUsages: ', $e->getMessage(), PHP_EOL;
@@ -4742,6 +4960,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -4795,8 +5015,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->getTenantPackage($tenant_id, $id);
@@ -4857,8 +5079,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $skip = 3.4; // float
+
 
 try {
     $result = $apiInstance->getTenantPackages($tenant_id, $skip);
@@ -4919,8 +5143,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->getTenantUser($tenant_id, $id);
@@ -4981,8 +5207,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $skip = 3.4; // float
+
 
 try {
     $result = $apiInstance->getTenantUsers($tenant_id, $skip);
@@ -5019,7 +5247,7 @@ try {
 ## `getTenants()`
 
 ```php
-getTenants($tenant_id, $meta, $skip): \FastComments\Client\Model\GetTenantsResponse
+getTenants($tenant_id, $options): \FastComments\Client\Model\GetTenantsResponse
 ```
 
 
@@ -5043,12 +5271,16 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$meta = 'meta_example'; // string
-$skip = 3.4; // float
+$options = [
+    'meta' => 'meta_example', // string
+    'skip' => 3.4, // float
+];
+
 
 try {
-    $result = $apiInstance->getTenants($tenant_id, $meta, $skip);
+    $result = $apiInstance->getTenants($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTenants: ', $e->getMessage(), PHP_EOL;
@@ -5056,6 +5288,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5107,9 +5341,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $user_id = 'user_id_example'; // string
+
 
 try {
     $result = $apiInstance->getTicket($tenant_id, $id, $user_id);
@@ -5147,7 +5383,7 @@ try {
 ## `getTickets()`
 
 ```php
-getTickets($tenant_id, $user_id, $state, $skip, $limit): \FastComments\Client\Model\GetTicketsResponse
+getTickets($tenant_id, $options): \FastComments\Client\Model\GetTicketsResponse
 ```
 
 
@@ -5171,14 +5407,18 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$user_id = 'user_id_example'; // string
-$state = 3.4; // float
-$skip = 3.4; // float
-$limit = 3.4; // float
+$options = [
+    'user_id' => 'user_id_example', // string
+    'state' => 3.4, // float
+    'skip' => 3.4, // float
+    'limit' => 3.4, // float
+];
+
 
 try {
-    $result = $apiInstance->getTickets($tenant_id, $user_id, $state, $skip, $limit);
+    $result = $apiInstance->getTickets($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getTickets: ', $e->getMessage(), PHP_EOL;
@@ -5186,6 +5426,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5239,8 +5481,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->getUser($tenant_id, $id);
@@ -5301,8 +5545,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->getUserBadge($tenant_id, $id);
@@ -5363,8 +5609,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
+
 
 try {
     $result = $apiInstance->getUserBadgeProgressById($tenant_id, $id);
@@ -5425,8 +5673,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $user_id = 'user_id_example'; // string
+
 
 try {
     $result = $apiInstance->getUserBadgeProgressByUserId($tenant_id, $user_id);
@@ -5463,7 +5713,7 @@ try {
 ## `getUserBadgeProgressList()`
 
 ```php
-getUserBadgeProgressList($tenant_id, $user_id, $limit, $skip): \FastComments\Client\Model\APIGetUserBadgeProgressListResponse
+getUserBadgeProgressList($tenant_id, $options): \FastComments\Client\Model\APIGetUserBadgeProgressListResponse
 ```
 
 
@@ -5487,13 +5737,17 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$user_id = 'user_id_example'; // string
-$limit = 3.4; // float
-$skip = 3.4; // float
+$options = [
+    'user_id' => 'user_id_example', // string
+    'limit' => 3.4, // float
+    'skip' => 3.4, // float
+];
+
 
 try {
-    $result = $apiInstance->getUserBadgeProgressList($tenant_id, $user_id, $limit, $skip);
+    $result = $apiInstance->getUserBadgeProgressList($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getUserBadgeProgressList: ', $e->getMessage(), PHP_EOL;
@@ -5501,6 +5755,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5529,7 +5785,7 @@ try {
 ## `getUserBadges()`
 
 ```php
-getUserBadges($tenant_id, $user_id, $badge_id, $type, $displayed_on_comments, $limit, $skip): \FastComments\Client\Model\APIGetUserBadgesResponse
+getUserBadges($tenant_id, $options): \FastComments\Client\Model\APIGetUserBadgesResponse
 ```
 
 
@@ -5553,16 +5809,20 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
-$user_id = 'user_id_example'; // string
-$badge_id = 'badge_id_example'; // string
-$type = 3.4; // float
-$displayed_on_comments = True; // bool
-$limit = 3.4; // float
-$skip = 3.4; // float
+$options = [
+    'user_id' => 'user_id_example', // string
+    'badge_id' => 'badge_id_example', // string
+    'type' => 3.4, // float
+    'displayed_on_comments' => True, // bool
+    'limit' => 3.4, // float
+    'skip' => 3.4, // float
+];
+
 
 try {
-    $result = $apiInstance->getUserBadges($tenant_id, $user_id, $badge_id, $type, $displayed_on_comments, $limit, $skip);
+    $result = $apiInstance->getUserBadges($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getUserBadges: ', $e->getMessage(), PHP_EOL;
@@ -5570,6 +5830,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5625,8 +5887,10 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
+
 
 try {
     $result = $apiInstance->getVotes($tenant_id, $url_id);
@@ -5663,7 +5927,7 @@ try {
 ## `getVotesForUser()`
 
 ```php
-getVotesForUser($tenant_id, $url_id, $user_id, $anon_user_id): \FastComments\Client\Model\GetVotesForUserResponse
+getVotesForUser($tenant_id, $url_id, $options): \FastComments\Client\Model\GetVotesForUserResponse
 ```
 
 
@@ -5687,13 +5951,17 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
-$user_id = 'user_id_example'; // string
-$anon_user_id = 'anon_user_id_example'; // string
+$options = [
+    'user_id' => 'user_id_example', // string
+    'anon_user_id' => 'anon_user_id_example', // string
+];
+
 
 try {
-    $result = $apiInstance->getVotesForUser($tenant_id, $url_id, $user_id, $anon_user_id);
+    $result = $apiInstance->getVotesForUser($tenant_id, $url_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getVotesForUser: ', $e->getMessage(), PHP_EOL;
@@ -5701,6 +5969,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -5753,9 +6023,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $domain_to_update = 'domain_to_update_example'; // string
 $patch_domain_config_params = new \FastComments\Client\Model\PatchDomainConfigParams(); // \FastComments\Client\Model\PatchDomainConfigParams
+
 
 try {
     $result = $apiInstance->patchDomainConfig($tenant_id, $domain_to_update, $patch_domain_config_params);
@@ -5793,7 +6065,7 @@ try {
 ## `patchHashTag()`
 
 ```php
-patchHashTag($tag, $tenant_id, $update_hash_tag_body): \FastComments\Client\Model\UpdateHashTagResponse
+patchHashTag($tenant_id, $tag, $update_hash_tag_body): \FastComments\Client\Model\UpdateHashTagResponse
 ```
 
 
@@ -5817,12 +6089,14 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tag = 'tag_example'; // string
+
 $tenant_id = 'tenant_id_example'; // string
+$tag = 'tag_example'; // string
 $update_hash_tag_body = new \FastComments\Client\Model\UpdateHashTagBody(); // \FastComments\Client\Model\UpdateHashTagBody
 
+
 try {
-    $result = $apiInstance->patchHashTag($tag, $tenant_id, $update_hash_tag_body);
+    $result = $apiInstance->patchHashTag($tenant_id, $tag, $update_hash_tag_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->patchHashTag: ', $e->getMessage(), PHP_EOL;
@@ -5833,8 +6107,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **tag** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **update_hash_tag_body** | [**\FastComments\Client\Model\UpdateHashTagBody**](../Model/UpdateHashTagBody.md)|  | [optional] |
 
 ### Return type
@@ -5881,9 +6155,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_api_page_data = new \FastComments\Client\Model\UpdateAPIPageData(); // \FastComments\Client\Model\UpdateAPIPageData
+
 
 try {
     $result = $apiInstance->patchPage($tenant_id, $id, $update_api_page_data);
@@ -5945,10 +6221,12 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_apisso_user_data = new \FastComments\Client\Model\UpdateAPISSOUserData(); // \FastComments\Client\Model\UpdateAPISSOUserData
 $update_comments = True; // bool
+
 
 try {
     $result = $apiInstance->patchSSOUser($tenant_id, $id, $update_apisso_user_data, $update_comments);
@@ -6011,9 +6289,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $domain_to_update = 'domain_to_update_example'; // string
 $update_domain_config_params = new \FastComments\Client\Model\UpdateDomainConfigParams(); // \FastComments\Client\Model\UpdateDomainConfigParams
+
 
 try {
     $result = $apiInstance->putDomainConfig($tenant_id, $domain_to_update, $update_domain_config_params);
@@ -6075,10 +6355,12 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_apisso_user_data = new \FastComments\Client\Model\UpdateAPISSOUserData(); // \FastComments\Client\Model\UpdateAPISSOUserData
 $update_comments = True; // bool
+
 
 try {
     $result = $apiInstance->putSSOUser($tenant_id, $id, $update_apisso_user_data, $update_comments);
@@ -6141,9 +6423,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $render_email_template_body = new \FastComments\Client\Model\RenderEmailTemplateBody(); // \FastComments\Client\Model\RenderEmailTemplateBody
 $locale = 'locale_example'; // string
+
 
 try {
     $result = $apiInstance->renderEmailTemplate($tenant_id, $render_email_template_body, $locale);
@@ -6205,9 +6489,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $replace_tenant_package_body = new \FastComments\Client\Model\ReplaceTenantPackageBody(); // \FastComments\Client\Model\ReplaceTenantPackageBody
+
 
 try {
     $result = $apiInstance->replaceTenantPackage($tenant_id, $id, $replace_tenant_package_body);
@@ -6269,10 +6555,12 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $replace_tenant_user_body = new \FastComments\Client\Model\ReplaceTenantUserBody(); // \FastComments\Client\Model\ReplaceTenantUserBody
 $update_comments = 'update_comments_example'; // string
+
 
 try {
     $result = $apiInstance->replaceTenantUser($tenant_id, $id, $replace_tenant_user_body, $update_comments);
@@ -6311,7 +6599,7 @@ try {
 ## `saveComment()`
 
 ```php
-saveComment($tenant_id, $create_comment_params, $is_live, $do_spam_check, $send_emails, $populate_notifications): \FastComments\Client\Model\APISaveCommentResponse
+saveComment($tenant_id, $create_comment_params, $options): \FastComments\Client\Model\APISaveCommentResponse
 ```
 
 
@@ -6335,15 +6623,19 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_comment_params = new \FastComments\Client\Model\CreateCommentParams(); // \FastComments\Client\Model\CreateCommentParams
-$is_live = True; // bool
-$do_spam_check = True; // bool
-$send_emails = True; // bool
-$populate_notifications = True; // bool
+$options = [
+    'is_live' => True, // bool
+    'do_spam_check' => True, // bool
+    'send_emails' => True, // bool
+    'populate_notifications' => True, // bool
+];
+
 
 try {
-    $result = $apiInstance->saveComment($tenant_id, $create_comment_params, $is_live, $do_spam_check, $send_emails, $populate_notifications);
+    $result = $apiInstance->saveComment($tenant_id, $create_comment_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->saveComment: ', $e->getMessage(), PHP_EOL;
@@ -6351,6 +6643,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6381,7 +6675,7 @@ try {
 ## `saveCommentsBulk()`
 
 ```php
-saveCommentsBulk($tenant_id, $create_comment_params, $is_live, $do_spam_check, $send_emails, $populate_notifications): \FastComments\Client\Model\SaveCommentsBulkResponse[]
+saveCommentsBulk($tenant_id, $create_comment_params, $options): \FastComments\Client\Model\SaveCommentsBulkResponse[]
 ```
 
 
@@ -6405,15 +6699,19 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $create_comment_params = array(new \FastComments\Client\Model\CreateCommentParams()); // \FastComments\Client\Model\CreateCommentParams[]
-$is_live = True; // bool
-$do_spam_check = True; // bool
-$send_emails = True; // bool
-$populate_notifications = True; // bool
+$options = [
+    'is_live' => True, // bool
+    'do_spam_check' => True, // bool
+    'send_emails' => True, // bool
+    'populate_notifications' => True, // bool
+];
+
 
 try {
-    $result = $apiInstance->saveCommentsBulk($tenant_id, $create_comment_params, $is_live, $do_spam_check, $send_emails, $populate_notifications);
+    $result = $apiInstance->saveCommentsBulk($tenant_id, $create_comment_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->saveCommentsBulk: ', $e->getMessage(), PHP_EOL;
@@ -6421,6 +6719,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6475,9 +6775,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $from_name = 'from_name_example'; // string
+
 
 try {
     $result = $apiInstance->sendInvite($tenant_id, $id, $from_name);
@@ -6539,9 +6841,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $redirect_url = 'redirect_url_example'; // string
+
 
 try {
     $result = $apiInstance->sendLoginLink($tenant_id, $id, $redirect_url);
@@ -6579,7 +6883,7 @@ try {
 ## `unBlockUserFromComment()`
 
 ```php
-unBlockUserFromComment($tenant_id, $id, $un_block_from_comment_params, $user_id, $anon_user_id): \FastComments\Client\Model\UnblockSuccess
+unBlockUserFromComment($tenant_id, $id, $un_block_from_comment_params, $options): \FastComments\Client\Model\UnblockSuccess
 ```
 
 
@@ -6603,14 +6907,18 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $un_block_from_comment_params = new \FastComments\Client\Model\UnBlockFromCommentParams(); // \FastComments\Client\Model\UnBlockFromCommentParams
-$user_id = 'user_id_example'; // string
-$anon_user_id = 'anon_user_id_example'; // string
+$options = [
+    'user_id' => 'user_id_example', // string
+    'anon_user_id' => 'anon_user_id_example', // string
+];
+
 
 try {
-    $result = $apiInstance->unBlockUserFromComment($tenant_id, $id, $un_block_from_comment_params, $user_id, $anon_user_id);
+    $result = $apiInstance->unBlockUserFromComment($tenant_id, $id, $un_block_from_comment_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->unBlockUserFromComment: ', $e->getMessage(), PHP_EOL;
@@ -6618,6 +6926,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6647,7 +6957,7 @@ try {
 ## `unFlagComment()`
 
 ```php
-unFlagComment($tenant_id, $id, $user_id, $anon_user_id): \FastComments\Client\Model\FlagCommentResponse
+unFlagComment($tenant_id, $id, $options): \FastComments\Client\Model\FlagCommentResponse
 ```
 
 
@@ -6671,13 +6981,17 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
-$user_id = 'user_id_example'; // string
-$anon_user_id = 'anon_user_id_example'; // string
+$options = [
+    'user_id' => 'user_id_example', // string
+    'anon_user_id' => 'anon_user_id_example', // string
+];
+
 
 try {
-    $result = $apiInstance->unFlagComment($tenant_id, $id, $user_id, $anon_user_id);
+    $result = $apiInstance->unFlagComment($tenant_id, $id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->unFlagComment: ', $e->getMessage(), PHP_EOL;
@@ -6685,6 +6999,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6713,7 +7029,7 @@ try {
 ## `updateComment()`
 
 ```php
-updateComment($tenant_id, $id, $updatable_comment_params, $context_user_id, $do_spam_check, $is_live): \FastComments\Client\Model\APIEmptyResponse
+updateComment($tenant_id, $id, $updatable_comment_params, $options): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -6737,15 +7053,19 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $updatable_comment_params = new \FastComments\Client\Model\UpdatableCommentParams(); // \FastComments\Client\Model\UpdatableCommentParams
-$context_user_id = 'context_user_id_example'; // string
-$do_spam_check = True; // bool
-$is_live = True; // bool
+$options = [
+    'context_user_id' => 'context_user_id_example', // string
+    'do_spam_check' => True, // bool
+    'is_live' => True, // bool
+];
+
 
 try {
-    $result = $apiInstance->updateComment($tenant_id, $id, $updatable_comment_params, $context_user_id, $do_spam_check, $is_live);
+    $result = $apiInstance->updateComment($tenant_id, $id, $updatable_comment_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->updateComment: ', $e->getMessage(), PHP_EOL;
@@ -6753,6 +7073,8 @@ try {
 ```
 
 ### Parameters
+
+Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -6807,9 +7129,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_email_template_body = new \FastComments\Client\Model\UpdateEmailTemplateBody(); // \FastComments\Client\Model\UpdateEmailTemplateBody
+
 
 try {
     $result = $apiInstance->updateEmailTemplate($tenant_id, $id, $update_email_template_body);
@@ -6871,9 +7195,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $feed_post = new \FastComments\Client\Model\FeedPost(); // \FastComments\Client\Model\FeedPost
+
 
 try {
     $result = $apiInstance->updateFeedPost($tenant_id, $id, $feed_post);
@@ -6935,9 +7261,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_moderator_body = new \FastComments\Client\Model\UpdateModeratorBody(); // \FastComments\Client\Model\UpdateModeratorBody
+
 
 try {
     $result = $apiInstance->updateModerator($tenant_id, $id, $update_moderator_body);
@@ -6999,10 +7327,12 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_notification_body = new \FastComments\Client\Model\UpdateNotificationBody(); // \FastComments\Client\Model\UpdateNotificationBody
 $user_id = 'user_id_example'; // string
+
 
 try {
     $result = $apiInstance->updateNotification($tenant_id, $id, $update_notification_body, $user_id);
@@ -7065,9 +7395,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_question_config_body = new \FastComments\Client\Model\UpdateQuestionConfigBody(); // \FastComments\Client\Model\UpdateQuestionConfigBody
+
 
 try {
     $result = $apiInstance->updateQuestionConfig($tenant_id, $id, $update_question_config_body);
@@ -7129,9 +7461,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_question_result_body = new \FastComments\Client\Model\UpdateQuestionResultBody(); // \FastComments\Client\Model\UpdateQuestionResultBody
+
 
 try {
     $result = $apiInstance->updateQuestionResult($tenant_id, $id, $update_question_result_body);
@@ -7193,10 +7527,12 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_api_user_subscription_data = new \FastComments\Client\Model\UpdateAPIUserSubscriptionData(); // \FastComments\Client\Model\UpdateAPIUserSubscriptionData
 $user_id = 'user_id_example'; // string
+
 
 try {
     $result = $apiInstance->updateSubscription($tenant_id, $id, $update_api_user_subscription_data, $user_id);
@@ -7259,9 +7595,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_tenant_body = new \FastComments\Client\Model\UpdateTenantBody(); // \FastComments\Client\Model\UpdateTenantBody
+
 
 try {
     $result = $apiInstance->updateTenant($tenant_id, $id, $update_tenant_body);
@@ -7323,9 +7661,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_tenant_package_body = new \FastComments\Client\Model\UpdateTenantPackageBody(); // \FastComments\Client\Model\UpdateTenantPackageBody
+
 
 try {
     $result = $apiInstance->updateTenantPackage($tenant_id, $id, $update_tenant_package_body);
@@ -7387,10 +7727,12 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_tenant_user_body = new \FastComments\Client\Model\UpdateTenantUserBody(); // \FastComments\Client\Model\UpdateTenantUserBody
 $update_comments = 'update_comments_example'; // string
+
 
 try {
     $result = $apiInstance->updateTenantUser($tenant_id, $id, $update_tenant_user_body, $update_comments);
@@ -7453,9 +7795,11 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+
 $tenant_id = 'tenant_id_example'; // string
 $id = 'id_example'; // string
 $update_user_badge_params = new \FastComments\Client\Model\UpdateUserBadgeParams(); // \FastComments\Client\Model\UpdateUserBadgeParams
+
 
 try {
     $result = $apiInstance->updateUserBadge($tenant_id, $id, $update_user_badge_params);

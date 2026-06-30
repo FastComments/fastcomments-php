@@ -1,4 +1,4 @@
-# # CommentLogType
+# CommentLogType
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetSSOUserByIdAPIResponse
+# GetSSOUserByIdAPIResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # CheckBlockedCommentsResponse
+# CheckBlockedCommentsResponse
 
 ## Properties
 

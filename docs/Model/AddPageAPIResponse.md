@@ -1,4 +1,4 @@
-# # AddPageAPIResponse
+# AddPageAPIResponse
 
 ## Properties
 

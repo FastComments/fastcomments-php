@@ -1,4 +1,4 @@
-# # GetVotesResponse
+# GetVotesResponse
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # GetUserResponse
+# GetUserResponse
 
 ## Properties
 

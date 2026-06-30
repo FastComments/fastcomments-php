@@ -1,4 +1,4 @@
-# # CreateFeedPostParams
+# CreateFeedPostParams
 
 ## Properties
 

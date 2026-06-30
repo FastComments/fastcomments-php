@@ -1,4 +1,4 @@
-# # UploadImageResponse
+# UploadImageResponse
 
 ## Properties
 

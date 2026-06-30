@@ -1,4 +1,4 @@
-# # ModerationAPIChildCommentsResponse
+# ModerationAPIChildCommentsResponse
 
 ## Properties
 

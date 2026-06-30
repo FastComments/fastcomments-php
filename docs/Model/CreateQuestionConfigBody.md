@@ -1,4 +1,4 @@
-# # CreateQuestionConfigBody
+# CreateQuestionConfigBody
 
 ## Properties
 

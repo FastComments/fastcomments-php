@@ -1,4 +1,4 @@
-# # QuestionRenderingType
+# QuestionRenderingType
 
 ## Properties
 
