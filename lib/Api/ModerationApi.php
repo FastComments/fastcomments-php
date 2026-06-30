@@ -259,9 +259,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  string $vote_id vote_id (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $broadcast_id broadcast_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteModerationVote'] to see the possible values for this operation
@@ -270,9 +270,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\VoteDeleteResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteModerationVote($comment_id, $vote_id, array $options = [])
+    public function deleteModerationVote($tenant_id, $comment_id, $vote_id, array $options = [])
     {
-        list($response) = $this->deleteModerationVoteWithHttpInfo($comment_id, $vote_id, $options);
+        list($response) = $this->deleteModerationVoteWithHttpInfo($tenant_id, $comment_id, $vote_id, $options);
         return $response;
     }
 
@@ -283,9 +283,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $vote_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteModerationVote'] to see the possible values for this operation
@@ -294,9 +294,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\VoteDeleteResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteModerationVoteWithHttpInfo($comment_id, $vote_id, array $options = [])
+    public function deleteModerationVoteWithHttpInfo($tenant_id, $comment_id, $vote_id, array $options = [])
     {
-        $request = $this->deleteModerationVoteRequest($comment_id, $vote_id, $options);
+        $request = $this->deleteModerationVoteRequest($tenant_id, $comment_id, $vote_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -388,9 +388,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $vote_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteModerationVote'] to see the possible values for this operation
@@ -398,9 +398,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteModerationVoteAsync($comment_id, $vote_id, array $options = [])
+    public function deleteModerationVoteAsync($tenant_id, $comment_id, $vote_id, array $options = [])
     {
-        return $this->deleteModerationVoteAsyncWithHttpInfo($comment_id, $vote_id, $options)
+        return $this->deleteModerationVoteAsyncWithHttpInfo($tenant_id, $comment_id, $vote_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -415,9 +415,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $vote_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteModerationVote'] to see the possible values for this operation
@@ -425,10 +425,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteModerationVoteAsyncWithHttpInfo($comment_id, $vote_id, array $options = [])
+    public function deleteModerationVoteAsyncWithHttpInfo($tenant_id, $comment_id, $vote_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\VoteDeleteResponse';
-        $request = $this->deleteModerationVoteRequest($comment_id, $vote_id, $options);
+        $request = $this->deleteModerationVoteRequest($tenant_id, $comment_id, $vote_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -471,9 +471,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string $vote_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteModerationVote'] to see the possible values for this operation
@@ -481,14 +481,20 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteModerationVoteRequest($comment_id, $vote_id, array $options = [])
+    public function deleteModerationVoteRequest($tenant_id, $comment_id, $vote_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['deleteModerationVote'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling deleteModerationVote'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -506,8 +512,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/vote/{commentId}/{voteId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/vote/{commentId}/{voteId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -521,7 +526,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -621,6 +626,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  float|null $page page (optional)
      * @param  float|null $count count (optional)
      * @param  string|null $text_search text_search (optional)
@@ -629,7 +635,6 @@ class ModerationApi
      * @param  string|null $search_filters search_filters (optional)
      * @param  string|null $sorts sorts (optional)
      * @param  bool|null $demo demo (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiComments'] to see the possible values for this operation
      *
@@ -637,9 +642,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationAPIGetCommentsResponse|\FastComments\Client\Model\APIError
      */
-    public function getApiComments(array $options = [])
+    public function getApiComments($tenant_id, array $options = [])
     {
-        list($response) = $this->getApiCommentsWithHttpInfo($options);
+        list($response) = $this->getApiCommentsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -650,6 +655,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  float|null $page (optional)
      * @param  float|null $count (optional)
      * @param  string|null $text_search (optional)
@@ -658,7 +664,6 @@ class ModerationApi
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
      * @param  bool|null $demo (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiComments'] to see the possible values for this operation
      *
@@ -666,9 +671,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationAPIGetCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiCommentsWithHttpInfo(array $options = [])
+    public function getApiCommentsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getApiCommentsRequest($options);
+        $request = $this->getApiCommentsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -760,6 +765,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  float|null $page (optional)
      * @param  float|null $count (optional)
      * @param  string|null $text_search (optional)
@@ -768,16 +774,15 @@ class ModerationApi
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
      * @param  bool|null $demo (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiComments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiCommentsAsync(array $options = [])
+    public function getApiCommentsAsync($tenant_id, array $options = [])
     {
-        return $this->getApiCommentsAsyncWithHttpInfo($options)
+        return $this->getApiCommentsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -792,6 +797,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  float|null $page (optional)
      * @param  float|null $count (optional)
      * @param  string|null $text_search (optional)
@@ -800,17 +806,16 @@ class ModerationApi
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
      * @param  bool|null $demo (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiComments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiCommentsAsyncWithHttpInfo(array $options = [])
+    public function getApiCommentsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationAPIGetCommentsResponse';
-        $request = $this->getApiCommentsRequest($options);
+        $request = $this->getApiCommentsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -853,6 +858,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  float|null $page (optional)
      * @param  float|null $count (optional)
      * @param  string|null $text_search (optional)
@@ -861,14 +867,13 @@ class ModerationApi
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
      * @param  bool|null $demo (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiComments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiCommentsRequest(array $options = [])
+    public function getApiCommentsRequest($tenant_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $page = array_key_exists('page', $options) ? $options['page'] : null;
@@ -879,10 +884,15 @@ class ModerationApi
         $search_filters = array_key_exists('search_filters', $options) ? $options['search_filters'] : null;
         $sorts = array_key_exists('sorts', $options) ? $options['sorts'] : null;
         $demo = array_key_exists('demo', $options) ? $options['demo'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['getApiComments'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getApiComments'
+            );
+        }
 
 
 
@@ -894,13 +904,22 @@ class ModerationApi
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/api/comments';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/api/comments';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $page,
@@ -969,15 +988,6 @@ class ModerationApi
             $demo,
             'demo', // param base name
             'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
-            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1055,8 +1065,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $batch_job_id batch_job_id (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExportStatus'] to see the possible values for this operation
      *
@@ -1064,9 +1074,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationExportStatusResponse|\FastComments\Client\Model\APIError
      */
-    public function getApiExportStatus(array $options = [])
+    public function getApiExportStatus($tenant_id, array $options = [])
     {
-        list($response) = $this->getApiExportStatusWithHttpInfo($options);
+        list($response) = $this->getApiExportStatusWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -1077,8 +1087,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $batch_job_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExportStatus'] to see the possible values for this operation
      *
@@ -1086,9 +1096,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationExportStatusResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiExportStatusWithHttpInfo(array $options = [])
+    public function getApiExportStatusWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getApiExportStatusRequest($options);
+        $request = $this->getApiExportStatusRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1180,17 +1190,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $batch_job_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExportStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiExportStatusAsync(array $options = [])
+    public function getApiExportStatusAsync($tenant_id, array $options = [])
     {
-        return $this->getApiExportStatusAsyncWithHttpInfo($options)
+        return $this->getApiExportStatusAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1205,18 +1215,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $batch_job_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExportStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiExportStatusAsyncWithHttpInfo(array $options = [])
+    public function getApiExportStatusAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationExportStatusResponse';
-        $request = $this->getApiExportStatusRequest($options);
+        $request = $this->getApiExportStatusRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1259,27 +1269,32 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $batch_job_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExportStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiExportStatusRequest(array $options = [])
+    public function getApiExportStatusRequest($tenant_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $batch_job_id = array_key_exists('batch_job_id', $options) ? $options['batch_job_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['getApiExportStatus'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getApiExportStatus'
+            );
+        }
 
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/api/export/status';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/api/export/status';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1288,17 +1303,17 @@ class ModerationApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $batch_job_id,
-            'batchJobId', // param base name
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
+            $batch_job_id,
+            'batchJobId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1377,13 +1392,13 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $text_search text_search (optional)
      * @param  string|null $by_ip_from_comment by_ip_from_comment (optional)
      * @param  string|null $filters filters (optional)
      * @param  string|null $search_filters search_filters (optional)
      * @param  string|null $after_id after_id (optional)
      * @param  bool|null $demo demo (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiIds'] to see the possible values for this operation
      *
@@ -1391,9 +1406,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationAPIGetCommentIdsResponse|\FastComments\Client\Model\APIError
      */
-    public function getApiIds(array $options = [])
+    public function getApiIds($tenant_id, array $options = [])
     {
-        list($response) = $this->getApiIdsWithHttpInfo($options);
+        list($response) = $this->getApiIdsWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -1404,13 +1419,13 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
      * @param  string|null $after_id (optional)
      * @param  bool|null $demo (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiIds'] to see the possible values for this operation
      *
@@ -1418,9 +1433,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationAPIGetCommentIdsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiIdsWithHttpInfo(array $options = [])
+    public function getApiIdsWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getApiIdsRequest($options);
+        $request = $this->getApiIdsRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1512,22 +1527,22 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
      * @param  string|null $after_id (optional)
      * @param  bool|null $demo (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiIds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiIdsAsync(array $options = [])
+    public function getApiIdsAsync($tenant_id, array $options = [])
     {
-        return $this->getApiIdsAsyncWithHttpInfo($options)
+        return $this->getApiIdsAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1542,23 +1557,23 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
      * @param  string|null $after_id (optional)
      * @param  bool|null $demo (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiIds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiIdsAsyncWithHttpInfo(array $options = [])
+    public function getApiIdsAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationAPIGetCommentIdsResponse';
-        $request = $this->getApiIdsRequest($options);
+        $request = $this->getApiIdsRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1601,20 +1616,20 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
      * @param  string|null $after_id (optional)
      * @param  bool|null $demo (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiIds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiIdsRequest(array $options = [])
+    public function getApiIdsRequest($tenant_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $text_search = array_key_exists('text_search', $options) ? $options['text_search'] : null;
@@ -1623,10 +1638,15 @@ class ModerationApi
         $search_filters = array_key_exists('search_filters', $options) ? $options['search_filters'] : null;
         $after_id = array_key_exists('after_id', $options) ? $options['after_id'] : null;
         $demo = array_key_exists('demo', $options) ? $options['demo'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['getApiIds'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getApiIds'
+            );
+        }
 
 
 
@@ -1636,13 +1656,22 @@ class ModerationApi
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/api/ids';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/api/ids';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $text_search,
@@ -1693,15 +1722,6 @@ class ModerationApi
             $demo,
             'demo', // param base name
             'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
-            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1779,8 +1799,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBanUsersFromComment'] to see the possible values for this operation
      *
@@ -1788,9 +1808,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetBannedUsersFromCommentResponse|\FastComments\Client\Model\APIError
      */
-    public function getBanUsersFromComment($comment_id, array $options = [])
+    public function getBanUsersFromComment($tenant_id, $comment_id, $sso = null)
     {
-        list($response) = $this->getBanUsersFromCommentWithHttpInfo($comment_id, $options);
+        list($response) = $this->getBanUsersFromCommentWithHttpInfo($tenant_id, $comment_id, $sso);
         return $response;
     }
 
@@ -1801,8 +1821,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBanUsersFromComment'] to see the possible values for this operation
      *
@@ -1810,9 +1830,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetBannedUsersFromCommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getBanUsersFromCommentWithHttpInfo($comment_id, array $options = [])
+    public function getBanUsersFromCommentWithHttpInfo($tenant_id, $comment_id, $sso = null)
     {
-        $request = $this->getBanUsersFromCommentRequest($comment_id, $options);
+        $request = $this->getBanUsersFromCommentRequest($tenant_id, $comment_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1904,17 +1924,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBanUsersFromComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBanUsersFromCommentAsync($comment_id, array $options = [])
+    public function getBanUsersFromCommentAsync($tenant_id, $comment_id, $sso = null)
     {
-        return $this->getBanUsersFromCommentAsyncWithHttpInfo($comment_id, $options)
+        return $this->getBanUsersFromCommentAsyncWithHttpInfo($tenant_id, $comment_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1929,18 +1949,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBanUsersFromComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBanUsersFromCommentAsyncWithHttpInfo($comment_id, array $options = [])
+    public function getBanUsersFromCommentAsyncWithHttpInfo($tenant_id, $comment_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\GetBannedUsersFromCommentResponse';
-        $request = $this->getBanUsersFromCommentRequest($comment_id, $options);
+        $request = $this->getBanUsersFromCommentRequest($tenant_id, $comment_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1983,21 +2003,25 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBanUsersFromComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getBanUsersFromCommentRequest($comment_id, array $options = [])
+    public function getBanUsersFromCommentRequest($tenant_id, $comment_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['getBanUsersFromComment'][0];
+        $contentType = self::contentTypes['getBanUsersFromComment'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getBanUsersFromComment'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -2007,8 +2031,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/ban-users/from-comment/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/ban-users/from-comment/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2022,7 +2045,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2105,8 +2128,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentBanStatus'] to see the possible values for this operation
      *
@@ -2114,9 +2137,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetCommentBanStatusResponse|\FastComments\Client\Model\APIError
      */
-    public function getCommentBanStatus($comment_id, array $options = [])
+    public function getCommentBanStatus($tenant_id, $comment_id, $sso = null)
     {
-        list($response) = $this->getCommentBanStatusWithHttpInfo($comment_id, $options);
+        list($response) = $this->getCommentBanStatusWithHttpInfo($tenant_id, $comment_id, $sso);
         return $response;
     }
 
@@ -2127,8 +2150,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentBanStatus'] to see the possible values for this operation
      *
@@ -2136,9 +2159,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetCommentBanStatusResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCommentBanStatusWithHttpInfo($comment_id, array $options = [])
+    public function getCommentBanStatusWithHttpInfo($tenant_id, $comment_id, $sso = null)
     {
-        $request = $this->getCommentBanStatusRequest($comment_id, $options);
+        $request = $this->getCommentBanStatusRequest($tenant_id, $comment_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2230,17 +2253,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentBanStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentBanStatusAsync($comment_id, array $options = [])
+    public function getCommentBanStatusAsync($tenant_id, $comment_id, $sso = null)
     {
-        return $this->getCommentBanStatusAsyncWithHttpInfo($comment_id, $options)
+        return $this->getCommentBanStatusAsyncWithHttpInfo($tenant_id, $comment_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2255,18 +2278,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentBanStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentBanStatusAsyncWithHttpInfo($comment_id, array $options = [])
+    public function getCommentBanStatusAsyncWithHttpInfo($tenant_id, $comment_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\GetCommentBanStatusResponse';
-        $request = $this->getCommentBanStatusRequest($comment_id, $options);
+        $request = $this->getCommentBanStatusRequest($tenant_id, $comment_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2309,21 +2332,25 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentBanStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCommentBanStatusRequest($comment_id, array $options = [])
+    public function getCommentBanStatusRequest($tenant_id, $comment_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['getCommentBanStatus'][0];
+        $contentType = self::contentTypes['getCommentBanStatus'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getCommentBanStatus'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -2333,8 +2360,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/get-comment-ban-status/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/get-comment-ban-status/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2348,7 +2374,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2431,8 +2457,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentChildren'] to see the possible values for this operation
      *
@@ -2440,9 +2466,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationAPIChildCommentsResponse|\FastComments\Client\Model\APIError
      */
-    public function getCommentChildren($comment_id, array $options = [])
+    public function getCommentChildren($tenant_id, $comment_id, $sso = null)
     {
-        list($response) = $this->getCommentChildrenWithHttpInfo($comment_id, $options);
+        list($response) = $this->getCommentChildrenWithHttpInfo($tenant_id, $comment_id, $sso);
         return $response;
     }
 
@@ -2453,8 +2479,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentChildren'] to see the possible values for this operation
      *
@@ -2462,9 +2488,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationAPIChildCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCommentChildrenWithHttpInfo($comment_id, array $options = [])
+    public function getCommentChildrenWithHttpInfo($tenant_id, $comment_id, $sso = null)
     {
-        $request = $this->getCommentChildrenRequest($comment_id, $options);
+        $request = $this->getCommentChildrenRequest($tenant_id, $comment_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2556,17 +2582,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentChildren'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentChildrenAsync($comment_id, array $options = [])
+    public function getCommentChildrenAsync($tenant_id, $comment_id, $sso = null)
     {
-        return $this->getCommentChildrenAsyncWithHttpInfo($comment_id, $options)
+        return $this->getCommentChildrenAsyncWithHttpInfo($tenant_id, $comment_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2581,18 +2607,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentChildren'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCommentChildrenAsyncWithHttpInfo($comment_id, array $options = [])
+    public function getCommentChildrenAsyncWithHttpInfo($tenant_id, $comment_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\ModerationAPIChildCommentsResponse';
-        $request = $this->getCommentChildrenRequest($comment_id, $options);
+        $request = $this->getCommentChildrenRequest($tenant_id, $comment_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2635,21 +2661,25 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentChildren'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCommentChildrenRequest($comment_id, array $options = [])
+    public function getCommentChildrenRequest($tenant_id, $comment_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['getCommentChildren'][0];
+        $contentType = self::contentTypes['getCommentChildren'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getCommentChildren'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -2659,8 +2689,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/comment-children/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/comment-children/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2674,7 +2703,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2757,12 +2786,12 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $text_search text_search (optional)
      * @param  string|null $by_ip_from_comment by_ip_from_comment (optional)
      * @param  string|null $filter filter (optional)
      * @param  string|null $search_filters search_filters (optional)
      * @param  bool|null $demo demo (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCount'] to see the possible values for this operation
      *
@@ -2770,9 +2799,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationAPICountCommentsResponse|\FastComments\Client\Model\APIError
      */
-    public function getCount(array $options = [])
+    public function getCount($tenant_id, array $options = [])
     {
-        list($response) = $this->getCountWithHttpInfo($options);
+        list($response) = $this->getCountWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -2783,12 +2812,12 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
      * @param  string|null $filter (optional)
      * @param  string|null $search_filters (optional)
      * @param  bool|null $demo (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCount'] to see the possible values for this operation
      *
@@ -2796,9 +2825,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationAPICountCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCountWithHttpInfo(array $options = [])
+    public function getCountWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getCountRequest($options);
+        $request = $this->getCountRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2890,21 +2919,21 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
      * @param  string|null $filter (optional)
      * @param  string|null $search_filters (optional)
      * @param  bool|null $demo (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCountAsync(array $options = [])
+    public function getCountAsync($tenant_id, array $options = [])
     {
-        return $this->getCountAsyncWithHttpInfo($options)
+        return $this->getCountAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2919,22 +2948,22 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
      * @param  string|null $filter (optional)
      * @param  string|null $search_filters (optional)
      * @param  bool|null $demo (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCountAsyncWithHttpInfo(array $options = [])
+    public function getCountAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationAPICountCommentsResponse';
-        $request = $this->getCountRequest($options);
+        $request = $this->getCountRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2977,19 +3006,19 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
      * @param  string|null $filter (optional)
      * @param  string|null $search_filters (optional)
      * @param  bool|null $demo (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCountRequest(array $options = [])
+    public function getCountRequest($tenant_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $text_search = array_key_exists('text_search', $options) ? $options['text_search'] : null;
@@ -2997,10 +3026,15 @@ class ModerationApi
         $filter = array_key_exists('filter', $options) ? $options['filter'] : null;
         $search_filters = array_key_exists('search_filters', $options) ? $options['search_filters'] : null;
         $demo = array_key_exists('demo', $options) ? $options['demo'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['getCount'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getCount'
+            );
+        }
 
 
 
@@ -3009,13 +3043,22 @@ class ModerationApi
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/count';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/count';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $text_search,
@@ -3057,15 +3100,6 @@ class ModerationApi
             $demo,
             'demo', // param base name
             'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
-            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -3143,7 +3177,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
-     * @param  string|null $tenant_id tenant_id (optional)
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCounts'] to see the possible values for this operation
      *
@@ -3151,9 +3185,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetBannedUsersCountResponse|\FastComments\Client\Model\APIError
      */
-    public function getCounts(array $options = [])
+    public function getCounts($tenant_id, $sso = null)
     {
-        list($response) = $this->getCountsWithHttpInfo($options);
+        list($response) = $this->getCountsWithHttpInfo($tenant_id, $sso);
         return $response;
     }
 
@@ -3164,7 +3198,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCounts'] to see the possible values for this operation
      *
@@ -3172,9 +3206,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetBannedUsersCountResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCountsWithHttpInfo(array $options = [])
+    public function getCountsWithHttpInfo($tenant_id, $sso = null)
     {
-        $request = $this->getCountsRequest($options);
+        $request = $this->getCountsRequest($tenant_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3266,16 +3300,16 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCountsAsync(array $options = [])
+    public function getCountsAsync($tenant_id, $sso = null)
     {
-        return $this->getCountsAsyncWithHttpInfo($options)
+        return $this->getCountsAsyncWithHttpInfo($tenant_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3290,17 +3324,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCountsAsyncWithHttpInfo(array $options = [])
+    public function getCountsAsyncWithHttpInfo($tenant_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\GetBannedUsersCountResponse';
-        $request = $this->getCountsRequest($options);
+        $request = $this->getCountsRequest($tenant_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3343,24 +3377,27 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCountsRequest(array $options = [])
+    public function getCountsRequest($tenant_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['getCounts'][0];
+        $contentType = self::contentTypes['getCounts'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getCounts'
+            );
+        }
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/banned-users/counts';
+        $resourcePath = '/auth/my-account/moderate-comments/banned-users/mod_api/counts';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3374,7 +3411,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -3449,8 +3486,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLogs'] to see the possible values for this operation
      *
@@ -3458,9 +3495,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationAPIGetLogsResponse|\FastComments\Client\Model\APIError
      */
-    public function getLogs($comment_id, array $options = [])
+    public function getLogs($tenant_id, $comment_id, $sso = null)
     {
-        list($response) = $this->getLogsWithHttpInfo($comment_id, $options);
+        list($response) = $this->getLogsWithHttpInfo($tenant_id, $comment_id, $sso);
         return $response;
     }
 
@@ -3471,8 +3508,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLogs'] to see the possible values for this operation
      *
@@ -3480,9 +3517,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationAPIGetLogsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLogsWithHttpInfo($comment_id, array $options = [])
+    public function getLogsWithHttpInfo($tenant_id, $comment_id, $sso = null)
     {
-        $request = $this->getLogsRequest($comment_id, $options);
+        $request = $this->getLogsRequest($tenant_id, $comment_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3574,17 +3611,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLogs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLogsAsync($comment_id, array $options = [])
+    public function getLogsAsync($tenant_id, $comment_id, $sso = null)
     {
-        return $this->getLogsAsyncWithHttpInfo($comment_id, $options)
+        return $this->getLogsAsyncWithHttpInfo($tenant_id, $comment_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3599,18 +3636,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLogs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLogsAsyncWithHttpInfo($comment_id, array $options = [])
+    public function getLogsAsyncWithHttpInfo($tenant_id, $comment_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\ModerationAPIGetLogsResponse';
-        $request = $this->getLogsRequest($comment_id, $options);
+        $request = $this->getLogsRequest($tenant_id, $comment_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3653,21 +3690,25 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLogs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getLogsRequest($comment_id, array $options = [])
+    public function getLogsRequest($tenant_id, $comment_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['getLogs'][0];
+        $contentType = self::contentTypes['getLogs'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getLogs'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -3677,8 +3718,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/logs/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/logs/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3692,7 +3732,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -3775,7 +3815,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
-     * @param  string|null $tenant_id tenant_id (optional)
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadges'] to see the possible values for this operation
      *
@@ -3783,9 +3823,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetTenantManualBadgesResponse|\FastComments\Client\Model\APIError
      */
-    public function getManualBadges(array $options = [])
+    public function getManualBadges($tenant_id, $sso = null)
     {
-        list($response) = $this->getManualBadgesWithHttpInfo($options);
+        list($response) = $this->getManualBadgesWithHttpInfo($tenant_id, $sso);
         return $response;
     }
 
@@ -3796,7 +3836,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadges'] to see the possible values for this operation
      *
@@ -3804,9 +3844,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetTenantManualBadgesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getManualBadgesWithHttpInfo(array $options = [])
+    public function getManualBadgesWithHttpInfo($tenant_id, $sso = null)
     {
-        $request = $this->getManualBadgesRequest($options);
+        $request = $this->getManualBadgesRequest($tenant_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3898,16 +3938,16 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadges'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getManualBadgesAsync(array $options = [])
+    public function getManualBadgesAsync($tenant_id, $sso = null)
     {
-        return $this->getManualBadgesAsyncWithHttpInfo($options)
+        return $this->getManualBadgesAsyncWithHttpInfo($tenant_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3922,17 +3962,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadges'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getManualBadgesAsyncWithHttpInfo(array $options = [])
+    public function getManualBadgesAsyncWithHttpInfo($tenant_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\GetTenantManualBadgesResponse';
-        $request = $this->getManualBadgesRequest($options);
+        $request = $this->getManualBadgesRequest($tenant_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3975,24 +4015,27 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadges'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getManualBadgesRequest(array $options = [])
+    public function getManualBadgesRequest($tenant_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['getManualBadges'][0];
+        $contentType = self::contentTypes['getManualBadges'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getManualBadges'
+            );
+        }
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/get-manual-badges';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/get-manual-badges';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4006,7 +4049,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -4081,9 +4124,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $badges_user_id badges_user_id (optional)
      * @param  string|null $comment_id comment_id (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadgesForUser'] to see the possible values for this operation
      *
@@ -4091,9 +4134,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetUserManualBadgesResponse|\FastComments\Client\Model\APIError
      */
-    public function getManualBadgesForUser(array $options = [])
+    public function getManualBadgesForUser($tenant_id, array $options = [])
     {
-        list($response) = $this->getManualBadgesForUserWithHttpInfo($options);
+        list($response) = $this->getManualBadgesForUserWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -4104,9 +4147,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $badges_user_id (optional)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadgesForUser'] to see the possible values for this operation
      *
@@ -4114,9 +4157,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetUserManualBadgesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getManualBadgesForUserWithHttpInfo(array $options = [])
+    public function getManualBadgesForUserWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getManualBadgesForUserRequest($options);
+        $request = $this->getManualBadgesForUserRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4208,18 +4251,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $badges_user_id (optional)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadgesForUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getManualBadgesForUserAsync(array $options = [])
+    public function getManualBadgesForUserAsync($tenant_id, array $options = [])
     {
-        return $this->getManualBadgesForUserAsyncWithHttpInfo($options)
+        return $this->getManualBadgesForUserAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4234,19 +4277,19 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $badges_user_id (optional)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadgesForUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getManualBadgesForUserAsyncWithHttpInfo(array $options = [])
+    public function getManualBadgesForUserAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetUserManualBadgesResponse';
-        $request = $this->getManualBadgesForUserRequest($options);
+        $request = $this->getManualBadgesForUserRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4289,36 +4332,50 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $badges_user_id (optional)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getManualBadgesForUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getManualBadgesForUserRequest(array $options = [])
+    public function getManualBadgesForUserRequest($tenant_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $badges_user_id = array_key_exists('badges_user_id', $options) ? $options['badges_user_id'] : null;
         $comment_id = array_key_exists('comment_id', $options) ? $options['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['getManualBadgesForUser'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getManualBadgesForUser'
+            );
+        }
 
 
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/get-manual-badges-for-user';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/get-manual-badges-for-user';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $badges_user_id,
@@ -4332,15 +4389,6 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $comment_id,
             'commentId', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -4419,10 +4467,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $include_email include_email (optional)
      * @param  bool|null $include_ip include_ip (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationComment'] to see the possible values for this operation
      *
@@ -4430,9 +4478,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationAPICommentResponse|\FastComments\Client\Model\APIError
      */
-    public function getModerationComment($comment_id, array $options = [])
+    public function getModerationComment($tenant_id, $comment_id, array $options = [])
     {
-        list($response) = $this->getModerationCommentWithHttpInfo($comment_id, $options);
+        list($response) = $this->getModerationCommentWithHttpInfo($tenant_id, $comment_id, $options);
         return $response;
     }
 
@@ -4443,10 +4491,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $include_email (optional)
      * @param  bool|null $include_ip (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationComment'] to see the possible values for this operation
      *
@@ -4454,9 +4502,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationAPICommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getModerationCommentWithHttpInfo($comment_id, array $options = [])
+    public function getModerationCommentWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
-        $request = $this->getModerationCommentRequest($comment_id, $options);
+        $request = $this->getModerationCommentRequest($tenant_id, $comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4548,19 +4596,19 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $include_email (optional)
      * @param  bool|null $include_ip (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModerationCommentAsync($comment_id, array $options = [])
+    public function getModerationCommentAsync($tenant_id, $comment_id, array $options = [])
     {
-        return $this->getModerationCommentAsyncWithHttpInfo($comment_id, $options)
+        return $this->getModerationCommentAsyncWithHttpInfo($tenant_id, $comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4575,20 +4623,20 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $include_email (optional)
      * @param  bool|null $include_ip (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModerationCommentAsyncWithHttpInfo($comment_id, array $options = [])
+    public function getModerationCommentAsyncWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationAPICommentResponse';
-        $request = $this->getModerationCommentRequest($comment_id, $options);
+        $request = $this->getModerationCommentRequest($tenant_id, $comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4631,25 +4679,31 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $include_email (optional)
      * @param  bool|null $include_ip (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getModerationCommentRequest($comment_id, array $options = [])
+    public function getModerationCommentRequest($tenant_id, $comment_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $include_email = array_key_exists('include_email', $options) ? $options['include_email'] : null;
         $include_ip = array_key_exists('include_ip', $options) ? $options['include_ip'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['getModerationComment'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getModerationComment'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -4661,14 +4715,22 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/comment/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/comment/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $include_email,
@@ -4683,15 +4745,6 @@ class ModerationApi
             $include_ip,
             'includeIP', // param base name
             'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
-            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -4777,8 +4830,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationCommentText'] to see the possible values for this operation
      *
@@ -4786,9 +4839,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetCommentTextResponse|\FastComments\Client\Model\APIError
      */
-    public function getModerationCommentText($comment_id, array $options = [])
+    public function getModerationCommentText($tenant_id, $comment_id, $sso = null)
     {
-        list($response) = $this->getModerationCommentTextWithHttpInfo($comment_id, $options);
+        list($response) = $this->getModerationCommentTextWithHttpInfo($tenant_id, $comment_id, $sso);
         return $response;
     }
 
@@ -4799,8 +4852,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationCommentText'] to see the possible values for this operation
      *
@@ -4808,9 +4861,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetCommentTextResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getModerationCommentTextWithHttpInfo($comment_id, array $options = [])
+    public function getModerationCommentTextWithHttpInfo($tenant_id, $comment_id, $sso = null)
     {
-        $request = $this->getModerationCommentTextRequest($comment_id, $options);
+        $request = $this->getModerationCommentTextRequest($tenant_id, $comment_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4902,17 +4955,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationCommentText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModerationCommentTextAsync($comment_id, array $options = [])
+    public function getModerationCommentTextAsync($tenant_id, $comment_id, $sso = null)
     {
-        return $this->getModerationCommentTextAsyncWithHttpInfo($comment_id, $options)
+        return $this->getModerationCommentTextAsyncWithHttpInfo($tenant_id, $comment_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4927,18 +4980,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationCommentText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getModerationCommentTextAsyncWithHttpInfo($comment_id, array $options = [])
+    public function getModerationCommentTextAsyncWithHttpInfo($tenant_id, $comment_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\GetCommentTextResponse';
-        $request = $this->getModerationCommentTextRequest($comment_id, $options);
+        $request = $this->getModerationCommentTextRequest($tenant_id, $comment_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4981,21 +5034,25 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getModerationCommentText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getModerationCommentTextRequest($comment_id, array $options = [])
+    public function getModerationCommentTextRequest($tenant_id, $comment_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['getModerationCommentText'][0];
+        $contentType = self::contentTypes['getModerationCommentText'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getModerationCommentText'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -5005,8 +5062,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/get-comment-text/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/get-comment-text/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5020,7 +5076,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -5103,11 +5159,11 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $include_by_user_id_and_email include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip include_by_ip (optional)
      * @param  bool|null $include_by_email_domain include_by_email_domain (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreBanSummary'] to see the possible values for this operation
      *
@@ -5115,9 +5171,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\PreBanSummary|\FastComments\Client\Model\APIError
      */
-    public function getPreBanSummary($comment_id, array $options = [])
+    public function getPreBanSummary($tenant_id, $comment_id, array $options = [])
     {
-        list($response) = $this->getPreBanSummaryWithHttpInfo($comment_id, $options);
+        list($response) = $this->getPreBanSummaryWithHttpInfo($tenant_id, $comment_id, $options);
         return $response;
     }
 
@@ -5128,11 +5184,11 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreBanSummary'] to see the possible values for this operation
      *
@@ -5140,9 +5196,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\PreBanSummary|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPreBanSummaryWithHttpInfo($comment_id, array $options = [])
+    public function getPreBanSummaryWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
-        $request = $this->getPreBanSummaryRequest($comment_id, $options);
+        $request = $this->getPreBanSummaryRequest($tenant_id, $comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5234,20 +5290,20 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreBanSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPreBanSummaryAsync($comment_id, array $options = [])
+    public function getPreBanSummaryAsync($tenant_id, $comment_id, array $options = [])
     {
-        return $this->getPreBanSummaryAsyncWithHttpInfo($comment_id, $options)
+        return $this->getPreBanSummaryAsyncWithHttpInfo($tenant_id, $comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5262,21 +5318,21 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreBanSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPreBanSummaryAsyncWithHttpInfo($comment_id, array $options = [])
+    public function getPreBanSummaryAsyncWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\PreBanSummary';
-        $request = $this->getPreBanSummaryRequest($comment_id, $options);
+        $request = $this->getPreBanSummaryRequest($tenant_id, $comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5319,27 +5375,33 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreBanSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPreBanSummaryRequest($comment_id, array $options = [])
+    public function getPreBanSummaryRequest($tenant_id, $comment_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $include_by_user_id_and_email = array_key_exists('include_by_user_id_and_email', $options) ? $options['include_by_user_id_and_email'] : null;
         $include_by_ip = array_key_exists('include_by_ip', $options) ? $options['include_by_ip'] : null;
         $include_by_email_domain = array_key_exists('include_by_email_domain', $options) ? $options['include_by_email_domain'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['getPreBanSummary'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getPreBanSummary'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -5352,14 +5414,22 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/pre-ban-summary/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/pre-ban-summary/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $include_by_user_id_and_email,
@@ -5383,15 +5453,6 @@ class ModerationApi
             $include_by_email_domain,
             'includeByEmailDomain', // param base name
             'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
-            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -5477,10 +5538,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $value value (optional)
      * @param  string|null $filters filters (optional)
      * @param  string|null $search_filters search_filters (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchCommentsSummary'] to see the possible values for this operation
      *
@@ -5488,9 +5549,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationCommentSearchResponse|\FastComments\Client\Model\APIError
      */
-    public function getSearchCommentsSummary(array $options = [])
+    public function getSearchCommentsSummary($tenant_id, array $options = [])
     {
-        list($response) = $this->getSearchCommentsSummaryWithHttpInfo($options);
+        list($response) = $this->getSearchCommentsSummaryWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -5501,10 +5562,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchCommentsSummary'] to see the possible values for this operation
      *
@@ -5512,9 +5573,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationCommentSearchResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchCommentsSummaryWithHttpInfo(array $options = [])
+    public function getSearchCommentsSummaryWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getSearchCommentsSummaryRequest($options);
+        $request = $this->getSearchCommentsSummaryRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5606,19 +5667,19 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchCommentsSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchCommentsSummaryAsync(array $options = [])
+    public function getSearchCommentsSummaryAsync($tenant_id, array $options = [])
     {
-        return $this->getSearchCommentsSummaryAsyncWithHttpInfo($options)
+        return $this->getSearchCommentsSummaryAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5633,20 +5694,20 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchCommentsSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchCommentsSummaryAsyncWithHttpInfo(array $options = [])
+    public function getSearchCommentsSummaryAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationCommentSearchResponse';
-        $request = $this->getSearchCommentsSummaryRequest($options);
+        $request = $this->getSearchCommentsSummaryRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5689,39 +5750,53 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchCommentsSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchCommentsSummaryRequest(array $options = [])
+    public function getSearchCommentsSummaryRequest($tenant_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $value = array_key_exists('value', $options) ? $options['value'] : null;
         $filters = array_key_exists('filters', $options) ? $options['filters'] : null;
         $search_filters = array_key_exists('search_filters', $options) ? $options['search_filters'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['getSearchCommentsSummary'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getSearchCommentsSummary'
+            );
+        }
 
 
 
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/search/comments/summary';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/search/comments/summary';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $value,
@@ -5744,15 +5819,6 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $search_filters,
             'searchFilters', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -5831,8 +5897,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $value value (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchPages'] to see the possible values for this operation
      *
@@ -5840,9 +5906,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationPageSearchResponse|\FastComments\Client\Model\APIError
      */
-    public function getSearchPages(array $options = [])
+    public function getSearchPages($tenant_id, array $options = [])
     {
-        list($response) = $this->getSearchPagesWithHttpInfo($options);
+        list($response) = $this->getSearchPagesWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -5853,8 +5919,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchPages'] to see the possible values for this operation
      *
@@ -5862,9 +5928,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationPageSearchResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchPagesWithHttpInfo(array $options = [])
+    public function getSearchPagesWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getSearchPagesRequest($options);
+        $request = $this->getSearchPagesRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5956,17 +6022,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchPages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchPagesAsync(array $options = [])
+    public function getSearchPagesAsync($tenant_id, array $options = [])
     {
-        return $this->getSearchPagesAsyncWithHttpInfo($options)
+        return $this->getSearchPagesAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5981,18 +6047,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchPages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchPagesAsyncWithHttpInfo(array $options = [])
+    public function getSearchPagesAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationPageSearchResponse';
-        $request = $this->getSearchPagesRequest($options);
+        $request = $this->getSearchPagesRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6035,27 +6101,32 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchPages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchPagesRequest(array $options = [])
+    public function getSearchPagesRequest($tenant_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $value = array_key_exists('value', $options) ? $options['value'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['getSearchPages'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getSearchPages'
+            );
+        }
 
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/search/pages';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/search/pages';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6064,17 +6135,17 @@ class ModerationApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $value,
-            'value', // param base name
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
+            $value,
+            'value', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -6153,8 +6224,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $value value (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSites'] to see the possible values for this operation
      *
@@ -6162,9 +6233,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationSiteSearchResponse|\FastComments\Client\Model\APIError
      */
-    public function getSearchSites(array $options = [])
+    public function getSearchSites($tenant_id, array $options = [])
     {
-        list($response) = $this->getSearchSitesWithHttpInfo($options);
+        list($response) = $this->getSearchSitesWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -6175,8 +6246,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSites'] to see the possible values for this operation
      *
@@ -6184,9 +6255,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationSiteSearchResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchSitesWithHttpInfo(array $options = [])
+    public function getSearchSitesWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getSearchSitesRequest($options);
+        $request = $this->getSearchSitesRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6278,17 +6349,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSites'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchSitesAsync(array $options = [])
+    public function getSearchSitesAsync($tenant_id, array $options = [])
     {
-        return $this->getSearchSitesAsyncWithHttpInfo($options)
+        return $this->getSearchSitesAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6303,18 +6374,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSites'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchSitesAsyncWithHttpInfo(array $options = [])
+    public function getSearchSitesAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationSiteSearchResponse';
-        $request = $this->getSearchSitesRequest($options);
+        $request = $this->getSearchSitesRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6357,27 +6428,32 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSites'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchSitesRequest(array $options = [])
+    public function getSearchSitesRequest($tenant_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $value = array_key_exists('value', $options) ? $options['value'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['getSearchSites'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getSearchSites'
+            );
+        }
 
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/search/sites';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/search/sites';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6386,17 +6462,17 @@ class ModerationApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $value,
-            'value', // param base name
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
+            $value,
+            'value', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -6475,8 +6551,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $text_search text_search (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSuggest'] to see the possible values for this operation
      *
@@ -6484,9 +6560,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationSuggestResponse|\FastComments\Client\Model\APIError
      */
-    public function getSearchSuggest(array $options = [])
+    public function getSearchSuggest($tenant_id, array $options = [])
     {
-        list($response) = $this->getSearchSuggestWithHttpInfo($options);
+        list($response) = $this->getSearchSuggestWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -6497,8 +6573,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSuggest'] to see the possible values for this operation
      *
@@ -6506,9 +6582,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationSuggestResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchSuggestWithHttpInfo(array $options = [])
+    public function getSearchSuggestWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getSearchSuggestRequest($options);
+        $request = $this->getSearchSuggestRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6600,17 +6676,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSuggest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchSuggestAsync(array $options = [])
+    public function getSearchSuggestAsync($tenant_id, array $options = [])
     {
-        return $this->getSearchSuggestAsyncWithHttpInfo($options)
+        return $this->getSearchSuggestAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6625,18 +6701,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSuggest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchSuggestAsyncWithHttpInfo(array $options = [])
+    public function getSearchSuggestAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationSuggestResponse';
-        $request = $this->getSearchSuggestRequest($options);
+        $request = $this->getSearchSuggestRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6679,27 +6755,32 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchSuggest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchSuggestRequest(array $options = [])
+    public function getSearchSuggestRequest($tenant_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $text_search = array_key_exists('text_search', $options) ? $options['text_search'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['getSearchSuggest'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getSearchSuggest'
+            );
+        }
 
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/search/suggest';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/search/suggest';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6708,17 +6789,17 @@ class ModerationApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $text_search,
-            'text-search', // param base name
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
+            $text_search,
+            'text-search', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -6797,8 +6878,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $value value (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchUsers'] to see the possible values for this operation
      *
@@ -6806,9 +6887,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationUserSearchResponse|\FastComments\Client\Model\APIError
      */
-    public function getSearchUsers(array $options = [])
+    public function getSearchUsers($tenant_id, array $options = [])
     {
-        list($response) = $this->getSearchUsersWithHttpInfo($options);
+        list($response) = $this->getSearchUsersWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -6819,8 +6900,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchUsers'] to see the possible values for this operation
      *
@@ -6828,9 +6909,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationUserSearchResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSearchUsersWithHttpInfo(array $options = [])
+    public function getSearchUsersWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getSearchUsersRequest($options);
+        $request = $this->getSearchUsersRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6922,17 +7003,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchUsersAsync(array $options = [])
+    public function getSearchUsersAsync($tenant_id, array $options = [])
     {
-        return $this->getSearchUsersAsyncWithHttpInfo($options)
+        return $this->getSearchUsersAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6947,18 +7028,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSearchUsersAsyncWithHttpInfo(array $options = [])
+    public function getSearchUsersAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationUserSearchResponse';
-        $request = $this->getSearchUsersRequest($options);
+        $request = $this->getSearchUsersRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7001,27 +7082,32 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $value (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSearchUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSearchUsersRequest(array $options = [])
+    public function getSearchUsersRequest($tenant_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $value = array_key_exists('value', $options) ? $options['value'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['getSearchUsers'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getSearchUsers'
+            );
+        }
 
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/search/users';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/search/users';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7030,17 +7116,17 @@ class ModerationApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $value,
-            'value', // param base name
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
+            $value,
+            'value', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -7119,8 +7205,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $user_id user_id (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrustFactor'] to see the possible values for this operation
      *
@@ -7128,9 +7214,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetUserTrustFactorResponse|\FastComments\Client\Model\APIError
      */
-    public function getTrustFactor(array $options = [])
+    public function getTrustFactor($tenant_id, array $options = [])
     {
-        list($response) = $this->getTrustFactorWithHttpInfo($options);
+        list($response) = $this->getTrustFactorWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -7141,8 +7227,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrustFactor'] to see the possible values for this operation
      *
@@ -7150,9 +7236,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetUserTrustFactorResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTrustFactorWithHttpInfo(array $options = [])
+    public function getTrustFactorWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getTrustFactorRequest($options);
+        $request = $this->getTrustFactorRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7244,17 +7330,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrustFactor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTrustFactorAsync(array $options = [])
+    public function getTrustFactorAsync($tenant_id, array $options = [])
     {
-        return $this->getTrustFactorAsyncWithHttpInfo($options)
+        return $this->getTrustFactorAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7269,18 +7355,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrustFactor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTrustFactorAsyncWithHttpInfo(array $options = [])
+    public function getTrustFactorAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetUserTrustFactorResponse';
-        $request = $this->getTrustFactorRequest($options);
+        $request = $this->getTrustFactorRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7323,27 +7409,32 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrustFactor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTrustFactorRequest(array $options = [])
+    public function getTrustFactorRequest($tenant_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['getTrustFactor'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getTrustFactor'
+            );
+        }
 
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/get-trust-factor';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/get-trust-factor';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7352,17 +7443,17 @@ class ModerationApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $user_id,
-            'userId', // param base name
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
+            $user_id,
+            'userId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -7441,7 +7532,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
-     * @param  string|null $tenant_id tenant_id (optional)
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBanPreference'] to see the possible values for this operation
      *
@@ -7449,9 +7540,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse|\FastComments\Client\Model\APIError
      */
-    public function getUserBanPreference(array $options = [])
+    public function getUserBanPreference($tenant_id, $sso = null)
     {
-        list($response) = $this->getUserBanPreferenceWithHttpInfo($options);
+        list($response) = $this->getUserBanPreferenceWithHttpInfo($tenant_id, $sso);
         return $response;
     }
 
@@ -7462,7 +7553,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBanPreference'] to see the possible values for this operation
      *
@@ -7470,9 +7561,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserBanPreferenceWithHttpInfo(array $options = [])
+    public function getUserBanPreferenceWithHttpInfo($tenant_id, $sso = null)
     {
-        $request = $this->getUserBanPreferenceRequest($options);
+        $request = $this->getUserBanPreferenceRequest($tenant_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7564,16 +7655,16 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBanPreference'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBanPreferenceAsync(array $options = [])
+    public function getUserBanPreferenceAsync($tenant_id, $sso = null)
     {
-        return $this->getUserBanPreferenceAsyncWithHttpInfo($options)
+        return $this->getUserBanPreferenceAsyncWithHttpInfo($tenant_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7588,17 +7679,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBanPreference'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserBanPreferenceAsyncWithHttpInfo(array $options = [])
+    public function getUserBanPreferenceAsyncWithHttpInfo($tenant_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse';
-        $request = $this->getUserBanPreferenceRequest($options);
+        $request = $this->getUserBanPreferenceRequest($tenant_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7641,24 +7732,27 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserBanPreference'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserBanPreferenceRequest(array $options = [])
+    public function getUserBanPreferenceRequest($tenant_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['getUserBanPreference'][0];
+        $contentType = self::contentTypes['getUserBanPreference'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getUserBanPreference'
+            );
+        }
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/user-ban-preference';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/user-ban-preference';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7672,7 +7766,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -7747,8 +7841,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $comment_id comment_id (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserInternalProfile'] to see the possible values for this operation
      *
@@ -7756,9 +7850,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\GetUserInternalProfileResponse|\FastComments\Client\Model\APIError
      */
-    public function getUserInternalProfile(array $options = [])
+    public function getUserInternalProfile($tenant_id, array $options = [])
     {
-        list($response) = $this->getUserInternalProfileWithHttpInfo($options);
+        list($response) = $this->getUserInternalProfileWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -7769,8 +7863,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserInternalProfile'] to see the possible values for this operation
      *
@@ -7778,9 +7872,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\GetUserInternalProfileResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserInternalProfileWithHttpInfo(array $options = [])
+    public function getUserInternalProfileWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->getUserInternalProfileRequest($options);
+        $request = $this->getUserInternalProfileRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7872,17 +7966,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserInternalProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserInternalProfileAsync(array $options = [])
+    public function getUserInternalProfileAsync($tenant_id, array $options = [])
     {
-        return $this->getUserInternalProfileAsyncWithHttpInfo($options)
+        return $this->getUserInternalProfileAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7897,18 +7991,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserInternalProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserInternalProfileAsyncWithHttpInfo(array $options = [])
+    public function getUserInternalProfileAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\GetUserInternalProfileResponse';
-        $request = $this->getUserInternalProfileRequest($options);
+        $request = $this->getUserInternalProfileRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7951,27 +8045,32 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserInternalProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserInternalProfileRequest(array $options = [])
+    public function getUserInternalProfileRequest($tenant_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $comment_id = array_key_exists('comment_id', $options) ? $options['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['getUserInternalProfile'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling getUserInternalProfile'
+            );
+        }
 
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/get-user-internal-profile';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/get-user-internal-profile';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7980,17 +8079,17 @@ class ModerationApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $comment_id,
-            'commentId', // param base name
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
+            $comment_id,
+            'commentId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -8069,9 +8168,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  \FastComments\Client\Model\AdjustCommentVotesParams $adjust_comment_votes_params adjust_comment_votes_params (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $broadcast_id broadcast_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAdjustCommentVotes'] to see the possible values for this operation
@@ -8080,9 +8179,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\AdjustVotesResponse|\FastComments\Client\Model\APIError
      */
-    public function postAdjustCommentVotes($comment_id, $adjust_comment_votes_params, array $options = [])
+    public function postAdjustCommentVotes($tenant_id, $comment_id, $adjust_comment_votes_params, array $options = [])
     {
-        list($response) = $this->postAdjustCommentVotesWithHttpInfo($comment_id, $adjust_comment_votes_params, $options);
+        list($response) = $this->postAdjustCommentVotesWithHttpInfo($tenant_id, $comment_id, $adjust_comment_votes_params, $options);
         return $response;
     }
 
@@ -8093,9 +8192,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\AdjustCommentVotesParams $adjust_comment_votes_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAdjustCommentVotes'] to see the possible values for this operation
@@ -8104,9 +8203,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\AdjustVotesResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postAdjustCommentVotesWithHttpInfo($comment_id, $adjust_comment_votes_params, array $options = [])
+    public function postAdjustCommentVotesWithHttpInfo($tenant_id, $comment_id, $adjust_comment_votes_params, array $options = [])
     {
-        $request = $this->postAdjustCommentVotesRequest($comment_id, $adjust_comment_votes_params, $options);
+        $request = $this->postAdjustCommentVotesRequest($tenant_id, $comment_id, $adjust_comment_votes_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8198,9 +8297,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\AdjustCommentVotesParams $adjust_comment_votes_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAdjustCommentVotes'] to see the possible values for this operation
@@ -8208,9 +8307,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postAdjustCommentVotesAsync($comment_id, $adjust_comment_votes_params, array $options = [])
+    public function postAdjustCommentVotesAsync($tenant_id, $comment_id, $adjust_comment_votes_params, array $options = [])
     {
-        return $this->postAdjustCommentVotesAsyncWithHttpInfo($comment_id, $adjust_comment_votes_params, $options)
+        return $this->postAdjustCommentVotesAsyncWithHttpInfo($tenant_id, $comment_id, $adjust_comment_votes_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8225,9 +8324,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\AdjustCommentVotesParams $adjust_comment_votes_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAdjustCommentVotes'] to see the possible values for this operation
@@ -8235,10 +8334,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postAdjustCommentVotesAsyncWithHttpInfo($comment_id, $adjust_comment_votes_params, array $options = [])
+    public function postAdjustCommentVotesAsyncWithHttpInfo($tenant_id, $comment_id, $adjust_comment_votes_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\AdjustVotesResponse';
-        $request = $this->postAdjustCommentVotesRequest($comment_id, $adjust_comment_votes_params, $options);
+        $request = $this->postAdjustCommentVotesRequest($tenant_id, $comment_id, $adjust_comment_votes_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8281,9 +8380,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\AdjustCommentVotesParams $adjust_comment_votes_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAdjustCommentVotes'] to see the possible values for this operation
@@ -8291,14 +8390,20 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postAdjustCommentVotesRequest($comment_id, $adjust_comment_votes_params, array $options = [])
+    public function postAdjustCommentVotesRequest($tenant_id, $comment_id, $adjust_comment_votes_params, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['postAdjustCommentVotes'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling postAdjustCommentVotes'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -8316,8 +8421,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/adjust-comment-votes/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/adjust-comment-votes/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -8331,7 +8435,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -8430,12 +8534,12 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $text_search text_search (optional)
      * @param  string|null $by_ip_from_comment by_ip_from_comment (optional)
      * @param  string|null $filters filters (optional)
      * @param  string|null $search_filters search_filters (optional)
      * @param  string|null $sorts sorts (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExport'] to see the possible values for this operation
      *
@@ -8443,9 +8547,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationExportResponse|\FastComments\Client\Model\APIError
      */
-    public function postApiExport(array $options = [])
+    public function postApiExport($tenant_id, array $options = [])
     {
-        list($response) = $this->postApiExportWithHttpInfo($options);
+        list($response) = $this->postApiExportWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -8456,12 +8560,12 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExport'] to see the possible values for this operation
      *
@@ -8469,9 +8573,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationExportResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postApiExportWithHttpInfo(array $options = [])
+    public function postApiExportWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->postApiExportRequest($options);
+        $request = $this->postApiExportRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8563,21 +8667,21 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postApiExportAsync(array $options = [])
+    public function postApiExportAsync($tenant_id, array $options = [])
     {
-        return $this->postApiExportAsyncWithHttpInfo($options)
+        return $this->postApiExportAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8592,22 +8696,22 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postApiExportAsyncWithHttpInfo(array $options = [])
+    public function postApiExportAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\ModerationExportResponse';
-        $request = $this->postApiExportRequest($options);
+        $request = $this->postApiExportRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8650,19 +8754,19 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $text_search (optional)
      * @param  string|null $by_ip_from_comment (optional)
      * @param  string|null $filters (optional)
      * @param  string|null $search_filters (optional)
      * @param  string|null $sorts (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postApiExportRequest(array $options = [])
+    public function postApiExportRequest($tenant_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $text_search = array_key_exists('text_search', $options) ? $options['text_search'] : null;
@@ -8670,10 +8774,15 @@ class ModerationApi
         $filters = array_key_exists('filters', $options) ? $options['filters'] : null;
         $search_filters = array_key_exists('search_filters', $options) ? $options['search_filters'] : null;
         $sorts = array_key_exists('sorts', $options) ? $options['sorts'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['postApiExport'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling postApiExport'
+            );
+        }
 
 
 
@@ -8682,13 +8791,22 @@ class ModerationApi
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/api/export';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/api/export';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $text_search,
@@ -8729,15 +8847,6 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sorts,
             'sorts', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -8816,6 +8925,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $ban_email ban_email (optional)
      * @param  bool|null $ban_email_domain ban_email_domain (optional)
@@ -8825,7 +8935,6 @@ class ModerationApi
      * @param  bool|null $is_shadow_ban is_shadow_ban (optional)
      * @param  string|null $update_id update_id (optional)
      * @param  string|null $ban_reason ban_reason (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserFromComment'] to see the possible values for this operation
      *
@@ -8833,9 +8942,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\BanUserFromCommentResult|\FastComments\Client\Model\APIError
      */
-    public function postBanUserFromComment($comment_id, array $options = [])
+    public function postBanUserFromComment($tenant_id, $comment_id, array $options = [])
     {
-        list($response) = $this->postBanUserFromCommentWithHttpInfo($comment_id, $options);
+        list($response) = $this->postBanUserFromCommentWithHttpInfo($tenant_id, $comment_id, $options);
         return $response;
     }
 
@@ -8846,6 +8955,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $ban_email (optional)
      * @param  bool|null $ban_email_domain (optional)
@@ -8855,7 +8965,6 @@ class ModerationApi
      * @param  bool|null $is_shadow_ban (optional)
      * @param  string|null $update_id (optional)
      * @param  string|null $ban_reason (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserFromComment'] to see the possible values for this operation
      *
@@ -8863,9 +8972,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\BanUserFromCommentResult|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postBanUserFromCommentWithHttpInfo($comment_id, array $options = [])
+    public function postBanUserFromCommentWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
-        $request = $this->postBanUserFromCommentRequest($comment_id, $options);
+        $request = $this->postBanUserFromCommentRequest($tenant_id, $comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8957,6 +9066,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $ban_email (optional)
      * @param  bool|null $ban_email_domain (optional)
@@ -8966,16 +9076,15 @@ class ModerationApi
      * @param  bool|null $is_shadow_ban (optional)
      * @param  string|null $update_id (optional)
      * @param  string|null $ban_reason (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserFromComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBanUserFromCommentAsync($comment_id, array $options = [])
+    public function postBanUserFromCommentAsync($tenant_id, $comment_id, array $options = [])
     {
-        return $this->postBanUserFromCommentAsyncWithHttpInfo($comment_id, $options)
+        return $this->postBanUserFromCommentAsyncWithHttpInfo($tenant_id, $comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8990,6 +9099,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $ban_email (optional)
      * @param  bool|null $ban_email_domain (optional)
@@ -8999,17 +9109,16 @@ class ModerationApi
      * @param  bool|null $is_shadow_ban (optional)
      * @param  string|null $update_id (optional)
      * @param  string|null $ban_reason (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserFromComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBanUserFromCommentAsyncWithHttpInfo($comment_id, array $options = [])
+    public function postBanUserFromCommentAsyncWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\BanUserFromCommentResult';
-        $request = $this->postBanUserFromCommentRequest($comment_id, $options);
+        $request = $this->postBanUserFromCommentRequest($tenant_id, $comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9052,6 +9161,7 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $ban_email (optional)
      * @param  bool|null $ban_email_domain (optional)
@@ -9061,14 +9171,13 @@ class ModerationApi
      * @param  bool|null $is_shadow_ban (optional)
      * @param  string|null $update_id (optional)
      * @param  string|null $ban_reason (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserFromComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postBanUserFromCommentRequest($comment_id, array $options = [])
+    public function postBanUserFromCommentRequest($tenant_id, $comment_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $ban_email = array_key_exists('ban_email', $options) ? $options['ban_email'] : null;
@@ -9079,10 +9188,16 @@ class ModerationApi
         $is_shadow_ban = array_key_exists('is_shadow_ban', $options) ? $options['is_shadow_ban'] : null;
         $update_id = array_key_exists('update_id', $options) ? $options['update_id'] : null;
         $ban_reason = array_key_exists('ban_reason', $options) ? $options['ban_reason'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['postBanUserFromComment'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling postBanUserFromComment'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -9100,14 +9215,22 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/ban-user/from-comment/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/ban-user/from-comment/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $ban_email,
@@ -9175,15 +9298,6 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $ban_reason,
             'banReason', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -9270,8 +9384,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\BanUserUndoParams $ban_user_undo_params ban_user_undo_params (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserUndo'] to see the possible values for this operation
      *
@@ -9279,9 +9393,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function postBanUserUndo($ban_user_undo_params, array $options = [])
+    public function postBanUserUndo($tenant_id, $ban_user_undo_params, $sso = null)
     {
-        list($response) = $this->postBanUserUndoWithHttpInfo($ban_user_undo_params, $options);
+        list($response) = $this->postBanUserUndoWithHttpInfo($tenant_id, $ban_user_undo_params, $sso);
         return $response;
     }
 
@@ -9292,8 +9406,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BanUserUndoParams $ban_user_undo_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserUndo'] to see the possible values for this operation
      *
@@ -9301,9 +9415,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postBanUserUndoWithHttpInfo($ban_user_undo_params, array $options = [])
+    public function postBanUserUndoWithHttpInfo($tenant_id, $ban_user_undo_params, $sso = null)
     {
-        $request = $this->postBanUserUndoRequest($ban_user_undo_params, $options);
+        $request = $this->postBanUserUndoRequest($tenant_id, $ban_user_undo_params, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9395,17 +9509,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BanUserUndoParams $ban_user_undo_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserUndo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBanUserUndoAsync($ban_user_undo_params, array $options = [])
+    public function postBanUserUndoAsync($tenant_id, $ban_user_undo_params, $sso = null)
     {
-        return $this->postBanUserUndoAsyncWithHttpInfo($ban_user_undo_params, $options)
+        return $this->postBanUserUndoAsyncWithHttpInfo($tenant_id, $ban_user_undo_params, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9420,18 +9534,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BanUserUndoParams $ban_user_undo_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserUndo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBanUserUndoAsyncWithHttpInfo($ban_user_undo_params, array $options = [])
+    public function postBanUserUndoAsyncWithHttpInfo($tenant_id, $ban_user_undo_params, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postBanUserUndoRequest($ban_user_undo_params, $options);
+        $request = $this->postBanUserUndoRequest($tenant_id, $ban_user_undo_params, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9474,21 +9588,25 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BanUserUndoParams $ban_user_undo_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBanUserUndo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postBanUserUndoRequest($ban_user_undo_params, array $options = [])
+    public function postBanUserUndoRequest($tenant_id, $ban_user_undo_params, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['postBanUserUndo'][0];
+        $contentType = self::contentTypes['postBanUserUndo'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling postBanUserUndo'
+            );
+        }
+
         // verify the required parameter 'ban_user_undo_params' is set
         if ($ban_user_undo_params === null || (is_array($ban_user_undo_params) && count($ban_user_undo_params) === 0)) {
             throw new \InvalidArgumentException(
@@ -9498,8 +9616,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/ban-user/undo';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/ban-user/undo';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -9513,7 +9630,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -9595,11 +9712,11 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\BulkPreBanParams $bulk_pre_ban_params bulk_pre_ban_params (required)
      * @param  bool|null $include_by_user_id_and_email include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip include_by_ip (optional)
      * @param  bool|null $include_by_email_domain include_by_email_domain (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBulkPreBanSummary'] to see the possible values for this operation
      *
@@ -9607,9 +9724,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\BulkPreBanSummary|\FastComments\Client\Model\APIError
      */
-    public function postBulkPreBanSummary($bulk_pre_ban_params, array $options = [])
+    public function postBulkPreBanSummary($tenant_id, $bulk_pre_ban_params, array $options = [])
     {
-        list($response) = $this->postBulkPreBanSummaryWithHttpInfo($bulk_pre_ban_params, $options);
+        list($response) = $this->postBulkPreBanSummaryWithHttpInfo($tenant_id, $bulk_pre_ban_params, $options);
         return $response;
     }
 
@@ -9620,11 +9737,11 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BulkPreBanParams $bulk_pre_ban_params (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBulkPreBanSummary'] to see the possible values for this operation
      *
@@ -9632,9 +9749,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\BulkPreBanSummary|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postBulkPreBanSummaryWithHttpInfo($bulk_pre_ban_params, array $options = [])
+    public function postBulkPreBanSummaryWithHttpInfo($tenant_id, $bulk_pre_ban_params, array $options = [])
     {
-        $request = $this->postBulkPreBanSummaryRequest($bulk_pre_ban_params, $options);
+        $request = $this->postBulkPreBanSummaryRequest($tenant_id, $bulk_pre_ban_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9726,20 +9843,20 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BulkPreBanParams $bulk_pre_ban_params (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBulkPreBanSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBulkPreBanSummaryAsync($bulk_pre_ban_params, array $options = [])
+    public function postBulkPreBanSummaryAsync($tenant_id, $bulk_pre_ban_params, array $options = [])
     {
-        return $this->postBulkPreBanSummaryAsyncWithHttpInfo($bulk_pre_ban_params, $options)
+        return $this->postBulkPreBanSummaryAsyncWithHttpInfo($tenant_id, $bulk_pre_ban_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9754,21 +9871,21 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BulkPreBanParams $bulk_pre_ban_params (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBulkPreBanSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postBulkPreBanSummaryAsyncWithHttpInfo($bulk_pre_ban_params, array $options = [])
+    public function postBulkPreBanSummaryAsyncWithHttpInfo($tenant_id, $bulk_pre_ban_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\BulkPreBanSummary';
-        $request = $this->postBulkPreBanSummaryRequest($bulk_pre_ban_params, $options);
+        $request = $this->postBulkPreBanSummaryRequest($tenant_id, $bulk_pre_ban_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9811,27 +9928,33 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BulkPreBanParams $bulk_pre_ban_params (required)
      * @param  bool|null $include_by_user_id_and_email (optional)
      * @param  bool|null $include_by_ip (optional)
      * @param  bool|null $include_by_email_domain (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postBulkPreBanSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postBulkPreBanSummaryRequest($bulk_pre_ban_params, array $options = [])
+    public function postBulkPreBanSummaryRequest($tenant_id, $bulk_pre_ban_params, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $include_by_user_id_and_email = array_key_exists('include_by_user_id_and_email', $options) ? $options['include_by_user_id_and_email'] : null;
         $include_by_ip = array_key_exists('include_by_ip', $options) ? $options['include_by_ip'] : null;
         $include_by_email_domain = array_key_exists('include_by_email_domain', $options) ? $options['include_by_email_domain'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['postBulkPreBanSummary'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling postBulkPreBanSummary'
+            );
+        }
+
         // verify the required parameter 'bulk_pre_ban_params' is set
         if ($bulk_pre_ban_params === null || (is_array($bulk_pre_ban_params) && count($bulk_pre_ban_params) === 0)) {
             throw new \InvalidArgumentException(
@@ -9844,14 +9967,22 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/bulk-pre-ban-summary';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/bulk-pre-ban-summary';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $include_by_user_id_and_email,
@@ -9875,15 +10006,6 @@ class ModerationApi
             $include_by_email_domain,
             'includeByEmailDomain', // param base name
             'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
-            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -9968,8 +10090,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CommentsByIdsParams $comments_by_ids_params comments_by_ids_params (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postCommentsByIds'] to see the possible values for this operation
      *
@@ -9977,9 +10099,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\ModerationAPIChildCommentsResponse|\FastComments\Client\Model\APIError
      */
-    public function postCommentsByIds($comments_by_ids_params, array $options = [])
+    public function postCommentsByIds($tenant_id, $comments_by_ids_params, $sso = null)
     {
-        list($response) = $this->postCommentsByIdsWithHttpInfo($comments_by_ids_params, $options);
+        list($response) = $this->postCommentsByIdsWithHttpInfo($tenant_id, $comments_by_ids_params, $sso);
         return $response;
     }
 
@@ -9990,8 +10112,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CommentsByIdsParams $comments_by_ids_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postCommentsByIds'] to see the possible values for this operation
      *
@@ -9999,9 +10121,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\ModerationAPIChildCommentsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postCommentsByIdsWithHttpInfo($comments_by_ids_params, array $options = [])
+    public function postCommentsByIdsWithHttpInfo($tenant_id, $comments_by_ids_params, $sso = null)
     {
-        $request = $this->postCommentsByIdsRequest($comments_by_ids_params, $options);
+        $request = $this->postCommentsByIdsRequest($tenant_id, $comments_by_ids_params, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10093,17 +10215,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CommentsByIdsParams $comments_by_ids_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postCommentsByIds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCommentsByIdsAsync($comments_by_ids_params, array $options = [])
+    public function postCommentsByIdsAsync($tenant_id, $comments_by_ids_params, $sso = null)
     {
-        return $this->postCommentsByIdsAsyncWithHttpInfo($comments_by_ids_params, $options)
+        return $this->postCommentsByIdsAsyncWithHttpInfo($tenant_id, $comments_by_ids_params, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10118,18 +10240,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CommentsByIdsParams $comments_by_ids_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postCommentsByIds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postCommentsByIdsAsyncWithHttpInfo($comments_by_ids_params, array $options = [])
+    public function postCommentsByIdsAsyncWithHttpInfo($tenant_id, $comments_by_ids_params, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\ModerationAPIChildCommentsResponse';
-        $request = $this->postCommentsByIdsRequest($comments_by_ids_params, $options);
+        $request = $this->postCommentsByIdsRequest($tenant_id, $comments_by_ids_params, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10172,21 +10294,25 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CommentsByIdsParams $comments_by_ids_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postCommentsByIds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postCommentsByIdsRequest($comments_by_ids_params, array $options = [])
+    public function postCommentsByIdsRequest($tenant_id, $comments_by_ids_params, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['postCommentsByIds'][0];
+        $contentType = self::contentTypes['postCommentsByIds'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling postCommentsByIds'
+            );
+        }
+
         // verify the required parameter 'comments_by_ids_params' is set
         if ($comments_by_ids_params === null || (is_array($comments_by_ids_params) && count($comments_by_ids_params) === 0)) {
             throw new \InvalidArgumentException(
@@ -10196,8 +10322,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/comments-by-ids';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/comments-by-ids';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -10211,7 +10336,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -10293,8 +10418,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $broadcast_id broadcast_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postFlagComment'] to see the possible values for this operation
@@ -10303,9 +10428,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function postFlagComment($comment_id, array $options = [])
+    public function postFlagComment($tenant_id, $comment_id, array $options = [])
     {
-        list($response) = $this->postFlagCommentWithHttpInfo($comment_id, $options);
+        list($response) = $this->postFlagCommentWithHttpInfo($tenant_id, $comment_id, $options);
         return $response;
     }
 
@@ -10316,8 +10441,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postFlagComment'] to see the possible values for this operation
@@ -10326,9 +10451,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postFlagCommentWithHttpInfo($comment_id, array $options = [])
+    public function postFlagCommentWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
-        $request = $this->postFlagCommentRequest($comment_id, $options);
+        $request = $this->postFlagCommentRequest($tenant_id, $comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10420,8 +10545,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postFlagComment'] to see the possible values for this operation
@@ -10429,9 +10554,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postFlagCommentAsync($comment_id, array $options = [])
+    public function postFlagCommentAsync($tenant_id, $comment_id, array $options = [])
     {
-        return $this->postFlagCommentAsyncWithHttpInfo($comment_id, $options)
+        return $this->postFlagCommentAsyncWithHttpInfo($tenant_id, $comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10446,8 +10571,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postFlagComment'] to see the possible values for this operation
@@ -10455,10 +10580,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postFlagCommentAsyncWithHttpInfo($comment_id, array $options = [])
+    public function postFlagCommentAsyncWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postFlagCommentRequest($comment_id, $options);
+        $request = $this->postFlagCommentRequest($tenant_id, $comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10501,8 +10626,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postFlagComment'] to see the possible values for this operation
@@ -10510,14 +10635,20 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postFlagCommentRequest($comment_id, array $options = [])
+    public function postFlagCommentRequest($tenant_id, $comment_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['postFlagComment'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling postFlagComment'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -10528,8 +10659,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/flag-comment/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/flag-comment/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -10543,7 +10673,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -10635,19 +10765,19 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $broadcast_id broadcast_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRemoveComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \FastComments\Client\Model\PostRemoveCommentResponse|\FastComments\Client\Model\APIError
+     * @return \FastComments\Client\Model\PostRemoveCommentApiResponse|\FastComments\Client\Model\APIError
      */
-    public function postRemoveComment($comment_id, array $options = [])
+    public function postRemoveComment($tenant_id, $comment_id, array $options = [])
     {
-        list($response) = $this->postRemoveCommentWithHttpInfo($comment_id, $options);
+        list($response) = $this->postRemoveCommentWithHttpInfo($tenant_id, $comment_id, $options);
         return $response;
     }
 
@@ -10658,19 +10788,19 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRemoveComment'] to see the possible values for this operation
      *
      * @throws \FastComments\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \FastComments\Client\Model\PostRemoveCommentResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \FastComments\Client\Model\PostRemoveCommentApiResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postRemoveCommentWithHttpInfo($comment_id, array $options = [])
+    public function postRemoveCommentWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
-        $request = $this->postRemoveCommentRequest($comment_id, $options);
+        $request = $this->postRemoveCommentRequest($tenant_id, $comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10698,7 +10828,7 @@ class ModerationApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\FastComments\Client\Model\PostRemoveCommentResponse',
+                        '\FastComments\Client\Model\PostRemoveCommentApiResponse',
                         $request,
                         $response,
                     );
@@ -10726,7 +10856,7 @@ class ModerationApi
             }
 
             return $this->handleResponseWithDataType(
-                '\FastComments\Client\Model\PostRemoveCommentResponse',
+                '\FastComments\Client\Model\PostRemoveCommentApiResponse',
                 $request,
                 $response,
             );
@@ -10735,7 +10865,7 @@ class ModerationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\FastComments\Client\Model\PostRemoveCommentResponse',
+                        '\FastComments\Client\Model\PostRemoveCommentApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10762,8 +10892,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRemoveComment'] to see the possible values for this operation
@@ -10771,9 +10901,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRemoveCommentAsync($comment_id, array $options = [])
+    public function postRemoveCommentAsync($tenant_id, $comment_id, array $options = [])
     {
-        return $this->postRemoveCommentAsyncWithHttpInfo($comment_id, $options)
+        return $this->postRemoveCommentAsyncWithHttpInfo($tenant_id, $comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10788,8 +10918,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRemoveComment'] to see the possible values for this operation
@@ -10797,10 +10927,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRemoveCommentAsyncWithHttpInfo($comment_id, array $options = [])
+    public function postRemoveCommentAsyncWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
-        $returnType = '\FastComments\Client\Model\PostRemoveCommentResponse';
-        $request = $this->postRemoveCommentRequest($comment_id, $options);
+        $returnType = '\FastComments\Client\Model\PostRemoveCommentApiResponse';
+        $request = $this->postRemoveCommentRequest($tenant_id, $comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10843,8 +10973,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRemoveComment'] to see the possible values for this operation
@@ -10852,14 +10982,20 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postRemoveCommentRequest($comment_id, array $options = [])
+    public function postRemoveCommentRequest($tenant_id, $comment_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['postRemoveComment'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling postRemoveComment'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -10870,8 +11006,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/remove-comment/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/remove-comment/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -10885,7 +11020,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -10977,8 +11112,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $broadcast_id broadcast_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRestoreDeletedComment'] to see the possible values for this operation
@@ -10987,9 +11122,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function postRestoreDeletedComment($comment_id, array $options = [])
+    public function postRestoreDeletedComment($tenant_id, $comment_id, array $options = [])
     {
-        list($response) = $this->postRestoreDeletedCommentWithHttpInfo($comment_id, $options);
+        list($response) = $this->postRestoreDeletedCommentWithHttpInfo($tenant_id, $comment_id, $options);
         return $response;
     }
 
@@ -11000,8 +11135,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRestoreDeletedComment'] to see the possible values for this operation
@@ -11010,9 +11145,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postRestoreDeletedCommentWithHttpInfo($comment_id, array $options = [])
+    public function postRestoreDeletedCommentWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
-        $request = $this->postRestoreDeletedCommentRequest($comment_id, $options);
+        $request = $this->postRestoreDeletedCommentRequest($tenant_id, $comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11104,8 +11239,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRestoreDeletedComment'] to see the possible values for this operation
@@ -11113,9 +11248,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRestoreDeletedCommentAsync($comment_id, array $options = [])
+    public function postRestoreDeletedCommentAsync($tenant_id, $comment_id, array $options = [])
     {
-        return $this->postRestoreDeletedCommentAsyncWithHttpInfo($comment_id, $options)
+        return $this->postRestoreDeletedCommentAsyncWithHttpInfo($tenant_id, $comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11130,8 +11265,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRestoreDeletedComment'] to see the possible values for this operation
@@ -11139,10 +11274,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postRestoreDeletedCommentAsyncWithHttpInfo($comment_id, array $options = [])
+    public function postRestoreDeletedCommentAsyncWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postRestoreDeletedCommentRequest($comment_id, $options);
+        $request = $this->postRestoreDeletedCommentRequest($tenant_id, $comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11185,8 +11320,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postRestoreDeletedComment'] to see the possible values for this operation
@@ -11194,14 +11329,20 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postRestoreDeletedCommentRequest($comment_id, array $options = [])
+    public function postRestoreDeletedCommentRequest($tenant_id, $comment_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['postRestoreDeletedComment'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling postRestoreDeletedComment'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -11212,8 +11353,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/restore-deleted-comment/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/restore-deleted-comment/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -11227,7 +11367,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -11319,9 +11459,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $approved approved (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $broadcast_id broadcast_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentApprovalStatus'] to see the possible values for this operation
@@ -11330,9 +11470,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\SetCommentApprovedResponse|\FastComments\Client\Model\APIError
      */
-    public function postSetCommentApprovalStatus($comment_id, array $options = [])
+    public function postSetCommentApprovalStatus($tenant_id, $comment_id, array $options = [])
     {
-        list($response) = $this->postSetCommentApprovalStatusWithHttpInfo($comment_id, $options);
+        list($response) = $this->postSetCommentApprovalStatusWithHttpInfo($tenant_id, $comment_id, $options);
         return $response;
     }
 
@@ -11343,9 +11483,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $approved (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentApprovalStatus'] to see the possible values for this operation
@@ -11354,9 +11494,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\SetCommentApprovedResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postSetCommentApprovalStatusWithHttpInfo($comment_id, array $options = [])
+    public function postSetCommentApprovalStatusWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
-        $request = $this->postSetCommentApprovalStatusRequest($comment_id, $options);
+        $request = $this->postSetCommentApprovalStatusRequest($tenant_id, $comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11448,9 +11588,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $approved (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentApprovalStatus'] to see the possible values for this operation
@@ -11458,9 +11598,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentApprovalStatusAsync($comment_id, array $options = [])
+    public function postSetCommentApprovalStatusAsync($tenant_id, $comment_id, array $options = [])
     {
-        return $this->postSetCommentApprovalStatusAsyncWithHttpInfo($comment_id, $options)
+        return $this->postSetCommentApprovalStatusAsyncWithHttpInfo($tenant_id, $comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11475,9 +11615,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $approved (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentApprovalStatus'] to see the possible values for this operation
@@ -11485,10 +11625,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentApprovalStatusAsyncWithHttpInfo($comment_id, array $options = [])
+    public function postSetCommentApprovalStatusAsyncWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\SetCommentApprovedResponse';
-        $request = $this->postSetCommentApprovalStatusRequest($comment_id, $options);
+        $request = $this->postSetCommentApprovalStatusRequest($tenant_id, $comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11531,9 +11671,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $approved (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentApprovalStatus'] to see the possible values for this operation
@@ -11541,15 +11681,21 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postSetCommentApprovalStatusRequest($comment_id, array $options = [])
+    public function postSetCommentApprovalStatusRequest($tenant_id, $comment_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $approved = array_key_exists('approved', $options) ? $options['approved'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['postSetCommentApprovalStatus'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling postSetCommentApprovalStatus'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -11561,8 +11707,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/set-comment-approval-status/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/set-comment-approval-status/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -11571,18 +11716,18 @@ class ModerationApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $approved,
-            'approved', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $tenant_id,
             'tenantId', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $approved,
+            'approved', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -11677,9 +11822,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $reviewed reviewed (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $broadcast_id broadcast_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentReviewStatus'] to see the possible values for this operation
@@ -11688,9 +11833,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function postSetCommentReviewStatus($comment_id, array $options = [])
+    public function postSetCommentReviewStatus($tenant_id, $comment_id, array $options = [])
     {
-        list($response) = $this->postSetCommentReviewStatusWithHttpInfo($comment_id, $options);
+        list($response) = $this->postSetCommentReviewStatusWithHttpInfo($tenant_id, $comment_id, $options);
         return $response;
     }
 
@@ -11701,9 +11846,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $reviewed (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentReviewStatus'] to see the possible values for this operation
@@ -11712,9 +11857,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postSetCommentReviewStatusWithHttpInfo($comment_id, array $options = [])
+    public function postSetCommentReviewStatusWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
-        $request = $this->postSetCommentReviewStatusRequest($comment_id, $options);
+        $request = $this->postSetCommentReviewStatusRequest($tenant_id, $comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11806,9 +11951,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $reviewed (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentReviewStatus'] to see the possible values for this operation
@@ -11816,9 +11961,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentReviewStatusAsync($comment_id, array $options = [])
+    public function postSetCommentReviewStatusAsync($tenant_id, $comment_id, array $options = [])
     {
-        return $this->postSetCommentReviewStatusAsyncWithHttpInfo($comment_id, $options)
+        return $this->postSetCommentReviewStatusAsyncWithHttpInfo($tenant_id, $comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11833,9 +11978,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $reviewed (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentReviewStatus'] to see the possible values for this operation
@@ -11843,10 +11988,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentReviewStatusAsyncWithHttpInfo($comment_id, array $options = [])
+    public function postSetCommentReviewStatusAsyncWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postSetCommentReviewStatusRequest($comment_id, $options);
+        $request = $this->postSetCommentReviewStatusRequest($tenant_id, $comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11889,9 +12034,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $reviewed (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentReviewStatus'] to see the possible values for this operation
@@ -11899,15 +12044,21 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postSetCommentReviewStatusRequest($comment_id, array $options = [])
+    public function postSetCommentReviewStatusRequest($tenant_id, $comment_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $reviewed = array_key_exists('reviewed', $options) ? $options['reviewed'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['postSetCommentReviewStatus'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling postSetCommentReviewStatus'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -11919,8 +12070,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/set-comment-review-status/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/set-comment-review-status/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -11929,18 +12079,18 @@ class ModerationApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $reviewed,
-            'reviewed', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $tenant_id,
             'tenantId', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $reviewed,
+            'reviewed', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -12035,10 +12185,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  bool|null $spam spam (optional)
      * @param  bool|null $perm_not_spam perm_not_spam (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $broadcast_id broadcast_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentSpamStatus'] to see the possible values for this operation
@@ -12047,9 +12197,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function postSetCommentSpamStatus($comment_id, array $options = [])
+    public function postSetCommentSpamStatus($tenant_id, $comment_id, array $options = [])
     {
-        list($response) = $this->postSetCommentSpamStatusWithHttpInfo($comment_id, $options);
+        list($response) = $this->postSetCommentSpamStatusWithHttpInfo($tenant_id, $comment_id, $options);
         return $response;
     }
 
@@ -12060,10 +12210,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $spam (optional)
      * @param  bool|null $perm_not_spam (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentSpamStatus'] to see the possible values for this operation
@@ -12072,9 +12222,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postSetCommentSpamStatusWithHttpInfo($comment_id, array $options = [])
+    public function postSetCommentSpamStatusWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
-        $request = $this->postSetCommentSpamStatusRequest($comment_id, $options);
+        $request = $this->postSetCommentSpamStatusRequest($tenant_id, $comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12166,10 +12316,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $spam (optional)
      * @param  bool|null $perm_not_spam (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentSpamStatus'] to see the possible values for this operation
@@ -12177,9 +12327,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentSpamStatusAsync($comment_id, array $options = [])
+    public function postSetCommentSpamStatusAsync($tenant_id, $comment_id, array $options = [])
     {
-        return $this->postSetCommentSpamStatusAsyncWithHttpInfo($comment_id, $options)
+        return $this->postSetCommentSpamStatusAsyncWithHttpInfo($tenant_id, $comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12194,10 +12344,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $spam (optional)
      * @param  bool|null $perm_not_spam (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentSpamStatus'] to see the possible values for this operation
@@ -12205,10 +12355,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentSpamStatusAsyncWithHttpInfo($comment_id, array $options = [])
+    public function postSetCommentSpamStatusAsyncWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postSetCommentSpamStatusRequest($comment_id, $options);
+        $request = $this->postSetCommentSpamStatusRequest($tenant_id, $comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12251,10 +12401,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  bool|null $spam (optional)
      * @param  bool|null $perm_not_spam (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentSpamStatus'] to see the possible values for this operation
@@ -12262,16 +12412,22 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postSetCommentSpamStatusRequest($comment_id, array $options = [])
+    public function postSetCommentSpamStatusRequest($tenant_id, $comment_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $spam = array_key_exists('spam', $options) ? $options['spam'] : null;
         $perm_not_spam = array_key_exists('perm_not_spam', $options) ? $options['perm_not_spam'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['postSetCommentSpamStatus'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling postSetCommentSpamStatus'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -12284,14 +12440,22 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/set-comment-spam-status/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/set-comment-spam-status/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $spam,
@@ -12306,15 +12470,6 @@ class ModerationApi
             $perm_not_spam,
             'permNotSpam', // param base name
             'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
-            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -12409,9 +12564,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  \FastComments\Client\Model\SetCommentTextParams $set_comment_text_params set_comment_text_params (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $broadcast_id broadcast_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentText'] to see the possible values for this operation
@@ -12420,9 +12575,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\SetCommentTextResponse|\FastComments\Client\Model\APIError
      */
-    public function postSetCommentText($comment_id, $set_comment_text_params, array $options = [])
+    public function postSetCommentText($tenant_id, $comment_id, $set_comment_text_params, array $options = [])
     {
-        list($response) = $this->postSetCommentTextWithHttpInfo($comment_id, $set_comment_text_params, $options);
+        list($response) = $this->postSetCommentTextWithHttpInfo($tenant_id, $comment_id, $set_comment_text_params, $options);
         return $response;
     }
 
@@ -12433,9 +12588,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\SetCommentTextParams $set_comment_text_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentText'] to see the possible values for this operation
@@ -12444,9 +12599,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\SetCommentTextResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postSetCommentTextWithHttpInfo($comment_id, $set_comment_text_params, array $options = [])
+    public function postSetCommentTextWithHttpInfo($tenant_id, $comment_id, $set_comment_text_params, array $options = [])
     {
-        $request = $this->postSetCommentTextRequest($comment_id, $set_comment_text_params, $options);
+        $request = $this->postSetCommentTextRequest($tenant_id, $comment_id, $set_comment_text_params, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12538,9 +12693,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\SetCommentTextParams $set_comment_text_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentText'] to see the possible values for this operation
@@ -12548,9 +12703,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentTextAsync($comment_id, $set_comment_text_params, array $options = [])
+    public function postSetCommentTextAsync($tenant_id, $comment_id, $set_comment_text_params, array $options = [])
     {
-        return $this->postSetCommentTextAsyncWithHttpInfo($comment_id, $set_comment_text_params, $options)
+        return $this->postSetCommentTextAsyncWithHttpInfo($tenant_id, $comment_id, $set_comment_text_params, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12565,9 +12720,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\SetCommentTextParams $set_comment_text_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentText'] to see the possible values for this operation
@@ -12575,10 +12730,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postSetCommentTextAsyncWithHttpInfo($comment_id, $set_comment_text_params, array $options = [])
+    public function postSetCommentTextAsyncWithHttpInfo($tenant_id, $comment_id, $set_comment_text_params, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\SetCommentTextResponse';
-        $request = $this->postSetCommentTextRequest($comment_id, $set_comment_text_params, $options);
+        $request = $this->postSetCommentTextRequest($tenant_id, $comment_id, $set_comment_text_params, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12621,9 +12776,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  \FastComments\Client\Model\SetCommentTextParams $set_comment_text_params (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postSetCommentText'] to see the possible values for this operation
@@ -12631,14 +12786,20 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postSetCommentTextRequest($comment_id, $set_comment_text_params, array $options = [])
+    public function postSetCommentTextRequest($tenant_id, $comment_id, $set_comment_text_params, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['postSetCommentText'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling postSetCommentText'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -12656,8 +12817,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/set-comment-text/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/set-comment-text/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -12671,7 +12831,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -12770,8 +12930,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $broadcast_id broadcast_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postUnFlagComment'] to see the possible values for this operation
@@ -12780,9 +12940,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function postUnFlagComment($comment_id, array $options = [])
+    public function postUnFlagComment($tenant_id, $comment_id, array $options = [])
     {
-        list($response) = $this->postUnFlagCommentWithHttpInfo($comment_id, $options);
+        list($response) = $this->postUnFlagCommentWithHttpInfo($tenant_id, $comment_id, $options);
         return $response;
     }
 
@@ -12793,8 +12953,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postUnFlagComment'] to see the possible values for this operation
@@ -12803,9 +12963,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postUnFlagCommentWithHttpInfo($comment_id, array $options = [])
+    public function postUnFlagCommentWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
-        $request = $this->postUnFlagCommentRequest($comment_id, $options);
+        $request = $this->postUnFlagCommentRequest($tenant_id, $comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12897,8 +13057,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postUnFlagComment'] to see the possible values for this operation
@@ -12906,9 +13066,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postUnFlagCommentAsync($comment_id, array $options = [])
+    public function postUnFlagCommentAsync($tenant_id, $comment_id, array $options = [])
     {
-        return $this->postUnFlagCommentAsyncWithHttpInfo($comment_id, $options)
+        return $this->postUnFlagCommentAsyncWithHttpInfo($tenant_id, $comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12923,8 +13083,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postUnFlagComment'] to see the possible values for this operation
@@ -12932,10 +13092,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postUnFlagCommentAsyncWithHttpInfo($comment_id, array $options = [])
+    public function postUnFlagCommentAsyncWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->postUnFlagCommentRequest($comment_id, $options);
+        $request = $this->postUnFlagCommentRequest($tenant_id, $comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12978,8 +13138,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postUnFlagComment'] to see the possible values for this operation
@@ -12987,14 +13147,20 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postUnFlagCommentRequest($comment_id, array $options = [])
+    public function postUnFlagCommentRequest($tenant_id, $comment_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['postUnFlagComment'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling postUnFlagComment'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -13005,8 +13171,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/un-flag-comment/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/un-flag-comment/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -13020,7 +13185,7 @@ class ModerationApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -13112,9 +13277,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  string|null $direction direction (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $broadcast_id broadcast_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postVote'] to see the possible values for this operation
@@ -13123,9 +13288,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\VoteResponse|\FastComments\Client\Model\APIError
      */
-    public function postVote($comment_id, array $options = [])
+    public function postVote($tenant_id, $comment_id, array $options = [])
     {
-        list($response) = $this->postVoteWithHttpInfo($comment_id, $options);
+        list($response) = $this->postVoteWithHttpInfo($tenant_id, $comment_id, $options);
         return $response;
     }
 
@@ -13136,9 +13301,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string|null $direction (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postVote'] to see the possible values for this operation
@@ -13147,9 +13312,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\VoteResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postVoteWithHttpInfo($comment_id, array $options = [])
+    public function postVoteWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
-        $request = $this->postVoteRequest($comment_id, $options);
+        $request = $this->postVoteRequest($tenant_id, $comment_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13241,9 +13406,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string|null $direction (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postVote'] to see the possible values for this operation
@@ -13251,9 +13416,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postVoteAsync($comment_id, array $options = [])
+    public function postVoteAsync($tenant_id, $comment_id, array $options = [])
     {
-        return $this->postVoteAsyncWithHttpInfo($comment_id, $options)
+        return $this->postVoteAsyncWithHttpInfo($tenant_id, $comment_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13268,9 +13433,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string|null $direction (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postVote'] to see the possible values for this operation
@@ -13278,10 +13443,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postVoteAsyncWithHttpInfo($comment_id, array $options = [])
+    public function postVoteAsyncWithHttpInfo($tenant_id, $comment_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\VoteResponse';
-        $request = $this->postVoteRequest($comment_id, $options);
+        $request = $this->postVoteRequest($tenant_id, $comment_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13324,9 +13489,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $comment_id (required)
      * @param  string|null $direction (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postVote'] to see the possible values for this operation
@@ -13334,15 +13499,21 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postVoteRequest($comment_id, array $options = [])
+    public function postVoteRequest($tenant_id, $comment_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $direction = array_key_exists('direction', $options) ? $options['direction'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['postVote'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling postVote'
+            );
+        }
+
         // verify the required parameter 'comment_id' is set
         if ($comment_id === null || (is_array($comment_id) && count($comment_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -13354,8 +13525,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/vote/{commentId}';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/vote/{commentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -13364,17 +13534,17 @@ class ModerationApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $direction,
-            'direction', // param base name
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
+            $direction,
+            'direction', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -13470,10 +13640,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $badge_id badge_id (required)
      * @param  string|null $user_id user_id (optional)
      * @param  string|null $comment_id comment_id (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $broadcast_id broadcast_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAwardBadge'] to see the possible values for this operation
@@ -13482,9 +13652,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\AwardUserBadgeResponse|\FastComments\Client\Model\APIError
      */
-    public function putAwardBadge($badge_id, array $options = [])
+    public function putAwardBadge($tenant_id, $badge_id, array $options = [])
     {
-        list($response) = $this->putAwardBadgeWithHttpInfo($badge_id, $options);
+        list($response) = $this->putAwardBadgeWithHttpInfo($tenant_id, $badge_id, $options);
         return $response;
     }
 
@@ -13495,10 +13665,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAwardBadge'] to see the possible values for this operation
@@ -13507,9 +13677,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\AwardUserBadgeResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putAwardBadgeWithHttpInfo($badge_id, array $options = [])
+    public function putAwardBadgeWithHttpInfo($tenant_id, $badge_id, array $options = [])
     {
-        $request = $this->putAwardBadgeRequest($badge_id, $options);
+        $request = $this->putAwardBadgeRequest($tenant_id, $badge_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13601,10 +13771,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAwardBadge'] to see the possible values for this operation
@@ -13612,9 +13782,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAwardBadgeAsync($badge_id, array $options = [])
+    public function putAwardBadgeAsync($tenant_id, $badge_id, array $options = [])
     {
-        return $this->putAwardBadgeAsyncWithHttpInfo($badge_id, $options)
+        return $this->putAwardBadgeAsyncWithHttpInfo($tenant_id, $badge_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13629,10 +13799,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAwardBadge'] to see the possible values for this operation
@@ -13640,10 +13810,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putAwardBadgeAsyncWithHttpInfo($badge_id, array $options = [])
+    public function putAwardBadgeAsyncWithHttpInfo($tenant_id, $badge_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\AwardUserBadgeResponse';
-        $request = $this->putAwardBadgeRequest($badge_id, $options);
+        $request = $this->putAwardBadgeRequest($tenant_id, $badge_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13686,10 +13856,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAwardBadge'] to see the possible values for this operation
@@ -13697,16 +13867,22 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putAwardBadgeRequest($badge_id, array $options = [])
+    public function putAwardBadgeRequest($tenant_id, $badge_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
         $comment_id = array_key_exists('comment_id', $options) ? $options['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['putAwardBadge'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling putAwardBadge'
+            );
+        }
+
         // verify the required parameter 'badge_id' is set
         if ($badge_id === null || (is_array($badge_id) && count($badge_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -13719,14 +13895,22 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/award-badge';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/award-badge';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $badge_id,
@@ -13749,15 +13933,6 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $comment_id,
             'commentId', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -13845,8 +14020,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $url_id url_id (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCloseThread'] to see the possible values for this operation
      *
@@ -13854,9 +14029,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function putCloseThread($url_id, array $options = [])
+    public function putCloseThread($tenant_id, $url_id, $sso = null)
     {
-        list($response) = $this->putCloseThreadWithHttpInfo($url_id, $options);
+        list($response) = $this->putCloseThreadWithHttpInfo($tenant_id, $url_id, $sso);
         return $response;
     }
 
@@ -13867,8 +14042,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $url_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCloseThread'] to see the possible values for this operation
      *
@@ -13876,9 +14051,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putCloseThreadWithHttpInfo($url_id, array $options = [])
+    public function putCloseThreadWithHttpInfo($tenant_id, $url_id, $sso = null)
     {
-        $request = $this->putCloseThreadRequest($url_id, $options);
+        $request = $this->putCloseThreadRequest($tenant_id, $url_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13970,17 +14145,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $url_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCloseThread'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putCloseThreadAsync($url_id, array $options = [])
+    public function putCloseThreadAsync($tenant_id, $url_id, $sso = null)
     {
-        return $this->putCloseThreadAsyncWithHttpInfo($url_id, $options)
+        return $this->putCloseThreadAsyncWithHttpInfo($tenant_id, $url_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13995,18 +14170,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $url_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCloseThread'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putCloseThreadAsyncWithHttpInfo($url_id, array $options = [])
+    public function putCloseThreadAsyncWithHttpInfo($tenant_id, $url_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->putCloseThreadRequest($url_id, $options);
+        $request = $this->putCloseThreadRequest($tenant_id, $url_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14049,21 +14224,25 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $url_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putCloseThread'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putCloseThreadRequest($url_id, array $options = [])
+    public function putCloseThreadRequest($tenant_id, $url_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['putCloseThread'][0];
+        $contentType = self::contentTypes['putCloseThread'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling putCloseThread'
+            );
+        }
+
         // verify the required parameter 'url_id' is set
         if ($url_id === null || (is_array($url_id) && count($url_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -14073,8 +14252,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/close-thread';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/close-thread';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -14083,8 +14261,8 @@ class ModerationApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $url_id,
-            'urlId', // param base name
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -14092,12 +14270,12 @@ class ModerationApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
+            $url_id,
+            'urlId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -14172,10 +14350,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $badge_id badge_id (required)
      * @param  string|null $user_id user_id (optional)
      * @param  string|null $comment_id comment_id (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $broadcast_id broadcast_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRemoveBadge'] to see the possible values for this operation
@@ -14184,9 +14362,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\RemoveUserBadgeResponse|\FastComments\Client\Model\APIError
      */
-    public function putRemoveBadge($badge_id, array $options = [])
+    public function putRemoveBadge($tenant_id, $badge_id, array $options = [])
     {
-        list($response) = $this->putRemoveBadgeWithHttpInfo($badge_id, $options);
+        list($response) = $this->putRemoveBadgeWithHttpInfo($tenant_id, $badge_id, $options);
         return $response;
     }
 
@@ -14197,10 +14375,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRemoveBadge'] to see the possible values for this operation
@@ -14209,9 +14387,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\RemoveUserBadgeResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putRemoveBadgeWithHttpInfo($badge_id, array $options = [])
+    public function putRemoveBadgeWithHttpInfo($tenant_id, $badge_id, array $options = [])
     {
-        $request = $this->putRemoveBadgeRequest($badge_id, $options);
+        $request = $this->putRemoveBadgeRequest($tenant_id, $badge_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14303,10 +14481,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRemoveBadge'] to see the possible values for this operation
@@ -14314,9 +14492,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putRemoveBadgeAsync($badge_id, array $options = [])
+    public function putRemoveBadgeAsync($tenant_id, $badge_id, array $options = [])
     {
-        return $this->putRemoveBadgeAsyncWithHttpInfo($badge_id, $options)
+        return $this->putRemoveBadgeAsyncWithHttpInfo($tenant_id, $badge_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -14331,10 +14509,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRemoveBadge'] to see the possible values for this operation
@@ -14342,10 +14520,10 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putRemoveBadgeAsyncWithHttpInfo($badge_id, array $options = [])
+    public function putRemoveBadgeAsyncWithHttpInfo($tenant_id, $badge_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\RemoveUserBadgeResponse';
-        $request = $this->putRemoveBadgeRequest($badge_id, $options);
+        $request = $this->putRemoveBadgeRequest($tenant_id, $badge_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14388,10 +14566,10 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $badge_id (required)
      * @param  string|null $user_id (optional)
      * @param  string|null $comment_id (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $broadcast_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putRemoveBadge'] to see the possible values for this operation
@@ -14399,16 +14577,22 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putRemoveBadgeRequest($badge_id, array $options = [])
+    public function putRemoveBadgeRequest($tenant_id, $badge_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
         $comment_id = array_key_exists('comment_id', $options) ? $options['comment_id'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $broadcast_id = array_key_exists('broadcast_id', $options) ? $options['broadcast_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['putRemoveBadge'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling putRemoveBadge'
+            );
+        }
+
         // verify the required parameter 'badge_id' is set
         if ($badge_id === null || (is_array($badge_id) && count($badge_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -14421,14 +14605,22 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/remove-badge';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/remove-badge';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $badge_id,
@@ -14451,15 +14643,6 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $comment_id,
             'commentId', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -14547,8 +14730,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $url_id url_id (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putReopenThread'] to see the possible values for this operation
      *
@@ -14556,9 +14739,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function putReopenThread($url_id, array $options = [])
+    public function putReopenThread($tenant_id, $url_id, $sso = null)
     {
-        list($response) = $this->putReopenThreadWithHttpInfo($url_id, $options);
+        list($response) = $this->putReopenThreadWithHttpInfo($tenant_id, $url_id, $sso);
         return $response;
     }
 
@@ -14569,8 +14752,8 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $url_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putReopenThread'] to see the possible values for this operation
      *
@@ -14578,9 +14761,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putReopenThreadWithHttpInfo($url_id, array $options = [])
+    public function putReopenThreadWithHttpInfo($tenant_id, $url_id, $sso = null)
     {
-        $request = $this->putReopenThreadRequest($url_id, $options);
+        $request = $this->putReopenThreadRequest($tenant_id, $url_id, $sso);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14672,17 +14855,17 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $url_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putReopenThread'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putReopenThreadAsync($url_id, array $options = [])
+    public function putReopenThreadAsync($tenant_id, $url_id, $sso = null)
     {
-        return $this->putReopenThreadAsyncWithHttpInfo($url_id, $options)
+        return $this->putReopenThreadAsyncWithHttpInfo($tenant_id, $url_id, $sso)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -14697,18 +14880,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $url_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putReopenThread'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putReopenThreadAsyncWithHttpInfo($url_id, array $options = [])
+    public function putReopenThreadAsyncWithHttpInfo($tenant_id, $url_id, $sso = null)
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->putReopenThreadRequest($url_id, $options);
+        $request = $this->putReopenThreadRequest($tenant_id, $url_id, $sso);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14751,21 +14934,25 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string $url_id (required)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putReopenThread'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putReopenThreadRequest($url_id, array $options = [])
+    public function putReopenThreadRequest($tenant_id, $url_id, $sso = null)
     {
-        // unbox the optional parameters and request options from the $options array
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
-        $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
-        $contentType = $options['contentType'] ?? self::contentTypes['putReopenThread'][0];
+        $contentType = self::contentTypes['putReopenThread'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling putReopenThread'
+            );
+        }
+
         // verify the required parameter 'url_id' is set
         if ($url_id === null || (is_array($url_id) && count($url_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -14775,8 +14962,7 @@ class ModerationApi
 
 
 
-
-        $resourcePath = '/auth/my-account/moderate-comments/reopen-thread';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/reopen-thread';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -14785,8 +14971,8 @@ class ModerationApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $url_id,
-            'urlId', // param base name
+            $tenant_id,
+            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -14794,12 +14980,12 @@ class ModerationApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
+            $url_id,
+            'urlId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -14874,9 +15060,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string|null $user_id user_id (optional)
      * @param  string|null $trust_factor trust_factor (optional)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  string|null $sso sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTrustFactor'] to see the possible values for this operation
      *
@@ -14884,9 +15070,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\SetUserTrustFactorResponse|\FastComments\Client\Model\APIError
      */
-    public function setTrustFactor(array $options = [])
+    public function setTrustFactor($tenant_id, array $options = [])
     {
-        list($response) = $this->setTrustFactorWithHttpInfo($options);
+        list($response) = $this->setTrustFactorWithHttpInfo($tenant_id, $options);
         return $response;
     }
 
@@ -14897,9 +15083,9 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
      * @param  string|null $trust_factor (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTrustFactor'] to see the possible values for this operation
      *
@@ -14907,9 +15093,9 @@ class ModerationApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\SetUserTrustFactorResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setTrustFactorWithHttpInfo(array $options = [])
+    public function setTrustFactorWithHttpInfo($tenant_id, array $options = [])
     {
-        $request = $this->setTrustFactorRequest($options);
+        $request = $this->setTrustFactorRequest($tenant_id, $options);
 
         try {
             $options = $this->createHttpClientOption();
@@ -15001,18 +15187,18 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
      * @param  string|null $trust_factor (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTrustFactor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTrustFactorAsync(array $options = [])
+    public function setTrustFactorAsync($tenant_id, array $options = [])
     {
-        return $this->setTrustFactorAsyncWithHttpInfo($options)
+        return $this->setTrustFactorAsyncWithHttpInfo($tenant_id, $options)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -15027,19 +15213,19 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
      * @param  string|null $trust_factor (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTrustFactor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTrustFactorAsyncWithHttpInfo(array $options = [])
+    public function setTrustFactorAsyncWithHttpInfo($tenant_id, array $options = [])
     {
         $returnType = '\FastComments\Client\Model\SetUserTrustFactorResponse';
-        $request = $this->setTrustFactorRequest($options);
+        $request = $this->setTrustFactorRequest($tenant_id, $options);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -15082,36 +15268,50 @@ class ModerationApi
      *
      * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
      *
+     * @param  string $tenant_id (required)
      * @param  string|null $user_id (optional)
      * @param  string|null $trust_factor (optional)
-     * @param  string|null $tenant_id (optional)
      * @param  string|null $sso (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTrustFactor'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setTrustFactorRequest(array $options = [])
+    public function setTrustFactorRequest($tenant_id, array $options = [])
     {
         // unbox the optional parameters and request options from the $options array
         $user_id = array_key_exists('user_id', $options) ? $options['user_id'] : null;
         $trust_factor = array_key_exists('trust_factor', $options) ? $options['trust_factor'] : null;
-        $tenant_id = array_key_exists('tenant_id', $options) ? $options['tenant_id'] : null;
         $sso = array_key_exists('sso', $options) ? $options['sso'] : null;
         $contentType = $options['contentType'] ?? self::contentTypes['setTrustFactor'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling setTrustFactor'
+            );
+        }
 
 
 
 
 
-        $resourcePath = '/auth/my-account/moderate-comments/set-trust-factor';
+        $resourcePath = '/auth/my-account/moderate-comments/mod_api/set-trust-factor';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tenant_id,
+            'tenantId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $user_id,
@@ -15125,15 +15325,6 @@ class ModerationApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $trust_factor,
             'trustFactor', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $tenant_id,
-            'tenantId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

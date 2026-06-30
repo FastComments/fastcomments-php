@@ -6,55 +6,55 @@ All URIs are relative to https://fastcomments.com, except if the operation defin
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**deleteModerationVote()**](ModerationApi.md#deleteModerationVote) | **DELETE** /auth/my-account/moderate-comments/vote/{commentId}/{voteId} |  |
-| [**getApiComments()**](ModerationApi.md#getApiComments) | **GET** /auth/my-account/moderate-comments/api/comments |  |
-| [**getApiExportStatus()**](ModerationApi.md#getApiExportStatus) | **GET** /auth/my-account/moderate-comments/api/export/status |  |
-| [**getApiIds()**](ModerationApi.md#getApiIds) | **GET** /auth/my-account/moderate-comments/api/ids |  |
-| [**getBanUsersFromComment()**](ModerationApi.md#getBanUsersFromComment) | **GET** /auth/my-account/moderate-comments/ban-users/from-comment/{commentId} |  |
-| [**getCommentBanStatus()**](ModerationApi.md#getCommentBanStatus) | **GET** /auth/my-account/moderate-comments/get-comment-ban-status/{commentId} |  |
-| [**getCommentChildren()**](ModerationApi.md#getCommentChildren) | **GET** /auth/my-account/moderate-comments/comment-children/{commentId} |  |
-| [**getCount()**](ModerationApi.md#getCount) | **GET** /auth/my-account/moderate-comments/count |  |
-| [**getCounts()**](ModerationApi.md#getCounts) | **GET** /auth/my-account/moderate-comments/banned-users/counts |  |
-| [**getLogs()**](ModerationApi.md#getLogs) | **GET** /auth/my-account/moderate-comments/logs/{commentId} |  |
-| [**getManualBadges()**](ModerationApi.md#getManualBadges) | **GET** /auth/my-account/moderate-comments/get-manual-badges |  |
-| [**getManualBadgesForUser()**](ModerationApi.md#getManualBadgesForUser) | **GET** /auth/my-account/moderate-comments/get-manual-badges-for-user |  |
-| [**getModerationComment()**](ModerationApi.md#getModerationComment) | **GET** /auth/my-account/moderate-comments/comment/{commentId} |  |
-| [**getModerationCommentText()**](ModerationApi.md#getModerationCommentText) | **GET** /auth/my-account/moderate-comments/get-comment-text/{commentId} |  |
-| [**getPreBanSummary()**](ModerationApi.md#getPreBanSummary) | **GET** /auth/my-account/moderate-comments/pre-ban-summary/{commentId} |  |
-| [**getSearchCommentsSummary()**](ModerationApi.md#getSearchCommentsSummary) | **GET** /auth/my-account/moderate-comments/search/comments/summary |  |
-| [**getSearchPages()**](ModerationApi.md#getSearchPages) | **GET** /auth/my-account/moderate-comments/search/pages |  |
-| [**getSearchSites()**](ModerationApi.md#getSearchSites) | **GET** /auth/my-account/moderate-comments/search/sites |  |
-| [**getSearchSuggest()**](ModerationApi.md#getSearchSuggest) | **GET** /auth/my-account/moderate-comments/search/suggest |  |
-| [**getSearchUsers()**](ModerationApi.md#getSearchUsers) | **GET** /auth/my-account/moderate-comments/search/users |  |
-| [**getTrustFactor()**](ModerationApi.md#getTrustFactor) | **GET** /auth/my-account/moderate-comments/get-trust-factor |  |
-| [**getUserBanPreference()**](ModerationApi.md#getUserBanPreference) | **GET** /auth/my-account/moderate-comments/user-ban-preference |  |
-| [**getUserInternalProfile()**](ModerationApi.md#getUserInternalProfile) | **GET** /auth/my-account/moderate-comments/get-user-internal-profile |  |
-| [**postAdjustCommentVotes()**](ModerationApi.md#postAdjustCommentVotes) | **POST** /auth/my-account/moderate-comments/adjust-comment-votes/{commentId} |  |
-| [**postApiExport()**](ModerationApi.md#postApiExport) | **POST** /auth/my-account/moderate-comments/api/export |  |
-| [**postBanUserFromComment()**](ModerationApi.md#postBanUserFromComment) | **POST** /auth/my-account/moderate-comments/ban-user/from-comment/{commentId} |  |
-| [**postBanUserUndo()**](ModerationApi.md#postBanUserUndo) | **POST** /auth/my-account/moderate-comments/ban-user/undo |  |
-| [**postBulkPreBanSummary()**](ModerationApi.md#postBulkPreBanSummary) | **POST** /auth/my-account/moderate-comments/bulk-pre-ban-summary |  |
-| [**postCommentsByIds()**](ModerationApi.md#postCommentsByIds) | **POST** /auth/my-account/moderate-comments/comments-by-ids |  |
-| [**postFlagComment()**](ModerationApi.md#postFlagComment) | **POST** /auth/my-account/moderate-comments/flag-comment/{commentId} |  |
-| [**postRemoveComment()**](ModerationApi.md#postRemoveComment) | **POST** /auth/my-account/moderate-comments/remove-comment/{commentId} |  |
-| [**postRestoreDeletedComment()**](ModerationApi.md#postRestoreDeletedComment) | **POST** /auth/my-account/moderate-comments/restore-deleted-comment/{commentId} |  |
-| [**postSetCommentApprovalStatus()**](ModerationApi.md#postSetCommentApprovalStatus) | **POST** /auth/my-account/moderate-comments/set-comment-approval-status/{commentId} |  |
-| [**postSetCommentReviewStatus()**](ModerationApi.md#postSetCommentReviewStatus) | **POST** /auth/my-account/moderate-comments/set-comment-review-status/{commentId} |  |
-| [**postSetCommentSpamStatus()**](ModerationApi.md#postSetCommentSpamStatus) | **POST** /auth/my-account/moderate-comments/set-comment-spam-status/{commentId} |  |
-| [**postSetCommentText()**](ModerationApi.md#postSetCommentText) | **POST** /auth/my-account/moderate-comments/set-comment-text/{commentId} |  |
-| [**postUnFlagComment()**](ModerationApi.md#postUnFlagComment) | **POST** /auth/my-account/moderate-comments/un-flag-comment/{commentId} |  |
-| [**postVote()**](ModerationApi.md#postVote) | **POST** /auth/my-account/moderate-comments/vote/{commentId} |  |
-| [**putAwardBadge()**](ModerationApi.md#putAwardBadge) | **PUT** /auth/my-account/moderate-comments/award-badge |  |
-| [**putCloseThread()**](ModerationApi.md#putCloseThread) | **PUT** /auth/my-account/moderate-comments/close-thread |  |
-| [**putRemoveBadge()**](ModerationApi.md#putRemoveBadge) | **PUT** /auth/my-account/moderate-comments/remove-badge |  |
-| [**putReopenThread()**](ModerationApi.md#putReopenThread) | **PUT** /auth/my-account/moderate-comments/reopen-thread |  |
-| [**setTrustFactor()**](ModerationApi.md#setTrustFactor) | **PUT** /auth/my-account/moderate-comments/set-trust-factor |  |
+| [**deleteModerationVote()**](ModerationApi.md#deleteModerationVote) | **DELETE** /auth/my-account/moderate-comments/mod_api/vote/{commentId}/{voteId} |  |
+| [**getApiComments()**](ModerationApi.md#getApiComments) | **GET** /auth/my-account/moderate-comments/mod_api/api/comments |  |
+| [**getApiExportStatus()**](ModerationApi.md#getApiExportStatus) | **GET** /auth/my-account/moderate-comments/mod_api/api/export/status |  |
+| [**getApiIds()**](ModerationApi.md#getApiIds) | **GET** /auth/my-account/moderate-comments/mod_api/api/ids |  |
+| [**getBanUsersFromComment()**](ModerationApi.md#getBanUsersFromComment) | **GET** /auth/my-account/moderate-comments/mod_api/ban-users/from-comment/{commentId} |  |
+| [**getCommentBanStatus()**](ModerationApi.md#getCommentBanStatus) | **GET** /auth/my-account/moderate-comments/mod_api/get-comment-ban-status/{commentId} |  |
+| [**getCommentChildren()**](ModerationApi.md#getCommentChildren) | **GET** /auth/my-account/moderate-comments/mod_api/comment-children/{commentId} |  |
+| [**getCount()**](ModerationApi.md#getCount) | **GET** /auth/my-account/moderate-comments/mod_api/count |  |
+| [**getCounts()**](ModerationApi.md#getCounts) | **GET** /auth/my-account/moderate-comments/banned-users/mod_api/counts |  |
+| [**getLogs()**](ModerationApi.md#getLogs) | **GET** /auth/my-account/moderate-comments/mod_api/logs/{commentId} |  |
+| [**getManualBadges()**](ModerationApi.md#getManualBadges) | **GET** /auth/my-account/moderate-comments/mod_api/get-manual-badges |  |
+| [**getManualBadgesForUser()**](ModerationApi.md#getManualBadgesForUser) | **GET** /auth/my-account/moderate-comments/mod_api/get-manual-badges-for-user |  |
+| [**getModerationComment()**](ModerationApi.md#getModerationComment) | **GET** /auth/my-account/moderate-comments/mod_api/comment/{commentId} |  |
+| [**getModerationCommentText()**](ModerationApi.md#getModerationCommentText) | **GET** /auth/my-account/moderate-comments/mod_api/get-comment-text/{commentId} |  |
+| [**getPreBanSummary()**](ModerationApi.md#getPreBanSummary) | **GET** /auth/my-account/moderate-comments/mod_api/pre-ban-summary/{commentId} |  |
+| [**getSearchCommentsSummary()**](ModerationApi.md#getSearchCommentsSummary) | **GET** /auth/my-account/moderate-comments/mod_api/search/comments/summary |  |
+| [**getSearchPages()**](ModerationApi.md#getSearchPages) | **GET** /auth/my-account/moderate-comments/mod_api/search/pages |  |
+| [**getSearchSites()**](ModerationApi.md#getSearchSites) | **GET** /auth/my-account/moderate-comments/mod_api/search/sites |  |
+| [**getSearchSuggest()**](ModerationApi.md#getSearchSuggest) | **GET** /auth/my-account/moderate-comments/mod_api/search/suggest |  |
+| [**getSearchUsers()**](ModerationApi.md#getSearchUsers) | **GET** /auth/my-account/moderate-comments/mod_api/search/users |  |
+| [**getTrustFactor()**](ModerationApi.md#getTrustFactor) | **GET** /auth/my-account/moderate-comments/mod_api/get-trust-factor |  |
+| [**getUserBanPreference()**](ModerationApi.md#getUserBanPreference) | **GET** /auth/my-account/moderate-comments/mod_api/user-ban-preference |  |
+| [**getUserInternalProfile()**](ModerationApi.md#getUserInternalProfile) | **GET** /auth/my-account/moderate-comments/mod_api/get-user-internal-profile |  |
+| [**postAdjustCommentVotes()**](ModerationApi.md#postAdjustCommentVotes) | **POST** /auth/my-account/moderate-comments/mod_api/adjust-comment-votes/{commentId} |  |
+| [**postApiExport()**](ModerationApi.md#postApiExport) | **POST** /auth/my-account/moderate-comments/mod_api/api/export |  |
+| [**postBanUserFromComment()**](ModerationApi.md#postBanUserFromComment) | **POST** /auth/my-account/moderate-comments/mod_api/ban-user/from-comment/{commentId} |  |
+| [**postBanUserUndo()**](ModerationApi.md#postBanUserUndo) | **POST** /auth/my-account/moderate-comments/mod_api/ban-user/undo |  |
+| [**postBulkPreBanSummary()**](ModerationApi.md#postBulkPreBanSummary) | **POST** /auth/my-account/moderate-comments/mod_api/bulk-pre-ban-summary |  |
+| [**postCommentsByIds()**](ModerationApi.md#postCommentsByIds) | **POST** /auth/my-account/moderate-comments/mod_api/comments-by-ids |  |
+| [**postFlagComment()**](ModerationApi.md#postFlagComment) | **POST** /auth/my-account/moderate-comments/mod_api/flag-comment/{commentId} |  |
+| [**postRemoveComment()**](ModerationApi.md#postRemoveComment) | **POST** /auth/my-account/moderate-comments/mod_api/remove-comment/{commentId} |  |
+| [**postRestoreDeletedComment()**](ModerationApi.md#postRestoreDeletedComment) | **POST** /auth/my-account/moderate-comments/mod_api/restore-deleted-comment/{commentId} |  |
+| [**postSetCommentApprovalStatus()**](ModerationApi.md#postSetCommentApprovalStatus) | **POST** /auth/my-account/moderate-comments/mod_api/set-comment-approval-status/{commentId} |  |
+| [**postSetCommentReviewStatus()**](ModerationApi.md#postSetCommentReviewStatus) | **POST** /auth/my-account/moderate-comments/mod_api/set-comment-review-status/{commentId} |  |
+| [**postSetCommentSpamStatus()**](ModerationApi.md#postSetCommentSpamStatus) | **POST** /auth/my-account/moderate-comments/mod_api/set-comment-spam-status/{commentId} |  |
+| [**postSetCommentText()**](ModerationApi.md#postSetCommentText) | **POST** /auth/my-account/moderate-comments/mod_api/set-comment-text/{commentId} |  |
+| [**postUnFlagComment()**](ModerationApi.md#postUnFlagComment) | **POST** /auth/my-account/moderate-comments/mod_api/un-flag-comment/{commentId} |  |
+| [**postVote()**](ModerationApi.md#postVote) | **POST** /auth/my-account/moderate-comments/mod_api/vote/{commentId} |  |
+| [**putAwardBadge()**](ModerationApi.md#putAwardBadge) | **PUT** /auth/my-account/moderate-comments/mod_api/award-badge |  |
+| [**putCloseThread()**](ModerationApi.md#putCloseThread) | **PUT** /auth/my-account/moderate-comments/mod_api/close-thread |  |
+| [**putRemoveBadge()**](ModerationApi.md#putRemoveBadge) | **PUT** /auth/my-account/moderate-comments/mod_api/remove-badge |  |
+| [**putReopenThread()**](ModerationApi.md#putReopenThread) | **PUT** /auth/my-account/moderate-comments/mod_api/reopen-thread |  |
+| [**setTrustFactor()**](ModerationApi.md#setTrustFactor) | **PUT** /auth/my-account/moderate-comments/mod_api/set-trust-factor |  |
 
 
 ## `deleteModerationVote()`
 
 ```php
-deleteModerationVote($comment_id, $vote_id, $options): \FastComments\Client\Model\VoteDeleteResponse
+deleteModerationVote($tenant_id, $comment_id, $vote_id, $options): \FastComments\Client\Model\VoteDeleteResponse
 ```
 
 
@@ -73,17 +73,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $vote_id = 'vote_id_example'; // string
 $options = [
-    'tenant_id' => 'tenant_id_example', // string
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->deleteModerationVote($comment_id, $vote_id, $options);
+    $result = $apiInstance->deleteModerationVote($tenant_id, $comment_id, $vote_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->deleteModerationVote: ', $e->getMessage(), PHP_EOL;
@@ -96,9 +96,9 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
 | **vote_id** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
@@ -122,7 +122,7 @@ No authorization required
 ## `getApiComments()`
 
 ```php
-getApiComments($options): \FastComments\Client\Model\ModerationAPIGetCommentsResponse
+getApiComments($tenant_id, $options): \FastComments\Client\Model\ModerationAPIGetCommentsResponse
 ```
 
 
@@ -141,6 +141,7 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $options = [
     'page' => 3.4, // float
     'count' => 3.4, // float
@@ -150,13 +151,12 @@ $options = [
     'search_filters' => 'search_filters_example', // string
     'sorts' => 'sorts_example', // string
     'demo' => True, // bool
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->getApiComments($options);
+    $result = $apiInstance->getApiComments($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getApiComments: ', $e->getMessage(), PHP_EOL;
@@ -169,6 +169,7 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **page** | **float**|  | [optional] |
 | **count** | **float**|  | [optional] |
 | **text_search** | **string**|  | [optional] |
@@ -177,7 +178,6 @@ Note: required parameters and the request body are positional; the optional para
 | **search_filters** | **string**|  | [optional] |
 | **sorts** | **string**|  | [optional] |
 | **demo** | **bool**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -200,7 +200,7 @@ No authorization required
 ## `getApiExportStatus()`
 
 ```php
-getApiExportStatus($options): \FastComments\Client\Model\ModerationExportStatusResponse
+getApiExportStatus($tenant_id, $options): \FastComments\Client\Model\ModerationExportStatusResponse
 ```
 
 
@@ -219,15 +219,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $options = [
     'batch_job_id' => 'batch_job_id_example', // string
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->getApiExportStatus($options);
+    $result = $apiInstance->getApiExportStatus($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getApiExportStatus: ', $e->getMessage(), PHP_EOL;
@@ -240,8 +240,8 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **batch_job_id** | **string**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -264,7 +264,7 @@ No authorization required
 ## `getApiIds()`
 
 ```php
-getApiIds($options): \FastComments\Client\Model\ModerationAPIGetCommentIdsResponse
+getApiIds($tenant_id, $options): \FastComments\Client\Model\ModerationAPIGetCommentIdsResponse
 ```
 
 
@@ -283,6 +283,7 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $options = [
     'text_search' => 'text_search_example', // string
     'by_ip_from_comment' => 'by_ip_from_comment_example', // string
@@ -290,13 +291,12 @@ $options = [
     'search_filters' => 'search_filters_example', // string
     'after_id' => 'after_id_example', // string
     'demo' => True, // bool
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->getApiIds($options);
+    $result = $apiInstance->getApiIds($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getApiIds: ', $e->getMessage(), PHP_EOL;
@@ -309,13 +309,13 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **text_search** | **string**|  | [optional] |
 | **by_ip_from_comment** | **string**|  | [optional] |
 | **filters** | **string**|  | [optional] |
 | **search_filters** | **string**|  | [optional] |
 | **after_id** | **string**|  | [optional] |
 | **demo** | **bool**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -338,7 +338,7 @@ No authorization required
 ## `getBanUsersFromComment()`
 
 ```php
-getBanUsersFromComment($comment_id, $options): \FastComments\Client\Model\GetBannedUsersFromCommentResponse
+getBanUsersFromComment($tenant_id, $comment_id, $sso): \FastComments\Client\Model\GetBannedUsersFromCommentResponse
 ```
 
 
@@ -357,15 +357,13 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
 
 
 try {
-    $result = $apiInstance->getBanUsersFromComment($comment_id, $options);
+    $result = $apiInstance->getBanUsersFromComment($tenant_id, $comment_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getBanUsersFromComment: ', $e->getMessage(), PHP_EOL;
@@ -374,12 +372,10 @@ try {
 
 ### Parameters
 
-Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
-
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -402,7 +398,7 @@ No authorization required
 ## `getCommentBanStatus()`
 
 ```php
-getCommentBanStatus($comment_id, $options): \FastComments\Client\Model\GetCommentBanStatusResponse
+getCommentBanStatus($tenant_id, $comment_id, $sso): \FastComments\Client\Model\GetCommentBanStatusResponse
 ```
 
 
@@ -421,15 +417,13 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
 
 
 try {
-    $result = $apiInstance->getCommentBanStatus($comment_id, $options);
+    $result = $apiInstance->getCommentBanStatus($tenant_id, $comment_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getCommentBanStatus: ', $e->getMessage(), PHP_EOL;
@@ -438,12 +432,10 @@ try {
 
 ### Parameters
 
-Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
-
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -466,7 +458,7 @@ No authorization required
 ## `getCommentChildren()`
 
 ```php
-getCommentChildren($comment_id, $options): \FastComments\Client\Model\ModerationAPIChildCommentsResponse
+getCommentChildren($tenant_id, $comment_id, $sso): \FastComments\Client\Model\ModerationAPIChildCommentsResponse
 ```
 
 
@@ -485,15 +477,13 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
 
 
 try {
-    $result = $apiInstance->getCommentChildren($comment_id, $options);
+    $result = $apiInstance->getCommentChildren($tenant_id, $comment_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getCommentChildren: ', $e->getMessage(), PHP_EOL;
@@ -502,12 +492,10 @@ try {
 
 ### Parameters
 
-Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
-
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -530,7 +518,7 @@ No authorization required
 ## `getCount()`
 
 ```php
-getCount($options): \FastComments\Client\Model\ModerationAPICountCommentsResponse
+getCount($tenant_id, $options): \FastComments\Client\Model\ModerationAPICountCommentsResponse
 ```
 
 
@@ -549,19 +537,19 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $options = [
     'text_search' => 'text_search_example', // string
     'by_ip_from_comment' => 'by_ip_from_comment_example', // string
     'filter' => 'filter_example', // string
     'search_filters' => 'search_filters_example', // string
     'demo' => True, // bool
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->getCount($options);
+    $result = $apiInstance->getCount($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getCount: ', $e->getMessage(), PHP_EOL;
@@ -574,12 +562,12 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **text_search** | **string**|  | [optional] |
 | **by_ip_from_comment** | **string**|  | [optional] |
 | **filter** | **string**|  | [optional] |
 | **search_filters** | **string**|  | [optional] |
 | **demo** | **bool**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -602,7 +590,7 @@ No authorization required
 ## `getCounts()`
 
 ```php
-getCounts($options): \FastComments\Client\Model\GetBannedUsersCountResponse
+getCounts($tenant_id, $sso): \FastComments\Client\Model\GetBannedUsersCountResponse
 ```
 
 
@@ -621,14 +609,12 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-    'sso' => 'sso_example', // string
-];
+$tenant_id = 'tenant_id_example'; // string
+$sso = 'sso_example'; // string
 
 
 try {
-    $result = $apiInstance->getCounts($options);
+    $result = $apiInstance->getCounts($tenant_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getCounts: ', $e->getMessage(), PHP_EOL;
@@ -637,11 +623,9 @@ try {
 
 ### Parameters
 
-Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
-
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_id** | **string**|  | [optional] |
+| **tenant_id** | **string**|  | |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -664,7 +648,7 @@ No authorization required
 ## `getLogs()`
 
 ```php
-getLogs($comment_id, $options): \FastComments\Client\Model\ModerationAPIGetLogsResponse
+getLogs($tenant_id, $comment_id, $sso): \FastComments\Client\Model\ModerationAPIGetLogsResponse
 ```
 
 
@@ -683,15 +667,13 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
 
 
 try {
-    $result = $apiInstance->getLogs($comment_id, $options);
+    $result = $apiInstance->getLogs($tenant_id, $comment_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getLogs: ', $e->getMessage(), PHP_EOL;
@@ -700,12 +682,10 @@ try {
 
 ### Parameters
 
-Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
-
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -728,7 +708,7 @@ No authorization required
 ## `getManualBadges()`
 
 ```php
-getManualBadges($options): \FastComments\Client\Model\GetTenantManualBadgesResponse
+getManualBadges($tenant_id, $sso): \FastComments\Client\Model\GetTenantManualBadgesResponse
 ```
 
 
@@ -747,14 +727,12 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-    'sso' => 'sso_example', // string
-];
+$tenant_id = 'tenant_id_example'; // string
+$sso = 'sso_example'; // string
 
 
 try {
-    $result = $apiInstance->getManualBadges($options);
+    $result = $apiInstance->getManualBadges($tenant_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getManualBadges: ', $e->getMessage(), PHP_EOL;
@@ -763,11 +741,9 @@ try {
 
 ### Parameters
 
-Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
-
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_id** | **string**|  | [optional] |
+| **tenant_id** | **string**|  | |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -790,7 +766,7 @@ No authorization required
 ## `getManualBadgesForUser()`
 
 ```php
-getManualBadgesForUser($options): \FastComments\Client\Model\GetUserManualBadgesResponse
+getManualBadgesForUser($tenant_id, $options): \FastComments\Client\Model\GetUserManualBadgesResponse
 ```
 
 
@@ -809,16 +785,16 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $options = [
     'badges_user_id' => 'badges_user_id_example', // string
     'comment_id' => 'comment_id_example', // string
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->getManualBadgesForUser($options);
+    $result = $apiInstance->getManualBadgesForUser($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getManualBadgesForUser: ', $e->getMessage(), PHP_EOL;
@@ -831,9 +807,9 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **badges_user_id** | **string**|  | [optional] |
 | **comment_id** | **string**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -856,7 +832,7 @@ No authorization required
 ## `getModerationComment()`
 
 ```php
-getModerationComment($comment_id, $options): \FastComments\Client\Model\ModerationAPICommentResponse
+getModerationComment($tenant_id, $comment_id, $options): \FastComments\Client\Model\ModerationAPICommentResponse
 ```
 
 
@@ -875,17 +851,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $options = [
     'include_email' => True, // bool
     'include_ip' => True, // bool
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->getModerationComment($comment_id, $options);
+    $result = $apiInstance->getModerationComment($tenant_id, $comment_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getModerationComment: ', $e->getMessage(), PHP_EOL;
@@ -898,10 +874,10 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
 | **include_email** | **bool**|  | [optional] |
 | **include_ip** | **bool**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -924,7 +900,7 @@ No authorization required
 ## `getModerationCommentText()`
 
 ```php
-getModerationCommentText($comment_id, $options): \FastComments\Client\Model\GetCommentTextResponse
+getModerationCommentText($tenant_id, $comment_id, $sso): \FastComments\Client\Model\GetCommentTextResponse
 ```
 
 
@@ -943,15 +919,13 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
 
 
 try {
-    $result = $apiInstance->getModerationCommentText($comment_id, $options);
+    $result = $apiInstance->getModerationCommentText($tenant_id, $comment_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getModerationCommentText: ', $e->getMessage(), PHP_EOL;
@@ -960,12 +934,10 @@ try {
 
 ### Parameters
 
-Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
-
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -988,7 +960,7 @@ No authorization required
 ## `getPreBanSummary()`
 
 ```php
-getPreBanSummary($comment_id, $options): \FastComments\Client\Model\PreBanSummary
+getPreBanSummary($tenant_id, $comment_id, $options): \FastComments\Client\Model\PreBanSummary
 ```
 
 
@@ -1007,18 +979,18 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $options = [
     'include_by_user_id_and_email' => True, // bool
     'include_by_ip' => True, // bool
     'include_by_email_domain' => True, // bool
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->getPreBanSummary($comment_id, $options);
+    $result = $apiInstance->getPreBanSummary($tenant_id, $comment_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getPreBanSummary: ', $e->getMessage(), PHP_EOL;
@@ -1031,11 +1003,11 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
 | **include_by_user_id_and_email** | **bool**|  | [optional] |
 | **include_by_ip** | **bool**|  | [optional] |
 | **include_by_email_domain** | **bool**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1058,7 +1030,7 @@ No authorization required
 ## `getSearchCommentsSummary()`
 
 ```php
-getSearchCommentsSummary($options): \FastComments\Client\Model\ModerationCommentSearchResponse
+getSearchCommentsSummary($tenant_id, $options): \FastComments\Client\Model\ModerationCommentSearchResponse
 ```
 
 
@@ -1077,17 +1049,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $options = [
     'value' => 'value_example', // string
     'filters' => 'filters_example', // string
     'search_filters' => 'search_filters_example', // string
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->getSearchCommentsSummary($options);
+    $result = $apiInstance->getSearchCommentsSummary($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getSearchCommentsSummary: ', $e->getMessage(), PHP_EOL;
@@ -1100,10 +1072,10 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **value** | **string**|  | [optional] |
 | **filters** | **string**|  | [optional] |
 | **search_filters** | **string**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1126,7 +1098,7 @@ No authorization required
 ## `getSearchPages()`
 
 ```php
-getSearchPages($options): \FastComments\Client\Model\ModerationPageSearchResponse
+getSearchPages($tenant_id, $options): \FastComments\Client\Model\ModerationPageSearchResponse
 ```
 
 
@@ -1145,15 +1117,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $options = [
     'value' => 'value_example', // string
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->getSearchPages($options);
+    $result = $apiInstance->getSearchPages($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getSearchPages: ', $e->getMessage(), PHP_EOL;
@@ -1166,8 +1138,8 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **value** | **string**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1190,7 +1162,7 @@ No authorization required
 ## `getSearchSites()`
 
 ```php
-getSearchSites($options): \FastComments\Client\Model\ModerationSiteSearchResponse
+getSearchSites($tenant_id, $options): \FastComments\Client\Model\ModerationSiteSearchResponse
 ```
 
 
@@ -1209,15 +1181,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $options = [
     'value' => 'value_example', // string
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->getSearchSites($options);
+    $result = $apiInstance->getSearchSites($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getSearchSites: ', $e->getMessage(), PHP_EOL;
@@ -1230,8 +1202,8 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **value** | **string**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1254,7 +1226,7 @@ No authorization required
 ## `getSearchSuggest()`
 
 ```php
-getSearchSuggest($options): \FastComments\Client\Model\ModerationSuggestResponse
+getSearchSuggest($tenant_id, $options): \FastComments\Client\Model\ModerationSuggestResponse
 ```
 
 
@@ -1273,15 +1245,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $options = [
     'text_search' => 'text_search_example', // string
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->getSearchSuggest($options);
+    $result = $apiInstance->getSearchSuggest($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getSearchSuggest: ', $e->getMessage(), PHP_EOL;
@@ -1294,8 +1266,8 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **text_search** | **string**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1318,7 +1290,7 @@ No authorization required
 ## `getSearchUsers()`
 
 ```php
-getSearchUsers($options): \FastComments\Client\Model\ModerationUserSearchResponse
+getSearchUsers($tenant_id, $options): \FastComments\Client\Model\ModerationUserSearchResponse
 ```
 
 
@@ -1337,15 +1309,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $options = [
     'value' => 'value_example', // string
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->getSearchUsers($options);
+    $result = $apiInstance->getSearchUsers($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getSearchUsers: ', $e->getMessage(), PHP_EOL;
@@ -1358,8 +1330,8 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **value** | **string**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1382,7 +1354,7 @@ No authorization required
 ## `getTrustFactor()`
 
 ```php
-getTrustFactor($options): \FastComments\Client\Model\GetUserTrustFactorResponse
+getTrustFactor($tenant_id, $options): \FastComments\Client\Model\GetUserTrustFactorResponse
 ```
 
 
@@ -1401,15 +1373,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $options = [
     'user_id' => 'user_id_example', // string
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->getTrustFactor($options);
+    $result = $apiInstance->getTrustFactor($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getTrustFactor: ', $e->getMessage(), PHP_EOL;
@@ -1422,8 +1394,8 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **user_id** | **string**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1446,7 +1418,7 @@ No authorization required
 ## `getUserBanPreference()`
 
 ```php
-getUserBanPreference($options): \FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse
+getUserBanPreference($tenant_id, $sso): \FastComments\Client\Model\APIModerateGetUserBanPreferencesResponse
 ```
 
 
@@ -1465,14 +1437,12 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-    'sso' => 'sso_example', // string
-];
+$tenant_id = 'tenant_id_example'; // string
+$sso = 'sso_example'; // string
 
 
 try {
-    $result = $apiInstance->getUserBanPreference($options);
+    $result = $apiInstance->getUserBanPreference($tenant_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getUserBanPreference: ', $e->getMessage(), PHP_EOL;
@@ -1481,11 +1451,9 @@ try {
 
 ### Parameters
 
-Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
-
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_id** | **string**|  | [optional] |
+| **tenant_id** | **string**|  | |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1508,7 +1476,7 @@ No authorization required
 ## `getUserInternalProfile()`
 
 ```php
-getUserInternalProfile($options): \FastComments\Client\Model\GetUserInternalProfileResponse
+getUserInternalProfile($tenant_id, $options): \FastComments\Client\Model\GetUserInternalProfileResponse
 ```
 
 
@@ -1527,15 +1495,15 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $options = [
     'comment_id' => 'comment_id_example', // string
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->getUserInternalProfile($options);
+    $result = $apiInstance->getUserInternalProfile($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->getUserInternalProfile: ', $e->getMessage(), PHP_EOL;
@@ -1548,8 +1516,8 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1572,7 +1540,7 @@ No authorization required
 ## `postAdjustCommentVotes()`
 
 ```php
-postAdjustCommentVotes($comment_id, $adjust_comment_votes_params, $options): \FastComments\Client\Model\AdjustVotesResponse
+postAdjustCommentVotes($tenant_id, $comment_id, $adjust_comment_votes_params, $options): \FastComments\Client\Model\AdjustVotesResponse
 ```
 
 
@@ -1591,17 +1559,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $adjust_comment_votes_params = new \FastComments\Client\Model\AdjustCommentVotesParams(); // \FastComments\Client\Model\AdjustCommentVotesParams
 $options = [
-    'tenant_id' => 'tenant_id_example', // string
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->postAdjustCommentVotes($comment_id, $adjust_comment_votes_params, $options);
+    $result = $apiInstance->postAdjustCommentVotes($tenant_id, $comment_id, $adjust_comment_votes_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postAdjustCommentVotes: ', $e->getMessage(), PHP_EOL;
@@ -1614,9 +1582,9 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
 | **adjust_comment_votes_params** | [**\FastComments\Client\Model\AdjustCommentVotesParams**](../Model/AdjustCommentVotesParams.md)|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
@@ -1640,7 +1608,7 @@ No authorization required
 ## `postApiExport()`
 
 ```php
-postApiExport($options): \FastComments\Client\Model\ModerationExportResponse
+postApiExport($tenant_id, $options): \FastComments\Client\Model\ModerationExportResponse
 ```
 
 
@@ -1659,19 +1627,19 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $options = [
     'text_search' => 'text_search_example', // string
     'by_ip_from_comment' => 'by_ip_from_comment_example', // string
     'filters' => 'filters_example', // string
     'search_filters' => 'search_filters_example', // string
     'sorts' => 'sorts_example', // string
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->postApiExport($options);
+    $result = $apiInstance->postApiExport($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postApiExport: ', $e->getMessage(), PHP_EOL;
@@ -1684,12 +1652,12 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **text_search** | **string**|  | [optional] |
 | **by_ip_from_comment** | **string**|  | [optional] |
 | **filters** | **string**|  | [optional] |
 | **search_filters** | **string**|  | [optional] |
 | **sorts** | **string**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1712,7 +1680,7 @@ No authorization required
 ## `postBanUserFromComment()`
 
 ```php
-postBanUserFromComment($comment_id, $options): \FastComments\Client\Model\BanUserFromCommentResult
+postBanUserFromComment($tenant_id, $comment_id, $options): \FastComments\Client\Model\BanUserFromCommentResult
 ```
 
 
@@ -1731,6 +1699,7 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $options = [
     'ban_email' => True, // bool
@@ -1741,13 +1710,12 @@ $options = [
     'is_shadow_ban' => True, // bool
     'update_id' => 'update_id_example', // string
     'ban_reason' => 'ban_reason_example', // string
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->postBanUserFromComment($comment_id, $options);
+    $result = $apiInstance->postBanUserFromComment($tenant_id, $comment_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postBanUserFromComment: ', $e->getMessage(), PHP_EOL;
@@ -1760,6 +1728,7 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
 | **ban_email** | **bool**|  | [optional] |
 | **ban_email_domain** | **bool**|  | [optional] |
@@ -1769,7 +1738,6 @@ Note: required parameters and the request body are positional; the optional para
 | **is_shadow_ban** | **bool**|  | [optional] |
 | **update_id** | **string**|  | [optional] |
 | **ban_reason** | **string**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1792,7 +1760,7 @@ No authorization required
 ## `postBanUserUndo()`
 
 ```php
-postBanUserUndo($ban_user_undo_params, $options): \FastComments\Client\Model\APIEmptyResponse
+postBanUserUndo($tenant_id, $ban_user_undo_params, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -1811,15 +1779,13 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $ban_user_undo_params = new \FastComments\Client\Model\BanUserUndoParams(); // \FastComments\Client\Model\BanUserUndoParams
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
 
 
 try {
-    $result = $apiInstance->postBanUserUndo($ban_user_undo_params, $options);
+    $result = $apiInstance->postBanUserUndo($tenant_id, $ban_user_undo_params, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postBanUserUndo: ', $e->getMessage(), PHP_EOL;
@@ -1828,12 +1794,10 @@ try {
 
 ### Parameters
 
-Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
-
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **ban_user_undo_params** | [**\FastComments\Client\Model\BanUserUndoParams**](../Model/BanUserUndoParams.md)|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1856,7 +1820,7 @@ No authorization required
 ## `postBulkPreBanSummary()`
 
 ```php
-postBulkPreBanSummary($bulk_pre_ban_params, $options): \FastComments\Client\Model\BulkPreBanSummary
+postBulkPreBanSummary($tenant_id, $bulk_pre_ban_params, $options): \FastComments\Client\Model\BulkPreBanSummary
 ```
 
 
@@ -1875,18 +1839,18 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $bulk_pre_ban_params = new \FastComments\Client\Model\BulkPreBanParams(); // \FastComments\Client\Model\BulkPreBanParams
 $options = [
     'include_by_user_id_and_email' => True, // bool
     'include_by_ip' => True, // bool
     'include_by_email_domain' => True, // bool
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->postBulkPreBanSummary($bulk_pre_ban_params, $options);
+    $result = $apiInstance->postBulkPreBanSummary($tenant_id, $bulk_pre_ban_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postBulkPreBanSummary: ', $e->getMessage(), PHP_EOL;
@@ -1899,11 +1863,11 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **bulk_pre_ban_params** | [**\FastComments\Client\Model\BulkPreBanParams**](../Model/BulkPreBanParams.md)|  | |
 | **include_by_user_id_and_email** | **bool**|  | [optional] |
 | **include_by_ip** | **bool**|  | [optional] |
 | **include_by_email_domain** | **bool**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1926,7 +1890,7 @@ No authorization required
 ## `postCommentsByIds()`
 
 ```php
-postCommentsByIds($comments_by_ids_params, $options): \FastComments\Client\Model\ModerationAPIChildCommentsResponse
+postCommentsByIds($tenant_id, $comments_by_ids_params, $sso): \FastComments\Client\Model\ModerationAPIChildCommentsResponse
 ```
 
 
@@ -1945,15 +1909,13 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comments_by_ids_params = new \FastComments\Client\Model\CommentsByIdsParams(); // \FastComments\Client\Model\CommentsByIdsParams
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
 
 
 try {
-    $result = $apiInstance->postCommentsByIds($comments_by_ids_params, $options);
+    $result = $apiInstance->postCommentsByIds($tenant_id, $comments_by_ids_params, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postCommentsByIds: ', $e->getMessage(), PHP_EOL;
@@ -1962,12 +1924,10 @@ try {
 
 ### Parameters
 
-Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
-
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comments_by_ids_params** | [**\FastComments\Client\Model\CommentsByIdsParams**](../Model/CommentsByIdsParams.md)|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -1990,7 +1950,7 @@ No authorization required
 ## `postFlagComment()`
 
 ```php
-postFlagComment($comment_id, $options): \FastComments\Client\Model\APIEmptyResponse
+postFlagComment($tenant_id, $comment_id, $options): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2009,16 +1969,16 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $options = [
-    'tenant_id' => 'tenant_id_example', // string
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->postFlagComment($comment_id, $options);
+    $result = $apiInstance->postFlagComment($tenant_id, $comment_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postFlagComment: ', $e->getMessage(), PHP_EOL;
@@ -2031,8 +1991,8 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
@@ -2056,7 +2016,7 @@ No authorization required
 ## `postRemoveComment()`
 
 ```php
-postRemoveComment($comment_id, $options): \FastComments\Client\Model\PostRemoveCommentResponse
+postRemoveComment($tenant_id, $comment_id, $options): \FastComments\Client\Model\PostRemoveCommentApiResponse
 ```
 
 
@@ -2075,16 +2035,16 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $options = [
-    'tenant_id' => 'tenant_id_example', // string
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->postRemoveComment($comment_id, $options);
+    $result = $apiInstance->postRemoveComment($tenant_id, $comment_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postRemoveComment: ', $e->getMessage(), PHP_EOL;
@@ -2097,14 +2057,14 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
 
-[**\FastComments\Client\Model\PostRemoveCommentResponse**](../Model/PostRemoveCommentResponse.md)
+[**\FastComments\Client\Model\PostRemoveCommentApiResponse**](../Model/PostRemoveCommentApiResponse.md)
 
 ### Authorization
 
@@ -2122,7 +2082,7 @@ No authorization required
 ## `postRestoreDeletedComment()`
 
 ```php
-postRestoreDeletedComment($comment_id, $options): \FastComments\Client\Model\APIEmptyResponse
+postRestoreDeletedComment($tenant_id, $comment_id, $options): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2141,16 +2101,16 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $options = [
-    'tenant_id' => 'tenant_id_example', // string
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->postRestoreDeletedComment($comment_id, $options);
+    $result = $apiInstance->postRestoreDeletedComment($tenant_id, $comment_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postRestoreDeletedComment: ', $e->getMessage(), PHP_EOL;
@@ -2163,8 +2123,8 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
@@ -2188,7 +2148,7 @@ No authorization required
 ## `postSetCommentApprovalStatus()`
 
 ```php
-postSetCommentApprovalStatus($comment_id, $options): \FastComments\Client\Model\SetCommentApprovedResponse
+postSetCommentApprovalStatus($tenant_id, $comment_id, $options): \FastComments\Client\Model\SetCommentApprovedResponse
 ```
 
 
@@ -2207,17 +2167,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $options = [
     'approved' => True, // bool
-    'tenant_id' => 'tenant_id_example', // string
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->postSetCommentApprovalStatus($comment_id, $options);
+    $result = $apiInstance->postSetCommentApprovalStatus($tenant_id, $comment_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postSetCommentApprovalStatus: ', $e->getMessage(), PHP_EOL;
@@ -2230,9 +2190,9 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
 | **approved** | **bool**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
@@ -2256,7 +2216,7 @@ No authorization required
 ## `postSetCommentReviewStatus()`
 
 ```php
-postSetCommentReviewStatus($comment_id, $options): \FastComments\Client\Model\APIEmptyResponse
+postSetCommentReviewStatus($tenant_id, $comment_id, $options): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2275,17 +2235,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $options = [
     'reviewed' => True, // bool
-    'tenant_id' => 'tenant_id_example', // string
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->postSetCommentReviewStatus($comment_id, $options);
+    $result = $apiInstance->postSetCommentReviewStatus($tenant_id, $comment_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postSetCommentReviewStatus: ', $e->getMessage(), PHP_EOL;
@@ -2298,9 +2258,9 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
 | **reviewed** | **bool**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
@@ -2324,7 +2284,7 @@ No authorization required
 ## `postSetCommentSpamStatus()`
 
 ```php
-postSetCommentSpamStatus($comment_id, $options): \FastComments\Client\Model\APIEmptyResponse
+postSetCommentSpamStatus($tenant_id, $comment_id, $options): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2343,18 +2303,18 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $options = [
     'spam' => True, // bool
     'perm_not_spam' => True, // bool
-    'tenant_id' => 'tenant_id_example', // string
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->postSetCommentSpamStatus($comment_id, $options);
+    $result = $apiInstance->postSetCommentSpamStatus($tenant_id, $comment_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postSetCommentSpamStatus: ', $e->getMessage(), PHP_EOL;
@@ -2367,10 +2327,10 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
 | **spam** | **bool**|  | [optional] |
 | **perm_not_spam** | **bool**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
@@ -2394,7 +2354,7 @@ No authorization required
 ## `postSetCommentText()`
 
 ```php
-postSetCommentText($comment_id, $set_comment_text_params, $options): \FastComments\Client\Model\SetCommentTextResponse
+postSetCommentText($tenant_id, $comment_id, $set_comment_text_params, $options): \FastComments\Client\Model\SetCommentTextResponse
 ```
 
 
@@ -2413,17 +2373,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $set_comment_text_params = new \FastComments\Client\Model\SetCommentTextParams(); // \FastComments\Client\Model\SetCommentTextParams
 $options = [
-    'tenant_id' => 'tenant_id_example', // string
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->postSetCommentText($comment_id, $set_comment_text_params, $options);
+    $result = $apiInstance->postSetCommentText($tenant_id, $comment_id, $set_comment_text_params, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postSetCommentText: ', $e->getMessage(), PHP_EOL;
@@ -2436,9 +2396,9 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
 | **set_comment_text_params** | [**\FastComments\Client\Model\SetCommentTextParams**](../Model/SetCommentTextParams.md)|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
@@ -2462,7 +2422,7 @@ No authorization required
 ## `postUnFlagComment()`
 
 ```php
-postUnFlagComment($comment_id, $options): \FastComments\Client\Model\APIEmptyResponse
+postUnFlagComment($tenant_id, $comment_id, $options): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2481,16 +2441,16 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $options = [
-    'tenant_id' => 'tenant_id_example', // string
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->postUnFlagComment($comment_id, $options);
+    $result = $apiInstance->postUnFlagComment($tenant_id, $comment_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postUnFlagComment: ', $e->getMessage(), PHP_EOL;
@@ -2503,8 +2463,8 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
@@ -2528,7 +2488,7 @@ No authorization required
 ## `postVote()`
 
 ```php
-postVote($comment_id, $options): \FastComments\Client\Model\VoteResponse
+postVote($tenant_id, $comment_id, $options): \FastComments\Client\Model\VoteResponse
 ```
 
 
@@ -2547,17 +2507,17 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 $options = [
     'direction' => 'direction_example', // string
-    'tenant_id' => 'tenant_id_example', // string
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->postVote($comment_id, $options);
+    $result = $apiInstance->postVote($tenant_id, $comment_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->postVote: ', $e->getMessage(), PHP_EOL;
@@ -2570,9 +2530,9 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **comment_id** | **string**|  | |
 | **direction** | **string**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
@@ -2596,7 +2556,7 @@ No authorization required
 ## `putAwardBadge()`
 
 ```php
-putAwardBadge($badge_id, $options): \FastComments\Client\Model\AwardUserBadgeResponse
+putAwardBadge($tenant_id, $badge_id, $options): \FastComments\Client\Model\AwardUserBadgeResponse
 ```
 
 
@@ -2615,18 +2575,18 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $badge_id = 'badge_id_example'; // string
 $options = [
     'user_id' => 'user_id_example', // string
     'comment_id' => 'comment_id_example', // string
-    'tenant_id' => 'tenant_id_example', // string
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->putAwardBadge($badge_id, $options);
+    $result = $apiInstance->putAwardBadge($tenant_id, $badge_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->putAwardBadge: ', $e->getMessage(), PHP_EOL;
@@ -2639,10 +2599,10 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **badge_id** | **string**|  | |
 | **user_id** | **string**|  | [optional] |
 | **comment_id** | **string**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
@@ -2666,7 +2626,7 @@ No authorization required
 ## `putCloseThread()`
 
 ```php
-putCloseThread($url_id, $options): \FastComments\Client\Model\APIEmptyResponse
+putCloseThread($tenant_id, $url_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2685,15 +2645,13 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
 
 
 try {
-    $result = $apiInstance->putCloseThread($url_id, $options);
+    $result = $apiInstance->putCloseThread($tenant_id, $url_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->putCloseThread: ', $e->getMessage(), PHP_EOL;
@@ -2702,12 +2660,10 @@ try {
 
 ### Parameters
 
-Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
-
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **url_id** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -2730,7 +2686,7 @@ No authorization required
 ## `putRemoveBadge()`
 
 ```php
-putRemoveBadge($badge_id, $options): \FastComments\Client\Model\RemoveUserBadgeResponse
+putRemoveBadge($tenant_id, $badge_id, $options): \FastComments\Client\Model\RemoveUserBadgeResponse
 ```
 
 
@@ -2749,18 +2705,18 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $badge_id = 'badge_id_example'; // string
 $options = [
     'user_id' => 'user_id_example', // string
     'comment_id' => 'comment_id_example', // string
-    'tenant_id' => 'tenant_id_example', // string
     'broadcast_id' => 'broadcast_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->putRemoveBadge($badge_id, $options);
+    $result = $apiInstance->putRemoveBadge($tenant_id, $badge_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->putRemoveBadge: ', $e->getMessage(), PHP_EOL;
@@ -2773,10 +2729,10 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **badge_id** | **string**|  | |
 | **user_id** | **string**|  | [optional] |
 | **comment_id** | **string**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **broadcast_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
@@ -2800,7 +2756,7 @@ No authorization required
 ## `putReopenThread()`
 
 ```php
-putReopenThread($url_id, $options): \FastComments\Client\Model\APIEmptyResponse
+putReopenThread($tenant_id, $url_id, $sso): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -2819,15 +2775,13 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $url_id = 'url_id_example'; // string
-$options = [
-    'tenant_id' => 'tenant_id_example', // string
-    'sso' => 'sso_example', // string
-];
+$sso = 'sso_example'; // string
 
 
 try {
-    $result = $apiInstance->putReopenThread($url_id, $options);
+    $result = $apiInstance->putReopenThread($tenant_id, $url_id, $sso);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->putReopenThread: ', $e->getMessage(), PHP_EOL;
@@ -2836,12 +2790,10 @@ try {
 
 ### Parameters
 
-Note: required parameters and the request body are positional; the optional parameters listed below are passed as keys of the `$options` array.
-
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **url_id** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type
@@ -2864,7 +2816,7 @@ No authorization required
 ## `setTrustFactor()`
 
 ```php
-setTrustFactor($options): \FastComments\Client\Model\SetUserTrustFactorResponse
+setTrustFactor($tenant_id, $options): \FastComments\Client\Model\SetUserTrustFactorResponse
 ```
 
 
@@ -2883,16 +2835,16 @@ $apiInstance = new FastComments\Client\Api\ModerationApi(
     new GuzzleHttp\Client()
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $options = [
     'user_id' => 'user_id_example', // string
     'trust_factor' => 'trust_factor_example', // string
-    'tenant_id' => 'tenant_id_example', // string
     'sso' => 'sso_example', // string
 ];
 
 
 try {
-    $result = $apiInstance->setTrustFactor($options);
+    $result = $apiInstance->setTrustFactor($tenant_id, $options);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ModerationApi->setTrustFactor: ', $e->getMessage(), PHP_EOL;
@@ -2905,9 +2857,9 @@ Note: required parameters and the request body are positional; the optional para
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **user_id** | **string**|  | [optional] |
 | **trust_factor** | **string**|  | [optional] |
-| **tenant_id** | **string**|  | [optional] |
 | **sso** | **string**|  | [optional] |
 
 ### Return type

@@ -1,6 +1,6 @@
 <?php
 /**
- * PostRemoveCommentResponseTest
+ * PostRemoveCommentApiResponseTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace FastComments\Client\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * PostRemoveCommentResponseTest Class Doc Comment
+ * PostRemoveCommentApiResponseTest Class Doc Comment
  *
  * @category    Class
- * @description PostRemoveCommentResponse
+ * @description PostRemoveCommentApiResponse
  * @package     FastComments\Client
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class PostRemoveCommentResponseTest extends TestCase
+class PostRemoveCommentApiResponseTest extends TestCase
 {
 
     /**
@@ -72,9 +72,9 @@ class PostRemoveCommentResponseTest extends TestCase
     }
 
     /**
-     * Test "PostRemoveCommentResponse"
+     * Test "PostRemoveCommentApiResponse"
      */
-    public function testPostRemoveCommentResponse()
+    public function testPostRemoveCommentApiResponse()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

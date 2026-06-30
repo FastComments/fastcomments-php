@@ -1,6 +1,6 @@
 <?php
 /**
- * PostRemoveCommentResponse
+ * PostRemoveCommentApiResponse
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \FastComments\Client\ObjectSerializer;
 
 /**
- * PostRemoveCommentResponse Class Doc Comment
+ * PostRemoveCommentApiResponse Class Doc Comment
  *
  * @category Class
  * @package  FastComments\Client
@@ -41,7 +41,7 @@ use \FastComments\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PostRemoveCommentResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class PostRemoveCommentApiResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PostRemoveCommentResponse implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @var string
      */
-    protected static $openAPIModelName = 'PostRemoveCommentResponse';
+    protected static $openAPIModelName = 'PostRemoveCommentApiResponse';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

@@ -264,7 +264,7 @@ docs/Model/PatchDomainConfigResponse.md
 docs/Model/PatchPageAPIResponse.md
 docs/Model/PatchSSOUserAPIResponse.md
 docs/Model/PendingCommentToSyncOutbound.md
-docs/Model/PostRemoveCommentResponse.md
+docs/Model/PostRemoveCommentApiResponse.md
 docs/Model/PreBanSummary.md
 docs/Model/PubSubComment.md
 docs/Model/PubSubCommentBase.md
@@ -633,7 +633,7 @@ lib/Model/PatchDomainConfigResponse.php
 lib/Model/PatchPageAPIResponse.php
 lib/Model/PatchSSOUserAPIResponse.php
 lib/Model/PendingCommentToSyncOutbound.php
-lib/Model/PostRemoveCommentResponse.php
+lib/Model/PostRemoveCommentApiResponse.php
 lib/Model/PreBanSummary.php
 lib/Model/PubSubComment.php
 lib/Model/PubSubCommentBase.php
@@ -998,7 +998,7 @@ test/Model/PatchDomainConfigResponseTest.php
 test/Model/PatchPageAPIResponseTest.php
 test/Model/PatchSSOUserAPIResponseTest.php
 test/Model/PendingCommentToSyncOutboundTest.php
-test/Model/PostRemoveCommentResponseTest.php
+test/Model/PostRemoveCommentApiResponseTest.php
 test/Model/PreBanSummaryTest.php
 test/Model/PubSubCommentBaseTest.php
 test/Model/PubSubCommentTest.php

@@ -764,9 +764,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
-     * @param  string|null $tenant_id tenant_id (optional)
+     * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\CreateHashTagBody|null $create_hash_tag_body create_hash_tag_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addHashTag'] to see the possible values for this operation
      *
@@ -774,9 +772,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\CreateHashTagResponse|\FastComments\Client\Model\APIError
      */
-    public function addHashTag($create_hash_tag_body = null, $tenant_id = null)
+    public function addHashTag($tenant_id, $create_hash_tag_body = null)
     {
-        list($response) = $this->addHashTagWithHttpInfo($create_hash_tag_body, $tenant_id);
+        list($response) = $this->addHashTagWithHttpInfo($tenant_id, $create_hash_tag_body);
         return $response;
     }
 
@@ -785,9 +783,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateHashTagBody|null $create_hash_tag_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addHashTag'] to see the possible values for this operation
      *
@@ -795,9 +791,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\CreateHashTagResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function addHashTagWithHttpInfo($create_hash_tag_body = null, $tenant_id = null)
+    public function addHashTagWithHttpInfo($tenant_id, $create_hash_tag_body = null)
     {
-        $request = $this->addHashTagRequest($create_hash_tag_body, $tenant_id);
+        $request = $this->addHashTagRequest($tenant_id, $create_hash_tag_body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -887,18 +883,16 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateHashTagBody|null $create_hash_tag_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addHashTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addHashTagAsync($create_hash_tag_body = null, $tenant_id = null)
+    public function addHashTagAsync($tenant_id, $create_hash_tag_body = null)
     {
-        return $this->addHashTagAsyncWithHttpInfo($create_hash_tag_body, $tenant_id)
+        return $this->addHashTagAsyncWithHttpInfo($tenant_id, $create_hash_tag_body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -911,19 +905,17 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateHashTagBody|null $create_hash_tag_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addHashTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addHashTagAsyncWithHttpInfo($create_hash_tag_body = null, $tenant_id = null)
+    public function addHashTagAsyncWithHttpInfo($tenant_id, $create_hash_tag_body = null)
     {
         $returnType = '\FastComments\Client\Model\CreateHashTagResponse';
-        $request = $this->addHashTagRequest($create_hash_tag_body, $tenant_id);
+        $request = $this->addHashTagRequest($tenant_id, $create_hash_tag_body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -964,19 +956,23 @@ class DefaultApi
     /**
      * Create request for operation 'addHashTag'
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\CreateHashTagBody|null $create_hash_tag_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addHashTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function addHashTagRequest($create_hash_tag_body = null, $tenant_id = null)
+    public function addHashTagRequest($tenant_id, $create_hash_tag_body = null)
     {
         $contentType = self::contentTypes['addHashTag'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling addHashTag'
+            );
+        }
 
 
 
@@ -994,7 +990,7 @@ class DefaultApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
 
 
@@ -1070,9 +1066,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
-     * @param  string|null $tenant_id tenant_id (optional)
+     * @param  string $tenant_id tenant_id (required)
      * @param  \FastComments\Client\Model\BulkCreateHashTagsBody|null $bulk_create_hash_tags_body bulk_create_hash_tags_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addHashTagsBulk'] to see the possible values for this operation
      *
@@ -1080,9 +1074,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\BulkCreateHashTagsResponse|\FastComments\Client\Model\APIError
      */
-    public function addHashTagsBulk($bulk_create_hash_tags_body = null, $tenant_id = null)
+    public function addHashTagsBulk($tenant_id, $bulk_create_hash_tags_body = null)
     {
-        list($response) = $this->addHashTagsBulkWithHttpInfo($bulk_create_hash_tags_body, $tenant_id);
+        list($response) = $this->addHashTagsBulkWithHttpInfo($tenant_id, $bulk_create_hash_tags_body);
         return $response;
     }
 
@@ -1091,9 +1085,7 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BulkCreateHashTagsBody|null $bulk_create_hash_tags_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addHashTagsBulk'] to see the possible values for this operation
      *
@@ -1101,9 +1093,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\BulkCreateHashTagsResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function addHashTagsBulkWithHttpInfo($bulk_create_hash_tags_body = null, $tenant_id = null)
+    public function addHashTagsBulkWithHttpInfo($tenant_id, $bulk_create_hash_tags_body = null)
     {
-        $request = $this->addHashTagsBulkRequest($bulk_create_hash_tags_body, $tenant_id);
+        $request = $this->addHashTagsBulkRequest($tenant_id, $bulk_create_hash_tags_body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1193,18 +1185,16 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BulkCreateHashTagsBody|null $bulk_create_hash_tags_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addHashTagsBulk'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addHashTagsBulkAsync($bulk_create_hash_tags_body = null, $tenant_id = null)
+    public function addHashTagsBulkAsync($tenant_id, $bulk_create_hash_tags_body = null)
     {
-        return $this->addHashTagsBulkAsyncWithHttpInfo($bulk_create_hash_tags_body, $tenant_id)
+        return $this->addHashTagsBulkAsyncWithHttpInfo($tenant_id, $bulk_create_hash_tags_body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1217,19 +1207,17 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BulkCreateHashTagsBody|null $bulk_create_hash_tags_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addHashTagsBulk'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addHashTagsBulkAsyncWithHttpInfo($bulk_create_hash_tags_body = null, $tenant_id = null)
+    public function addHashTagsBulkAsyncWithHttpInfo($tenant_id, $bulk_create_hash_tags_body = null)
     {
         $returnType = '\FastComments\Client\Model\BulkCreateHashTagsResponse';
-        $request = $this->addHashTagsBulkRequest($bulk_create_hash_tags_body, $tenant_id);
+        $request = $this->addHashTagsBulkRequest($tenant_id, $bulk_create_hash_tags_body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1270,19 +1258,23 @@ class DefaultApi
     /**
      * Create request for operation 'addHashTagsBulk'
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
-     * @param  string|null $tenant_id (optional)
+     * @param  string $tenant_id (required)
      * @param  \FastComments\Client\Model\BulkCreateHashTagsBody|null $bulk_create_hash_tags_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addHashTagsBulk'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function addHashTagsBulkRequest($bulk_create_hash_tags_body = null, $tenant_id = null)
+    public function addHashTagsBulkRequest($tenant_id, $bulk_create_hash_tags_body = null)
     {
         $contentType = self::contentTypes['addHashTagsBulk'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling addHashTagsBulk'
+            );
+        }
 
 
 
@@ -1300,7 +1292,7 @@ class DefaultApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
 
 
@@ -9307,10 +9299,8 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $tag tag (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  \FastComments\Client\Model\DeleteHashTagRequestBody|null $delete_hash_tag_request_body delete_hash_tag_request_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteHashTag'] to see the possible values for this operation
      *
@@ -9318,9 +9308,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError
      */
-    public function deleteHashTag($tag, $delete_hash_tag_request_body = null, $tenant_id = null)
+    public function deleteHashTag($tenant_id, $tag, $delete_hash_tag_request_body = null)
     {
-        list($response) = $this->deleteHashTagWithHttpInfo($tag, $delete_hash_tag_request_body, $tenant_id);
+        list($response) = $this->deleteHashTagWithHttpInfo($tenant_id, $tag, $delete_hash_tag_request_body);
         return $response;
     }
 
@@ -9329,10 +9319,8 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
+     * @param  string $tenant_id (required)
      * @param  string $tag (required)
-     * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\DeleteHashTagRequestBody|null $delete_hash_tag_request_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteHashTag'] to see the possible values for this operation
      *
@@ -9340,9 +9328,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\APIEmptyResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteHashTagWithHttpInfo($tag, $delete_hash_tag_request_body = null, $tenant_id = null)
+    public function deleteHashTagWithHttpInfo($tenant_id, $tag, $delete_hash_tag_request_body = null)
     {
-        $request = $this->deleteHashTagRequest($tag, $delete_hash_tag_request_body, $tenant_id);
+        $request = $this->deleteHashTagRequest($tenant_id, $tag, $delete_hash_tag_request_body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9432,19 +9420,17 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
+     * @param  string $tenant_id (required)
      * @param  string $tag (required)
-     * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\DeleteHashTagRequestBody|null $delete_hash_tag_request_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteHashTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteHashTagAsync($tag, $delete_hash_tag_request_body = null, $tenant_id = null)
+    public function deleteHashTagAsync($tenant_id, $tag, $delete_hash_tag_request_body = null)
     {
-        return $this->deleteHashTagAsyncWithHttpInfo($tag, $delete_hash_tag_request_body, $tenant_id)
+        return $this->deleteHashTagAsyncWithHttpInfo($tenant_id, $tag, $delete_hash_tag_request_body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9457,20 +9443,18 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
+     * @param  string $tenant_id (required)
      * @param  string $tag (required)
-     * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\DeleteHashTagRequestBody|null $delete_hash_tag_request_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteHashTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteHashTagAsyncWithHttpInfo($tag, $delete_hash_tag_request_body = null, $tenant_id = null)
+    public function deleteHashTagAsyncWithHttpInfo($tenant_id, $tag, $delete_hash_tag_request_body = null)
     {
         $returnType = '\FastComments\Client\Model\APIEmptyResponse';
-        $request = $this->deleteHashTagRequest($tag, $delete_hash_tag_request_body, $tenant_id);
+        $request = $this->deleteHashTagRequest($tenant_id, $tag, $delete_hash_tag_request_body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9511,27 +9495,31 @@ class DefaultApi
     /**
      * Create request for operation 'deleteHashTag'
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
+     * @param  string $tenant_id (required)
      * @param  string $tag (required)
-     * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\DeleteHashTagRequestBody|null $delete_hash_tag_request_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteHashTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteHashTagRequest($tag, $delete_hash_tag_request_body = null, $tenant_id = null)
+    public function deleteHashTagRequest($tenant_id, $tag, $delete_hash_tag_request_body = null)
     {
         $contentType = self::contentTypes['deleteHashTag'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling deleteHashTag'
+            );
+        }
+
         // verify the required parameter 'tag' is set
         if ($tag === null || (is_array($tag) && count($tag) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $tag when calling deleteHashTag'
             );
         }
-
 
 
 
@@ -9549,7 +9537,7 @@ class DefaultApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
 
 
@@ -29380,10 +29368,8 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
+     * @param  string $tenant_id tenant_id (required)
      * @param  string $tag tag (required)
-     * @param  string|null $tenant_id tenant_id (optional)
      * @param  \FastComments\Client\Model\UpdateHashTagBody|null $update_hash_tag_body update_hash_tag_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchHashTag'] to see the possible values for this operation
      *
@@ -29391,9 +29377,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FastComments\Client\Model\UpdateHashTagResponse|\FastComments\Client\Model\APIError
      */
-    public function patchHashTag($tag, $update_hash_tag_body = null, $tenant_id = null)
+    public function patchHashTag($tenant_id, $tag, $update_hash_tag_body = null)
     {
-        list($response) = $this->patchHashTagWithHttpInfo($tag, $update_hash_tag_body, $tenant_id);
+        list($response) = $this->patchHashTagWithHttpInfo($tenant_id, $tag, $update_hash_tag_body);
         return $response;
     }
 
@@ -29402,10 +29388,8 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
+     * @param  string $tenant_id (required)
      * @param  string $tag (required)
-     * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\UpdateHashTagBody|null $update_hash_tag_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchHashTag'] to see the possible values for this operation
      *
@@ -29413,9 +29397,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FastComments\Client\Model\UpdateHashTagResponse|\FastComments\Client\Model\APIError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function patchHashTagWithHttpInfo($tag, $update_hash_tag_body = null, $tenant_id = null)
+    public function patchHashTagWithHttpInfo($tenant_id, $tag, $update_hash_tag_body = null)
     {
-        $request = $this->patchHashTagRequest($tag, $update_hash_tag_body, $tenant_id);
+        $request = $this->patchHashTagRequest($tenant_id, $tag, $update_hash_tag_body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -29505,19 +29489,17 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
+     * @param  string $tenant_id (required)
      * @param  string $tag (required)
-     * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\UpdateHashTagBody|null $update_hash_tag_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchHashTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchHashTagAsync($tag, $update_hash_tag_body = null, $tenant_id = null)
+    public function patchHashTagAsync($tenant_id, $tag, $update_hash_tag_body = null)
     {
-        return $this->patchHashTagAsyncWithHttpInfo($tag, $update_hash_tag_body, $tenant_id)
+        return $this->patchHashTagAsyncWithHttpInfo($tenant_id, $tag, $update_hash_tag_body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -29530,20 +29512,18 @@ class DefaultApi
      *
      * FastComments PHP API Client - A SDK for interacting with the FastComments API
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
+     * @param  string $tenant_id (required)
      * @param  string $tag (required)
-     * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\UpdateHashTagBody|null $update_hash_tag_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchHashTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchHashTagAsyncWithHttpInfo($tag, $update_hash_tag_body = null, $tenant_id = null)
+    public function patchHashTagAsyncWithHttpInfo($tenant_id, $tag, $update_hash_tag_body = null)
     {
         $returnType = '\FastComments\Client\Model\UpdateHashTagResponse';
-        $request = $this->patchHashTagRequest($tag, $update_hash_tag_body, $tenant_id);
+        $request = $this->patchHashTagRequest($tenant_id, $tag, $update_hash_tag_body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -29584,27 +29564,31 @@ class DefaultApi
     /**
      * Create request for operation 'patchHashTag'
      *
-     * Note: required parameters (and the request body) are positional; optional parameters are passed as keys of the $options array
-     *
+     * @param  string $tenant_id (required)
      * @param  string $tag (required)
-     * @param  string|null $tenant_id (optional)
      * @param  \FastComments\Client\Model\UpdateHashTagBody|null $update_hash_tag_body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchHashTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function patchHashTagRequest($tag, $update_hash_tag_body = null, $tenant_id = null)
+    public function patchHashTagRequest($tenant_id, $tag, $update_hash_tag_body = null)
     {
         $contentType = self::contentTypes['patchHashTag'][0];
         
+        // verify the required parameter 'tenant_id' is set
+        if ($tenant_id === null || (is_array($tenant_id) && count($tenant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $tenant_id when calling patchHashTag'
+            );
+        }
+
         // verify the required parameter 'tag' is set
         if ($tag === null || (is_array($tag) && count($tag) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $tag when calling patchHashTag'
             );
         }
-
 
 
 
@@ -29622,7 +29606,7 @@ class DefaultApi
             'string', // openApiType
             'form', // style
             true, // explode
-            false // required
+            true // required
         ) ?? []);
 
 

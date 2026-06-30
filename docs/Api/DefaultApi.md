@@ -189,7 +189,7 @@ try {
 ## `addHashTag()`
 
 ```php
-addHashTag($create_hash_tag_body, $tenant_id): \FastComments\Client\Model\CreateHashTagResponse
+addHashTag($tenant_id, $create_hash_tag_body): \FastComments\Client\Model\CreateHashTagResponse
 ```
 
 
@@ -214,12 +214,12 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     $config
 );
 
-$create_hash_tag_body = new \FastComments\Client\Model\CreateHashTagBody(); // \FastComments\Client\Model\CreateHashTagBody
 $tenant_id = 'tenant_id_example'; // string
+$create_hash_tag_body = new \FastComments\Client\Model\CreateHashTagBody(); // \FastComments\Client\Model\CreateHashTagBody
 
 
 try {
-    $result = $apiInstance->addHashTag($create_hash_tag_body, $tenant_id);
+    $result = $apiInstance->addHashTag($tenant_id, $create_hash_tag_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->addHashTag: ', $e->getMessage(), PHP_EOL;
@@ -230,7 +230,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_id** | **string**|  | [optional] |
+| **tenant_id** | **string**|  | |
 | **create_hash_tag_body** | [**\FastComments\Client\Model\CreateHashTagBody**](../Model/CreateHashTagBody.md)|  | [optional] |
 
 ### Return type
@@ -253,7 +253,7 @@ try {
 ## `addHashTagsBulk()`
 
 ```php
-addHashTagsBulk($bulk_create_hash_tags_body, $tenant_id): \FastComments\Client\Model\BulkCreateHashTagsResponse
+addHashTagsBulk($tenant_id, $bulk_create_hash_tags_body): \FastComments\Client\Model\BulkCreateHashTagsResponse
 ```
 
 
@@ -278,12 +278,12 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     $config
 );
 
-$bulk_create_hash_tags_body = new \FastComments\Client\Model\BulkCreateHashTagsBody(); // \FastComments\Client\Model\BulkCreateHashTagsBody
 $tenant_id = 'tenant_id_example'; // string
+$bulk_create_hash_tags_body = new \FastComments\Client\Model\BulkCreateHashTagsBody(); // \FastComments\Client\Model\BulkCreateHashTagsBody
 
 
 try {
-    $result = $apiInstance->addHashTagsBulk($bulk_create_hash_tags_body, $tenant_id);
+    $result = $apiInstance->addHashTagsBulk($tenant_id, $bulk_create_hash_tags_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->addHashTagsBulk: ', $e->getMessage(), PHP_EOL;
@@ -294,7 +294,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_id** | **string**|  | [optional] |
+| **tenant_id** | **string**|  | |
 | **bulk_create_hash_tags_body** | [**\FastComments\Client\Model\BulkCreateHashTagsBody**](../Model/BulkCreateHashTagsBody.md)|  | [optional] |
 
 ### Return type
@@ -1945,7 +1945,7 @@ try {
 ## `deleteHashTag()`
 
 ```php
-deleteHashTag($tag, $delete_hash_tag_request_body, $tenant_id): \FastComments\Client\Model\APIEmptyResponse
+deleteHashTag($tenant_id, $tag, $delete_hash_tag_request_body): \FastComments\Client\Model\APIEmptyResponse
 ```
 
 
@@ -1970,13 +1970,13 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     $config
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $tag = 'tag_example'; // string
 $delete_hash_tag_request_body = new \FastComments\Client\Model\DeleteHashTagRequestBody(); // \FastComments\Client\Model\DeleteHashTagRequestBody
-$tenant_id = 'tenant_id_example'; // string
 
 
 try {
-    $result = $apiInstance->deleteHashTag($tag, $delete_hash_tag_request_body, $tenant_id);
+    $result = $apiInstance->deleteHashTag($tenant_id, $tag, $delete_hash_tag_request_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->deleteHashTag: ', $e->getMessage(), PHP_EOL;
@@ -1987,8 +1987,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **tag** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **delete_hash_tag_request_body** | [**\FastComments\Client\Model\DeleteHashTagRequestBody**](../Model/DeleteHashTagRequestBody.md)|  | [optional] |
 
 ### Return type
@@ -6065,7 +6065,7 @@ try {
 ## `patchHashTag()`
 
 ```php
-patchHashTag($tag, $update_hash_tag_body, $tenant_id): \FastComments\Client\Model\UpdateHashTagResponse
+patchHashTag($tenant_id, $tag, $update_hash_tag_body): \FastComments\Client\Model\UpdateHashTagResponse
 ```
 
 
@@ -6090,13 +6090,13 @@ $apiInstance = new FastComments\Client\Api\DefaultApi(
     $config
 );
 
+$tenant_id = 'tenant_id_example'; // string
 $tag = 'tag_example'; // string
 $update_hash_tag_body = new \FastComments\Client\Model\UpdateHashTagBody(); // \FastComments\Client\Model\UpdateHashTagBody
-$tenant_id = 'tenant_id_example'; // string
 
 
 try {
-    $result = $apiInstance->patchHashTag($tag, $update_hash_tag_body, $tenant_id);
+    $result = $apiInstance->patchHashTag($tenant_id, $tag, $update_hash_tag_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->patchHashTag: ', $e->getMessage(), PHP_EOL;
@@ -6107,8 +6107,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **tenant_id** | **string**|  | |
 | **tag** | **string**|  | |
-| **tenant_id** | **string**|  | [optional] |
 | **update_hash_tag_body** | [**\FastComments\Client\Model\UpdateHashTagBody**](../Model/UpdateHashTagBody.md)|  | [optional] |
 
 ### Return type
